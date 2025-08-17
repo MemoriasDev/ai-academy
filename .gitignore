@@ -2,6 +2,14 @@
 public/videos/**/*.mp4
 *.mp4
 
+# Python virtual environments
+ai-course-transcription-package/whisper_env/
+whisper_env/
+venv/
+.venv/
+*.pyc
+__pycache__/
+
 # Logs
 logs
 *.log
