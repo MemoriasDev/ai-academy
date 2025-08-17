@@ -14,7 +14,7 @@ interface CohortDropdownProps {
 }
 
 export function CohortDropdown({ currentCohort = "Cohort 2", cohorts, onCohortSelect }: CohortDropdownProps) {
-  const availableCohorts = cohorts || ["Cohort 1", "Cohort 2", "Cohort 3"];
+  const availableCohorts = cohorts || ["Cohort 2"];
 
   return (
     <DropdownMenu>
