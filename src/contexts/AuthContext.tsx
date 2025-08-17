@@ -97,7 +97,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Listen for auth state changes (login, logout, token refresh, etc.)
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        console.log('Auth event:', event);
+        // Auth event handled
         
         // Update local state
         setSession(session);
@@ -132,7 +132,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             
           case 'TOKEN_REFRESHED':
             // Token was successfully refreshed
-            console.log('Token refreshed successfully');
+            // Token refreshed successfully
             break;
             
           case 'USER_UPDATED':
@@ -142,7 +142,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             
           case 'PASSWORD_RECOVERY':
             // User clicked password recovery link
-            console.log('Password recovery initiated');
+            // Password recovery initiated
             break;
         }
         
@@ -160,7 +160,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         
         // Refresh if less than 5 minutes until expiry
         if (timeUntilExpiry < 5 * 60 * 1000 && timeUntilExpiry > 0) {
-          console.log('Refreshing token proactively...');
+          // Refreshing token proactively
           const { data, error } = await supabase.auth.refreshSession();
           
           if (error) {
@@ -247,7 +247,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (data.user && !data.session) {
         // If no session returned, try to sign in automatically
         // This happens when email confirmation is required but we want to bypass for MVP
-        console.log('No session returned from signup, attempting auto-signin...');
+        // No session returned from signup, attempting auto-signin
         
         // Wait a brief moment for the user to be fully created
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -257,7 +257,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         
         // If sign in fails, it might be because email confirmation is required
         if (signInResult.error) {
-          console.log('Auto-signin failed, email confirmation may be required');
+          // Auto-signin failed, email confirmation may be required
           // Return success anyway since user was created
           // Show a message about email confirmation
           return { 
@@ -273,7 +273,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       // If we got both user and session, everything worked!
       if (data.user && data.session) {
-        console.log('Signup successful with immediate session');
+        // Signup successful with immediate session
       }
 
       return { error: null };

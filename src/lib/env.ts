@@ -48,7 +48,7 @@ export function validateEnv(): void {
     throw new Error('Invalid Supabase anon key');
   }
 
-  console.log('✅ Environment variables validated successfully');
+  // Environment variables validated successfully
 }
 
 // Run validation immediately when module is imported
