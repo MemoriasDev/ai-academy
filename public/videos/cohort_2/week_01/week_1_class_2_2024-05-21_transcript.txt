@@ -1,0 +1,1621 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_test/week_01/week_1_class_2_2024-05-21.mp4
+**Duration:** 2943.87 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 801
+**Generated:** 2025-08-13 18:07:33
+**File Hash:** 2cdcfc9e70495a8b5bc40f043329879b
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_01
+**file_name:** week_1_class_2_2024-05-21.mp4
+
+---
+
+## Transcript
+
+**[3.38s → 6.74s]** All right, so here's how office hours works.
+
+**[6.74s → 8.98s]** In terms of how we do an office hours,
+
+**[8.98s → 12.26s]** we'll take the take home activity at the end of last lecture.
+
+**[12.26s → 16.66s]** Yesterday we had a take home activity of creating an LLM that summarizes to
+
+**[16.66s → 17.98s]** maintain chat history.
+
+**[17.98s → 20.42s]** We're going to do that with you in the beginning of the session.
+
+**[20.42s → 24.90s]** Then we open it up for any questions that you guys may have.
+
+**[24.90s → 29.54s]** You guys can then ask any questions regarding the course itself,
+
+**[29.54s → 31.54s]** any technical questions you have about the code,
+
+**[31.54s → 35.30s]** or any questions in general about just the layout of anything that's happening.
+
+**[35.30s → 38.34s]** And then usually it takes about 40 minutes to an hour.
+
+**[38.34s → 43.46s]** If we end early, we end early, if we go along, usually we end up averaging about an hour though.
+
+**[44.66s → 48.10s]** But that's the plan for today. I'm going to hand it up to Tom first,
+
+**[48.10s → 50.82s]** who's going to start off with the technical implementation.
+
+**[55.79s → 57.47s]** Awesome. Thanks a lot Ash.
+
+**[58.35s → 61.95s]** Yeah, so at the moment we're doing kind of a summary chatbot basically for this.
+
+**[61.95s → 66.48s]** I can share screen, right?
+
+**[66.48s → 70.83s]** Let's just put it in there.
+
+**[70.83s → 76.40s]** So I've prepped the code for what we've got today.
+
+**[76.40s → 82.76s]** What I've done is I've opened it up into a colab, just for ease of explanation.
+
+**[82.76s → 89.34s]** We've still got it on the VS code as well, with all of it there.
+
+**[89.34s → 93.02s]** So whichever you like to see, eventually we can show that.
+
+**[93.02s → 101.82s]** just very exciting to get a pop to into here. So if your setting up your stuff are for the actual
+
+**[101.82s → 106.86s]** initial stuff, you'll kind of want to make your virtual environment first like it says in the
+
+**[106.86s → 113.02s]** readme and then do a pip install or requirements to the requirements file and that will grab all of
+
+**[113.02s → 121.38s]** the bits and pieces and the stuff to actually make this work. Then you want to kind of look at the
+
+**[121.38s → 126.42s]** the import system. So we're actually importing OS so we can grab a key from the .emv. At this
+
+**[126.42s → 129.86s]** point I'm not doing that in the collab. I'm just kind of hard-coded in it. So it's probably
+
+**[129.86s → 134.90s]** not a good idea to do that in real world terms but I've just unmatched quickly. Get it shown.
+
+**[136.04s → 143.24s]** And again loading the load.emv from .emv to kind of load it in. And then we're importing OpenAI.
+
+**[143.24s → 147.88s]** Now obviously under real world circumstances later on you'd probably be using something like
+
+**[147.88s → 150.32s]** but right now we haven't actually introduced it,
+
+**[150.32s → 153.52s]** so we're pretending that doesn't exist right now.
+
+**[153.52s → 155.56s]** So we're going to import OpenAI,
+
+**[155.56s → 160.55s]** so we've got access to the OpenAI chat stuff and things like that.
+
+**[160.55s → 164.39s]** Then if you've got this inside a .emv file,
+
+**[164.39s → 166.19s]** then we'll be loading .emv,
+
+**[166.19s → 169.55s]** and then you'll be basically pulling in the API key
+
+**[169.55s → 172.95s]** and building out the client.
+
+**[172.95s → 174.87s]** So at this point, we've got the API key,
+
+**[174.87s → 176.27s]** and this is just today's API key
+
+**[176.27s → 180.05s]** that's been dropped in the chat by Ash.
+
+**[180.05s → 182.41s]** For now, I'll just print the API key to make it,
+
+**[182.41s → 184.73s]** sort of like show that we've definitely got that set.
+
+**[184.73s → 188.49s]** So I'll just click on this one and run it one more time,
+
+**[188.49s → 190.05s]** just to make sure all the imports are in.
+
+**[190.05s → 192.57s]** We'll just load in the API key.
+
+**[192.57s → 194.53s]** Then we'll make sure that the API key is there,
+
+**[194.53s → 197.25s]** which your prints.
+
+**[197.25s → 199.97s]** So the next thing is we need to work on a function
+
+**[199.97s → 202.81s]** to generate a response.
+
+**[202.81s → 205.25s]** So it's basically it's going to generate text response
+
+**[205.25s → 208.24s]** based on a given prompt and model.
+
+**[208.24s → 210.74s]** It's taking parameters of prompt,
+
+**[210.74s → 212.38s]** and that's going to be the input string
+
+**[212.38s → 215.22s]** for the AI model to process.
+
+**[215.22s → 217.22s]** And parameter of engine, and the engine
+
+**[217.22s → 219.10s]** is basically just the model.
+
+**[219.10s → 220.70s]** So it's just another word for the model,
+
+**[220.70s → 222.78s]** it's the engine that we use.
+
+**[222.78s → 224.18s]** And that's going to be the identifier used
+
+**[224.18s → 227.79s]** to generate the response.
+
+**[227.79s → 230.75s]** So now we want it to return a string,
+
+**[230.75s → 233.43s]** and the string needs to contain the processed output
+
+**[233.43s → 235.28s]** from the AI model.
+
+**[235.28s → 237.00s]** So we take a look at the implementation
+
+**[237.00s → 239.50s]** or possibly implementation of that.
+
+**[239.50s → 241.72s]** We define in the generate response,
+
+**[241.72s → 244.68s]** we're taking in a prompt and we're hard coding the engine
+
+**[244.68s → 247.26s]** to kind of be GPT-3 turbo for now,
+
+**[247.26s → 249.92s]** but you can override that when calling it.
+
+**[249.92s → 252.20s]** So we're just kind of having a fail safe
+
+**[252.20s → 253.40s]** and a thing to go to.
+
+**[254.40s → 255.72s]** So we've got a dark string here
+
+**[255.72s → 258.32s]** that generates text response based on given prompt model,
+
+**[258.32s → 260.78s]** pretty much what I've just gone over,
+
+**[260.78s → 261.62s]** same sort of thing.
+
+**[261.62s → 265.30s]** It's just here for clarity and to help anyone who's building it
+
+**[265.30s → 266.90s]** or anyone who's actually trying to understand
+
+**[266.90s → 269.78s]** what it does at a quick glance.
+
+**[269.78s → 272.18s]** Here we're creating a response
+
+**[272.18s → 274.06s]** and we're actually using the OpenAI,
+
+**[274.06s → 275.50s]** using chat completions,
+
+**[275.50s → 278.86s]** and we're creating a new chat completion.
+
+**[278.86s → 280.34s]** Then we're basing the model
+
+**[280.34s → 281.66s]** on the engine that's been passed in
+
+**[281.66s → 283.78s]** or the model that's been passed in.
+
+**[283.78s → 285.46s]** We're starting our messages,
+
+**[285.46s → 287.86s]** messages being a list of all of the messages
+
+**[287.86s → 290.06s]** that are there.
+
+**[290.06s → 292.45s]** We're starting it with the role user,
+
+**[292.45s → 294.49s]** content of prompt.
+
+**[294.49s → 300.12s]** Now prompt is a variable that's been passed in along with the engine.
+
+**[300.12s → 304.37s]** So this is part of the overall building blocks of it.
+
+**[304.37s → 309.25s]** So we have a tricatch block because this could generate an exception.
+
+**[309.25s → 315.45s]** So we want to kind of catch that exception if it happens just to clean the and gracefully
+
+**[315.45s → 317.73s]** move out of it.
+
+**[317.73s → 322.61s]** So this thing here, the create, that takes in the model, it takes in the messages, but
+
+**[322.61s → 327.41s]** also wants to know how many of the maximum tokens that we want to use. So we can kind of tweak
+
+**[327.41s → 333.78s]** that a little bit. 150 seems to work out as a general basis to start with. The end is basically
+
+**[333.78s → 341.18s]** how many times do we want to kind of generate a response for whatever prompt we give it. So in this
+
+**[341.18s → 345.10s]** case, we're just sticking with one to keep it very simple. It's only going to have one response
+
+**[345.10s → 349.98s]** and not have multiples. In certain circumstances, you might want to change the end to a multiple
+
+**[349.98s → 355.86s]** response and then have the user kind of decide on a weighted average of what sort of response
+
+**[355.86s → 364.66s]** they want to take. Stop that's basically if we don't get any response from the actual
+
+**[364.66s → 369.58s]** chat completion then it will just send us none. We can decide what we want to send back
+
+**[369.58s → 375.30s]** that could be stop there, stop that and all stuff. But for our purposes, none works perfectly
+
+**[375.30s → 380.98s]** fine. And then the temperature, we're keeping it a fair medium sort of temperature. We're
+
+**[380.98s → 385.22s]** not going too high but we don't want it to zero just yet because we want to get some sort
+
+**[385.22s → 390.88s]** of variance in a response time in a response. So that's basically just the simple most
+
+**[390.88s → 398.86s]** basic sort of thing to gain us a response. Now we would possibly come up with a problem
+
+**[398.86s → 407.38s]** where there are no choices. So if it doesn't generate a response and we try to return the
+
+**[407.38s → 413.30s]** response and we won't have choices so we're going to get some errors. So what we need to do is make sure
+
+**[413.94s → 420.05s]** that this is give us a response and in doing so we just say if the choices exist inside the
+
+**[420.05s → 427.14s]** response then we're going to return a choice 0 which is the first choice in this case it's only
+
+**[427.14s → 431.65s]** got one anyway and then give us the message but gives the content of the message what we're going to
+
+**[431.65s → 436.45s]** do is strip in all of the whites based on all the bits and pieces that could possibly be error and
+
+**[436.45s → 444.54s]** in the way of clarity. If choice is does not exist in the response, we want to kind of just
+
+**[444.54s → 448.94s]** let it know, let us know that it's had an unexpected response format and then give us kind of what
+
+**[448.94s → 454.70s]** the response looks like. So maybe it might be a weird strange object returning in some way or
+
+**[454.70s → 460.14s]** something's gone strange with the network where it haven't connected or something. The other unhappy
+
+**[460.14s → 463.82s]** case, because this would be a non-happy case, this would be kind of a happy case where everything's
+
+**[463.82s → 467.82s]** working. The other unhappy case we need to deal with is if there's an exception, I'm kind of
+
+**[467.82s → 474.22s]** left as a very, very generic exception at this point. Ideally, in more than MVP, you're
+
+**[474.22s → 478.22s]** going to reiterate, I believe, you want to be a bit more specific with exceptions, and you
+
+**[478.22s → 483.33s]** probably want to have more of them down here. Just for now, I've just done a catch-all exception
+
+**[483.33s → 488.29s]** where we say there's some sort of problem and it's giving you an exception. If all of this
+
+**[488.29s → 493.57s]** just falls out and we fall down here, we just return an empty string. So we don't, you know,
+
+**[493.57s → 499.10s]** we don't actually give the user nothing, even though it looks like nothing, it means it's not going
+
+**[499.10s → 506.90s]** to just error out and break everything. That's our generate response. Just a quick one, is there any
+
+**[506.90s → 512.10s]** questions or anything about this before we move on to the next one? Specifically for this function?
+
+**[515.10s → 524.43s]** Anything at all? I saw in the requirements that TXT, it's sent to 0.28 of the OpenAI Library.
+
+**[524.43s → 527.43s]** is that what we're going to use?
+
+**[527.43s → 531.43s]** But they choose the format in 1.0.
+
+**[531.43s → 532.43s]** Yeah, I was going to say moving forward,
+
+**[532.43s → 533.43s]** we'll probably use newer stuff.
+
+**[533.43s → 537.43s]** This was just for this simple explanation and the other stuff.
+
+**[537.43s → 540.43s]** And especially, you'll definitely want newer stuff
+
+**[540.43s → 542.43s]** if you're using things like lang chain
+
+**[542.43s → 544.43s]** because it uses all the newer things.
+
+**[544.43s → 546.43s]** So literally next week we'll be using newer versions.
+
+**[546.43s → 551.66s]** This is just for this specific demonstration and ideas.
+
+**[551.66s → 555.78s]** It was the easiest way to quickly get it up and running just without letting chain and
+
+**[555.78s → 559.22s]** just get it there.
+
+**[559.22s → 563.26s]** Another interesting thing for you to take away is take the code and try and update it to
+
+**[563.26s → 565.06s]** a newer version open out.
+
+**[565.06s → 568.10s]** There's some interesting little changes you need to do and some refactoring.
+
+**[568.10s → 572.93s]** So it'll be a nice little project for you to take home and have a little play.
+
+**[572.93s → 573.93s]** Does that make sense?
+
+**[573.93s → 575.93s]** Or is there any other questions or follow-up sneak?
+
+**[575.93s → 578.50s]** Yeah, I made some.
+
+**[578.50s → 579.89s]** Awesome.
+
+**[579.89s → 587.89s]** So just on the sort of times or constraints, we're going to move forward and move on to the next function that we're going to be talking about.
+
+**[587.89s → 591.89s]** The next freestanding function we've got here is create summarized text function.
+
+**[591.89s → 600.05s]** All this does very, very simplistic function. It summarizes provided text using the specified AI model. So super simple.
+
+**[600.05s → 605.05s]** It takes in some text as a parameter of text and that's the text to be summarized.
+
+**[605.05s → 611.61s]** It takes in a bit of a pattern coming on here, takes in the actual engine and that'll identify the actual
+
+**[612.31s → 618.47s]** Engine what we're going to use for the summarization and then what it returns is a simple summary of the input text
+
+**[618.47s → 623.55s]** In other words, it's kind of a sorted excerpt of that text. It'll be an interesting format as well
+
+**[625.71s → 630.95s]** So moving forward here's kind of the a way of implementing it actually at some point before I go on to that
+
+**[630.95s → 634.55s]** I'm going to quickly make sure that's run because otherwise later on down the line it's going to be broken
+
+**[634.55s → 638.39s]** So the summarized, as you can see, it's pretty much a couple of lines.
+
+**[638.39s → 640.99s]** We could have got with a one line and with this, to be honest.
+
+**[640.99s → 644.47s]** But just for clarity, we've put it into multiple lines.
+
+**[644.47s → 647.35s]** So we define a function called summarize text.
+
+**[647.35s → 648.67s]** It's a free standing function.
+
+**[648.67s → 655.03s]** It takes in the text and takes in a default engine of GPT 3.5 turbo.
+
+**[655.03s → 659.47s]** But if you actually call it with an secondary, so you put your text in and you put something
+
+**[659.47s → 661.03s]** here, it's fine.
+
+**[661.03s → 662.03s]** You can override it.
+
+**[662.03s → 664.79s]** So it's fully over at the bottom of that point.
+
+**[664.79s → 669.28s]** Again, this is exactly what I just explained earlier on this side.
+
+**[669.28s → 671.48s]** And if we move down here, the actual summary prompt
+
+**[671.48s → 674.48s]** that we're giving it is just summarize this conversation
+
+**[674.48s → 675.32s]** literally.
+
+**[675.32s → 677.89s]** And whatever the text is.
+
+**[677.89s → 680.37s]** That's how simple we're doing.
+
+**[680.37s → 683.01s]** And so we're just generating the response,
+
+**[683.01s → 686.01s]** using our previously made function.
+
+**[686.01s → 688.17s]** So that previous functional pair.
+
+**[688.17s → 691.05s]** So we're passing it, the summary prompt,
+
+**[691.05s → 693.38s]** and also what engine we're using.
+
+**[693.38s → 697.06s]** So literally it's kind of simply using this free standard
+
+**[697.06s → 699.98s]** function within this one, just for clarity
+
+**[699.98s → 704.62s]** and to break it down into more reusable chunks.
+
+**[704.62s → 707.85s]** I'm gonna just run that as well.
+
+**[707.85s → 709.25s]** I mean, this is fairly straightforward,
+
+**[709.25s → 710.89s]** so I don't know whether there'll be any questions for this,
+
+**[710.89s → 713.33s]** but I'll still just for continuance,
+
+**[713.33s → 715.05s]** just as anybody got any questions
+
+**[715.05s → 726.83s]** or any confusion over this or anything before we move forward.
+
+**[726.83s → 729.60s]** Okay, just for time I'll move forward.
+
+**[729.60s → 731.68s]** So again, we're going to create another setup.
+
+**[731.68s → 734.24s]** We're going to create another free standing function.
+
+**[734.24s → 737.80s]** And it's going to assess the complexity of some data.
+
+**[737.80s → 740.56s]** It's a very simplistic complexity assessor.
+
+**[740.56s → 742.04s]** You can write so many different ones.
+
+**[742.04s → 744.52s]** You can write entire trees and stuff.
+
+**[744.52s → 747.28s]** But we haven't gotten to that content yet in the syllabus.
+
+**[747.28s → 750.52s]** So we're going to be only showing you kind
+
+**[750.52s → 753.36s]** of a general idea of what we have covered already.
+
+**[753.36s → 757.24s]** So we're not going way outside of the scope.
+
+**[757.24s → 759.24s]** So this one's just going to assess the complexity
+
+**[759.24s → 765.22s]** the conversation history and return a complexity score. So its parameters are it's going to grab
+
+**[765.22s → 771.06s]** the history, a list of strings representing the conversations history. It's again we can see a
+
+**[771.06s → 776.66s]** pattern here the engine so it's going to take in the engine to identify what we're going to be
+
+**[776.66s → 782.74s]** used to assess the complexity. Then it's going to just return a simple integer representing the
+
+**[782.74s → 787.62s]** complexity score of the conversation so it's fairly straightforward and hopefully understandable.
+
+**[787.62s → 796.87s]** So, a possible way of implementing this based upon this criteria would be first creating
+
+**[796.87s → 802.90s]** complexity prompt, so we'll say assess the complexity of this conversation.
+
+**[802.90s → 807.30s]** And in this code, we just simply join the history together with spaces.
+
+**[807.30s → 811.97s]** So we're basically kind of making sure that all of the different bits all stuck together
+
+**[811.97s → 814.73s]** and then we expect to get a complexity score.
+
+**[814.73s → 817.67s]** So that's all we do.
+
+**[817.67s → 820.75s]** Okay, tell me what the complexity is.
+
+**[820.75s → 827.71s]** So the thing here is the history and everything, we're going to be using that prompt to initially
+
+**[827.71s → 834.78s]** start it, we're going to then generate a response, utilizing the complexity prompt and passing
+
+**[834.78s → 835.78s]** it the end.
+
+**[835.78s → 841.96s]** So we'll have some text with, okay, here's the complexity of this stuff.
+
+**[841.96s → 847.86s]** So we'll have a bunch of text here with some verbose information, some text, but somewhere
+
+**[847.86s → 852.62s]** along the line, it'll have a number or a couple of numbers somewhere to kind of explain,
+
+**[852.62s → 857.06s]** hey this is how complex it is, it might have a 50, it might have a 35, it might have a
+
+**[857.06s → 861.04s]** 1.2, it depends entirely how complex it believes it is.
+
+**[861.04s → 865.24s]** So that's the number what we're going to be using and to extract that number we can
+
+**[865.24s → 871.58s]** say okay as long as complex text was not blank, we can break up the complex text into
+
+**[871.58s → 876.58s]** a single word so we're using it as a corpus, so we're using that complex to test as our
+
+**[876.58s → 883.42s]** corpus then we're jumping over every single word in the reverse of those complexity words.
+
+**[883.42s → 887.98s]** So we're going to take the end area because if you think about it's going okay give me
+
+**[887.98s → 894.89s]** the complexity score so it'll be near the end hopefully when it's being generated.
+
+**[894.89s → 900.21s]** So at this point we're going to reverse sort of read through it and if any of those words
+
+**[900.21s → 906.08s]** are a digit so if they're numbers we want to return that word as an integer because that
+
+**[906.08s → 912.40s]** will be the complexity score based upon our prompt. And hopefully it will be somewhere near
+
+**[912.40s → 920.56s]** the end, which means we'll get to it faster by looking at it in reverse. If we get to
+
+**[920.56s → 926.80s]** the end of this and we don't get a single complexity score, we've got a hard coded return of a complexity
+
+**[926.80s → 933.04s]** of 20. Now this is completely arbitrary, we could change this to tweak it now and then, but that's
+
+**[933.04s → 936.34s]** That's just what we decided to just put there for now.
+
+**[936.34s → 938.50s]** Again, this was just a general choice
+
+**[938.50s → 942.82s]** and this is really objective as to what you put here.
+
+**[942.82s → 944.46s]** But for now, sort of defaulting it
+
+**[944.46s → 947.88s]** to a 20 of all else variables.
+
+**[947.88s → 949.88s]** Okay, so this was a slightly more complex
+
+**[949.88s → 952.64s]** but not super complex function.
+
+**[952.64s → 953.74s]** It's a free standing one.
+
+**[953.74s → 955.44s]** Is there any questions about this function
+
+**[955.44s → 958.56s]** or any of it and then the stuff in it
+
+**[958.56s → 960.76s]** before we move forward at all?
+
+**[960.76s → 967.76s]** What is the idea of using this integer as a complexity assessment?
+
+**[967.76s → 970.61s]** Is that just a right?
+
+**[970.61s → 975.21s]** It's a simplest way of looking at it and being able to have a finite specific number
+
+**[975.21s → 981.81s]** to say, if we have something to a certain complexity, then we want to automatically summarize it.
+
+**[981.81s → 986.13s]** So we're giving it a general idea of if it's too complex, then we want to summarize it
+
+**[986.13s → 987.77s]** and turn it into a summary instead.
+
+**[987.77s → 991.33s]** So that's the main utility function for the success complex.
+
+**[991.33s → 994.13s]** Does that make sense?
+
+**[994.13s → 997.61s]** Or is there any follow-ups to that?
+
+**[997.61s → 1003.73s]** But we're converting the, we're assessing it based off
+
+**[1003.73s → 1005.49s]** whether it's a number.
+
+**[1005.49s → 1011.18s]** This is just a demonstration of hypothetical complexity.
+
+**[1011.18s → 1013.26s]** Because we need some sort of function.
+
+**[1013.26s → 1019.26s]** OK, imagine you have a billion items in your history
+
+**[1019.26s → 1022.42s]** and you're asked to talk about those like summarise them.
+
+**[1022.42s → 1024.70s]** You don't necessarily, you want to kind of go,
+
+**[1024.70s → 1030.59s]** well, can they fit within the numbers?
+
+**[1031.86s → 1035.34s]** So, what we probably would do is work out, for example,
+
+**[1035.34s → 1036.34s]** where did I put it?
+
+**[1038.10s → 1039.90s]** So see how we've got a max tokens.
+
+**[1039.90s → 1042.26s]** So what you do is you kind of work out how many words
+
+**[1042.26s → 1045.49s]** that maybe that max tokens would be.
+
+**[1045.49s → 1046.65s]** And what we want to do is,
+
+**[1046.65s → 1050.13s]** if we're going to kind of get cut off at some point
+
+**[1050.13s → 1051.13s]** in those max tokens.
+
+**[1051.13s → 1055.81s]** If we don't want it to just be cut mid-sentence, for instance.
+
+**[1055.81s → 1060.09s]** So what we want to do is we want to be able to go, okay, if you're too long and you won't
+
+**[1060.09s → 1064.73s]** be understandable as a whole explanation, summarize it.
+
+**[1064.73s → 1071.46s]** So we need some sort of numeric value to kind of say, okay, only summarize if it's too big.
+
+**[1071.46s → 1078.12s]** So you can also summarize if the length or the size of this prompt is too big, or the size
+
+**[1078.12s → 1080.28s]** of this response rather than we build.
+
+**[1080.28s → 1082.94s]** That makes sense.
+
+**[1082.94s → 1088.70s]** OK, but why don't we just count the tokens and the history?
+
+**[1088.70s → 1090.50s]** Or is that what we're trying to do?
+
+**[1090.50s → 1096.33s]** We're trying to try and do that, but in a deterministic way
+
+**[1096.33s → 1097.45s]** and a tooling-based way.
+
+**[1097.45s → 1101.09s]** So now, if we want to, we're just basically calling this.
+
+**[1101.09s → 1102.57s]** So what we can do is, without having
+
+**[1102.57s → 1105.93s]** to change a load of hard-coded stuff inside the main logic,
+
+**[1105.93s → 1108.17s]** we can just change something in here
+
+**[1108.17s → 1111.37s]** and change how it deals with complexity.
+
+**[1111.37s → 1116.73s]** This could even be hitting a different API and pulling some data from that to find out the complexity.
+
+**[1116.73s → 1119.17s]** So there's a lot of different things you can do with it.
+
+**[1119.17s → 1122.17s]** And it's more a way of modularizing the code.
+
+**[1122.17s → 1127.47s]** Because we could simply hard code it as okay if it's a simple if condition saying,
+
+**[1127.47s → 1133.14s]** if it's got more than the amount of the Mac tokens can handle, then summarize.
+
+**[1133.14s → 1135.54s]** That's the simple sort of sort of thing.
+
+**[1135.54s → 1141.14s]** But this way allows us to kind of programmatically and easily modularize it.
+
+**[1141.14s → 1148.58s]** and we could pull all that code out, change that code without changing anything else in the overall architecture of the application.
+
+**[1150.32s → 1151.12s]** Does that make sense?
+
+**[1151.84s → 1152.16s]** Okay.
+
+**[1153.36s → 1153.76s]** Awesome.
+
+**[1155.63s → 1157.47s]** Okay. Let's see what else we got.
+
+**[1157.63s → 1158.63s]** Oh, that was the next thing.
+
+**[1158.63s → 1160.11s]** We've got a whole class to look at.
+
+**[1161.28s → 1164.48s]** So now to utilize these functions,
+
+**[1165.20s → 1169.12s]** we're building basically a class called summarizing chatbot.
+
+**[1169.44s → 1170.52s]** So I'm going to kind of utilize.
+
+**[1170.52s → 1172.96s]** And this is kind of the main meat of the
+
+**[1173.44s → 1178.99s]** actual application itself. I'm going to probably zoom out of this a little bit because half the lines
+
+**[1178.99s → 1190.74s]** are off-screen, just to give us a bit of space. So now this summarisation chatbot, or summarising
+
+**[1190.74s → 1196.02s]** chatbot rather, is a chatbot the user AI to generate responses, summarise conversation history,
+
+**[1196.02s → 1201.38s]** so we can say, hey, can you summarise everything we spoke about today in a single summary?
+
+**[1201.38s → 1205.57s]** and assess conversational complexity dynamically.
+
+**[1205.57s → 1208.13s]** So that's the reason why we're making these sort of functionalities
+
+**[1208.13s → 1211.49s]** to kind of give this some sort of utility as such.
+
+**[1211.49s → 1212.69s]** Without making tooling,
+
+**[1212.69s → 1218.53s]** because we'll talk about tooling further on down the line.
+
+**[1218.53s → 1220.65s]** And for the initialization, all we're doing is
+
+**[1220.65s → 1224.00s]** we're taking in an actual engine.
+
+**[1224.00s → 1226.12s]** We're hard coding that to be chatgeed
+
+**[1226.12s → 1229.08s]** to turbo 3.5.
+
+**[1229.08s → 1230.96s]** We're taking a base history length,
+
+**[1230.96s → 1233.72s]** as you can see, only try to keep it safe.
+
+**[1233.72s → 1235.44s]** a base history of 10.
+
+**[1235.44s → 1238.96s]** If it gets to 10, we don't want to keep pushing it.
+
+**[1238.96s → 1241.52s]** But you could change that to 100, you could change to 50,
+
+**[1241.52s → 1242.92s]** you could change it to five,
+
+**[1242.92s → 1244.24s]** and you can kind of decide on that.
+
+**[1244.24s → 1246.86s]** We can override that.
+
+**[1246.86s → 1248.94s]** So this one is going to initialize a new instance
+
+**[1248.94s → 1251.72s]** of the summarizing part.
+
+**[1251.72s → 1254.96s]** So the first parameter again, I'll just explain,
+
+**[1254.96s → 1256.16s]** it's going to be the engine.
+
+**[1256.16s → 1258.56s]** Second, we're going to be the length,
+
+**[1258.56s → 1261.24s]** which is based on the base number of exchange before
+
+**[1261.24s → 1264.60s]** considering, hey, I need to summarize if I
+
+**[1264.60s → 1267.32s]** sort of like end up with more than 10 bunches
+
+**[1267.32s → 1269.68s]** of information to spit out.
+
+**[1271.52s → 1275.94s]** So here we're just literally setting up the OpenAI engine,
+
+**[1275.94s → 1277.94s]** the chat history, we're just storing it as a list
+
+**[1277.94s → 1280.42s]** for the moment, you might wanna make some more dynamic
+
+**[1280.42s → 1282.42s]** sort of thing to hold it.
+
+**[1282.42s → 1284.50s]** You could use some sort of memorization,
+
+**[1284.50s → 1288.54s]** you could use a whole database, like graph database,
+
+**[1288.54s → 1291.14s]** but again, because we haven't actually covered that
+
+**[1291.14s → 1294.30s]** in any of our material just yet,
+
+**[1294.30s → 1297.10s]** we're sticking with simple and basic to use things
+
+**[1297.10s → 1299.62s]** that you can just swap that out for.
+
+**[1299.62s → 1301.30s]** That could be swapped out for a whole API
+
+**[1301.30s → 1306.54s]** and a connection set to go to any data you like.
+
+**[1306.54s → 1307.90s]** Then we'll give it the base history length
+
+**[1307.90s → 1311.45s]** which will pull from this parameter.
+
+**[1311.45s → 1313.05s]** And that's basically the entire initialization.
+
+**[1313.05s → 1315.78s]** So not a lot to initialize.
+
+**[1315.78s → 1317.26s]** I'm gonna, just for time sake,
+
+**[1317.26s → 1319.70s]** we're gonna move straight into these methods.
+
+**[1319.70s → 1321.10s]** We've got to get response.
+
+**[1321.10s → 1324.34s]** So basically this is just gonna take some input text in.
+
+**[1324.34s → 1326.26s]** It's going to process the user input.
+
+**[1326.26s → 1328.06s]** It's going to generate some sort of response
+
+**[1328.06s → 1331.10s]** and update the conversation history.
+
+**[1331.10s → 1333.22s]** And the parameters again, is just the input text,
+
+**[1333.22s → 1334.86s]** which is basically the user input,
+
+**[1334.86s → 1337.65s]** with which the bunch then responds to.
+
+**[1337.65s → 1340.69s]** It's going to return the generator response from the bot.
+
+**[1340.69s → 1344.58s]** So this is kind of utilizing that whole idea of history here.
+
+**[1344.58s → 1348.82s]** So first, we're going to take all the current chat history,
+
+**[1348.82s → 1352.69s]** join it together, via new lines.
+
+**[1352.69s → 1354.69s]** So we're just going to have all the chat history
+
+**[1354.69s → 1359.70s]** going to be on its own line. Then we're going to make our prompt be the chat
+
+**[1359.70s → 1367.14s]** history, but then add the user prompt being the input text. And then what we're
+
+**[1367.14s → 1370.98s]** going to do is we're going to have the bot preceded with the word bot so that
+
+**[1370.98s → 1374.90s]** when it's responding, we kind of have in the conversation where the user is
+
+**[1374.90s → 1380.22s]** whatever you put in and the bot is basically going to be talking back to you
+
+**[1380.22s → 1384.58s]** with the response. So then we utilize this utility function of
+
+**[1384.58s → 1391.59s]** generate response, given the prompt that's been taken from this prompt here, and then also
+
+**[1392.68s → 1397.80s]** passing the open AI engine so we have access to the engine. So we've already gone over what
+
+**[1397.80s → 1403.08s]** that function does, so now programmatically this will give us a response, but then what we'll do
+
+**[1403.08s → 1408.44s]** is we'll add the response to our history. We haven't spoken about what the update history does yet,
+
+**[1408.44s → 1414.63s]** but we'll kind of get to that in a moment, but in essence it just adds it to this list pretty much.
+
+**[1415.90s → 1423.29s]** So we take our input text and the response and add it as to this list of conversation history.
+
+**[1424.31s → 1427.67s]** Then we just return the response. So it's fairly straightforward again.
+
+**[1427.67s → 1431.43s]** You'll think, sort of, crazy here. This should be something you could probably code up in your sleep.
+
+**[1433.72s → 1438.95s]** Then we've got the update history. So the thing that this course here, this
+
+**[1438.95s → 1443.35s]** updates the conversation history with the latest exchange and manage its length.
+
+**[1443.35s → 1448.39s]** So if it gets too long, we kind of want it to go, no, no, this needs to summarize.
+
+**[1448.39s → 1449.59s]** We need to summarize something here.
+
+**[1451.82s → 1456.06s]** So this takes the user input, which is whatever the latest input from the user is,
+
+**[1456.06s → 1458.06s]** and then the bot response as well.
+
+**[1459.83s → 1463.51s]** So here we're going to say self.chat.history.extend.
+
+**[1463.51s → 1467.99s]** So we're kind of adding this list of things to the current list.
+
+**[1467.99s → 1468.79s]** That's all we're doing.
+
+**[1468.79s → 1486.24s]** Those you do not use to Python, this is kind of fairly straightforward and I think but it literally just takes this list, takes the previous list and pretty much concatenates the two lists.
+
+**[1486.24s → 1492.32s]** And once it's done that, we now have a longer history with the current things.
+
+**[1492.32s → 1495.62s]** But then what we want to do is we want to figure out is it too complex?
+
+**[1495.62s → 1500.96s]** Does it take up too much space and is it going to be causing us problems then line?
+
+**[1500.96s → 1505.21s]** So we've run the assess complexity, free standing function on it.
+
+**[1505.21s → 1509.93s]** And we pass it, the chat history, we also pass it the engine.
+
+**[1509.93s → 1512.45s]** This then gives us a complexity score.
+
+**[1512.45s → 1516.17s]** Then we need to decide on, well, is the score bad or good?
+
+**[1516.17s → 1519.25s]** So now we need to make an adaptive history length.
+
+**[1519.25s → 1521.49s]** So we take a max of the current length,
+
+**[1524.76s → 1527.56s]** and then we pass it the min of either fifth day
+
+**[1527.56s → 1530.24s]** or the complexity score divided by five.
+
+**[1530.24s → 1533.96s]** So this is a simple way of checking
+
+**[1533.96s → 1537.12s]** shall we kind of chop off some of this history
+
+**[1537.12s → 1540.80s]** and just basically turn it into summarisation of itself
+
+**[1540.80s → 1544.67s]** rather than kind of having it as its full text.
+
+**[1544.67s → 1546.71s]** And then we go, if the length of our chat history
+
+**[1546.71s → 1553.53s]** longer than the adaptive history length times two, then we want to summarise the history.
+
+**[1553.53s → 1562.14s]** So we say, summarise the text and join it by space, pass it the chat history and also
+
+**[1562.14s → 1567.54s]** pass it the engine, which is the particular one that we've got set.
+
+**[1567.54s → 1572.62s]** Then what we do is we reset the chat history to be the summarised history.
+
+**[1572.62s → 1580.48s]** and here we're doing something similar to how we did the extend, but it's hard coded to concatenate it.
+
+**[1580.48s → 1585.53s]** So all we're doing is we're taking this summarized history, turning it into a list,
+
+**[1585.53s → 1591.42s]** full of that summarized history. Then we're adding the chat history, but we're adding it
+
+**[1591.98s → 1597.26s]** basically to the end of the thing. So we're adding the end of the chat history here, look.
+
+**[1597.26s → 1604.20s]** So we're starting at negative adaptive history length divided by two.
+
+**[1604.20s → 1609.60s]** So we take whatever the adaptive history length is, we divide it by two, we negate it and
+
+**[1609.60s → 1611.16s]** turn it into a negative start.
+
+**[1611.16s → 1614.69s]** So we're starting from the other end, not the front.
+
+**[1614.69s → 1617.88s]** So it's almost like we're reversing it here.
+
+**[1617.88s → 1619.56s]** And then we're going to end.
+
+**[1619.56s → 1621.04s]** So we're kind of moving through.
+
+**[1621.04s → 1625.42s]** So we're concatenating and adding the chat history there.
+
+**[1625.42s → 1631.90s]** So this is basically just adding all the summarizations to the history.
+
+**[1631.90s → 1633.42s]** That's quite a mouthful of stuff.
+
+**[1633.42s → 1638.44s]** So any questions at all about this class?
+
+**[1638.44s → 1642.76s]** It's fairly straightforward, but it was quite worthy.
+
+**[1642.76s → 1647.76s]** So any questions, any observations, any think at all?
+
+**[1647.76s → 1648.76s]** Yeah.
+
+**[1648.76s → 1652.56s]** I don't really understand what the point of the adaptive history length is.
+
+**[1652.56s → 1655.62s]** He's right, okay.
+
+**[1655.62s → 1663.65s]** So basically the history, this was added as a thing so that we can make the history check
+
+**[1663.65s → 1665.57s]** the current adaptive history length.
+
+**[1665.57s → 1667.57s]** How long is it right now?
+
+**[1667.57s → 1668.57s]** Yeah.
+
+**[1668.57s → 1671.38s]** And we want to be able to adapt that length.
+
+**[1671.38s → 1672.73s]** Yeah.
+
+**[1672.73s → 1676.65s]** So I might have been able to have a history length being trying to think of an explanation
+
+**[1676.65s → 1681.69s]** here that doesn't sort of lead into about 50,000 more questions.
+
+**[1681.69s → 1682.69s]** Right.
+
+**[1682.69s → 1684.12s]** Okay.
+
+**[1684.12s → 1690.94s]** So we're checking the current length, the base length, which our purpose is what 10.
+
+**[1690.94s → 1701.30s]** So if the current base length is greater than either 50 or our complexity score divided
+
+**[1701.30s → 1706.76s]** by 5 then we're going to set it to that.
+
+**[1706.76s → 1711.04s]** Otherwise we're going to be setting it, we're just going to leave it as it is basically,
+
+**[1711.04s → 1713.43s]** it's going to just set to that.
+
+**[1713.43s → 1721.40s]** So that's just to give us a known quotient of how long we want the history to be at that
+
+**[1721.40s → 1722.48s]** point.
+
+**[1722.48s → 1736.30s]** So imagine the history contains, let's say, imagine the history has a score of 500.
+
+**[1736.30s → 1743.68s]** So if we do 500 divided by 5, that means that our complexity score is going to be 100,
+
+**[1743.68s → 1748.28s]** Yeah, which is far too complex. It's more complex than we want it to be
+
+**[1748.54s → 1754.43s]** Yeah, so the moment we only want it to have imagine the base history length being its complexity score
+
+**[1755.54s → 1759.04s]** That makes it so this is its base. This is it's complexity
+
+**[1759.04s → 1761.04s]** This is a complexity what we want it to be
+
+**[1761.74s → 1767.91s]** But at this point we're checking is it like if that was a 10 is it five times
+
+**[1768.59s → 1771.77s]** the current complexity
+
+**[1771.77s → 1774.57s]** Or is it more than five times going complexity?
+
+**[1774.57s → 1781.70s]** If it is, then what we want to do is kind of like set that to the thing to chop it.
+
+**[1781.70s → 1788.03s]** But basically saying, if you get to a point where when you're talking and trying to say
+
+**[1788.03s → 1794.40s]** the thing, if you're going to be cut off mid-sentence, then we need to summarize.
+
+**[1794.40s → 1799.32s]** Okay, so the actual meat of this is in the min per ounce?
+
+**[1799.32s → 1800.32s]** Absolutely, yeah.
+
+**[1800.32s → 1807.32s]** Okay, so we're saying we want to limit it to 50 or whatever's last 50 or the complexity
+
+**[1807.32s → 1810.32s]** on the complexity score.
+
+**[1810.32s → 1812.32s]** It's over 50 on the complexity score.
+
+**[1812.32s → 1815.32s]** We need to chop it up, by the way, that's the idea.
+
+**[1815.32s → 1817.32s]** I think that's the idea.
+
+**[1817.32s → 1823.32s]** It's also about efficiency because sometimes what happens is most implementations of summarization
+
+**[1823.32s → 1828.32s]** but you'll see on the internet today will take the full chat history and re-putting,
+
+**[1828.32s → 1831.96s]** whether it's a system prompt or an assistant prompt.
+
+**[1831.96s → 1833.56s]** Instead, if you make it adaptive,
+
+**[1833.56s → 1835.44s]** then you can continuously change
+
+**[1835.44s → 1838.20s]** when the complexity of the actual messages
+
+**[1838.20s → 1840.52s]** gets to a point that's a tipping point.
+
+**[1840.52s → 1843.24s]** And then you summarize that and then send the summary over.
+
+**[1843.24s → 1845.76s]** That's actually what we do with our technical tutor
+
+**[1845.76s → 1848.28s]** inside LoomTech for the other side of the school,
+
+**[1848.28s → 1850.64s]** where if it's a lot of back and forth questions,
+
+**[1850.64s → 1852.84s]** whether it's encoding or back and forth,
+
+**[1852.84s → 1855.44s]** we'll actually tip it over after a certain point of complexity
+
+**[1855.44s → 1857.20s]** and then summarize it.
+
+**[1857.20s → 1859.00s]** So I think that was the thought process behind it.
+
+**[1859.00s → 1860.64s]** It was probably efficiency.
+
+**[1860.64s → 1862.44s]** And then someone asked a really good question,
+
+**[1862.44s → 1865.32s]** the chat, could we use different types of messages
+
+**[1865.32s → 1867.04s]** like the assistant or the system?
+
+**[1867.04s → 1868.68s]** 100%.
+
+**[1868.68s → 1871.00s]** You could 100% use different types of messages
+
+**[1871.00s → 1874.44s]** to make this three times better by saying,
+
+**[1874.44s → 1875.84s]** okay, you're gonna be this role,
+
+**[1875.84s → 1876.68s]** you're gonna be that role
+
+**[1876.68s → 1879.24s]** or the assistant message could be different
+
+**[1879.24s → 1881.80s]** or your user message could be delineated.
+
+**[1881.80s → 1883.64s]** So the answer is yes to that as well.
+
+**[1883.64s → 1888.16s]** So just wanted to talk about those two questions.
+
+**[1888.16s → 1892.01s]** Okay, I think I loved Ashley's response there.
+
+**[1892.01s → 1893.65s]** One kind of follow up here like,
+
+**[1893.65s → 1895.52s]** why,
+
+**[1895.52s → 1900.47s]** then why are we multiplying it by two in the following line?
+
+**[1900.47s → 1903.95s]** So, look, if the length of the chat history
+
+**[1903.95s → 1906.27s]** is greater than the adaptive history length,
+
+**[1906.27s → 1911.29s]** so realistically, the chat history's probably gonna be bigger
+
+**[1911.29s → 1913.60s]** than just the length anyway.
+
+**[1913.60s → 1915.20s]** So it won't,
+
+**[1915.20s → 1916.28s]** in this situation,
+
+**[1916.28s → 1917.64s]** we've kind of done a little bit of math
+
+**[1917.64s → 1920.52s]** under the hood and tweak this a few times
+
+**[1920.52s → 1924.24s]** and this seemed to be the sweet spot for the performance.
+
+**[1924.24s → 1926.04s]** And when you're actually building these out,
+
+**[1926.04s → 1928.52s]** it will be a case of a little bit of test it
+
+**[1928.52s → 1929.60s]** and remedial in test it.
+
+**[1929.60s → 1933.04s]** And this seems to be around about where it kind of works
+
+**[1933.04s → 1934.24s]** like performance at the time.
+
+**[1934.24s → 1936.40s]** So it's again, another little performance tweak
+
+**[1936.40s → 1937.60s]** that was just purely.
+
+**[1939.12s → 1941.92s]** I also think that, whether complexity function,
+
+**[1941.92s → 1943.76s]** you could have also asked the LLM,
+
+**[1943.76s → 1945.52s]** just give me a guess or no,
+
+**[1945.52s → 1947.20s]** if I should summarize or not.
+
+**[1947.20s → 1949.56s]** You could have done that as well.
+
+**[1949.56s → 1952.96s]** So why do we choose a number instead of just saying yes or no?
+
+**[1952.96s → 1955.04s]** I think this, I don't know if anybody had that question,
+
+**[1955.04s → 1957.16s]** but I think the all process there was,
+
+**[1957.16s → 1962.68s]** the number gives way more detail as to like whether or not you
+
+**[1962.68s → 1963.92s]** should go in one direction or not.
+
+**[1963.92s → 1965.80s]** Right now I've just made it 50.
+
+**[1965.80s → 1969.00s]** That's just because we're trying to keep it real simple
+
+**[1969.00s → 1971.64s]** to show you guys, but the thought process here is,
+
+**[1971.64s → 1974.00s]** but you guys can play with that.
+
+**[1974.00s → 1975.84s]** Maybe you want to do at 70.
+
+**[1975.84s → 1978.20s]** Maybe you want to do it at 20, maybe you want to do a 30.
+
+**[1978.20s → 1980.44s]** Maybe you actually want to do an actual API
+
+**[1980.44s → 1982.00s]** that judges complexity better.
+
+**[1982.00s → 1983.36s]** Maybe you make it a little bit more advanced.
+
+**[1983.36s → 1985.20s]** Maybe you make it way more simple.
+
+**[1985.20s → 1986.84s]** I just do yes or no.
+
+**[1986.84s → 1989.08s]** But the good part about this is if you make it adaptive,
+
+**[1989.08s → 1989.92s]** it'll be efficient.
+
+**[1989.92s → 1992.12s]** You'll save a lot of money too.
+
+**[1992.12s → 1994.80s]** Yeah, but I mean, conceptually isn't the same thing as saying,
+
+**[1994.80s → 1997.24s]** like instead of multiplying it by doing that line,
+
+**[1997.24s → 2002.34s]** why wouldn't we just make it a mean of 100
+
+**[2002.98s → 2005.70s]** and a complexity divided by two and a half or two?
+
+**[2005.70s → 2009.37s]** No, that can be the same thing.
+
+**[2009.37s → 2010.77s]** I think so.
+
+**[2010.77s → 2012.80s]** Tom, what do you think?
+
+**[2012.80s → 2015.16s]** Yeah, that as a balancing gear, that's fine.
+
+**[2015.16s → 2016.60s]** But again, it's just numbers.
+
+**[2016.60s → 2019.40s]** So it's down to your choice as the developer.
+
+**[2019.40s → 2023.40s]** These are just us arbitrarily pulling these numbers.
+
+**[2023.40s → 2024.88s]** You know what I mean?
+
+**[2024.88s → 2026.56s]** So it's really is down to your choices
+
+**[2026.56s → 2027.60s]** to what these numbers are.
+
+**[2027.60s → 2030.36s]** Hard code numbers are not necessarily
+
+**[2030.36s → 2033.52s]** something you need to be bothered by, if you know what I mean.
+
+**[2033.52s → 2038.84s]** to more about the process of what's being done rather than the actual physical numbers
+
+**[2038.84s → 2042.84s]** there. Those could be almost anything cool. Those AMB if we like.
+
+**[2042.84s → 2048.48s]** Got it. Okay. But it was all good questions because it bought out a lot of interesting
+
+**[2048.48s → 2054.88s]** things. It's really awesome. Do you have any follow ups or anything? Or is there any other
+
+**[2054.88s → 2060.13s]** stuff? I think that's it for the code. Unless there's any questions on the implementation
+
+**[2060.13s → 2065.29s]** here. Did anybody do it in another way? I did see Chris's length chain one. So I have
+
+**[2065.29s → 2071.05s]** a suggestion for that. But did anybody else do it natively in OpenAI and take a different
+
+**[2071.05s → 2075.12s]** approach?
+
+**[2075.12s → 2080.09s]** Well, I didn't post it, but I saw it.
+
+**[2080.09s → 2086.33s]** Yeah. I took it as we did using the library called TickToken.
+
+**[2086.33s → 2089.77s]** Yeah, which is a tokenizer to pound the tokens.
+
+**[2089.77s → 2090.77s]** Yes.
+
+**[2090.77s → 2092.77s]** For the company's discourse.
+
+**[2092.77s → 2096.20s]** Did you vectorize and put in database?
+
+**[2096.20s → 2098.43s]** Or did you just chunk it up?
+
+**[2098.43s → 2110.23s]** So it has a method called encoding for model.
+
+**[2110.23s → 2113.23s]** Yeah, I'll be honest, I don't know what exactly it does.
+
+**[2113.23s → 2120.23s]** So next Tuesday, we'll be using TikTok in with pine cone to chunk it and then embed it and then send it to the vector database.
+
+**[2120.23s → 2122.23s]** So that's a great start actually.
+
+**[2122.23s → 2125.23s]** So definitely keep investing in there.
+
+**[2125.23s → 2129.31s]** The only other thing I'll bring up is the Langshan example.
+
+**[2129.31s → 2131.79s]** Why do I love Langshan so much?
+
+**[2131.79s → 2134.95s]** There's so many abstractions you can just use out of the box.
+
+**[2134.95s → 2141.11s]** The one I want to show you guys is Tom here on my screen.
+
+**[2141.11s → 2143.11s]** Oh, yeah, sorry.
+
+**[2143.11s → 2144.39s]** Yeah, no worries.
+
+**[2144.39s → 2145.87s]** Do do do do.
+
+**[2145.87s → 2150.71s]** It's conversation summary.
+
+**[2150.71s → 2153.35s]** Inside Langshan.memory,
+
+**[2153.35s → 2156.79s]** there's conversation summary memory and chat message history.
+
+**[2156.79s → 2162.47s]** You can use this out of the box and this makes your life 10 times easier.
+
+**[2162.47s → 2166.39s]** A lot of the things that we had to do manually here,
+
+**[2166.39s → 2169.83s]** Langshin has done for you within the package itself.
+
+**[2169.83s → 2172.63s]** There's another one I would like to mention as well,
+
+**[2172.63s → 2177.75s]** which is, if you are any of your JavaScript developers,
+
+**[2177.75s → 2179.39s]** it's also available in that.
+
+**[2179.39s → 2181.73s]** Oh, there was one more.
+
+**[2181.73s → 2185.24s]** The summary buffer.
+
+**[2185.24s → 2191.80s]** So this is where you, if you want a specific thing saved inside the actual summary,
+
+**[2191.80s → 2195.96s]** you can actually define what that is using buffer memory and back and forth,
+
+**[2195.96s → 2199.24s]** Lenshane let's you do that out of the box. We will explore this in the future,
+
+**[2199.24s → 2202.60s]** but I do want to point that out now for anybody that's going to try out that solution,
+
+**[2202.60s → 2206.04s]** because I did see Chris go in that direction. The other thing I want to say is,
+
+**[2206.04s → 2211.64s]** Lenshane offers callback functions where you can take information like the number of tokens used,
+
+**[2211.64s → 2214.36s]** or the number of estimated number of money you use,
+
+**[2214.36s → 2216.44s]** and you can actually get that information out.
+
+**[2216.44s → 2218.40s]** So a lot of people were, we were talking about,
+
+**[2218.40s → 2221.84s]** hey, if you want to keep the token usage efficient,
+
+**[2221.84s → 2224.12s]** that's why we're summarizing and trying to make an adaptive.
+
+**[2224.12s → 2225.68s]** You can actually make it directly related
+
+**[2225.68s → 2227.40s]** to the actual number of tokens related
+
+**[2227.40s → 2229.84s]** or the actual amount of money being used
+
+**[2229.84s → 2231.28s]** back and forth by the chatbot.
+
+**[2232.28s → 2236.00s]** I think that is very useful, especially if you're making
+
+**[2236.00s → 2237.72s]** something where a lot of people are
+
+**[2237.72s → 2240.32s]** using your chatbot back and forth, like a support bot,
+
+**[2240.32s → 2244.04s]** or in our case, I'm going to check AI tutor.
+
+**[2244.04s → 2247.16s]** Okay, so those are the two things I want to call out now.
+
+**[2247.16s → 2250.64s]** Any questions on that before I was just going to ensure
+
+**[2250.64s → 2252.96s]** a little bit of further tomorrow as well.
+
+**[2252.96s → 2259.48s]** Yeah, I charged for the amount of tokens returned by the
+
+**[2259.48s → 2263.00s]** model or are you charged for the whole context window?
+
+**[2263.00s → 2267.84s]** And they can be in the previous part of the whole context window,
+
+**[2267.84s → 2269.80s]** but I will double check and make sure,
+
+**[2269.80s → 2272.12s]** but I do believe it is the full context though,
+
+**[2273.08s → 2278.52s]** that you are using when you send a message.
+
+**[2278.52s → 2280.48s]** But this is a great transition
+
+**[2280.48s → 2282.78s]** to what we're gonna be talking about tomorrow,
+
+**[2282.78s → 2284.36s]** which is LangSmith.
+
+**[2284.36s → 2288.48s]** So LangSmith is a monitoring and managing tool
+
+**[2288.48s → 2292.28s]** for LLM applications and Nick, it actually calculates
+
+**[2292.28s → 2295.64s]** how much you're spending on every single LLM interaction
+
+**[2295.64s → 2298.40s]** and actually shows you how much you're spending
+
+**[2298.40s → 2300.24s]** as a whole on your application.
+
+**[2300.24s → 2302.40s]** So we're gonna be talking about that tomorrow.
+
+**[2302.40s → 2304.68s]** Now, there's three alternatives to Langsmith,
+
+**[2304.68s → 2306.96s]** and I'll talk about why we've chosen Langsmith
+
+**[2306.96s → 2308.48s]** over the other three.
+
+**[2308.48s → 2311.68s]** There's Langfuse, which is an open source alternative.
+
+**[2311.68s → 2313.36s]** This is pretty much the same as Langsmith,
+
+**[2313.36s → 2314.68s]** but it's open source.
+
+**[2314.68s → 2318.84s]** There's GenTreece, and then DataDog just announced today
+
+**[2318.84s → 2321.60s]** that they're coming out with LLM observability
+
+**[2321.60s → 2323.28s]** inside of their platform.
+
+**[2323.28s → 2325.88s]** So a lot of our core one members
+
+**[2325.88s → 2327.68s]** were actually already using DataDog,
+
+**[2327.68s → 2328.84s]** so they were really excited for this.
+
+**[2328.84s → 2332.00s]** So I'm gonna talk through why we've chosen Langsmith.
+
+**[2332.00s → 2337.08s]** The reason we've chosen Lengsmith is because it integrates into the Lengshade ecosystem seamlessly,
+
+**[2337.08s → 2338.76s]** really simply.
+
+**[2338.76s → 2340.76s]** All you need is one API key.
+
+**[2340.76s → 2346.28s]** And if you put it within your environment, everything is tracked without you having to do much.
+
+**[2346.28s → 2349.00s]** Anytime it picks up a Lengshade library,
+
+**[2349.00s → 2354.44s]** anytime it picks up any LLM usage, it will track that for you out of the box.
+
+**[2354.44s → 2355.72s]** Now a lot of you might be thinking,
+
+**[2355.72s → 2359.32s]** hey, Ash, I don't want to use Lengsmith because it's whatever.
+
+**[2359.32s → 2361.52s]** It's an internal private, whatever.
+
+**[2361.52s → 2363.00s]** So then, link use does the same,
+
+**[2363.00s → 2364.80s]** but it does have some functionality,
+
+**[2364.80s → 2366.68s]** it does not have some functionality.
+
+**[2366.68s → 2369.20s]** And what is the functionality that it does not have?
+
+**[2369.20s → 2372.04s]** It's annotating and making your own data sets.
+
+**[2372.04s → 2373.88s]** So we'll see tomorrow with Langsmith,
+
+**[2373.88s → 2377.24s]** you can actually pick and choose outputs, annotate them,
+
+**[2377.24s → 2379.48s]** and then save it to personalized data sets
+
+**[2379.48s → 2382.12s]** that you can then use in the future for fine tuning.
+
+**[2382.12s → 2384.64s]** So that's probably one of the two big reasons
+
+**[2384.64s → 2386.14s]** where we've chosen Langsmith,
+
+**[2386.14s → 2389.92s]** but we will be introducing the Langfuse and Langsmith tomorrow
+
+**[2389.92s → 2393.68s]** as choices for you to use in the course.
+
+**[2393.68s → 2396.92s]** Now, GenTrace is up and coming, they just started out.
+
+**[2396.92s → 2398.64s]** You can pretty much do everything
+
+**[2398.64s → 2402.04s]** that you could do out of the box with Langsmith,
+
+**[2402.04s → 2405.68s]** accept the whole annotation and dataset creation.
+
+**[2405.68s → 2407.80s]** And if you're using Lama Index,
+
+**[2407.80s → 2410.08s]** this would be a better tool for you
+
+**[2410.08s → 2412.84s]** as it incorporates into Lama Index better.
+
+**[2412.84s → 2414.88s]** And then obviously DataDog was something I just mentioned.
+
+**[2414.88s → 2417.88s]** They just announced beta, so I haven't actually tried that yet.
+
+**[2417.88s → 2420.68s]** So I did want to introduce that before tomorrow.
+
+**[2420.68s → 2423.00s]** I actually put some links out here
+
+**[2423.00s → 2425.32s]** for you guys to watch before the lecture tomorrow.
+
+**[2425.32s → 2428.12s]** So you guys can sort of just get to know it a little bit
+
+**[2428.12s → 2429.68s]** before we get into it.
+
+**[2429.68s → 2431.08s]** After lengthsmith on Tuesday,
+
+**[2431.08s → 2433.72s]** we hit the ground running officially with RAG
+
+**[2433.72s → 2435.92s]** and actually go into the techniques
+
+**[2435.92s → 2438.48s]** that are very important for creating these applications.
+
+**[2438.48s → 2441.56s]** Are there any questions on what we're covering tomorrow
+
+**[2441.56s → 2453.97s]** and what we're covering next Tuesday?
+
+**[2453.97s → 2458.23s]** Tom, any questions for Tom on his implementation?
+
+**[2458.23s → 2461.75s]** And then the code is already available to you. It's in a branch called
+
+**[2462.96s → 2467.12s]** 24A2 I believe. I'm just going to check and make sure I'm correct on that.
+
+**[2468.92s → 2472.68s]** So you can see the full implementation right here that Tom walked you through
+
+**[2472.68s → 2480.04s]** and then we have a little setup guide for you as well. Any questions?
+
+**[2485.88s → 2490.92s]** So okay so we have Lang Smith, we have Lang Chen, we have Lang Hughes, and we have that
+
+**[2490.92s → 2495.16s]** Jen, that last thing you've shown.
+
+**[2495.16s → 2495.92s]** And Chris.
+
+**[2495.92s → 2496.92s]** Chris, yeah.
+
+**[2496.92s → 2498.92s]** Yeah, it's generous.
+
+**[2498.92s → 2502.28s]** But for now, we should just read on Lensmiths.
+
+**[2502.28s → 2502.80s]** Yeah, yeah.
+
+**[2502.80s → 2506.96s]** So just for now, do the links I showed you, I will be posting.
+
+**[2506.96s → 2510.80s]** OK, we've picked a path in this course.
+
+**[2510.80s → 2513.88s]** That's our opinion as the best text that currently.
+
+**[2513.88s → 2516.16s]** But it's important that we expose you to the alternatives.
+
+**[2516.16s → 2519.76s]** So tomorrow, we'll be focusing on Langsmith and Langfuse.
+
+**[2519.76s → 2529.23s]** but I will definitely send you information on gentrists.
+
+**[2529.23s → 2532.12s]** Does that make sense?
+
+**[2532.12s → 2533.64s]** Yeah, it makes sense.
+
+**[2533.64s → 2535.08s]** OK.
+
+**[2535.08s → 2536.52s]** That's it for me today, Tom.
+
+**[2536.52s → 2541.08s]** Do you think from you?
+
+**[2541.08s → 2547.88s]** Now I'm just excited to see how the current cohort,
+
+**[2547.88s → 2550.50s]** I think, is what's coming up.
+
+**[2550.50s → 2554.10s]** Quick question, guys.
+
+**[2554.10s → 2555.50s]** Obviously, this was fairly simplistic
+
+**[2555.50s → 2556.82s]** because we're at the start of things,
+
+**[2556.82s → 2558.34s]** but is there anything where you'd
+
+**[2558.34s → 2563.38s]** like to go in a more deep dive, imagine you're talking to your future self and you was going to
+
+**[2563.38s → 2569.65s]** come on this course again and you start in this position, is there anything, what would be a more
+
+**[2569.65s → 2576.29s]** complex sort of summary thing or is there something you'd like to kind of see in this portion of the
+
+**[2576.29s → 2578.45s]** course in the future.
+
+**[2583.16s → 2596.53s]** Well, maybe it's mapping this to how it can be utilized for specifically for developer productivity.
+
+**[2600.84s → 2604.04s]** But I understand that you have to build the foundation first.
+
+**[2604.04s → 2609.08s]** So yeah, I think every guided project will directly address developer productivity.
+
+**[2609.80s → 2613.40s]** And then everything leading up to it is going to be just setting up the stage for that guided
+
+**[2613.40s → 2619.64s]** project. So next week is the technical writer agent, which should aims to completely automate
+
+**[2619.64s → 2624.44s]** documentation creation. I mean, cohort one has taken it in several different directions.
+
+**[2624.44s → 2629.56s]** By the way, that link is live right now. So if you want to look at that project, you can on the app.plumtech.com.
+
+**[2629.56s → 2633.60s]** and you can look at the starter repo for that,
+
+**[2633.60s → 2635.60s]** but I 100% agree with you.
+
+**[2635.60s → 2637.60s]** We will make sure that every guided project
+
+**[2637.60s → 2644.12s]** directly addresses developer productivity.
+
+**[2644.12s → 2645.12s]** Yeah, an awesome question.
+
+**[2645.12s → 2647.12s]** I'm sorry, awesome observation.
+
+**[2647.12s → 2649.12s]** Yeah, because I mean, it's best to kind of
+
+**[2649.12s → 2651.12s]** in these situations keep tight feedback loop
+
+**[2651.12s → 2653.12s]** because your answers will also
+
+**[2653.12s → 2656.12s]** help future people doing this course as well.
+
+**[2656.12s → 2658.12s]** Because we like to kind of reiterate
+
+**[2658.12s → 2660.12s]** and make sure that everything is on point.
+
+**[2660.12s → 2667.84s]** It's always hard to get that balance of technical and simple to read and simple to look at.
+
+**[2667.84s → 2672.52s]** You get different people from different walks of life coming in and you'll have varying
+
+**[2672.52s → 2676.56s]** technical abilities in the classes.
+
+**[2676.56s → 2681.20s]** Something that might work for this cohort may not work for next cohort if they have a
+
+**[2681.20s → 2684.00s]** different set of technical abilities.
+
+**[2684.00s → 2687.80s]** We have to find tune it in those ways as well.
+
+**[2687.80s → 2692.24s]** We don't really conceptualize this in use.
+
+**[2692.24s → 2702.49s]** We are talking about a way to keep the size of a context down.
+
+**[2702.49s → 2706.69s]** But we also do this besides in chatbots.
+
+**[2706.69s → 2708.77s]** And then another question is something
+
+**[2708.77s → 2711.72s]** that I didn't really understand is,
+
+**[2711.72s → 2716.23s]** are we, if we're summarizing squashing history
+
+**[2716.23s → 2718.91s]** into a summary, are we reinitializing
+
+**[2718.91s → 2723.11s]** in instance, like a new context window with the model and sending it in the summary or
+
+**[2723.11s → 2728.18s]** we just rehashing like that.
+
+**[2728.18s → 2735.26s]** We're doing, we're keeping the same context window because we're keeping the history.
+
+**[2735.26s → 2739.58s]** That's what's keeping the context, our code is keeping the context.
+
+**[2739.58s → 2744.98s]** So basically it is kind of a new context window, but because we've got the history, it's
+
+**[2744.98s → 2746.88s]** keeping that set.
+
+**[2746.88s → 2749.68s]** but then it's also changing it out to summary
+
+**[2749.68s → 2752.66s]** so that we're not using as much tokens
+
+**[2752.66s → 2754.42s]** of those data things as we do.
+
+**[2754.42s → 2758.38s]** Okay, and then a more ap another practical application
+
+**[2758.38s → 2761.98s]** for the summary is when you're ragging something,
+
+**[2761.98s → 2763.62s]** so in the future we'll talk about this.
+
+**[2763.62s → 2766.54s]** Let's see you're ragging 100 documents.
+
+**[2766.54s → 2770.41s]** Instead of looking through every single document
+
+**[2770.41s → 2773.61s]** when the AI is trying to decide where to rag from,
+
+**[2773.61s → 2776.17s]** the AI will summarize every single document
+
+**[2776.17s → 2783.17s]** and have summaries on top so it can query based on the summary much quicker than it can then reading the whole document.
+
+**[2783.17s → 2802.17s]** So what is another practical application of using summaries over actually, you know, just sending or not using summaries is in brag when you're trying to decide what is actually relevant or irrelevant when trying to make a decision and pulling into your chat or into whatever LLM application you have.
+
+**[2802.17s → 2805.17s]** So that's the other place I've seen Summary's a lot.
+
+**[2805.17s → 2814.19s]** I guess in a more...
+
+**[2814.19s → 2818.19s]** So in an actual production environment,
+
+**[2818.19s → 2821.19s]** you would want a more advanced approach
+
+**[2821.19s → 2825.19s]** because the summarization might lose something
+
+**[2825.19s → 2828.19s]** that you actually consider important.
+
+**[2828.19s → 2831.19s]** So I guess in practice,
+
+**[2831.19s → 2833.19s]** would you use some sort of an agentic approach
+
+**[2833.19s → 2835.19s]** where you queries a summary
+
+**[2835.19s → 2837.19s]** and then that doesn't have an answer
+
+**[2837.19s → 2839.91s]** you do IRG and then that is where it works for you,
+
+**[2839.91s → 2842.63s]** try to feed the whole contact purge.
+
+**[2842.63s → 2844.95s]** Is there a multi-layered approach?
+
+**[2844.95s → 2848.23s]** In production, we would use something called Langgraph.
+
+**[2848.23s → 2852.79s]** Langgraph has memory built in to the agent scratch pad.
+
+**[2852.79s → 2855.87s]** So this is pushing ahead, but Langgraph, what it does
+
+**[2855.87s → 2859.03s]** is it'll help you create that mechanism of decisions,
+
+**[2859.03s → 2860.87s]** and that mechanism of maintaining memory
+
+**[2860.87s → 2863.87s]** across the entire, I guess, generation chain.
+
+**[2863.87s → 2866.15s]** And so once that generation is complete,
+
+**[2866.15s → 2870.71s]** then you're able to then maintain that memory without having anything to lose.
+
+**[2870.71s → 2873.59s]** So the answer is, how do you do it in production? You use Lenggraph, but
+
+**[2874.47s → 2878.71s]** and there are definitely methods that are we'll talk about how to make sure that accuracy is good.
+
+**[2880.31s → 2885.11s]** But next week, we'll talk about just using some resets of holes, so just locally not in production.
+
+**[2891.20s → 2899.33s]** And it's a combination of Korea and Leng, which is a week seven, I think, seven, right?
+
+**[2904.00s → 2904.72s]** But great question.
+
+**[2910.23s → 2915.11s]** Okay, the only other thing is I'm going to post a Lune video mid-day tomorrow, maybe early morning.
+
+**[2915.11s → 2919.19s]** I have the video already. I just don't want to bombard you guys with emails and slack messages.
+
+**[2919.19s → 2925.11s]** So you guys, I hate Ash, just keeps emailing me. But the video is just how to set up an account on
+
+**[2925.11s → 2929.83s]** Langsmith just to make sure you guys have that ready to go before class. It takes all of two minutes.
+
+**[2931.51s → 2936.71s]** And so that'll be the only thing I go over. Besides that, I hope you have a great day. So talk to you
+
+**[2936.71s → 2940.05s]** you guys tomorrow, if you haven't, thank you.
+
+**[2940.05s → 2941.17s]** Bye guys.
+
+**[2941.17s → 2942.01s]** Thanks everybody.
+

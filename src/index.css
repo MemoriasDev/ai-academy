@@ -1,0 +1,338 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Educational Platform Design System - Clean, focused learning interface */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 13% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 13%;
+
+    /* Primary - Educational blue for focus and progress */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 217 91% 55%;
+
+    /* Secondary - Subtle gray for secondary actions */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 13% 13%;
+
+    /* Muted - For less important text and backgrounds */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Accent - Success green for completed items */
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Success - For progress indicators */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning - For important notes */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Content specific variables */
+    --content-width: 65ch;
+    --sidebar-width: 280px;
+    
+    /* Code highlighting */
+    --code-bg: 220 13% 97%;
+    --code-border: 220 13% 91%;
+    
+    /* Progress colors */
+    --progress-bg: 220 14% 96%;
+    --progress-complete: 142 76% 36%;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  /* Typography for educational content */
+  h1 {
+    @apply text-3xl font-bold tracking-tight;
+  }
+  
+  h2 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+  
+  h3 {
+    @apply text-xl font-semibold;
+  }
+  
+  /* Code blocks styling */
+  code {
+    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm;
+  }
+  
+  pre {
+    @apply overflow-x-auto rounded-lg bg-[hsl(var(--code-bg))] border border-[hsl(var(--code-border))] p-4 text-sm;
+  }
+  
+  pre code {
+    @apply bg-transparent p-0;
+  }
+  
+  /* Enhanced lesson content typography */
+  .lesson-content {
+    @apply text-foreground;
+  }
+
+  .lesson-content h1 {
+    @apply text-2xl font-bold mb-4 mt-6 first:mt-0 text-foreground leading-tight;
+  }
+
+  .lesson-content h2 {
+    @apply text-xl font-semibold mb-3 mt-5 text-foreground leading-tight;
+  }
+
+  .lesson-content h3 {
+    @apply text-lg font-medium mb-2 mt-4 text-foreground leading-tight;
+  }
+
+  .lesson-content p {
+    @apply mb-4 text-foreground leading-relaxed;
+  }
+
+  .lesson-content strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .lesson-content em {
+    @apply italic text-foreground/90;
+  }
+
+  .lesson-content ul {
+    @apply mb-4 ml-6 space-y-2 list-disc marker:text-muted-foreground;
+  }
+
+  .lesson-content ol {
+    @apply mb-4 ml-6 space-y-2 list-decimal marker:text-muted-foreground;
+  }
+
+  .lesson-content li {
+    @apply text-foreground leading-relaxed;
+  }
+
+  /* Enhanced prose container */
+  .prose-enhanced {
+    @apply text-foreground;
+  }
+
+  .prose-enhanced > div > *:first-child {
+    @apply mt-0;
+  }
+
+  .prose-enhanced > div > *:last-child {
+    @apply mb-0;
+  }
+
+  /* Rich content styling */
+  .rich-content {
+    @apply text-foreground leading-relaxed;
+  }
+
+  .rich-content h1 {
+    @apply text-2xl font-bold mb-4 mt-6 first:mt-0 text-foreground border-b border-border pb-2;
+  }
+
+  .rich-content h2 {
+    @apply text-xl font-semibold mb-3 mt-5 text-foreground border-b border-border/50 pb-1;
+  }
+
+  .rich-content h3 {
+    @apply text-lg font-medium mb-2 mt-4 text-foreground;
+  }
+
+  .rich-content p {
+    @apply mb-3 text-foreground leading-relaxed;
+  }
+
+  .rich-content strong {
+    @apply font-semibold text-accent;
+  }
+
+  .rich-content em {
+    @apply italic text-muted-foreground;
+  }
+
+  .rich-content ul {
+    @apply space-y-2 mb-4;
+  }
+
+  .rich-content li {
+    @apply text-foreground leading-relaxed;
+  }
+
+  /* Content section animations */
+  .content-section {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  .content-section .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  /* Progressive disclosure animations */
+  .expand-enter {
+    @apply opacity-0 max-h-0 overflow-hidden;
+    animation: expandIn 0.3s ease-out forwards;
+  }
+
+  .expand-exit {
+    @apply opacity-100;
+    animation: expandOut 0.3s ease-out forwards;
+  }
+
+  @keyframes expandIn {
+    0% {
+      opacity: 0;
+      max-height: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      max-height: 1000px;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes expandOut {
+    0% {
+      opacity: 1;
+      max-height: 1000px;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      max-height: 0;
+      transform: translateY(-10px);
+    }
+  }
+}
+
+@layer components {
+  /* Progress indicator styles */
+  .progress-ring {
+    @apply transition-all duration-200 ease-in-out;
+  }
+  
+  .progress-ring.completed {
+    @apply bg-success text-success-foreground;
+  }
+  
+  /* Smooth animations */
+  .slide-in {
+    animation: slideIn 0.2s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Focus styles for accessibility */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+}

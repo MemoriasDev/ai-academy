@@ -1,0 +1,1823 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_08/week_8_class_1_2024-07-15.mp4
+**Duration:** 3832.42 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 902
+**Generated:** 2025-08-13 20:32:08
+**File Hash:** 8869c505f3e28bc5b3f8f64edf474a0b
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_08
+**file_name:** week_8_class_1_2024-07-15.mp4
+
+---
+
+## Transcript
+
+**[299.18s → 311.80s]** I'm going to hire this.
+
+**[311.80s → 317.83s]** I said my mic wouldn't connect or my speakers didn't connect.
+
+**[317.83s → 319.75s]** So if you're talking, I didn't hear you.
+
+**[319.75s → 321.43s]** I'm sorry, but do you hear me now?
+
+**[321.43s → 322.91s]** I do hear you now.
+
+**[322.91s → 325.11s]** All right. I'm going to hire this.
+
+**[325.11s → 332.54s]** Well, it's partly because with the upcoming morning cohort,
+
+**[332.54s → 337.30s]** I'll need to be able to switch back and forth my setups a little faster.
+
+**[337.30s → 339.83s]** And so wireless is just easier.
+
+**[339.83s → 342.32s]** Yeah, it makes sense.
+
+**[342.32s → 345.56s]** But I saw that you were going on crew,
+
+**[345.56s → 347.44s]** so I was like, I need, I want to hop into this one.
+
+**[347.44s → 349.32s]** Let's do it again.
+
+**[349.32s → 351.66s]** Hey Tom.
+
+**[351.66s → 353.38s]** Well, it'll probably be different
+
+**[353.38s → 356.18s]** because it's got a little bit of jazz to it.
+
+**[356.18s → 359.10s]** That's why I like to listen to.
+
+**[359.10s → 360.22s]** All right.
+
+**[360.22s → 361.14s]** Thanks for joining.
+
+**[361.14s → 365.50s]** So we're going to talk about crew AI
+
+**[365.50s → 370.14s]** And perhaps just about projects in such in general,
+
+**[370.14s → 374.02s]** really, because I know that that's near upon us.
+
+**[374.02s → 377.38s]** And so it's good to be thinking about and planning those things.
+
+**[377.38s → 380.50s]** So I'll just get to it since we're starting this delay.
+
+**[380.50s → 386.25s]** So I'm sorry for any delay in letting people in,
+
+**[386.25s → 389.26s]** but I think we have that sorted out.
+
+**[389.26s → 396.89s]** So do people see my desktop?
+
+**[396.89s → 398.25s]** I will go ahead.
+
+**[398.25s → 403.37s]** few enough of us that actually I'm not going to start a question thread. I don't think we need a thread.
+
+**[403.37s → 410.41s]** Just if you have questions or blockers or whatever put it in the channel and if it's a question
+
+**[410.41s → 417.05s]** that I feel I want to take I'll take it and if it's maybe something for Tom to help unblock you
+
+**[417.05s → 425.56s]** he can do that. So either way just ask it straight in the channel. So what is crew AI? Well really
+
+**[425.56s → 434.32s]** create just another framework to more or less do the things you've been doing lately, which makes
+
+**[434.32s → 439.12s]** it sound boring. So I'll make it sound a little less boring. It's an opinionated framework. It's a
+
+**[439.12s → 445.80s]** framework that is going to, you know, they have their own pitch here. Power with simplicity.
+
+**[445.80s → 452.36s]** Automate your important workflows quickly. I mean, their pitch is that sort of like Ruby on Rails
+
+**[452.36s → 457.08s]** pitch because we think about it or beyond rails is just another web app framework. But the
+
+**[457.08s → 463.88s]** pitch is is that it has a certain design philosophy towards how to do these things and that
+
+**[463.88s → 469.16s]** is principled and that they believe is a good way to envision and solve these problems.
+
+**[469.16s → 474.68s]** And if you agree and the problems you want to solve fit well with that pattern, you can
+
+**[474.68s → 480.40s]** use their framework and get kind of significant acceleration at least in the early MVP stage
+
+**[480.40s → 487.12s]** especially because there's just a lot less boilerplate as you will see. There's a lot less stuff you
+
+**[487.12s → 493.52s]** have to specify compared to doing it the way we've been doing it. I will correct use of lane chain
+
+**[493.52s → 500.16s]** and lane this, that and the other, right? So and CrayEye is still basically built on that stuff.
+
+**[500.16s → 505.44s]** Like CrayEye is still at the end of the day building things that go down to that level and then
+
+**[505.44s → 509.00s]** and you'll ultimately make API calls to open AI
+
+**[509.00s → 513.50s]** or perhaps hit a local LLM if you have one running
+
+**[513.50s → 516.00s]** that offers equivalent API.
+
+**[516.00s → 519.44s]** So it's still the same technology under the hood.
+
+**[520.40s → 524.64s]** But we're all, you know, we've all written plenty of code
+
+**[524.64s → 526.64s]** and so we can appreciate that that difference
+
+**[526.64s → 529.20s]** and interface on the top can make a significant difference
+
+**[529.20s → 531.88s]** in terms of how it is to use the tool
+
+**[531.88s → 534.09s]** and how productive you can be with the tool
+
+**[534.09s → 536.19s]** in certain situations.
+
+**[536.19s → 537.99s]** And it's just good to see another way
+
+**[537.99s → 539.03s]** to solve these problems.
+
+**[539.03s → 540.43s]** Because even if you end up deciding,
+
+**[540.43s → 542.39s]** now maybe QAI isn't for me,
+
+**[542.39s → 544.47s]** you might still take some ideas from it
+
+**[544.47s → 546.31s]** that you might implement your own way,
+
+**[546.31s → 547.39s]** and that's fine too.
+
+**[548.46s → 552.46s]** Now, the bear argument here,
+
+**[552.46s → 555.82s]** the stock market meeting,
+
+**[555.82s → 559.70s]** like the against argument for QAI would be,
+
+**[559.70s → 562.78s]** well, maybe if it's too opinionated for your use case,
+
+**[562.78s → 565.86s]** maybe if you want to do something that it doesn't,
+
+**[565.86s → 569.26s]** it's not really on its happy path, right?
+
+**[569.26s → 572.62s]** That doesn't fit with the way it approaches problems.
+
+**[572.62s → 574.38s]** You're gonna end up fighting with the framework
+
+**[574.38s → 575.70s]** rather than really using it.
+
+**[575.70s → 577.94s]** And that's the trade off that every framework has.
+
+**[577.94s → 580.86s]** Like this is not at all unique to LLMs.
+
+**[580.86s → 583.58s]** This is just what it is to be a software engineer
+
+**[583.58s → 584.74s]** to use frameworks.
+
+**[584.74s → 587.22s]** We still use frameworks because they are often
+
+**[587.22s → 592.22s]** very, very valuable in what they offer us.
+
+**[592.22s → 594.14s]** but there is that tradeoff.
+
+**[594.14s → 600.06s]** So, just want to highlight here, I forget,
+
+**[600.06s → 603.30s]** because I think I did one other guest lecture, right,
+
+**[603.30s → 606.38s]** with 24A2 in the past.
+
+**[606.38s → 608.74s]** So I forget if I introduced this then or not,
+
+**[608.74s → 610.30s]** but I've been using the brave,
+
+**[610.30s → 612.58s]** so I don't mean this is not a product placement
+
+**[612.58s → 616.58s]** or anything, but I like this search engine
+
+**[616.58s → 617.98s]** because it's a proper,
+
+**[617.98s → 619.62s]** I think it's just being, to be honest,
+
+**[619.62s → 622.78s]** reskinned, but with a pretty nice rag implementation
+
+**[622.78s → 626.10s]** on top where it will just sort of give you pretty nice
+
+**[626.10s → 628.14s]** literate summaries and will actually give you
+
+**[628.14s → 629.58s]** the sources of the summaries.
+
+**[629.58s → 632.42s]** And so this is, you know, when I'm doing information retrieval
+
+**[632.42s → 633.90s]** in the summary I often go to this.
+
+**[633.90s → 638.50s]** So what does, what does an LLM rag system think about Crue AI?
+
+**[638.50s → 641.82s]** Well, let's open source framework for collaborative AI agents.
+
+**[641.82s → 644.62s]** And then there's this whole list of features,
+
+**[644.62s → 646.54s]** last jargon really.
+
+**[646.54s → 649.78s]** And there's some stuff here that is like familiar.
+
+**[649.78s → 652.58s]** Okay, LLM's tools function calling LLM.
+
+**[652.58s → 658.82s]** Yeah, that all makes sense. And honestly here, I feel like it's not the best way to be honest.
+
+**[658.82s → 664.18s]** I feel like their the LLM is mixing its levels about distraction here, but it's getting into like
+
+**[664.18s → 670.18s]** actual specific parameters on using it. And then different sorts of templates and
+
+**[671.06s → 676.58s]** delegation agents can delegate tasks. We'll see some of this. Really, the role-based agent is the
+
+**[676.58s → 685.30s]** the main thing that they do have at the top here, goals and roles, and also backstory, which
+
+**[685.30s → 692.04s]** is basically an interesting way to, you know, instead of the explicit prompt thing that you're
+
+**[692.04s → 701.64s]** used to, to sort of frame who, as it were, who your agent is, right? And this impacts how that
+
+**[701.64s → 703.64s]** that agent will solve problems.
+
+**[704.99s → 707.31s]** Of course, if you want actual documentation,
+
+**[707.31s → 710.23s]** I suggest you are there actual documentation,
+
+**[710.23s → 713.15s]** but just reminding that that's a thing.
+
+**[713.15s → 715.11s]** So let's get into the slides.
+
+**[715.11s → 716.11s]** I'll pause for a second,
+
+**[716.11s → 716.95s]** before starting slides.
+
+**[716.95s → 724.70s]** Any questions on anything I've said so far?
+
+**[724.70s → 730.18s]** Great.
+
+**[730.18s → 734.26s]** Okay, an agentic framework built on top of lane chain
+
+**[734.26s → 736.82s]** and it will help you build agents more quickly.
+
+**[736.82s → 739.38s]** And that matters.
+
+**[739.38s → 744.86s]** velocity matters and it abstracts the building of workflows.
+
+**[744.86s → 747.48s]** And that word abstracts is doing a lot of lifting here.
+
+**[747.48s → 750.78s]** That basically means, well, you type less, right?
+
+**[750.78s → 754.63s]** But that doesn't mean that less code is run.
+
+**[754.63s → 756.39s]** That just means that you type less.
+
+**[756.39s → 758.43s]** The code that you're not typing
+
+**[758.43s → 763.43s]** is sort of by default set in some way by the framework, right?
+
+**[764.35s → 767.15s]** And the goal here, if you're on the happy path
+
+**[767.15s → 771.31s]** of the framework is you get to focus on prompting
+
+**[771.31s → 773.43s]** because that's where a lot of the value is, right?
+
+**[773.43s → 774.27s]** Prompting should be here.
+
+**[774.27s → 775.79s]** And at the end of the day, it seems simple.
+
+**[775.79s → 779.75s]** It seems like LLM 101, but the difference between a good return
+
+**[779.75s → 782.11s]** on the system and not can really come down
+
+**[782.11s → 784.59s]** to the quality of the prompts as much and more
+
+**[784.59s → 786.51s]** that the architecture of the system.
+
+**[786.51s → 787.99s]** So you spend more time on that.
+
+**[787.99s → 790.63s]** You spend less time worrying about logic
+
+**[790.63s → 793.31s]** and making these complicated graphs all manually
+
+**[793.31s → 796.23s]** and all the other things that we're doing with language.
+
+**[796.23s → 798.32s]** Right.
+
+**[798.32s → 801.88s]** So what you should get out of this,
+
+**[801.88s → 804.64s]** you should understand when to use KRAI
+
+**[804.64s → 808.28s]** and implicitly when maybe not to.
+
+**[808.28s → 811.36s]** What its components are, how to build
+
+**[811.36s → 812.68s]** and start workflows with it,
+
+**[812.68s → 815.48s]** and then we'll actually step through some things
+
+**[815.48s → 817.80s]** because that's really how you actually really
+
+**[817.80s → 819.80s]** learn and absorb that.
+
+**[819.80s → 823.90s]** So I'm not gonna read all this.
+
+**[823.90s → 825.90s]** You have the slides for your own reference.
+
+**[825.90s → 829.42s]** I've already given some of my opinions,
+
+**[829.42s → 833.10s]** but I'll give a few more with this slide as backdrop here.
+
+**[833.10s → 836.18s]** And I think that it summarizes very well up here,
+
+**[836.18s → 837.82s]** chain customization,
+
+**[837.82s → 839.66s]** Kruai per detect.
+
+**[839.66s → 840.90s]** Now does this mean that like,
+
+**[840.90s → 844.62s]** oh, Kruai is not good enough for real production systems,
+
+**[844.62s → 846.16s]** something something, well,
+
+**[846.16s → 848.10s]** I mean, maybe, maybe not.
+
+**[848.10s → 850.50s]** You know, the the the determiner of that
+
+**[850.50s → 853.26s]** really just has to do with the complexity of the problem
+
+**[853.26s → 854.10s]** you're solving.
+
+**[854.10s → 859.94s]** that complexity actually mandates tinkering with the internals of an LLN architecture, right?
+
+**[859.94s → 866.02s]** Like, if you really do have strong opinions about the precise graph and chain and such that are
+
+**[866.02s → 872.34s]** being used in your agenteic system, then you might need to work it a lower level in crew A.
+
+**[872.98s → 877.14s]** And now, do you have those opinions because you actually need to have those opinions to solve
+
+**[877.14s → 883.06s]** your problem? Or because you just want to have those opinions. And that's perhaps up to you to decide.
+
+**[883.06s → 888.06s]** But that's where that comes down to in my opinion.
+
+**[888.06s → 892.06s]** And that's what I mean by having to fight the framework.
+
+**[892.06s → 898.06s]** If you really want to make a bespoke graph with Kruiai,
+
+**[898.06s → 900.06s]** you might have to fight the framework a little bit.
+
+**[900.06s → 903.06s]** It wouldn't be impossible, by the way, probably at least,
+
+**[903.06s → 906.06s]** because Kruiai is itself built on lane chain and Python
+
+**[906.06s → 907.06s]** is this crazy flexible language.
+
+**[907.06s → 910.06s]** So you could always import things and hack it
+
+**[910.06s → 913.26s]** pack it until it does kind of what you want, right?
+
+**[913.26s → 916.42s]** But that's not how you should be using QAI.
+
+**[916.42s → 918.94s]** You shouldn't be using QAI if you're constantly
+
+**[918.94s → 921.34s]** going down to the chain layer anyway,
+
+**[921.34s → 923.10s]** because QAI, at that point,
+
+**[923.10s → 926.26s]** might be giving you more trouble than it's worth, right?
+
+**[926.26s → 929.10s]** You should be using QAI if it's philosophy,
+
+**[929.10s → 931.54s]** which you will see shortly more of,
+
+**[931.54s → 933.62s]** for now, and be a literally hand-wavy about it.
+
+**[933.62s → 936.26s]** But if it's approached to things,
+
+**[936.26s → 937.18s]** it's a fit for you.
+
+**[937.18s → 943.40s]** And really from that spectrum comes a bunch of other trade-offs.
+
+**[943.40s → 950.36s]** So the advantages of quickness is, well, it's an easy to ramp up.
+
+**[950.36s → 953.48s]** You can iterate quickly and that has real value and business value and
+
+**[953.48s → 957.16s]** learning value because when you read fast iteration cycle,
+
+**[957.16s → 959.32s]** what you should take from that is fast feedback loop.
+
+**[959.32s → 962.80s]** I can try a bunch of things and see what sticks, right?
+
+**[962.80s → 966.28s]** Like in one week I could try five different project ideas
+
+**[966.28s → 970.76s]** and get each of them to a point where I can maybe see if it's worth pursuing any of them third,
+
+**[971.56s → 975.40s]** something like that, right? And that's much easier to do with a system like this.
+
+**[978.01s → 983.69s]** However, when you end up really digging deep, it's going to be harder to customize,
+
+**[983.69s → 988.73s]** possibly harder to debug, you'll have less control and less flexibility. So, again,
+
+**[990.27s → 996.83s]** I guess at a top level, I would say that like, yeah, the, you know, typically a larger system
+
+**[996.99s → 1002.03s]** is more complicated, it might ultimately mandate the tool more like chain. But I don't want to just say,
+
+**[1002.03s → 1007.39s]** oh, big means chain, because there could still be big but simple systems, where the challenge and
+
+**[1007.39s → 1012.59s]** the complexity is nothing to do with the agent of architecture, but is more about scaling the compute
+
+**[1012.59s → 1018.59s]** or interacting with the database or some other aspect of the application logic. So I wouldn't
+
+**[1018.59s → 1026.19s]** always say, oh, large system means use chain. I would say system where there's going to be complexity
+
+**[1026.19s → 1030.99s]** in the LLN layer and the agenteic layer, you might end up wanting to use LLN Chain.
+
+**[1030.99s → 1035.71s]** Now that said, depending on the situation, depending on your team or what you're doing,
+
+**[1036.35s → 1040.03s]** Mike still want to build the prototype in true A.A. There's no rules against that.
+
+**[1040.59s → 1045.95s]** To be clear, the code is going to be different enough that it will be a bit of a rewrite to then
+
+**[1045.95s → 1051.63s]** get it to LLN Chain, but that might still be an okay approach that people who do those sorts of
+
+**[1051.63s → 1060.64s]** things. Or of course, you can just start with nature. All right. So what is this philosophy that
+
+**[1060.64s → 1065.12s]** crew AI has? Well, let's let's learn some of the concepts here. And yeah, again, I'm looking at this.
+
+**[1065.12s → 1070.64s]** I'm like, well, yeah, the brave search summary hits some of these things, but it kind of missed
+
+**[1070.64s → 1078.00s]** some of them. That was not the best LLM summary I've seen of things. So, you know, we can still keep
+
+**[1078.00s → 1085.44s]** our day jobs, I guess. So, QAI is based on a hierarchical teams graph framework. So basically,
+
+**[1085.44s → 1093.04s]** this is the graph, to some extent. Like, you don't necessarily customize it as much as you
+
+**[1093.04s → 1102.43s]** potentially could with, with line graph, right? So, this might look familiar, this might look
+
+**[1102.43s → 1108.35s]** like something that you've probably seen recently, perhaps called like the supervisor
+
+**[1108.35s → 1112.19s]** pattern or something like that.
+
+**[1112.19s → 1117.63s]** And so this is something that is an established way of hierarchy of building things that make
+
+**[1117.63s → 1119.51s]** sense.
+
+**[1119.51s → 1123.83s]** And it looks almost like a human org chart, too, right?
+
+**[1123.83s → 1127.99s]** I guess the user would be the CEO, but hey, that's fun.
+
+**[1127.99s → 1129.83s]** So how does this work?
+
+**[1129.83s → 1136.31s]** Well, the user has a single contact point, which is nice because LLMs are great for interfaces
+
+**[1136.31s → 1141.35s]** to users because natural language both directions. So that's the interface at the top level. You just
+
+**[1141.35s → 1149.40s]** chat with it. But then what happens by the scenes where the supervisor has teams that it knows report
+
+**[1149.40s → 1156.53s]** to it. And it can route tasks to those teams. And then those teams have actual, here's where the
+
+**[1156.53s → 1163.17s]** actual agents live. So this is where your actual actual work is going on here. Right. So there's
+
+**[1163.17s → 1173.17s]** still LLMs calls happening here, but the LLM calls here more like, hey, here's a task, where should it go, or here's some results, what should we do with it, right?
+
+**[1173.17s → 1179.17s]** This is, these are the LLMs that actually have real tools and actually go out and do things.
+
+**[1179.17s → 1187.17s]** And so if the user says, or this is looking, this is looking like some sort of technical, I guess maybe a data research team in this picture, right?
+
+**[1187.17s → 1190.05s]** And so maybe the user's going to ask a question of like,
+
+**[1190.05s → 1195.27s]** you know, give me a report of the top 10 performing stocks
+
+**[1195.27s → 1198.89s]** for the last 10 years or something like that, right?
+
+**[1198.89s → 1202.61s]** On the Dow Jones, whatever.
+
+**[1202.61s → 1208.05s]** And so the supervisor says, okay, we'll need to do some research.
+
+**[1208.05s → 1211.37s]** And so the web looks, you know, it goes to the research
+
+**[1211.37s → 1213.61s]** because the searcher, you've seen this already, right?
+
+**[1213.61s → 1216.13s]** How that sort of task would be parsed.
+
+**[1216.13s → 1219.93s]** The difference here, as you'll see when we see the code,
+
+**[1219.93s → 1221.33s]** is we're not going to have to structure
+
+**[1221.33s → 1223.25s]** all this quite so painstakingly.
+
+**[1224.25s → 1227.53s]** We're just going to make these components here
+
+**[1227.53s → 1229.09s]** and kind of compose them together,
+
+**[1229.09s → 1230.93s]** and then the magic of QAI,
+
+**[1230.93s → 1233.45s]** and that framework steps in and does it.
+
+**[1233.45s → 1235.25s]** Now, this might be the point when you're asking,
+
+**[1235.25s → 1237.05s]** well gee, if this was the easy way to do it,
+
+**[1237.05s → 1239.81s]** why did we learn the harder way first?
+
+**[1239.81s → 1244.49s]** And the answer there is if you learn the easier way first,
+
+**[1244.49s → 1250.57s]** You want to appreciate it? No. It's kind of what it is is it's harder to gain an intuition, right?
+
+**[1251.61s → 1259.05s]** If it happens magically, then there's sort of less to learn. And so from a teaching perspective,
+
+**[1259.53s → 1265.37s]** our approach is to give you the bigger toolkit first, and then once you understand how that works,
+
+**[1265.37s → 1270.01s]** understanding how a sort of opinionated layer on top of it that makes it easier works,
+
+**[1270.01s → 1276.57s]** That's not hard. And it can still be worthwhile. There's still value here. So that's that approach.
+
+**[1277.69s → 1283.93s]** And let's talk a little bit about some of these specific terms. So agents that should be familiar.
+
+**[1283.93s → 1291.52s]** That's these down here really. Tasks that should also be fairly familiar and that's going to be in
+
+**[1291.52s → 1298.56s]** the sort of payloads being passed on this graph. These steps where things are being executed.
+
+**[1298.56s → 1303.32s]** tools, also familiar, those are, and generally compatible.
+
+**[1303.32s → 1304.88s]** I mean, this is built online chain,
+
+**[1304.88s → 1308.32s]** so we can use similar tool suites.
+
+**[1308.32s → 1311.84s]** Okay, processes, these are defined workflows.
+
+**[1311.84s → 1313.36s]** Okay, now things are getting a little different.
+
+**[1313.36s → 1316.12s]** So there's a way to have to find a workflow
+
+**[1316.12s → 1318.68s]** that outlines how tasks should be performed.
+
+**[1318.68s → 1322.64s]** So we can give some opinions about the process to do things.
+
+**[1322.64s → 1325.48s]** And crews, we define groups of agents
+
+**[1325.48s → 1326.84s]** that are working together.
+
+**[1326.84s → 1329.84s]** Ah, and crew AI, okay.
+
+**[1329.84s → 1331.00s]** And then memory.
+
+**[1331.00s → 1333.28s]** There's a built in memory mechanism for storing
+
+**[1333.28s → 1335.88s]** and recalling information to maintain continuity.
+
+**[1335.88s → 1338.78s]** So you can do all these things with Wayne Chain,
+
+**[1338.78s → 1342.88s]** but you get these for free or for cheap as it were,
+
+**[1342.88s → 1347.28s]** for just a little bit of decoration using crew AI.
+
+**[1347.28s → 1352.04s]** And then crew AI will build the system
+
+**[1352.04s → 1355.42s]** that is sort of per your specification here.
+
+**[1355.42s → 1362.30s]** Another way to think about this is the difference between imperative and declarative programming.
+
+**[1362.30s → 1367.90s]** So imperative programming is a sort of programming you're used to and it's like when you say x equals
+
+**[1367.90s → 1373.74s]** 2 plus 3, you're giving the steps, right? Declarative programming is when you just describe
+
+**[1373.74s → 1378.70s]** what you want to have. And the declarative language that you've probably used is SQL.
+
+**[1379.26s → 1383.50s]** You don't tell the database engine how to appreciate your data. You just say, I want this data
+
+**[1383.50s → 1389.34s]** and then the database engine makes something called a query plan that actually figures out how to get
+
+**[1390.06s → 1394.70s]** turned to you, right? And if you're really thinking with databases, you know about that stuff,
+
+**[1394.70s → 1399.10s]** but you don't have to know about that stuff to use the database. It's kind of similar here. We're
+
+**[1399.10s → 1404.72s]** working in a more declarative level of saying, hey, this is what I want to happen. Please make it so.
+
+**[1406.38s → 1412.86s]** All right. Getting started with your crew. So here are some of the steps and I'm not going to
+
+**[1412.86s → 1416.62s]** Well, on this side too, slide too long. I feel like I've described this quite a bit.
+
+**[1416.62s → 1422.30s]** You wish you get to the code. And this sort of thing will also be pretty clear when you see the code.
+
+**[1422.30s → 1428.40s]** But just at a high level, the crew is a team. Just a grouping of agents, just their darker for that.
+
+**[1428.40s → 1435.76s]** You add agents with roles to the team. You need to like the roles matter. The roles sort of are
+
+**[1435.76s → 1440.96s]** a way to encapsulate what we've called system problems because it's with nips. But when it's a different
+
+**[1440.96s → 1448.72s]** approach to it that you'll see. You define tasks, so you break the project into manageable tasks.
+
+**[1448.72s → 1456.64s]** So tasks are an actual object here and you'll see that too. And then the memory you set it up
+
+**[1456.64s → 1462.88s]** fairly straightforward and you just kick it off and give it its tasks. Well, it's prompt really
+
+**[1462.88s → 1470.06s]** that gets the main thing the supervisor has to do is break down the human prompt into these tasks
+
+**[1470.06s → 1478.01s]** really. I'm going to decide who should do the tasks. All right, so let's get to some code.
+
+**[1479.74s → 1485.90s]** So let's do that. Two examples. We've got trip planner and we've got stock analysis.
+
+**[1488.41s → 1497.48s]** Let's see here. Let's go ahead and do extra plan. So the trip planner has, let me actually
+
+**[1497.48s → 1507.16s]** get the code up here on the side too so we can look through this just a little bit before we run it.
+
+**[1509.12s → 1517.90s]** So the trip planner, this is just a boilerplate explanation stuff, I guess we're just going to
+
+**[1517.90s → 1522.94s]** turn the code. So the entry point unsurprisingly, main dot bot, let's see what we've got here.
+
+**[1524.73s → 1530.89s]** We've got a trip crew, yeah, look at our imports, they're all from crew, oh that's not what I wanted
+
+**[1530.89s → 1556.99s]** to do. And so, sorry, it's even a bit, that's better. So we have our trick crew, go out
+
+**[1556.99s → 1564.20s]** by this, sorry for being an indecisive backpacking, it's nice to have this on-site. So it's all in
+
+**[1564.20s → 1570.44s]** one big class, right? Wow, yeah. Well, if you've seen a lot of opinionated frameworks, you know,
+
+**[1570.44s → 1573.24s]** they often like taking this approach.
+
+**[1573.24s → 1575.08s]** And how do you initialize this?
+
+**[1575.08s → 1577.48s]** Well, you initialize this with, what is this?
+
+**[1577.48s → 1582.36s]** Well, this turns out to be what the user is going to provide.
+
+**[1582.36s → 1585.12s]** So this crew is a trip planner.
+
+**[1585.12s → 1587.74s]** And so the user is going to provide,
+
+**[1587.74s → 1591.39s]** make sure it's a little less clicky.
+
+**[1591.39s → 1593.35s]** The user is going to provide where they're starting
+
+**[1593.35s → 1596.79s]** from, where they'd like to go, when they'd like to go,
+
+**[1596.79s → 1598.27s]** and what they'd like to do.
+
+**[1598.27s → 1601.91s]** And so this essentially becomes like the schema for that.
+
+**[1601.91s → 1605.02s]** And then the run is the actual entry point.
+
+**[1605.02s → 1608.56s]** It instantiates agents, instantiates tasks,
+
+**[1608.56s → 1609.40s]** and this is it.
+
+**[1609.40s → 1612.08s]** Like this basically sticks things together
+
+**[1612.08s → 1618.89s]** and makes the equivalent of this, right?
+
+**[1618.89s → 1622.87s]** So this is a lot less code than if you had to make this
+
+**[1622.87s → 1627.05s]** with chain chain because all we do is we just add agents
+
+**[1627.05s → 1629.11s]** and we'll go to the agents specification next.
+
+**[1629.11s → 1630.11s]** That's what you'll wonder.
+
+**[1630.11s → 1632.67s]** Because yes, we do this to the best finding agents.
+
+**[1632.67s → 1637.11s]** But we add them, we set up these tasks
+
+**[1637.11s → 1640.11s]** and these tasks come from a task class.
+
+**[1640.11s → 1643.19s]** So we've imported both agents and tasks,
+
+**[1643.19s → 1646.18s]** and this is our own code here.
+
+**[1646.18s → 1648.42s]** And then we put it all together in a group.
+
+**[1648.42s → 1653.34s]** And this object essentially, at least,
+
+**[1653.34s → 1654.62s]** that's the equivalent of it.
+
+**[1654.62s → 1657.30s]** And we just stick together what the agents and the tasks are
+
+**[1657.30s → 1659.27s]** and we kick off the group.
+
+**[1659.27s → 1661.63s]** And then the entry point, which is essentially
+
+**[1661.63s → 1665.87s]** talking to the supervisor says, hey, here's the questions, where are you traveling? And it even
+
+**[1665.87s → 1671.74s]** assigns it directly to these values, right? Where are you traveling from? Oh, I'm traveling from
+
+**[1671.74s → 1678.70s]** New Mexico. Where do you want to visit? Oh, I want to visit either London or Paris when you want
+
+**[1678.70s → 1685.30s]** to go. Well, sometime the next three weeks. You know, what are your interests? Museums and water
+
+**[1685.30s → 1693.22s]** colors. I don't know, right? So you could you could say these things and it'll get fed in to this
+
+**[1693.22s → 1702.06s]** system. So this file is about 80 lines of code to specify all of that. And that's the advantage,
+
+**[1702.06s → 1706.94s]** as it were, and probably be easily doubled that to put together this sort of architecture
+
+**[1706.94s → 1723.48s]** more directly. Now, excuse me, how about the actual agents and tasks? That's what the actual heavy lifting is. And that's where Kruai wants you to focus your time.
+
+**[1723.48s → 1735.23s]** So if we go here, there's trip agents and trip tasks. And trip agents is another class that we just declare.
+
+**[1735.23s → 1742.29s]** And you'll see that we actually are using a link chain import here, right?
+
+**[1742.29s → 1753.86s]** So we're using that as the actual entry point, the BDI calls. I think we're probably just being actually, that's not even being explicitly used in this file.
+
+**[1753.86s → 1757.86s]** But I elsewhere it is and we're hitting you know, GPT35 or something.
+
+**[1757.86s → 1762.86s]** And then there's also these tools and these tools are defined in their own little directory.
+
+**[1762.86s → 1768.86s]** And if you look at these tools, these tools are basically just lane chain tools, right?
+
+**[1768.86s → 1772.86s]** Now there are some crew AI imports here.
+
+**[1772.86s → 1777.08s]** So let's see how we use those.
+
+**[1777.08s → 1781.08s]** So we are making an agent inside this tool.
+
+**[1781.08s → 1783.08s]** So that's interesting, right?
+
+**[1783.08s → 1784.08s]** We'll get back to that.
+
+**[1784.08s → 1787.08s]** Let's look at the main agents file more as well.
+
+**[1787.08s → 1790.92s]** But really, the top level is just a tool decorator.
+
+**[1790.92s → 1795.28s]** So you could use any chain tool because crew is built on chain.
+
+**[1795.28s → 1798.08s]** So you're already familiar with tools.
+
+**[1798.08s → 1799.76s]** We're importing tools.
+
+**[1799.76s → 1801.20s]** We're defining a class.
+
+**[1801.20s → 1803.64s]** And then there's these methods inside the class.
+
+**[1803.64s → 1810.12s]** And the methods are essentially a little bit of a factory
+
+**[1810.12s → 1811.20s]** pattern or something here.
+
+**[1811.20s → 1814.36s]** They return the agent.
+
+**[1814.36s → 1819.04s]** So the agents are encapsulated inside methods.
+
+**[1819.04s → 1822.60s]** And strictly speaking, you wouldn't have to do it this way.
+
+**[1822.60s → 1826.08s]** But this is the opinionated way that Kruai wants you to do.
+
+**[1826.08s → 1829.04s]** This is their happy path that allows everything
+
+**[1829.04s → 1832.40s]** to be magically stitched together in 80 lines like I showed you.
+
+**[1832.40s → 1832.92s]** Right?
+
+**[1832.92s → 1834.08s]** So you probably want to do it.
+
+**[1834.08s → 1836.36s]** Like if you're using Kruai, you want to stay on this path.
+
+**[1836.36s → 1838.36s]** You want to take this approach.
+
+**[1838.36s → 1842.36s]** And so we are defining several methods and each method.
+
+**[1842.36s → 1844.72s]** And these are fairly simple agents.
+
+**[1844.72s → 1848.96s]** So it's a one-liner or at least a one logical line.
+
+**[1848.96s → 1851.48s]** But you could put other Python here if you wanted to,
+
+**[1851.48s → 1853.88s]** if you had to for some reason.
+
+**[1853.88s → 1856.12s]** Well, if you look at each agent, where they get it.
+
+**[1856.12s → 1858.84s]** Well, they get a role, a goal.
+
+**[1858.84s → 1859.68s]** That's interesting.
+
+**[1859.68s → 1861.76s]** A backstory, some tools.
+
+**[1861.76s → 1863.68s]** And then just yeah, we want it for both
+
+**[1863.68s → 1866.40s]** for debugging purposes right now.
+
+**[1866.40s → 1869.68s]** So the role is almost like a job title.
+
+**[1869.68s → 1871.04s]** And that actually kind of matters.
+
+**[1871.04s → 1873.70s]** just like with tools and tool selection,
+
+**[1873.70s → 1876.94s]** it matters how you name and document your functions.
+
+**[1876.94s → 1878.74s]** And then the goal and the backstory
+
+**[1878.74s → 1880.74s]** are a sort of opinionated way
+
+**[1880.74s → 1882.58s]** to split up what the system prompt is.
+
+**[1882.58s → 1886.04s]** You are not coding the system prompt yourself here.
+
+**[1886.04s → 1888.58s]** You could look at the actual code of CREI
+
+**[1888.58s → 1890.02s]** if you want, if we've time at the end,
+
+**[1890.02s → 1891.82s]** maybe we can try to find it.
+
+**[1891.82s → 1893.30s]** Because I'm sure there is a system prompt.
+
+**[1893.30s → 1895.50s]** It's is going down to some layer
+
+**[1895.50s → 1898.73s]** where there is an LLM with a system prompt.
+
+**[1898.73s → 1907.23s]** But that system prompt is essentially being stitched together for you by crew AI based on your provided goal and backstory.
+
+**[1908.33s → 1920.70s]** So select the best city that's the goal. So there's a purpose for this agent and that helps pair with tasks right and the backstory is sort of more traditional system prompt type stuff.
+
+**[1921.99s → 1927.79s]** You know telling what the capabilities are that also has to do with task assignment of course, but
+
+**[1929.60s → 1933.60s]** splitting these lets you capture these two sorts of aspects of that description
+
+**[1933.60s → 1938.98s]** and maybe helps you as a programmer or a prompt engineer
+
+**[1938.98s → 1942.98s]** write better, write better prompts
+
+**[1942.98s → 1947.98s]** and capture angles that you might not have thought of if you were just right in the full system prompt yourself.
+
+**[1947.98s → 1952.33s]** Tools you're familiar with and then it's just the same pattern over and over and that's it.
+
+**[1952.33s → 1955.33s]** So the agents are actually less than 50 lines here.
+
+**[1955.33s → 1957.33s]** It's with imports and white space.
+
+**[1957.33s → 1960.33s]** So still not a whole lot of code.
+
+**[1960.33s → 1965.33s]** Let's check out the tasks because that's something that's a little different.
+
+**[1965.33s → 1970.33s]** You know tools and agents we've seen that even if we're specifying them a little differently here.
+
+**[1970.33s → 1974.33s]** Tasks well that's a Kuiai thing.
+
+**[1974.33s → 1978.88s]** And by the way, D.Dent is just this.
+
+**[1978.88s → 1982.88s]** The adification thing that lets us write the text indented.
+
+**[1982.88s → 1989.92s]** indented, so it's all pretty. But then it gets de-dented. So this leading white space is removed
+
+**[1990.32s → 1996.24s]** when it's actually being passed to the LLN because why would you pass something to the LLN that has like
+
+**[1996.84s → 2004.28s]** six white spaces at the start of every line. So that's all that is. It's the nice, nice little utility here. So you might want to pick up on that pattern too.
+
+**[2004.28s → 2007.76s]** But a lot of text here, right?
+
+**[2007.76s → 2009.04s]** A lot of text.
+
+**[2009.04s → 2011.44s]** This is actually the task prompts or the prompts
+
+**[2011.44s → 2015.04s]** that you will spend the most time engineering potentially.
+
+**[2015.04s → 2017.84s]** I mean, you could get a little complicated here if you want,
+
+**[2017.84s → 2020.20s]** but you don't necessarily have to
+
+**[2020.20s → 2023.48s]** and sometimes simplicity might actually be better
+
+**[2023.48s → 2026.68s]** because it makes it clear who to assign tasks to.
+
+**[2026.68s → 2030.20s]** You know, a bad system is one where it's ambiguous,
+
+**[2030.20s → 2032.40s]** what age it gets for task.
+
+**[2032.40s → 2036.48s]** Here, though, with the tasks, we provide all sorts of details.
+
+**[2036.48s → 2039.16s]** What you should do, what you should consider,
+
+**[2039.16s → 2043.12s]** what the task involves using language like this task,
+
+**[2043.12s → 2046.32s]** like we are, this is we are aware that this is a task,
+
+**[2046.32s → 2050.15s]** because I'm sure the system itself is, too.
+
+**[2050.15s → 2054.48s]** Specifications for what the final answer should include.
+
+**[2054.48s → 2057.76s]** And then this is a little bit of magic
+
+**[2057.76s → 2060.04s]** that Kruaii tells you to put there,
+
+**[2060.04s → 2063.08s]** but you should, because again, opinionated framework.
+
+**[2063.08s → 2067.40s]** And it basically populates some of the other system prompt
+
+**[2067.40s → 2070.32s]** stuff that they figure out.
+
+**[2070.32s → 2074.28s]** And then this let goes back to the entry point, the main.py file.
+
+**[2074.28s → 2077.04s]** It's pulling the four actual.
+
+**[2077.04s → 2080.20s]** So this is essentially the user prompt, right?
+
+**[2080.20s → 2082.88s]** Like that, this part of it in particular.
+
+**[2082.88s → 2085.40s]** Hey, I'm going from here to here.
+
+**[2085.40s → 2088.10s]** This is what, right?
+
+**[2088.10s → 2091.30s]** And then you'll see much like the agents,
+
+**[2091.30s → 2095.42s]** This is a class with function or methods that return
+
+**[2095.42s → 2098.58s]** instantiated objects, in this case a task.
+
+**[2098.58s → 2101.66s]** The task takes an agent because it's going to be called
+
+**[2101.66s → 2105.20s]** by a supervisor that says, hey, this should go to this agent,
+
+**[2105.20s → 2108.32s]** right, or by a team perhaps, because they get the supervisors
+
+**[2108.32s → 2111.24s]** round the teams if you have multiple teams.
+
+**[2111.24s → 2116.72s]** So the agent is assigned the task like that.
+
+**[2116.72s → 2118.72s]** And with another task, so I'm going to look at the task
+
+**[2118.72s → 2119.22s]** action.
+
+**[2119.22s → 2120.06s]** Well, we did, I guess.
+
+**[2120.06s → 2122.30s]** So this is the identified task,
+
+**[2122.30s → 2125.28s]** basically select the best city.
+
+**[2125.28s → 2127.14s]** Cause, you know, the user might say,
+
+**[2127.14s → 2131.11s]** oh, I wanna go to either London or Paris or Berlin,
+
+**[2131.11s → 2134.07s]** whatever, I'm just picking big cities in Europe
+
+**[2134.07s → 2137.07s]** for some reason, that are also very different, really.
+
+**[2137.07s → 2139.91s]** But in any case, which actually would make this
+
+**[2139.91s → 2140.83s]** probably easier.
+
+**[2140.83s → 2143.07s]** So this is to pick the city.
+
+**[2144.07s → 2146.75s]** The gathered task then is like,
+
+**[2146.75s → 2150.71s]** Hey, you should get all the information you need.
+
+**[2150.71s → 2153.82s]** So the city's been selected, right?
+
+**[2153.82s → 2156.66s]** What should this person see there?
+
+**[2156.66s → 2159.46s]** Like, what are all the cool things
+
+**[2159.46s → 2162.06s]** that you could do at this city?
+
+**[2162.06s → 2164.70s]** And then plan, okay, we have a city,
+
+**[2164.70s → 2166.72s]** we have cool things to do.
+
+**[2166.72s → 2170.06s]** Let's actually write a seven day travelite temporary
+
+**[2170.06s → 2172.72s]** with weather forecasts, places to eat,
+
+**[2172.72s → 2174.72s]** especially the web researchers needed,
+
+**[2174.72s → 2177.38s]** all the sort of stuff, right?
+
+**[2177.38s → 2181.66s]** And it's a long, detailed prompt, I recommend you clothing.
+
+**[2181.66s → 2183.42s]** I'm not gonna read all the prompt.
+
+**[2183.42s → 2185.74s]** I should start running this.
+
+**[2185.74s → 2187.14s]** Oh yeah, here's the tip section.
+
+**[2187.14s → 2189.94s]** If you do your best work, I'll tip you $100.
+
+**[2189.94s → 2191.14s]** You can change this tip.
+
+**[2191.14s → 2192.66s]** This is there being a little cue.
+
+**[2192.66s → 2197.66s]** But the idea is that motivating the agent matters.
+
+**[2197.94s → 2200.38s]** It's sort of similar to how system prompts can say,
+
+**[2200.38s → 2205.52s]** oh, you are extremely talented front-end engineer sort of thing.
+
+**[2205.52s → 2207.52s]** All right, so that's really the system.
+
+**[2207.52s → 2210.88s]** I guess let's take another look at the tools real quick.
+
+**[2210.88s → 2213.20s]** Again, you've seen stuff like this.
+
+**[2213.20s → 2216.84s]** The main difference here is this tool also even spawns
+
+**[2216.84s → 2220.24s]** an agent inside it, which is interesting, right?
+
+**[2220.24s → 2222.32s]** A researcher, so you can do that.
+
+**[2222.32s → 2225.48s]** I don't think all the tools do that though.
+
+**[2225.48s → 2227.88s]** Yeah, the calculator just literally evaluates,
+
+**[2227.88s → 2229.40s]** it does math.
+
+**[2229.40s → 2231.32s]** That's what the calculator does.
+
+**[2231.32s → 2234.16s]** So yeah, there's just tools.
+
+**[2234.16s → 2237.48s]** Let's go ahead and get going here.
+
+**[2237.48s → 2240.12s]** So, just a check.
+
+**[2240.12s → 2242.90s]** I think the way to do this is just
+
+**[2242.90s → 2248.74s]** Python, I mean, even if I, right?
+
+**[2248.74s → 2252.82s]** And let's see this go.
+
+**[2252.82s → 2254.98s]** Where will you be traveling from?
+
+**[2254.98s → 2256.72s]** Well, yeah, let's say,
+
+**[2259.55s → 2261.75s]** what's, I wanna make it easy.
+
+**[2261.75s → 2262.71s]** So I wanna make it a place
+
+**[2262.71s → 2266.60s]** that doesn't have like too many crazy lights or is it?
+
+**[2266.60s → 2269.90s]** Is anybody, is anybody wanna try it?
+
+**[2269.90s → 2272.62s]** Is anybody wanna actually play in their vacation here?
+
+**[2272.62s → 2275.26s]** It just works, you know, if you get a nice, uh, it's an area.
+
+**[2277.94s → 2279.16s]** Oh, it's some Paul Brazil.
+
+**[2280.09s → 2280.69s]** It's my brother.
+
+**[2284.50s → 2285.00s]** All right.
+
+**[2288.11s → 2293.37s]** Where are you interested in visiting or anybody I just have to be in.
+
+**[2293.37s → 2294.01s]** But yet, right?
+
+**[2294.41s → 2296.05s]** Some Paul always is the city.
+
+**[2296.85s → 2297.77s]** Oh, that you want to visit.
+
+**[2303.94s → 2307.86s]** Maybe where you from there's where you from and then where do you want to visit?
+
+**[2308.66s → 2309.18s]** Oh, yes.
+
+**[2309.94s → 2315.02s]** Um, I'm from Brazil, but I don't know.
+
+**[2315.06s → 2318.93s]** any other, any other country?
+
+**[2320.70s → 2325.02s]** That's fine. You can put some, I mean, yeah, we're interested
+
+**[2325.02s → 2326.68s]** to see if it can handle some of the information
+
+**[2326.68s → 2331.52s]** or report you these. Well, I know, it's bellow,
+
+**[2331.52s → 2332.82s]** it was on just right.
+
+**[2333.92s → 2335.58s]** Maybe, he would generate is another.
+
+**[2337.10s → 2337.90s]** There's a narrow one.
+
+**[2341.94s → 2343.50s]** One of the cities in the north.
+
+**[2344.93s → 2346.37s]** Has he seen? Maybe.
+
+**[2346.37s → 2347.57s]** He's seen from the north.
+
+**[2347.57s → 2351.24s]** All right, yeah, all right, that works.
+
+**[2351.24s → 2354.88s]** And because this is an LLM,
+
+**[2354.88s → 2356.72s]** we shouldn't have to give any strict format here.
+
+**[2356.72s → 2358.44s]** So I really am going to try something like
+
+**[2358.44s → 2362.34s]** the many time, when you miss the three weeks,
+
+**[2362.34s → 2364.34s]** something like that.
+
+**[2364.34s → 2366.66s]** One would hope that you can figure that out.
+
+**[2366.66s → 2368.18s]** And let's put a few interests.
+
+**[2368.18s → 2382.33s]** What would you like to do?
+
+**[2382.33s → 2384.05s]** Your choice, though.
+
+**[2384.05s → 2390.37s]** Tio says if it beats maybe a good, uh,
+
+**[2390.37s → 2396.61s]** He and Hessev has a good natural steps and Barzone has a lot of cultural museums and other steps.
+
+**[2396.61s → 2416.06s]** We could put like museums and nature nature and try to do what you do to why not.
+
+**[2416.85s → 2423.22s]** We don't need to give the time. All right, because we just want to sort of see how it's working here.
+
+**[2423.22s → 2427.22s]** It's going to start scrolling by a lot of stuff because we made it all over Bose.
+
+**[2427.22s → 2429.22s]** You can see, hey, here's the prompt already.
+
+**[2429.22s → 2431.47s]** This is what we provided.
+
+**[2431.47s → 2435.47s]** It started the task, analyze and select the best city.
+
+**[2435.47s → 2437.47s]** Make a detailed report about the city.
+
+**[2437.47s → 2439.47s]** If you do your best work, I'll tip you.
+
+**[2439.47s → 2443.47s]** Traveling from, traveling to anytime.
+
+**[2443.47s → 2447.50s]** Now it's going into the crew agent executor chain.
+
+**[2447.50s → 2449.50s]** It's asking itself to do any to tool.
+
+**[2449.50s → 2451.50s]** Yes, I need to search the internet.
+
+**[2451.50s → 2454.22s]** And no, yes, just like you've seen elsewhere,
+
+**[2454.22s → 2456.66s]** I assume in the other classes,
+
+**[2456.66s → 2459.94s]** you could potentially build it into your tool
+
+**[2459.94s → 2462.46s]** that it actually checks with a human before using the tool.
+
+**[2462.46s → 2466.30s]** Now, we're letting this system run basically autonomously,
+
+**[2466.30s → 2468.74s]** but we don't have to.
+
+**[2468.74s → 2473.34s]** We could potentially have human and the loop type stuff
+
+**[2473.34s → 2475.98s]** if that's appropriate for your follow-up.
+
+**[2475.98s → 2478.46s]** So it searches for a weather forecast
+
+**[2478.46s → 2481.26s]** for the next three weeks.
+
+**[2481.26s → 2482.10s]** That's interesting.
+
+**[2482.10s → 2484.22s]** You just searched for three cities like that.
+
+**[2484.22s → 2486.74s]** I wonder if that's going to work even.
+
+**[2491.30s → 2496.77s]** I've used the search a whole lot.
+
+**[2496.77s → 2498.09s]** Let me double check the tool here
+
+**[2498.09s → 2503.33s]** because I think is the tool.
+
+**[2503.33s → 2505.13s]** Yeah, no, it actually does get to search in that
+
+**[2505.13s → 2507.69s]** because I know sometimes our tools,
+
+**[2507.69s → 2510.69s]** for example, purposes are hard coded.
+
+**[2510.69s → 2513.33s]** Oh, but I might not have set that.
+
+**[2514.86s → 2518.73s]** Let me see how this is doing here.
+
+**[2518.73s → 2520.19s]** It's certainly trying.
+
+**[2523.32s → 2528.12s]** I'm gonna go ahead and,
+
+**[2528.12s → 2530.66s]** oh, okay, how about that?
+
+**[2530.66s → 2533.30s]** All right, set the API key.
+
+**[2533.30s → 2534.66s]** Let's try it again.
+
+**[2534.66s → 2536.54s]** I have to type on that stuff again though.
+
+**[2538.90s → 2543.74s]** There are any other API keys that I missed then.
+
+**[2543.74s → 2545.74s]** We'll see if that actually makes a difference
+
+**[2545.74s → 2549.90s]** in its ability to retrieve stuff.
+
+**[2549.90s → 2555.46s]** Oh, it needs a server queue too.
+
+**[2555.46s → 2559.38s]** I have that.
+
+**[2559.38s → 2561.02s]** Yes, I do.
+
+**[2561.02s → 2565.94s]** Let's clean this up and we'll get.
+
+**[2565.94s → 2569.70s]** All right, now it will actually be able to access information
+
+**[2569.70s → 2572.26s]** from the internet, assuming my keys are still there.
+
+**[2572.26s → 2575.34s]** So, all right, some follow up, Brazil.
+
+**[2577.46s → 2578.62s]** And yeah, I mean, we could also be fun.
+
+**[2578.62s → 2580.34s]** We could try international stuff too.
+
+**[2580.34s → 2583.46s]** So we could try not that Brazil is not fun.
+
+**[2584.86s → 2587.34s]** We could try, because it should be easier
+
+**[2587.34s → 2588.34s]** for me to type city names,
+
+**[2588.34s → 2593.82s]** So you can try New York, London, and the publics.
+
+**[2596.37s → 2600.33s]** Anytime you're in the city, the publics.
+
+**[2600.33s → 2603.41s]** And maybe if you put museums here,
+
+**[2603.41s → 2605.73s]** and they all have new buildings,
+
+**[2605.73s → 2607.49s]** so I'll be interested to see what it actually thinks
+
+**[2607.49s → 2608.81s]** the best city is.
+
+**[2611.98s → 2613.66s]** What else could we put?
+
+**[2618.35s → 2621.47s]** I'm hoping sure, I'm gonna win a hand, we're good for that.
+
+**[2621.47s → 2622.31s]** We'll put it there.
+
+**[2622.31s → 2624.15s]** I might not London out, I guess.
+
+**[2628.94s → 2630.26s]** All right, let's see the connection,
+
+**[2630.26s → 2633.72s]** so I'll see you in the next time at least.
+
+**[2633.72s → 2635.56s]** And going from Sao Paulo, I think just means
+
+**[2635.56s → 2637.00s]** that these flights are gonna be expensive.
+
+**[2637.00s → 2639.12s]** But yes, now I can access the internet.
+
+**[2639.12s → 2641.02s]** Awesome, really?
+
+**[2641.02s → 2645.10s]** 338 from Sao Paulo to JFK.
+
+**[2645.10s → 2652.79s]** I wonder if that's real, but the internet claims it's possible.
+
+**[2652.79s → 2654.95s]** Okay, so we see it stepping through the stuff
+
+**[2654.95s → 2656.67s]** and actually getting results this time, right?
+
+**[2656.67s → 2657.51s]** That's the gist of it.
+
+**[2657.51s → 2663.43s]** We're just seeing it do all the things that we knew it would do based on what we specified
+
+**[2663.43s → 2664.43s]** here.
+
+**[2664.43s → 2667.15s]** But while it's running, I just want to remind you that like the total amount of code for
+
+**[2667.15s → 2672.47s]** this full system, which if you had to draw, would look kind of like this.
+
+**[2672.47s → 2678.41s]** We'd have a user, a supervisor, a team with agents and a bunch of tools.
+
+**[2678.41s → 2683.09s]** All we really did was have a few tools which we could define ourselves or import from lane
+
+**[2683.09s → 2689.09s]** chain existing community tools, a few agents, which are basically just a few prompts,
+
+**[2690.05s → 2694.53s]** like little mini prompts that get stitched together into a system prompt and some tools.
+
+**[2696.05s → 2705.97s]** And then the task code, which is the longest, but it's all prompt. And that's the point.
+
+**[2705.97s → 2710.93s]** The philosophy here, what Kruai wants you to do is spend all your time thinking about this.
+
+**[2710.93s → 2715.38s]** To me, I want to make all this other stuff as simple as possible.
+
+**[2715.38s → 2719.38s]** So you just put it together and then you spend all your time here.
+
+**[2719.38s → 2721.38s]** I'm going to have all your time.
+
+**[2721.38s → 2731.38s]** But like you get to spend a good amount of time here because they have the philosophy that this is where you'll see good return on your on your time, because why should you have to
+
+**[2731.38s → 2735.06s]** we make this graph over and over again
+
+**[2735.06s → 2739.06s]** if this is the good graph for the problem we dissolve it.
+
+**[2739.06s → 2743.62s]** And indeed, so this is the longest file really.
+
+**[2743.62s → 2746.46s]** Yeah, this file is just barely longer, I think,
+
+**[2746.46s → 2749.07s]** than the file that puts it all together.
+
+**[2749.07s → 2752.19s]** Oh, I went up to high.
+
+**[2752.19s → 2756.83s]** Yeah, main.py, 81 lines.
+
+**[2756.83s → 2759.99s]** So the file that puts everything together and specifies,
+
+**[2759.99s → 2761.31s]** well, it doesn't really specify,
+
+**[2761.31s → 2763.99s]** but gives you the object of the architecture,
+
+**[2763.99s → 2767.35s]** gives you the runnable Malang chain parlance,
+
+**[2767.35s → 2772.77s]** is shorter than the prompts for your tasks.
+
+**[2775.16s → 2777.50s]** Barely shorter, but shorter.
+
+**[2777.50s → 2780.54s]** Let's see how this is doing.
+
+**[2780.54s → 2784.74s]** Oh, it finished the chain.
+
+**[2784.74s → 2786.90s]** All right.
+
+**[2786.90s → 2790.18s]** Well, New York is the cheapest to go to
+
+**[2790.18s → 2792.74s]** and you can see the Statue of Liberty, Ellis Island.
+
+**[2792.74s → 2793.90s]** Yeah, okay.
+
+**[2793.90s → 2796.22s]** London, you can see Westminster, Paris,
+
+**[2796.22s → 2806.59s]** you see a bunch of stuff. What city do you pick? Paris. It picked Paris. Interesting.
+
+**[2812.38s → 2816.54s]** Why? I wonder what its reason was. Considering flight costs, weather and attraction,
+
+**[2817.18s → 2821.58s]** maybe the weather. The flight costs are all about the same. Paris is actually the most expensive.
+
+**[2825.46s → 2831.30s]** I think it probably is kind of the nice weather there now. I don't know. All right, it's still going.
+
+**[2831.30s → 2840.54s]** So that was the end of the first chain, right? The first task of this. So it did a bunch of
+
+**[2840.54s → 2845.10s]** web searches, a bunch of thinking and eventually set along Paris and gave its little reason.
+
+**[2845.66s → 2851.74s]** And now what should already be happening here is yeah, the next task, right? And note,
+
+**[2852.66s → 2858.02s]** this task went to the local expert, right? And the first task, we did the first task,
+
+**[2858.02s → 2869.94s]** go to a lot of sprawling, sorry about that. The first task went to the city selection expert
+
+**[2869.94s → 2879.54s]** as it should. And if we go to how we define our agents, we can see that with the tools we gave them
+
+**[2879.54s → 2884.98s]** and the goal in the backstory is pretty obvious how these tasks should be assigned. And then if you
+
+**[2884.98s → 2890.66s]** go to the tasks, that means that when the supervisor called that they passed in the correct agent.
+
+**[2890.66s → 2895.77s]** and if we go to the actual crew, yeah.
+
+**[2895.77s → 2899.13s]** So the crew had all the agents and all the tasks
+
+**[2899.13s → 2904.13s]** and it was very clear and direct how to pass these tasks, right?
+
+**[2906.43s → 2909.87s]** So, I mean, actually, we assign them here.
+
+**[2909.87s → 2912.03s]** So it's not even the supervisor pick.
+
+**[2912.03s → 2912.87s]** Yeah, sorry about that.
+
+**[2912.87s → 2914.55s]** I just wanted to make sure I could find the line
+
+**[2914.55s → 2915.79s]** before I said that.
+
+**[2915.79s → 2918.15s]** Cause sometimes that's what it is, right?
+
+**[2918.15s → 2921.27s]** In this case, it's actually being routed directly
+
+**[2921.27s → 2925.99s]** because we took the task and we instantiated it
+
+**[2925.99s → 2929.15s]** and we said that the identified task should use
+
+**[2929.15s → 2931.07s]** the state selector agent to gather tasks,
+
+**[2931.07s → 2932.83s]** she used the expert and the planning task
+
+**[2932.83s → 2934.35s]** to distribute the concierge.
+
+**[2934.35s → 2937.63s]** So we put all that together and that is actually
+
+**[2937.63s → 2938.79s]** what it's here.
+
+**[2938.79s → 2940.87s]** So it's actually deterministic in this case,
+
+**[2941.87s → 2945.38s]** but you can imagine more complicated scenarios.
+
+**[2945.38s → 2947.26s]** So let's see how this one's doing.
+
+**[2947.26s → 2954.28s]** So the prompt was like, hey, I'm sorry, I have a scroll on the one.
+
+**[2954.28s → 2956.68s]** So I need to scroll to the end of the first task again.
+
+**[2956.68s → 2963.06s]** Okay, so you're going to Paris from Brazil.
+
+**[2963.06s → 2967.06s]** You have to compile information to make the best trip ever.
+
+**[2967.06s → 2970.06s]** Okay, we're the best things to do in Paris.
+
+**[2970.06s → 2975.12s]** A bunch of museums, the Louvre, the Eiffel Tower.
+
+**[2975.12s → 2985.74s]** Oh, we might be hitting some sort of rate limit with our browser list, so our system
+
+**[2985.74s → 2990.86s]** might not be able to look up every, because you can see it's trying to do a lot of research.
+
+**[2990.86s → 2992.98s]** It's actually being quite powerful.
+
+**[2992.98s → 2995.10s]** It looks like it's still working at least sometimes.
+
+**[2995.10s → 2997.59s]** So it's getting the weather.
+
+**[2997.59s → 3003.19s]** It's learning how to experience Paris like a local, wants to find hiking trails and
+
+**[3003.19s → 3004.51s]** hidden gems.
+
+**[3004.51s → 3008.90s]** So yeah, it's looking for not just the major stuff.
+
+**[3008.90s → 3015.79s]** Okay, we're getting, we're getting browser list again.
+
+**[3015.79s → 3022.14s]** Okay, so it's good to note though that even though the tool failed a little bit,
+
+**[3022.14s → 3025.14s]** at least it didn't spin forever and burn a zillion tokens.
+
+**[3025.14s → 3031.14s]** It's default behavior, which we didn't really decide was to do things a few times
+
+**[3031.14s → 3034.14s]** and then give it sort of final answer here.
+
+**[3034.14s → 3039.50s]** written report. Oh, you need to catch these museums. You need to enjoy this hike. You need to
+
+**[3042.35s → 3050.75s]** you know, check the forecast. You need to buy a pass for 38 euros or something like that, right?
+
+**[3051.39s → 3057.31s]** So it figured that stuff out even though some of these pages didn't load correctly, it's still
+
+**[3057.31s → 3063.28s]** kind of function. So that's good to speak. And it made its report. And now the travel
+
+**[3063.28s → 3068.16s]** con search, it's like, okay, this person's going to Paris, they want to see these things,
+
+**[3069.46s → 3075.10s]** figure it out, right? Make the itinerary. So they're searching. This one will be interesting to see.
+
+**[3075.10s → 3079.34s]** I feel like there's going to be hallucinations. They're going to be most likely in this. But
+
+**[3081.78s → 3086.18s]** and we don't have a checking agent. We could have it actually like quality checking agent,
+
+**[3086.18s → 3090.50s]** right, quality check team. Like here's a travel item where you make sure that it actually works, right?
+
+**[3093.02s → 3100.21s]** So yeah, browserless, browserless. I'm not sure how much content we're going to actually have this time.
+
+**[3102.06s → 3111.97s]** And it's at the restaurant all sorts of things until finally. I'm just going to find a port here.
+
+**[3111.97s → 3117.10s]** I'm not sure they're truly trying to look stuff up.
+
+**[3117.10s → 3121.94s]** Unfortunately, I'm unable to provide a deep, so again,
+
+**[3121.94s → 3124.14s]** and again, I believe that this is basically part
+
+**[3124.14s → 3129.78s]** of the philosophy program into JuAI.
+
+**[3129.78s → 3135.36s]** It doesn't try over over again and burn infinite open AI tokens
+
+**[3135.36s → 3138.14s]** hitting browser, this is rate limit page.
+
+**[3138.14s → 3140.82s]** It tried a bunch, but then it said, hey,
+
+**[3140.82s → 3142.86s]** I just can't get the information.
+
+**[3142.86s → 3147.98s]** So it's allowed to fail, right? And that's also actually I think kind of a good thing that they've built that into their
+
+**[3148.54s → 3153.66s]** From templates and how they stitch it together is that they allow their ages to potentially kind of fail
+
+**[3153.66s → 3155.66s]** And say hey, I can't build a detailed
+
+**[3156.06s → 3158.06s]** Seven-day itinerary right now
+
+**[3158.14s → 3160.70s]** But here's something that it could look like and here's like
+
+**[3161.34s → 3167.66s]** I would not call this a detailed itinerary, right? This is just a rough plan of what you could do each day
+
+**[3167.66s → 3169.18s]** Which honestly, I don't like
+
+**[3169.18s → 3175.10s]** screwed details, itineraries anyway, I think it kind of makes things notification in my opinion. But
+
+**[3176.94s → 3182.38s]** a little bit of a play-in here, right? It's nice to have ticket costs at least, that's helpful.
+
+**[3183.45s → 3192.03s]** So, this is the final output, right? And was this necessarily the best output we could get,
+
+**[3192.03s → 3198.27s]** probably not? But it shows you how these sorts of systems could work, and you can see that it's
+
+**[3198.27s → 3201.71s]** It certainly is capable of processing a lot of information
+
+**[3201.71s → 3205.07s]** and synthesizing and putting it together in a somewhat novel way.
+
+**[3205.07s → 3209.35s]** So there are problems that could potentially
+
+**[3209.35s → 3214.38s]** be really significantly automated by this sort of approach.
+
+**[3214.38s → 3218.78s]** I have talked and scold a bunch and hopefully not bored you all.
+
+**[3218.78s → 3221.22s]** And maybe is anybody going to plan a trip to Paris
+
+**[3221.22s → 3227.89s]** based on this not exactly detailed activity?
+
+**[3227.89s → 3230.63s]** And probably not.
+
+**[3230.63s → 3235.16s]** maybe you can improve the system and get one out of it.
+
+**[3235.16s → 3235.68s]** All right.
+
+**[3235.68s → 3239.71s]** And then, I guess it actually, yeah,
+
+**[3239.71s → 3242.11s]** it's basically the same stuff, just free-fall added.
+
+**[3242.11s → 3243.95s]** So this is the actual final output.
+
+**[3243.95s → 3246.44s]** Have an amazing trip.
+
+**[3246.44s → 3249.96s]** Well, they provide a little bit of estimate at the end here.
+
+**[3249.96s → 3254.64s]** $100 a day from meals and entertainment, $200 a night
+
+**[3254.64s → 3258.23s]** for hotel, $2,100 for the trip.
+
+**[3258.23s → 3260.51s]** It seems like an optimistic estimate to me,
+
+**[3260.51s → 3261.55s]** but what do I know?
+
+**[3261.55s → 3273.84s]** Great, so I'm going to go ahead and stop screen sharing for a second here.
+
+**[3273.84s → 3278.32s]** So we're not going to have time to roll through the other system, but the other system is
+
+**[3278.32s → 3285.08s]** another similar sort of thing except instead of planning trips, it analyzes stocks.
+
+**[3285.08s → 3298.44s]** So I guess I'm going to be sure the entry point real quick, similar structure, a little
+
+**[3298.44s → 3304.68s]** simpler even in that, you know, the agents and the tasks, I think there's a little bit less to it.
+
+**[3304.68s → 3311.72s]** But yeah, you've got financial analysts and research analysts and investment advisors, and you've got
+
+**[3311.72s → 3319.24s]** defined tasks of researching and analyzing. And so you can see how and recommending, you can see how
+
+**[3319.24s → 3325.72s]** these are paired with the agents. And then you've got a main dot pie that sticks it all together. And
+
+**[3325.72s → 3329.36s]** and indeed assigns the, so I want to also be clear
+
+**[3329.36s → 3332.08s]** because this is a difference that we're doing here.
+
+**[3332.08s → 3334.96s]** We're passing in the research analyst agent
+
+**[3334.96s → 3336.20s]** for the research task.
+
+**[3336.20s → 3337.20s]** We're doing this.
+
+**[3337.20s → 3340.44s]** We're passing in the analyst agent for the financial task.
+
+**[3340.44s → 3341.84s]** So, we have three tasks.
+
+**[3341.84s → 3343.60s]** So the analyst agent does three tasks,
+
+**[3343.60s → 3346.84s]** and then the investment advisor does the recommend task.
+
+**[3349.72s → 3351.20s]** Oh no, there are two different analysts here.
+
+**[3351.20s → 3353.36s]** Sorry, research analyst does one task,
+
+**[3353.36s → 3355.04s]** financial analyst,
+
+**[3355.04s → 3359.20s]** financial analyst is the middle two tasks invested in advisory as the last, but this code looks almost
+
+**[3359.20s → 3364.80s]** identical to the other one and that's intentional. This is the boilerplate and it's not too long. It's
+
+**[3364.80s → 3370.32s]** even shorter here. And the question is simpler too. You just ask what's a company one to analyze,
+
+**[3371.52s → 3377.04s]** Microsoft say, and then it's going to give you a report. And as with the other example,
+
+**[3377.04s → 3384.16s]** the most lines of code are in the prompts for the task. Hey, collect and summarize news articles,
+
+**[3384.16s → 3390.16s]** pay attention to significant events, not the thorough analysis of the stock's financial health,
+
+**[3390.16s → 3397.52s]** PE, all these finance things. So, again, steps through all that and puts it all together and
+
+**[3397.52s → 3405.44s]** gets your result. So, you can see it would work similar to this. This was actually a more complicated
+
+**[3405.44s → 3412.55s]** one though, which why I stepped through it. So, any questions on any of the code, anything we've
+
+**[3412.55s → 3426.36s]** you've stepped through together.
+
+**[3426.36s → 3431.08s]** Anybody considering using Kruai for any of their projects?
+
+**[3431.08s → 3432.12s]** For anybody who have questions,
+
+**[3432.12s → 3435.12s]** anybody still not sure how to decide whether they should
+
+**[3435.12s → 3444.41s]** use Kruai, I like thinking about that.
+
+**[3444.41s → 3449.73s]** So the hands-on homework here is to start thinking,
+
+**[3449.73s → 3453.01s]** like really start thinking and actually doing something
+
+**[3453.01s → 3455.45s]** about your final project.
+
+**[3455.45s → 3459.61s]** What you should do is you should plan
+
+**[3459.61s → 3461.89s]** and design and actually write something down.
+
+**[3461.89s → 3463.88s]** It does not have to be long.
+
+**[3463.88s → 3466.92s]** Please, in fact, long is probably bad.
+
+**[3466.92s → 3469.24s]** If you try to make a plan super long,
+
+**[3469.24s → 3472.79s]** you end up, there I say hallucinating, not playing,
+
+**[3472.79s → 3475.67s]** but you end up filling in details
+
+**[3475.67s → 3477.15s]** that you're not sure about yet
+
+**[3477.15s → 3480.11s]** that end up changing down the line anyway, right?
+
+**[3480.11s → 3481.19s]** You're just starting.
+
+**[3481.19s → 3484.69s]** You're not gonna know everything that's okay.
+
+**[3484.69s → 3486.45s]** Don't let the perfect be the enemy of the good.
+
+**[3486.45s → 3489.85s]** But do plan something and do start planning
+
+**[3489.85s → 3492.09s]** and write it down.
+
+**[3492.09s → 3496.17s]** This first point here, design, plan the implementation,
+
+**[3496.17s → 3498.53s]** specify an agent's tasks, training, strategy,
+
+**[3498.53s → 3504.38s]** performance metrics, that could be three sentences, I think.
+
+**[3504.38s → 3507.67s]** Basically, one sentence for like,
+
+**[3507.67s → 3510.91s]** I want to make a system where agents do this, that and that.
+
+**[3510.91s → 3512.79s]** These are the agents I would use.
+
+**[3512.79s → 3515.07s]** This is how I would measure them.
+
+**[3515.07s → 3519.35s]** Like you could specify all this in three, maybe four sentences.
+
+**[3519.35s → 3522.87s]** And then that's it, post-a summary.
+
+**[3522.87s → 3524.79s]** Besides three or four sentences,
+
+**[3524.79s → 3528.15s]** include at least one visual aid is the language
+
+**[3528.15s → 3529.31s]** apparently we're using.
+
+**[3529.31s → 3534.22s]** Really that means ideally, something like this.
+
+**[3534.22s → 3536.58s]** But honestly, graphics are not my strong suit.
+
+**[3536.58s → 3541.58s]** Like, you know, we've got Ash on our team at Blue Tech
+
+**[3541.58s → 3545.98s]** is amazing, I just whipping up these graphical designs
+
+**[3545.98s → 3546.62s]** of things.
+
+**[3546.62s → 3548.42s]** I am not so good at that.
+
+**[3548.42s → 3551.90s]** So I would always keep it simple at first at least.
+
+**[3551.90s → 3555.42s]** But something, some sort of representation
+
+**[3555.42s → 3557.66s]** of how your architect should sit together
+
+**[3557.66s → 3559.90s]** or how your data flow would look
+
+**[3559.90s → 3562.34s]** or what it is you're solving, right?
+
+**[3562.34s → 3564.70s]** Input to help put something like that.
+
+**[3564.70s → 3569.06s]** And share those on Slack in the cohort channel.
+
+**[3569.06s → 3572.46s]** The reason to do that actually isn't really to share with us.
+
+**[3572.46s → 3574.82s]** I mean, yes, we'd love you'd love to see it
+
+**[3574.82s → 3578.18s]** and we will definitely offer feedback and support.
+
+**[3578.18s → 3579.90s]** but it's also to share with each other.
+
+**[3579.90s → 3583.18s]** So you can also see what other people are thinking
+
+**[3583.18s → 3587.62s]** and trying and potentially offer them some feedback too.
+
+**[3588.46s → 3590.94s]** So which it's gonna be practice giving feedback,
+
+**[3590.94s → 3592.88s]** as well as getting them.
+
+**[3592.88s → 3597.00s]** So at this point, I mean, you don't need to even decide
+
+**[3597.00s → 3599.36s]** for sure if you're using true AI or not,
+
+**[3599.36s → 3601.12s]** like that's not necessarily the decision
+
+**[3601.12s → 3606.16s]** you should make here, but certainly based on what you do here,
+
+**[3606.16s → 3610.76s]** you should be able to have a decent opinion
+
+**[3610.76s → 3612.40s]** about that sort of decision.
+
+**[3612.40s → 3614.32s]** Like this should be enough information
+
+**[3614.32s → 3616.52s]** where it's like, yeah, this thing that I'm doing
+
+**[3616.52s → 3619.64s]** is the sort of like research oriented task
+
+**[3619.64s → 3624.64s]** or whatever that would fit well within this structure,
+
+**[3624.64s → 3626.88s]** with these different teams and such.
+
+**[3626.88s → 3630.68s]** Or actually what I'm doing is more like a data pipeline
+
+**[3630.68s → 3633.80s]** or a loop that needs constant feedback
+
+**[3633.80s → 3635.48s]** or something like that.
+
+**[3635.48s → 3639.64s]** And so maybe, or I need to customize it more for some reason
+
+**[3639.64s → 3641.60s]** or I need to work with a different system.
+
+**[3641.60s → 3649.63s]** And so maybe career isn't the way to go.
+
+**[3649.63s → 3651.19s]** All right.
+
+**[3651.19s → 3653.39s]** Any questions at all?
+
+**[3653.39s → 3657.35s]** I'll also be here on Wednesday.
+
+**[3657.35s → 3660.99s]** So you'll have another shot at just general questions
+
+**[3660.99s → 3661.51s]** if you'd like.
+
+**[3661.51s → 3663.35s]** But Wednesday will be the guided project.
+
+**[3663.35s → 3666.99s]** So we'll have a lot of crown to cover.
+
+**[3666.99s → 3670.82s]** So yeah, I just,
+
+**[3670.82s → 3673.70s]** any questions are all about anything from the course, really.
+
+**[3675.16s → 3676.76s]** Just open the floor here for a moment
+
+**[3676.76s → 3687.73s]** if anybody has any thing.
+
+**[3687.73s → 3688.73s]** While you're thinking,
+
+**[3688.73s → 3691.77s]** I'll foreshadow a little bit the guided project
+
+**[3691.77s → 3694.37s]** will be one of our,
+
+**[3694.37s → 3696.25s]** one of the systems we've worked on
+
+**[3697.21s → 3699.85s]** that can hopefully serve as further inspiration
+
+**[3699.85s → 3702.57s]** for your own projects for some of the,
+
+**[3702.57s → 3706.13s]** you know, you'll see how we actually architected and built
+
+**[3706.13s → 3710.45s]** certain things. And so to be clear, you should not wait to plan until Thursday.
+
+**[3710.45s → 3712.59s]** You should start planning now. You don't need the third or sorry,
+
+**[3712.59s → 3716.57s]** Wednesday. I'm used to teaching out Thursdays. You will not need the Wednesday
+
+**[3716.69s → 3719.79s]** class to start your plan. But the Wednesday class should hopefully help you
+
+**[3719.79s → 3727.15s]** start your implementation. Or you could also start that already, really,
+
+**[3727.19s → 3736.16s]** if you have the time and energy. All right. Well, thank you. And I hope this
+
+**[3736.16s → 3738.92s]** was all useful and interesting to you.
+
+**[3738.92s → 3746.24s]** All right, I'll just add that the end guys, if you want to go over any like brainstorming
+
+**[3746.24s → 3749.36s]** I think you're welcome to do that in the office hours tomorrow as well.
+
+**[3749.36s → 3753.24s]** So if you've got any questions or if you'd like it's just like bounce some ideas around
+
+**[3753.24s → 3757.40s]** the place, we can do parts of that in the office hours tomorrow as well.
+
+**[3757.40s → 3758.40s]** Absolutely.
+
+**[3758.40s → 3762.12s]** Like if you're not at the point where you feel comfortable writing down something like
+
+**[3762.12s → 3763.80s]** this, then just start by talking.
+
+**[3763.80s → 3766.12s]** Talk about it with somebody.
+
+**[3766.12s → 3767.80s]** We're here for that.
+
+**[3767.80s → 3768.80s]** Or potentially.
+
+**[3768.80s → 3774.24s]** whoever else that you know that's appropriate to talk about these sorts of things with.
+
+**[3774.24s → 3782.72s]** But you know, absolutely. You need to start verbalizing or expressing these thoughts so you can
+
+**[3782.72s → 3789.02s]** start getting them in a shape to actually write down. You know, it's really like this ridiculous
+
+**[3789.02s → 3798.08s]** long chain of iteration here to be hard. I mean, you see hooker pairs vacation. I bet you the plan
+
+**[3798.08s → 3802.48s]** I'm going to lot better if the tool hadn't kind of crapped out.
+
+**[3802.48s → 3804.68s]** We just got read limited on the actual
+
+**[3804.68s → 3806.24s]** scraping information.
+
+**[3806.24s → 3810.47s]** So all right.
+
+**[3810.47s → 3813.67s]** Well, thank you for that reminder and offer Tom.
+
+**[3813.67s → 3824.30s]** And if nobody has anything else, I think that's it for tonight.
+
+**[3824.30s → 3825.92s]** Thanks, Adam.
+
+**[3825.92s → 3826.44s]** Absolutely.
+
+**[3826.44s → 3827.98s]** Thanks.
+
+**[3827.98s → 3829.40s]** Thanks.
+
+**[3829.40s → 3830.40s]** Thanks.
+

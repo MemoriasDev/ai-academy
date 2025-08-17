@@ -1,0 +1,2157 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_03/week_3_class_3_2024-06-05.mp4
+**Duration:** 4873.70 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 1069
+**Generated:** 2025-08-13 18:35:39
+**File Hash:** 819a0ff9aa324cf68ae5d11b08ad1f99
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_03
+**file_name:** week_3_class_3_2024-06-05.mp4
+
+---
+
+## Transcript
+
+**[61.65s → 72.93s]** I'm going to go to.
+
+**[72.93s → 73.69s]** Right.
+
+**[73.69s → 77.11s]** So I hope everyone enjoyed office hours yesterday,
+
+**[77.11s → 81.53s]** and you're able to join and have some fun playing around.
+
+**[81.53s → 85.81s]** So on Monday, we covered tool and functions
+
+**[85.81s → 89.77s]** within the context of LLM, so function calls and tool calls.
+
+**[89.77s → 92.65s]** And we did that in preparation for the concept of agents.
+
+**[92.65s → 96.24s]** This whole two-week sprint is about agents.
+
+**[96.24s → 98.92s]** So today, we're going to introduce how
+
+**[98.92s → 101.64s]** to begin to use an agent complete a task.
+
+**[101.64s → 104.16s]** And the example we're going to look at is having
+
+**[104.16s → 112.14s]** somebody write a researcher for it about a mysterious model.
+
+**[112.14s → 117.48s]** So the idea of agents is really that sequence of reasoning
+
+**[117.48s → 118.48s]** actions.
+
+**[118.48s → 122.20s]** So being able to make a decision about what to do next
+
+**[122.20s → 126.32s]** in a given set of general prompts.
+
+**[126.32s → 129.36s]** So this is where things get really interesting
+
+**[129.36s → 131.82s]** for LLMs because now you begin to go beyond
+
+**[131.82s → 136.58s]** just like simple action response
+
+**[136.58s → 139.02s]** from with human in the loop.
+
+**[139.02s → 140.98s]** Now you're going to need more sophisticated workflows
+
+**[140.98s → 143.06s]** where the LLM is operating independently
+
+**[143.06s → 151.22s]** for your program, it's operating independently of you.
+
+**[151.22s → 155.29s]** So today we're going to cover five core competencies.
+
+**[155.29s → 159.69s]** We're going to talk about the React framework
+
+**[159.69s → 163.29s]** in the context of LLMs, re and act.
+
+**[163.29s → 166.85s]** and then the basic agent to lifestyle, or lifestyle,
+
+**[166.85s → 170.29s]** life cycle of going through and reasoning
+
+**[170.29s → 171.53s]** through a different problem.
+
+**[173.03s → 175.67s]** And then we're gonna talk about the react pattern
+
+**[175.67s → 176.87s]** and why it works.
+
+**[176.87s → 181.59s]** So essentially, why is LLM able to evaluate
+
+**[181.59s → 185.59s]** what it's doing, why that works well.
+
+**[185.59s → 187.81s]** Then we'll talk about how to build an agent
+
+**[187.81s → 191.17s]** and I'll show the example of the research assistant
+
+**[191.17s → 192.79s]** in BS code today.
+
+**[192.79s → 197.79s]** And then we'll talk a little bit about viewing agents and
+
+**[197.79s → 208.79s]** Langsmith. So for what we've been looking at what's happening to hood in Langsmiths throughout the course so far, we'll take tonight will be the different we'll take a look at what's happening with our agent and
+
+**[208.79s → 216.21s]** Langsmith. And then at the very end of class, we'll take a look at what are already prebuilt agents.
+
+**[216.21s → 222.69s]** Probably comes as a surprise to no one that there are many prebuilt agents out there.
+
+**[222.69s → 227.41s]** Like I was just glancing, impreping for class tonight, reviewing
+
+**[227.41s → 230.45s]** chain, chain, documentation on people of agents.
+
+**[230.45s → 235.41s]** And there's a great one for Office 365 or Microsoft 365
+
+**[235.41s → 238.89s]** to allow you to do a variety of different actions.
+
+**[238.89s → 247.93s]** Cool stuff, really, really cool stuff.
+
+**[247.93s → 251.67s]** So the React framework, not the JavaScript one,
+
+**[251.67s → 256.26s]** is to stands for reasoning and acting.
+
+**[256.26s → 261.26s]** So it's going to enable LLMs to mimic human-like behavior,
+
+**[261.38s → 265.74s]** like whether that's an order of operations decision,
+
+**[265.74s → 267.94s]** reasoning verbally about a problem,
+
+**[267.94s → 270.06s]** like having to show your work
+
+**[270.06s → 272.70s]** when you do your math problems in grade school,
+
+**[273.82s → 276.38s]** and then actually taking action to gain,
+
+**[276.38s → 280.14s]** typically to gain some kind of information.
+
+**[280.14s → 282.06s]** Then we're going to allow the LLM
+
+**[282.06s → 284.54s]** to interact with external tools.
+
+**[284.54s → 288.14s]** So we saw on Monday nights class how to interact
+
+**[288.14s → 291.46s]** with a very simple weather API by using the LLM
+
+**[291.46s → 293.34s]** to parse the location information out,
+
+**[293.34s → 297.87s]** grab the weather, and then spit out a summarized response.
+
+**[297.87s → 300.75s]** Here, though, we're going to allow that tool interaction
+
+**[300.75s → 303.87s]** to expand and allow the LLM to be
+
+**[303.87s → 308.43s]** and to make independent decisions about the order of operations,
+
+**[308.43s → 322.01s]** the which tools that accesses what it does with those tools.
+
+**[322.01s → 327.30s]** So with the reason only, the LLM is going to start writing
+
+**[327.70s → 329.78s]** a reasoning trace, you're gonna ask a question,
+
+**[329.78s → 331.66s]** it provides a reasoning and then that reasoning
+
+**[331.66s → 334.19s]** goes back into the LLM.
+
+**[334.19s → 339.19s]** So let's say, I write a prompt that something like,
+
+**[339.27s → 343.43s]** tell me if this particular article was written
+
+**[343.43s → 348.43s]** by Yang Koon and it's gonna analyze a reason about that
+
+**[348.43s → 352.75s]** reason about that and then provide that information back into the LLMS and prompt.
+
+**[356.29s → 364.18s]** Where reasoning and action in play is in that example, let's say my journal article
+
+**[364.18s → 370.90s]** searcher says, okay, I want you to go to reason about the information. Now I've got that additional
+
+**[370.90s → 375.86s]** reason context, but go search to make sure that maybe snippets of the article
+
+**[375.86s → 380.14s]** exist on the internet and the environment.
+
+**[380.14s → 383.14s]** The environment in our case would be like the research landscape.
+
+**[383.14s → 388.18s]** Okay, then that's going to make some observations.
+
+**[388.18s → 392.18s]** And those observations are going to go back into the LLM.
+
+**[392.18s → 398.70s]** So if React is just reasoning and action,
+
+**[398.70s → 401.70s]** this is where things come together in chain.
+
+**[401.70s → 407.70s]** So React agents in chain utilize this framework to select the appropriate tools.
+
+**[407.70s → 414.14s]** So it's going to be the most general purpose action agent framework.
+
+**[414.14s → 418.84s]** There are a couple others, but really, this is the thing most of you will be interacting
+
+**[418.84s → 424.24s]** with frequently when you're doing agent work.
+
+**[424.24s → 427.74s]** The other big thing about this framework in Langshane is it's going to automatically
+
+**[427.74s → 430.68s]** select the right tool based on provided descriptions.
+
+**[430.68s → 436.34s]** So if you remember on Mondays by its class, I told you that the description, whether
+
+**[436.34s → 443.10s]** there, the thing that you put in the open AI, the JSON specification, or in the Doxchains
+
+**[443.10s → 447.78s]** of your tool, however you provide the description, the description of what the tool does need
+
+**[447.78s → 451.90s]** to be really good.
+
+**[451.90s → 465.21s]** So the React version in Langshane, we're going to take our reasing traces, go into the LLM,
+
+**[465.21s → 470.01s]** it's going to take that information, take an action, observe something in the environment,
+
+**[470.01s → 472.53s]** the observation is going back into the LLM.
+
+**[472.53s → 474.29s]** It's going to reason about that,
+
+**[474.29s → 476.37s]** and then it's going to go back out.
+
+**[476.37s → 477.97s]** So another really simple example
+
+**[477.97s → 480.42s]** could be something like,
+
+**[480.42s → 484.42s]** I would like you to generate a picture of a dog.
+
+**[484.42s → 487.60s]** So in this example,
+
+**[487.60s → 489.92s]** it's going to go and evaluate,
+
+**[489.92s → 491.72s]** oh, what is the user asking for?
+
+**[491.72s → 494.32s]** It's asking for a picture of a dog.
+
+**[494.32s → 496.84s]** So I need to generate a picture of a dog,
+
+**[496.84s → 500.16s]** and then it's going to go find the appropriate function
+
+**[500.16s → 504.24s]** that'll call something like a stable diffusion model,
+
+**[504.24s → 515.09s]** generate the image and return the image to the user.
+
+**[515.09s → 518.45s]** Breaking this down just like a little bit more,
+
+**[518.45s → 520.69s]** so you can build stronger intuition,
+
+**[520.69s → 522.89s]** basically same information on previous slides,
+
+**[522.89s → 525.38s]** presented differently.
+
+**[525.38s → 529.58s]** Agents are going to use LLMs to simulate reasoning
+
+**[529.58s → 532.02s]** and solve more complex tasks.
+
+**[532.02s → 536.62s]** So as you, as developers, can equip agents with tools and code.
+
+**[536.62s → 541.14s]** So in the context of this course,
+
+**[541.14s → 544.18s]** we try and talk about as much as possible using these tools
+
+**[544.18s → 546.62s]** to enhance your productivity.
+
+**[546.62s → 550.98s]** So you could write agents to interface with your APIs.
+
+**[550.98s → 553.78s]** You could write agents to automate portions of your work
+
+**[553.78s → 555.30s]** as developers.
+
+**[555.30s → 558.78s]** And actually, LLMs are probably most well adopted
+
+**[558.78s → 562.34s]** in the agent worlds for developers.
+
+**[562.34s → 565.94s]** So you can find vukus and vukus of reference projects
+
+**[565.94s → 573.39s]** out there. And then of course there are agents that just do kind of customer facing or user
+
+**[573.39s → 580.96s]** facing applications as well. So how these systems work, this system is going to receive some kind
+
+**[580.96s → 587.28s]** of input from the user. So right now the agents that we're going to be talking about don't operate
+
+**[587.28s → 593.20s]** entirely independently. There's still some kind of user prompt or user action that's going to kick
+
+**[593.20s → 600.80s]** those things off. So the user is going to input a prompt typically. Based on what's in the input,
+
+**[600.80s → 606.08s]** the agent is going to decide whether to use a tool and determines the appropriate input for that
+
+**[606.08s → 613.12s]** tool. It's going back to that weather example. Let's say that we weren't just dealing with
+
+**[613.12s → 620.48s]** temperature. We were also dealing with humidity, forecast, maybe a couple other different functions.
+
+**[620.48s → 628.80s]** And I asked a question and I said, what is the relative humidity level of long island this evening?
+
+**[630.37s → 633.57s]** It's going to go and say, oh, relative humidity level.
+
+**[635.09s → 639.97s]** I'm probably looking for the humidity end point on the weather API.
+
+**[639.97s → 645.84s]** Here's the appropriate function. Then I'm going to call that humidity function and record the
+
+**[645.84s → 648.75s]** the observation that comes out.
+
+**[648.75s → 651.19s]** The history of the tool so far,
+
+**[651.19s → 653.27s]** the tool input and the observation,
+
+**[653.27s → 657.15s]** all of that context has been back into the agent.
+
+**[657.15s → 660.87s]** So it's not just the simple output of the call.
+
+**[660.87s → 662.75s]** The agent is gonna repeat the process
+
+**[662.75s → 664.87s]** until no further tools are needed.
+
+**[664.87s → 667.99s]** So it's gonna keep self-evaluating
+
+**[667.99s → 670.15s]** the information that you're providing.
+
+**[670.15s → 674.71s]** So let's say, I asked for a more complicated description
+
+**[674.71s → 676.76s]** of the weather.
+
+**[676.76s → 685.60s]** I'd like you to provide me a summary of the long island forecast addressing air quality,
+
+**[685.60s → 690.68s]** humidity, temperature, and possible precipitation for the next three days.
+
+**[690.68s → 696.10s]** Now, you imagine that weather example, there are going to be multiple functions that an agent
+
+**[696.10s → 699.82s]** is going to need to call in order to assess those questions.
+
+**[699.82s → 708.14s]** So it's going to take that context with each subsequent call until everything's complete.
+
+**[708.14s → 714.54s]** And you need that entire context just like exhausting a list or an iterator object in a
+
+**[714.54s → 729.38s]** programming language, we need to know what's already been done.
+
+**[729.38s → 734.78s]** So we are going to build a research agent into Nights class.
+
+**[734.78s → 739.70s]** So we're going to build it using Lanchine and it's going to research review and write reports
+
+**[739.70s → 742.66s]** on specific topics.
+
+**[742.66s → 745.10s]** The agent's going to be capable of gathering information,
+
+**[745.10s → 749.18s]** analyzing and producing well-structured comprehensive reports.
+
+**[751.84s → 754.16s]** So here's just the overview of the steps
+
+**[754.16s → 757.12s]** I'm going to walk through them at a high level
+
+**[757.12s → 762.04s]** in tonight's slides before I show you the code.
+
+**[762.04s → 766.09s]** But we'll walk through the kickoff
+
+**[766.09s → 771.17s]** the solution closer than.
+
+**[771.17s → 773.45s]** So don't worry about falling on the code so far
+
+**[773.45s → 776.25s]** is what I'm telling you right now.
+
+**[776.25s → 778.85s]** So we're going to initialize our connection to an LLM.
+
+**[778.85s → 781.65s]** It's just like any client connection.
+
+**[781.65s → 785.33s]** We are actually going to be using the new flavor of DTP4
+
+**[785.33s → 789.25s]** for tonight's just a slight change.
+
+**[789.25s → 790.95s]** We're going to find the tools that the agent's
+
+**[790.95s → 795.37s]** going to use for research, review, and report writing.
+
+**[795.37s → 798.41s]** I'm going to show you a nifty search engine that
+
+**[798.41s → 801.97s]** does kind of, it's an API search engine
+
+**[801.97s → 804.81s]** that ground truths information.
+
+**[804.81s → 806.09s]** Kind of cool stuff, I think.
+
+**[807.64s → 810.42s]** Then we're gonna need to define our prompt
+
+**[810.42s → 814.22s]** that outlines the goal for the agent,
+
+**[814.22s → 817.65s]** call the agent executor inside chain,
+
+**[817.65s → 819.17s]** and then stream the outputs.
+
+**[819.17s → 821.25s]** So we're actually gonna see the intermediate steps
+
+**[821.25s → 824.29s]** in the terminal as it's reasoning
+
+**[824.29s → 830.34s]** through this particular task.
+
+**[830.34s → 832.70s]** I wanna pause here though, make sure,
+
+**[832.70s → 834.94s]** I haven't seen any questions and Slack.
+
+**[834.94s → 849.64s]** Are there any questions so far in agents?
+
+**[849.64s → 860.46s]** Okay, then we'll keep moving.
+
+**[860.46s → 864.99s]** So our tools that our research agent is gonna need,
+
+**[864.99s → 867.11s]** they're gonna need web search, you know?
+
+**[868.59s → 871.31s]** And we're gonna ask them to gather information.
+
+**[871.31s → 873.87s]** We're going to need somebody that actually does the analysis
+
+**[873.87s → 874.99s]** and writing work.
+
+**[874.99s → 877.35s]** That's going to be a call to open AI
+
+**[877.35s → 880.19s]** with the context of our research.
+
+**[880.19s → 881.83s]** And then we're also gonna need a tool
+
+**[881.83s → 884.31s]** that actually saves the report.
+
+**[884.31s → 888.77s]** So we need a tool that interacts with a file system.
+
+**[888.77s → 891.41s]** Hopefully this tool annotation looks familiar to you.
+
+**[893.00s → 898.19s]** We're gonna query tably, invoke our query
+
+**[898.19s → 900.81s]** and then get the results.
+
+**[900.81s → 903.49s]** We're gonna write our reports,
+
+**[903.49s → 906.47s]** same connection with chat to DTP,
+
+**[906.47s → 907.87s]** pass in our prompt information
+
+**[907.87s → 909.11s]** and then chain together our prompt,
+
+**[909.11s → 913.14s]** write our in-string output.
+
+**[913.14s → 914.78s]** And then finally, save to file.
+
+**[914.78s → 920.06s]** This is just typical based Python writing our text file out,
+
+**[920.06s → 923.17s]** nothing too fancy.
+
+**[923.17s → 935.71s]** Let's take a look at what tably is.
+
+**[935.71s → 942.40s]** Post this link in the red questions.
+
+**[942.40s → 945.44s]** So tably is a search engine that's really
+
+**[945.44s → 947.56s]** will optimize for large language queries.
+
+**[947.56s → 953.78s]** So you're going to get quick and relatively stable search results.
+
+**[953.78s → 956.36s]** The thing about this is that it's,
+
+**[957.62s → 966.46s]** the say this in the documentation which I love,
+
+**[966.46s → 968.78s]** they've focused on optimizing the search experience
+
+**[968.78s → 972.10s]** for AI developers and autonomous AI agents.
+
+**[972.10s → 973.34s]** Well, what does that mean?
+
+**[973.34s → 977.34s]** Will they take care of all the burden of scraping filter
+
+**[977.34s → 980.40s]** and extracting the most relevant information?
+
+**[980.40s → 982.44s]** Right, so all of that stuff,
+
+**[982.44s → 985.80s]** which you can see in the template code
+
+**[985.80s → 993.31s]** here, Mars is really well done. Like in the actual code in the class, it's not too much more there.
+
+**[999.23s → 1004.67s]** There are a couple other things like this. You could actually use other search API tools.
+
+**[1006.19s → 1012.43s]** Yeah, you could use Google itself. You could use Bing. Any kind of search API, you could use for
+
+**[1012.43s → 1019.80s]** the same style of use case. The reason we chose this one for class of course is because it provides
+
+**[1019.80s → 1029.13s]** very clean results that we're going to be easy to interpret for class. From a developer experience,
+
+**[1029.13s → 1036.73s]** I don't know how mature this tool is for scale like enterprise use cases. So I would say proceed
+
+**[1036.73s → 1057.56s]** with caution if you want to use this in a work context. So one difference that I want to point out
+
+**[1057.56s → 1062.52s]** in our agent workflow is for the first time we're going to need to really pay attention to what's
+
+**[1062.52s → 1064.24s]** that's actually happening with our prompts
+
+**[1064.24s → 1067.46s]** and where the prompts are being inserted.
+
+**[1067.46s → 1070.02s]** So we're actually gonna be writing different types
+
+**[1070.02s → 1074.30s]** of prompts today for the first time.
+
+**[1074.30s → 1077.82s]** Some of you write constitutional prompts early on in class
+
+**[1077.82s → 1080.78s]** and we kinda let the head when we did that.
+
+**[1080.78s → 1084.26s]** That's kinda akin to a system initialization prompts
+
+**[1084.26s → 1085.26s]** in some ways.
+
+**[1086.61s → 1089.37s]** Barring that little interlude,
+
+**[1089.37s → 1092.12s]** this is where we're really beginning to focus on
+
+**[1092.12s → 1093.80s]** how prompts fit into your workflow
+
+**[1093.80s → 1095.92s]** and what the different types are.
+
+**[1095.92s → 1099.85s]** So inside the right report tool,
+
+**[1099.85s → 1102.47s]** we're gonna have a system prompt
+
+**[1102.47s → 1104.55s]** that's going to initialize the system,
+
+**[1104.55s → 1106.51s]** telling it that it's a great writer
+
+**[1106.51s → 1111.07s]** and that you provide good context for business leaders.
+
+**[1111.07s → 1114.23s]** What we do for the agent is gonna be slightly different
+
+**[1114.23s → 1117.79s]** because we want them to do something different.
+
+**[1117.79s → 1121.23s]** We want the agent to be our research assistant.
+
+**[1121.23s → 1124.69s]** So we want them to go write the reports,
+
+**[1124.69s → 1126.45s]** save it to a file,
+
+**[1126.45s → 1130.25s]** and actually do some of the integration work
+
+**[1130.25s → 1144.08s]** between all of these different tools.
+
+**[1144.08s → 1146.84s]** Now, when we create and run our agent,
+
+**[1146.84s → 1150.00s]** it's going to initialize a list of tools.
+
+**[1150.00s → 1152.96s]** Our tool, in this example, is linear, right?
+
+**[1152.96s → 1156.20s]** Like web research, write reports, save the file.
+
+**[1156.20s → 1158.36s]** We might loop over web research a few times
+
+**[1158.36s → 1160.28s]** depending on what we put in the Bronx.
+
+**[1160.28s → 1165.28s]** But we can absolutely create a larger list of tools.
+
+**[1167.90s → 1172.90s]** I was reading a blog post that was internal to Lockheed today.
+
+**[1174.18s → 1176.42s]** This use case is public, so I'm very thankful
+
+**[1176.42s → 1180.90s]** I can't talk about it publicly on wildfire prediction
+
+**[1180.90s → 1183.22s]** where wildfire is gonna spread.
+
+**[1183.22s → 1184.74s]** And they were using agents
+
+**[1184.74s → 1187.22s]** to help write universal scene descriptions
+
+**[1187.22s → 1189.38s]** with NVIDIA's toolkit.
+
+**[1189.38s → 1192.82s]** So they're reading through data about wildfires
+
+**[1192.82s → 1196.46s]** and then creating those universal street scene descriptions.
+
+**[1196.46s → 1200.10s]** There's a Nvidia toolkit to help do that,
+
+**[1200.10s → 1203.18s]** but they are using functions like this
+
+**[1203.18s → 1206.80s]** and looping through the data that's out there.
+
+**[1206.80s → 1208.60s]** Really, really cool stuff.
+
+**[1210.60s → 1213.12s]** Be able to, in natural language, ask for something
+
+**[1213.12s → 1214.76s]** and then generate a,
+
+**[1215.76s → 1217.88s]** a metaverse example of it is,
+
+**[1217.88s → 1222.52s]** is I think really exciting.
+
+**[1222.52s → 1226.04s]** So our list of tools, we're gonna buy the tools to our LLM,
+
+**[1226.04s → 1229.97s]** so our LLM knows it and has access to them.
+
+**[1229.97s → 1232.31s]** We're gonna create our tool calling agents,
+
+**[1232.31s → 1236.15s]** letting it know what the LLM context is,
+
+**[1236.15s → 1237.95s]** what tools are available and the prompt
+
+**[1237.95s → 1242.36s]** that we use to initialize everything.
+
+**[1242.36s → 1246.28s]** Then the agent executor is the actual runtime for the agent.
+
+**[1246.28s → 1249.04s]** So, we're saving a lot of code here,
+
+**[1249.04s → 1252.12s]** but the agent executors that things actually
+
+**[1252.12s → 1256.16s]** went to call the agent and execute the actions it chooses.
+
+**[1256.16s → 1260.82s]** So for our context before, where it's just kind of like
+
+**[1260.82s → 1265.42s]** promsens, silo workflow, everything we're gonna see printed out
+
+**[1265.42s → 1270.12s]** is gonna happen in that agent executor class.
+
+**[1270.12s → 1272.88s]** And then list allows the agent's content
+
+**[1272.88s → 1274.68s]** to stream to the terminal.
+
+**[1277.32s → 1280.48s]** So our query tonight is gonna be a brighter report
+
+**[1280.48s → 1285.28s]** about the mysterious G2P2 chatbot that's on
+
+**[1285.28s → 1288.14s]** lmsys.work.
+
+**[1288.14s → 1291.60s]** So list, agentxfewer.stream.
+
+**[1291.60s → 1292.92s]** We're going to have our query input
+
+**[1292.92s → 1306.32s]** and an agent's scratchpad is the research it's doing.
+
+**[1306.32s → 1307.24s]** Everybody with me so far?
+
+**[1307.24s → 1336.00s]** I know any questions.
+
+**[1336.00s → 1337.44s]** So here's our code file.
+
+**[1337.44s → 1343.18s]** My environment's all set up, so I won't show you all any of that.
+
+**[1343.18s → 1347.78s]** But everything you've seen, our web search,
+
+**[1347.78s → 1352.90s]** our right report tool, we just included a prompt in this example that you didn't see
+
+**[1352.90s → 1360.18s]** when the code are saved to file function and then the initialization workflow.
+
+**[1360.18s → 1378.88s]** So our prompt template, our web research, and our saved the file.
+
+**[1378.88s → 1382.55s]** Let's actually take a look.
+
+**[1382.55s → 1384.39s]** We took a look at Pre-Vac prompts.
+
+**[1384.39s → 1411.50s]** Let's take a look at what is in this prompt real quick.
+
+**[1411.50s → 1416.30s]** So this is the UR helpful assistant placeholder chat history input
+
+**[1416.30s → 1419.50s]** at our placeholders, the agents crash bed.
+
+**[1421.32s → 1423.56s]** Not really a crazy prompt, I gotta say.
+
+**[1434.70s → 1451.06s]** Let's go ahead and run this.
+
+**[1451.06s → 1452.84s]** So I will say this is slow.
+
+**[1455.73s → 1458.01s]** So entering new agent X-heater change.
+
+**[1458.01s → 1467.98s]** So there's our query.
+
+**[1467.98s → 1473.95s]** Here we're getting the kind of raw research data from the search.
+
+**[1473.95s → 1483.77s]** So we got web research twice, right report once saved a file.
+
+**[1490.85s → 1497.96s]** Yeah, pretty cool.
+
+**[1497.96s → 1519.47s]** And you can see this new file here, gtbchappbotreport.tax.
+
+**[1519.57s → 1520.91s]** Well, let's try and break it.
+
+**[1522.10s → 1527.45s]** Does someone want to maybe provide a more esoteric idea
+
+**[1529.81s → 1536.76s]** to ask our models to investigate?
+
+**[1536.76s → 1540.39s]** Our agent is pretty generalizable.
+
+**[1540.39s → 1546.61s]** So we're going to ask you to write a report.
+
+**[1546.61s → 1571.13s]** What does someone want a short report about?
+
+**[1571.13s → 1577.66s]** Why don't we ask about Rust?
+
+**[1577.66s → 1581.54s]** I think many of you hopefully are being exposed
+
+**[1581.54s → 1594.54s]** to Rust in your work context.
+
+**[1594.54s → 1596.72s]** So I'm going to ask you to write a report about the benefits
+
+**[1596.72s → 1628.33s]** of Rust programming language for Python developers.
+
+**[1628.33s → 1648.55s]** So we've got our first web search.
+
+**[1648.55s → 1650.79s]** Ooh, take a look at this report.
+
+**[1650.79s → 1654.78s]** This is actually the format needs much nicer.
+
+**[1654.78s → 1659.23s]** The benefits of learning rust for Python developers.
+
+**[1659.23s → 1673.83s]** That is, Kiffy.
+
+**[1673.83s → 1676.51s]** Yeah, I mean, this is hopefully, this resonates with me.
+
+**[1676.51s → 1679.83s]** This is something the developer advocates of my team
+
+**[1679.83s → 1682.75s]** have been investigating and helping socialize
+
+**[1682.75s → 1685.24s]** in our communities.
+
+**[1685.24s → 1689.42s]** But rust emphasis on speed and performance
+
+**[1689.42s → 1692.90s]** is hugely beneficial.
+
+**[1693.98s → 1697.70s]** Like, do you mean example, I'm using UV right now
+
+**[1697.70s → 1701.18s]** as my environment and package manager.
+
+**[1701.18s → 1706.57s]** So like UV pip install way faster than just native pip,
+
+**[1707.45s → 1713.37s]** blazingly.
+
+**[1713.37s → 1716.85s]** Yeah, and let's try maybe one more of these prompts
+
+**[1716.85s → 1718.37s]** from Tom.
+
+**[1718.37s → 1735.20s]** Tom, do you have a preference between the two?
+
+**[1735.20s → 1737.96s]** Yeah, can I ask some questions about the code?
+
+**[1737.96s → 1739.10s]** Yeah, of course, Chris.
+
+**[1739.10s → 1741.72s]** Yeah, so I'm looking at research agent
+
+**[1741.72s → 1746.56s]** and I'm trying to understand a few things.
+
+**[1746.56s → 1753.78s]** So when I look at the tool for saving file,
+
+**[1753.78s → 1757.80s]** oh, sorry, below that, when we're
+
+**[1757.80s → 1761.64s]** instantiating the initial prompt, right?
+
+**[1761.64s → 1767.30s]** I don't understand this agent scratch pad thing.
+
+**[1767.30s → 1769.05s]** What is that?
+
+**[1769.05s → 1772.09s]** What is the message in the solar and what is agent scratch about it?
+
+**[1772.92s → 1774.56s]** I'm so glad you asked.
+
+**[1775.53s → 1776.41s]** Let's go take a look.
+
+**[1783.76s → 1787.92s]** So this is being tracked automatically with blank views.
+
+**[1790.87s → 1793.55s]** So let's take a look at the data that is actually getting passed.
+
+**[1796.10s → 1799.62s]** So I never set up Lang Smith in the first class.
+
+**[1801.97s → 1806.61s]** Is this like what do I need to do to enable that?
+
+**[1806.61s → 1821.22s]** Yeah, so all you need to do, you can set up a personal project for free and there's a, I think it's like maybe a thousand API calls or relatively high limit you won't hit in class.
+
+**[1821.22s → 1828.70s]** And then you'll get an API key and you would set up an environment variable similar to the open AI API key.
+
+**[1828.70s → 1839.70s]** Only difference is there are two extra variables you need to set, which are the name of the projects and the, there's some variable you need to set true.
+
+**[1839.70s → 1844.73s]** Both of which are documented in the starter code for this repo and Mondays.
+
+**[1844.73s → 1848.73s]** Oh, so what I have to do is run this code and then I navigate to lengths with it.
+
+**[1848.73s → 1857.61s]** either you got it, yep, after you set up the keys, yep. So our input was right
+
+**[1857.61s → 1860.01s]** report about the benefits of the first growth,
+
+**[1860.01s → 1863.61s]** uh, rust programming language. We had the intermediate steps in the agent
+
+**[1863.61s → 1868.73s]** scratch pad. So Chris's question was, what is the agent scratch pad for?
+
+**[1868.73s → 1875.35s]** So this was the initial input. Um, let's take a look at
+
+**[1875.35s → 1880.87s]** what happens. So Chaggdp understands that web search
+
+**[1880.87s → 1886.55s]** write reports saved to file the three functions that it can call to assist with the initial prompt.
+
+**[1887.35s → 1893.67s]** It decided to call web research. So you're a helpful assistant. Write report about the benefits of
+
+**[1893.67s → 1899.91s]** the breast programming language. It made that web research call with the query benefits of press
+
+**[1900.90s → 1907.62s]** breast programming language for Python, right? So when it does the web research,
+
+**[1907.62s → 1915.67s]** There's the query string we sent, and then we get the search results.
+
+**[1915.67s → 1920.74s]** This is the output, all parsed from the interweb.
+
+**[1920.74s → 1923.64s]** This is what the volley is sending back.
+
+**[1923.64s → 1933.43s]** Now, Chris, the chat prompt template has this additional information in it.
+
+**[1933.43s → 1937.99s]** So intermediate steps that happened before, but then if we keep scrolling down to the bottom,
+
+**[1937.99s → 1942.01s]** Oh, I think a skull cast it.
+
+**[1942.01s → 1958.24s]** We're going to have that information in here.
+
+**[1958.24s → 1963.72s]** Where is agent scratch pad in the JSON objects?
+
+**[1963.72s → 1977.29s]** So you just under anything, the message isn't not sure about.
+
+**[1977.29s → 1982.31s]** Somewhere maybe after that.
+
+**[1982.31s → 2021.33s]** I'm losing that thread of where that particular scratch pad is stored.
+
+**[2021.33s → 2031.39s]** But the core idea there is that it's actually storing the information that we're getting back. Oh, duh. That's why we can't find it. It's in the.
+
+**[2031.39s → 2033.65s]** It's not in the actual object.
+
+**[2033.65s → 2036.65s]** Messages agent scratch bad.
+
+**[2036.65s → 2038.65s]** Thanks Tom.
+
+**[2038.65s → 2039.65s]** Thank you. Call it out.
+
+**[2039.65s → 2040.65s]** That's where Chris.
+
+**[2040.65s → 2043.65s]** The information is being stored about our web research.
+
+**[2043.65s → 2048.65s]** So the web research call is in that list object agent scratch bad.
+
+**[2048.65s → 2053.16s]** when it's got all the metadata that we're getting returned.
+
+**[2053.16s → 2057.20s]** So that context is being passed into the next step
+
+**[2057.20s → 2067.38s]** about agent research.
+
+**[2067.38s → 2070.38s]** All right, so we could have called it anything.
+
+**[2070.38s → 2071.86s]** Yeah, totally.
+
+**[2071.86s → 2075.58s]** Okay. Yeah.
+
+**[2075.58s → 2077.14s]** Yeah, we could try and change it real quick.
+
+**[2077.14s → 2078.90s]** I think, okay, it's a little confusing
+
+**[2078.90s → 2080.58s]** because it seems like there is some concept
+
+**[2080.58s → 2083.78s]** of an agent scratchpad and line chain.
+
+**[2083.78s → 2086.86s]** And maybe it's just like the naming of it
+
+**[2086.86s → 2090.18s]** is being used for two different things in this case
+
+**[2090.18s → 2094.39s]** Because in this case, we're passing it
+
+**[2094.39s → 2097.03s]** as a string, as the variable name for the message's place
+
+**[2097.03s → 2098.07s]** older.
+
+**[2098.07s → 2100.59s]** But I feel like that's just confusing
+
+**[2100.59s → 2101.87s]** just because it seems like there's
+
+**[2101.87s → 2105.31s]** another concept called agent scratch bed elsewhere.
+
+**[2105.31s → 2106.03s]** Yeah.
+
+**[2106.03s → 2108.51s]** And I would have to research it to know.
+
+**[2108.51s → 2112.47s]** I think that's not something I've paid careful attention to.
+
+**[2112.47s → 2115.66s]** And I've done this before myself.
+
+**[2115.66s → 2119.38s]** Like normally when I just call place the placeholder variable,
+
+**[2119.38s → 2126.74s]** whatever I'm feeling. But I'd have to double track we wouldn't break something here. We can most
+
+**[2126.74s → 2133.45s]** certainly try to. All right, and then my next question is about this next line 57 about the hub
+
+**[2134.17s → 2142.26s]** and we're pulling this thing here. I mean, is this just to show that it's possible? Because I don't
+
+**[2142.26s → 2148.36s]** really see why we would do it in this case. To be honest, I think that this prompt also
+
+**[2148.36s → 2150.63s]** So it's not worth bullying.
+
+**[2150.63s → 2152.63s]** It's just kind of a downpriced.
+
+**[2157.75s → 2161.95s]** But we do want to show you that this is a thing
+
+**[2161.95s → 2163.81s]** you should look to do.
+
+**[2163.81s → 2168.81s]** So because there are plenty of good prompts out there.
+
+**[2169.79s → 2172.63s]** Yeah, I wonder if I've worried about like a left pads
+
+**[2172.63s → 2175.73s]** in a real like there's no,
+
+**[2175.73s → 2180.31s]** it looks like from my short looking at hub here,
+
+**[2180.31s → 2182.91s]** Like they can just update the prompt in the background
+
+**[2182.91s → 2183.79s]** and we would have no idea.
+
+**[2183.79s → 2185.31s]** I mean, pulling it as a string,
+
+**[2185.31s → 2188.07s]** it doesn't look like we're saving it anywhere,
+
+**[2188.07s → 2189.07s]** cashing it.
+
+**[2191.82s → 2194.90s]** Yeah, unless you're somehow grabbing the hash,
+
+**[2194.90s → 2196.90s]** because I think these are kinda like gist,
+
+**[2197.90s → 2200.34s]** you could tag the individual commit,
+
+**[2200.34s → 2202.42s]** and that would be the best way to do it.
+
+**[2203.86s → 2205.10s]** Kind of like a Docker image.
+
+**[2205.10s → 2208.34s]** You don't wanna pull the latest Docker image every time
+
+**[2208.34s → 2211.14s]** you're getting to get into trouble fast.
+
+**[2213.22s → 2218.22s]** But yeah, let's go on a quick news chase and do
+
+**[2220.03s → 2224.82s]** chain how specific commenced.
+
+**[2235.50s → 2238.93s]** Yeah, it looks like you just use a call
+
+**[2238.93s → 2243.08s]** and then the specific commit hash you want.
+
+**[2243.08s → 2244.76s]** Okay, and the chat, you're saying, yes,
+
+**[2244.76s → 2245.60s]** you can push power commands.
+
+**[2245.60s → 2247.52s]** I can see that being very valuable,
+
+**[2247.52s → 2249.72s]** or actually like the real use case here,
+
+**[2249.72s → 2252.76s]** You know, we have maybe the prompt engineers
+
+**[2252.76s → 2254.72s]** updating things as they're tuning things.
+
+**[2254.72s → 2259.70s]** The product engineers are keeping the workflow going.
+
+**[2259.70s → 2262.56s]** We also have, I can also see the useful for,
+
+**[2265.98s → 2271.58s]** if we have the back, like the vertex is down,
+
+**[2271.58s → 2274.90s]** we wanna use OpenAI model.
+
+**[2274.90s → 2278.50s]** You know, those two have different prompt styles.
+
+**[2278.50s → 2279.74s]** So we would wanna keep
+
+**[2279.74s → 2285.10s]** both going at once, maybe we can reference it that way.
+
+**[2286.74s → 2291.07s]** But yeah, I'm curious what's out there in the hub
+
+**[2291.07s → 2295.12s]** for in terms of open source problems.
+
+**[2295.12s → 2297.52s]** Yeah, I would definitely play around.
+
+**[2299.40s → 2301.40s]** There are not as many as I would hope.
+
+**[2303.46s → 2306.06s]** And an open problem for us at work right now
+
+**[2306.06s → 2310.02s]** is thinking about what a prompt repository looks internally.
+
+**[2310.02s → 2322.88s]** Obviously, we can't use something like this, even a sassful for security reasons.
+
+**[2322.88s → 2332.29s]** So, whoo, last one turn I thought there would be.
+
+**[2332.29s → 2343.07s]** I did change the agent scratchpad variable to something else and it looks like the structure
+
+**[2343.07s → 2360.87s]** data in lengths with stayed as agent scratch pad. Interesting. But I also am looking at lengths
+
+**[2360.87s → 2364.00s]** with for the first time right now. So maybe I'll miss something.
+
+**[2364.00s → 2371.00s]** It does default to that variable anyway. So I think when they actually write it out in example code,
+
+**[2371.00s → 2376.00s]** they tend to use that variable. So I'm not too sure when you have to change it in one and one place,
+
+**[2376.00s → 2379.32s]** whether it's, can I override it or something?
+
+**[2379.32s → 2403.78s]** I do want to ask, are there any other questions about the code so far?
+
+**[2403.78s → 2408.22s]** The other questions about agents?
+
+**[2408.22s → 2423.47s]** You know, I get this, look at this example of, okay, let's use this search API to find the data about the wildfires and then let's.
+
+**[2423.47s → 2427.79s]** Agent will massage it into the right format,
+
+**[2427.79s → 2429.43s]** and then it's got a tool.
+
+**[2429.43s → 2432.41s]** It can save it to a file, blah, blah, blah.
+
+**[2435.98s → 2439.22s]** I mean, it just sounds like a shitty ETL, honestly.
+
+**[2439.22s → 2440.70s]** Like it sounds like a...
+
+**[2440.70s → 2442.58s]** Ah, ah, ah, ah, ah.
+
+**[2442.58s → 2445.70s]** I'm saying like something that we're over-engineering
+
+**[2445.70s → 2448.14s]** for the sake of whatever.
+
+**[2448.14s → 2451.34s]** And I imagine that there's some scenario with age.
+
+**[2451.34s → 2455.63s]** I mean, I'm sold on agents.
+
+**[2455.63s → 2457.91s]** I think there's a good long-term use case for them.
+
+**[2457.91s → 2462.63s]** I don't know if I have the use cases where
+
+**[2462.63s → 2465.47s]** it makes sense for me to try and set up
+
+**[2465.47s → 2469.87s]** a whole like lane chain thing to hold data,
+
+**[2469.87s → 2472.11s]** transform it, blah, blah, blah.
+
+**[2472.11s → 2476.02s]** Why don't I just do that with Python, you know?
+
+**[2476.02s → 2479.62s]** Yes, and I will say agents are typically
+
+**[2479.62s → 2484.71s]** not very performant unless you're using a certain set of models.
+
+**[2484.71s → 2486.71s]** Like I mentioned that on Monday with,
+
+**[2486.71s → 2489.50s]** when we were talking about tools and functions,
+
+**[2489.50s → 2491.30s]** and of course, agents being natural extension
+
+**[2491.30s → 2494.54s]** of that has the same limitations.
+
+**[2494.54s → 2498.98s]** So like, it's not like I'm going to like Lama too
+
+**[2498.98s → 2501.74s]** and getting quite the same interactivity
+
+**[2501.74s → 2506.74s]** but I am with say a GTP even 35 or just four.
+
+**[2506.74s → 2512.57s]** just for like really GTP, you know, four and mixed
+
+**[2512.57s → 2515.51s]** role and just a handful of others are going to be the models
+
+**[2515.51s → 2517.85s]** that are going to support agents really, really well.
+
+**[2519.51s → 2520.91s]** So there's that limitation.
+
+**[2521.07s → 2524.28s]** But that I also think part of it is that we haven't
+
+**[2524.28s → 2526.94s]** imagined fully what's possible yet.
+
+**[2526.98s → 2530.80s]** And so I think there's a lot of just research and development
+
+**[2530.80s → 2532.74s]** into what is possible.
+
+**[2533.50s → 2535.98s]** So what I'm seeing from a lot of developers,
+
+**[2535.98s → 2542.54s]** They're trying to do things that are incredibly sophisticated and having a lot of success.
+
+**[2542.54s → 2548.38s]** Whether that's creating universal scene descriptions, which is a very complex age of
+
+**[2548.38s → 2549.38s]** base problem.
+
+**[2549.38s → 2554.98s]** And being moderately successful, I wouldn't say they're insanely successful.
+
+**[2554.98s → 2555.98s]** Or...
+
+**[2555.98s → 2557.98s]** Creating universal what?
+
+**[2557.98s → 2559.98s]** A universal scene description.
+
+**[2559.98s → 2560.98s]** A U-S-D?
+
+**[2560.98s → 2564.31s]** Is that a metaverse file?
+
+**[2564.31s → 2567.31s]** Yeah, that's a common metaverse file type.
+
+**[2568.77s → 2570.99s]** Let's see.
+
+**[2570.99s → 2576.34s]** AI, USD omniverse extension.
+
+**[2584.92s → 2585.92s]** I think I'm just a second one.
+
+**[2585.92s → 2586.76s]** Google is real quick.
+
+**[2586.76s → 2593.28s]** I don't remember the name of the omniverse extension.
+
+**[2593.28s → 2599.92s]** Ah, there it is.
+
+**[2599.92s → 2601.12s]** So this is an omnivirus.
+
+**[2601.12s → 2605.76s]** So NVIDIA's omniverse is a 3D simulation engine
+
+**[2605.76s → 2609.79s]** and that's maybe boiling it down to be too simple,
+
+**[2609.79s → 2613.47s]** but this extension allows you to interact
+
+**[2613.47s → 2618.19s]** with that Omniverse, Universe, and create elements
+
+**[2618.19s → 2622.36s]** using something like generative AI or ChatGTTP.
+
+**[2622.36s → 2625.04s]** So you can ask for it, hey, I'd like you to create
+
+**[2625.04s → 2629.08s]** a room and a warehouse and furnaceship like an office.
+
+**[2629.08s → 2633.60s]** And then it's gonna create the scene in Omniverse.
+
+**[2633.60s → 2636.32s]** And that information is stored in a,
+
+**[2636.32s → 2638.04s]** what's called the universal screen description
+
+**[2638.04s → 2644.56s]** .usd file. So really, really cool extension.
+
+**[2647.32s → 2650.92s]** I want to just fire fire thing. Yeah.
+
+**[2651.56s → 2658.97s]** You mentioned it's like a bunch of structured data about historical fires. Was that was that it?
+
+**[2660.19s → 2662.84s]** And then they listen like.
+
+**[2662.84s → 2665.26s]** I'm going to send you guys. Go ahead.
+
+**[2665.26s → 2670.88s]** So the question is, I mean, is the input to the agents a bunch of structured data?
+
+**[2671.76s → 2678.24s]** And like, and or is that, I thought that was kind of difficult for some of these models to
+
+**[2678.24s → 2684.91s]** comprehend with accuracy? Yes, it is, there is quite a bit of structured data that goes into that
+
+**[2684.91s → 2691.52s]** problem, but it's not a, they're also doing kind of smart things with it, so they're not passing
+
+**[2691.52s → 2701.84s]** all of the structured data once, but you know, kind of like piece by piece. And I think the,
+
+**[2701.84s → 2709.87s]** like the big innovation there is they're doing like a lot of asynchronous calls to the LOM to do that.
+
+**[2709.87s → 2720.32s]** So it's yes, they did they had they were into that problem, Chris, that team that was working on a project where it's like, oh, we can't pass in all of these huge data files at once.
+
+**[2720.32s → 2722.88s]** files at once, we need to figure out smart ways to chunk it.
+
+**[2735.31s → 2737.95s]** Hey, quick question on my part.
+
+**[2738.67s → 2743.43s]** Similar to Chris, I'm not super sold on agents as well, but I do sort of think of
+
+**[2743.43s → 2748.03s]** them as sort of like an orchestrator for LLMs in a sense where like, you know,
+
+**[2748.03s → 2751.95s]** sometimes I put something into cloud or GPT and ask it to do something and it just
+
+**[2751.95s → 2756.47s]** times out. And I'm like, well, I sort of need this to the loop and continue.
+
+**[2756.47s → 2758.59s]** And I need something to coordinate that.
+
+**[2758.59s → 2762.75s]** And that's the clearest use case I see for agents.
+
+**[2762.75s → 2764.71s]** Would you agree with that or are I
+
+**[2764.71s → 2767.10s]** missing something fundamental?
+
+**[2767.10s → 2768.78s]** No, I mean, I think you're spot on.
+
+**[2768.78s → 2772.18s]** And I think that's a great use case for agents.
+
+**[2772.18s → 2774.50s]** And when you think about like something like writing
+
+**[2774.50s → 2779.20s]** report, that's also something where, sure,
+
+**[2779.20s → 2780.68s]** you can take that off from the command line.
+
+**[2780.68s → 2785.56s]** But when I'm thinking about engineering complete tools system,
+
+**[2785.56s → 2789.94s]** that's something where it goes beyond just writing a simple tool
+
+**[2789.94s → 2792.34s]** and gets sent to like, oh, I can expose them to a user
+
+**[2792.34s → 2793.82s]** that'll write a report.
+
+**[2793.82s → 2797.98s]** And what they decide to do is that, and it allows,
+
+**[2799.51s → 2802.31s]** then also opens the possibility of creating a user
+
+**[2802.31s → 2806.27s]** in the loop situation to where you're pausing in certain steps
+
+**[2806.27s → 2807.79s]** to allow the user to interact,
+
+**[2807.79s → 2810.39s]** but you're still having the agent aware of the tools
+
+**[2810.39s → 2811.79s]** in its ecosystem.
+
+**[2811.79s → 2814.23s]** So like extending that agent, research,
+
+**[2814.23s → 2820.79s]** any example, you know, hey, you did your research on Rust, going back to that example. I really like
+
+**[2820.79s → 2830.18s]** what you did. Maybe also talk about, I know that Rust is also being used for like Python packages
+
+**[2830.18s → 2837.14s]** written in compiled and Rust with Python wrapper over it. So tell me more about that as well.
+
+**[2837.70s → 2843.22s]** And so it goes back and does more research on that subject. And then ask you, you know, how do you
+
+**[2843.22s → 2844.46s]** How do you want the report delivered?
+
+**[2844.46s → 2848.26s]** And then you say, oh, I actually want a PDF of this report.
+
+**[2848.26s → 2851.89s]** And then there's that nice function to save the PDF.
+
+**[2851.89s → 2856.49s]** So I think where agents will get better and better and better
+
+**[2856.49s → 2859.29s]** is kind of in the same way we see programming,
+
+**[2859.29s → 2860.93s]** getting better and better and better.
+
+**[2860.93s → 2865.65s]** We're going to see more and more agent frameworks pop up
+
+**[2866.65s → 2871.37s]** where I am concerned about the kind of the health of agents
+
+**[2871.37s → 2875.29s]** myself is with a stability of certain models.
+
+**[2875.29s → 2877.77s]** So like what agent frameworks are going to work with which
+
+**[2877.77s → 2881.90s]** programming languages and which models.
+
+**[2881.90s → 2888.67s]** But I think things like digital transformation
+
+**[2888.67s → 2895.63s]** ask, thinking like Microsoft 365 kind of stuff.
+
+**[2895.63s → 2899.95s]** I think those kinds of agents will be really strong and really
+
+**[2899.95s → 2906.75s]** good because they'll probably be tightly coupled with the models from those providers like Google.
+
+**[2906.75s → 2909.71s]** I'm sure we'll tightly couple their agent frameworks in the same way.
+
+**[2912.33s → 2917.29s]** Yeah, that makes sense. I mean, for context, I'm running a marketplace business and,
+
+**[2918.01s → 2922.49s]** you know, with marketplaces, there are a lot of issues with like onboarding sellers and maintaining
+
+**[2922.49s → 2927.93s]** quality control, etc. And the first thought is like, oh, I'm trying to do some of these and then I'm
+
+**[2927.93s → 2929.97s]** And I'm like, oh, why don't I just write like,
+
+**[2929.97s → 2931.49s]** if statements, right?
+
+**[2931.49s → 2934.93s]** And then it's like, how do I reason through that?
+
+**[2934.93s → 2936.85s]** And it's a bit difficult.
+
+**[2936.85s → 2941.09s]** But yeah, something to model over for sure.
+
+**[2941.09s → 2944.36s]** Oh, yeah.
+
+**[2944.36s → 2949.04s]** I mean, I think if you all are in skater engineering
+
+**[2949.04s → 2953.48s]** positions, it's a great thing just to do a bake off, right?
+
+**[2953.48s → 2960.01s]** Let's say like, I'm an experiment at the agent workflow.
+
+**[2960.01s → 2967.62s]** Let's see if somebody can program this with like a simple logic or a clear ETL.
+
+**[2967.90s → 2971.78s]** And let's see who's more more performant and has a better experience.
+
+**[2973.60s → 2974.08s]** Nice.
+
+**[2974.08s → 2976.40s]** I'm looking at the, oh, sorry.
+
+**[2976.96s → 2978.12s]** Go ahead, I ain't stopped in.
+
+**[2978.16s → 2978.80s]** Oh, wait.
+
+**[2980.20s → 2981.08s]** You just a really quick one.
+
+**[2981.08s → 2985.76s]** I'm looking at the project we have for next week, which is like a tester agent.
+
+**[2985.76s → 2986.76s]** I think that might be the one.
+
+**[2987.44s → 2987.64s]** Yeah.
+
+**[2987.64s → 2995.40s]** or so what was the, like, why is an agent appropriate for that or sort of like the coder agent?
+
+**[2995.40s → 3002.28s]** Like, how did you, like, why would those, like, interesting projects to apply agents towards?
+
+**[3002.28s → 3006.08s]** Oh, you're talking about like the chatbot agent?
+
+**[3006.08s → 3011.28s]** Yeah, there's one we have for next week AI for development from a code or agent.
+
+**[3011.28s → 3018.81s]** Tom, I don't know, maybe you know, with more about that one, but yeah, it's a project
+
+**[3018.81s → 3020.91s]** maybe have it for next week.
+
+**[3020.91s → 3026.87s]** Yeah, so that is, I can't speak to that particular project,
+
+**[3028.95s → 3031.19s]** because I haven't reviewed the project description
+
+**[3032.43s → 3034.59s]** and Tom can speak to that particular project more,
+
+**[3034.59s → 3038.07s]** but what I can say that generally speaking is,
+
+**[3038.07s → 3039.59s]** with like having that interactive,
+
+**[3039.59s → 3043.59s]** the interactivity with an agent is really important.
+
+**[3043.59s → 3047.67s]** That's even what I was referencing with the research example.
+
+**[3047.67s → 3049.67s]** I think that's really, I think, where agents are more
+
+**[3049.67s → 3051.67s]** and more exciting.
+
+**[3051.67s → 3052.89s]** So...
+
+**[3052.89s → 3054.89s]** Human and loop stuff, that makes sense.
+
+**[3054.89s → 3055.89s]** Yeah, it's like...
+
+**[3055.89s → 3056.89s]** Yeah.
+
+**[3056.89s → 3058.89s]** Ask questions and he just keeps defining the work.
+
+**[3058.89s → 3059.89s]** Okay, I'll get it.
+
+**[3059.89s → 3060.89s]** Yeah.
+
+**[3060.89s → 3061.89s]** Yeah.
+
+**[3061.89s → 3064.08s]** I was going to say, there's a couple of other sides.
+
+**[3064.08s → 3066.08s]** One, Christopher, it looks like that
+
+**[3066.08s → 3070.18s]** Agent Scratchpad is kind of coded into the
+
+**[3070.18s → 3073.18s]** Create Tooling tool calling agent.
+
+**[3073.18s → 3075.18s]** Because while I've done so, I've managed to change the prompt.
+
+**[3075.18s → 3077.18s]** I've made my own prompt on that,
+
+**[3077.18s → 3084.00s]** that hub, change the variable to like Bob the something calling agent storage or something
+
+**[3084.00s → 3091.18s]** and it just blows it up basically it wants to be called agents crash pad under the hood
+
+**[3091.18s → 3099.29s]** for that specific create tool calling agent so that's kind of like something it's kind
+
+**[3099.29s → 3105.24s]** of required for that specific thing because if you just change it in the code that we've
+
+**[3105.24s → 3109.24s]** got locally in the python, it's not looking there it's looking at the prompt which is
+
+**[3109.24s → 3113.88s]** that thing that we're pulling from a hub. So if you go into the prompt playground, you can change
+
+**[3113.88s → 3120.43s]** it there, but then it breaks everything else as well. Okay, so the use of the string agent
+
+**[3120.43s → 3131.93s]** scratch pad in the message of space is not related at all. See you there. And again, for the developer
+
+**[3131.93s → 3139.48s]** thing, we can have a quick look at a basic thing like that in one of the office hours as well
+
+**[3139.48s → 3141.48s]** I think that I can go a bit more in depth.
+
+**[3141.48s → 3142.84s]** I was feeling it.
+
+**[3142.84s → 3144.32s]** You know, I'm sorry John.
+
+**[3144.32s → 3145.54s]** Two.
+
+**[3145.54s → 3147.66s]** Oh, no, you're fine, Tom.
+
+**[3147.66s → 3150.54s]** I do, we very naturally transitioned
+
+**[3150.54s → 3154.10s]** into the office hours questions, which I love.
+
+**[3154.10s → 3156.26s]** There is just one other thing that I want to mention
+
+**[3156.26s → 3158.78s]** that I've actually alluded to a couple of times in class
+
+**[3160.78s → 3164.02s]** is there are of course prebuilt agents
+
+**[3164.02s → 3166.34s]** that can help you accelerate to a kids.
+
+**[3166.34s → 3169.82s]** So you definitely need to check those out.
+
+**[3169.82s → 3174.82s]** This is a really simple one that helps analyze SQL queries,
+
+**[3175.90s → 3178.98s]** list all the employees with salaries greater than 1000s.
+
+**[3178.98s → 3183.48s]** So you can access the pre-built agent tool gets here.
+
+**[3186.19s → 3188.11s]** There's a great one for airbites.
+
+**[3188.11s → 3190.91s]** If anybody uses airbite for DTL,
+
+**[3191.81s → 3196.81s]** like I mentioned, there's one in here for Microsoft 365,
+
+**[3197.09s → 3199.64s]** some stuff near for GitLab.
+
+**[3199.64s → 3207.78s]** my developer people, but definitely check out these pre-existing agents.
+
+**[3207.78s → 3226.21s]** You'll see good examples on how to do this stuff.
+
+**[3226.21s → 3231.85s]** I think one thing maybe just to give you a vision of agents, I think a lot of people have
+
+**[3231.85s → 3236.57s]** questions on the purpose of agents and the future of agents.
+
+**[3236.57s → 3244.43s]** Maybe I'll give you a vision of what this could look like in the future.
+
+**[3244.43s → 3247.03s]** So let's assume for a second you're a,
+
+**[3248.98s → 3251.14s]** however one here likes coffee,
+
+**[3251.14s → 3254.54s]** you're a coffee bean buyer.
+
+**[3254.54s → 3260.52s]** So like you go and you purchase wholesale bags of coffee.
+
+**[3260.52s → 3264.52s]** So you log on to your application
+
+**[3264.52s → 3267.68s]** that you work for a company that has an application
+
+**[3267.68s → 3270.89s]** that assists you with a buying of coffee beans.
+
+**[3270.89s → 3274.96s]** So you log on to your application at work in the morning
+
+**[3274.96s → 3279.86s]** And you say, okay, we'll call BeanMe,
+
+**[3279.86s → 3282.46s]** we'll be the application.
+
+**[3282.46s → 3285.22s]** You say, okay, good morning BeanMe.
+
+**[3285.22s → 3290.22s]** I'd like to know which markets have coffees
+
+**[3291.20s → 3295.50s]** that are good for making innovative espresso.
+
+**[3295.50s → 3298.26s]** And particularly I'm looking for
+
+**[3298.26s → 3300.90s]** XYZ flavor profiles.
+
+**[3300.90s → 3305.42s]** So that agent in BeanMe is gonna go and do research.
+
+**[3305.42s → 3309.42s]** It's going to come back and return a natural language response.
+
+**[3309.42s → 3316.56s]** It's going to say, hey, we think the markets in Ethiopia, Kenya,
+
+**[3316.56s → 3318.80s]** and then randomly be a knob are going
+
+**[3318.80s → 3322.71s]** to be great for this flavor profile copy you're looking for.
+
+**[3322.71s → 3324.51s]** OK, great.
+
+**[3324.51s → 3329.52s]** Can you pull current market prices for those regions?
+
+**[3329.52s → 3330.12s]** Excellent.
+
+**[3330.12s → 3333.52s]** So then you get the nice average market data.
+
+**[3333.52s → 3339.84s]** then you as a human says, okay, I'd like to interested in purchasing coffee from Vietnam.
+
+**[3339.84s → 3343.84s]** Can you provide me the list of growers? And then it gives you the growers.
+
+**[3345.20s → 3350.00s]** Right? And you're going through that agent interaction. You have your kind of corporate
+
+**[3350.00s → 3357.73s]** coffee buying functions in there. And then you're saying, hey, these individuals are
+
+**[3357.73s → 3363.97s]** outside people that you can just buy 50 pound bags of coffee from online.
+
+**[3365.05s → 3369.61s]** I got to pick up the phone and call this person to write them an email.
+
+**[3369.61s → 3374.97s]** And so then the agent says, Hey, I can initiate a phone call with this person,
+
+**[3374.97s → 3379.33s]** but warning it's, you know, three o'clock in the morning for them.
+
+**[3379.65s → 3383.65s]** Why don't we send them an email instead and then it suggests email copy that you could send.
+
+**[3383.65s → 3388.01s]** And even go so far as to have the programmatic access to Gmail
+
+**[3388.01s → 3393.49s]** that they can send an email on your behalf.
+
+**[3393.49s → 3400.45s]** To give you a vision of how an agent could work to help somebody do their day to day job.
+
+**[3400.45s → 3405.53s]** And it's all about exposing that functionality to the users.
+
+**[3405.53s → 3408.41s]** And you could do something similar for customers too,
+
+**[3408.41s → 3411.53s]** that doesn't necessarily need to be just internal business functions.
+
+**[3411.53s → 3420.60s]** make sense. What do you think is the level of modularity that we should build
+
+**[3420.60s → 3426.16s]** sort of agents and tools? Like is there like a sufficient level of abstraction that
+
+**[3426.16s → 3432.64s]** is reasonable like an email writer and a centered or is it like how do you
+
+**[3432.64s → 3438.59s]** know they think about a couple of those? Yeah that's such a really interesting
+
+**[3438.59s → 3444.51s]** question that I don't know if I have a really good answer for it. The way I can
+
+**[3444.51s → 3458.51s]** And speaking in generalities, the way I see it shaping up that Lockheed, where we're heavily invested in generative AI for our own digital transformation, the way I'm seeing it shape up is people are building generalizable toolkits,
+
+**[3458.51s → 3463.51s]** whether that's email writing or an engineering function
+
+**[3463.51s → 3466.43s]** or what have you.
+
+**[3466.43s → 3469.11s]** And then that toolkit is modular
+
+**[3469.11s → 3470.67s]** into different applications.
+
+**[3471.77s → 3474.65s]** It's not quite as clean of an experience as say,
+
+**[3474.65s → 3478.09s]** like the chain list of all their agent toolkits.
+
+**[3479.57s → 3483.49s]** But we are seeing that emerge
+
+**[3483.49s → 3485.49s]** where people are kind of choosing the agents
+
+**[3485.49s → 3488.69s]** I want to connect into particular applications.
+
+**[3488.69s → 3495.12s]** But what we aren't seeing is the desire for monolithic.
+
+**[3495.12s → 3497.36s]** This is the only chat interface you're ever
+
+**[3497.36s → 3498.20s]** going to have.
+
+**[3498.20s → 3501.84s]** And that interacts with everything.
+
+**[3501.84s → 3506.83s]** We haven't seen an appetite for that.
+
+**[3506.83s → 3509.67s]** Yeah, it's sort of like an evolution of rest from draft
+
+**[3509.67s → 3511.91s]** you while I think where you start developing
+
+**[3511.91s → 3512.99s]** these like before the polls.
+
+**[3512.99s → 3513.99s]** It's interesting.
+
+**[3513.99s → 3516.89s]** Very cool.
+
+**[3516.89s → 3521.89s]** And so there could be a centralized
+
+**[3523.01s → 3527.49s]** prompt directory and a centralized tool kit directory,
+
+**[3527.49s → 3531.59s]** right, and maybe teams can spin up their own agents
+
+**[3531.59s → 3534.99s]** and just import whatever tools they need for that.
+
+**[3538.81s → 3542.65s]** Yes, that would be the perfect level of abstraction.
+
+**[3542.65s → 3544.45s]** Yeah, if you could build your own,
+
+**[3544.45s → 3546.01s]** and that's getting at the idea of building
+
+**[3546.01s → 3552.17s]** own GPT platform essentially, like away from people to spin up applications and attach,
+
+**[3553.77s → 3557.13s]** either prompts into that GPT or agents into that GP.
+
+**[3559.56s → 3561.16s]** But yeah, that's exactly.
+
+**[3564.70s → 3568.46s]** That question is sort of related to agents, maybe a little off topic.
+
+**[3570.73s → 3576.73s]** Yeah, I guess like, I'm curious about like evaluation. So like, you have these prompts that
+
+**[3576.73s → 3579.49s]** that you're writing and you could try it out with the
+
+**[3579.49s → 3581.89s]** if you're Asian, so you could try it out with different tasks.
+
+**[3582.37s → 3587.94s]** Is it like a pattern that you can use to just sort of, I don't know,
+
+**[3588.66s → 3591.70s]** but let's say like push up a prompt to like let's say some sort of pub
+
+**[3592.38s → 3596.46s]** and then just like trigger it like a flow that like you know, just test that
+
+**[3596.46s → 3597.62s]** with the data that you have.
+
+**[3598.14s → 3600.34s]** But you have your data, you have the tasks that you want.
+
+**[3600.94s → 3604.18s]** And now you just want to be able to like evaluate the prompt that like you've
+
+**[3604.18s → 3605.14s]** been working hard on.
+
+**[3605.14s → 3610.64s]** Is there like an EV pattern for that? Does that make sense?
+
+**[3610.64s → 3616.64s]** So, like you're trying to test the output that the prompts giving you is out here asking?
+
+**[3616.64s → 3623.64s]** Yeah, yeah, so this could be like a classification task or it could be like, I don't know, something else, a summarization task.
+
+**[3623.64s → 3633.12s]** And I'm wondering if there's like an easy way to just, I don't know, say, hey, I've changed my prompt or I have a prompt that I haven't mine.
+
+**[3633.12s → 3636.85s]** and mine, heritives, and then just sort of,
+
+**[3636.85s → 3638.25s]** like let's just use this framework
+
+**[3638.25s → 3641.01s]** to start experimenting with the task that I already have.
+
+**[3641.01s → 3643.52s]** If I already have my data set and everything,
+
+**[3643.52s → 3646.80s]** I'm just curious about what are you are doing
+
+**[3646.80s → 3649.56s]** in terms of your valuation and like automating that,
+
+**[3649.56s → 3652.72s]** or is it a very manual process where you get your data
+
+**[3652.72s → 3656.00s]** set manually and then you actually test it out with your prompts.
+
+**[3658.44s → 3661.16s]** So I've seen a couple different ways of doing it
+
+**[3661.16s → 3665.00s]** depending on the projects.
+
+**[3665.00s → 3667.48s]** I think generally what you're probably getting at
+
+**[3667.48s → 3670.56s]** is just the idea of building a dataset.
+
+**[3670.56s → 3677.99s]** So there's in laying few pieces if I go in here,
+
+**[3682.16s → 3684.16s]** this isn't more probably.
+
+**[3684.16s → 3686.12s]** I don't think I have any of the older responses.
+
+**[3687.84s → 3690.04s]** But I can go in here and take a look at the prompts
+
+**[3690.04s → 3693.84s]** and see which ones I liked and which ones I didn't.
+
+**[3694.52s → 3698.52s]** and start to have that additional annotation.
+
+**[3698.52s → 3701.92s]** And then I can use that annotation to create datasets.
+
+**[3701.92s → 3704.36s]** So like, I think an example early on
+
+**[3704.36s → 3705.80s]** in the classes, dad jokes.
+
+**[3705.80s → 3708.28s]** So like, you know, you can annotate,
+
+**[3708.28s → 3711.20s]** like, ah, there was a terrible bad joke, dad joke
+
+**[3711.20s → 3712.70s]** where that was a good dad joke,
+
+**[3713.84s → 3718.40s]** and create that dataset, which you could either use
+
+**[3718.40s → 3720.56s]** to do some fine tuning.
+
+**[3720.56s → 3723.28s]** So you're fine tuning in instruction
+
+**[3723.28s → 3727.32s]** happening in your model, that's one way of getting,
+
+**[3727.32s → 3731.76s]** think what you're talking about where it's like helping
+
+**[3731.76s → 3733.80s]** automate the performance of stuff.
+
+**[3733.80s → 3737.08s]** But then there's the actual prompt engineering
+
+**[3737.08s → 3741.16s]** development, which I personally don't find
+
+**[3741.16s → 3743.40s]** Langsmith intuitive to use for.
+
+**[3745.42s → 3748.18s]** We have used weights and biases for that.
+
+**[3748.18s → 3757.48s]** That has a slightly better prompt engineering tracking.
+
+**[3757.48s → 3760.48s]** It's pretty new. It's like not.
+
+**[3760.48s → 3764.21s]** It's like a pretty new feature.
+
+**[3764.21s → 3769.11s]** See if I still have my personal log in to this.
+
+**[3769.11s → 3772.11s]** I don't have any data in here. So it's not going to be too spicy.
+
+**[3772.11s → 3775.43s]** But let me share the link.
+
+**[3775.43s → 3787.23s]** Yeah, I guess I'm thinking like.
+
+**[3787.23s → 3789.96s]** All right, go ahead.
+
+**[3789.96s → 3797.82s]** Yeah, totally. So this is where you could do more rigorous evaluations of what's happening
+
+**[3797.82s → 3803.62s]** through prompts. It's going to have a lot of very similar stuff to length views, but it
+
+**[3803.62s → 3809.46s]** is going to have more sophisticated tracking for different prompts, so that way you could
+
+**[3809.46s → 3816.30s]** start to virtually control your prompts. Like there's ways to associate the particular
+
+**[3816.30s → 3822.34s]** commit in the metadata. So like say you're committing your prompt as a gist to get
+
+**[3822.34s → 3830.67s]** however get lab and then adding in that prompt and seeing what happens and then creating
+
+**[3830.67s → 3835.15s]** modeling different experiments in the tool. So there are a couple different ways to see
+
+**[3835.15s → 3840.70s]** what the behavior is going to look like. In terms of fully go, sorry, go ahead. Yeah,
+
+**[3840.70s → 3845.20s]** I feel like you had some questions. Yeah, I get them like still trying to figure out if
+
+**[3845.20s → 3848.00s]** there's like a more generic way to,
+
+**[3848.00s → 3849.28s]** because I don't know, I guess typically
+
+**[3849.28s → 3851.40s]** when I'm doing evaluation for a task,
+
+**[3851.40s → 3854.39s]** it's I have a script already.
+
+**[3854.39s → 3857.79s]** I know the task is, and I already have
+
+**[3857.79s → 3859.76s]** I golden data set,
+
+**[3859.76s → 3861.28s]** and then I'm tracking precision and recall
+
+**[3861.28s → 3862.48s]** after I run my script,
+
+**[3862.48s → 3864.20s]** but I don't know, I think it'd be nice
+
+**[3864.20s → 3865.12s]** if there was like a framework,
+
+**[3865.12s → 3866.44s]** like, you know, someone could just say like,
+
+**[3866.44s → 3869.18s]** hey, here's my data set.
+
+**[3869.18s → 3871.70s]** Here's like, you know, the events that I want
+
+**[3871.70s → 3872.94s]** to like listen to are like the prompt,
+
+**[3872.94s → 3875.42s]** you know, whenever a prompt is like pushed up,
+
+**[3875.42s → 3878.66s]** like run it, the status set.
+
+**[3878.66s → 3880.97s]** I'm not sure if there's something.
+
+**[3880.97s → 3883.25s]** I mean, I guess you could do that with the link.
+
+**[3883.25s → 3884.49s]** Yeah, does that make sense?
+
+**[3884.49s → 3886.01s]** Like what I'm trying to ask?
+
+**[3886.01s → 3886.85s]** Yeah.
+
+**[3886.85s → 3889.88s]** I'm wondering if people do try to do that.
+
+**[3889.88s → 3894.78s]** Yeah, you just have to make it up sort of.
+
+**[3894.78s → 3897.98s]** There's not like a best practice way to do it yet.
+
+**[3899.02s → 3902.34s]** Like there is for say like cross-fold validation
+
+**[3902.34s → 3904.70s]** for classical, statistical learning
+
+**[3904.70s → 3909.70s]** or batching and deep learning.
+
+**[3909.70s → 3911.38s]** But I have seen people do that before,
+
+**[3911.38s → 3914.54s]** where they'll create some kind of full standard data set.
+
+**[3914.54s → 3920.15s]** And they'll do things like use a different LLM.
+
+**[3920.31s → 3922.31s]** So like, let's say you're using chatty D.P.
+
+**[3923.47s → 3928.47s]** Then they're gonna use Gemini or MixedTroll or Lama
+
+**[3929.23s → 3933.15s]** and do zero-shot classification to say
+
+**[3933.15s → 3936.67s]** like on a summarization task, summarize all of the articles
+
+**[3936.67s → 3940.87s]** on World War II figures.
+
+**[3940.87s → 3944.67s]** So you have like maybe gold standard summaries
+
+**[3946.42s → 3948.94s]** of those figures from somewhere else.
+
+**[3951.16s → 3955.04s]** You have to chat to you do the summarization
+
+**[3955.04s → 3960.54s]** that you have Lama say, hey, is this summarization
+
+**[3960.54s → 3963.62s]** good, great, or excellent, or poor?
+
+**[3963.62s → 3966.70s]** And it's like that zero shot classification.
+
+**[3966.70s → 3970.62s]** And you're providing a second prompt,
+
+**[3970.62s → 3973.84s]** essentially, to provide a structured output.
+
+**[3973.84s → 3975.56s]** Now there are problems with that too, right?
+
+**[3975.56s → 3977.28s]** Because then you're introducing another LLM
+
+**[3977.28s → 3980.40s]** and another prompt to do evaluation of a previous prompts.
+
+**[3981.38s → 3983.28s]** And that's where it can break down
+
+**[3983.28s → 3985.24s]** a more sophisticated workflows.
+
+**[3985.24s → 3986.88s]** But if you're doing something really simple,
+
+**[3986.88s → 3989.56s]** like benchmarking and summarization,
+
+**[3989.56s → 3991.36s]** that seemed to work for people
+
+**[3991.36s → 3994.48s]** or perform satisfactory results
+
+**[3994.48s → 3996.48s]** because then it gives you experimental information
+
+**[3996.48s → 3997.68s]** when you change your prompt.
+
+**[3997.68s → 4002.27s]** Like, hey, when I change my prompt with these six words,
+
+**[4002.27s → 4005.75s]** all of a sudden my performance seemed to increase.
+
+**[4014.81s → 4016.13s]** John, good question.
+
+**[4016.13s → 4020.81s]** It seems like this whole world is like changing every week.
+
+**[4021.81s → 4022.65s]** Yeah.
+
+**[4022.65s → 4027.04s]** My concern, I mean, I'm a founder and a general soul engineer
+
+**[4027.04s → 4028.20s]** but start up.
+
+**[4028.20s → 4031.12s]** My concern here is that it's really helpful to be learning
+
+**[4031.12s → 4033.24s]** all these things for sure and enjoying doing the projects,
+
+**[4033.24s → 4036.86s]** but my concern is that if I invest time building stuff
+
+**[4036.86s → 4039.36s]** for my own engineering workflow,
+
+**[4039.36s → 4042.23s]** it becomes obsolete into weeks.
+
+**[4042.23s → 4043.91s]** It's sort of like a bit scary.
+
+**[4043.91s → 4047.79s]** I think how do you focus think through that at lucky?
+
+**[4047.79s → 4052.51s]** Yeah, so obviously in our industry,
+
+**[4052.51s → 4055.27s]** that's a major concern as well.
+
+**[4055.27s → 4062.44s]** The primary thing that people tend to worry about is the model changing.
+
+**[4062.44s → 4071.32s]** So I think it's generally less of an issue today than it was even six or eight months ago,
+
+**[4071.32s → 4075.52s]** was like, hey, all of a sudden, chatty to pee before it comes out.
+
+**[4075.52s → 4081.88s]** And let's say Grock 2 comes out tomorrow.
+
+**[4081.88s → 4086.17s]** Yeah, that might suddenly change your workflows.
+
+**[4086.17s → 4088.97s]** So you have to just be really careful about like,
+
+**[4088.97s → 4090.41s]** which models you're using,
+
+**[4090.41s → 4093.15s]** making sure the prompts are using our well-tracked.
+
+**[4094.88s → 4096.84s]** And then where your model is hosted,
+
+**[4096.84s → 4098.92s]** I think is important too.
+
+**[4098.92s → 4100.36s]** We host our own models.
+
+**[4100.36s → 4103.60s]** And so like, not necessarily ones that we train ourselves,
+
+**[4103.60s → 4106.98s]** but stuff we bring in from the open source community.
+
+**[4108.68s → 4111.28s]** And have our own API ecosystem
+
+**[4111.28s → 4113.28s]** that supports serving those models,
+
+**[4113.28s → 4119.28s]** which is spectacular because we have to worry less about what's coming in and what's coming out.
+
+**[4119.28s → 4122.70s]** And then we have that stability.
+
+**[4122.70s → 4128.70s]** And then of course, stability on APIs of things like Lange chain.
+
+**[4128.70s → 4135.70s]** I think a lot of people just get frustrated with it because they're constantly implementing the state of art.
+
+**[4135.70s → 4139.73s]** And at some point you just have to say like,
+
+**[4139.73s → 4144.00s]** Hey, for this application I'm doing, you know,
+
+**[4144.00s → 4148.89s]** Lanchin be 0.15.
+
+**[4148.89s → 4150.81s]** That's what you got for a while.
+
+**[4150.81s → 4154.65s]** And then you could look at the future of doing upgrades.
+
+**[4154.65s → 4157.53s]** I mean, of course, you don't want to build massive tech debt
+
+**[4157.53s → 4158.89s]** and not change it for two years.
+
+**[4158.89s → 4163.47s]** But that is the kind of stuff we're looking at.
+
+**[4163.47s → 4166.47s]** And thinking about is just really good software practices
+
+**[4166.47s → 4172.10s]** are going to help you.
+
+**[4172.10s → 4172.86s]** Yeah, it makes sense.
+
+**[4172.86s → 4174.04s]** So the things that won't change
+
+**[4174.04s → 4177.59s]** and the things that master prompts like chain
+
+**[4177.59s → 4179.51s]** seems like a safe path.
+
+**[4180.47s → 4181.31s]** Yeah, cool.
+
+**[4182.47s → 4184.67s]** I don't think that the thing just a monitor
+
+**[4184.67s → 4186.59s]** and stick a pulse check on every few months
+
+**[4186.59s → 4191.19s]** is if the community is like the AI community
+
+**[4191.19s → 4193.59s]** at large is beginning to adopt a new prompt
+
+**[4193.59s → 4197.63s]** engineering framework or like new LOM interaction framework
+
+**[4197.63s → 4199.95s]** besides chain, I think that's unlikely,
+
+**[4199.95s → 4202.87s]** but you got to saw some of the red threats
+
+**[4202.87s → 4216.39s]** posted from Monday, maybe one from why hacker. But yeah, I read TLDR and TLDR AI and a couple
+
+**[4216.39s → 4221.75s]** other developer newsletters, so I think those are good sources of information for me to keep
+
+**[4221.75s → 4251.58s]** a sense of what's happening. Well, if there aren't any other questions, I won't run these examples,
+
+**[4251.58s → 4256.54s]** but I did just want to point out there are a couple other notebooks in the classroom repository
+
+**[4256.54s → 4259.62s]** that you can play around with tonight.
+
+**[4259.62s → 4262.58s]** There's a slightly more sophisticated sales agent
+
+**[4262.58s → 4266.15s]** that goes through kind of similar to the coffee
+
+**[4266.15s → 4271.79s]** being thing I was talking about before, but right inverted.
+
+**[4271.79s → 4276.43s]** So that's a fun example to read through, or Ron, if you want.
+
+**[4276.43s → 4281.55s]** And then there's also the baby artificial general intelligence
+
+**[4281.55s → 4294.16s]** example.
+
+**[4294.16s → 4305.79s]** Any last questions before he floats out for the night?
+
+**[4305.79s → 4310.79s]** I have a question, but maybe, you know, maybe those today's not the day for it.
+
+**[4310.79s → 4316.30s]** But I feel free to put on this.
+
+**[4316.30s → 4328.71s]** Let's say that we were to set up an agent that was basically just like a chatbot that was supporting advertised readers who are advertising on Reddit.
+
+**[4328.71s → 4333.33s]** And they can set them up with some tools,
+
+**[4333.33s → 4338.10s]** like specific campaign updates,
+
+**[4338.10s → 4340.02s]** maybe that they can make a bid recommendation
+
+**[4340.02s → 4343.78s]** and then person can just accept the bid recommendation
+
+**[4343.78s → 4346.62s]** directly in the tool, just hit the API
+
+**[4346.62s → 4348.38s]** and be able to update in the campaign.
+
+**[4352.19s → 4358.18s]** How do I surface that in a way that's safe from abuse
+
+**[4358.42s → 4362.91s]** or yeah, say we're just up to use,
+
+**[4362.91s → 4367.91s]** and Jeff, like, if we're setting up an agent here
+
+**[4369.38s → 4374.38s]** that has a beginning prompt, you are a helpful assistant.
+
+**[4375.35s → 4379.75s]** I mean, how do we stop the prompt
+
+**[4379.75s → 4383.67s]** from getting rewritten as you are an unhelpful agent
+
+**[4383.67s → 4386.91s]** and then they just start to use our chat bot
+
+**[4386.91s → 4390.42s]** for doing whatever they want?
+
+**[4390.42s → 4393.90s]** Yeah, and so this is something exposed to your internal staff.
+
+**[4395.26s → 4402.12s]** No, I'm just ideating exposed into the real world.
+
+**[4402.12s → 4403.68s]** I mean, I think the first step would be,
+
+**[4403.68s → 4406.90s]** it has to go through the backend service
+
+**[4406.90s → 4409.14s]** for some sort of validation layer
+
+**[4409.14s → 4414.25s]** and then it makes the alarm call, but that's all I got.
+
+**[4414.25s → 4416.85s]** Yeah, I think there are a couple of ways
+
+**[4416.85s → 4418.21s]** to take a look at it.
+
+**[4419.21s → 4422.05s]** One, you can also just check the prompts
+
+**[4422.05s → 4426.45s]** that are coming in to a really, really, really simple way
+
+**[4426.45s → 4430.77s]** to do that is to take the embedding of the prompt
+
+**[4430.77s → 4432.05s]** and just double check.
+
+**[4432.05s → 4435.45s]** Like, if your prompt can be altered, so like,
+
+**[4435.45s → 4440.13s]** let's assume that it's not a system level prompt,
+
+**[4440.13s → 4445.22s]** but a prompt that's happening in the agent workflow.
+
+**[4448.20s → 4449.92s]** A simple guardrail is just checking
+
+**[4449.92s → 4453.28s]** that it's not within a certain context set in the embedding.
+
+**[4453.28s → 4457.56s]** Like definitely don't have prompts about,
+
+**[4457.56s → 4459.92s]** like you're a helpful sarcastic, right?
+
+**[4459.92s → 4461.20s]** Whatever.
+
+**[4461.20s → 4463.76s]** And you could write a couple examples
+
+**[4463.76s → 4465.96s]** to create a vector embedding space
+
+**[4465.96s → 4468.16s]** that you wanna draw guardrails around.
+
+**[4468.16s → 4471.97s]** Kind of like if I was showing the embedding example
+
+**[4471.97s → 4474.81s]** early on from class, it would literally be like
+
+**[4474.81s → 4476.61s]** drawing a box is around the space
+
+**[4476.61s → 4479.05s]** as you don't want people to go and talk about.
+
+**[4480.21s → 4488.40s]** And it also makes it easy for you to add additional things as you discover misuse that way too.
+
+**[4488.40s → 4493.40s]** So that's probably the simplest way to create cardrails.
+
+**[4493.40s → 4500.40s]** Of course there are more sophisticated ways, but then they begin to introduce problems with latency.
+
+**[4500.40s → 4509.40s]** So the constitutional chains and system prompts can often introduce additional latency depending on the sophistication of what you're asking them to do.
+
+**[4509.40s → 4519.20s]** Yeah, I was going to suggest that at the top of the head,
+
+**[4519.20s → 4521.80s]** it's obviously at the API layer,
+
+**[4521.80s → 4525.31s]** like if you're talking to an LLM
+
+**[4525.31s → 4527.75s]** that carries out actions on APIs,
+
+**[4527.75s → 4530.75s]** you could introduce some sort of validation of the API
+
+**[4530.75s → 4532.63s]** that I've ultimately introduced the abuse.
+
+**[4532.63s → 4535.67s]** And John, I'm not sure if this is what you were suggesting,
+
+**[4535.67s → 4537.63s]** but it's also interesting that when someone sends
+
+**[4537.63s → 4539.39s]** the message to the agent,
+
+**[4539.39s → 4542.35s]** there's another agent that develops that message first
+
+**[4542.35s → 4543.19s]** and checks the seed.
+
+**[4543.19s → 4544.35s]** That's like that.
+
+**[4544.35s → 4546.35s]** And then allows that to pass through
+
+**[4546.35s → 4548.39s]** to the original agent, right?
+
+**[4548.39s → 4551.22s]** So yeah.
+
+**[4551.22s → 4553.82s]** Yeah, I mean, what better way to do it?
+
+**[4553.82s → 4555.38s]** Agent's all the way down.
+
+**[4555.38s → 4556.22s]** That.
+
+**[4561.98s → 4564.14s]** Okay, so I should look into the constitutional prompts a bit.
+
+**[4564.14s → 4566.70s]** I'm not really sure what that is.
+
+**[4566.70s → 4569.18s]** I know we briefly talked about it last week.
+
+**[4569.18s → 4573.58s]** And is that a chain feature that works
+
+**[4573.58s → 4579.70s]** with all the frontier models or is that specific to open data?
+
+**[4579.70s → 4588.51s]** So I think there's, let me see.
+
+**[4588.51s → 4590.31s]** I think that this is probably something
+
+**[4590.31s → 4605.42s]** you should check out.
+
+**[4605.42s → 4610.38s]** It's kind of the same idea that help you
+
+**[4610.38s → 4614.14s]** begin to take a look at what particular,
+
+**[4614.14s → 4615.98s]** you don't necessarily have to use this library,
+
+**[4615.98s → 4620.50s]** but the reason I like it is their documentation is outstanding.
+
+**[4620.50s → 4627.50s]** So you can get a sense of what a user prompt is going to look like and then some of the things you might check against.
+
+**[4627.50s → 4641.12s]** So, and there are many ways to operationalize guardrails.
+
+**[4641.12s → 4648.05s]** So there are a couple different features you could play with and Langchain that would allow that.
+
+**[4648.05s → 4651.05s]** A lot of people do the system prompt level.
+
+**[4651.05s → 4657.05s]** So you're going to a lot of people initialize their system prompt with guardrails.
+
+**[4657.05s → 4664.66s]** which is a really reliable way to do it, but I think you've seen people can jail break that
+
+**[4665.62s → 4668.18s]** reverse engineer their way out of a system prompt pretty easily.
+
+**[4673.05s → 4679.93s]** I was going to say one way how we used to do was literally limit the amount of things that the
+
+**[4679.93s → 4686.82s]** user can actually ask in one shot and sanitize based on large inputs.
+
+**[4686.82s → 4693.47s]** Because basically if your system prompt is nice and big, it carries more weight to the
+
+**[4693.47s → 4696.24s]** GPD model, for instance.
+
+**[4696.24s → 4702.16s]** So if you wanted to jailbreak something, you want to force as much text to sort of overwrite
+
+**[4702.16s → 4704.37s]** that other prompt.
+
+**[4704.37s → 4706.62s]** So a couple of things.
+
+**[4706.62s → 4712.22s]** Using a large language model that's got a large window to hold stuff so that it can keep
+
+**[4712.22s → 4717.42s]** all of your system prompts in context.
+
+**[4717.42s → 4721.18s]** making sure that the user prompt has to have to be smaller than the system prompt.
+
+**[4721.18s → 4729.14s]** That's the most basic thing because when we're doing network security auditing,
+
+**[4729.14s → 4739.52s]** we also do prompt engineering attacks and stuff. A lot of the time, the remediation to stop it
+
+**[4739.52s → 4748.00s]** happening is purely just having to make sure that the user can't make more weighted prompt than the
+
+**[4748.00s → 4757.31s]** system. It's not 100% infallible, but it kind of gives it a bit of a better guard rail than a
+
+**[4757.31s → 4764.37s]** lot of other things. And with low latency, I did, well, it's just because I spend my days
+
+**[4764.37s → 4768.77s]** mostly making attacks on the stuff for work anyways. It's kind of...
+
+**[4768.77s → 4774.98s]** I didn't realize this where you're doing right now, so I'm seeing your attacking LLMs.
+
+**[4774.98s → 4782.54s]** So I do my main incoming network security and a lot of physical security stuff.
+
+**[4782.54s → 4786.22s]** So I'm like half ton hanging out of a window and climbing into somewhere
+
+**[4786.22s → 4788.46s]** and then breaking into a secure system.
+
+**[4788.46s → 4792.46s]** And I get a lot of like military contracts for stuff and things like that.
+
+**[4792.46s → 4799.12s]** But I really enjoy the helping and seeing people learn and seeing people
+
+**[4799.12s → 4801.08s]** to understand things.
+
+**[4801.08s → 4805.66s]** So this is like also a fun job to do.
+
+**[4805.66s → 4807.91s]** Super fun.
+
+**[4807.91s → 4809.91s]** I have to take jobs that I enjoy.
+
+**[4809.91s → 4825.44s]** Cool.
+
+**[4825.44s → 4829.75s]** We all are there any other questions?
+
+**[4829.75s → 4846.50s]** Well, then we'll close out for tonight.
+
+**[4846.50s → 4848.50s]** Great class, great discussion.
+
+**[4848.50s → 4849.50s]** I had a lot of fun.
+
+**[4849.50s → 4851.50s]** I hope you all did too.
+
+**[4851.50s → 4855.79s]** So have a great weekend.
+
+**[4855.79s → 4858.79s]** And I will see everybody in class on Monday night.
+
+**[4858.79s → 4860.50s]** Thank you.
+
+**[4860.50s → 4861.50s]** See you then.
+
+**[4861.50s → 4864.83s]** Thanks.
+
+**[4864.83s → 4867.08s]** You guys.
+

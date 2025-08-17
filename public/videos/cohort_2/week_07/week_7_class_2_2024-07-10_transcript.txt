@@ -1,0 +1,1595 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_07/week_7_class_2_2024-07-10.mp4
+**Duration:** 4933.12 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 788
+**Generated:** 2025-08-13 20:30:38
+**File Hash:** 8515fd3a7e1cb104e508d47f052a1ce3
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_07
+**file_name:** week_7_class_2_2024-07-10.mp4
+
+---
+
+## Transcript
+
+**[550.13s → 552.45s]** All right, welcome everybody.
+
+**[552.45s → 558.09s]** Tonight we're going to continue on with our class 7.2.
+
+**[558.09s → 560.49s]** And we're talking about Langsurf tonight.
+
+**[560.49s → 562.93s]** We actually already talked a little bit about Langsurf.
+
+**[562.93s → 565.41s]** So this will just be like a deeper dive
+
+**[565.41s → 575.14s]** essentially into what we've already talked about.
+
+**[575.14s → 577.34s]** Just one second while I'm changing a full-screen chair
+
+**[577.34s → 578.77s]** mode.
+
+**[578.77s → 581.89s]** Perfect.
+
+**[581.89s → 583.33s]** Tonight's a great night for us, also,
+
+**[583.33s → 585.17s]** to talk a little bit about your capstones,
+
+**[585.17s → 587.63s]** take some time to think about the architecture
+
+**[587.63s → 589.47s]** and the question's there to.
+
+**[590.67s → 592.85s]** But Langser will be our primary focus
+
+**[592.85s → 596.26s]** from a continent, point of view.
+
+**[600.06s → 602.72s]** So tonight our learning objectives are
+
+**[602.72s → 607.72s]** to understand Langser basically at high level architecture
+
+**[607.94s → 609.78s]** like what it's useful for,
+
+**[611.22s → 613.62s]** we're gonna talk about how to deploy an app to render,
+
+**[613.62s → 617.62s]** which is like a very lightweight app hosting.
+
+**[617.62s → 622.66s]** It reminds me a lot of some stuff like Heroku.
+
+**[622.66s → 627.66s]** Ritter reminds me a lot of Heroku, like, I don't know, maybe five, six, seven years ago.
+
+**[627.66s → 631.66s]** Maybe even older than that before sales horse bottom.
+
+**[631.66s → 638.04s]** But just a great way to deploy the lightweight applications easily.
+
+**[638.04s → 642.68s]** If deployment is not your cup of tea as a developer.
+
+**[642.68s → 645.96s]** Then we'll talk about how to set up a feedback loop,
+
+**[645.96s → 649.56s]** squaring responses, and adding them to a data sets,
+
+**[649.56s → 653.40s]** and understanding how to use agents and graphs on Langser.
+
+**[653.40s → 656.82s]** I think the last on the objective today,
+
+**[656.82s → 663.06s]** we just may not cover, depending on our time.
+
+**[663.06s → 672.02s]** Sorry, my screen joe is going to hit wire.
+
+**[672.02s → 676.23s]** So hopefully understanding on
+
+**[676.23s → 680.47s]** had these agents on links or graph is more conceptual and I'll talk a little bit about
+
+**[681.75s → 684.39s]** like why links are makes sense for that use case.
+
+**[690.62s → 696.70s]** Langserve is a part of the chain ecosystem. So you've seen this before earlier in class.
+
+**[696.70s → 701.90s]** I showed you a demo application and we talked a little bit about it. But it's a framework
+
+**[701.90s → 709.05s]** design to deploy LLM chains to scale the web services. So now we don't have to worry about writing
+
+**[709.05s → 713.37s]** a lot of the code to do this every time.
+
+**[713.37s → 717.01s]** Basically, it's actually a very useful abstraction
+
+**[717.01s → 719.45s]** that helped you accelerate deploying these types
+
+**[719.45s → 723.49s]** of chains, graphs, and multi-agent systems.
+
+**[723.49s → 726.01s]** And it provides a standardized set of API
+
+**[726.01s → 729.06s]** endpoints for you to interact with.
+
+**[729.06s → 731.94s]** Those are things like invoke, batch, stream,
+
+**[731.94s → 735.18s]** stream log, so on and so forth.
+
+**[735.18s → 739.90s]** So, and for talking about it in the conversational chain,
+
+**[739.90s → 742.70s]** retrieval or any other agent chain.
+
+**[742.70s → 745.06s]** We're going to pass it to you at a routes.
+
+**[745.06s → 747.24s]** Basically, it's a way to initiate a conversation
+
+**[747.24s → 749.18s]** with your LLM service.
+
+**[750.52s → 752.92s]** And those routes are going to have things
+
+**[752.92s → 757.92s]** that are going to invoke the request, batch inference,
+
+**[759.60s → 763.12s]** create a stream of information passing back and forth,
+
+**[763.12s → 766.34s]** stream log the data back.
+
+**[766.34s → 768.02s]** And then there's also some other information
+
+**[768.02s → 769.82s]** about the API service itself.
+
+**[769.82s → 772.74s]** like get the input schema for a certain endpoint,
+
+**[772.74s → 775.40s]** get the output schema, and get the config schema.
+
+**[776.89s → 778.55s]** These endpoints, by the way,
+
+**[778.55s → 780.75s]** would be just to put this in perspective
+
+**[780.75s → 782.75s]** for you as a developer.
+
+**[782.75s → 784.43s]** These are actually really useful.
+
+**[784.43s → 786.51s]** I'm working on a project right now
+
+**[786.51s → 789.65s]** where we have a custom deployment of Whisper.
+
+**[789.65s → 793.49s]** And I'm testing it for our developers.
+
+**[793.49s → 795.49s]** It's like a product that one of my teams at work
+
+**[795.49s → 797.21s]** has deployed.
+
+**[797.21s → 798.37s]** So we're just going through the process
+
+**[798.37s → 800.05s]** of evaluating its documentation
+
+**[800.05s → 802.77s]** developer usability and stuff like that.
+
+**[802.77s → 806.25s]** And one of the things I noticed right up the bat is that the API
+
+**[806.25s → 809.13s]** endpoints that we deploy for Whispering are not very clear on how
+
+**[809.13s → 811.93s]** to use, and primarily because the input schema is
+
+**[811.93s → 814.53s]** it's super well documented.
+
+**[814.53s → 818.33s]** So being able to call input schema on the API endpoint instead
+
+**[818.33s → 820.77s]** of having to dig and find the documentation
+
+**[820.77s → 822.61s]** would be an amazing feature.
+
+**[822.61s → 828.05s]** So these are very handy when I think about deploying
+
+**[828.05s → 831.66s]** maybe I end points for other developers.
+
+**[831.66s → 833.18s]** Now what are some features?
+
+**[833.18s → 835.98s]** Like why is this framework better than doing it by yourself?
+
+**[838.85s → 841.69s]** It's like probably really not that complex
+
+**[841.69s → 843.21s]** if you're familiar with fast API
+
+**[843.21s → 845.37s]** or other Python based deployment tools
+
+**[845.37s → 846.93s]** and how to figure the stuff out.
+
+**[846.93s → 847.77s]** Now you're right,
+
+**[847.77s → 849.93s]** you could absolutely figure the stuff out.
+
+**[851.13s → 852.81s]** But there are some features
+
+**[852.81s → 854.13s]** that I think are worth noting.
+
+**[856.54s → 859.78s]** So the first is that it's automatically configured
+
+**[859.78s → 868.26s]** be scalable. So that way you're automatically enforcing and putting out the schemas and
+
+**[868.26s → 874.90s]** giving rich error messages and your server is not going to crash quickly. So number one
+
+**[874.90s → 883.98s]** feature makes it really easy to scale hundreds, thousands of requests. Maybe once you get over
+
+**[883.98s → 888.36s]** that, you might need a more complex deployment architecture, but a couple hundred, couple
+
+**[888.36s → 891.16s]** 1000 requests at a time should be roughly okay.
+
+**[894.05s → 896.65s]** API documentation, huge one, right?
+
+**[896.65s → 899.17s]** Nobody likes writing documentation.
+
+**[899.17s → 901.33s]** That's like one of the beautiful things about LLM's,
+
+**[901.33s → 903.77s]** really great about writing documentation.
+
+**[903.77s → 905.95s]** Here you don't need an LLM drive the documentation
+
+**[905.95s → 909.69s]** because the documents, the endpoints are already documented
+
+**[909.69s → 910.89s]** for you.
+
+**[910.89s → 913.45s]** So there's an endpoint called docs,
+
+**[913.45s → 915.49s]** which is going to serve,
+
+**[915.49s → 920.45s]** have the JSON schema and swagger docs all configured for you.
+
+**[920.45s → 922.73s]** You saw this before in our earlier class, right?
+
+**[922.73s → 925.92s]** And we'll show you that again today.
+
+**[925.92s → 929.44s]** The invoke endpoint is going to be the thing that actually
+
+**[929.44s → 932.84s]** accepts your JSON data and put now put and supporting
+
+**[932.84s → 935.45s]** concurrent requests.
+
+**[935.45s → 938.67s]** Batch endpoint, very similar, but actually
+
+**[938.67s → 941.47s]** produces output for several inputs in parallel.
+
+**[941.47s → 945.83s]** So like say you needed a process of unshoot data at once.
+
+**[945.83s → 949.67s]** Nikito was talking about his capstone project
+
+**[949.67s → 954.51s]** being searching Zillow for houses or apartments near,
+
+**[954.51s → 956.51s]** like a new location.
+
+**[956.51s → 960.23s]** What if he wanted to search for multiple locations at once,
+
+**[960.23s → 963.96s]** he'd use the batch and point to help do that.
+
+**[963.96s → 968.68s]** Streaming is actually really popular in LLMs
+
+**[968.68s → 972.28s]** because the inference time is really low, right?
+
+**[972.28s → 974.92s]** Or excuse me, the inference time is really high.
+
+**[974.92s → 977.92s]** And so users' patience is very low.
+
+**[977.92s → 982.16s]** And so they like to see something happening, progress happening.
+
+**[982.16s → 986.92s]** And so the streaming endpoint sends out output as it becomes available.
+
+**[986.92s → 990.32s]** You kind of think about it as like an L and typing,
+
+**[990.32s → 992.52s]** as probably the best analogy.
+
+**[992.52s → 997.08s]** So you get your streaming endpoint and streaming log endpoint
+
+**[997.08s → 999.88s]** that also logs some intermediate steps.
+
+**[999.88s → 1012.65s]** Most of the time, you're going to care about number five over number six.
+
+**[1012.65s → 1015.53s]** I'm actually going to go through the whole PowerPoint first.
+
+**[1015.53s → 1017.17s]** So we can get it out of the slides.
+
+**[1017.17s → 1021.21s]** So if it does seem like we're just skipping topics,
+
+**[1021.21s → 1022.41s]** that's on purpose.
+
+**[1024.37s → 1026.01s]** So we're going to talk about,
+
+**[1026.01s → 1027.37s]** once we move out of the slides,
+
+**[1027.37s → 1030.09s]** we'll talk about deploying agents on Render.
+
+**[1030.09s → 1034.69s]** So the objective for us is to deploy a LANGE chain-based agent,
+
+**[1034.69s → 1037.89s]** including installation, package management, optional links,
+
+**[1037.89s → 1042.17s]** Smith setup, and or Docker deployment.
+
+**[1042.17s → 1044.37s]** Document deployment is optional
+
+**[1044.37s → 1047.57s]** with the way the repository structure.
+
+**[1047.57s → 1053.41s]** So you can also do an base Python,
+
+**[1053.41s → 1056.61s]** just the configuration is a little bit more challenging.
+
+**[1059.00s → 1060.56s]** And then we'll configure instant type
+
+**[1060.56s → 1063.44s]** and environment variables to make everything pretty automated.
+
+**[1065.20s → 1067.48s]** All I can do the steps of render,
+
+**[1067.48s → 1069.00s]** you may or may not have used that before.
+
+**[1069.00s → 1072.72s]** If you've given this size of tonight's class,
+
+**[1072.72s → 1075.01s]** let me just double check on
+
+**[1075.01s → 1081.44s]** showed up. I might just do when we get to this step, we'll just double check and see
+
+**[1081.44s → 1087.17s]** you guys have used for a new report if you care about using it and then we can make a decision
+
+**[1088.23s → 1097.25s]** on whether or not it's worth your time to go through that step. All right,
+
+**[1098.16s → 1107.57s]** and we'll come back to homework in a little bit. So hopefully you all got the repository
+
+**[1107.57s → 1112.86s]** from the starter code.
+
+**[1112.86s → 1117.18s]** If you don't already have that, that is in your repositories.
+
+**[1117.18s → 1119.18s]** Excuse me, in Slack.
+
+**[1119.18s → 1122.18s]** And you can click on that starter repo.
+
+**[1122.18s → 1127.70s]** Get your fun. I've already forked mine.
+
+**[1127.70s → 1139.53s]** So got set.
+
+**[1139.53s → 1142.53s]** Before I start diving into the code, any questions so far?
+
+**[1142.53s → 1147.72s]** Haven't seen any pop up in questions for red.
+
+**[1147.72s → 1156.96s]** I did want to ask, well, we're supposed to be doing stuff.
+
+**[1156.96s → 1159.96s]** Of course, it's titled Dev Productivity.
+
+**[1159.96s → 1166.96s]** I'm a little bit on defense whether it's better to do something
+
+**[1166.96s → 1172.38s]** that is like a meta project where it helps with coding
+
+**[1172.38s → 1178.51s]** or whether a project that does something useful with AI is more.
+
+**[1178.51s → 1186.30s]** I don't know. I didn't quite see what the ideal project would be.
+
+**[1188.88s → 1197.71s]** Yeah, I think I'll try and answer this questions succinctly. I think we would love to guide you
+
+**[1197.71s → 1206.19s]** into doing something that's work relevant. And whether or not, though, that's exclusively focused
+
+**[1206.19s → 1215.05s]** on developer relevancy or I think it's kind of a toss up. So like an example might be deploying
+
+**[1215.93s → 1220.73s]** like a corrective rag solution over your code based on for new developers.
+
+**[1222.41s → 1225.29s]** That's like a developer productivity use case that's created work.
+
+**[1227.69s → 1233.53s]** But there aren't hard, I don't think unless Tom correct me if I'm off base here. There aren't
+
+**[1233.53s → 1238.73s]** requirements that your capstone has to be about work. We just want to see you implement the tools
+
+**[1238.73s → 1249.05s]** technology. Yeah and sorry. Yesterday I dropped a quick guess where I'd put a massive list of
+
+**[1249.85s → 1254.41s]** possible suggestions of anything and anything I could think of. I've just done like 10 for each
+
+**[1254.41s → 1261.05s]** category. I can drop that, the link to that in the thing as well if you're
+
+**[1261.05s → 1265.34s]** That's just a bunch of possible things you know,
+
+**[1265.34s → 1269.22s]** you could do in or something similar or derived from that or make up your own
+
+**[1269.22s → 1275.65s]** order. Oh yeah, I see. Yeah.
+
+**[1275.65s → 1278.17s]** A project sedation list. Yeah. Thank you.
+
+**[1280.06s → 1283.18s]** All right. Well, based on the lists, then yeah.
+
+**[1283.18s → 1287.62s]** Sounds like you guys are okay with something that's not directly
+
+**[1287.62s → 1290.62s]** meant for engineers. Thanks.
+
+**[1293.58s → 1307.76s]** Yeah, to tell you. Let's look at some home.
+
+**[1307.76s → 1316.24s]** So I already have my environment set up so that we just don't have to go to the steps in class.
+
+**[1316.24s → 1323.24s]** Same workflow class, a pretty virtual environment, if you're using virtual environments.
+
+**[1323.24s → 1327.24s]** And it's all your requirements at the XT.
+
+**[1327.24s → 1333.64s]** Make sure that you source your environment variables.
+
+**[1333.64s → 1345.53s]** So we have two examples agent and chat with persistence. We'll start with the agent.
+
+**[1345.53s → 1350.79s]** So, this particular agent is going to expose a
+
+**[1350.79s → 1356.96s]** conversational retrieval agent.
+
+**[1356.96s → 1361.96s]** And the idea is that we're going to stream back and forth a
+
+**[1361.96s → 1364.12s]** conversation about.
+
+**[1364.12s → 1368.48s]** That's grounded with some information.
+
+**[1368.48s → 1372.48s]** It's kind of silly like that's like fish dogs like sticks.
+
+**[1372.48s → 1377.48s]** Just to show you at a very high level what this looks like.
+
+**[1377.48s → 1380.76s]** And we can play with this.
+
+**[1380.76s → 1385.64s]** We can absolutely play with this.
+
+**[1385.64s → 1388.66s]** So what we're gonna do in this use case
+
+**[1388.66s → 1393.56s]** is that we're going to have kind of our persona
+
+**[1393.56s → 1395.52s]** on our LOM called Eugene.
+
+**[1396.68s → 1399.44s]** And Eugene is going to give us thoughts
+
+**[1399.44s → 1402.68s]** about any relevant documents.
+
+**[1402.68s → 1404.92s]** So Eugene's gonna go through our corpus,
+
+**[1404.92s → 1406.64s]** do some retrieval of manageration
+
+**[1406.64s → 1418.68s]** and get back our thoughts.
+
+**[1418.68s → 1421.28s]** Now a lot of this information should look familiar to you.
+
+**[1421.28s → 1426.11s]** We're gonna have our chat prompt template, right?
+
+**[1426.11s → 1431.72s]** This is just a our simple system prompt
+
+**[1431.72s → 1436.72s]** that we're gonna initialize with, right?
+
+**[1436.72s → 1439.40s]** Here, this is a slight change
+
+**[1439.40s → 1441.92s]** in initializing the client connection.
+
+**[1441.92s → 1443.68s]** Because we're using streaming,
+
+**[1443.68s → 1446.68s]** you're also going to need to enable streaming
+
+**[1446.68s → 1448.88s]** with a client connection too.
+
+**[1448.88s → 1453.38s]** I'm fairly sure the default is false.
+
+**[1453.38s → 1457.82s]** So just make sure you're enabling stream to true when you're creating
+
+**[1457.82s → 1463.32s]** the client connection to open an eye.
+
+**[1463.32s → 1468.08s]** I wouldn't necessarily recommend leaning this open.
+
+**[1468.08s → 1469.96s]** If you're not using it,
+
+**[1469.96s → 1478.48s]** it's just like you can be frustrating sometimes.
+
+**[1478.48s → 1483.61s]** We're going to bind our tools to our LLM,
+
+**[1483.61s → 1513.02s]** Right, and then put together our agent and then fast API will spin up.
+
+**[1513.02s → 1522.36s]** Or sort of that guys.
+
+**[1522.36s → 1529.77s]** We're just going to our fast API app create our input model,
+
+**[1529.77s → 1535.37s]** our output model, and then add routes to the application.
+
+**[1535.37s → 1541.37s]** So like I mentioned before before add routes is a function from Langservs.
+
+**[1541.37s → 1543.72s]** We'll wave back up here,
+
+**[1543.72s → 1546.59s]** Lang serve add routes.
+
+**[1546.59s → 1548.59s]** So if you're familiar with fast API,
+
+**[1548.59s → 1554.59s]** you're probably used to seeing those nice decorators on your functions and stuff like that.
+
+**[1554.59s → 1556.62s]** Here with addarous,
+
+**[1556.62s → 1558.62s]** we're just specifying to our app,
+
+**[1558.62s → 1562.65s]** add this agent executor with types, input output,
+
+**[1562.65s → 1564.65s]** and then give our config.
+
+**[1564.65s → 1567.29s]** So immediately,
+
+**[1567.29s → 1573.09s]** addarous is going to expose these four endpoints for us,
+
+**[1573.09s → 1578.19s]** At least the ones that we would interact with typically on the application.
+
+**[1578.19s → 1584.61s]** Right. Any questions so far on the code.
+
+**[1584.61s → 1637.81s]** That was but kind of blazing walk through this this file.
+
+**[1637.81s → 1640.81s]** I'm not seeing any questions. I'd like you to ask.
+
+**[1640.81s → 1646.67s]** We've linked to this repo, which is the week eight assignments.
+
+**[1646.67s → 1651.67s]** Yeah, I was just checking in the app that Blumtech has a link for week eight,
+
+**[1651.67s → 1659.15s]** I think it's some sort of, it's a school manager, but we are.
+
+**[1659.15s → 1663.15s]** So we're still in week seven.
+
+**[1663.15s → 1668.34s]** So we're, oh, seven and then we have 7.2.
+
+**[1668.34s → 1670.34s]** Yeah.
+
+**[1670.34s → 1673.68s]** Oh, got it.
+
+**[1673.68s → 1678.68s]** So this is not, okay, so today's link is not the assignment.
+
+**[1678.68s → 1682.68s]** They're say it's, it's a demo repo.
+
+**[1682.68s → 1683.68s]** Got it.
+
+**[1683.68s → 1686.00s]** Right, exactly. Yeah. Okay. Thank you.
+
+**[1692.17s → 1695.05s]** Let's go and start the, if there are any questions about the code base,
+
+**[1695.85s → 1714.41s]** let's go and start the web service and take a look. All right. Everything is up.
+
+**[1716.17s → 1722.48s]** I love these. I forget what these are called, but the fun text art,
+
+**[1724.43s → 1731.07s]** I like sparks as always. Really good. Sparks and TensorFlow always come to my minds, being good.
+
+**[1731.07s → 1736.00s]** and blanks are just that mediocre.
+
+**[1736.00s → 1738.68s]** All right, so that's now running web application.
+
+**[1738.68s → 1744.16s]** So let's take a look at localhost.
+
+**[1744.16s → 1749.16s]** So playground is a very, very useful tool, right?
+
+**[1749.16s → 1752.40s]** We have created an API or web service.
+
+**[1752.40s → 1757.36s]** So I'm sure you can turn the playground off,
+
+**[1757.36s → 1758.88s]** but it's enabled by default.
+
+**[1758.88s → 1761.60s]** So it's an endpoint for us to just easily interact
+
+**[1761.60s → 1763.12s]** with the application.
+
+**[1763.12s → 1764.88s]** That's another benefit to Langser.
+
+**[1764.88s → 1766.88s]** So I can just kind of test what's going on
+
+**[1767.92s → 1770.24s]** without having to go into a notebook
+
+**[1770.24s → 1773.04s]** or something make a bunch of API calls.
+
+**[1773.04s → 1777.34s]** Remember, this is about cats and dogs.
+
+**[1777.34s → 1798.79s]** So we see some of the intermediate steps.
+
+**[1798.79s → 1802.19s]** So the actions that LLM took, we got Eugene's thoughts,
+
+**[1802.19s → 1810.80s]** what did dogs like, I got all the intermediate fun stuff.
+
+**[1810.80s → 1813.84s]** And then finally we got the content of the very end.
+
+**[1813.84s → 1815.96s]** Dogs like sticks, they enjoy playing with them
+
+**[1815.96s → 1817.88s]** and chewing it on sticks as a form of entertainment
+
+**[1817.88s → 1819.84s]** and exercise.
+
+**[1819.84s → 1822.64s]** And that's awesome that came straight from our, you know,
+
+**[1822.64s → 1828.03s]** our very simple rag solution.
+
+**[1828.03s → 1829.83s]** Some other useful stuff that's exposed for us
+
+**[1829.83s → 1832.55s]** on laying serve.
+
+**[1832.55s → 1840.88s]** So docs, like I was saying,
+
+**[1840.88s → 1843.52s]** these automatically generated swagger docs
+
+**[1843.52s → 1846.32s]** very, very useful.
+
+**[1846.32s → 1863.04s]** So we can understand what's going on with our application.
+
+**[1863.04s → 1865.24s]** Here's a kind of funny warning.
+
+**[1865.24s → 1875.82s]** This particular version of PyDantic isn't generating docs for both batch stream or stream
+
+**[1875.82s → 1877.33s]** log.
+
+**[1877.33s → 1885.27s]** I don't know if you guys have seen the XKDs about PyDantic's version problems, but it's really
+
+**[1885.27s → 1888.53s]** funny to find this later.
+
+**[1888.53s → 1894.37s]** The less any of you that have had to work with the issues of PyDantic in the past year on
+
+**[1894.37s → 1896.77s]** any production of credit applications.
+
+**[1903.35s → 1906.95s]** Our input schema was just really simple for this application.
+
+**[1906.95s → 1909.19s]** You can imagine in your capstone, so like,
+
+**[1911.52s → 1914.76s]** the key is, so I'm going to pick on Unikita because you talked about your capstone.
+
+**[1914.76s → 1917.72s]** And so I just want to keep saying things that are going to be relevant.
+
+**[1919.72s → 1925.68s]** But let's say for his application, you was talking about finding,
+
+**[1925.68s → 1928.80s]** you know, information research about moving to new locations.
+
+**[1929.08s → 1932.64s]** So you might pass in your input, not just a simple prompt,
+
+**[1932.64s → 1934.92s]** but things like where are you moving?
+
+**[1936.56s → 1939.38s]** What are the types of preferences you have?
+
+**[1940.96s → 1944.80s]** Are there any features of the place you're looking for?
+
+**[1944.80s → 1947.00s]** You know, and you could structure that input
+
+**[1947.00s → 1949.24s]** in such a way that it goes into your prompt, right?
+
+**[1949.24s → 1952.52s]** And so like you parse out that input
+
+**[1952.52s → 1955.32s]** into an injected into your prompt that goes in,
+
+**[1955.32s → 1958.82s]** or tool if you're calling on a tool to use.
+
+**[1960.82s → 1964.04s]** So that's a great way to do it.
+
+**[1967.76s → 1968.76s]** And same with output,
+
+**[1968.76s → 1969.76s]** the structure of the output
+
+**[1969.76s → 1978.20s]** in a very specific scheme as well.
+
+**[1978.20s → 1980.80s]** Let's take a look at actual inference
+
+**[1980.80s → 2008.97s]** against these endpoints.
+
+**[2008.97s → 2011.37s]** Probably I don't think I have I find kernel installed.
+
+**[2014.54s → 2015.70s]** So,
+
+**[2015.70s → 2018.16s]** oh,
+
+**[2018.16s → 2019.48s]** me seeing,
+
+**[2019.48s → 2023.96s]** I might be able to use my base Python environment.
+
+**[2023.96s → 2051.68s]** Can we just a second with all this?
+
+**[2051.68s → 2053.48s]** I Python kernel installs.
+
+**[2053.48s → 2062.96s]** If you're not familiar with notebooks,
+
+**[2062.96s → 2068.09s]** you don't have to have all of jupers installed to run
+
+**[2068.09s → 2070.69s]** and connect to a kernel on your machine.
+
+**[2070.69s → 2074.48s]** So back in the old days,
+
+**[2074.48s → 2076.88s]** when I use anaconda,
+
+**[2076.88s → 2079.56s]** my anaconda configuration on my local machine
+
+**[2079.56s → 2082.36s]** was like a single condo installation,
+
+**[2082.36s → 2083.72s]** multiple condo environments.
+
+**[2083.72s → 2086.04s]** but I wasn't installing Jupyter in each con environment.
+
+**[2086.04s → 2088.79s]** I was just installing the IPon kernel
+
+**[2088.79s → 2092.27s]** and then exposing a basically a system link back
+
+**[2092.27s → 2094.97s]** to the IPon kernel.
+
+**[2094.97s → 2098.93s]** That's a pretty complex configuration of conda,
+
+**[2098.93s → 2105.08s]** but less resource intensive.
+
+**[2105.08s → 2107.68s]** For those of us, I'm sure most of you are like me now.
+
+**[2107.68s → 2110.56s]** Most of your dev probably happens on VS Code
+
+**[2110.56s → 2111.76s]** on a remote server.
+
+**[2113.12s → 2117.52s]** And so it's not super important.
+
+**[2117.52s → 2128.20s]** you're developing in a Docker container.
+
+**[2128.20s → 2130.04s]** All right, we're just finishing up with installations,
+
+**[2130.04s → 2132.76s]** connecting with the kernel.
+
+**[2132.76s → 2134.68s]** So what we're doing in this notebook
+
+**[2134.68s → 2138.20s]** is I showed you the running UI that we launched.
+
+**[2138.20s → 2139.60s]** Here we're going to use requests
+
+**[2139.60s → 2143.20s]** to make requests back and forth between the local API,
+
+**[2143.20s → 2145.88s]** just to show you the same output and show you
+
+**[2145.88s → 2148.20s]** what the developer experience would be like,
+
+**[2148.20s → 2186.75s]** hitting those APIs.
+
+**[2186.75s → 2188.35s]** And fun, of course, the environment
+
+**[2188.35s → 2191.03s]** that I randomly picked was also missing requests
+
+**[2191.03s → 2225.98s]** and Langserf.
+
+**[2225.98s → 2238.11s]** So we're asking here what you gene things of cats.
+
+**[2238.11s → 2240.96s]** Hang on just a second.
+
+**[2240.96s → 2246.54s]** I am still in something's not quite right here.
+
+**[2246.54s → 2254.83s]** So I'm going to pop back and create a new terminal session
+
+**[2254.83s → 2263.60s]** and make sure that I'm launching the notebook in the same Python
+
+**[2263.60s → 2266.48s]** environment that I'm using for the server.
+
+**[2266.48s → 2267.72s]** So give me just one second.
+
+**[2283.14s → 2283.74s]** Make sure.
+
+**[2286.52s → 2287.64s]** So I'm putting this down.
+
+**[2287.64s → 2291.42s]** I buy kernel to that environment.
+
+**[2305.36s → 2318.36s]** And because I can never remember this, let's just grab the
+
+**[2321.37s → 2322.57s]** I pie kernel.
+
+**[2325.56s → 2326.84s]** And so name.
+
+**[2328.92s → 2330.28s]** No one's trying to be led in.
+
+**[2346.71s → 2347.67s]** Well, did you get them Tom?
+
+**[2351.77s → 2353.81s]** Sorry, just had a complete lock up at that point.
+
+**[2355.47s → 2355.95s]** What's that?
+
+**[2356.19s → 2356.71s]** No, it's okay.
+
+**[2356.71s → 2362.84s]** Sorry about that. It wouldn't let me click.
+
+**[2362.84s → 2363.76s]** Stunned that.
+
+**[2363.76s → 2392.05s]** And a command real quick.
+
+**[2465.56s → 2466.56s]** Sorry guys.
+
+**[2469.12s → 2477.66s]** Okay. Here's what we're going to do instead.
+
+**[2479.91s → 2482.79s]** So you're going to pull this up in terminal and we'll just run it by my line.
+
+**[2495.14s → 2497.10s]** Can you guys see my screen is the alright?
+
+**[2501.62s → 2503.78s]** Yeah, I can see your private environment selection.
+
+**[2505.13s → 2505.65s]** Perfect.
+
+**[2508.27s → 2511.99s]** So the question was we're asking what does Eugene think of cats?
+
+**[2511.99s → 2521.53s]** We're posting that question to the local API. We already have running that's still running.
+
+**[2521.53s → 2534.91s]** Yeah, we got the same response Eugene thinks cats like fish.
+
+**[2534.91s → 2538.96s]** Pretty fun, right?
+
+**[2538.96s → 2546.96s]** The other thing that we can do is also interact with something. It's called remote runable and this is the
+
+**[2546.96s → 2557.49s]** portion where we can begin to invoke other parts of the chain.
+
+**[2557.49s → 2561.29s]** that are just a little bit different.
+
+**[2561.29s → 2565.77s]** So it's kind of like a way to do things
+
+**[2565.77s → 2571.38s]** without having to call and request.
+
+**[2571.38s → 2574.58s]** So a use case for remote runable would be,
+
+**[2574.58s → 2576.16s]** when you're doing something in your Python code,
+
+**[2576.16s → 2578.60s]** you have this API service running,
+
+**[2578.60s → 2582.52s]** but you don't want to write a bunch of requests scripts
+
+**[2582.52s → 2605.74s]** to do that would be when you're going to use remote runable.
+
+**[2605.74s → 2606.86s]** So we're going to try something,
+
+**[2606.86s → 2618.97s]** await remote runable, and we're just going to try
+
+**[2618.97s → 2635.57s]** like a simple hello world.
+
+**[2635.57s → 2640.73s]** Yeah, I think that the await is unique to our notebook.
+
+**[2641.39s → 2656.05s]** That's okay.
+
+**[2656.05s → 2675.58s]** Rent is remote, runable.
+
+**[2675.58s → 2690.43s]** Similar API endpoints with the like invoke,
+
+**[2690.43s → 2691.79s]** what is Eugene to get cats
+
+**[2691.79s → 2698.50s]** and we get our you know, Eugene being cats like fish.
+
+**[2698.50s → 2703.76s]** So so far we've covered like the invoke endpoint.
+
+**[2704.44s → 2705.88s]** We haven't covered the batch endpoint.
+
+**[2705.88s → 2706.80s]** I'm just skipping over that.
+
+**[2706.80s → 2708.68s]** I think hopefully the use case for that
+
+**[2708.68s → 2714.36s]** intuitive. The stream endpoint I think is where things get kind of interesting and spicy,
+
+**[2715.40s → 2720.12s]** basically streaming us allowing you to alternate between actions and observations.
+
+**[2721.24s → 2730.60s]** So it's streaming the steps that happen in your chain. If you want to stream tokens,
+
+**[2730.60s → 2737.27s]** use stream log. That's where you're going to see the typing. Stream is just the stream of
+
+**[2737.27s → 2740.27s]** of consciousness at the LLM,
+
+**[2740.27s → 2741.63s]** the intermediate steps that are happening
+
+**[2741.63s → 2743.77s]** or chain or your agent.
+
+**[2744.79s → 2754.46s]** Kind of what we saw in the UI and the playgrounds.
+
+**[2754.46s → 2758.76s]** I don't think it's so work in the command line.
+
+**[2758.76s → 2762.49s]** So, take a look at the previous output.
+
+**[2762.49s → 2764.57s]** What is the gene thing of cats?
+
+**[2764.57s → 2766.33s]** You're seeing the action,
+
+**[2766.33s → 2770.30s]** hey, we called on the GTI gene dots tool.
+
+**[2770.30s → 2773.77s]** You know, we got the additional steps, right,
+
+**[2773.77s → 2775.65s]** agent action message,
+
+**[2775.65s → 2793.04s]** and then we finally got the output stuff.
+
+**[2793.04s → 2795.44s]** Now, stream events is where the client is looking
+
+**[2795.44s → 2798.80s]** for a runnable called agent for the chain events.
+
+**[2801.99s → 2805.31s]** What we can do is say, on the server side,
+
+**[2805.31s → 2808.75s]** when we go back to the server code, we can take a look
+
+**[2808.75s → 2812.32s]** and say runnable with config run name agent.
+
+**[2812.32s → 2817.31s]** And for the event in the runnable stream of events
+
+**[2817.31s → 2822.72s]** and initiate our event name agent
+
+**[2822.72s → 2829.08s]** and assign it a task to do.
+
+**[2829.08s → 2836.41s]** So, right, it's kind of like analogous to a way
+
+**[2836.77s → 2841.87s]** of being able to program an agent to do a unique task
+
+**[2844.32s → 2848.85s]** using your LLM deployed through a wrapper.
+
+**[2848.85s → 2851.01s]** So if you're thinking about, okay, JC,
+
+**[2851.01s → 2853.53s]** what's the use case of doing that
+
+**[2853.53s → 2858.81s]** is calling on OpenAI directly into Clare My Own agents and having my code base do that.
+
+**[2860.91s → 2865.39s]** Probably the biggest use case for agents on top of agents
+
+**[2867.85s → 2874.81s]** in a kind of way is for us to be able to abstract a lot of tool calls away.
+
+**[2874.81s → 2878.73s]** So having to be able to code all the available tools and bind them to your LLM,
+
+**[2878.73s → 2881.41s]** All that code is abstracted.
+
+**[2881.41s → 2883.53s]** So what you're saying is,
+
+**[2883.53s → 2885.57s]** as a runnable agent,
+
+**[2885.57s → 2890.41s]** I want you to write a story about the information you pull.
+
+**[2891.21s → 2894.33s]** And our example is very thin.
+
+**[2894.33s → 2897.13s]** You know, Eugene only has access to two pieces
+
+**[2897.13s → 2900.09s]** of very short information or a tree.
+
+**[2900.09s → 2901.45s]** But you could think about this use case
+
+**[2901.45s → 2902.69s]** being much, much larger.
+
+**[2902.69s → 2906.29s]** Like in the Zillow example,
+
+**[2906.29s → 2908.45s]** right, there might be a lot of different tools.
+
+**[2908.73s → 2912.36s]** And Nikita might decide to a three-reaster in PAL.
+
+**[2912.36s → 2914.32s]** He's got his agent deployed.
+
+**[2914.32s → 2915.36s]** He's got everything running.
+
+**[2915.36s → 2918.72s]** But all of a sudden, I'm like, man, I got a cool new idea
+
+**[2918.72s → 2922.48s]** for the question I can ask this system.
+
+**[2922.48s → 2926.44s]** And so he reached structures the streaming events
+
+**[2926.44s → 2935.43s]** that he asked and gets out at completely different context.
+
+**[2935.43s → 2939.67s]** So starting the agent with, what does Eugene think of cats?
+
+**[2939.67s → 2941.51s]** Tell me a story about that thought.
+
+**[2941.51s → 2944.98s]** So the starting tool effect is get Eugene Stads,
+
+**[2944.98s → 2949.56s]** done tool get Eugene Stads, and then the output.
+
+**[2949.56s → 2968.48s]** All right, and then we get to the storytelling.
+
+**[2968.48s → 2971.32s]** Stream log is where you're getting the individual tokens,
+
+**[2971.32s → 2973.20s]** set streaming equal to true,
+
+**[2973.20s → 2976.32s]** I'm like I mentioned when you initialize the clients.
+
+**[2976.32s → 2978.76s]** LLM also most support streaming,
+
+**[2978.76s → 2982.00s]** it's big to know not every LLM support streaming,
+
+**[2983.08s → 2985.92s]** your GTP is 3.5 and above are generally
+
+**[2985.92s → 2999.36s]** gonna support streaming.
+
+**[2999.36s → 3032.07s]** questions about this co-face.
+
+**[3032.07s → 3034.19s]** Not seeing any questions.
+
+**[3034.19s → 3040.15s]** I did want to ask, we have another slightly different flavor
+
+**[3040.15s → 3044.32s]** where we're doing chat with persistence.
+
+**[3044.32s → 3047.51s]** If you want to see an example where we're actually
+
+**[3047.51s → 3057.65s]** persisting some of the information stored,
+
+**[3057.65s → 3060.69s]** that's a great example if you're interested in chat
+
+**[3060.69s → 3062.33s]** with persistence.
+
+**[3062.33s → 3065.25s]** I can also just be a back of example for you.
+
+**[3067.38s → 3068.22s]** So at this point in class,
+
+**[3068.22s → 3073.22s]** I wanna check in and see how many of you want to review render,
+
+**[3075.02s → 3076.62s]** to point out on render.
+
+**[3080.28s → 3081.20s]** I guess I'm,
+
+**[3084.89s → 3089.92s]** I guess I'm not sure what the advantage is
+
+**[3090.64s → 3095.68s]** specifically using render versus is it,
+
+**[3095.68s → 3100.00s]** Just a convenient way to start the application.
+
+**[3100.00s → 3103.00s]** You've been a volunteer lambda.
+
+**[3103.00s → 3107.41s]** I'm just going to use this when we would necessarily want to use it.
+
+**[3107.41s → 3110.41s]** Yeah, so I'm actually glad you're the person asked our question.
+
+**[3110.41s → 3117.41s]** Because I know you worked at AWS, so that's a great question.
+
+**[3117.41s → 3123.57s]** Yes, I would say render is a let's just take a look at the website first.
+
+**[3123.57s → 3129.18s]** and then I also want to show a couple different things.
+
+**[3129.18s → 3136.18s]** Render is just a really great way to build simple applications.
+
+**[3136.18s → 3142.34s]** I've never used it for like really, really lightweight,
+
+**[3142.34s → 3146.34s]** like demo applications. I've never used it for production applications.
+
+**[3146.34s → 3149.34s]** I personally can't speak to that.
+
+**[3149.34s → 3156.34s]** I know from their growth of experience quite a bit of growth for production applications.
+
+**[3156.34s → 3160.63s]** Let me take you look at the workflow.
+
+**[3160.63s → 3174.81s]** And like I said, if you use Turoku like five to ten years ago, the experience will feel very similar to you.
+
+**[3174.81s → 3178.81s]** So you can structure a bunch of different types of applications.
+
+**[3178.81s → 3184.81s]** my personal website is a static website. And so I'm actually looking at it's on AWS right now,
+
+**[3184.81s → 3191.76s]** and I'm looking at migrating it to Render. But hosting Langserb on Render, there's no magic of
+
+**[3191.76s → 3199.76s]** using Render for Langserb. The reason we chose this application is because it's for teaching,
+
+**[3199.76s → 3206.40s]** it's very streamlined, just the essential services, and it's very easy to connect to a Git repository.
+
+**[3206.40s → 3208.96s]** So you see ICD, the application.
+
+**[3208.96s → 3210.88s]** Soon as I make a code change, it's
+
+**[3210.88s → 3214.00s]** going to deploy it automatically in render.
+
+**[3214.00s → 3217.53s]** So if I wanted to create a new web service,
+
+**[3217.53s → 3225.36s]** I can attach it to the Rebox working in.
+
+**[3225.36s → 3237.08s]** Here's the Rebox just mess around with,
+
+**[3237.08s → 3241.82s]** install the requirements, and then what I need to launch
+
+**[3241.82s → 3244.36s]** the application.
+
+**[3244.36s → 3247.28s]** So for us, the community is actually
+
+**[3247.28s → 3249.60s]** a little different here on render
+
+**[3249.60s → 3254.45s]** for using base Python.
+
+**[3254.45s → 3267.38s]** It's something like in class slash agents slash server.py.
+
+**[3267.38s → 3270.54s]** That's actually not the command we want to run probably,
+
+**[3270.54s → 3275.64s]** but render I think will struggle the bind reports that are being
+
+**[3275.64s → 3279.34s]** launched if we do it that way.
+
+**[3279.34s → 3281.02s]** But generally speaking, this is how you
+
+**[3281.02s → 3285.74s]** launch Python application render.
+
+**[3285.74s → 3288.90s]** pick up free tier and set environment variables.
+
+**[3288.90s → 3290.54s]** I'm not going to go through the regular role
+
+**[3290.54s → 3292.38s]** of adding environment variables,
+
+**[3295.21s → 3306.98s]** but yeah, super add in your open name,
+
+**[3306.98s → 3311.85s]** and then I'll attach a cheater to launching application.
+
+**[3311.85s → 3313.13s]** So the key this question was,
+
+**[3313.13s → 3315.65s]** how does this compare to other cloud services?
+
+**[3317.42s → 3321.79s]** On AWS, probably the thing that would be most similar
+
+**[3321.79s → 3325.19s]** to just like render as a complete product suite
+
+**[3325.19s → 3329.71s]** would be amplify, especially with their static websites
+
+**[3329.71s → 3331.75s]** on amplify.
+
+**[3331.75s → 3334.19s]** There are a lot of other services, though, in AWS,
+
+**[3334.19s → 3336.67s]** that have a lot of overlapping similarity,
+
+**[3336.67s → 3345.47s]** like elastic bean stock, lambda functions,
+
+**[3345.47s → 3347.43s]** and a whole bunch of other stuff.
+
+**[3347.43s → 3349.31s]** Bargate would probably also be another one
+
+**[3349.31s → 3351.23s]** if you docker out as the application.
+
+**[3351.23s → 3353.91s]** You could deploy it on Fargate too.
+
+**[3353.91s → 3357.83s]** Those are all the AWS services that would be analogous for Ender.
+
+**[3360.88s → 3363.08s]** I did not have time to research this before class,
+
+**[3363.08s → 3364.96s]** but we use Kserb at work.
+
+**[3365.68s → 3368.88s]** I'm sure many of you probably use Kubernetes
+
+**[3368.88s → 3371.60s]** or your stack at work includes Kubernetes.
+
+**[3374.18s → 3378.14s]** I was really curious to research
+
+**[3378.14s → 3382.26s]** if people have deployed Langserb on Kubernetes
+
+**[3382.26s → 3385.98s]** because and using K-Surf.
+
+**[3387.34s → 3391.08s]** I don't, one of the things I wasn't sure about
+
+**[3391.08s → 3394.16s]** is whether or not K-Surf supports multiple endpoints.
+
+**[3395.36s → 3399.86s]** I think that was my big question on K-Surf.
+
+**[3399.86s → 3402.46s]** Normally, I've only seen K-Surf applications
+
+**[3402.46s → 3404.40s]** that have one end point that's like, predict.
+
+**[3406.08s → 3409.11s]** So a bunch of different ways to deploy
+
+**[3409.11s → 3410.91s]** your length serve application,
+
+**[3410.91s → 3415.91s]** starting from the very simple ways to deploy it on Bender,
+
+**[3416.47s → 3420.64s]** all the way out to deploying it on AWS services.
+
+**[3420.64s → 3424.81s]** So you all want to talk for a few minutes,
+
+**[3424.81s → 3427.69s]** maybe we can talk about the architecture and landscape
+
+**[3427.69s → 3430.49s]** within your company that would be best suited for this.
+
+**[3432.68s → 3435.40s]** I'm not sure what other people's stacks look like.
+
+**[3436.80s → 3437.80s]** So maybe we can start there.
+
+**[3437.80s → 3438.80s]** Like what are your,
+
+**[3438.80s → 3445.09s]** What other people's stacks look like that you could deploy your capstone application on?
+
+**[3445.09s → 3469.41s]** Yeah, I mean, we have a coupon in these bars on easy to instances, but I am, I often came
+
+**[3469.41s → 3479.89s]** jointly sets of be honest. I'm not exactly sure what you're these tools. I would use to help deploy the object to you.
+
+**[3479.89s → 3485.05s]** Yeah, so as these, the like 30 second review,
+
+**[3485.05s → 3487.93s]** we talked a lot about Lange chain server tonight.
+
+**[3487.93s → 3490.13s]** So it's essentially a wrapper
+
+**[3490.13s → 3495.13s]** over like a very nice abstraction over fast API.
+
+**[3495.81s → 3499.09s]** So you imagine you're deploying API endpoints
+
+**[3499.09s → 3504.09s]** for your multi agent chain or multi agent system.
+
+**[3504.80s → 3507.24s]** Lange's service is a tidy way to do that.
+
+**[3507.24s → 3510.84s]** So the question is, where would be the best place to host
+
+**[3510.84s → 3518.73s]** those API endpoints within your infrastructure?
+
+**[3518.73s → 3535.90s]** I think it'd be cool to have maybe a namespace
+
+**[3535.90s → 3539.54s]** for different agents.
+
+**[3539.54s → 3543.33s]** And then I don't know, on behalf of some sort of like,
+
+**[3543.33s → 3545.01s]** okay, we need to reach out to them.
+
+**[3545.01s → 3547.79s]** But to be honest, I mean, I'm not completely sure.
+
+**[3547.79s → 3551.83s]** First, who's that person?
+
+**[3551.83s → 3554.67s]** Yeah, you could definitely create a namespace,
+
+**[3554.67s → 3556.91s]** put the center Docker container,
+
+**[3556.91s → 3561.91s]** And, you know, there are a lot of home chart and launch it near namespace.
+
+**[3563.15s → 3564.59s]** They'll be totally fine.
+
+**[3567.88s → 3572.25s]** Might be some scaling stuff you have to mess around with, for sure.
+
+**[3572.37s → 3574.94s]** But not terrible.
+
+**[3575.18s → 3579.66s]** Yeah, more complex than what we've shown in last night, but not terrible if you're familiar with it.
+
+**[3587.10s → 3592.10s]** What about other people? Do you have other architectures at work that would be different?
+
+**[3592.10s → 3597.10s]** Maybe some of you use Azure or Bare Metal.
+
+**[3597.10s → 3635.76s]** Yeah, Nikita just shared Amplify. Amplify is what I used for my,
+
+**[3635.76s → 3641.27s]** I should two websites running on Amplify right now.
+
+**[3641.27s → 3646.30s]** And for those of you that use the AWS console.
+
+**[3646.30s → 3648.30s]** It's very overwhelming.
+
+**[3648.30s → 3652.50s]** And I've been using it for a long time too.
+
+**[3652.50s → 3662.08s]** But even able to buy, it can be challenging to use, because there's some other globally distributed
+
+**[3662.08s → 3668.42s]** stuff that's not immediately in the application that I think render and a few other things
+
+**[3668.42s → 3671.86s]** do a slightly better job of, in my opinion, for personal use.
+
+**[3671.86s → 3696.26s]** Yeah, just based on their remembered replete, and they actually have an AI integration
+
+**[3696.26s → 3697.58s]** I was well remembered.
+
+**[3697.58s → 3699.10s]** They're pretty good.
+
+**[3699.10s → 3701.76s]** Pretty convenient.
+
+**[3701.76s → 3709.06s]** Oh nice. Yeah, I haven't ever used Repplet.
+
+**[3709.06s → 3712.66s]** I think it's become popular right versus a Lockheed.
+
+**[3715.06s → 3717.02s]** And so I haven't had a chance to like mess around
+
+**[3717.02s → 3726.21s]** with the subway no go for us.
+
+**[3726.21s → 3727.05s]** But yeah.
+
+**[3729.21s → 3732.37s]** Lambda actually has a free tier.
+
+**[3732.37s → 3733.89s]** So if you write,
+
+**[3735.95s → 3737.99s]** if you can keep your execution time
+
+**[3737.99s → 3740.99s]** at the minimum, you can actually get away with doing lots
+
+**[3740.99s → 3742.91s]** of processing for free.
+
+**[3742.91s → 3745.07s]** As long as you have a low call start time,
+
+**[3745.07s → 3749.97s]** so you have to use some rust or by the instead of Java,
+
+**[3749.97s → 3755.13s]** but you can get thousands of up to a thousand users
+
+**[3755.13s → 3761.10s]** for free depending on what your application does exactly.
+
+**[3761.10s → 3763.26s]** Yeah, definitely.
+
+**[3763.26s → 3765.78s]** Lamb is an amazing service.
+
+**[3765.78s → 3769.02s]** Yeah, if you used rust with Lambda functions,
+
+**[3769.02s → 3774.43s]** really, really cool stuff.
+
+**[3774.43s → 3779.53s]** I used Lambda functions for a lot of ETL jobs before,
+
+**[3781.73s → 3783.43s]** which is always cool to see.
+
+**[3789.66s → 3790.98s]** Going back to your capstone
+
+**[3790.98s → 3792.92s]** and of course, content per second,
+
+**[3793.90s → 3796.34s]** so your hands on homework for,
+
+**[3796.34s → 3799.42s]** we're kind of transitioning right into your capstone.
+
+**[3799.42s → 3802.78s]** So next week, we'll still continue with normal instruction.
+
+**[3802.78s → 3805.26s]** Just a reminder, I am out on vacation next week.
+
+**[3805.26s → 3807.90s]** So Aaron will be substitute teaching for me
+
+**[3807.90s → 3828.13s]** Monday at Wednesday. I think you'll have a discussion about crew AI and then you also have a conversation about a very sophisticated application, which I think all of you will be super, super excited to see that it'll get you excited about your capsits.
+
+**[3828.13s → 3833.70s]** So your homework is to continue iterating on your
+
+**[3833.70s → 3836.90s]** problem for your capstone identifying solutions
+
+**[3836.90s → 3839.90s]** and then designing the solution.
+
+**[3839.90s → 3844.18s]** So we have plenty of time, you know,
+
+**[3844.18s → 3848.18s]** stick around, answer questions that you might have
+
+**[3848.18s → 3851.18s]** by your capstone architecture.
+
+**[3851.18s → 3854.18s]** So I'll hand a floor over to you all.
+
+**[3854.18s → 3857.18s]** And what you want to talk about with your capstones
+
+**[3857.18s → 3908.05s]** about stuff happening in this space. I'm just waiting for any questions. I don't want to
+
+**[3908.05s → 3924.90s]** in the class too early. I guess like one damn curious about I don't know if this is like
+
+**[3924.90s → 3931.31s]** Dressen or Pass and Terri's what I remember, but we're kind of trying to find some like good examples
+
+**[3931.31s → 3941.81s]** of like using like chain agents, like hack tools to take in, take them from the user and actually
+
+**[3941.81s → 3949.52s]** like format the data to like bodies that have like multiple keys and values and that's in that
+
+**[3949.52s → 3959.39s]** to an API request, an API. Oh, you're saying you like like user puts in unstructured data that a
+
+**[3959.39s → 3965.23s]** tool or agent figures out how to restructure it and then puts it into the appropriate format for
+
+**[3965.23s → 3970.91s]** an API call. Yeah, I'm not sure if we've done anything like that yet or maybe I'm missing something,
+
+**[3970.91s → 3975.15s]** but yeah, fully liked that, I think we really just look for my capstone project.
+
+**[3975.15s → 3976.35s]** I think it's a cure for our clients.
+
+**[3976.35s → 3981.90s]** We haven't done anything like that in class, but that's actually super helpful feedback
+
+**[3981.90s → 3986.62s]** because we can absolutely include an example like that in the course material.
+
+**[3988.91s → 3995.49s]** So I think let's just maybe just go try and have you tried a research and find one yet already?
+
+**[3997.78s → 4002.10s]** I'm more so I try to just use Langchain itself with like the output parsers
+
+**[4002.10s → 4007.66s]** to see if I can get that working. But I only didn't like a little bit of research,
+
+**[4007.66s → 4025.15s]** like probably over the past two days. Yeah. Okay. I'm sure I guess.
+
+**[4025.15s → 4032.05s]** Okay. No, it's good. I just want to, I just did a quick search on that to see
+
+**[4033.89s → 4066.93s]** I think it's maybe structured tool. And Tom, if you have a good example too,
+
+**[4066.93s → 4107.28s]** feel free to time chime in. Yeah. I think this is just a thine toy, I think, with my
+
+**[4107.28s → 4119.14s]** Mike muted. So this is a crazy example right here actually. But you're kind of dumb.
+
+**[4120.70s → 4124.46s]** So I was just saying that I might have a couple of examples somewhere along in the round where I've
+
+**[4124.46s → 4129.82s]** got to kind of find them. I did a fresh install of our brain system literally yesterday.
+
+**[4130.54s → 4133.74s]** So I've got to kind of shift through some of my other stuff on the other drive.
+
+**[4133.74s → 4137.96s]** I've got it.
+
+**[4137.96s → 4144.51s]** So as this is a fun one, this one is searching hugging
+
+**[4144.51s → 4147.59s]** phase for any models.
+
+**[4147.59s → 4153.99s]** So it's expecting the API calls, expecting a path to the model,
+
+**[4153.99s → 4160.30s]** any query parameters that you have, both of those are optional.
+
+**[4160.30s → 4167.38s]** And then it's going to get a model URL, the base authorization,
+
+**[4167.38s → 4169.66s]** result, kind of fun stuff.
+
+**[4169.66s → 4176.54s]** So it's a structured tool call, get a huggie-based model.
+
+**[4176.54s → 4183.02s]** And let's actually run the example together real quick.
+
+**[4183.02s → 4184.38s]** Let's see.
+
+**[4184.38s → 4227.47s]** Cool.
+
+**[4227.47s → 4229.01s]** I think the only thing we need for this example
+
+**[4229.01s → 4235.58s]** is just a huggie-based API token.
+
+**[4235.58s → 4238.34s]** Let me just log in and create one real quick.
+
+**[4238.34s → 4240.98s]** And we'll change the query too.
+
+**[4240.98s → 4245.42s]** Any type of model, so any type of AI model that's not
+
+**[4245.42s → 4258.86s]** an LLM that you're interested in, video, audio, grammar,
+
+**[4258.86s → 4262.02s]** you're asking if there's any model I'm specifically interested in?
+
+**[4262.02s → 4269.26s]** Yeah, any like class model.
+
+**[4269.26s → 4271.34s]** What do you mean by a video grammar?
+
+**[4271.34s → 4274.22s]** Yeah, can you elaborate a bit on that?
+
+**[4274.22s → 4275.18s]** Oh, yeah.
+
+**[4275.18s → 4277.78s]** I was just asking if there were any other types of AI problems
+
+**[4277.78s → 4280.00s]** that you were interested in?
+
+**[4280.00s → 4282.58s]** Oh, I feel like you're saying.
+
+**[4282.58s → 4288.25s]** Well, really, I'd say this is like mostly a,
+
+**[4288.25s → 4290.57s]** I wanna try to build an egg on top of my egg, you know,
+
+**[4290.57s → 4296.05s]** but also I might look into like summarizing slack threads
+
+**[4296.21s → 4297.57s]** like a good productivity thing,
+
+**[4297.57s → 4301.38s]** especially given slack of the attention policies we have.
+
+**[4301.38s → 4305.17s]** My organization, so I don't know,
+
+**[4305.17s → 4308.13s]** I feel like that one I can use the course material.
+
+**[4308.13s → 4310.70s]** Okay.
+
+**[4310.70s → 4332.38s]** I wonder if they might have changed their,
+
+**[4332.38s → 4355.63s]** looks like they just changed their off model that was not as good of an example as I was hoping for.
+
+**[4355.63s → 4380.77s]** On our API key, see if there are any wide open APIs.
+
+**[4380.77s → 4386.02s]** So right now I'm just pulling another API example.
+
+**[4386.02s → 4392.30s]** to ensure it looks like the bear token that's mentioned in this example.
+
+**[4393.02s → 4398.10s]** I'm not sure that the token I could create immediately in Hugging Face was the right one.
+
+**[4398.70s → 4401.02s]** So I want to show you an example and mess it off.
+
+**[4401.78s → 4406.86s]** But this code is what you're looking for is use because if you take a look at the query here,
+
+**[4407.38s → 4412.90s]** like models get Hugging Face, and then it's going to show you the query parameters are
+
+**[4412.90s → 4419.00s]** Um, pretty wide open, like just search GTP.
+
+**[4420.39s → 4425.73s]** Um, and the LLM is kind of figuring out what to do in that step.
+
+**[4431.03s → 4435.80s]** And then there, this example is getting into the weeds of, um,
+
+**[4435.80s → 4439.58s]** pretty more custom tool and then, um,
+
+**[4440.41s → 4443.95s]** actually getting into how it decides to do all that kind of stuff.
+
+**[4447.48s → 4461.97s]** You make sure that this is what exactly are you trying to accomplish?
+
+**[4461.97s → 4465.73s]** like what is the structured query you're trying to get from user input?
+
+**[4467.24s → 4473.24s]** Yeah, so like I work in ads and I'm really concentrating, hey, it's possible for me to
+
+**[4474.93s → 4485.41s]** like have a user just chat with an agent and create like a creative or post based off just
+
+**[4486.13s → 4491.04s]** that and information that they input and then like have it refined as well
+
+**[4491.04s → 4493.88s]** on in the chat. Is that like something?
+
+**[4493.88s → 4495.87s]** Yeah, so like,
+
+**[4495.87s → 4498.76s]** I'd be like someone wants to create an ad.
+
+**[4498.76s → 4499.80s]** Yeah.
+
+**[4499.80s → 4503.92s]** And then the ultimate goal is to create that.
+
+**[4503.92s → 4508.04s]** So they're chatting about performance,
+
+**[4508.04s → 4511.00s]** maybe couple ideas,
+
+**[4511.00s → 4514.44s]** somebody picks one and they submit the ad to the API
+
+**[4514.44s → 4516.08s]** and point at the very end.
+
+**[4516.08s → 4518.60s]** Yeah. Yeah, exactly.
+
+**[4518.60s → 4520.68s]** Cool. Yeah.
+
+**[4520.68s → 4526.95s]** Yeah, you could definitely do that. That should be super easy to do. Maybe easiest in the right word.
+
+**[4528.07s → 4533.43s]** That is obtainable in the current code architecture without too much headache.
+
+**[4540.37s → 4548.15s]** And I think one thing I mentioned a Chris too is for you guys, I would maybe think about
+
+**[4548.15s → 4561.92s]** also publishing tools on chain that expose tools to those kinds of endpoints and you guys can open source them.
+
+**[4561.92s → 4569.92s]** That way people could create develop their own workflows for that stuff as well, which would also be a really cool project.
+
+**[4569.92s → 4572.92s]** And I think I've shown that before.
+
+**[4572.92s → 4592.89s]** They're like, nah, so they're going to be like, yeah.
+
+**[4592.89s → 4601.71s]** I want to, I guess, integrations. Yeah. Sorry.
+
+**[4601.71s → 4618.02s]** Yeah, here's the list of, um,
+
+**[4618.02s → 4623.37s]** Tokets. So you guys could totally publish your own toolkit on Reddit,
+
+**[4623.37s → 4625.69s]** which should be sweet.
+
+**[4625.69s → 4644.72s]** Okay, I'll just, um, quickly done a prompt and tested it in sort of a couple of AI,
+
+**[4644.72s → 4648.48s]** Sort of LLMs and putting that as a system prompt seems to work
+
+**[4649.60s → 4651.36s]** for making it
+
+**[4651.36s → 4653.39s]** taking a human
+
+**[4653.39s → 4655.68s]** sort of
+
+**[4655.68s → 4657.26s]** request
+
+**[4657.26s → 4659.74s]** So so my consuming says that they want to
+
+**[4660.89s → 4664.93s]** Get something or do something and then give it an API endpoint
+
+**[4665.99s → 4670.75s]** Then it'll format a request body in JSON for the request
+
+**[4671.07s → 4673.15s]** So that's something like what you're thinking about
+
+**[4673.15s → 4678.12s]** Yeah, I think that's pretty fast.
+
+**[4678.12s → 4683.88s]** So basically using that as a system prompt could be added to any agent and then kind of
+
+**[4683.88s → 4690.76s]** just have it do its thing and then have set a tool or an API, say a request tool where
+
+**[4690.76s → 4696.02s]** you just get the request library for instance and then that could take that and become the
+
+**[4696.02s → 4700.34s]** body of the request and then setting the stuff out so it's fairly rudimentary to be able
+
+**[4700.34s → 4702.98s]** to do it pretty much from scratch that way.
+
+**[4702.98s → 4703.98s]** Okay.
+
+**[4703.98s → 4706.06s]** I'll try that out. You might share the crowd.
+
+**[4706.06s → 4710.54s]** I've done it in the thread of Liberty popped in there,
+
+**[4710.54s → 4713.34s]** we're in a little co-block. It's just basically your language model design
+
+**[4713.34s → 4716.78s]** to help you just structure the stuff. So I've explained that
+
+**[4716.78s → 4720.49s]** there will be taken in human readable query from the user
+
+**[4720.49s → 4724.65s]** and it's posted past that and converting to a formatted JSON object
+
+**[4724.65s → 4729.53s]** and it seems to do it so far. I've tried it with chat GPT, I've tried it with
+
+**[4729.53s → 4732.73s]** a bunch of ones on hogging face or tried it with the
+
+**[4732.73s → 4734.37s]** it seems to work with all of those.
+
+**[4734.37s → 4738.43s]** So that should be enough just to get started on the new.
+
+**[4744.95s → 4745.63s]** Sorry, John.
+
+**[4746.87s → 4747.87s]** Oh, no, that's perfect.
+
+**[4747.87s → 4749.32s]** Yeah.
+
+**[4751.61s → 4752.61s]** That's perfect.
+
+**[4752.61s → 4755.21s]** And then I think in your multi-agents system too, then,
+
+**[4755.21s → 4758.57s]** then like the other thing to think about is a tool that validates
+
+**[4758.77s → 4762.05s]** that the new API endpoint is correct.
+
+**[4762.05s → 4766.05s]** So the tool runs a function just to check, you know,
+
+**[4766.05s → 4767.53s]** that everything's correct.
+
+**[4769.13s → 4775.69s]** And then uses the output, whether it's correct or not, if it needs to revise the JSON spec,
+
+**[4776.49s → 4782.49s]** it could be another thing too. And that, like that tool doesn't need to be an LLM call.
+
+**[4782.49s → 4787.53s]** It could literally be like a winter JSON spec document that you're
+
+**[4787.53s → 4792.33s]** going to get. And then just using the information to refine the JSON object.
+
+**[4826.57s → 4837.98s]** Cool. Are there any other questions that can answer? We can we talk about your capstones?
+
+**[4838.46s → 4840.46s]** other subcumon to go through.
+
+**[4840.46s → 4877.81s]** Well, if there aren't any other questions tonight,
+
+**[4877.81s → 4883.22s]** we can go ahead and close out.
+
+**[4883.22s → 4887.83s]** And I think hopefully hopefully you enjoyed tonight's class,
+
+**[4887.83s → 4890.83s]** give you a little bit, I know you've seen links here before,
+
+**[4890.83s → 4893.83s]** or so hopefully give you a little bit more information and
+
+**[4893.83s → 4899.44s]** suppression in your mind as you start to work on deploying your agents.
+
+**[4899.44s → 4902.50s]** Over the next two to three weeks.
+
+**[4902.50s → 4909.83s]** So, anyway, I will catch you all when I am back
+
+**[4909.83s → 4914.27s]** on a week from Monday.
+
+**[4914.27s → 4918.87s]** So enjoy a class of air next week and office hours of time.
+
+**[4918.87s → 4922.07s]** And I will catch all of you week after next.
+
+**[4922.07s → 4924.00s]** Thank you.
+
+**[4924.00s → 4925.50s]** Thanks everybody.
+

@@ -1,0 +1,38 @@
+{
+  "transcription": {
+    "model_size": "base",
+    "device": "cpu",
+    "compute_type": "int8",
+    "max_workers": 1,
+    "batch_size": 10
+  },
+  "extraction": {
+    "enable_content_analysis": true,
+    "difficulty_assessment": true,
+    "code_extraction": true,
+    "generate_summaries": true,
+    "max_workers": 8
+  },
+  "input": {
+    "videos_base_path": "../cohorts",
+    "video_extensions": [
+      ".mp4",
+      ".webm",
+      ".avi",
+      ".mov",
+      ".mkv"
+    ]
+  },
+  "output": {
+    "reports_path": "../reports",
+    "comprehensive_report": true,
+    "individual_reports": true
+  },
+  "workflow": {
+    "skip_existing_transcripts": true,
+    "skip_existing_analysis": true,
+    "verify_file_integrity": true,
+    "cleanup_temp_files": true,
+    "checkpoint_frequency": 10
+  }
+}

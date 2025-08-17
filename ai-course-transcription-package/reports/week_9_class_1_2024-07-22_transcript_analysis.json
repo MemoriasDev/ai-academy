@@ -1,0 +1,859 @@
+{
+  "session_info": {
+    "cohort": "cohorts",
+    "week": "week_09",
+    "title": "Cohorts - Week 09",
+    "duration": 2159.87,
+    "summary": "Session covered 6 key principles across 4 categories. Main focus areas: control_flow (3 concepts), concepts (1 concepts), data_structures (1 concepts). Included 73 instructional segments."
+  },
+  "learning_principles": [
+    {
+      "title": "If Concept",
+      "description": "that I can show you too if it fits into where we go tonight.",
+      "category": "control_flow",
+      "keywords": [
+        "if"
+      ],
+      "timestamp_start": 31.13,
+      "timestamp_end": 40.28,
+      "context": "We'll talk about it. And I've got some stuff from a really old class that I can show you too if it fits into where we go tonight. So we're going to cover a bunch of different stuff been pretty short first.",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "For Concept",
+      "description": "I'm going back and checking how that data is performing",
+      "category": "control_flow",
+      "keywords": [
+        "for"
+      ],
+      "timestamp_start": 430.83,
+      "timestamp_end": 433.11,
+      "context": "whether I'm having engineers review a test data set instead of having mass human and the to loop feedback. I'm going back and checking how that data is performing at regular intervals. So you're going to want to identify",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Try Concept",
+      "description": "tuning, trying to figure out how will my models generated output",
+      "category": "control_flow",
+      "keywords": [
+        "try"
+      ],
+      "timestamp_start": 466.08,
+      "timestamp_end": 472.43,
+      "context": "I'm trying to utilize as much existing data as possible. So if I'm using a data set that I've created for instruction tuning, trying to figure out how will my models generated output matches the kind of gold standard or good outputs that I have. You've seen those with large language model benchmark",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Class Concept",
+      "description": "Or if you're, how I can meet, and you come up in the world of classical statistical learning machine learning, we just call it ML ops.",
+      "category": "concepts",
+      "keywords": [
+        "class"
+      ],
+      "timestamp_start": 501.27,
+      "timestamp_end": 509.95,
+      "context": "And then finally, you're going to want to create a process for facilitating continuous improvement. This is getting into the concept of LLM ops or generative AI ops. Or if you're, how I can meet, and you come up in the world of classical statistical learning machine learning, we just call it ML ops....",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Graph Concept",
+      "description": "And just to show you that kind of same concept graphically,",
+      "category": "data_structures",
+      "keywords": [
+        "graph"
+      ],
+      "timestamp_start": 539.65,
+      "timestamp_end": 549.64,
+      "context": "So you want to facilitate that continuous improvement process by having a very well-established plan in place. And just to show you that kind of same concept graphically, Oops, hopefully you all can see my screen. Just to show this, this is really, really old hand drawn thing",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Testing Concept",
+      "description": "It's really not a great way to do that. This is really good for like simple input and how I'm prompted evaluation testing.",
+      "category": "tools",
+      "keywords": [
+        "testing"
+      ],
+      "timestamp_start": 1163.64,
+      "timestamp_end": 1171.64,
+      "context": "Some great examples on DSPY's website, but you can read through. A couple of caveats though that I'll say one tool calling isn't well supported yet here with DSP. So if you're the prompt you're trying to engineer and all some kind of tool call. It's really not a great way to do that. This is really ...",
+      "difficulty_level": "beginner",
+      "code_examples": []
+    }
+  ],
+  "instruction_segments": [
+    {
+      "step_number": 1,
+      "instruction": "Instead of code, we're going to talk through designing",
+      "timestamp_start": 15.98,
+      "timestamp_end": 19.62,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 2,
+      "instruction": "So we're going to cover a bunch of different stuff",
+      "timestamp_start": 40.28,
+      "timestamp_end": 42.36,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 3,
+      "instruction": "So we're going to talk about what the acceptable output",
+      "timestamp_start": 44.44,
+      "timestamp_end": 48.24,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 4,
+      "instruction": "We'll talk about choosing the right LLM,",
+      "timestamp_start": 72.28,
+      "timestamp_end": 74.77,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 5,
+      "instruction": "and then finally, strong prompts outside your project",
+      "timestamp_start": 85.21,
+      "timestamp_end": 87.41,
+      "action_type": "instruction",
+      "related_concepts": [
+        "finally",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 6,
+      "instruction": "It's probably the very first thing before you start",
+      "timestamp_start": 107.52,
+      "timestamp_end": 110.54,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 7,
+      "instruction": "So let's say, for example, you're building an application",
+      "timestamp_start": 123.3,
+      "timestamp_end": 126.18,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 8,
+      "instruction": "Like you're building the next McDonald's",
+      "timestamp_start": 130.58,
+      "timestamp_end": 133.34,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 9,
+      "instruction": "We have a team at work right now that's working on developing a rag over multiple terabytes of engineering documents.",
+      "timestamp_start": 205.58,
+      "timestamp_end": 217.58,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 10,
+      "instruction": "They're super, super heavy electrical and mechanical systems engineers. They know nothing about AI.",
+      "timestamp_start": 217.58,
+      "timestamp_end": 226.68,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 11,
+      "instruction": "Could actually already be an LLM let's go give it a shot and so we tried prompting just a few things and I was able to just by helping them write some good prompts using the wiser framework.",
+      "timestamp_start": 244.35,
+      "timestamp_end": 258.86,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 12,
+      "instruction": "levels of detail. And then the other thing that they were saying, which is great feedback is",
+      "timestamp_start": 302.14,
+      "timestamp_end": 307.26,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 13,
+      "instruction": "you know our company's been doing this type of engineering problem for 70 or 80 years. We have",
+      "timestamp_start": 307.9,
+      "timestamp_end": 314.06,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 14,
+      "instruction": "of mountains and mountains of proprietary engineering knowledge",
+      "timestamp_start": 314.06,
+      "timestamp_end": 317.98,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 15,
+      "instruction": "So probably, and we'll start out",
+      "timestamp_start": 331.5,
+      "timestamp_end": 333.26,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 16,
+      "instruction": "and then eventually, maybe building on an instruction,",
+      "timestamp_start": 337.94,
+      "timestamp_end": 340.98,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 17,
+      "instruction": "and we can really give good examples of the type",
+      "timestamp_start": 344.78,
+      "timestamp_end": 348.42,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 18,
+      "instruction": "or not in that example I'm talking about.",
+      "timestamp_start": 367.15,
+      "timestamp_end": 369.99,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 19,
+      "instruction": "know if we've talked about reinforcement learning human feedback loops.",
+      "timestamp_start": 382.56,
+      "timestamp_end": 387.73,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if",
+        "loop"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 20,
+      "instruction": "system that captures that evaluation data really, really well. Now whether that's kind of mass",
+      "timestamp_start": 407.3,
+      "timestamp_end": 412.66,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 21,
+      "instruction": "user data collection or whether that's hyper specific on, you know, engineering example,",
+      "timestamp_start": 412.66,
+      "timestamp_end": 418.9,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 22,
+      "instruction": "some kind of adoption metric and then figure out",
+      "timestamp_start": 439.07,
+      "timestamp_end": 442.91,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 23,
+      "instruction": "And then finally, you're going to want to create a process for facilitating continuous improvement.",
+      "timestamp_start": 487.35,
+      "timestamp_end": 493.27,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "finally"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 24,
+      "instruction": "And then finally, I deploy this solution together",
+      "timestamp_start": 604.14,
+      "timestamp_end": 606.34,
+      "action_type": "instruction",
+      "related_concepts": [
+        "finally"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 25,
+      "instruction": "and then I repeat the process iteratively",
+      "timestamp_start": 606.34,
+      "timestamp_end": 609.86,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 26,
+      "instruction": "Hang on just a second, you know,",
+      "timestamp_start": 617.83,
+      "timestamp_end": 618.83,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 27,
+      "instruction": "But switching gears a little bit, let's",
+      "timestamp_start": 669.64,
+      "timestamp_end": 673.12,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 28,
+      "instruction": "It's really important that you develop a strong intuition",
+      "timestamp_start": 701.63,
+      "timestamp_end": 704.31,
+      "action_type": "instruction",
+      "related_concepts": [
+        "import"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 29,
+      "instruction": "are gonna change over the next two years.",
+      "timestamp_start": 713.42,
+      "timestamp_end": 716.22,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 30,
+      "instruction": "So yeah, things that are gonna need to remember",
+      "timestamp_start": 729.84,
+      "timestamp_end": 732.68,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 31,
+      "instruction": "and like I'd like to know about the weather",
+      "timestamp_start": 783.82,
+      "timestamp_end": 787.14,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 32,
+      "instruction": "with no examples, one example or a few examples",
+      "timestamp_start": 818.08,
+      "timestamp_end": 822.04,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 33,
+      "instruction": "one time. Manual code of course is just consistent input now put and you can use that whenever you",
+      "timestamp_start": 830.6,
+      "timestamp_end": 840.41,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 34,
+      "instruction": "make sense. That's always going to be very deterministic, right? Like I need to know what my bank",
+      "timestamp_start": 840.41,
+      "timestamp_end": 849.42,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 35,
+      "instruction": "Like my best writing might come from ChatGTB4 or Gemma but you know just raw internet research where",
+      "timestamp_start": 923.74,
+      "timestamp_end": 932.54,
+      "action_type": "instruction",
+      "related_concepts": [
+        "search"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 36,
+      "instruction": "I'm parsing broad search results and summarizing them you know, Wama 3 run locally might be fine for",
+      "timestamp_start": 932.54,
+      "timestamp_end": 939.26,
+      "action_type": "instruction",
+      "related_concepts": [
+        "search",
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 37,
+      "instruction": "Now, objectively measured doesn't necessarily mean",
+      "timestamp_start": 951.7,
+      "timestamp_end": 955.79,
+      "action_type": "instruction",
+      "related_concepts": [
+        "object"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 38,
+      "instruction": "You know, I need to go hit the end point for ChatGTP",
+      "timestamp_start": 964.45,
+      "timestamp_end": 968.47,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 39,
+      "instruction": "Now, for many of you especially you work in your capstone projects,",
+      "timestamp_start": 1018.57,
+      "timestamp_end": 1023.45,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 40,
+      "instruction": "different examples and different language models. And then it'll help you gather and generate",
+      "timestamp_start": 1095.86,
+      "timestamp_end": 1103.06,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 41,
+      "instruction": "and evaluate output quality. And then you're going to run some preliminary evaluations, identify",
+      "timestamp_start": 1111.28,
+      "timestamp_end": 1117.28,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 42,
+      "instruction": "the baseline performance against various models. Now in step seven, optimizing instructions,",
+      "timestamp_start": 1117.28,
+      "timestamp_end": 1125.49,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 43,
+      "instruction": "Some great examples on DSPY's website, but you can read through.",
+      "timestamp_start": 1145.81,
+      "timestamp_end": 1150.64,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 44,
+      "instruction": "prompts right now. Well maybe what I should say supports",
+      "timestamp_start": 1181.24,
+      "timestamp_end": 1185.96,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 45,
+      "instruction": "simpler prompts best and then I kind of last big thing to think about for your",
+      "timestamp_start": 1185.96,
+      "timestamp_end": 1205.13,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 46,
+      "instruction": "So back to that engineering example, say, hey, are these outputs correct?",
+      "timestamp_start": 1211.61,
+      "timestamp_end": 1218.65,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 47,
+      "instruction": "Also, too, I think it's very important to be transparent that the content that's being generated",
+      "timestamp_start": 1231.52,
+      "timestamp_end": 1239.28,
+      "action_type": "instruction",
+      "related_concepts": [
+        "import"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 48,
+      "instruction": "So when they know it's from AI,",
+      "timestamp_start": 1248.62,
+      "timestamp_end": 1250.06,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 49,
+      "instruction": "if you've noticed, Amazon has a AI generated summary now.",
+      "timestamp_start": 1260.04,
+      "timestamp_end": 1264.6,
+      "action_type": "review",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 50,
+      "instruction": "I know that's generated by AI, but I still go through it.",
+      "timestamp_start": 1269.96,
+      "timestamp_end": 1273.16,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 51,
+      "instruction": "I don't know that we're quite there yet, but getting pretty close.",
+      "timestamp_start": 1333.88,
+      "timestamp_end": 1339.88,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 52,
+      "instruction": "But over the next couple weeks,",
+      "timestamp_start": 1369.39,
+      "timestamp_end": 1372.71,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 53,
+      "instruction": "And then absolutely share your capstone for feedback product design,",
+      "timestamp_start": 1377.09,
+      "timestamp_end": 1382.09,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 54,
+      "instruction": "If have any other frameworks or other probes or other examples is really cool to see.",
+      "timestamp_start": 1492.72,
+      "timestamp_end": 1501.52,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 55,
+      "instruction": "tasks because when I met my case, for example, in my company, we don't have a",
+      "timestamp_start": 1519.51,
+      "timestamp_end": 1526.59,
+      "action_type": "explanation",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 56,
+      "instruction": "solution make-by-scatch, I imagine that need more, not only effort, but more knowledge for",
+      "timestamp_start": 1562.24,
+      "timestamp_end": 1573.12,
+      "action_type": "instruction",
+      "related_concepts": [
+        "catch",
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 57,
+      "instruction": "to propose like this. For example, in in new shop, that's my my company and the others in this class.",
+      "timestamp_start": 1610.61,
+      "timestamp_end": 1617.57,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "for",
+        "class"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 58,
+      "instruction": "But one point we think to use AI is for analyze the first step",
+      "timestamp_start": 1651.32,
+      "timestamp_end": 1657.84,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 59,
+      "instruction": "looking for the libraries or a lot of patterns that for example external requests for no",
+      "timestamp_start": 1699.67,
+      "timestamp_end": 1712.51,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 60,
+      "instruction": "pattern is sent off it back for partners like you killed, do that, you know,",
+      "timestamp_start": 1729.51,
+      "timestamp_end": 1737.51,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 61,
+      "instruction": "you analyze a lot of small information like the client is distracted or for example",
+      "timestamp_start": 1795.45,
+      "timestamp_end": 1807.05,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 62,
+      "instruction": "interaction, this is good and make the first half check for us and that.",
+      "timestamp_start": 1854.56,
+      "timestamp_end": 1860.36,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 63,
+      "instruction": "For example, what other thing we are talking, I talk to one of my colleagues this day",
+      "timestamp_start": 1860.36,
+      "timestamp_end": 1867.4,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 64,
+      "instruction": "is for example, this is really common on AppStars when you have a published app and this is",
+      "timestamp_start": 1867.4,
+      "timestamp_end": 1876.44,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 65,
+      "instruction": "You can then always invest a little bit of time in learning",
+      "timestamp_start": 2012.5,
+      "timestamp_end": 2015.5,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 66,
+      "instruction": "things and then kind of build up and build on land graph or another thing and have it a bit more",
+      "timestamp_start": 2018.5,
+      "timestamp_end": 2023.8,
+      "action_type": "instruction",
+      "related_concepts": [
+        "graph"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 67,
+      "instruction": "robust afterwards. So it doesn't have to be perfect first time round unless obviously you try and",
+      "timestamp_start": 2023.8,
+      "timestamp_end": 2029.16,
+      "action_type": "exercise",
+      "related_concepts": [
+        "try"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 68,
+      "instruction": "that's. But in general when you first testing it's that's the idea behind these frameworks is",
+      "timestamp_start": 2030.04,
+      "timestamp_end": 2035.64,
+      "action_type": "instruction",
+      "related_concepts": [
+        "testing",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 69,
+      "instruction": "and things like Cua is, get it to be fit for purpose and once you've got it fit for purpose then",
+      "timestamp_start": 2035.64,
+      "timestamp_end": 2042.6,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 70,
+      "instruction": "then you can build on it and make it more robust and switch to you can just switch out the different bits and pieces like the LLM's",
+      "timestamp_start": 2042.6,
+      "timestamp_end": 2050.82,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 71,
+      "instruction": "you can't make it to the office hours, let me know a time what would make a better suit you.",
+      "timestamp_start": 2099.39,
+      "timestamp_end": 2104.39,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 72,
+      "instruction": "Well, if you have any other questions, Marcus, we'll go and close out for tonight.",
+      "timestamp_start": 2129.12,
+      "timestamp_end": 2135.57,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 73,
+      "instruction": "Okay, I don't know if this is really thanks for it.",
+      "timestamp_start": 2139.18,
+      "timestamp_end": 2147.91,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if"
+      ],
+      "code_snippets": []
+    }
+  ],
+  "key_topics": [
+    "data_structures",
+    "concepts",
+    "control_flow",
+    "tools"
+  ],
+  "difficulty_progression": [
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "beginner"
+  ],
+  "statistics": {
+    "total_principles": 6,
+    "total_instructions": 73,
+    "unique_categories": 4,
+    "avg_segment_duration": 5.784246575342474
+  }
+}

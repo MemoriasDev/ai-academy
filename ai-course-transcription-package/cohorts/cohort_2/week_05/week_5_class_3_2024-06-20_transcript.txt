@@ -1,0 +1,2751 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_05/week_5_class_3_2024-06-20.mp4
+**Duration:** 5024.99 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 1366
+**Generated:** 2025-08-13 18:45:34
+**File Hash:** 1f17512678d111fb98272f14bf4b2ee1
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_05
+**file_name:** week_5_class_3_2024-06-20.mp4
+
+---
+
+## Transcript
+
+**[462.70s → 465.50s]** recording.
+
+**[465.50s → 468.00s]** Hello, and thank you for joining.
+
+**[468.00s → 469.86s]** And hopefully a few more joins,
+
+**[469.86s → 473.22s]** slash if you're watching the recording, that's great too.
+
+**[473.22s → 476.22s]** So my name is Aaron, and today we'll
+
+**[476.22s → 480.50s]** be talking basically about more fine tuning techniques,
+
+**[480.50s → 483.38s]** more things you can do to fine tune a model,
+
+**[483.38s → 485.46s]** more considerations.
+
+**[485.46s → 487.10s]** We'll actually step through something
+
+**[487.10s → 490.54s]** and what we're stepping through is possibly,
+
+**[490.54s → 491.74s]** for the first time for you all.
+
+**[491.74s → 492.94s]** I don't know exactly sure.
+
+**[492.94s → 494.38s]** It's my first time with you all,
+
+**[494.38s → 495.86s]** but I believe for the first time,
+
+**[495.86s → 498.74s]** stepping outside of the OpenAI ecosystem
+
+**[498.74s → 501.46s]** to fine-tune LAMA,
+
+**[502.38s → 504.74s]** and to be clear,
+
+**[504.74s → 505.74s]** the example we're doing,
+
+**[505.74s → 508.38s]** we're not gonna get an incredible production grade fine-tune
+
+**[508.38s → 509.74s]** out of free resources.
+
+**[509.74s → 512.14s]** It's more of something to learn
+
+**[512.14s → 513.58s]** and do a proof of concept with,
+
+**[513.58s → 515.18s]** but the concepts hold.
+
+**[515.18s → 516.10s]** They generalize,
+
+**[516.10s → 518.74s]** and if you threw more compute resources at this
+
+**[518.74s → 520.18s]** and took a similar approach,
+
+**[520.18s → 521.86s]** and you had, of course, the data,
+
+**[521.86s → 523.74s]** it all, it really hinges on the on the data.
+
+**[523.74s → 528.87s]** The training data is the crux of fine tuning,
+
+**[528.87s → 531.99s]** but if you have that, then these techniques will work.
+
+**[531.99s → 536.03s]** So I will throw up the questions thread now,
+
+**[536.03s → 540.03s]** and that is where my eyes will be for the most part
+
+**[540.03s → 541.11s]** in terms of questions,
+
+**[541.11s → 543.55s]** because there are too many windows that I have to keep open.
+
+**[543.55s → 548.62s]** So I won't be able to see the zoom chat, that kind of thing.
+
+**[548.62s → 550.66s]** zoom chat and that kind of thing.
+
+**[550.66s → 552.66s]** Oh, and I guess I didn't even introduce myself at all.
+
+**[552.66s → 554.38s]** I mean, there's a little intro for me in the channel,
+
+**[554.38s → 560.02s]** but I worked in tech for a long time.
+
+**[560.02s → 564.46s]** I guess I'll say 15 years, a little more than that,
+
+**[564.46s → 566.86s]** but whatever, we'll say 15.
+
+**[566.86s → 570.30s]** And I don't want to say 20 yet.
+
+**[570.30s → 572.22s]** I'll have to say 20 soon.
+
+**[572.22s → 577.82s]** And I have a background in statistics and Python.
+
+**[577.82s → 582.02s]** And so my current day job, I'm working at a place
+
+**[582.02s → 584.46s]** where we're doing a lot of natural language processing
+
+**[584.46s → 586.22s]** on medical text.
+
+**[586.22s → 590.38s]** And as you might guess, one of the most important applications
+
+**[590.38s → 592.42s]** on medical text is de-identification
+
+**[592.42s → 594.62s]** because it privacy, right?
+
+**[594.62s → 597.04s]** So a lot of what I'm doing is trying
+
+**[597.04s → 601.82s]** to de-identify medical texts so it can then be actually used
+
+**[601.82s → 604.66s]** for research while still respecting patient privacy.
+
+**[604.66s → 610.10s]** So that's a bit about me and into these slides in the topic.
+
+**[616.05s → 619.33s]** All right, so advanced fine tuning techniques.
+
+**[619.33s → 623.09s]** We're gonna learn about all these weird acronyms
+
+**[623.09s → 626.25s]** and quantization and human feedback and evaluation
+
+**[626.25s → 628.73s]** and it's kind of gonna be a lot of concepts.
+
+**[628.73s → 631.37s]** Although I think it's also building on the concepts
+
+**[631.37s → 634.98s]** you already saw earlier this week.
+
+**[634.98s → 640.31s]** So let's get to it.
+
+**[640.31s → 642.79s]** All right, so what you'll be getting out of this lecture,
+
+**[642.79s → 646.35s]** to understand reinforcement learning with human feedback.
+
+**[646.35s → 648.67s]** And to be clear, reinforcement learning
+
+**[648.67s → 651.27s]** with human feedback isn't just about fine tuning.
+
+**[651.27s → 654.31s]** It's the secret sauce that makes instruction tuned models
+
+**[654.31s → 655.55s]** work in the first place.
+
+**[655.55s → 657.75s]** It's what makes Chatchy PT.
+
+**[657.75s → 660.83s]** I mean, really it was in a sense the breakthrough,
+
+**[660.83s → 663.07s]** I would say, of Chatchy PT3 that led
+
+**[663.07s → 666.31s]** it into the consciousness of, you know,
+
+**[666.31s → 668.67s]** well, almost everybody it seems,
+
+**[668.67s → 671.83s]** because it is the approach that let
+
+**[671.83s → 676.11s]** them guide a model based on human preferences and human feedback,
+
+**[676.11s → 681.67s]** talent eventually became this chatty, supportive, upbeat sort of thing.
+
+**[681.67s → 684.27s]** And that's, of course, that's the direction they happen to tune it.
+
+**[684.27s → 687.83s]** You could tune a bot to be very dark and dark.
+
+**[687.83s → 690.67s]** If you really wanted or whatever direction you're going,
+
+**[690.67s → 695.07s]** but probably less likely to be able to make a corporation on that.
+
+**[695.07s → 696.87s]** Though, so we'll talk about that.
+
+**[696.87s → 699.17s]** that we'll talk about.
+
+**[699.17s → 703.97s]** So PEPH, Lora, and Quantization, they're all, and BenQ, Lora.
+
+**[703.97s → 705.97s]** All these concepts are kind of entangled,
+
+**[705.97s → 707.47s]** but they are distinct.
+
+**[707.47s → 710.37s]** So we're going to clear all that up with that means
+
+**[710.37s → 713.53s]** and how to think about them and how
+
+**[713.53s → 717.05s]** to apply them to actual fine tuning.
+
+**[717.05s → 719.17s]** Really, every time I say fine tuning,
+
+**[719.17s → 721.89s]** if any of you have a background in statistics
+
+**[721.89s → 724.33s]** or machine learning, which it's fine if you don't,
+
+**[724.33s → 728.53s]** But if you do, just think of, it's just more training, right?
+
+**[728.53s → 730.81s]** That's fine tuning just means taking a model
+
+**[730.81s → 731.81s]** and training it more.
+
+**[731.81s → 734.37s]** That's really what it means at a high level.
+
+**[734.37s → 736.37s]** Now there's some details because the models
+
+**[736.37s → 738.93s]** we're talking about are large.
+
+**[738.93s → 741.25s]** The large and large language models
+
+**[741.25s → 743.85s]** refers to how many parameters how big the model is.
+
+**[743.85s → 748.41s]** And so training a large model is pretty expensive
+
+**[748.41s → 749.53s]** and so there's a lot of tricks.
+
+**[749.53s → 751.37s]** And these are basically the tricks, right?
+
+**[751.37s → 754.01s]** these are the tricks to make it a little bit more reasonable.
+
+**[754.01s → 759.33s]** I don't know that there are any official public figures, but the ballpark figures for
+
+**[759.33s → 765.77s]** trying to find a foundational model, training something like chat GPT or Lama on give or take
+
+**[765.77s → 770.53s]** the intramet plus whatever else they throw at it is easily into the millions and millions
+
+**[770.53s → 772.05s]** of dollars of compute.
+
+**[772.05s → 774.82s]** That's very, very expensive.
+
+**[774.82s → 779.18s]** Fintuning can be a lot, lot, lot cheaper.
+
+**[779.18s → 781.62s]** It might still be thousands of dollars of compute.
+
+**[781.62s → 785.10s]** if you have a large corpus and you want to do it well
+
+**[785.10s → 786.50s]** on a pretty large model.
+
+**[787.46s → 790.14s]** But thousands of dollars of compute
+
+**[790.14s → 794.06s]** to is well within the reach of a large number
+
+**[794.06s → 795.94s]** of smaller medium businesses,
+
+**[795.94s → 798.14s]** if they have a use case that justifies it, right?
+
+**[798.14s → 802.18s]** So it's definitely something that you don't have to be
+
+**[803.18s → 805.42s]** a Google or a Microsoft to do.
+
+**[805.42s → 809.34s]** It's something that you can do if you can clear
+
+**[809.34s → 811.46s]** the budget for your AWS, right?
+
+**[811.46s → 816.38s]** So, all right, any questions at a high level
+
+**[816.38s → 819.34s]** on what we're gonna be talking about today?
+
+**[819.34s → 822.68s]** Just pause for a sec.
+
+**[822.68s → 828.98s]** And again, question trends slack is the place for it.
+
+**[828.98s → 829.98s]** Well, I will keep going.
+
+**[829.98s → 832.66s]** Feel free to drop the questions whenever they come to you,
+
+**[832.66s → 835.34s]** of course, or unmute or such a small group
+
+**[835.34s → 837.90s]** that if you wanna speak up, raise your hand,
+
+**[837.90s → 840.14s]** that's okay too.
+
+**[840.14s → 841.58s]** Especially when we get towards the end
+
+**[841.58s → 843.22s]** and we're actually more hands on.
+
+**[843.22s → 847.38s]** So what is reinforcement learning with human feedback?
+
+**[847.38s → 850.38s]** So reinforcement learning with human feedback
+
+**[850.38s → 854.42s]** is about using human input to improve the decision making
+
+**[854.42s → 855.30s]** by the LLN.
+
+**[855.30s → 857.74s]** And when we talk about alignment,
+
+**[857.74s → 861.02s]** this is the mechanism with which we bring about alignment.
+
+**[861.02s → 863.34s]** Now, I want to be clear that really alignment
+
+**[863.34s → 865.42s]** and the words liable here are both,
+
+**[865.42s → 866.46s]** they're a little loaded.
+
+**[866.46s → 869.06s]** I mean, what I mean by that, it's not a bad thing.
+
+**[869.06s → 871.97s]** It just means that alignment with what?
+
+**[871.97s → 874.01s]** reliable in doing what, right?
+
+**[874.01s → 879.01s]** It's the certainly most of the commercial LLMs
+
+**[880.65s → 884.27s]** are trying to align with certain notions
+
+**[884.27s → 885.93s]** around what's useful for humans
+
+**[885.93s → 888.89s]** and what's perhaps not useful or even harmful.
+
+**[888.89s → 891.93s]** And so that's what we mean most of the time
+
+**[891.93s → 893.25s]** when we talk about this,
+
+**[893.25s → 895.77s]** but abstracted from the particulars
+
+**[895.77s → 897.53s]** of human society and ethics,
+
+**[897.53s → 901.01s]** we really just mean aligning with whatever direction
+
+**[901.01s → 903.09s]** we give them in the feedback.
+
+**[903.09s → 906.25s]** So that's what makes it so powerful is however
+
+**[906.25s → 909.25s]** you choose to give feedback, that's what the model's
+
+**[909.25s → 910.53s]** going to learn.
+
+**[910.53s → 912.97s]** And how does it work?
+
+**[912.97s → 916.21s]** Well, you start with a pre-trained LLM
+
+**[916.21s → 921.13s]** and you can start with, say, GPT 40.
+
+**[921.13s → 924.13s]** Now, GPT 40 and most of the LLMs that you're likely
+
+**[924.13s → 925.69s]** going to start with are actually,
+
+**[925.69s → 927.53s]** they've already been instruction tuned.
+
+**[927.53s → 931.05s]** So they've already gone through quite a bit of RLHF
+
+**[931.05s → 936.05s]** in order to, again, behave like a little chatty assistant
+
+**[936.05s → 938.33s]** that you can ask questions to and get answers.
+
+**[938.33s → 941.85s]** The actual truly foundational models,
+
+**[941.85s → 945.45s]** and unfortunately the demo for this is not up,
+
+**[945.45s → 948.77s]** hugging face spaces are not always reliable,
+
+**[948.77s → 951.05s]** but they can be cool demos.
+
+**[952.33s → 955.17s]** This is not a chatbot, this is a model
+
+**[955.17s → 957.37s]** that is just a completion model.
+
+**[957.37s → 959.73s]** And that's what when you train on the internet,
+
+**[959.73s → 962.17s]** that's what you get before any reinforcement learning
+
+**[962.17s → 963.17s]** with human feedback.
+
+**[963.17s → 964.49s]** So if you look at the example prompts,
+
+**[964.49s → 968.97s]** and you can imagine how they would continue,
+
+**[968.97s → 970.85s]** press J, if I put cheese into the fridge,
+
+**[970.85s → 971.69s]** will it melt?
+
+**[971.69s → 973.13s]** Answer, colon space.
+
+**[973.13s → 974.77s]** And then it would answer the question.
+
+**[974.77s → 976.17s]** So there were these tricks.
+
+**[976.17s → 980.33s]** And not that long ago, basically GPT2 or earlier,
+
+**[980.33s → 983.49s]** I remember looking at this four or five years ago,
+
+**[983.49s → 988.29s]** The cutting edge models were basically just completion models.
+
+**[988.29s → 990.37s]** And so if you wanted to use them to get answers,
+
+**[990.37s → 995.37s]** you had to do these funny things to sort of make it work.
+
+**[995.37s → 997.45s]** Or just accept that there are actually
+
+**[997.45s → 998.97s]** use cases for completion models.
+
+**[998.97s → 1001.61s]** Maybe you want to just give it some text and have it
+
+**[1001.61s → 1002.69s]** right to Mr. Van Artekhoel.
+
+**[1002.69s → 1003.81s]** That's a valid use case.
+
+**[1003.81s → 1007.20s]** You don't necessarily want to ask it to write your article.
+
+**[1007.20s → 1009.68s]** But reinforcement learning with human feedback
+
+**[1009.68s → 1012.72s]** takes a model that is just oriented towards completing
+
+**[1012.72s → 1018.48s]** sorts of prompts and instead like we're all familiar with chat GTT you would just ask it like
+
+**[1018.48s → 1022.96s]** hey if I put cheese in the fridge will it melt or hey what's this plus this you know
+
+**[1023.92s → 1037.04s]** or you know who is this or whatever so how does it do that and what it does is we have a pre-trained
+
+**[1037.04s → 1044.08s]** model and then we collect human feedback based on model outputs so we have inputs to the
+
+**[1044.08s → 1046.18s]** the model and outputs.
+
+**[1046.18s → 1050.72s]** So actually the inputs would start by looking kind of like this.
+
+**[1050.72s → 1053.98s]** And then the model would output whatever.
+
+**[1053.98s → 1055.88s]** And we would say, well, actually,
+
+**[1055.88s → 1057.32s]** we want you to answer the question.
+
+**[1057.32s → 1059.80s]** And so we score it, especially inputs,
+
+**[1059.80s → 1060.96s]** wouldn't you look exactly like that.
+
+**[1060.96s → 1062.56s]** The inputs would look like the questions you want
+
+**[1062.56s → 1064.66s]** to ask, you want it to be tuned for.
+
+**[1064.66s → 1066.88s]** So again, this is just more training.
+
+**[1066.88s → 1068.64s]** And in training and machine learning,
+
+**[1068.64s → 1071.12s]** you always need the input and the output.
+
+**[1071.12s → 1075.08s]** you need the independent variable and the dependent variable
+
+**[1075.08s → 1076.92s]** if you want to get really mathy about it.
+
+**[1076.92s → 1079.24s]** You need the pair of them to actually
+
+**[1079.24s → 1082.08s]** guide the model to update its internal rates.
+
+**[1082.08s → 1084.36s]** So its probabilities are shifted to be more likely
+
+**[1084.36s → 1086.08s]** to make output like that in the future.
+
+**[1086.08s → 1087.84s]** That's all we're doing at a top level.
+
+**[1087.84s → 1091.60s]** And of course, dig much more neat at the top level
+
+**[1091.60s → 1093.24s]** and the math gets ridiculous.
+
+**[1093.24s → 1096.32s]** And honestly, that's not what we're going to talk about.
+
+**[1096.32s → 1099.52s]** If you're curious about it, I'm sure we can find some resources.
+
+**[1099.52s → 1102.48s]** but it's not useful to go too deep into the math
+
+**[1102.48s → 1104.16s]** from a development perspective.
+
+**[1104.16s → 1106.80s]** The interwisher you wanna have is more around the tools
+
+**[1106.80s → 1109.21s]** and the systems and the architecture.
+
+**[1109.21s → 1111.13s]** And that's what will let you build usefully on it.
+
+**[1111.13s → 1114.57s]** The only reason to go deeper into the actual math of it
+
+**[1114.57s → 1116.97s]** is if you're really gunning for a job,
+
+**[1116.97s → 1120.33s]** actually at OpenAI or something, I suppose.
+
+**[1120.33s → 1122.45s]** And even then, probably a lot of people there
+
+**[1122.45s → 1124.57s]** don't really dig into the math either.
+
+**[1124.57s → 1127.45s]** So we give it input
+
+**[1127.45s → 1130.45s]** And the untuned model gives crappy output.
+
+**[1130.45s → 1133.41s]** And the human looks at the crappy output
+
+**[1133.41s → 1135.01s]** and scores it and corrects it.
+
+**[1135.01s → 1138.09s]** And then gives it back to the model to train it.
+
+**[1138.09s → 1140.01s]** And that's the rewards here.
+
+**[1140.01s → 1142.93s]** And that updates it and you just repeat.
+
+**[1142.93s → 1146.01s]** You sort of have a loop where you continue to do it
+
+**[1146.01s → 1148.37s]** where, okay, the model's been tuned a bit.
+
+**[1148.37s → 1149.69s]** Let's give it some other problems.
+
+**[1149.69s → 1150.69s]** Let's see what it outputs.
+
+**[1150.69s → 1152.37s]** Let's continue to correct the output
+
+**[1152.37s → 1154.97s]** and reward it or penalize it based on the quality
+
+**[1154.97s → 1156.17s]** of its outputs.
+
+**[1156.17s → 1159.05s]** And if you do this on enough pairs,
+
+**[1159.05s → 1162.43s]** you get a model that does what you want, right?
+
+**[1162.43s → 1164.25s]** That's the general idea here.
+
+**[1164.25s → 1166.53s]** There's a lot of potential details that
+
+**[1167.81s → 1170.77s]** we don't need to really get into like the ranking.
+
+**[1171.69s → 1173.29s]** So there are ranking mechanisms.
+
+**[1173.29s → 1176.29s]** You may be familiar with ELO if you follow the chess
+
+**[1176.29s → 1179.37s]** or I guess maybe sport world in general.
+
+**[1180.29s → 1183.81s]** But the specific ranking mechanism
+
+**[1183.81s → 1186.13s]** doesn't really matter that much.
+
+**[1186.13s → 1188.53s]** The point is is that you can build in however,
+
+**[1188.53s → 1191.33s]** probably want to do that from our use case,
+
+**[1191.33s → 1194.13s]** even though we're not just be using OpenAI as API,
+
+**[1194.13s → 1196.13s]** we're still going to be using frameworks and tools
+
+**[1196.13s → 1198.01s]** that think about most of this for us.
+
+**[1198.01s → 1200.53s]** So we're not going to dig into this level directly,
+
+**[1200.53s → 1204.73s]** but it's good to know that this is going on behind the scenes.
+
+**[1204.73s → 1205.73s]** All right, pausing again,
+
+**[1205.73s → 1209.41s]** because this is possibly the most busy, complicated slide
+
+**[1209.41s → 1211.28s]** we've got.
+
+**[1211.28s → 1212.48s]** So if you have questions,
+
+**[1212.48s → 1218.48s]** plus I want to sit my water,
+
+**[1218.48s → 1220.20s]** I can also come back.
+
+**[1220.20s → 1223.02s]** So how does this look?
+
+**[1223.02s → 1228.02s]** Well, this is to be clear a very simple example
+
+**[1228.30s → 1229.90s]** that's not necessarily him.
+
+**[1229.90s → 1232.18s]** In fact, it definitely isn't full of real world,
+
+**[1232.18s → 1234.62s]** but it has all the pieces that you'd need.
+
+**[1234.62s → 1236.50s]** And you can do it with Langsmith.
+
+**[1236.50s → 1238.06s]** And you can do this.
+
+**[1238.06s → 1240.18s]** This is building an on-chat open AI.
+
+**[1240.18s → 1244.38s]** So you'd be fine tuning a GPT model in this case,
+
+**[1244.38s → 1247.22s]** but you could have similar code for the open models.
+
+**[1247.22s → 1251.80s]** You just basically change what you're connecting to here.
+
+**[1251.80s → 1255.80s]** And you'd have some logic to actually send a prompt,
+
+**[1255.80s → 1257.80s]** which is code you've seen a bunch.
+
+**[1257.80s → 1258.80s]** That's why it's not here.
+
+**[1258.80s → 1260.80s]** But I'll tag out in a sec to actually run this.
+
+**[1260.80s → 1263.80s]** And then you have the prompt.
+
+**[1263.80s → 1265.80s]** And then you need to have a run ID.
+
+**[1265.80s → 1268.80s]** Because that's what you attach the feedback to.
+
+**[1268.80s → 1272.80s]** And so you send the prompt.
+
+**[1272.80s → 1276.09s]** You get the response.
+
+**[1276.09s → 1282.33s]** And then you use the run ID and the feedback to score the prompt.
+
+**[1282.65s → 1287.61s]** And the score right now is basically hard coded, which
+
+**[1287.61s → 1290.49s]** refer just always passing into the feedback as thumbs up.
+
+**[1290.49s → 1294.09s]** And this is just checking if the feedbacks thumbs up score at one, otherwise zero.
+
+**[1294.33s → 1298.33s]** Right. And it's very typical to score one or zero.
+
+**[1298.33s → 1300.17s]** And you might think, well, why just one or zero?
+
+**[1300.17s → 1305.67s]** Well, you're scoring 20,000 of these, you know, one or zero is actually pretty good
+
+**[1305.67s → 1310.23s]** because in the average of that basically gives you a proportion of 0.78 or whatever.
+
+**[1310.87s → 1316.71s]** And it's, you know, math people like having their scores live in the unit interval from 0 to 1
+
+**[1316.71s → 1326.55s]** or a variety of reasons. So let me actually, I think I have the example here the way I want it.
+
+**[1326.55s → 1335.27s]** Let's actually look at it. Let's kind of zoom in here. So yeah, the actual invoking
+
+**[1335.27s → 1339.11s]** is just setting it up saying you are a helpful assistant,
+
+**[1339.11s → 1342.15s]** and here's the message and so forth and so on.
+
+**[1342.15s → 1345.83s]** And for the run ID, I'm just making a random UID,
+
+**[1345.83s → 1348.59s]** which is not really the correct way to do it
+
+**[1348.59s → 1351.71s]** and we want to actually collect the true run ID
+
+**[1351.71s → 1353.35s]** from the response and all that,
+
+**[1353.35s → 1355.87s]** but it's just to make the code actually run.
+
+**[1355.87s → 1360.67s]** And so if we were to look at it and run it,
+
+**[1360.67s → 1362.79s]** takes a second, and the actual prompt is saying,
+
+**[1362.79s → 1364.91s]** hey, translate this from English to French.
+
+**[1364.91s → 1368.83s]** file of programming and it translates it to jador.
+
+**[1368.83s → 1371.27s]** I can't announce French very well
+
+**[1372.27s → 1375.31s]** and our score is one because we pass thumbs up
+
+**[1375.31s → 1376.95s]** into score prompt.
+
+**[1376.95s → 1379.19s]** And this would be recorded then
+
+**[1380.23s → 1383.15s]** because that's what the score prompt function ultimately does
+
+**[1383.15s → 1387.63s]** and it creates this feedback that gets scored.
+
+**[1387.63s → 1391.75s]** And by doing that, we then would have the data available
+
+**[1391.75s → 1397.55s]** to us to make a data set and use as a data set for fine tuning, which you already saw earlier
+
+**[1397.55s → 1404.15s]** this week uploading the data set to open AI. So again, this is very proof of concept.
+
+**[1404.15s → 1407.83s]** A real world application, you'd have other logic for deciding how to score the prompt.
+
+**[1407.83s → 1412.75s]** Maybe this would actually basically be exposed in a Web UI. One of the best ways to get
+
+**[1412.75s → 1417.47s]** data, really the way all the truly large data sets are built, is essentially build an
+
+**[1417.47s → 1424.99s]** application that millions of people want to use and then collect data from that application based on their usage, right?
+
+**[1424.99s → 1429.23s]** Based on people thumbs up or thumbs down in movies on Netflix or something.
+
+**[1429.91s → 1437.54s]** And that becomes your feedback mechanism. So this is again, just to get the concept of it.
+
+**[1438.66s → 1445.58s]** Now, doing the actual foundational fine tuning is a little more intense than thumbs up and thumbs down. I believe that open AI,
+
+**[1445.58s → 1452.22s]** probably hired hundreds of contractors and made them argue with computers for many, many hours
+
+**[1452.22s → 1457.74s]** in order to do so fine tuning. So fine tuning can be more complicated depending what it is you're
+
+**[1457.74s → 1465.58s]** doing, but just a zero one response built on the quality of the output and scored by a human
+
+**[1465.58s → 1470.38s]** at a high level. That's the sort of general way to do it that works pretty well for a wide set
+
+**[1470.38s → 1471.38s]** of these cases.
+
+**[1471.38s → 1478.83s]** I'm going to keep going because I am assuming there are no questions.
+
+**[1478.83s → 1481.99s]** But now we're going to get into some of the actual concepts for how we find to.
+
+**[1481.99s → 1486.15s]** And then I want to make sure to actually run through the code, even show off lightning
+
+**[1486.15s → 1490.75s]** a little bit, which if you haven't signed up for yet, it's pretty spiffy.
+
+**[1490.75s → 1493.03s]** I mean, we're playing with it ourselves.
+
+**[1493.03s → 1497.91s]** And like the instructional staff were enjoying it.
+
+**[1497.91s → 1501.55s]** All right, how do you actually find two?
+
+**[1501.55s → 1505.43s]** Talk a lot about why and what it is.
+
+**[1505.43s → 1508.42s]** Well, we need to be efficient about it
+
+**[1508.42s → 1513.02s]** because the original models have billions and billions of parameters.
+
+**[1513.02s → 1515.82s]** And you could, by the way,
+
+**[1515.82s → 1520.18s]** find two in a way that actually updates all those billions of parameters.
+
+**[1520.18s → 1521.90s]** You could.
+
+**[1521.90s → 1525.98s]** There's that's potentially supported operation.
+
+**[1525.98s → 1527.98s]** It's not what most people do most of the time.
+
+**[1527.98s → 1530.10s]** And there's at least two really good reasons for that.
+
+**[1530.10s → 1534.10s]** One of those is efficiency, which is sort of emphasized
+
+**[1534.10s → 1535.66s]** right here.
+
+**[1535.66s → 1540.74s]** And then the other reason is that you kind of have
+
+**[1540.74s → 1545.78s]** a larger risk of regression if you find to the whole model.
+
+**[1545.78s → 1548.14s]** And what I mean by regression in this case
+
+**[1548.14s → 1551.62s]** is you might like performance regression, not statistical
+
+**[1551.62s → 1552.22s]** regression.
+
+**[1552.22s → 1554.66s]** You might cause the model to mess things up.
+
+**[1554.66s → 1559.42s]** your fine tuning might tweak weights that you actually didn't want to tweak.
+
+**[1559.78s → 1564.74s]** And all of a sudden your model no longer, you know,
+
+**[1565.26s → 1567.38s]** knows certain things it needs to know, right?
+
+**[1567.86s → 1570.82s]** And so a lot of fine tuning techniques instead,
+
+**[1571.74s → 1573.90s]** freeze the original transform.
+
+**[1574.98s → 1580.42s]** That's the T and GPT, not the actual neural network architectures,
+
+**[1580.42s → 1582.22s]** statistical, supervised learning model.
+
+**[1582.22s → 1583.46s]** It's doing all this magic.
+
+**[1583.46s → 1585.98s]** that's the next token predictor, right?
+
+**[1585.98s → 1587.98s]** You give it tokens, it gives you more tokens.
+
+**[1587.98s → 1590.62s]** That's what this all boils down to at the end of the day.
+
+**[1590.62s → 1592.78s]** Tokens are pieces of words.
+
+**[1592.78s → 1597.85s]** And then we update some fully connected layers
+
+**[1597.89s → 1601.97s]** that are sort of external to the frozen model.
+
+**[1601.97s → 1604.53s]** And this is much smaller than the frozen model.
+
+**[1604.53s → 1607.21s]** The frozen model could be billions of parameters.
+
+**[1607.21s → 1610.09s]** We make just, you know, there could be a hundred layers
+
+**[1610.09s → 1613.09s]** or something, we just make a few layers, few parameters.
+
+**[1613.09s → 1618.65s]** fully connected means that all of the parameters in one layer connect to all the parameters in the next layer.
+
+**[1618.65s → 1622.73s]** That's all that means if you're not familiar with neural network jargon,
+
+**[1622.73s → 1626.49s]** it's a very typical way to make your neural network go.
+
+**[1626.49s → 1633.66s]** And this is what we're training and it's smaller, so it's more efficient and we're not going to,
+
+**[1633.66s → 1636.70s]** I mean, keep in mind you could still have performance regression.
+
+**[1636.70s → 1639.90s]** You could still because this becomes the final layers before the output.
+
+**[1639.90s → 1642.18s]** This will significantly change the behavior of your model.
+
+**[1642.18s → 1645.78s]** So you can find to the model this way and still cause your model to mess things up
+
+**[1645.78s → 1646.78s]** that it got right before.
+
+**[1646.98s → 1648.58s]** And it's absolutely a possibility.
+
+**[1649.08s → 1652.88s]** It's another part of the many reasons why you need to have accuracy measurements
+
+**[1653.48s → 1660.18s]** and benchmarking and you need to be able to know where you're going when you're doing this sort of thing basically.
+
+**[1661.08s → 1666.14s]** But I'd say it's a lot less likely than when you try to find to the whole Shabang.
+
+**[1666.14s → 1672.00s]** So there are still some considerations.
+
+**[1672.00s → 1676.32s]** You know, it's still going to cost something computationally,
+
+**[1676.32s → 1678.00s]** and you're still going to need to balance
+
+**[1678.00s → 1682.84s]** what you do here exactly with what your needs are.
+
+**[1682.84s → 1685.60s]** And also because you're not updating the full model,
+
+**[1685.60s → 1687.52s]** there might be, like I don't,
+
+**[1687.52s → 1689.52s]** I don't think this would be an adequate way
+
+**[1689.52s → 1692.20s]** to take a foundational completion model
+
+**[1692.20s → 1694.92s]** and make it into a chat model, right?
+
+**[1694.92s → 1696.96s]** Because just adding, I mean, maybe you could do it.
+
+**[1696.96s → 1701.56s]** But I'd be quite sure that when they were taking
+
+**[1701.56s → 1704.08s]** the foundational model and making it a chat model,
+
+**[1704.08s → 1708.12s]** they probably updated some of the internal weights as well.
+
+**[1708.12s → 1710.04s]** They didn't just add layers at the end.
+
+**[1712.31s → 1714.51s]** But for most practical use cases,
+
+**[1714.51s → 1717.15s]** for any fine-tuning that are small to medium business,
+
+**[1717.15s → 1719.71s]** that only wants to blow 5K on it's gonna do,
+
+**[1719.71s → 1723.29s]** this approach makes arguably a lot of sense.
+
+**[1723.29s → 1728.02s]** So that's path for endorphishing fine tuning.
+
+**[1728.02s → 1728.86s]** What is Laura?
+
+**[1728.86s → 1732.86s]** Well, Laura is basically an actual approach to path
+
+**[1732.86s → 1736.66s]** that gets into the linear algebra a little bit.
+
+**[1736.66s → 1739.58s]** And as I said, we're not gonna go in depth here,
+
+**[1739.58s → 1742.94s]** but you do need an intuition for what this is
+
+**[1742.94s → 1746.42s]** because it's basically where these extra layers come from
+
+**[1746.42s → 1750.22s]** and we call them adapters.
+
+**[1750.22s → 1754.82s]** And so, Laura stands for low rank adaptations,
+
+**[1754.82s → 1758.86s]** but if you adapt to word, low rank is a linear algebra thing.
+
+**[1758.86s → 1762.38s]** The rank of a matrix is a linear algebra way to talk about
+
+**[1762.38s → 1766.70s]** sort of the size of complexity of that matrix.
+
+**[1766.70s → 1771.75s]** And so, there are linear algebra operations,
+
+**[1771.75s → 1774.71s]** these sort of dimensional reduction things.
+
+**[1774.71s → 1777.35s]** And I'm not gonna get into the details of that.
+
+**[1777.35s → 1779.79s]** I'm not even, there's probably multiple ways to do it
+
+**[1779.79s → 1783.43s]** I'm not sure exactly which way is going to be applied
+
+**[1783.43s → 1785.39s]** than you get in library, you'd have to actually really dig
+
+**[1785.39s → 1786.67s]** in to find that.
+
+**[1786.67s → 1789.71s]** But the general intuition is it takes a large matrix,
+
+**[1789.71s → 1791.67s]** which is a large set of numbers,
+
+**[1791.67s → 1795.79s]** and it makes a smaller matrix that is kind of similar
+
+**[1795.79s → 1796.83s]** to that large matrix.
+
+**[1796.83s → 1799.87s]** Obviously, it can't be the same, right?
+
+**[1799.87s → 1801.79s]** It cannot, because it has fewer numbers.
+
+**[1801.79s → 1804.67s]** So it's necessarily a lossy transformation
+
+**[1804.67s → 1807.43s]** to go from a higher rank to a lower rank, loses information,
+
+**[1807.43s → 1813.35s]** just like taking a wave and making it an MP3 fundamentally loses information when you do that.
+
+**[1813.35s → 1818.87s]** So you're making it smaller in a lossy way as opposed to lossless, like zip, right?
+
+**[1819.75s → 1825.27s]** But you can make it a lot smaller by having to loss the transformation and you still,
+
+**[1825.27s → 1831.51s]** just like an MP3, still pretty much sound like a wave, like a low rank adaptation matrix still
+
+**[1831.51s → 1836.07s]** points in a similar direction in whatever multidimensional vector space, right?
+
+**[1836.07s → 1842.39s]** like if you did any sort of linear algebra operations, it would feel like a similar matrix.
+
+**[1843.43s → 1848.71s]** And it's also done in such a way that the linear algebra still lines up that you've got
+
+**[1848.71s → 1853.91s]** numbers of rows and columns aligning so you can multiply things and pass your neuron
+
+**[1854.55s → 1860.08s]** activations on and all that sort of stuff. So again, that's what's happening here
+
+**[1860.08s → 1868.84s]** conceptually, not the full math obviously, but the reason we do that is because this low
+
+**[1868.84s → 1876.44s]** rank adaptation means kind of the same thing, but we can fine tune it and keep the old thing.
+
+**[1876.44s → 1884.08s]** So we keep the old, you know, no adapter models, like, sorry, I think there's essentially
+
+**[1884.08s → 1891.24s]** this box here and we keep whatever the pre-trained is, but we're adding these adapters.
+
+**[1891.24s → 1895.60s]** And these adapters are smaller and they still give us our, sorry, the base model is here.
+
+**[1895.60s → 1897.20s]** I'm going in the wrong direction.
+
+**[1897.20s → 1900.24s]** So we keep the base model.
+
+**[1900.24s → 1901.24s]** What I'm saying is correct.
+
+**[1901.24s → 1904.16s]** I'm just indicating the wrong part of the diagram.
+
+**[1904.16s → 1911.40s]** But we add these adapters and these adapters give us another layer before our output that
+
+**[1911.40s → 1917.40s]** we can fine tune and steer in the direction of things. And this helps it adapt to new tasks.
+
+**[1917.40s → 1925.63s]** That's what fine tuning is about. Quantization, what's that? So again, this is some up here. PEPH is just
+
+**[1925.63s → 1932.27s]** the general school of thought, if you will, of training models fine tuning them in an efficient way.
+
+**[1932.27s → 1939.87s]** Laura is a particular linear algebra approach to doing PEPH. Quantization is another thing you can
+
+**[1939.87s → 1942.99s]** do to basically save on computational resources.
+
+**[1942.99s → 1946.47s]** And technically, you don't have, like, quantization
+
+**[1946.47s → 1947.67s]** is actually broader than this.
+
+**[1947.67s → 1949.87s]** You can apply quantization to Laura.
+
+**[1949.87s → 1951.27s]** That's what Cue Laura is.
+
+**[1951.27s → 1954.59s]** You can also apply quantization to just the model itself.
+
+**[1954.59s → 1956.95s]** You can quantize a model without finding two needed,
+
+**[1956.95s → 1958.95s]** just to make it smaller.
+
+**[1958.95s → 1961.95s]** And if you want to run your model on the edge
+
+**[1961.95s → 1964.23s]** or something like that, that could be very good reason
+
+**[1964.23s → 1965.27s]** for doing that.
+
+**[1965.27s → 1968.07s]** So all quantization is, if you're not familiar with it,
+
+**[1968.07s → 1972.47s]** is it's basically truncating numbers, taking 32 bit floats, making the mate bit anxious.
+
+**[1973.27s → 1979.19s]** And by doing that, you save a lot of bits, right? 24 bits per number in this particular case.
+
+**[1979.19s → 1983.27s]** And there's no hard reason to stop at 8. You could quantize down further.
+
+**[1984.79s → 1988.87s]** In fact, I've even been reading that there is an LLM that's experimenting with like just
+
+**[1989.51s → 1996.47s]** one bit, just like 0-1 for everything, right? And of course, you might need more
+
+**[1998.07s → 2003.43s]** nodes when you do that. That's a kind of extreme case. Typically you're going to quantize to 8 or 4,
+
+**[2004.55s → 2012.63s]** something like that. And what quantization will do, again, just like the adapter is a
+
+**[2012.63s → 2019.51s]** lossy version of the layers in the base model, because it's a low rank adaptation, quantizing is
+
+**[2019.51s → 2027.68s]** lossy. Like this 8-bit integer is a pretty similar number to this 32-bit float, out to 8-bits,
+
+**[2027.68s → 2033.76s]** right? But in that remaining 24 bits of detail, it doesn't have. And it's just gets truncated away.
+
+**[2034.48s → 2041.36s]** And so why might that matter? Well, that affects the numerical accuracy of your predictions, which
+
+**[2041.36s → 2046.64s]** basically it's a little bit hard to think of it in the context of a next token predictor, because
+
+**[2047.36s → 2053.84s]** it's not like there's the same sort of objective accuracy measure as compared to pure numeric output.
+
+**[2053.84s → 2059.12s]** But it's going to change the numerical output and ultimately change the class is predicted in a way
+
+**[2059.12s → 2066.15s]** that makes it not as accurate as the original full trained model. That said, in a lot of real
+
+**[2066.15s → 2074.79s]** cases, the loss in accuracy is nominal and you save just a ton of resources. It's much easier to
+
+**[2074.79s → 2080.63s]** potentially find two in a model like this. So you find two in the quantized version. You could also,
+
+**[2080.63s → 2083.91s]** I mean, maybe there are situations where you actually want to fine tune
+
+**[2084.95s → 2090.23s]** pre-quantization, but then quantize after to ship the quantized model, because you can't
+
+**[2090.23s → 2095.51s]** worry about the edge resources. There's ongoing, I think, I don't think the field has a final
+
+**[2095.51s → 2099.19s]** answer to this, whether it's better to quantize before or after. There are some people who
+
+**[2099.19s → 2103.83s]** probably argue like, well, actually, if you're going to ship a quantized model, you should quantize
+
+**[2103.83s → 2109.12s]** has been trained quantized model as well.
+
+**[2109.12s → 2112.92s]** But regardless, natural quantization is just truncating numbers.
+
+**[2112.92s → 2117.52s]** And I hope you can see how it doesn't just apply to Laura.
+
+**[2117.52s → 2119.56s]** But it does apply to her.
+
+**[2119.56s → 2122.32s]** You can quantize these adapters that you've
+
+**[2122.32s → 2126.00s]** made, these smaller matrices that represent the full ones,
+
+**[2126.00s → 2130.40s]** and make them even smaller, and make them even easier to train.
+
+**[2130.40s → 2134.88s]** So all these tricks basically are what lets us take,
+
+**[2134.88s → 2136.16s]** because it's kind of mind-boggling,
+
+**[2136.16s → 2137.58s]** you think about it, I think I even saw a comment
+
+**[2137.58s → 2139.98s]** in the channel, it's amazing that we can use
+
+**[2139.98s → 2143.96s]** freely available free tier resources
+
+**[2143.96s → 2148.46s]** to fine tune these Lama models
+
+**[2148.46s → 2150.24s]** with billions of parameters that were trained
+
+**[2150.24s → 2152.96s]** on the internet by Facebook with millions
+
+**[2152.96s → 2154.68s]** and millions of dollars and such.
+
+**[2154.68s → 2157.08s]** Yeah, it is amazing, but that's because
+
+**[2157.08s → 2160.16s]** with all these tricks the actual cost of doing it
+
+**[2160.16s → 2161.62s]** goes down quite a bit.
+
+**[2163.84s → 2165.88s]** You can still spend a lot of money on doing this.
+
+**[2165.88s → 2167.76s]** At that point, the money scales
+
+**[2167.76s → 2169.80s]** at how much data you're sending to it.
+
+**[2169.80s → 2173.00s]** And we're not gonna find to it on a huge corpus today
+
+**[2173.00s → 2175.28s]** because it wouldn't run in a class,
+
+**[2175.28s → 2177.72s]** and that's not the point of what we're doing right now.
+
+**[2177.72s → 2182.72s]** Maybe for later projects or things you do at work,
+
+**[2182.82s → 2185.16s]** you would think about trying to incorporate this
+
+**[2185.16s → 2186.28s]** with larger data sets.
+
+**[2186.28s → 2190.00s]** And that's again, once you get your head around all this stuff,
+
+**[2190.00s → 2191.40s]** And that's where the work always is.
+
+**[2191.40s → 2193.72s]** The most time is wrestling data,
+
+**[2193.72s → 2195.24s]** getting the data that's good
+
+**[2195.24s → 2200.14s]** and the shape you need it to do all this cool stuff.
+
+**[2200.14s → 2202.34s]** Ooh, okay, I feel like I've talked quite a bit.
+
+**[2202.34s → 2204.90s]** So this is the slide that puts it all together.
+
+**[2204.90s → 2207.02s]** I've already talked about all these pieces pretty much.
+
+**[2207.02s → 2209.18s]** So I'm gonna just leave it on this slide
+
+**[2209.18s → 2224.48s]** and pause to see if there are any questions.
+
+**[2224.48s → 2226.12s]** Saving the hard questions for later,
+
+**[2226.12s → 2230.85s]** when we get to the code.
+
+**[2230.85s → 2233.53s]** I have a kind of a general question.
+
+**[2233.53s → 2235.03s]** Sure.
+
+**[2235.03s → 2239.05s]** So this might be a real beginner question,
+
+**[2239.05s → 2242.77s]** but when it comes to this feedback loop,
+
+**[2244.72s → 2246.16s]** is there a sense of,
+
+**[2246.16s → 2251.16s]** is there a memory of the feedback that's given to the model,
+
+**[2252.12s → 2255.16s]** or does the model sort of like change in place?
+
+**[2255.16s → 2257.64s]** That's a great question, yeah.
+
+**[2257.64s → 2263.13s]** And so I would say, I mean, I guess with that framing,
+
+**[2263.13s → 2267.05s]** think of it as the model changing in place,
+
+**[2267.05s → 2271.17s]** but what I mean by that is you're fine tuning it,
+
+**[2271.17s → 2273.53s]** you're updating the parameters of the model.
+
+**[2273.53s → 2276.81s]** And so at least in my mind,
+
+**[2276.81s → 2279.37s]** the parameters of the model are the model.
+
+**[2279.37s → 2281.61s]** And parameters again,
+
+**[2281.61s → 2283.25s]** and the language here is confusing,
+
+**[2283.25s → 2284.37s]** it's kind of overloading,
+
+**[2284.37s → 2285.29s]** but just to distinguish,
+
+**[2285.29s → 2287.53s]** parameter is the billions and billions of numbers
+
+**[2287.53s → 2291.01s]** internal to the model that humans never directly touched
+
+**[2291.01s → 2293.57s]** that we just steer by giving training examples.
+
+**[2293.57s → 2298.01s]** hyperparameters on the other hand are all the like weird numbers like you know
+
+**[2298.01s → 2302.69s]** beta's and learning rates and stuff that we do mess with that change how the
+
+**[2302.69s → 2307.15s]** training works. But in any case when you're doing this sort of feedback loop and
+
+**[2307.15s → 2311.37s]** if you're doing it continually or iteratively which you know the actual
+
+**[2311.37s → 2314.67s]** mechanics of it you'd have to talk with an ML ops person doing like a full-scale
+
+**[2314.67s → 2318.77s]** project with this is not a one-person thing it's a team with you know people
+
+**[2318.77s → 2323.07s]** who have expertise in training and then offer DevOps and stuff like that. But
+
+**[2323.07s → 2327.95s]** You're probably not going to train on every individual example.
+
+**[2327.95s → 2329.11s]** You're probably going to batch it.
+
+**[2329.11s → 2334.75s]** You're probably going to be like, okay, every week we collect user feedback and that gives
+
+**[2334.75s → 2339.63s]** us 100,000 new examples on average.
+
+**[2339.63s → 2345.43s]** And we use that user feedback as a training data set and we find to release a new version
+
+**[2345.43s → 2346.43s]** of the model.
+
+**[2346.43s → 2348.43s]** Something like that, right?
+
+**[2348.43s → 2352.03s]** And each time you do that, that will update the model.
+
+**[2352.03s → 2354.67s]** Now of course, what part of the model it updates
+
+**[2354.67s → 2355.63s]** depends on what you're doing.
+
+**[2355.63s → 2357.63s]** If you're doing something like this,
+
+**[2357.63s → 2359.79s]** if you're doing Laura, Q, Laura blah blah blah,
+
+**[2359.79s → 2362.95s]** you're not actually updating the original model
+
+**[2362.95s → 2366.03s]** necessarily, you're updating your adapters, right?
+
+**[2366.03s → 2368.63s]** But still, once you add the adapters,
+
+**[2368.63s → 2370.31s]** the adapters are part of the model
+
+**[2370.31s → 2375.31s]** and so much as the adapters directly impact the output model.
+
+**[2375.55s → 2377.51s]** So you're not updating these weights ever,
+
+**[2377.51s → 2379.03s]** but you are updating the weights
+
+**[2379.03s → 2381.43s]** inside your adapters every time you train.
+
+**[2382.86s → 2386.96s]** Is there any mechanism to undo an update?
+
+**[2386.96s → 2391.60s]** Ah, I mean the only way to do it truly reliably would be to revert to an earlier question.
+
+**[2391.60s → 2403.64s]** And in fact, I mean, that's reproducibility and it really, especially where I'm at, it really matters because the models that I'm working with are doing something pretty sensitive for moving identifying information.
+
+**[2403.64s → 2407.60s]** And so we track that the language for this,
+
+**[2407.60s → 2410.72s]** the service called rates and biases,
+
+**[2410.72s → 2412.84s]** that lets you track artifacts
+
+**[2412.84s → 2415.36s]** and it could connect to your Git, your S3,
+
+**[2415.36s → 2418.72s]** and have hashes and timestamps, all that sort of stuff.
+
+**[2418.72s → 2421.96s]** And so, and you can measure the accuracy of each version
+
+**[2421.96s → 2423.08s]** as you go.
+
+**[2423.08s → 2425.28s]** So you're tracking the accuracy.
+
+**[2425.28s → 2428.08s]** So this is different from lane chain.
+
+**[2428.08s → 2431.48s]** Lane chain, lane Smith is very oriented towards,
+
+**[2431.48s → 2433.46s]** I would say, the ML ops.
+
+**[2433.46s → 2438.46s]** This is kind of more like accuracy and it connects to it,
+
+**[2438.74s → 2442.74s]** but it's how I know whether or not Model V17
+
+**[2442.74s → 2444.14s]** is better than Model V16.
+
+**[2444.14s → 2447.22s]** And if it's not, I keep Model V16.
+
+**[2447.22s → 2449.34s]** And that's how that works.
+
+**[2451.67s → 2454.07s]** In general, and this is where it gets kind of hand wave
+
+**[2454.07s → 2457.27s]** because this is such a new space, but in general,
+
+**[2458.69s → 2461.25s]** training the later something is trained on
+
+**[2461.25s → 2463.65s]** and the later something is in the model architecture.
+
+**[2463.65s → 2467.89s]** And by later, I mean like the thing you just fed it or the thing right before the app
+
+**[2467.89s → 2471.37s]** with the adapters, the more impact it has on model behavior.
+
+**[2471.37s → 2475.89s]** So even though you're keeping the transformer around by adding these adapters and by training
+
+**[2475.89s → 2480.37s]** on stuff, you do substantially impact the output potentially.
+
+**[2480.37s → 2485.29s]** So it is good to have that sort of monitoring in place to make sure you're going the right
+
+**[2485.29s → 2487.54s]** direction.
+
+**[2487.54s → 2489.65s]** It's a good question.
+
+**[2489.65s → 2490.65s]** Any others?
+
+**[2490.65s → 2496.22s]** All right.
+
+**[2496.22s → 2498.66s]** All right, well, we're going to get to the code.
+
+**[2498.66s → 2502.18s]** So I'll just, you know, we're kind of at the sum up slides.
+
+**[2502.18s → 2504.74s]** The one thing I want to point out on this slide though,
+
+**[2504.74s → 2507.46s]** with Q-Lora, you know, I kind of,
+
+**[2507.46s → 2510.38s]** well, I won't say I missled, but I haven't gotten to the point yet.
+
+**[2510.38s → 2512.70s]** We're not, we actually typically quantize
+
+**[2512.70s → 2514.70s]** the original transformer too, right?
+
+**[2514.70s → 2517.82s]** So you are actually losing some quality,
+
+**[2517.82s → 2522.58s]** not just in your adapters, potentially your adapters being smaller,
+
+**[2522.58s → 2524.66s]** but you also are going to quantize the numbers
+
+**[2524.66s → 2526.78s]** inside the original model.
+
+**[2526.78s → 2530.12s]** which saves a lot of space and computation,
+
+**[2530.12s → 2532.58s]** it makes things much faster,
+
+**[2532.58s → 2537.08s]** but does potentially cause issues.
+
+**[2538.68s → 2541.02s]** In general, it depends on what you're doing,
+
+**[2541.02s → 2544.92s]** but quantized models with adequate fine tuning
+
+**[2544.92s → 2547.12s]** tend to perform very well at the tasks
+
+**[2547.12s → 2548.58s]** they're fine tuning for.
+
+**[2548.58s → 2550.18s]** What they tend to lose perhaps
+
+**[2550.18s → 2553.96s]** is some of the general reasoning
+
+**[2553.96s → 2556.26s]** or other general knowledge that they had
+
+**[2556.26s → 2557.98s]** before the fine tuning.
+
+**[2557.98s → 2559.38s]** Now, if you take a huge model
+
+**[2559.38s → 2561.10s]** and you strip it down to the essentials
+
+**[2561.10s → 2563.34s]** and you fine tune it for a particular task,
+
+**[2563.34s → 2565.10s]** what you'll get is a lean mean model
+
+**[2565.10s → 2566.90s]** that's good at that task,
+
+**[2566.90s → 2571.16s]** but perhaps lost some of its general abilities.
+
+**[2571.16s → 2573.08s]** But the thing is, that's actually,
+
+**[2573.08s → 2575.20s]** I mean, that adds to the reasons to do this
+
+**[2575.20s → 2576.96s]** because that's cost savings.
+
+**[2576.96s → 2581.08s]** Yeah, instead of paying half a penny per inference
+
+**[2581.08s → 2582.80s]** because you're using a huge model,
+
+**[2582.80s → 2585.72s]** you're paying a 20th of a penny per inference,
+
+**[2585.72s → 2587.56s]** and you're saving a lot of money that way,
+
+**[2587.56s → 2590.88s]** if you're doing tons and tons of inference.
+
+**[2590.88s → 2592.74s]** So, right.
+
+**[2592.74s → 2594.98s]** I'm not gonna read all this.
+
+**[2594.98s → 2597.90s]** You have the slides is for your reference.
+
+**[2597.90s → 2600.06s]** Probably addressed many of the points here,
+
+**[2601.02s → 2604.82s]** but there's trade-offs and comparisons here.
+
+**[2604.82s → 2607.42s]** Again, the way I think of it is that PEPT
+
+**[2607.42s → 2611.30s]** is just a general overall way.
+
+**[2611.30s → 2615.85s]** Laura is a way to do to select
+
+**[2615.85s → 2618.99s]** and only update how you actually select that subset
+
+**[2618.99s → 2620.83s]** and quantization on top of the world
+
+**[2620.83s → 2624.33s]** makes it even smaller.
+
+**[2624.33s → 2629.09s]** All right, now we are going to step through some code.
+
+**[2629.09s → 2632.97s]** And because this, even though we can do this
+
+**[2632.97s → 2635.33s]** on free resources, it can take a while to run.
+
+**[2635.33s → 2639.73s]** So I have some somewhat pre-baked results if necessary.
+
+**[2639.73s → 2642.17s]** But what we're going to do is we're going to fine tune
+
+**[2642.17s → 2644.61s]** in Lama 2 using this technique.
+
+**[2644.61s → 2647.01s]** Lama 2 is an open model.
+
+**[2647.01s → 2650.30s]** The license for it is complicated,
+
+**[2650.30s → 2651.78s]** but as long as you're not a mega corp,
+
+**[2651.78s → 2653.66s]** you can use it for pretty much anything.
+
+**[2654.66s → 2659.22s]** And we're gonna understand something about the hyper parameters.
+
+**[2659.22s → 2664.22s]** And yeah, so let's go ahead and get into it.
+
+**[2664.22s → 2669.60s]** Oh, often this turns on quickly.
+
+**[2669.60s → 2673.68s]** This is light-named, but I also have it here in a lab already,
+
+**[2673.68s → 2675.16s]** man, that we can look at.
+
+**[2675.16s → 2678.47s]** Let me do it.
+
+**[2678.47s → 2679.67s]** Oh, I can see Tom here,
+
+**[2679.67s → 2683.66s]** well we can live collaborate fancy.
+
+**[2683.66s → 2691.82s]** Well, Tom don't click anything.
+
+**[2691.82s → 2695.77s]** All right, so no, I don't want to template that.
+
+**[2695.77s → 2700.15s]** I'll just ignore that.
+
+**[2700.15s → 2702.53s]** All right, so making sure we have our dependencies
+
+**[2702.53s → 2705.61s]** and you can see there's these packages, bits and bytes,
+
+**[2705.61s → 2708.25s]** it is going to help us with a quantization
+
+**[2708.25s → 2710.65s]** as you might guess.
+
+**[2710.65s → 2713.09s]** And just importing those dependencies.
+
+**[2713.09s → 2715.49s]** Here's where we start getting to hyperprem.
+
+**[2715.49s → 2717.17s]** And there's a whole bunch of them.
+
+**[2717.17s → 2720.05s]** And if you have to really dig deep into this, again,
+
+**[2720.05s → 2722.41s]** this is why I said earlier, a major project here
+
+**[2722.41s → 2724.13s]** is generally not a one person job.
+
+**[2724.13s → 2725.93s]** It's generally something that you'll have a team,
+
+**[2725.93s → 2727.61s]** people with different specializations
+
+**[2727.61s → 2729.69s]** and your consultant collaborate.
+
+**[2729.69s → 2733.52s]** But a few that are particularly important to understand,
+
+**[2733.52s → 2737.68s]** learning rate, drop out, alpha.
+
+**[2737.68s → 2741.40s]** So, and then there's also, you can see right here,
+
+**[2741.40s → 2743.84s]** here's where we're selecting the quantization, right,
+
+**[2743.84s → 2746.84s]** Let's see here.
+
+**[2746.84s → 2748.84s]** I guess dropouts towards the top.
+
+**[2748.84s → 2751.84s]** So we'll start with alpha and dropout.
+
+**[2751.84s → 2756.00s]** So alpha varies what alpha means.
+
+**[2756.00s → 2759.00s]** It's one of those words that all they use all over math.
+
+**[2759.00s → 2764.51s]** But in this context, it's basically to wait for how much.
+
+**[2764.51s → 2768.51s]** The output from the adapters matter versus the output from the base model.
+
+**[2768.51s → 2770.51s]** So because you can you can steer that.
+
+**[2770.51s → 2774.83s]** that. And so that's by the way one way to make your fine tuning a little more conservative is you
+
+**[2774.83s → 2779.55s]** can have, I believe, a smaller alpha. Double check the details because it could even vary based on
+
+**[2779.55s → 2784.03s]** implementation, but you could you could specify the parameters such that more of the output is
+
+**[2784.03s → 2790.27s]** steered by the original untuned parameters or maybe truncated, but still untuned parameters
+
+**[2790.27s → 2794.19s]** versus more of the output is steered from the parameters that you're actually updating when
+
+**[2794.19s → 2800.27s]** you feed into a trade example. So that's what alpha is. The balance between those two things
+
+**[2800.51s → 2805.32s]** Dropout is a mechanism to reduce overfitting.
+
+**[2805.32s → 2807.64s]** If you're not familiar with machine learning,
+
+**[2807.64s → 2811.56s]** all overfitting is it's training a model so much
+
+**[2811.56s → 2815.40s]** that it really learns the data you give it,
+
+**[2815.40s → 2817.72s]** but it doesn't generalize well.
+
+**[2817.72s → 2819.40s]** It can actually happen.
+
+**[2819.40s → 2821.48s]** Now, LLMs have so many parameters
+
+**[2821.48s → 2825.44s]** that neural networks in general are
+
+**[2825.44s → 2828.52s]** very resistant to overfitting, one would argue,
+
+**[2828.52s → 2830.64s]** But it can still be a concern.
+
+**[2830.64s → 2833.72s]** And certainly with classical models, it can really easily happen.
+
+**[2833.72s → 2837.16s]** Because if you feed so many examples to it,
+
+**[2837.16s → 2839.86s]** that it memorizes the examples, but it doesn't actually
+
+**[2839.86s → 2843.56s]** learn the pattern when you give it an example it hasn't
+
+**[2843.56s → 2845.44s]** seen before.
+
+**[2845.44s → 2849.40s]** And it's not just about feeding the examples,
+
+**[2849.40s → 2851.64s]** but letting the parameters become really tightly
+
+**[2851.64s → 2854.12s]** attuned to the examples is really what it's about.
+
+**[2854.12s → 2856.12s]** So I'm being literally hand-wavy here,
+
+**[2856.12s → 2858.24s]** because this is not supposed to be a statistics class.
+
+**[2858.24s → 2863.24s]** But the point is is what Dropout does is it reduces the risk of overfitting.
+
+**[2863.24s → 2870.24s]** The higher the dropout, basically the more numbers you randomly drop in your train.
+
+**[2870.24s → 2872.74s]** You might be like, wait, why did I just randomly drop stuff?
+
+**[2872.74s → 2874.74s]** I'm spending all this compute to update the numbers.
+
+**[2874.74s → 2876.24s]** Why would I drop them?
+
+**[2876.24s → 2880.81s]** Well, honestly, I'm not sure that there's a great math proof reason why.
+
+**[2880.81s → 2883.81s]** It's one of those things that it works in application.
+
+**[2883.81s → 2889.25s]** These models have so many parameters that dropping some of them randomly
+
+**[2889.25s → 2897.12s]** doesn't make them, like it actually makes them more robust because when you think about it's a network with many, many nodes to many, many other nodes.
+
+**[2897.12s → 2902.56s]** And if it realizes that it can't just rely on one particular node because any parameter might be dropped,
+
+**[2902.56s → 2906.04s]** that makes it actually learn things through multiple paths.
+
+**[2906.04s → 2912.52s]** You can think of it similar to, if you've ever heard of like chaos testing or whatever from the DevOps people,
+
+**[2912.52s → 2916.36s]** They're like, let's just randomly break infrastructure,
+
+**[2916.36s → 2918.84s]** randomly turn off EC2 instances,
+
+**[2918.84s → 2921.68s]** and make sure that our stack still stays up
+
+**[2921.68s → 2922.84s]** or something like that, right?
+
+**[2922.84s → 2926.48s]** It's that sort of idea where it's like a solid infrastructure,
+
+**[2926.48s → 2928.88s]** a solid architecture is something that you can sort of take
+
+**[2928.88s → 2931.20s]** a hammer to and knock pieces out of,
+
+**[2931.20s → 2933.15s]** and it doesn't fall over.
+
+**[2933.15s → 2936.32s]** And so that's what Dropout is doing for us.
+
+**[2936.32s → 2940.00s]** And then once the last frame we want to highlight here,
+
+**[2940.00s → 2940.76s]** learning rate.
+
+**[2940.76s → 2941.96s]** So that's another good one.
+
+**[2941.96s → 2944.28s]** It's probably lower down.
+
+**[2944.28s → 2946.72s]** And so by the way, epics is just how long
+
+**[2946.72s → 2948.40s]** you're training for batch sizes,
+
+**[2948.40s → 2950.87s]** how much you're training at once.
+
+**[2950.87s → 2955.07s]** Kind of intuitive, obviously real industry grade training,
+
+**[2955.07s → 2957.23s]** training can pick much larger numbers here.
+
+**[2958.19s → 2959.87s]** Learning rate though.
+
+**[2959.87s → 2962.99s]** So what's actually happening when you're training
+
+**[2962.99s → 2964.71s]** is you're asking the computer to solve
+
+**[2964.71s → 2967.23s]** what's called an optimization problem.
+
+**[2967.23s → 2969.15s]** And again, this is getting into the domain
+
+**[2969.15s → 2970.55s]** of linear algebra.
+
+**[2970.55s → 2999.75s]** But what it means is that it's navigating the multidimensional vector space that your matrix lives in and finding parameters that make for the best score based on some scoring metric that's internal to the math that that again you don't have to actually cutting this Adam W does it for you the operator doesn't this determines how quickly it does that and you might think well I just wanted to do it as quick as a can what do you mean determines how quickly well.
+
+**[3000.81s → 3012.31s]** You don't and the reason is because what this is is the learning rate is the step size. It's how much it updates the numbers when it decides to update a parameter in the space. How much does it update it by.
+
+**[3012.61s → 3015.61s]** And if you update it by a really large number.
+
+**[3015.71s → 3020.81s]** What's going to happen is you're not going to converge because you're going to overstep the true optimal.
+
+**[3020.81s → 3026.01s]** Like think about if you're trying if you're a giant and you're trying to climb a hill and your legs are so long
+
+**[3026.01s → 3030.57s]** You can't get to the top of the hill because every time you try to step you actually end up stepping over the hill
+
+**[3030.57s → 3035.89s]** And you're on the other side of the hill or something. It's a kind of surreal example, but hopefully it makes sense
+
+**[3036.81s → 3040.53s]** That's the idea here is if your step size is too big you might I'll get there faster
+
+**[3040.53s → 3044.65s]** It's like no you'll get there never the math will never converge and that's bad
+
+**[3044.65s → 3050.97s]** Obviously, two small steps size, also not so great because you'll get there, but you'll
+
+**[3050.97s → 3056.37s]** take twice as long or 10 times as long, or like you're paying more money to AWS, basically,
+
+**[3056.37s → 3060.05s]** if you pick a learning rate that's way too small.
+
+**[3060.05s → 3066.13s]** So taking the right learning rate is one might say more art than science.
+
+**[3066.13s → 3072.97s]** So again, if you're doing this on a real big project, consult with experts, and also in
+
+**[3072.97s → 3078.09s]** In general for all this stuff, what you want to do is you want to start small.
+
+**[3078.09s → 3083.77s]** Start with smaller samples of data, start with one effort and small batches and try to
+
+**[3083.77s → 3087.37s]** determine the right hyperparameters for those small batches.
+
+**[3087.37s → 3093.87s]** Because assuming the dimensionality is the same when you feed more batches to it, the learning
+
+**[3093.87s → 3095.99s]** rate will probably generalize fairly well.
+
+**[3095.99s → 3100.51s]** If you find the right learning rate from a couple of thousand examples and then you want
+
+**[3100.51s → 3104.75s]** to feed it 100,000 more, you can probably use that earning rate that you already figured out.
+
+**[3105.79s → 3111.39s]** So there are more examples here. Weight decay is another one that sort of helps with overfitting.
+
+**[3112.03s → 3116.83s]** There's different optimizers you can select. There's different way. It's all sorts of stuff.
+
+**[3118.27s → 3124.27s]** I would not know what all these are off the top of my head. And they're not always the same in
+
+**[3124.27s → 3131.63s]** every framework. I mean this is basically hugging faces, transformer, setup for it, but there
+
+**[3131.63s → 3135.79s]** are other neural, this is very similar to neural network stuff. And if you ever use pie torch,
+
+**[3135.79s → 3140.83s]** or TensorFlow or whatever, you'll see kind of the same parameters but kind of a little different,
+
+**[3140.83s → 3144.67s]** because they're just different frameworks for doing the training neural networks.
+
+**[3145.31s → 3148.83s]** Hugging face, though, is particularly good for transformers. That's why we're using it.
+
+**[3148.83s → 3150.09s]** Cool.
+
+**[3150.09s → 3154.73s]** Questions on hyper parameters, but I make sure I actually think I still need to run this
+
+**[3154.73s → 3156.46s]** cell.
+
+**[3156.46s → 3159.82s]** Should probably run the rest of the cells, because they might take a little while and I'm
+
+**[3159.82s → 3160.82s]** talking a lot.
+
+**[3160.82s → 3163.34s]** I'm just going to run this cell and then I'll talk about it later.
+
+**[3163.34s → 3169.76s]** I'm going to run down to where does the main training point.
+
+**[3169.76s → 3173.11s]** Yeah, we're going down to here.
+
+**[3173.11s → 3176.87s]** I'm not actually going to push it to the hub that, oh, hold on, unauthorized.
+
+**[3176.87s → 3178.06s]** Oh, I didn't.
+
+**[3178.06s → 3179.06s]** Sorry, go ahead.
+
+**[3179.06s → 3190.06s]** Sorry, go ahead. There's one cell we have to run before just so it sets up the training and then you can run the rest. All right, where is this I miss that cell then. Oh,
+
+**[3190.06s → 3195.38s]** yeah, see this little area because of that. Yes, we're running this one.
+
+**[3195.38s → 3197.38s]** This cell.
+
+**[3197.38s → 3203.38s]** The one before and then that one. Yeah, just run the one. Yeah, run this one and that definition and the rest you can run.
+
+**[3203.38s → 3205.28s]** I guess I'm against this.
+
+**[3205.28s → 3213.62s]** So it's saying it found on oh, do I need to switch the type?
+
+**[3213.62s → 3214.62s]** Aha.
+
+**[3214.62s → 3216.42s]** If you go into this.
+
+**[3216.42s → 3219.42s]** Yeah, if you click that green button on the.
+
+**[3219.42s → 3225.42s]** Yeah, yeah, yeah, I'm on CPU in general when you're doing this, you want GPUs.
+
+**[3225.42s → 3228.42s]** I use L4 even so you will use L4.
+
+**[3228.42s → 3229.42s]** Cool.
+
+**[3229.42s → 3232.92s]** Confirm.
+
+**[3232.92s → 3234.92s]** Oh, and I wait two minutes.
+
+**[3234.92s → 3238.64s]** So yeah, GPUs are what you use for this.
+
+**[3238.64s → 3241.16s]** And if you've ever wondered why the hacker GPUs
+
+**[3241.16s → 3243.66s]** what we use for deep learning,
+
+**[3243.66s → 3248.66s]** the reason is because CPUs are designed to be very general.
+
+**[3248.76s → 3252.00s]** They're a silicone that is good at everything,
+
+**[3252.00s → 3253.22s]** floating point operations,
+
+**[3253.22s → 3257.10s]** integer operations, cryptography, whatever.
+
+**[3257.10s → 3259.96s]** And actual cryptom, not talking cryptocurrency,
+
+**[3259.96s → 3261.80s]** I mean like AES or whatever,
+
+**[3261.80s → 3264.52s]** stuff you'll actually use for network security.
+
+**[3266.82s → 3285.54s]** GPUs are good at geometric operations, which happen to involve massively parallel vector matrix calculus, you know, and because that's how you draw fancy graphics is you simulate things with with big vectors like that. And it turns out that that's also how you train.
+
+**[3285.54s → 3290.34s]** machine learning models and so that's sort of where that came from.
+
+**[3290.34s → 3294.02s]** There is even more specialized chips out there.
+
+**[3294.02s → 3297.70s]** You might have heard of Google's TPU which they call their tensor processing unit.
+
+**[3297.70s → 3301.06s]** It's really not that different from a GPU.
+
+**[3301.06s → 3304.50s]** You just wouldn't be able to play your video games on it.
+
+**[3304.50s → 3307.33s]** I guess.
+
+**[3307.33s → 3308.33s]** All right.
+
+**[3308.33s → 3309.33s]** You're ready.
+
+**[3309.33s → 3310.33s]** Yeah, let's switch.
+
+**[3310.33s → 3315.55s]** All right.
+
+**[3315.55s → 3320.18s]** It's really, I don't want multiple GPUs right now.
+
+**[3320.18s → 3326.52s]** Thank you.
+
+**[3326.52s → 3333.55s]** And we're set all this to run and then I'm going to sort of show ahead what happens in the notebook.
+
+**[3336.26s → 3355.45s]** All right, so that's probably already ran. So we'll just do it from want to make sure that I see the app up in that ran. This is running.
+
+**[3358.90s → 3362.58s]** I'm just going to view all the cells to run because I think they'll run this time.
+
+**[3362.58s → 3365.63s]** And I'm not going to do this.
+
+**[3365.63s → 3369.47s]** I'm not because we've already trained this or fine tuned this and already published it.
+
+**[3369.47s → 3373.31s]** So I'll talk a little bit about what that means and how you could do it too.
+
+**[3373.31s → 3377.23s]** But while this is running, here's what it would actually help.
+
+**[3377.23s → 3381.47s]** But so it's, we already talked about this.
+
+**[3381.47s → 3384.71s]** Well, I guess the other thing we didn't talk about is obviously our base model.
+
+**[3384.71s → 3386.31s]** So that's the base model.
+
+**[3386.31s → 3392.11s]** It's a llama 7 billion fine tuned for like already a chat model.
+
+**[3392.11s → 3394.67s]** So already you can talk with it.
+
+**[3394.67s → 3397.75s]** And we're just going to fine tune it with some tweet
+
+**[3397.75s → 3400.61s]** sentiment information.
+
+**[3400.61s → 3403.61s]** And we loaded data set.
+
+**[3403.61s → 3406.89s]** And setting up the data set again is where a lot of the work is,
+
+**[3406.89s → 3411.21s]** but we're not going to cover that right this moment.
+
+**[3411.21s → 3413.97s]** We basically pass all the hyperparameters
+
+**[3413.97s → 3417.85s]** into various little config objects, connect to a GPU.
+
+**[3417.85s → 3420.09s]** We make the model from the base model.
+
+**[3420.09s → 3421.97s]** So this is sort of like how you load the model
+
+**[3421.97s → 3424.33s]** from Hangeed Face the base model.
+
+**[3424.33s → 3426.01s]** You make it to a tokenizer,
+
+**[3426.01s → 3427.33s]** or sorry, you get the tokenizer,
+
+**[3427.33s → 3430.37s]** which is how you transform the data
+
+**[3430.37s → 3432.53s]** into what you're actually going to train on.
+
+**[3432.53s → 3435.49s]** You get your config for a path, Laura stuff,
+
+**[3435.49s → 3437.73s]** again, more hyper parameters into another object,
+
+**[3437.73s → 3439.41s]** and then you check all these objects
+
+**[3439.41s → 3441.81s]** into a big training arguments thing,
+
+**[3441.81s → 3444.01s]** and you check that and the model and the data
+
+**[3444.01s → 3447.28s]** into a trainer and then you call trainer.trade.
+
+**[3447.28s → 3448.84s]** So a lot of boilerplate,
+
+**[3448.84s → 3450.48s]** but this is a working example
+
+**[3450.48s → 3454.24s]** that gives you a starting point if you want to do something similar.
+
+**[3454.24s → 3455.72s]** Obviously, if you want to,
+
+**[3455.72s → 3458.08s]** and there's a pretty complete set of hyper parameters,
+
+**[3458.08s → 3459.80s]** there's probably some we didn't include.
+
+**[3459.80s → 3462.52s]** So there's other things you could theoretically do here.
+
+**[3462.52s → 3464.24s]** If you want to add other customization,
+
+**[3464.24s → 3466.84s]** you can obviously also just change these,
+
+**[3466.84s → 3469.36s]** change the base model, that kind of thing.
+
+**[3469.36s → 3471.92s]** But once it gets to train.train,
+
+**[3471.92s → 3476.70s]** you see that it's going to do some hucking face stuff
+
+**[3476.70s → 3479.02s]** about loading safe tensors by the way.
+
+**[3479.02s → 3480.30s]** I want to call that out,
+
+**[3480.30s → 3482.82s]** Because I know that John Cody mentioned this,
+
+**[3482.82s → 3484.42s]** part of the reason he was hugging faces
+
+**[3484.42s → 3487.98s]** it does a good job at packaging models in safe tensors.
+
+**[3487.98s → 3489.74s]** And the reason you want to use a safe tensor
+
+**[3489.74s → 3491.42s]** and not just a pickle,
+
+**[3491.42s → 3493.86s]** if you're familiar with Python pickles,
+
+**[3493.86s → 3497.58s]** importing a pickle is trusting somebody entirely.
+
+**[3497.58s → 3499.86s]** Pickles can run arbitrary Python code.
+
+**[3499.86s → 3504.14s]** Like the pickles are not safe from a security perspective.
+
+**[3504.14s → 3506.94s]** And so that's why distributing models is just pickles
+
+**[3506.94s → 3509.10s]** is not something that you want to do
+
+**[3509.10s → 3512.06s]** because you're just trusting that they're not trying
+
+**[3512.06s → 3514.42s]** to get root on your machine.
+
+**[3514.42s → 3516.74s]** Safe tensors are way to package models
+
+**[3516.74s → 3518.74s]** that do not allow arbitrary code.
+
+**[3518.74s → 3522.86s]** It's just the weights in the matrix.
+
+**[3522.86s → 3524.26s]** When it gets to actually training,
+
+**[3524.26s → 3527.36s]** which let's see if we actually are yet.
+
+**[3527.36s → 3532.88s]** Now, it's still on some earlier cell, right?
+
+**[3532.88s → 3536.53s]** Oh, no it is, it's training.
+
+**[3536.53s → 3538.21s]** So when it gets to the training,
+
+**[3538.21s → 3539.93s]** so we can actually see progress here,
+
+**[3539.93s → 3547.93s]** You see it's taking steps and these are the actual sort of training steps updating the parameters.
+
+**[3547.93s → 3561.93s]** So it's getting batches of data looking at its output saying I want to update my parameters so my output is more like what this training output example is because we because every training example is an input output pair.
+
+**[3561.93s → 3574.93s]** So it actually runs inference basically on the input of it sees the output that it has with its current parameters compares the output to the ideal output that is in the training data the difference between those two is called the loss.
+
+**[3576.38s → 3587.38s]** And then it updates its parameters so that the next time it's inference its output is closer to what it should be and that's why as it takes more steps the loss goes down.
+
+**[3588.38s → 3589.38s]** That's how it always works.
+
+**[3589.38s → 3601.38s]** You know, as you train more, your models parameters get closer to steering the output to be what it should be based on the input output example and training data.
+
+**[3602.44s → 3618.44s]** Overfitting is just doing this so much that the loss gets too low. Now you can see, oh wait, the loss bound stuff. Yeah, that happens. And it's and that's how you sort of know that you might want to stop training or possibly that your learning rate is too big, that you're not finding the true minimum.
+
+**[3619.44s → 3625.60s]** But if it sort of bounces around a bit because there's no castiness in this. This is not a simple model
+
+**[3625.60s → 3627.68s]** There's a there's a lot of randomness going on
+
+**[3628.08s → 3632.76s]** But it's already I'd say like it started up here three and it's kind of bouncing around
+
+**[3632.76s → 3638.04s]** It wants to go to maybe point nine or something and I think that's probably about as good as it's gonna get right and
+
+**[3638.52s → 3643.56s]** To be clear this model in absolute terms doesn't mean anything if you walk up to a machine learning person
+
+**[3643.56s → 3645.56s]** You're like yeah, my loss is point nine
+
+**[3645.56s → 3655.56s]** They're going to say like, okay, like in what context relative to what model relative to what other loss metric relative to what epic or related.
+
+**[3655.56s → 3658.56s]** It only means something in a comparative sense.
+
+**[3658.56s → 3662.56s]** There are metrics that mean something in absolute sense from model comparison.
+
+**[3662.56s → 3666.56s]** I think John Cody talked a little bit about some of the benchmarks you can do.
+
+**[3666.56s → 3669.56s]** But that's a separate thing that you do after the training.
+
+**[3669.56s → 3674.98s]** Do it. It's important, but it's separate from tracking the loss during the training.
+
+**[3674.98s → 3678.23s]** Anyway, I'll let this continue.
+
+**[3678.23s → 3681.11s]** When this training lasts me in this context,
+
+**[3681.11s → 3682.39s]** I guess I'm solving little trouble
+
+**[3682.39s → 3685.00s]** with wrap from my head around.
+
+**[3685.00s → 3686.04s]** Sure.
+
+**[3686.04s → 3688.48s]** Honestly, to give the full math definition,
+
+**[3688.48s → 3689.72s]** I'd have to dig into it,
+
+**[3689.72s → 3693.00s]** but it's essentially a distance,
+
+**[3693.00s → 3697.88s]** an average distance between the vector representation.
+
+**[3697.88s → 3703.95s]** What tokenizing does is it splits text into tokens,
+
+**[3703.95s → 3705.43s]** which are kind of like words,
+
+**[3705.43s → 3708.39s]** and then converts each word into a number.
+
+**[3708.39s → 3711.99s]** And so a bunch of numbers in a row, that's called a vector, right?
+
+**[3711.99s → 3716.07s]** And so vectors can have distances between them.
+
+**[3716.07s → 3720.63s]** You can do distance metrics where you see how far one vector is from another,
+
+**[3720.63s → 3723.91s]** basically by doing dot product or cosines.
+
+**[3723.91s → 3725.67s]** There's different sort of similarity measures.
+
+**[3725.67s → 3727.91s]** And I'm not sure off hand which one's running here.
+
+**[3728.63s → 3734.23s]** But something like that is happening between all of the vectors
+
+**[3734.23s → 3737.63s]** that we are giving it the input output pairs, right?
+
+**[3737.63s → 3739.95s]** And the ideal output and the actual output.
+
+**[3739.95s → 3743.59s]** And it's the distance essentially between those two that
+
+**[3743.59s → 3745.66s]** is informing our loss.
+
+**[3745.66s → 3746.34s]** OK.
+
+**[3746.34s → 3749.16s]** So I guess in the data set that we have like,
+
+**[3749.16s → 3750.56s]** I haven't seen the data set.
+
+**[3750.56s → 3751.88s]** I guess I'm going to show it a bit.
+
+**[3751.88s → 3754.68s]** But we have to expect it output.
+
+**[3754.68s → 3759.00s]** And then also the data set looks the data set looks the same.
+
+**[3759.00s → 3761.49s]** I don't know if it's checking the repo.
+
+**[3761.49s → 3762.01s]** Is it?
+
+**[3762.01s → 3763.29s]** I mean, I'll link it right now.
+
+**[3763.29s → 3764.25s]** Oh, it's not having faith.
+
+**[3764.25s → 3765.25s]** Yeah, it's in our Oregon.
+
+**[3765.25s → 3767.61s]** So if you go there, so we have an Oregon Hugging Face
+
+**[3767.61s → 3769.69s]** and you can have datasets and models and Hugging Face
+
+**[3769.69s → 3772.89s]** so you can look at the dataset here.
+
+**[3772.89s → 3777.74s]** But it's the format for this one,
+
+**[3777.74s → 3779.06s]** yeah, I should have shown this earlier.
+
+**[3779.06s → 3780.42s]** Thank you for asking.
+
+**[3780.42s → 3785.96s]** It is a system prompt and then a user prompt
+
+**[3788.80s → 3792.59s]** and then what the output should be.
+
+**[3792.59s → 3793.59s]** Okay.
+
+**[3793.59s → 3798.19s]** And so the system problem, I think it's always the same.
+
+**[3798.19s → 3799.31s]** So really it's these two.
+
+**[3799.31s → 3803.30s]** It's this is like, this is the input, right?
+
+**[3803.30s → 3804.44s]** And this is the output.
+
+**[3804.44s → 3808.36s]** Like you should classify this as being neutral.
+
+**[3808.36s → 3810.32s]** That's what you should respond when you see this.
+
+**[3810.32s → 3813.40s]** And when you see this, you should classify this
+
+**[3813.40s → 3816.64s]** as being negative and so forth and so on.
+
+**[3816.64s → 3821.24s]** And so the loss is reflecting how good its output is,
+
+**[3821.24s → 3824.92s]** how much it's getting right in terms of the examples
+
+**[3824.92s → 3826.12s]** that it's seeing.
+
+**[3826.12s → 3830.04s]** And it keeps updating its weights until it gets about
+
+**[3830.04s → 3831.60s]** as good as it can get.
+
+**[3831.60s → 3836.60s]** And then of course, the loss only reflects performance
+
+**[3837.00s → 3839.01s]** on the training data.
+
+**[3839.01s → 3841.45s]** And that's why you always want to have some separate
+
+**[3841.45s → 3844.57s]** fold out data or sometimes called like test data
+
+**[3844.57s → 3845.57s]** or validation data.
+
+**[3845.57s → 3847.45s]** You've had multiple sets of it.
+
+**[3847.45s → 3851.09s]** And you use that, you don't let the model train on that data.
+
+**[3851.09s → 3852.97s]** You don't let the model see that data
+
+**[3852.97s → 3854.85s]** because you don't want it to be cheating, right?
+
+**[3854.85s → 3857.37s]** Like you want it to actually have learned how to generalize
+
+**[3857.37s → 3859.97s]** to handle novel data that's never seen before.
+
+**[3859.97s → 3862.57s]** So you hold that data out and then separately
+
+**[3862.57s → 3863.57s]** you want to test with it.
+
+**[3863.57s → 3865.73s]** You can see very similar metrics
+
+**[3865.73s → 3868.01s]** and make decisions based on that.
+
+**[3868.01s → 3870.61s]** And we're not doing that full loop here.
+
+**[3870.61s → 3872.61s]** It functions fairly similarly,
+
+**[3872.61s → 3876.57s]** but we can see, in fact, we did,
+
+**[3876.57s → 3878.29s]** you can also just do some ad hoc stuff.
+
+**[3878.29s → 3879.57s]** So I think that's what we're doing here.
+
+**[3879.57s → 3886.29s]** asking like, okay, here's a human prompt talking about Tesla saying, hey, Tesla's making
+
+**[3886.29s → 3893.94s]** this much money. However, once scaled, superchargers will generate even more money. And what is
+
+**[3893.94s → 3900.06s]** the sentiment of this tweet and what did it output? Yeah, the use of the word, however,
+
+**[3900.06s → 3903.82s]** suggests that the author is acknowledging a potential challenge or limitation, but the
+
+**[3903.82s → 3909.50s]** overall sentiment of the tweet is positive. So we fine tune this model. And it judges
+
+**[3909.50s → 3914.14s]** this tweet is positive. And now, did this do better than the unfind to the model? Well,
+
+**[3914.14s → 3919.50s]** you'd also have to test the unfind to the model. It might not be that substantial of an improvement,
+
+**[3919.50s → 3925.74s]** yet you might have to feed it for examples, training examples in the tuning, but that's basically
+
+**[3925.74s → 3931.74s]** how that works. And then the last step that I didn't do here is actually pushing the model.
+
+**[3932.38s → 3938.86s]** You can treat a hugging face kind of like a get hub sort of community where people, instead of
+
+**[3938.86s → 3942.70s]** the forks of code, people do fine tuning of models.
+
+**[3942.70s → 3945.46s]** People take models and they do their spin on it
+
+**[3945.46s → 3947.54s]** and then they put it out there to share it with people.
+
+**[3947.54s → 3952.54s]** And it can be a way to sort of share with the community
+
+**[3952.70s → 3956.14s]** and establish your presence a little bit, perhaps.
+
+**[3956.14s → 3959.14s]** So that's what that is.
+
+**[3959.14s → 3963.06s]** And that's, I hope that, did I answer your question?
+
+**[3963.06s → 3963.90s]** Yeah, that makes sense.
+
+**[3963.90s → 3965.98s]** I mean, I think like when I think about it,
+
+**[3965.98s → 3971.55s]** seems like what we're transforming the prediction to an embedding and then we're
+
+**[3971.55s → 3976.35s]** transforming the actual expectation that I put to an embedding and then we're calculating
+
+**[3976.35s → 3980.83s]** the distance between those two and then that output is used for the training class.
+
+**[3980.83s → 3983.55s]** Is that like the reductive way of explaining it?
+
+**[3983.55s → 3985.11s]** No, no, that pretty much works.
+
+**[3985.11s → 3986.55s]** I would be careful.
+
+**[3986.55s → 3992.55s]** So the word embedding might have a different meaning in some contexts in the sense that
+
+**[3992.55s → 3998.11s]** When we tokenize and convert it to numbers,
+
+**[3998.11s → 4000.39s]** it might be an embedding action, but it might not.
+
+**[4000.39s → 4004.35s]** It's, yeah, I'd honestly have to dig into details.
+
+**[4004.35s → 4006.03s]** It's a numeric representation though.
+
+**[4006.03s → 4007.03s]** That's the main point.
+
+**[4009.44s → 4012.84s]** Embeddings, if you're curious what embedding often refers to,
+
+**[4012.84s → 4016.64s]** if you look at one of these architectures,
+
+**[4016.64s → 4019.12s]** that is none of these pictures are quite perfect for it.
+
+**[4019.12s → 4021.68s]** But if you look at a neural network architecture
+
+**[4021.68s → 4026.68s]** And you basically chop off the last layer, the output layer.
+
+**[4026.68s → 4033.68s]** So because the output layer is what actually outputs something in the dimension in the space you want, the output layer for neural network.
+
+**[4033.68s → 4040.68s]** And it's not just about LLM. So let's say you train an image classification network to recognize pictures of cats.
+
+**[4040.68s → 4045.68s]** And the last layer is going to be 0, 1 is this picture or cat, right?
+
+**[4045.68s → 4049.52s]** The layer before that is just going to be a whole mess of numbers.
+
+**[4049.52s → 4050.88s]** That's the embeddings.
+
+**[4050.88s → 4052.24s]** Like, that's where you get embeddings from.
+
+**[4052.24s → 4053.80s]** It's the penultimate layer.
+
+**[4053.80s → 4057.64s]** And the reason that works, the reason you call that an image embedding,
+
+**[4057.64s → 4060.92s]** is because those numbers have gone through all the other earlier layers
+
+**[4060.92s → 4066.60s]** and they ostensibly represent the input in some sort of semantic space.
+
+**[4066.60s → 4069.88s]** They represent all the processing that the LLM has to do
+
+**[4069.88s → 4071.80s]** except for the last output step.
+
+**[4071.80s → 4076.64s]** And so they are like the sort of internal brain of the LLM,
+
+**[4076.64s → 4078.16s]** which is why they don't make any sense to us,
+
+**[4078.16s → 4080.40s]** they just look like a bunch of numbers.
+
+**[4080.40s → 4085.62s]** But they have a sort of meaning to them.
+
+**[4085.62s → 4086.46s]** OK.
+
+**[4086.46s → 4087.74s]** A little bit of attention there.
+
+**[4087.74s → 4091.18s]** Yeah, that's a little bit of a gap.
+
+**[4091.18s → 4092.18s]** Yeah, a little bit.
+
+**[4092.18s → 4092.98s]** I'll look it up.
+
+**[4092.98s → 4095.10s]** Yeah, I'm dumping a lot of concepts.
+
+**[4095.10s → 4098.54s]** So this is sort of stuff that takes repeated exposure.
+
+**[4098.54s → 4100.26s]** And that's part of the point of also what
+
+**[4100.26s → 4102.06s]** will be asking you to do.
+
+**[4102.06s → 4106.22s]** But the intuition, I think, that you should take away
+
+**[4106.22s → 4107.74s]** where does loss come from as well.
+
+**[4107.74s → 4108.42s]** It's numbers.
+
+**[4108.42s → 4111.26s]** It comes from somehow converting the input out,
+
+**[4111.26s → 4113.74s]** put pairs into numbers, and then measuring
+
+**[4113.74s → 4116.90s]** some distance or difference between those numbers.
+
+**[4116.90s → 4119.22s]** That's where the loss comes from.
+
+**[4119.22s → 4124.02s]** And the specifics of how that's done honestly
+
+**[4124.02s → 4126.66s]** don't matter too much unless you want to actually build
+
+**[4126.66s → 4127.90s]** the software that does this.
+
+**[4127.90s → 4130.62s]** If you just want to use the software,
+
+**[4130.62s → 4134.34s]** the intuitions you want to build would have more to do
+
+**[4134.34s → 4137.04s]** with some of the other hyperparameters
+
+**[4137.04s → 4140.54s]** and architectural aspects of it,
+
+**[4140.54s → 4144.93s]** and operational aspects of it.
+
+**[4144.93s → 4147.49s]** All right, I'm a little past time,
+
+**[4147.49s → 4149.53s]** so I want to address the homework
+
+**[4149.53s → 4152.21s]** and then if people need to hop, people can hop.
+
+**[4152.21s → 4156.49s]** So the homework is to take an existing dataset
+
+**[4156.49s → 4157.33s]** on a hugging face.
+
+**[4157.33s → 4159.73s]** So we use this dataset that we've prepared,
+
+**[4159.73s → 4163.61s]** you can browse data sets on Augenface,
+
+**[4163.61s → 4164.65s]** and there's a bunch of them.
+
+**[4164.65s → 4170.48s]** And you can just find one and use it to fine tune
+
+**[4170.92s → 4173.44s]** an open source LLM like Lava2.
+
+**[4173.44s → 4175.20s]** I mean, you could probably pretty much reuse
+
+**[4175.20s → 4177.88s]** the code we have given you, of course,
+
+**[4177.88s → 4180.04s]** tweak things as you'd like.
+
+**[4180.04s → 4181.72s]** But really, the point of doing this
+
+**[4181.72s → 4185.32s]** is watching me do it is one thing to retain it.
+
+**[4185.32s → 4186.36s]** You've got to step through it.
+
+**[4186.36s → 4188.12s]** You've got to actually get hands on keyboard,
+
+**[4188.12s → 4191.52s]** on screen time and be actively doing it yourself.
+
+**[4191.52s → 4193.92s]** So do that.
+
+**[4193.92s → 4195.92s]** I didn't demo running it on colab,
+
+**[4195.92s → 4198.72s]** so let me just show if you choose to do it on colab.
+
+**[4198.72s → 4202.72s]** This is where you select your instance type.
+
+**[4202.72s → 4206.32s]** And you want a T4, I believe,
+
+**[4206.32s → 4208.72s]** is the TPU, is the processor
+
+**[4208.72s → 4211.52s]** that will be capable of doing this stuff.
+
+**[4211.52s → 4214.52s]** If you do it here, as I learned along with you,
+
+**[4214.52s → 4216.92s]** you click some stuff up here
+
+**[4216.92s → 4220.55s]** and you select the GPU and then you can run stuff.
+
+**[4220.55s → 4221.91s]** So do that.
+
+**[4222.91s → 4226.51s]** And I would say as bonus, like share it with us,
+
+**[4226.51s → 4228.55s]** maybe even if it's something that you're proud of,
+
+**[4228.55s → 4230.71s]** put it out there on Huffing Face, you don't have to.
+
+**[4230.71s → 4231.59s]** It's your first model.
+
+**[4231.59s → 4234.67s]** So if it's just a learning example, that's fine.
+
+**[4234.67s → 4239.64s]** But share it and slack and talk about it would be great.
+
+**[4239.64s → 4244.64s]** All right, any questions on anything that,
+
+**[4244.84s → 4247.56s]** and this is, I've covered all the base material.
+
+**[4247.56s → 4250.48s]** I am going to show as a sort of bonus,
+
+**[4250.48s → 4252.28s]** something called tensorboard,
+
+**[4252.28s → 4255.48s]** but that's sort of above and beyond.
+
+**[4255.48s → 4267.72s]** So I'll pause for questions here.
+
+**[4267.72s → 4273.03s]** All right, so, yeah, but the question about like,
+
+**[4273.03s → 4275.75s]** so when you're like deciding to pick,
+
+**[4275.75s → 4279.48s]** if I don't know, like the labels that you expect,
+
+**[4279.48s → 4281.72s]** how do you like usually figure out,
+
+**[4283.66s → 4288.63s]** I don't know, whether or not you do the right benchmarks?
+
+**[4288.63s → 4290.35s]** So that's a good question.
+
+**[4290.35s → 4293.11s]** I mean, there's a few questions in there, I think.
+
+**[4293.11s → 4296.71s]** But the main one that I'd start with is sort of,
+
+**[4296.71s → 4300.71s]** how do you set up the training data?
+
+**[4300.71s → 4303.11s]** How do you know how to set it up?
+
+**[4303.11s → 4306.79s]** And from a technical perspective,
+
+**[4306.79s → 4308.67s]** there's whatever format for it.
+
+**[4308.67s → 4311.63s]** And this one, I lose it.
+
+**[4311.63s → 4316.52s]** This kind of, I guess I lose this tab.
+
+**[4316.52s → 4319.56s]** This kind of funny looking format is,
+
+**[4319.56s → 4322.44s]** I believe specific to what the Huffington Face Library
+
+**[4322.44s → 4325.48s]** expected, Nash can speak to it a little bit.
+
+**[4325.48s → 4329.20s]** Is that right?
+
+**[4329.20s → 4329.70s]** Which one?
+
+**[4329.70s → 4330.50s]** Sorry.
+
+**[4330.50s → 4332.60s]** And the format of this date.
+
+**[4332.60s → 4333.52s]** Oh, that's for a long time.
+
+**[4333.52s → 4335.76s]** How did you know to put it in this format?
+
+**[4335.76s → 4336.80s]** Lama 2.
+
+**[4336.80s → 4337.30s]** Lama 2.
+
+**[4337.30s → 4338.00s]** Lama 2.
+
+**[4338.00s → 4339.28s]** This is the Lama 2 format.
+
+**[4339.28s → 4339.78s]** Yeah.
+
+**[4339.78s → 4341.68s]** So system prompts in Lama 2, Facebook
+
+**[4341.68s → 4344.40s]** is decided to go against everybody else
+
+**[4344.40s → 4348.41s]** because they want it to be different.
+
+**[4348.41s → 4350.49s]** Well, when you're worth billions of dollars,
+
+**[4350.49s → 4352.69s]** and you just want to feel special, I guess,
+
+**[4352.69s → 4354.01s]** you can do things like that.
+
+**[4354.01s → 4358.61s]** So you figure out the format based,
+
+**[4358.61s → 4361.01s]** the format of your data has to be basically the same
+
+**[4361.01s → 4364.33s]** as the format of the model that you are fine-tuning.
+
+**[4364.33s → 4366.85s]** Like that's generally the right way to do that.
+
+**[4366.85s → 4368.99s]** And then ask for the contents,
+
+**[4368.99s → 4372.37s]** I mean, if that was what you were asking,
+
+**[4372.37s → 4375.21s]** am I misunderstanding your question?
+
+**[4375.21s → 4377.21s]** Yeah, and that's sort of what I'm asking.
+
+**[4377.21s → 4379.17s]** I was like, no, how do you know whether,
+
+**[4379.17s → 4384.40s]** I mean, it's going to really vary on the problem that domain.
+
+**[4384.40s → 4387.40s]** I can speak to my own experience.
+
+**[4387.40s → 4390.40s]** Typically, if you want to do a lot of data,
+
+**[4390.40s → 4393.40s]** I mean, I think for this,
+
+**[4393.40s → 4395.40s]** for this sort of example,
+
+**[4395.40s → 4398.40s]** you know, Ash probably generated it with GPT-4
+
+**[4398.40s → 4400.40s]** and that can work as a baseline.
+
+**[4400.40s → 4403.40s]** You know, you can use a large LLM to make synthetic data.
+
+**[4403.40s → 4405.40s]** That is pretty good for a lot of problems.
+
+**[4405.40s → 4407.40s]** And that can be a starting point.
+
+**[4407.40s → 4410.20s]** for a lot of problems and that can be a starting point.
+
+**[4410.20s → 4412.20s]** But if you're doings, and in that case,
+
+**[4412.20s → 4415.40s]** it's just prompt engineering and few shot examples
+
+**[4415.40s → 4418.20s]** and working with it and checking its output some
+
+**[4418.20s → 4420.20s]** until you can trust it.
+
+**[4420.20s → 4422.20s]** For really sensitive stuff,
+
+**[4422.20s → 4424.20s]** you might still want to come up with some baselines
+
+**[4424.20s → 4426.20s]** and aesthetic data, but then you'll want
+
+**[4426.20s → 4428.20s]** to organize having humans review it.
+
+**[4428.20s → 4429.80s]** And that's sort of like the laying Smith,
+
+**[4429.80s → 4431.80s]** I'm not even involved in, but you know,
+
+**[4431.80s → 4433.80s]** the data sets in laying Smith,
+
+**[4433.80s → 4436.20s]** how you can go from observation to observation
+
+**[4436.20s → 4437.52s]** you're not going to have a human annotated.
+
+**[4437.52s → 4440.68s]** So you could load a data set, a synthetic data set
+
+**[4440.68s → 4446.98s]** into, uh, Rumpi 2 2.
+
+**[4446.98s → 4449.06s]** Maybe yeah, that actually has something in it.
+
+**[4449.06s → 4451.38s]** You could load a data set into here,
+
+**[4451.38s → 4454.50s]** and then, you know, is input pair, output pair,
+
+**[4454.50s → 4457.50s]** and humans could go through and review it,
+
+**[4457.50s → 4460.54s]** which I think is actually a different tab here,
+
+**[4460.54s → 4463.10s]** which over time it is, annotation, right?
+
+**[4463.10s → 4465.86s]** A human could take this and review dad jokes
+
+**[4465.86s → 4468.02s]** and annotate the bad jokes.
+
+**[4468.02s → 4473.02s]** and edit the correct output based on the input
+
+**[4473.14s → 4476.84s]** and have software to manage it.
+
+**[4476.84s → 4478.48s]** So a bunch of humans can do it.
+
+**[4478.48s → 4481.40s]** And the other practical advice I would have,
+
+**[4481.40s → 4485.56s]** this is not just, sorry, go back here.
+
+**[4485.56s → 4488.40s]** This is not just LLMs, but this is any sort of,
+
+**[4488.40s → 4490.44s]** because we're talking about supervised learning.
+
+**[4490.44s → 4492.32s]** That's the machine learning statistics term here.
+
+**[4492.32s → 4495.24s]** Training a model based on input output pairs.
+
+**[4495.24s → 4497.24s]** And whenever you are doing that,
+
+**[4497.24s → 4499.24s]** want a team of people to review it.
+
+**[4499.24s → 4502.60s]** The first thing you should do is all have like a good hour or
+
+**[4502.60s → 4506.60s]** two long session together, reviewing stuff together, talking
+
+**[4506.60s → 4509.00s]** with each other, making sure you're on the same page, and
+
+**[4509.00s → 4512.36s]** writing down a code book based on the cases you encounter.
+
+**[4512.36s → 4516.67s]** Like actually writing down, this is how we decide as humans,
+
+**[4516.67s → 4519.55s]** what this is, and what that is. Because if you just let people go
+
+**[4519.55s → 4522.83s]** at it and let humans label data, every human's going to label
+
+**[4522.83s → 4526.91s]** it a little bit differently. And that's also a consideration if
+
+**[4526.91s → 4530.03s]** if you're taking human labeled data from a crowdsource thing
+
+**[4530.03s → 4532.59s]** where you can't enforce a code book.
+
+**[4532.59s → 4534.15s]** In that case, there's other techniques
+
+**[4534.15s → 4536.75s]** you might do to try to make the data more consistent.
+
+**[4536.75s → 4541.07s]** But yeah, you want to spend the time basically
+
+**[4541.07s → 4544.07s]** to really generate and review the data.
+
+**[4544.07s → 4545.55s]** And there's no substitute for it.
+
+**[4545.55s → 4547.55s]** And it really is where 90% of the work is
+
+**[4547.55s → 4549.79s]** for almost any real world project.
+
+**[4549.79s → 4551.87s]** Like all this stuff is cool and fun.
+
+**[4551.87s → 4553.15s]** And I love thinking about it.
+
+**[4553.15s → 4556.47s]** But my day job, I'm just trying to deal.
+
+**[4556.47s → 4558.15s]** I'm that deep in messy data.
+
+**[4558.15s → 4560.07s]** Like that's just where we all are.
+
+**[4560.07s → 4563.36s]** So that's where the world is.
+
+**[4563.36s → 4564.68s]** I guess Ash, would you be?
+
+**[4565.92s → 4569.16s]** Can you share that prompt that you use to generate?
+
+**[4569.16s → 4570.52s]** Yeah, this data.
+
+**[4570.52s → 4575.56s]** And I'm curious, it's like easier ways to, yeah.
+
+**[4575.56s → 4577.88s]** I was just like a function I could just like already run
+
+**[4577.88s → 4580.16s]** to just transform whatever I have.
+
+**[4580.16s → 4582.72s]** Like they just into.
+
+**[4582.72s → 4584.24s]** I have that as well.
+
+**[4584.24s → 4585.84s]** I have that only for Lama too.
+
+**[4585.84s → 4590.24s]** I don't have that for opening at, but I could probably generate something.
+
+**[4590.24s → 4598.64s]** I mean, you could absolutely wrap LLM prompt and functions and classes to make it like just generate data and exactly the shape you want.
+
+**[4598.64s → 4603.44s]** And that could work pretty well. And of course, there are ways to generate data that have nothing to do with LLMs.
+
+**[4603.44s → 4609.84s]** For instance, there's the paper library and Python that I've used for a variety of things.
+
+**[4609.84s → 4614.02s]** and it's a way to just make up names and addresses
+
+**[4614.02s → 4618.70s]** and like, more of an Ipsom text and bunches of things
+
+**[4618.70s → 4622.78s]** like that and sometimes that can be useful.
+
+**[4622.78s → 4623.98s]** Yeah, I guess I'm thinking about specifically
+
+**[4623.98s → 4628.02s]** like the formatting for like Lama.
+
+**[4628.02s → 4630.30s]** Yeah, I would say I absolutely come up
+
+**[4630.30s → 4633.06s]** with some wrapper class or check if somebody already did it
+
+**[4633.06s → 4634.06s]** and put it on Pippie.
+
+**[4634.06s → 4638.10s]** But, it definitely makes sense.
+
+**[4638.10s → 4639.50s]** Asha is just going to say to him,
+
+**[4639.50s → 4641.02s]** he'll share his code for it, right?
+
+**[4641.02s → 4641.86s]** Yeah, I'll show my code.
+
+**[4641.86s → 4644.00s]** It's basically it's all just native Python
+
+**[4644.00s → 4645.22s]** where I just take the prompt
+
+**[4645.22s → 4648.10s]** and I put the things and I put the S's
+
+**[4648.10s → 4650.60s]** and then I put the system, but I'll show it over.
+
+**[4650.60s → 4652.38s]** And then I would also say on a lean phase,
+
+**[4652.38s → 4654.26s]** you just grab a pre-made dataset
+
+**[4654.26s → 4656.90s]** and you have a thousand lines that are already correct.
+
+**[4656.90s → 4660.26s]** And then you can go and like use the correct lines judge
+
+**[4660.26s → 4661.42s]** if you tell you that,
+
+**[4661.42s → 4662.26s]** and then I'm like,
+
+**[4662.26s → 4663.38s]** hey, this is what it's supposed to look like.
+
+**[4663.38s → 4665.54s]** So we'll always output the correct form.
+
+**[4665.54s → 4667.78s]** Usually you'll always output the current form.
+
+**[4667.78s → 4669.70s]** I mean, let's even browse this a little bit together.
+
+**[4669.70s → 4674.86s]** So you can see, how can you face, they even support other modes,
+
+**[4674.90s → 4678.02s]** multi-modal, visual, audio.
+
+**[4678.02s → 4681.82s]** You want natural language and text classification
+
+**[4681.82s → 4685.68s]** is a pretty good, somewhat simple thing.
+
+**[4685.68s → 4687.42s]** Although, let's look at feature extraction
+
+**[4687.42s → 4689.34s]** because we basically already did text classification.
+
+**[4689.34s → 4692.14s]** Sentiment analysis is an example of text classification.
+
+**[4692.14s → 4695.14s]** Is this text positive or negative, right?
+
+**[4695.14s → 4698.70s]** Feature extraction is, look at this text
+
+**[4698.70s → 4701.28s]** and then get some actual feature,
+
+**[4701.28s → 4704.40s]** like an actual nicely structured thing out of it.
+
+**[4704.40s → 4708.72s]** Say convert a medical report into an iPhone dictionary
+
+**[4708.72s → 4712.64s]** with the patient's age and condition and blood type
+
+**[4712.64s → 4713.64s]** and stuff like that, right?
+
+**[4713.64s → 4716.70s]** All this, because there's information in the report,
+
+**[4716.70s → 4719.28s]** but it's all in this messy natural text
+
+**[4719.28s → 4721.72s]** and we wanna be able to stick it into our database
+
+**[4721.72s → 4723.88s]** as actual features.
+
+**[4723.88s → 4729.02s]** So see if there's some feature,
+
+**[4729.02s → 4730.90s]** yeah, S releases.
+
+**[4730.90s → 4733.40s]** What does this do?
+
+**[4733.40s → 4735.28s]** Okay, so this looks like,
+
+**[4736.60s → 4738.88s]** and somewhat dark topic,
+
+**[4738.88s → 4743.88s]** but this is extracting generating tabular data based on
+
+**[4750.48s → 4753.28s]** international, based on the text, based on this text.
+
+**[4753.28s → 4758.28s]** So this is an actual joint command operation release
+
+**[4758.28s → 4761.88s]** And this is what somebody in the military would actually release
+
+**[4761.88s → 4764.78s]** a text describing an event that happened.
+
+**[4764.78s → 4767.24s]** And these are the information that we want.
+
+**[4767.24s → 4769.68s]** We want to know where it happened, what happened,
+
+**[4769.68s → 4771.28s]** and when it happened.
+
+**[4771.28s → 4773.48s]** And so this has all this.
+
+**[4773.48s → 4777.18s]** And then you would train the model to generate this output
+
+**[4777.18s → 4780.10s]** based on this input.
+
+**[4780.10s → 4782.40s]** Honestly, this does not look like it's anywhere near.
+
+**[4782.40s → 4784.46s]** You'd have to massage it's quite important to make it
+
+**[4784.46s → 4787.80s]** almost format, but it has all the information.
+
+**[4787.80s → 4790.08s]** Like this would be the user input.
+
+**[4790.08s → 4793.12s]** And then the output would be like the pair event type
+
+**[4793.12s → 4796.52s]** this, province this, city that, right?
+
+**[4796.52s → 4798.04s]** And you'd feed those examples to it
+
+**[4798.04s → 4800.20s]** so it knows that that corresponds.
+
+**[4803.81s → 4807.61s]** If I search for a llama here,
+
+**[4807.61s → 4809.15s]** that doesn't,
+
+**[4809.15s → 4811.03s]** Ash, you have a way to find a dataset
+
+**[4811.03s → 4812.83s]** that's already in the llama format.
+
+**[4814.00s → 4819.28s]** They usually have the ending llama dash 2k.
+
+**[4819.28s → 4821.00s]** So that's why I use a search.
+
+**[4822.06s → 4826.46s]** Yeah, I shouldn't limit myself to feature extraction, then let's just search here.
+
+**[4826.46s → 4828.68s]** Lama2K.
+
+**[4829.48s → 4833.96s]** Okay. So, sure, just look at any of these.
+
+**[4835.08s → 4837.48s]** Oh, and yes, you don't have to do English if you don't want.
+
+**[4837.48s → 4842.59s]** So I'm not sure what they're doing here, but there's multiple languages actually.
+
+**[4842.59s → 4845.79s]** So here, here's it in English. How to own a plane in the United States.
+
+**[4845.79s → 4850.96s]** To own a plane. I guess this is just general instruction by tuning.
+
+**[4850.96s → 4854.16s]** This doesn't seem like it's oriented towards,
+
+**[4854.16s → 4858.80s]** or maybe they're making an airplane advisor.
+
+**[4858.80s → 4862.88s]** But yeah, but the point is, you can find all sorts of data sets
+
+**[4862.88s → 4864.40s]** that are already in the right format.
+
+**[4864.40s → 4868.00s]** And I think searching for Lama2K is a good way to do that.
+
+**[4872.35s → 4873.07s]** There are questions.
+
+**[4876.51s → 4878.59s]** I'll show this real quick.
+
+**[4878.59s → 4880.83s]** And then if you have questions, just let me know.
+
+**[4881.71s → 4885.71s]** This does not show up when you run it in lightning,
+
+**[4885.71s → 4889.59s]** But because this is tensor board is actually a Google thing.
+
+**[4889.59s → 4893.63s]** And so it integrates very nicely with Google collab.
+
+**[4893.63s → 4896.23s]** But tensor board is basically, if you recall,
+
+**[4896.23s → 4899.67s]** the lost metric that we saw here going down over time,
+
+**[4899.67s → 4901.87s]** this is a good top level way to understand
+
+**[4901.87s → 4906.07s]** how your model, how training your model is going.
+
+**[4906.07s → 4908.15s]** But there's a lot more ways to understand it.
+
+**[4908.15s → 4910.11s]** There's a lot of numbers to see.
+
+**[4910.11s → 4911.95s]** And so this tracks that.
+
+**[4911.95s → 4914.43s]** And this is the actual training loss over time.
+
+**[4914.43s → 4919.31s]** you can see in this training, like an R's, it went down a bunch and then it sort of bounced around
+
+**[4919.31s → 4926.59s]** and then we stopped. But there's also the learning rate actually is not always a static number.
+
+**[4926.59s → 4930.99s]** There's hyperprimers that can change the learning rate over time as it gets closer to where it wants
+
+**[4930.99s → 4939.15s]** to go. I'm not even sure what this one's tracking, but there's all sorts of things you can track over
+
+**[4939.15s → 4946.57s]** time here and you can see if this interactive mouse over you click and zoom and stuff.
+
+**[4946.57s → 4951.53s]** For this toy example, like using TensorFlow, we're going on is way overkill.
+
+**[4951.53s → 4956.37s]** But this is the sort of tool that somebody who's really deep into model training is really
+
+**[4956.37s → 4959.61s]** changing all their hyper parameters and speeding a ton of data.
+
+**[4959.61s → 4964.61s]** They're going to want to look at how their training is going in a tool like this and understand
+
+**[4964.61s → 4966.55s]** what's going on.
+
+**[4966.55s → 4971.55s]** So it loads pretty nicely in co-lab.
+
+**[4973.92s → 4975.80s]** Yeah, just wanna show that.
+
+**[4975.80s → 4977.08s]** That's all I've got.
+
+**[4977.08s → 4980.04s]** So I'll last call for questions,
+
+**[4980.04s → 4984.44s]** and otherwise it's been great being your guest lecture today.
+
+**[4991.53s → 4992.81s]** If questions come up later,
+
+**[4992.81s → 4994.89s]** feel free to shoot them into the channel
+
+**[4994.89s → 4996.37s]** and somebody will help.
+
+**[4996.37s → 5000.12s]** And again, reminder,
+
+**[5000.12s → 5001.20s]** I'm doing something,
+
+**[5002.52s → 5004.56s]** just run through the actions,
+
+**[5004.56s → 5013.06s]** maybe tweak stuff and bonus, please share what you did and how it went. So thank you and I think that is it.
+
+**[5013.06s → 5017.08s]** Thanks guys.
+

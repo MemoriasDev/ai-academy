@@ -1,0 +1,63 @@
+{
+  "description": "S3 video manifest for cohort transcription",
+  "aws_credentials": {
+    "comment": "Optional - only needed for private buckets",
+    "access_key": "",
+    "secret_key": "",
+    "region": "us-east-1"
+  },
+  "transcription_config": {
+    "model_size": "base",
+    "device": "cpu",
+    "max_workers": 2,
+    "cleanup_temp_files": true
+  },
+  "videos": [
+    {
+      "url": "s3://your-bucket/cohort3/week1/lesson1.mp4",
+      "cohort": 3,
+      "week": 1,
+      "lesson": 1,
+      "title": "Introduction to AI Development",
+      "date": "2024-01-15",
+      "output_path": "cohorts/cohort_3/week_01/week_1_class_1_2024-01-15"
+    },
+    {
+      "url": "https://your-bucket.s3.amazonaws.com/cohort3/week1/lesson2.mp4",
+      "cohort": 3,
+      "week": 1,
+      "lesson": 2,
+      "title": "Setting Up Development Environment",
+      "date": "2024-01-16",
+      "output_path": "cohorts/cohort_3/week_01/week_1_class_2_2024-01-16"
+    },
+    {
+      "url": "https://example.com/videos/cohort3-week1-lesson3.mp4",
+      "cohort": 3,
+      "week": 1,
+      "lesson": 3,
+      "title": "First AI Application",
+      "date": "2024-01-17",
+      "output_path": "cohorts/cohort_3/week_01/week_1_class_3_2024-01-17"
+    }
+  ],
+  "course_json_generation": {
+    "comment": "After transcription, use this to generate course.json",
+    "course_json_path": "src/content/course.json",
+    "backups_dir": "src/content/.backups",
+    "dry_run": false,
+    "commit": false,
+    "jobs": [
+      {
+        "transcript_path": "cohorts/cohort_3/week_01/week_1_class_1_2024-01-15_transcript.txt",
+        "week_id": "week-1",
+        "week_title": "AI Development Fundamentals",
+        "lesson_id": "lesson-1-1",
+        "lesson_title": "Introduction to AI Development",
+        "video_url": "/videos/cohort_3/week_01/week_1_class_1_2024-01-15.mp4",
+        "video_id": "week_1_class_1_2024-01-15",
+        "duration": "90:00"
+      }
+    ]
+  }
+}

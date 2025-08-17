@@ -1,0 +1,2539 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_08/week_8_class_2_2024-07-17.mp4
+**Duration:** 4429.63 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 1260
+**Generated:** 2025-08-13 20:34:11
+**File Hash:** 09b421ac085d7382ac02e2f065857b27
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_08
+**file_name:** week_8_class_2_2024-07-17.mp4
+
+---
+
+## Transcript
+
+**[5.04s → 7.58s]** All right, so here we go.
+
+**[7.58s → 10.48s]** We are introducing the capstone project.
+
+**[10.48s → 16.48s]** So that's going to involve basically,
+
+**[16.48s → 19.68s]** we're going to show something we've done called Kevin,
+
+**[19.68s → 22.56s]** which is not exactly a capstone project,
+
+**[22.56s → 25.44s]** but it should give you some inspiration and reference point
+
+**[25.44s → 28.80s]** and give you the structure for the capstone project you'll be looking on.
+
+**[28.80s → 30.14s]** So.
+
+**[30.14s → 46.65s]** uh, uh, and uh, let's just get started. So, uh, we've covered all the material,
+
+**[46.65s → 52.41s]** congratulations, uh, and by all the material, I mean, like all the topics and tools that, that, uh,
+
+**[52.41s → 57.21s]** you have for your core toolbox here. Now, I want to acknowledge, of course, there's more out there.
+
+**[57.93s → 64.41s]** It's impossible to cover everything for really any technological topic, but, uh, we've given what,
+
+**[64.41s → 71.17s]** but we would say is a good foundation and a broad enough base to build some real things.
+
+**[71.17s → 74.33s]** So that's what we're going to talk about.
+
+**[74.33s → 78.69s]** And I just want to, I'm probably going to say stuff like this several times, where I just
+
+**[78.69s → 84.49s]** want to open up by saying like, please get started with something and get it out there,
+
+**[84.49s → 89.29s]** at least talk about it with other people as early as you're comfortable doing so.
+
+**[89.29s → 90.65s]** It does not have to be perfect.
+
+**[90.65s → 96.89s]** it will not be perfect, just get tight feedback cycles, try things, and get it out there
+
+**[96.89s → 100.57s]** and talk about it with people, share it with people, and then go back and try other things.
+
+**[100.57s → 105.29s]** And that is really not LLM specific, but it certainly applies here.
+
+**[106.79s → 112.23s]** So what is the capstone? On the last two weeks, we're going to work on the LLN capstone project,
+
+**[112.23s → 119.03s]** which is designed for implementation at your company. I mean, the hope is that you are applying
+
+**[119.03s → 123.99s]** these skills directly at your job that you build and something that perhaps
+
+**[123.99s → 128.55s]** automates or partially automates some common task at your work something like that.
+
+**[129.82s → 138.14s]** And so we will be providing code and practical solutions in our examples with you
+
+**[138.14s → 146.78s]** and we're also happy to help and support your work together. So the way to structure
+
+**[146.78s → 150.06s]** approaching the capstone since it is going to seem kind of large at first.
+
+**[151.10s → 159.02s]** Start by identifying a problem. And that means to basically think about something that could
+
+**[159.02s → 163.90s]** be suitable for at least partial automation. That's probably what we're talking about in the AI
+
+**[163.90s → 168.94s]** land. And one of the early things you want to really identify is, okay, how much? Like, maybe it's
+
+**[168.94s → 174.54s]** complete automation. I mean, that's, I would say that's not necessarily the most common in real
+
+**[174.54s → 181.18s]** hard business situations. There might still be some human review step, but maybe it's a task that
+
+**[181.18s → 184.22s]** can be almost entirely automated or maybe it's something where you need to be able to really
+
+**[184.22s → 189.26s]** explicit human in the loop system, but you can still make that human faster and more efficient
+
+**[190.06s → 196.62s]** by using an LLM. And one tip is if you use a ticket system like GERA,
+
+**[197.90s → 202.94s]** one good way to potentially identify these problems, and I'm not really a GERA wizard, by the way,
+
+**[202.94s → 206.54s]** So find your local Jira wizard if you're not one yourself.
+
+**[206.54s → 209.90s]** But there are ways to search Jira
+
+**[209.90s → 213.18s]** and similar tools to find patterns within tickets,
+
+**[213.18s → 216.46s]** assuming that people enter tickets consistently enough.
+
+**[216.46s → 218.06s]** And so you might be able to find like,
+
+**[218.06s → 224.25s]** hey, every month, we do the 15 front-end tickets
+
+**[224.73s → 227.93s]** that are low to medium effort
+
+**[227.93s → 230.61s]** and that involve such and such, right?
+
+**[230.61s → 232.09s]** And that looks like something
+
+**[232.09s → 234.33s]** that we could probably automate because of their,
+
+**[234.33s → 237.17s]** these repetitive tickets and they always use
+
+**[237.17s → 239.29s]** the same tools and touch the same code.
+
+**[239.29s → 242.69s]** And so maybe we can automate that, right?
+
+**[242.69s → 245.56s]** So that could be a way to find.
+
+**[245.56s → 247.88s]** Then once you have your problem identified,
+
+**[247.88s → 251.00s]** maybe you already do, or at least have something in mind,
+
+**[251.00s → 253.88s]** you want to design a solution.
+
+**[253.88s → 257.00s]** So that means planning.
+
+**[257.00s → 260.30s]** And planning is sort of, dare I say, more
+
+**[260.30s → 268.14s]** aren't been science. I mean, you want a plan that is actionable and specific enough, but
+
+**[269.02s → 273.42s]** you don't want to overplan because you don't know what you don't know. You only know when you
+
+**[273.42s → 280.70s]** start making it. I'm sure we all have experienced that. So at the same time, there's, you know,
+
+**[280.70s → 284.46s]** you don't want absolutely no plan. Because if you don't want absolutely no plan, you might waste
+
+**[284.46s → 289.42s]** a bunch of times you might go down alleyways and tangents that you don't need to.
+
+**[289.98s → 299.10s]** So there's no perfect approach here but some good things to think about is break out what tasks
+
+**[299.10s → 304.30s]** your agents will do which will also tell you what agents in one agent architecture might be
+
+**[304.30s → 311.42s]** appropriate, although that might change. How you want to train or what LLMs, I would say training
+
+**[311.42s → 317.10s]** strategy also just includes what LLMs will you use and it's totally fine for a baseline MVP to be
+
+**[317.10s → 323.02s]** like, ah, I'm just going to do GPT-35 out the box, right? Like as a baseline or 40 or something, right?
+
+**[324.22s → 330.70s]** And that's fine. This will be clear to use those at your work, of course. If maybe you can't send
+
+**[330.70s → 334.62s]** everything to check GPT and you need to run it locally, maybe need to look for it all along.
+
+**[334.62s → 342.30s]** But in any case, picking a model and then perhaps thinking like, okay, is the out-the-box model
+
+**[342.30s → 346.14s]** with maybe some prompt engineering enough, or do we actually have to find doing this,
+
+**[346.14s → 354.38s]** which we discussed in earlier classes. But don't start me yet. Just think like, oh, is that
+
+**[354.38s → 359.18s]** something I wanted to eventually? And then I'd say one of the most, if not the most important
+
+**[359.18s → 362.62s]** thing to plan at least a little bit, is how you're going to measure your system.
+
+**[362.62s → 368.38s]** you know, how you're going to actually determine that it's doing something you want it to do.
+
+**[368.38s → 373.22s]** And there might be a few different things you want to measure.
+
+**[373.22s → 376.30s]** You might want to measure practical real world impact.
+
+**[376.30s → 380.54s]** So if you actually did some, some Gira ticket wizardry,
+
+**[380.54s → 383.86s]** then you might want to say, well, when the system is done,
+
+**[383.86s → 390.98s]** it should, you know, reduce the number of Gira tickets that humans have to do by X,
+
+**[390.98s → 397.70s]** or something like that, x per month, right? Based on looking at that. So that could be one metric,
+
+**[397.70s → 404.66s]** but the metric can also be way, way more specific. It can be at the level of fine tuning,
+
+**[404.66s → 408.90s]** right? It can be at the level of, when this is the output, the output should be that,
+
+**[408.90s → 414.98s]** those sorts of pairs and having actual labeled data, perhaps, that you use to fine tune with.
+
+**[414.98s → 418.66s]** And then the metric would just be, well, what percentage of the time does it get it right?
+
+**[418.66s → 423.46s]** you know, what percentage in time is it right enough depending on what the output is exactly.
+
+**[424.79s → 431.99s]** So plan those metrics because you need those metrics to know if you're iterating in the right direction.
+
+**[431.99s → 436.31s]** So that's, I'd say, one of the more important things to plan, but even then, I'll add like,
+
+**[436.31s → 440.39s]** you're not going to find the metrics perfectly until you get started. So it's okay if your
+
+**[440.39s → 445.91s]** definition of the metrics is a little aspirational at first, but at least think about it. You know,
+
+**[445.91s → 449.43s]** at least write something down that you'd like to do to measure the system.
+
+**[451.28s → 454.88s]** Then the fun begins, right? At least, I think a lot of us
+
+**[454.88s → 462.32s]** in Greenfield prototype code is fun. So code a prototype. And emphasis on prototype,
+
+**[462.32s → 467.28s]** MVP, you're not going to do everything you planned, you're not going to do everything that comes up,
+
+**[467.28s → 473.52s]** you want to find the minimal system that can do a complete user loop, probably the equivalent
+
+**[473.52s → 484.32s]** of something like a chain runable, you know, some agent or graph or chain of agents that a user
+
+**[484.32s → 491.92s]** can give input to at the end of the chain output happens and then have that hooked into something.
+
+**[491.92s → 499.84s]** Maybe a langserve fast API app, maybe something else, you know, maybe actually a web microservices
+
+**[499.84s → 502.28s]** is not appropriate for your project.
+
+**[502.28s → 503.68s]** These things are just Python code,
+
+**[503.68s → 506.08s]** so you could potentially just interact with it
+
+**[506.08s → 510.58s]** as a script in some other setting, it's necessary.
+
+**[510.58s → 512.18s]** But just get to that minimal point
+
+**[512.18s → 513.70s]** where you can actually run something
+
+**[513.70s → 517.26s]** and give it input and see output at the end.
+
+**[517.26s → 519.66s]** And then that's when you start testing
+
+**[519.66s → 522.06s]** and actually trying to maybe implement at least one
+
+**[522.06s → 525.94s]** of your metrics and also gallery sort of subjective
+
+**[525.94s → 527.62s]** human feedback, right?
+
+**[527.62s → 529.58s]** And then based on that feedback,
+
+**[529.58s → 533.22s]** I sort of go back to your code and just keep that loop going
+
+**[533.22s → 539.18s]** as much and as quickly as is reasonable for your situation.
+
+**[539.18s → 543.62s]** And you'll end up knowing when your system is, I think,
+
+**[543.62s → 546.94s]** good enough, which will still not be perfect, mind you.
+
+**[546.94s → 550.74s]** But if you're able to get to that fast, tight feedback loop,
+
+**[550.74s → 552.70s]** I want to reiterate, almost everything I just said
+
+**[552.70s → 555.86s]** was not really even available in specific.
+
+**[555.86s → 558.22s]** But it is very, very relevant, certainly,
+
+**[558.22s → 559.34s]** to this capstone.
+
+**[559.34s → 563.27s]** So I hope it's helpful.
+
+**[563.27s → 568.33s]** So just a quick overview of the schedule.
+
+**[569.37s → 572.53s]** And so this is the schedule starting next week,
+
+**[572.53s → 574.77s]** I believe, because this is the last guided project
+
+**[574.77s → 578.17s]** we are going to look at a guided project together still.
+
+**[578.17s → 583.17s]** But starting next week, it's fully focused on capstones.
+
+**[583.65s → 588.17s]** There will be, and also I believe it will be John Curry.
+
+**[588.17s → 589.09s]** Won't be me at least,
+
+**[589.09s → 591.45s]** because I'll be teaching a different board.
+
+**[591.45s → 594.05s]** But I know that I think John Coney will come back.
+
+**[595.33s → 598.01s]** Maybe there'll be some guest instructors as well.
+
+**[598.01s → 598.85s]** I'm not sure.
+
+**[601.04s → 605.57s]** You will be talking about architecting apps.
+
+**[605.57s → 608.57s]** So it's good if by this class, which is next Monday,
+
+**[608.57s → 611.81s]** you at least sort of have identified your problem
+
+**[611.81s → 614.61s]** and maybe begun to design it, right?
+
+**[614.61s → 617.17s]** And then that way when you talk about architecting,
+
+**[617.17s → 619.01s]** you'll be able to apply that.
+
+**[619.01s → 621.61s]** And then designing, so you're probably still designing.
+
+**[621.61s → 623.45s]** And then there's live feedback.
+
+**[623.45s → 626.49s]** So this is a week from Monday,
+
+**[626.49s → 628.45s]** about a week and a half from now, I guess.
+
+**[628.45s → 631.45s]** If you have something, if you have a MVP,
+
+**[631.45s → 635.53s]** you could get live feedback, which could be pretty useful.
+
+**[635.53s → 637.29s]** Or even if you just have a design,
+
+**[637.29s → 640.08s]** you can get feedback on the design.
+
+**[640.08s → 644.64s]** And then actual showcasing the prototype.
+
+**[644.64s → 646.04s]** So the very last class, I guess,
+
+**[646.04s → 648.36s]** is when it would be good to aim to have an MVP
+
+**[648.36s → 656.36s]** if you're able. If you're not, it's not either the world. We'll talk about this sort of overall timeline of all this in sec.
+
+**[656.36s → 665.48s]** But as I've said a few times, start small and that way you can get something done and then get feedback on it.
+
+**[665.48s → 675.48s]** So all of this will involve BloomTech staff showing things and also offering feedback based on what you have.
+
+**[675.48s → 680.84s]** So that of course depends on you having something that you want feedback on.
+
+**[680.84s → 688.99s]** And then the overall schedule here. So I don't know if this has already been announced to this cohort.
+
+**[688.99s → 692.99s]** I think it probably has been mentioned.
+
+**[692.99s → 697.99s]** But just to make sure it's clear with everybody, there's continued support after the live instructions.
+
+**[697.99s → 703.11s]** live instructions. There's been the 10 weeks of live instruction. That's that will finish and
+
+**[703.11s → 710.15s]** that means that these sessions within instructor like me will no longer be happening. But you will
+
+**[710.15s → 717.11s]** retain access to all the coursework, to slack into the portal and to staff, mostly via slack,
+
+**[717.67s → 721.43s]** and also learning assistance, I think my whole occasional office hours.
+
+**[721.43s → 732.23s]** and so you will retain that for six months after the class. So July, right? So that takes you to
+
+**[732.23s → 737.43s]** some point in January. I'm not going to try to come up with the exact date right now. That can be
+
+**[737.43s → 745.03s]** shared in the channel later. But that timeline is also the timeline that you have to submit all your
+
+**[745.03s → 752.07s]** projects, right? And that also includes the other projects that you are assigned to submit and
+
+**[754.13s → 760.69s]** submitting all the projects will then mean that we give you a certificate of completion.
+
+**[761.33s → 767.17s]** So that's the timeline for that and that's also the timeline for you to work on your capstone to
+
+**[767.17s → 773.49s]** actually fully realize it hopefully. I mean I really do think you should aim it all getting through
+
+**[773.49s → 778.93s]** at least the first two steps and ideally taking a bite out of the third step in the next two weeks.
+
+**[778.93s → 784.21s]** Two weeks is a long time. Like that should be doable most of the time if you scope it. But
+
+**[784.77s → 791.65s]** you don't have to finish in the next two weeks. You have six months and that is also time for you to
+
+**[791.65s → 796.37s]** hopefully really apply at your company and to work about it, work to work with it there. We'd
+
+**[796.37s → 806.77s]** love to hear from you at any point in the future. If the system that you worked on is implemented
+
+**[806.77s → 812.29s]** and saves all these people time at your work or something cool like that, that'd be great. That's
+
+**[812.29s → 818.93s]** exactly what we're aiming for. So feel free to reach out both for continued support and just to
+
+**[818.93s → 822.65s]** to get some kudos for a job well done.
+
+**[822.65s → 826.37s]** So that's the timeline, that's what the capstone is.
+
+**[827.41s → 830.45s]** And I know, Hazee, you're our only live student right now.
+
+**[830.45s → 838.54s]** So do you have any questions about any of that?
+
+**[838.54s → 848.47s]** And you can type or talk whatever you prefer.
+
+**[848.47s → 851.27s]** All right, I will keep going.
+
+**[851.27s → 854.47s]** So now we're going to introduce Kevin.
+
+**[854.47s → 855.31s]** What is Kevin?
+
+**[855.31s → 859.65s]** Well, Kevin is our example capstone type project.
+
+**[859.65s → 864.77s]** And to be clear, it's something that Blume Tech is also continuing to iterate on.
+
+**[864.77s → 868.65s]** I would not call Kevin complete, but Kevin is pretty cool.
+
+**[868.65s → 876.20s]** Kevin can do some things and Kevin certainly, at the very least, illustrates the first three
+
+**[876.20s → 880.20s]** of these pretty well and we're continuing to work on four right now.
+
+**[880.20s → 881.92s]** That's where we are.
+
+**[881.92s → 884.93s]** We are in the feedback loop with Kevin.
+
+**[884.93s → 896.67s]** So, Kevin is a manager agent that is supposed to handle tickets from Gera, just general development
+
+**[896.67s → 900.43s]** tickets. And you know, ones that aren't too complicated, if you're familiar with Agi,
+
+**[900.43s → 907.79s]** three story points or less, and also not completely unsupervised, underdeveloper supervision.
+
+**[907.79s → 913.55s]** So I think the ideal for Kevin is maybe it makes a three point ticket into a one point ticket,
+
+**[913.55s → 920.19s]** right? Because the developer can feed the three-point ticket into cabin and it does something,
+
+**[920.19s → 925.55s]** right? And what it does might not be completely perfect. The developer will have to review it,
+
+**[925.55s → 929.87s]** maybe change a few things here and there before actually really checking it in.
+
+**[930.75s → 937.23s]** But that happens in code reviews already, right? So that can still be a significant time savings.
+
+**[937.23s → 951.23s]** And we'll talk more, I mean this is really the meat of the plan and our ash is amazing at making these sorts of diagrams. I am not and if you are not and your diagram is not this amazing don't feel bad.
+
+**[951.23s → 954.23s]** Any diagram is a good starting place.
+
+**[954.23s → 968.23s]** And actually one thing we can do to help you in the next few weeks is we can do live diagraming together if you have questions and you have an idea that you're not really able to capture it on on a graph.
+
+**[968.23s → 972.23s]** We can work on that together. So I encourage taking advantage of that.
+
+**[972.23s → 981.71s]** So what does Kevin do? Well, I would say start by reading this box here because this is the API that Kevin's actually an exposed.
+
+**[981.71s → 986.43s]** Kevin will be a sort of microservice web API type approach.
+
+**[986.43s → 989.63s]** And yes, with Langserve on top of fast API.
+
+**[989.63s → 993.67s]** And there's sort of four workhorse endpoints here.
+
+**[993.67s → 996.39s]** The generate endpoint, the review endpoint,
+
+**[996.39s → 999.38s]** test endpoint in the PR endpoint.
+
+**[999.38s → 1004.18s]** And what generate is, is it's right some code, right?
+
+**[1004.18s → 1012.24s]** And I believe Kevin is at least aspirationally
+
+**[1012.24s → 1015.56s]** Kevin should be able to work pretty well on existing code
+
+**[1015.56s → 1016.48s]** bases right now.
+
+**[1016.48s → 1019.16s]** Kevin's probably best at Greenfield stuff.
+
+**[1019.16s → 1023.96s]** I think really working on existing code bases
+
+**[1023.96s → 1026.96s]** will require enhancing the rag.
+
+**[1026.96s → 1029.76s]** But the generate queries, essentially,
+
+**[1029.76s → 1031.96s]** these are going to go request.
+
+**[1031.96s → 1035.92s]** These are probably going to go left to right a lot of the time.
+
+**[1035.92s → 1042.15s]** So generate says, hey, write me a React app that
+
+**[1042.15s → 1044.95s]** Plays to contact toe or something like that, right?
+
+**[1044.95s → 1048.19s]** And or maybe something more businessy, right?
+
+**[1048.19s → 1054.19s]** Or react, update the react module that powers the search widget
+
+**[1054.19s → 1057.61s]** on the front page to be purple.
+
+**[1057.61s → 1059.73s]** I'm not a front end person if you can't tell.
+
+**[1061.89s → 1064.45s]** But something like that, right?
+
+**[1064.45s → 1068.13s]** And the query needs to be parsed.
+
+**[1068.13s → 1071.53s]** And so this is what will decide what sort of tasks
+
+**[1071.53s → 1073.69s]** that involves whether it's updating files,
+
+**[1073.69s → 1079.07s]** fixing files, or creating files.
+
+**[1079.07s → 1082.07s]** So create is the green field situation.
+
+**[1083.19s → 1085.51s]** Fix, I believe is meant to most
+
+**[1085.51s → 1088.31s]** to take actual errors and interest those errors.
+
+**[1088.31s → 1090.95s]** So you could think of this as like bug tickets
+
+**[1090.95s → 1094.35s]** versus feature tickets, if you have that sort of thing.
+
+**[1094.35s → 1095.99s]** Feature tickets will either be,
+
+**[1095.99s → 1098.23s]** well, they might even be creating new things,
+
+**[1098.23s → 1100.27s]** but a lot of the time a feature might be updated
+
+**[1100.27s → 1107.71s]** existing thing that had a feature fixing a bug or actually making something new and slightly
+
+**[1107.71s → 1116.06s]** different state in these cases is extracted from the query and then in any case it goes to a rag
+
+**[1116.06s → 1120.30s]** and if I recall I think this is probably actually supposed to be green as well
+
+**[1121.58s → 1130.13s]** to look at the code base and then actually I guess this one goes straight to an LLM because it
+
+**[1130.13s → 1134.69s]** it includes the code. So forget that, this is blue, this is blue on purpose. So yeah, these are color
+
+**[1134.69s → 1140.21s]** coded. Blue is an LLM, green is a rag, prompt template, and a darker container. We'll get to that.
+
+**[1141.39s → 1151.89s]** So in this case, we get the code for context for these tasks, or the code is included in the state
+
+**[1151.89s → 1156.53s]** for this task. Once we have that code and all the other contexts, we actually get it to the LLM
+
+**[1157.09s → 1161.41s]** to generate code and the dependencies of the code and the description of the code.
+
+**[1161.89s → 1164.22s]** All right, and then now that goes out.
+
+**[1164.22s → 1165.30s]** And then what is this?
+
+**[1165.30s → 1168.74s]** Well, this is the actual web interface.
+
+**[1168.74s → 1170.62s]** This is meant to be the human interface.
+
+**[1170.62s → 1173.58s]** Because the idea is that this is a human in the loop
+
+**[1173.58s → 1176.98s]** with a developer who's going to be chatted with Kevin
+
+**[1176.98s → 1179.14s]** and has certain functions that they can invoke
+
+**[1179.14s → 1180.82s]** to sort of guide Kevin.
+
+**[1180.82s → 1184.14s]** And these are the functions that you would want to invoke
+
+**[1184.14s → 1185.62s]** after this output.
+
+**[1185.62s → 1188.02s]** So based on the output from the developer,
+
+**[1188.02s → 1192.50s]** from you start by asking Kevin, hey, make me a tick-tock toe app.
+
+**[1192.50s → 1194.98s]** And then based on the code, it spits out,
+
+**[1194.98s → 1198.30s]** you choose whether to call review, test, or PR,
+
+**[1198.30s → 1200.34s]** which are three remaining reps, right?
+
+**[1200.34s → 1203.14s]** So we will now discuss those.
+
+**[1203.14s → 1206.34s]** Review is sort of like the hey,
+
+**[1206.34s → 1208.38s]** maybe you didn't get it right.
+
+**[1208.38s → 1212.14s]** Maybe you should find some things to improve, right?
+
+**[1212.14s → 1216.26s]** And I mean, the developer could also do that themselves,
+
+**[1216.26s → 1217.86s]** the developer could essentially iterate
+
+**[1217.86s → 1219.90s]** whatever prompt they give Kevin.
+
+**[1219.90s → 1225.06s]** But the idea is, is this could accelerate that by asking Kevin
+
+**[1225.06s → 1228.66s]** itself to review its own output code
+
+**[1228.66s → 1231.52s]** and to generate recommendations for that.
+
+**[1231.52s → 1234.04s]** So this is sort of like Kevin with a different hat on, right?
+
+**[1234.04s → 1236.52s]** Kevin, the developer versus Kevin, the reviewer.
+
+**[1236.52s → 1238.28s]** And that generates recommendations.
+
+**[1238.28s → 1239.92s]** And then once there are recommendations,
+
+**[1239.92s → 1243.96s]** the human can decide whether, okay, that's fine.
+
+**[1243.96s → 1245.60s]** We don't need to actually do these things.
+
+**[1245.60s → 1246.68s]** We can just test the code.
+
+**[1246.68s → 1249.32s]** or yeah, actually I want to route these recommendations
+
+**[1249.32s → 1254.48s]** back to generate, and I want Kevin to actually write more code
+
+**[1254.56s → 1258.84s]** or change code based on the recommendations that the review had.
+
+**[1258.84s → 1259.68s]** Right?
+
+**[1259.68s → 1261.44s]** So that's that flow.
+
+**[1261.44s → 1263.44s]** When the user is happy with the code,
+
+**[1263.44s → 1266.44s]** either the output has been iterated enough times,
+
+**[1266.44s → 1269.12s]** the reviews have been incorporated or not,
+
+**[1269.12s → 1270.96s]** but they're the users happy.
+
+**[1270.96s → 1273.16s]** They can call test or PR.
+
+**[1273.16s → 1275.64s]** Now, probably want to call test first, right?
+
+**[1275.64s → 1278.92s]** test your code before checking in, don't test in production.
+
+**[1278.92s → 1282.00s]** So what does test do?
+
+**[1282.00s → 1286.17s]** Well, test, and this is where the Docker containers come in.
+
+**[1286.17s → 1290.61s]** Test fires up environments that have the actual code
+
+**[1290.61s → 1294.21s]** as a Git branch and run the actual code.
+
+**[1294.21s → 1296.29s]** And ideally, this will depend a little bit
+
+**[1296.29s → 1298.69s]** on the code based Kevin is unleashed on,
+
+**[1298.69s → 1302.05s]** but ideally run whatever test suite you have,
+
+**[1302.05s → 1304.37s]** like an existing test suite.
+
+**[1304.37s → 1306.33s]** And potentially also run new tests,
+
+**[1306.33s → 1308.55s]** if you ask Kevin to generate tests.
+
+**[1308.55s → 1311.91s]** But a lot of the time as you know,
+
+**[1311.91s → 1315.09s]** software tests aren't about just writing tests for new code,
+
+**[1315.09s → 1318.01s]** they're about ensuring that the new code didn't break all tests.
+
+**[1318.01s → 1321.57s]** So we run the code containerized
+
+**[1321.57s → 1323.25s]** because it's from an LLN,
+
+**[1323.25s → 1324.81s]** and you don't really know it yet.
+
+**[1324.81s → 1327.93s]** And this is the first time we're running it and testing it.
+
+**[1327.93s → 1332.06s]** And we see if, you know, how the tests do.
+
+**[1332.06s → 1334.41s]** And then there's some sort of,
+
+**[1334.41s → 1336.41s]** and this can be a heuristic because,
+
+**[1336.41s → 1337.57s]** depending on your test suite,
+
+**[1337.57s → 1339.41s]** 100% passing might not happen.
+
+**[1339.41s → 1341.93s]** You might have flaky tests or things like that
+
+**[1341.93s → 1345.73s]** or performance tests that aren't zero one.
+
+**[1345.73s → 1348.69s]** So you have some rule for what too many errors
+
+**[1348.69s → 1350.17s]** versus good enough is, right?
+
+**[1350.17s → 1352.77s]** And if there's too many errors from the test,
+
+**[1352.77s → 1353.97s]** then you go back to generate
+
+**[1353.97s → 1357.29s]** and you probably pass those errors to fix, right?
+
+**[1357.29s → 1360.13s]** I mean, that's what the parse query will determine.
+
+**[1360.13s → 1363.21s]** and then generate more code and you're back in this loop
+
+**[1363.21s → 1364.45s]** until you're good enough.
+
+**[1364.45s → 1368.09s]** But finally, when you are good enough
+
+**[1368.09s → 1371.37s]** and you pass the tests, you can open a PR.
+
+**[1371.37s → 1373.17s]** And the PR,
+
+**[1373.17s → 1375.57s]** use a simple prompt template that we'll see
+
+**[1375.57s → 1379.05s]** and the GitHub API to open an actual PR
+
+**[1379.05s → 1383.33s]** that has whatever was originally developed here by Kevin.
+
+**[1383.33s → 1386.01s]** And that of course doesn't make it merging
+
+**[1386.01s → 1387.01s]** the main branch.
+
+**[1387.01s → 1394.08s]** This is where our developer who's hanging out working with Kevin would probably review
+
+**[1394.08s → 1401.15s]** that PR, or maybe even ask somebody else too, and then get it actually merged in after
+
+**[1401.15s → 1402.15s]** any needed changes.
+
+**[1402.15s → 1406.83s]** So, that's all human in the loop as well, sort of at the end of the graph.
+
+**[1406.83s → 1409.83s]** So, that's what Kevin is.
+
+**[1409.83s → 1412.59s]** And we've implemented a lot of this.
+
+**[1412.59s → 1415.47s]** So we're going to look at the code and talk about it and demo it.
+
+**[1415.47s → 1418.05s]** All right, and you can save that for the end.
+
+**[1418.05s → 1420.99s]** Feel free to ask questions anytime you want, by the way,
+
+**[1420.99s → 1422.87s]** just putting that out there.
+
+**[1422.87s → 1427.62s]** I guess I'll even pause for questions one more time since this was a lot.
+
+**[1427.62s → 1429.06s]** I think it's bad to go.
+
+**[1429.06s → 1433.28s]** Is this all clear enough?
+
+**[1433.28s → 1435.44s]** There's a lot going on here.
+
+**[1435.44s → 1439.83s]** To be clear, whatever project you work on,
+
+**[1439.83s → 1441.35s]** whatever caps on you work on,
+
+**[1441.35s → 1443.59s]** maybe it will have to be this complicated,
+
+**[1443.59s → 1448.11s]** right? Like maybe this is about the complexity you should aim for,
+
+**[1448.11s → 1451.79s]** But that doesn't need the very first thing you write down or the very first thing you implement,
+
+**[1451.79s → 1458.46s]** it will be this complicated and that's fine. I think it took us a few at least quick iterations
+
+**[1458.46s → 1466.86s]** to get to something like this. All right, so this is actually Kevin deployed on the right here,
+
+**[1466.86s → 1471.34s]** and Kevin is built with Langserv so we get all the nice documentation for free.
+
+**[1472.70s → 1478.38s]** This is more courtesy of Fast 8. The I than Langserv really, but here are all the Langserv
+
+**[1478.38s → 1508.69s]** generated routes. So really each of these, each of those four entry points generate, generate review, test, and PR, all of those are their own overall route that then has a bunch of sub wraps, you know, you can invoke queries, you can batch and stream, you can see the schema and you can do that for PR's for PR configs, you can do that for test and test config review reviews is all this generated stuff.
+
+**[1508.69s → 1517.69s]** And then the default ones where you can actually get some labeled feedback data and potentially use this to fine tune the actual underlying LLM.
+
+**[1517.69s → 1521.69s]** If that's appropriate or needed for your case.
+
+**[1521.69s → 1527.72s]** And also this can be vectorized thing that I think is basically for the rag. We'll see that.
+
+**[1527.72s → 1531.44s]** So we won't dig into all of this, but it's all here.
+
+**[1531.44s → 1533.96s]** You can go here yourself if you want.
+
+**[1533.96s → 1535.64s]** Tom, if you want to drop this,
+
+**[1535.64s → 1538.52s]** one of these links and it's some resources.
+
+**[1538.52s → 1541.76s]** This is the generate playground.
+
+**[1541.76s → 1544.04s]** So we get the free playground from Langserred.
+
+**[1544.04s → 1547.64s]** We could go to the PR or test or other playgrounds,
+
+**[1547.64s → 1550.76s]** but the generate one is a natural place to start.
+
+**[1550.76s → 1553.80s]** But well, I guess I'll actually start by running something
+
+**[1553.80s → 1555.44s]** and then we'll walk through the code.
+
+**[1555.44s → 1560.44s]** So what's something that would be fun to ask Kevin to generate?
+
+**[1568.46s → 1569.82s]** Somebody doesn't say something in time,
+
+**[1569.82s → 1571.74s]** you could say something too, sorry, I don't know,
+
+**[1571.74s → 1574.91s]** because otherwise I'm going to click that.
+
+**[1574.91s → 1576.43s]** Okay, let's go with something.
+
+**[1576.43s → 1578.71s]** I'll tell you what, it's a good one, connect for.
+
+**[1580.00s → 1581.32s]** Okay, that's it.
+
+**[1581.32s → 1583.40s]** It's one of my own, but it's still got.
+
+**[1584.48s → 1588.48s]** We've wanted a connect for using HTML,
+
+**[1588.48s → 1595.46s]** the HTML, the JavaScript, the app, that the app, that the
+
+**[1595.46s → 1601.66s]** I quit, try to measure anything else. It might need a little bit more prompt
+
+**[1601.66s → 1605.02s]** him for that to be honest. Yeah, yeah, yeah, well, let's sort of let's think
+
+**[1605.02s → 1609.10s]** it's here it makes. Well, I'm just trying it, but I guess we just try this
+
+**[1609.10s → 1612.14s]** and every one prompt. And yeah, I do want to give you a few more
+
+**[1612.14s → 1616.14s]** tokens to think with here. So I'm going to connect for a game,
+
+**[1616.14s → 1621.40s]** The learning to work and this is a club training,
+
+**[1621.68s → 1624.04s]** how do you lay well about,
+
+**[1627.37s → 1628.53s]** how do you want to know?
+
+**[1628.53s → 1630.13s]** The Smith Forest two players, right?
+
+**[1630.13s → 1631.97s]** So I want to be here that like,
+
+**[1631.97s → 1636.65s]** and allow learning to play a particular game against
+
+**[1636.65s → 1639.33s]** the AI, the bad dress, the guys,
+
+**[1639.33s → 1645.39s]** the students, and the lady.
+
+**[1645.39s → 1647.55s]** So I'll just say a computer opponent.
+
+**[1647.55s → 1649.97s]** Yeah, I mean, I was gonna say,
+
+**[1649.97s → 1651.93s]** I had a race with Groch,
+
+**[1651.93s → 1655.77s]** making this so I had one screen with me making it and rock making it the other one and we kind of
+
+**[1656.63s → 1661.83s]** end up around about the same time frame but I made a meme max algorithm for mine and it just did
+
+**[1661.83s → 1668.20s]** kind of a two-player one. Yeah I'm just letting it do something similar which is right here but
+
+**[1668.20s → 1671.72s]** that's cool. I mean if you had your prompt well I'll try this one first and if you want to dig up
+
+**[1671.72s → 1683.74s]** whatever prompt you use with croc but right might take a second to wake up I'm hoping that all
+
+**[1683.74s → 1692.57s]** all the pieces are where they should be. While I was thinking, though, that's why I wanted
+
+**[1692.57s → 1697.29s]** the triggers first. Let's actually look at the code. So there's two repos and they're both public.
+
+**[1697.29s → 1702.81s]** So Tom Philphilphine dropped both these links and whatever thread as well. But I'm not really
+
+**[1702.81s → 1714.10s]** going to look at the client because the client is just a minimal React template. And I don't
+
+**[1714.10s → 1717.86s]** even know that this is really,
+
+**[1717.86s → 1719.64s]** what would I do?
+
+**[1719.64s → 1721.44s]** Some using the playground here.
+
+**[1721.44s → 1724.12s]** And so yeah, I think most of the development work
+
+**[1724.12s → 1727.36s]** as far as been on the API, and that's all well and good.
+
+**[1727.36s → 1728.92s]** One of the nice things Lane Show gives you
+
+**[1728.92s → 1731.24s]** is it gives you enough UI for MVP
+
+**[1731.24s → 1734.36s]** that you don't need to spend time on it.
+
+**[1734.36s → 1737.12s]** So I'm not going to worry about the front end.
+
+**[1737.12s → 1738.72s]** It's already doing stuff, so that's cool.
+
+**[1738.72s → 1743.22s]** It looks like, okay.
+
+**[1743.22s → 1753.65s]** Let's focus on the back end.
+
+**[1753.65s → 1763.72s]** This links actually to some of the main things.
+
+**[1763.72s → 1767.72s]** Let's just look at this one.
+
+**[1767.72s → 1773.10s]** One of the first things that has to do is retrieve any relevant info.
+
+**[1773.10s → 1776.30s]** the last thing is retrieving any relevant info, correct code.
+
+**[1776.30s → 1777.30s]** So how does it do that?
+
+**[1777.30s → 1781.02s]** Well, it uses that vectorizing, which is backed by
+
+**[1781.02s → 1786.21s]** Pinecon with a database and OpenAI to actually generate the vectors.
+
+**[1786.21s → 1793.13s]** And it connects to a GitHub repository, if you give it one for that,
+
+**[1793.13s → 1794.57s]** and it vectorizes the code base.
+
+**[1794.57s → 1800.01s]** So it's using the GitHub API and it's initializing Pinecon.
+
+**[1800.01s → 1805.29s]** create an index using cosine distance and this is pretty decently sized and
+
+**[1805.29s → 1810.90s]** betting is 1536. It's interesting. So hopefully it captures the semantics of
+
+**[1810.90s → 1815.70s]** the code well and it's using recursive care protects splinters so as you
+
+**[1815.70s → 1818.98s]** hopefully recall when some of the vecorization stuff was talked about there are
+
+**[1818.98s → 1824.18s]** different ways to handle when you need to split text because it's too long
+
+**[1824.18s → 1831.18s]** for like it's less than what you can just chuck into the processing.
+
+**[1831.18s → 1836.18s]** And this trucks it into 100 with over 10.
+
+**[1836.18s → 1838.18s]** These are all parameters you could change,
+
+**[1838.18s → 1840.18s]** and you could even change user to different splitter.
+
+**[1840.18s → 1844.18s]** But this is a pretty good baseline splitter approach for your own MVP.
+
+**[1844.18s → 1851.18s]** So in general, this file could actually a lot of logic from this file could probably be used very similarly.
+
+**[1851.18s → 1856.22s]** in any MVP you have that needs a rag that needs some vectorization. I mean, maybe you won't be
+
+**[1856.22s → 1862.46s]** connected to GitHub, so maybe that'll be different, but other than that. And it's just moving
+
+**[1862.46s → 1867.58s]** over all the files. So files, it gets the file structure from the ad repo, loops over all files,
+
+**[1868.22s → 1871.74s]** splits them all up as documents, calculates the embedding source, the embedding,
+
+**[1871.74s → 1888.13s]** like is this R vector DB. So then another thing it does that's worth highlighting is where it generates text. So let's, let's look at what we got here first.
+
+**[1888.13s → 1891.28s]** So I wonder if this will work.
+
+**[1891.28s → 1897.42s]** Yeah, looks like this could work, although how is it.
+
+**[1897.42s → 1902.49s]** I was using unpackage.com for React and stuff.
+
+**[1904.66s → 1907.74s]** Did I trust this?
+
+**[1907.74s → 1910.74s]** You know, I'll drop this in the channel
+
+**[1910.74s → 1913.48s]** and whoever's brave can trust it.
+
+**[1913.48s → 1916.75s]** I'll put this in the same thread.
+
+**[1916.75s → 1918.71s]** Or Tom, if you want to test this,
+
+**[1918.71s → 1922.02s]** while I'm continuing to look at stuff
+
+**[1922.02s → 1927.29s]** and you can tell me if this works.
+
+**[1927.29s → 1929.73s]** So, but let's look at what it's doing.
+
+**[1929.73s → 1931.81s]** It certainly looks plausible.
+
+**[1931.81s → 1933.57s]** It's just using hosted scripts,
+
+**[1933.57s → 1935.69s]** So that's fine, front end on the late.
+
+**[1935.69s → 1943.25s]** There's a check win function, checks all the four directions,
+
+**[1944.51s → 1947.59s]** does some looping and some ifs, but all looks plausible.
+
+**[1947.59s → 1949.99s]** If there's a bug here, we have to actually sort of find it,
+
+**[1949.99s → 1952.27s]** review this code more carefully.
+
+**[1952.27s → 1954.47s]** If cowt equals four, yeah, connect four.
+
+**[1954.47s → 1957.67s]** So if there are four things in a row that add up,
+
+**[1957.67s → 1960.47s]** otherwise you don't win.
+
+**[1960.47s → 1963.67s]** And then there's something to represent the board,
+
+**[1963.67s → 1966.81s]** which is looking all reacting, that's great.
+
+**[1966.81s → 1970.98s]** And then the main logic is a React component
+
+**[1970.98s → 1973.26s]** and current player one.
+
+**[1973.26s → 1974.66s]** Oh, I wonder if it actually,
+
+**[1974.66s → 1976.06s]** oh, so it does have a computer move.
+
+**[1976.06s → 1977.70s]** I wonder if the computer,
+
+**[1977.70s → 1979.82s]** that's the part I'm curious if it'll work.
+
+**[1981.88s → 1985.52s]** So the human can click cells
+
+**[1985.52s → 1987.68s]** and there's a handler for that
+
+**[1987.68s → 1989.32s]** and it passes some state around
+
+**[1989.32s → 1990.40s]** and hopefully does what it should
+
+**[1990.40s → 1993.00s]** checks if the user wins at some state.
+
+**[1993.00s → 1996.00s]** The computer move also looks at the board,
+
+**[1996.00s → 1997.36s]** looks at the available columns,
+
+**[1997.36s → 2001.12s]** fix a random column and clicks it.
+
+**[2001.12s → 2004.29s]** And then at the end, you can restart the game.
+
+**[2004.29s → 2007.61s]** And then we render and return a DOM
+
+**[2007.61s → 2009.97s]** that has this stuff in it.
+
+**[2009.97s → 2010.97s]** And it looks plausible to me.
+
+**[2010.97s → 2013.59s]** Tom, is it working?
+
+**[2013.59s → 2014.11s]** It is.
+
+**[2014.11s → 2018.87s]** Do you want a screen share for a bit?
+
+**[2018.87s → 2019.75s]** You don't mind?
+
+**[2019.75s → 2020.59s]** Can, though.
+
+**[2020.59s → 2021.75s]** I just shoved it straight into a code pen
+
+**[2021.75s → 2023.79s]** so I can share the code pen, then.
+
+**[2023.79s → 2024.63s]** Oh, cool, cool.
+
+**[2024.63s → 2026.07s]** Then I'll load up the code pen.
+
+**[2026.07s → 2028.40s]** Yeah, just drop the code pen.
+
+**[2028.40s → 2029.36s]** Just go quickly.
+
+**[2029.36s → 2030.64s]** I call it lock-in to share it.
+
+**[2030.64s → 2031.64s]** I'm sorry.
+
+**[2032.64s → 2034.64s]** I'm going back to screen sharing then.
+
+**[2034.64s → 2035.64s]** Yeah.
+
+**[2035.64s → 2039.12s]** It's a little login to that.
+
+**[2039.12s → 2042.12s]** Yeah, just dropping the same thread or whatever.
+
+**[2042.12s → 2046.12s]** I just literally pasted the HTML and it's got the HTML and everything else with it.
+
+**[2046.12s → 2048.12s]** So it's kind of one of those.
+
+**[2048.12s → 2049.54s]** Yeah.
+
+**[2049.54s → 2052.72s]** I have to go through the process.
+
+**[2052.72s → 2053.72s]** Yeah.
+
+**[2053.72s → 2054.72s]** Get rid of that.
+
+**[2054.72s → 2056.85s]** Get rid of that.
+
+**[2056.85s → 2061.01s]** Now, of course, this is just demonstrating one of...
+
+**[2061.01s → 2065.36s]** It's not going to be the best of the best, but it's a nice little.
+
+**[2065.36s → 2066.36s]** Off it's working.
+
+**[2066.36s → 2067.36s]** That's great.
+
+**[2067.36s → 2070.36s]** But this is just demonstrating one of the rats, right?
+
+**[2070.36s → 2073.36s]** One of the overall flows that Kevin is capable of.
+
+**[2073.36s → 2076.36s]** And once the human has this out, but they decide what's next.
+
+**[2076.36s → 2080.36s]** And for something simple like this, that's why the PR option is here.
+
+**[2080.36s → 2084.36s]** Maybe you're like, hey, yeah, I as a human, I looked at this and it works.
+
+**[2084.36s → 2086.36s]** I don't need to run a test suite.
+
+**[2086.36s → 2089.36s]** I don't need to ask it to review it and improve it.
+
+**[2089.36s → 2091.36s]** improve it. I'm just going to open a PR with it.
+
+**[2091.36s → 2092.36s]** Steve, that comes up all right.
+
+**[2092.36s → 2094.36s]** Steve, I'll put the...
+
+**[2094.36s → 2095.36s]** I see the link.
+
+**[2095.36s → 2096.36s]** Let's find out.
+
+**[2096.36s → 2097.86s]** Maybe go straight in or whether it actually
+
+**[2097.86s → 2099.36s]** to do something with that.
+
+**[2099.36s → 2100.36s]** But it should be for me.
+
+**[2100.36s → 2101.36s]** Spacely that bit.
+
+**[2101.36s → 2102.36s]** I see something here.
+
+**[2102.36s → 2104.36s]** So if you click somewhere on there,
+
+**[2104.36s → 2106.36s]** you're choosing which one of these columns
+
+**[2106.36s → 2108.36s]** that you're going to pop down your things.
+
+**[2108.36s → 2109.36s]** Yeah, see here.
+
+**[2109.36s → 2110.36s]** And let's even let's bang on a bit.
+
+**[2110.36s → 2112.36s]** So, okay, I chose this column.
+
+**[2112.36s → 2113.36s]** Oh, it dropped down.
+
+**[2113.36s → 2114.36s]** I'm going to choose this column.
+
+**[2114.36s → 2116.36s]** But I'm going to choose it from down here now.
+
+**[2116.36s → 2119.42s]** That's interesting.
+
+**[2119.42s → 2121.42s]** Yeah, really is right.
+
+**[2121.42s → 2122.42s]** Correct.
+
+**[2122.42s → 2123.42s]** You're just choosing which column.
+
+**[2123.42s → 2125.42s]** So normally you just drop it down.
+
+**[2125.42s → 2126.42s]** Yeah, yeah.
+
+**[2126.42s → 2127.42s]** Yeah, yeah.
+
+**[2127.42s → 2129.42s]** Like anywhere you click here, it goes down there.
+
+**[2129.42s → 2131.42s]** So yeah, anywhere.
+
+**[2131.42s → 2134.42s]** And even if I click on it, where it already is, that works.
+
+**[2134.42s → 2137.45s]** Oh, no, it actually took away my win.
+
+**[2137.45s → 2138.45s]** Yeah.
+
+**[2138.45s → 2140.45s]** I was I guess I've a win here now.
+
+**[2140.45s → 2142.45s]** Let's see if winning logic works.
+
+**[2142.45s → 2144.45s]** Yeah, it's one wins.
+
+**[2144.45s → 2146.45s]** We start game with a min max.
+
+**[2146.45s → 2148.45s]** You either lose or draw.
+
+**[2148.45s → 2153.45s]** Sure, yes, you can write an optimal algorithm for this not to,
+
+**[2153.89s → 2155.45s]** it's not sort of like TickTackTo.
+
+**[2155.45s → 2160.45s]** You can write an optimal TickTackTo that the computer should not lose.
+
+**[2163.85s → 2166.79s]** And might even win if the human isn't paying too much attention.
+
+**[2168.51s → 2170.35s]** What's the side for a whole thing?
+
+**[2170.35s → 2171.63s]** It's good, it's not.
+
+**[2171.63s → 2173.27s]** Yeah, so this works.
+
+**[2173.27s → 2175.71s]** I also like this as an alternative to TickTackTo.
+
+**[2175.71s → 2179.55s]** sort of Sandy check that you're right, some code system is able to do something.
+
+**[2180.67s → 2187.07s]** If we go back now to this, so this output here again is just demonstrating, and let's invest
+
+**[2187.07s → 2191.63s]** in a little bit more what happened here, because this interface just has the query in the output.
+
+**[2191.63s → 2195.79s]** But we can look at the intermediate steps and we can see the sort of like payloads that we're
+
+**[2195.79s → 2204.22s]** used to seeing for the OpenAI API. There's the message that went in. And oh, we're seeing the system
+
+**[2204.22s → 2211.95s]** prompt, right? Oh, the system prompt is actually specifying Python code. So that's, but the yellows
+
+**[2211.95s → 2218.64s]** will need to be flexible, even though we asked, actually, I'll just react. So this isn't super
+
+**[2218.64s → 2223.60s]** readable. So we'll read this elsewhere in the code base, I think. But this is the system prompt.
+
+**[2223.60s → 2227.76s]** And so this is what you as a developer of a system for your caption project would be worried
+
+**[2227.76s → 2233.04s]** about writing. And then this is the user prompt. And then this is what OpenAI did about it. And it
+
+**[2233.04s → 2240.19s]** basically just generated this pretty much out the box with GPT 40. Yeah, so it was just
+
+**[2240.19s → 2246.51s]** generating this. It was happy with itself. So good for it. And I know it might seem like we're
+
+**[2246.51s → 2251.71s]** just dressing up sending a prompt to GPT 40. And to an extent, we all, typically that is all
+
+**[2251.71s → 2259.44s]** the half. But I want to emphasize that this happened in an overall architecture that allows you
+
+**[2259.44s → 2263.84s]** to potentially do cooler things as you make it better and better and as you do more prompt engineering
+
+**[2263.84s → 2269.28s]** maybe use something other than GPT-40, maybe a fine tuned model, and all that good stuff.
+
+**[2269.28s → 2274.24s]** So it's good to start simple. It's good to start with tasks that you really think your system
+
+**[2274.24s → 2278.80s]** can do because if your system doesn't even do that, then that's a very good indicator that
+
+**[2278.80s → 2283.44s]** something is just fundamentally broken, right? And then it's perhaps not even passing the output
+
+**[2283.44s → 2289.04s]** or formatting things as it sure, or syntax error type stuff. And that stuff happens. And so it's
+
+**[2289.04s → 2292.18s]** it's good to have these sandy checkstones.
+
+**[2292.18s → 2295.28s]** But what would a human then do with this sort of output?
+
+**[2295.28s → 2298.32s]** Well, as I said, in this particular case,
+
+**[2298.32s → 2300.24s]** you might just choose to PR it.
+
+**[2301.22s → 2303.62s]** But if you asked for something more complicated,
+
+**[2303.62s → 2306.46s]** that it actually was updating existing code,
+
+**[2306.46s → 2309.18s]** you might ask for reviews, you might ask for tests
+
+**[2309.18s → 2310.48s]** as I already described.
+
+**[2311.78s → 2312.90s]** Times it.
+
+**[2312.90s → 2313.74s]** All right.
+
+**[2313.74s → 2318.46s]** So at this point, I'm not gonna demo more
+
+**[2318.46s → 2328.18s]** Kevin yet, I think that this was a good introduction to Kevin. And maybe in future office hours,
+
+**[2328.18s → 2333.70s]** Tom, you could also show off more about Kevin if there's some downtime where people don't have
+
+**[2333.70s → 2341.62s]** questions. I think that could be a good useful thing to do. But there is more functionality
+
+**[2341.62s → 2346.50s]** and in isolation, each route is not actually that complicated. It actually does kind of boil down
+
+**[2346.50s → 2352.34s]** to send a thing. Let's look a little bit at the code structure and then Hazik, if you have
+
+**[2352.34s → 2356.10s]** absolutely any questions or if you potentially want to brainstorm a bit, we're here for that.
+
+**[2357.38s → 2364.58s]** But no pressure, if this is it, this is it. So let's look at a few other spots in the code.
+
+**[2364.58s → 2371.94s]** So the test generation code, if we were to call it, here's that system prompt. And this is a long
+
+**[2371.94s → 2380.82s]** prompt, right? This is like a over 80 lines of prompt. The vast majority of the five is prompt,
+
+**[2380.82s → 2387.05s]** right? And that's good. I mean, that's where we're getting the return here by trying to steer
+
+**[2387.05s → 2394.25s]** these incredibly powerful systems into a very specific semantic space. Sorry, just semantic space.
+
+**[2395.05s → 2399.61s]** And I won't read all of this, but again, it's Python focus, which makes sense, because
+
+**[2399.61s → 2401.09s]** as a generator is to.
+
+**[2401.09s → 2404.05s]** And it provides enumerated rules.
+
+**[2404.05s → 2405.57s]** It provides examples.
+
+**[2405.57s → 2409.69s]** This whole prompt is an example of few shot learning.
+
+**[2409.69s → 2413.49s]** We're not fine tuning, but we're giving actual examples
+
+**[2413.49s → 2416.49s]** baked into the prompt of like, here's a function.
+
+**[2416.49s → 2418.97s]** Here's how I want you to write a unit test for it.
+
+**[2418.97s → 2423.17s]** And so this demonstrates to the LLM like, OK,
+
+**[2423.17s → 2427.49s]** I want to pick out good Python functions that are clear units
+
+**[2427.49s → 2431.77s]** and don't want to use the standard library unit test module,
+
+**[2431.77s → 2435.41s]** and make a file that does a bunch of tests on it.
+
+**[2435.41s → 2438.37s]** And then here's another slightly more sophisticated example,
+
+**[2438.37s → 2440.41s]** but does the same sort of thing,
+
+**[2440.41s → 2442.73s]** and actually packs it in a class
+
+**[2442.73s → 2445.49s]** and makes a unit test test case and shows
+
+**[2445.49s → 2448.60s]** that this is the sort of thing we want.
+
+**[2448.60s → 2452.12s]** And then the code logic is the template, system prompt,
+
+**[2452.12s → 2455.00s]** and then the actual human prompt,
+
+**[2455.00s → 2458.48s]** Isn't really human, isn't like, you don't type to this one.
+
+**[2458.48s → 2463.46s]** You don't say, oh, blah, blah, blah, please write tests for me.
+
+**[2463.46s → 2466.02s]** That's all in here.
+
+**[2466.02s → 2471.23s]** With the architecture, if you press the test button,
+
+**[2471.23s → 2472.87s]** it just passes the code.
+
+**[2472.87s → 2476.27s]** It passes whatever code was generated or reviewed
+
+**[2476.27s → 2481.66s]** and passes that code into the test.
+
+**[2481.66s → 2484.94s]** So tests will make tests.
+
+**[2484.94s → 2492.06s]** hold on. This is for running tests. So actually, I think making tests might be
+
+**[2492.06s → 2495.18s]** back under generate. So I want to apologize about that. Making
+
+**[2495.18s → 2498.70s]** and let's let's track that down. But that's important to clarify. These
+
+**[2498.70s → 2502.46s]** systems are complicated enough to get to confusing. Test is for running tests.
+
+**[2503.02s → 2507.10s]** I bet you that writing tests is somehow associated as a generating
+
+**[2507.10s → 2510.54s]** task. But let's actually go to the entry point and trace that out to be
+
+**[2510.54s → 2521.74s]** sure here. So here is the main fast API file and we can see all four of the routes, the
+
+**[2521.74s → 2528.04s]** sets of routes that are added. So this is a generate one and it uses the generate chain.
+
+**[2528.04s → 2538.78s]** So where does generate chain come from? Well generate chain. Yeah, it comes from, I
+
+**[2538.78s → 2546.30s]** want to go to that file. I'll just go here. Comes from here. So actually, I guess where
+
+**[2546.30s → 2554.16s]** test chain then. I guess you know what I so to correct myself I guess the test
+
+**[2554.16s → 2560.48s]** chain does both right and hopefully run tests we're gonna have to validate that a
+
+**[2560.48s → 2575.01s]** little bit but yeah so the test chain is prompting to write tests. So I was
+
+**[2575.01s → 2582.06s]** right the first time. I was just showing it on everything. The Docker run is
+
+**[2582.06s → 2588.06s]** its own route. So I think maybe this architecture diagram is a teensy that out of date with what happened
+
+**[2588.06s → 2594.54s]** with the code, and that happens, by the way. That's always happens in the real world, and it's always
+
+**[2594.54s → 2598.14s]** a little bit of a pain to go back and update the architectural diagram, but it's a good idea to do it
+
+**[2598.14s → 2607.26s]** periodically, as I'm sure we will. So I think in the actual architecture now, running a Docker
+
+**[2607.26s → 2612.86s]** container is its own separate name route separate from perhaps generating new tests and I think that
+
+**[2612.86s → 2618.78s]** makes sense because they are kind of set in place and running the Docker container also if we go
+
+**[2618.78s → 2627.47s]** back to the server file here is a little bit different right it's not a it's not using ad routes
+
+**[2627.47s → 2634.59s]** this is just fast API right this is just basically adding you know okay we have a pie of
+
+**[2634.59s → 2637.71s]** of the name of the models,
+
+**[2637.71s → 2640.79s]** the pedantic model here of the data structure,
+
+**[2640.79s → 2642.75s]** which is how we get that magic documentation
+
+**[2642.75s → 2644.91s]** of all the payload types and stuff.
+
+**[2644.91s → 2648.35s]** And it includes some config and we have the code.
+
+**[2648.35s → 2650.31s]** And then we try to run it in Docker.
+
+**[2650.31s → 2652.84s]** And then this workhorse function,
+
+**[2652.84s → 2660.33s]** if we go to Docker Run,
+
+**[2660.33s → 2662.25s]** does the rest of the logic here, right?
+
+**[2662.25s → 2666.29s]** And actually has a Python Docker container
+
+**[2666.29s → 2668.93s]** that actually we drop the code into.
+
+**[2668.93s → 2671.89s]** And there's not a whole lot of LLM stuff going on here.
+
+**[2671.89s → 2674.65s]** In fact, there's not really any of it
+
+**[2674.65s → 2676.88s]** in this specific step.
+
+**[2676.88s → 2679.88s]** This is just some logic to generate a Docker container
+
+**[2679.88s → 2682.08s]** to chuck the LLM code into the run it.
+
+**[2682.08s → 2684.72s]** And that can be triggered by the human by clicking
+
+**[2684.72s → 2689.52s]** the button that corresponds to sending a request to this route.
+
+**[2689.52s → 2690.55s]** Right?
+
+**[2690.55s → 2693.67s]** So yeah.
+
+**[2693.67s → 2695.47s]** Anyway, sorry.
+
+**[2695.47s → 2696.27s]** What was the other part of that?
+
+**[2696.27s → 2696.47s]** Yeah.
+
+**[2696.47s → 2698.67s]** Run the code in Docker was the other thing
+
+**[2698.67s → 2699.91s]** to talk about here.
+
+**[2699.91s → 2702.47s]** So I guess we did update it on the slides
+
+**[2702.47s → 2706.73s]** on the drop down here or the list, I mean.
+
+**[2709.94s → 2714.38s]** All right, I have pretty much at time.
+
+**[2714.38s → 2717.90s]** So there's not a whole lot else about the code
+
+**[2717.90s → 2719.78s]** that I'm gonna talk through right now.
+
+**[2719.78s → 2723.02s]** I feel like I've referred to most of the things
+
+**[2723.02s → 2725.66s]** that are distinct about it.
+
+**[2725.66s → 2727.62s]** And a lot of the stuff you've seen before,
+
+**[2727.62s → 2729.06s]** if you actually dig into the details
+
+**[2729.06s → 2732.14s]** these other ones like the PR.
+
+**[2732.14s → 2733.86s]** This is also a system prompt,
+
+**[2733.86s → 2736.30s]** a much shorter system prompt in this case.
+
+**[2738.18s → 2741.74s]** And right now that's because we're stuck in a knot.
+
+**[2741.74s → 2744.34s]** We have fully implemented the GitHub folder.
+
+**[2744.34s → 2745.58s]** This is okay to do.
+
+**[2745.58s → 2749.14s]** So when you have your big beautiful architecture,
+
+**[2749.14s → 2750.78s]** maybe you implement this
+
+**[2750.78s → 2752.94s]** and the PR won the last one,
+
+**[2752.94s → 2755.06s]** it's kind of just a stub until you have the time
+
+**[2755.06s → 2757.96s]** to implement the logic to open a full PR.
+
+**[2757.96s → 2761.04s]** You don't need to fix that first, right?
+
+**[2761.04s → 2762.92s]** Review, though, there is a lot here.
+
+**[2762.92s → 2764.52s]** So there's a bunch of prompt,
+
+**[2764.52s → 2766.64s]** and there's some action examples.
+
+**[2766.64s → 2768.80s]** So we're actually making the prompt template
+
+**[2768.80s → 2770.20s]** a little bit more programmatically.
+
+**[2770.20s → 2772.96s]** So we're again doing few shop learning here,
+
+**[2772.96s → 2776.08s]** but we could potentially add more examples to this in future,
+
+**[2776.08s → 2778.04s]** which might be very useful,
+
+**[2778.04s → 2780.52s]** especially if we take advantage of some of the length
+
+**[2780.52s → 2783.11s]** served systems for that.
+
+**[2783.11s → 2785.27s]** And at the end of the day, though,
+
+**[2785.27s → 2787.47s]** we're just piping it together and making it runable,
+
+**[2787.47s → 2789.47s]** like we always do.
+
+**[2789.47s → 2790.55s]** And then let's see how it tests is.
+
+**[2790.55s → 2792.07s]** So test is also pretty flashed out.
+
+**[2792.07s → 2792.99s]** Oh no, test we looked at.
+
+**[2792.99s → 2794.55s]** Test is very flashed out.
+
+**[2794.55s → 2795.63s]** Generate we didn't look at,
+
+**[2795.63s → 2797.03s]** but generate's also flashed out.
+
+**[2797.03s → 2798.31s]** And it's, again,
+
+**[2798.31s → 2800.43s]** beginning specific lists
+
+**[2800.43s → 2803.51s]** and telling what we want very precisely.
+
+**[2803.51s → 2807.04s]** And that's all good practices in this case.
+
+**[2807.04s → 2810.40s]** All right, and Tom linked.
+
+**[2811.68s → 2813.08s]** Yeah, all I did was,
+
+**[2813.08s → 2815.40s]** I quickly gave it a little bit more of a prompt
+
+**[2815.40s → 2817.64s]** to do with Python just to give it a bit more
+
+**[2817.64s → 2820.28s]** like, yeah, actually exercise all of its cool.
+
+**[2820.28s → 2823.24s]** Yeah, just told it to make a simple,
+
+**[2823.24s → 2827.56s]** flask API backend that generates a short,
+
+**[2827.56s → 2831.30s]** basically we're making a URL shortener app.
+
+**[2831.30s → 2832.82s]** So I'll told it to make the backend for it,
+
+**[2832.82s → 2835.50s]** using the SQL Lite and flask,
+
+**[2835.50s → 2838.82s]** and make a simple HTML, HTML, CSS, JavaScript,
+
+**[2838.82s → 2840.26s]** frontend for it.
+
+**[2840.26s → 2842.26s]** And it seems to have done the job, no problem.
+
+**[2842.26s → 2844.66s]** Yeah, this is what I mean, we'd have to actually review this,
+
+**[2844.66s → 2846.62s]** but that's what all those other routes would be for.
+
+**[2846.62s → 2850.58s]** it'd be very plausible to put this a little bit of cleanup that could be done.
+
+**[2850.58s → 2851.78s]** So it would be nice.
+
+**[2851.78s → 2852.78s]** Yeah.
+
+**[2852.78s → 2857.78s]** And you can probably automate that by like passing it to the review and having that generate recommendations
+
+**[2857.78s → 2862.70s]** and passing that back to generate to actually do the cleanup and passing it to test to write
+
+**[2862.70s → 2868.50s]** some tests and passing it to Docker run, not picture here to run it in Docker.
+
+**[2868.50s → 2869.50s]** Right.
+
+**[2869.50s → 2875.34s]** I didn't maybe the idea is that the test wraps could automatically call Docker run as well.
+
+**[2875.34s → 2878.18s]** I don't know if that's the direction Ash is going to take it or if he's going to keep
+
+**[2878.18s → 2880.14s]** Docker run as a separate step.
+
+**[2880.14s → 2881.38s]** That was an awesome work.
+
+**[2881.38s → 2884.54s]** It was right unit test for it as well.
+
+**[2884.54s → 2886.09s]** It did that as well.
+
+**[2886.09s → 2887.57s]** Yeah, yeah, yeah.
+
+**[2887.57s → 2889.70s]** So the direction.
+
+**[2889.70s → 2891.70s]** Yeah, yeah.
+
+**[2891.70s → 2894.62s]** Yeah, also that test, which is great.
+
+**[2894.62s → 2896.62s]** So great.
+
+**[2896.62s → 2897.94s]** Thank you for that example.
+
+**[2897.94s → 2900.54s]** And that shows a little bit more of its abilities.
+
+**[2900.54s → 2905.46s]** And again, you can see how you'd pass that to the other routes to get your final product
+
+**[2905.46s → 2911.22s]** And when I was saying there about, oh, whether tests should run Docker API or not,
+
+**[2911.22s → 2916.26s]** that's the sort of design decision that, you know, there is not an objective right answer to.
+
+**[2916.26s → 2922.62s]** You sort of have to think about who your users are and what the user flow makes sense.
+
+**[2922.62s → 2926.62s]** You know, maybe you have, maybe it's developers, their power users,
+
+**[2926.62s → 2931.66s]** you want to actually separate generating tests from running tests, right?
+
+**[2931.66s → 2933.70s]** Maybe they want to look at the test before they run it.
+
+**[2933.70s → 2938.50s]** Or maybe no, it actually writes the test really well and reliably,
+
+**[2938.50s → 2939.94s]** and we want to save time.
+
+**[2939.94s → 2944.50s]** And so writing the test and running the test is coupled happens together.
+
+**[2944.50s → 2949.33s]** And that's the sort of thing that you can play with both options and figure it out over time.
+
+**[2949.33s → 2951.97s]** Okay, cool. So, what is your homework?
+
+**[2951.97s → 2956.37s]** Well, it should be pretty clear. Design your capstone and share it for feedback.
+
+**[2956.37s → 2959.17s]** Share the Slack channel.
+
+**[2959.17s → 2962.76s]** It's okay if it's just a few sentences.
+
+**[2962.76s → 2966.36s]** For your four sentences, it's enough to an MVP plan here,
+
+**[2966.36s → 2968.36s]** an MVP design for an MVP project.
+
+**[2968.36s → 2970.52s]** You can briefly answer each of these questions.
+
+**[2971.80s → 2973.32s]** And you can draw some sort of picture.
+
+**[2974.37s → 2975.89s]** Which again, can be pretty simple.
+
+**[2975.89s → 2977.33s]** You might not picture all of this.
+
+**[2977.33s → 2979.81s]** You might just picture like a fraction of the system
+
+**[2979.81s → 2981.41s]** that you might want to build ultimately,
+
+**[2981.41s → 2983.17s]** and that's an okay starting point.
+
+**[2983.17s → 2984.85s]** Or maybe you will draw a big picture,
+
+**[2984.85s → 2986.85s]** but a lot of it will be uncertain.
+
+**[2986.85s → 2989.17s]** And you'll have to update and change it later.
+
+**[2990.53s → 2992.53s]** All right, so please, please do that.
+
+**[2992.53s → 2996.85s]** because that is how you will take advantage of these lectures.
+
+**[2996.85s → 3000.49s]** By having your own plan, you don't have to implement it all into these.
+
+**[3000.49s → 3002.05s]** You've got the six months for that.
+
+**[3002.05s → 3005.77s]** But by having at least a plan, you will take better advantage
+
+**[3005.77s → 3008.29s]** and get more out of these upcoming sessions.
+
+**[3008.29s → 3011.57s]** So on that note, thank you for joining.
+
+**[3011.57s → 3013.77s]** And do you have any questions?
+
+**[3013.77s → 3016.69s]** Do you have any ideas you want to give a little bit of feedback on?
+
+**[3016.69s → 3020.81s]** Or maybe next week?
+
+**[3020.81s → 3021.37s]** Thanks for that.
+
+**[3021.37s → 3022.21s]** That was very helpful.
+
+**[3022.21s → 3028.13s]** I must admit, I've been lagging a bit behind the work has been, has held me pretty swamped.
+
+**[3028.77s → 3036.05s]** This is incredibly, incredibly, probably interesting. I was chatting with, with Tom over Slack and
+
+**[3036.05s → 3042.77s]** they were talking about human in the loop, which does feel, for me at least, an important paradigm
+
+**[3042.77s → 3047.81s]** for AI moving forward in a sense where like, if I'm riding code instead of, you know,
+
+**[3047.81s → 3054.18s]** talking to cursor and giving it instructions. I would like cursor talk back to me and
+
+**[3054.18s → 3059.30s]** anticipate what my intent truly is. And then, you know, it refines it, refines it,
+
+**[3059.30s → 3063.70s]** refines it over time because I find that humans are bad at prompting in general, even we don't
+
+**[3063.70s → 3069.86s]** really have like a clear idea. So I feel like the machine sort of happens a little bit. And I would
+
+**[3069.86s → 3079.46s]** love an IDE that works with me in order to generate code. And the process you outline here,
+
+**[3079.46s → 3086.42s]** of it, like, give instructions and generate tests, it runs it. I think it's very elegant,
+
+**[3086.42s → 3093.30s]** but it does seem like it's quite dependent on some sort of like GitHub PR workflow,
+
+**[3093.30s → 3099.81s]** whereas when I'm single, I am the single, the CEO and the CTO. And so it is sort of like
+
+**[3100.37s → 3103.97s]** I don't even use Git branches at this point,
+
+**[3103.97s → 3105.37s]** like that's the thing.
+
+**[3105.37s → 3107.65s]** So I'm wondering if you can look
+
+**[3107.65s → 3110.77s]** off a little bit more lightweight
+
+**[3110.77s → 3113.61s]** that can exist locally on a computer.
+
+**[3113.61s → 3115.21s]** That's our first question and then have another one,
+
+**[3115.21s → 3117.01s]** but we should pause that again.
+
+**[3117.01s → 3118.57s]** I'll try to take the first one first.
+
+**[3118.57s → 3119.73s]** That's a great question.
+
+**[3119.73s → 3124.01s]** Yes, this is a bit paired with
+
+**[3124.01s → 3125.53s]** the assumption that you use Git out,
+
+**[3125.53s → 3127.37s]** which is a pretty good baseline assumption for
+
+**[3127.37s → 3129.21s]** a lot of developers and development teams,
+
+**[3129.21s → 3131.21s]** but not everybody, like you said.
+
+**[3132.44s → 3135.72s]** And I think, I mean, there's a few situations
+
+**[3135.72s → 3136.72s]** if you're not using GitHub,
+
+**[3136.72s → 3138.36s]** but you're just using GitLab or something,
+
+**[3138.36s → 3140.08s]** well, then that's just switching out the APIs,
+
+**[3140.08s → 3143.00s]** but the overall flow would mostly work the same.
+
+**[3143.00s → 3145.68s]** However, if you're doing something where it's like,
+
+**[3145.68s → 3147.20s]** you know, I'm not even going,
+
+**[3147.20s → 3149.72s]** I'm not doing like as much branching
+
+**[3149.72s → 3151.64s]** and code reviews and stuff like that
+
+**[3151.64s → 3153.88s]** because that would just slow me down
+
+**[3153.88s → 3156.88s]** and I'm just sort of chugging away
+
+**[3156.88s → 3161.88s]** as a solo developer, then I think, I mean,
+
+**[3162.83s → 3164.15s]** one could still make the argument,
+
+**[3164.15s → 3166.39s]** well hey, you still should use branches and all that.
+
+**[3166.39s → 3168.67s]** I'm not necessarily saying that's the right argument,
+
+**[3168.67s → 3171.71s]** but there are people who would perhaps take that argument.
+
+**[3171.71s → 3173.67s]** And then I think the other way to say,
+
+**[3173.67s → 3175.83s]** well no, I really do want a lighter system
+
+**[3175.83s → 3177.51s]** and that really does let me move faster
+
+**[3177.51s → 3178.87s]** and that's the right call.
+
+**[3179.87s → 3185.80s]** I think, I mean, you still need something about tests,
+
+**[3185.80s → 3190.20s]** ideally. You still probably have some sort of test suite even if it's simpler and lighter.
+
+**[3190.76s → 3197.88s]** So you still have generate and test be kind of similar. I guess instead of PR,
+
+**[3198.52s → 3205.96s]** maybe you'd have something that basically productizes it somehow, somehow makes it livable.
+
+**[3205.96s → 3211.32s]** Because that's what a PR is to the median developer, the median company, opening a PR,
+
+**[3211.32s → 3215.84s]** are merging the PR really, but that's then checking off a box.
+
+**[3215.84s → 3218.40s]** That's then getting some points done, moving the ticket over
+
+**[3218.40s → 3220.24s]** and hopefully doing their job.
+
+**[3220.24s → 3224.08s]** And so if your job doesn't involve that exactly,
+
+**[3224.08s → 3226.60s]** then it presumably involves something.
+
+**[3226.60s → 3229.04s]** It involves putting the code somewhere,
+
+**[3229.04s → 3234.10s]** maybe putting it on some prototype demo website
+
+**[3234.10s → 3238.94s]** that you can show people, or maybe it involves just putting
+
+**[3238.94s → 3240.38s]** it in a place in your hard drive.
+
+**[3240.38s → 3242.24s]** and that's fine too.
+
+**[3242.24s → 3245.96s]** But some sort of route that handles the options there
+
+**[3245.96s → 3247.92s]** and that lets you feed output there
+
+**[3247.92s → 3249.60s]** once that output is good enough,
+
+**[3249.60s → 3252.44s]** that's the main thing I can think of replacing.
+
+**[3252.44s → 3254.08s]** And then I guess for simplifying,
+
+**[3254.08s → 3258.60s]** I mean, you could certainly simplify the test flow
+
+**[3258.60s → 3263.38s]** by just removing either removing separate writing of tests
+
+**[3263.38s → 3265.98s]** and just having run tests or vice versa,
+
+**[3265.98s → 3267.70s]** which ever is more important to you.
+
+**[3267.70s → 3272.70s]** And you could argue that like this flow might not be necessary either,
+
+**[3272.70s → 3276.70s]** that the human can just sort of do this.
+
+**[3276.70s → 3279.70s]** If you don't want to try to automate any of the recommendations,
+
+**[3279.70s → 3283.70s]** maybe just have the human be able to loop on this like you were describing,
+
+**[3283.70s → 3289.70s]** and just continue to have a conversation and give feedback to improve the code somehow.
+
+**[3289.70s → 3293.93s]** So those are various simplifications I can picture.
+
+**[3293.93s → 3297.13s]** But yeah, I totally hear you on how the code,
+
+**[3297.13s → 3300.61s]** like systems that facilitate writing code.
+
+**[3300.61s → 3302.25s]** I think we've only scratched the surface
+
+**[3302.25s → 3305.25s]** on what those will really look like at the end of the day.
+
+**[3305.25s → 3307.13s]** But it's definitely an interesting place
+
+**[3307.13s → 3308.57s]** and it's definitely a place that I think
+
+**[3308.57s → 3310.33s]** we'll always need human in the loop,
+
+**[3310.33s → 3313.09s]** assuming we want the code to do something humans want,
+
+**[3314.33s → 3315.41s]** which I have to do.
+
+**[3316.76s → 3317.84s]** Yeah, that makes a lot of sense.
+
+**[3317.84s → 3321.75s]** I mean, like, I'm a self-taught developer, right?
+
+**[3321.75s → 3326.55s]** And I'm basically building a live stream video auctions up
+
+**[3326.55s → 3329.35s]** for Latin America and just to give you context
+
+**[3329.35s → 3330.71s]** as to what I'm doing.
+
+**[3330.71s → 3334.15s]** And the way I code really is like,
+
+**[3334.15s → 3335.87s]** it's very like iterative, right?
+
+**[3335.87s → 3337.71s]** I build an API route.
+
+**[3337.71s → 3341.47s]** I run it in a postman.
+
+**[3341.47s → 3343.59s]** Does it return the thing I want?
+
+**[3343.59s → 3345.58s]** Then I hook it up to the summit.
+
+**[3345.58s → 3347.50s]** I'm like, cool, it works.
+
+**[3347.50s → 3349.02s]** Like, I don't even write tests, right?
+
+**[3349.02s → 3351.54s]** That's the thing that's interesting.
+
+**[3351.54s → 3355.02s]** And so I think like, I look at this workflow you have here.
+
+**[3355.02s → 3357.34s]** And the first thing that comes to mind
+
+**[3357.34s → 3360.10s]** is that there are potential points of failure
+
+**[3360.10s → 3362.78s]** in the sense where even the tests might not be correct.
+
+**[3362.78s → 3364.42s]** And I know in previous sessions,
+
+**[3364.42s → 3367.30s]** we've spoken about an agent that writes the tests.
+
+**[3367.30s → 3369.14s]** You've got an agent that checks the test.
+
+**[3369.14s → 3370.70s]** You've got a whole bunch of stuff.
+
+**[3370.70s → 3374.98s]** And I think that there comes a trade off.
+
+**[3374.98s → 3376.58s]** We can throw more agents at this problem,
+
+**[3376.58s → 3378.34s]** or we start to involve a human.
+
+**[3378.34s → 3381.42s]** Now if you involve a human, I don't want to look at 30 tests.
+
+**[3381.42s → 3383.22s]** I want to look at two, right?
+
+**[3383.22s → 3385.10s]** And like a proof, you know?
+
+**[3385.10s → 3385.94s]** Like that's the...
+
+**[3385.94s → 3386.90s]** You could make it into the prompt.
+
+**[3386.90s → 3390.54s]** You could say like right to like pick the two most important
+
+**[3390.54s → 3393.54s]** things to test and make those tests.
+
+**[3393.54s → 3395.10s]** Right, right, right, yeah.
+
+**[3395.10s → 3397.97s]** Yeah, that makes sense.
+
+**[3397.97s → 3398.85s]** That makes a lot of sense.
+
+**[3398.85s → 3400.61s]** Yeah, it does feel like tests are key
+
+**[3400.61s → 3404.05s]** to sort of making the whole iterative loop work, right?
+
+**[3404.05s → 3406.89s]** Yeah, I mean, so what I would say tests are largely
+
+**[3406.89s → 3408.17s]** about regression too.
+
+**[3408.17s → 3412.45s]** So I mean, I think any developer,
+
+**[3412.45s → 3415.77s]** it kind of, at least any productive developer has a flow,
+
+**[3415.77s → 3418.05s]** at least I'm like what you were describing.
+
+**[3418.05s → 3420.05s]** You know, for me, what I'm really actually,
+
+**[3420.05s → 3422.37s]** when I'm in my human version
+
+**[3422.37s → 3424.53s]** of Kevin's generate step here,
+
+**[3424.53s → 3426.37s]** I'm living in a Python network.
+
+**[3426.37s → 3429.73s]** And I'm just trying stuff until I see that it works.
+
+**[3429.73s → 3432.25s]** And then I'm like, okay, it works.
+
+**[3432.25s → 3435.05s]** And how I actually get it in the shape I need it to be
+
+**[3435.05s → 3439.61s]** whatever file and get with tests and all that stuff.
+
+**[3439.61s → 3441.77s]** All that comes after for the most part.
+
+**[3441.77s → 3443.85s]** I mean, yes, test driven development,
+
+**[3443.85s → 3446.19s]** but I don't know that any very few people
+
+**[3446.19s → 3448.25s]** really apply that, I think.
+
+**[3448.25s → 3451.85s]** Now, that said, if you're not writing tests now,
+
+**[3451.85s → 3453.89s]** I mean, maybe what you could benefit from
+
+**[3453.89s → 3455.37s]** would be a system that doesn't try to do
+
+**[3455.37s → 3457.57s]** end-to-end development like this,
+
+**[3457.57s → 3461.61s]** but one that focuses on understanding existing code bases,
+
+**[3461.61s → 3463.77s]** giving recommendations and improvements
+
+**[3463.77s → 3466.21s]** maybe to you the human, right?
+
+**[3466.21s → 3470.09s]** So like an AI code review buddy since you're working alone
+
+**[3471.25s → 3473.73s]** and maybe an and maybe generates tests
+
+**[3473.73s → 3475.65s]** and maybe including the prompts like,
+
+**[3475.65s → 3477.29s]** don't just generate a zillion tests,
+
+**[3477.29s → 3481.29s]** generate like tests that test the most important functionality
+
+**[3481.29s → 3483.17s]** and maybe have some way to define what that is
+
+**[3483.17s → 3485.21s]** to help make that decision
+
+**[3485.21s → 3487.41s]** or just trust that the analytical figure it out.
+
+**[3487.41s → 3491.81s]** But I think that those could be other things to do,
+
+**[3491.81s → 3493.73s]** just reduced the scope of the system.
+
+**[3493.73s → 3495.49s]** And speaking as a developer,
+
+**[3495.49s → 3498.21s]** what I would motivate you to think of for tests is,
+
+**[3498.21s → 3499.45s]** you know, it's,
+
+**[3499.45s → 3502.05s]** it's not be the first or last person
+
+**[3502.05s → 3503.69s]** to basically skip writing tests
+
+**[3503.69s → 3505.13s]** in the name of velocity,
+
+**[3505.13s → 3506.45s]** that I get it.
+
+**[3506.45s → 3508.89s]** Test hygiene matters,
+
+**[3508.89s → 3511.65s]** but how and when it matters is mostly like,
+
+**[3513.53s → 3516.13s]** to prevent regression was the word I use.
+
+**[3516.13s → 3518.33s]** And in this case, regression and the sense of like,
+
+**[3518.33s → 3519.49s]** something that was working,
+
+**[3519.49s → 3521.89s]** not working because of the newer change.
+
+**[3521.89s → 3526.05s]** And as a solo developer, that happens less often,
+
+**[3526.05s → 3528.41s]** because you're only one person touching the code base,
+
+**[3528.41s → 3530.05s]** but it will still happen eventually.
+
+**[3530.05s → 3532.29s]** Like if you write, if you're touching the same code base
+
+**[3532.29s → 3535.77s]** for months and years, eventually you'll break something
+
+**[3535.77s → 3539.13s]** that was working and maybe not realize it right away.
+
+**[3539.13s → 3541.49s]** So tests are good for identifying
+
+**[3541.49s → 3543.09s]** and catching those sorts of things.
+
+**[3543.09s → 3547.45s]** For tech, for like making sure that key functionality
+
+**[3547.45s → 3549.57s]** that was previously implemented doesn't break
+
+**[3549.57s → 3552.21s]** because something new was added that refactors
+
+**[3552.21s → 3554.53s]** and changes and blah, blah, blah, right?
+
+**[3554.53s → 3556.77s]** Because code can be very complicated and intermingled.
+
+**[3556.77s → 3558.97s]** So that's one of the main things I see tests
+
+**[3558.97s → 3562.13s]** is being useful for in your situation.
+
+**[3562.13s → 3565.29s]** And there are other uses and applications of tests, of course.
+
+**[3565.29s → 3569.09s]** But yeah, a lot of testing philosophy
+
+**[3569.09s → 3574.09s]** and orthodoxy is centered on large enterprise.
+
+**[3574.81s → 3575.97s]** It's not a fit for you.
+
+**[3575.97s → 3576.81s]** So I get it.
+
+**[3576.81s → 3582.37s]** that you haven't like, you haven't dived into that and that's fair. But I think that you
+
+**[3582.37s → 3586.53s]** would benefit probably from some light regression tests.
+
+**[3586.53s → 3591.43s]** Yeah, for sure. That makes a lot of sense. The, I mean, like, I'm just thinking through my
+
+**[3591.43s → 3595.27s]** own coding workflow right now, right? Like, like, like, you know, this morning I sat down
+
+**[3595.27s → 3599.07s]** to like build a new feature. And like the first thing I do is like, I have a pen and paper
+
+**[3599.07s → 3602.23s]** and I like sketch out how would this work with the front end, how would this work with
+
+**[3602.23s → 3604.47s]** and I have a base a diagram, right?
+
+**[3604.47s → 3607.19s]** And then like I pick a part of it,
+
+**[3607.19s → 3609.35s]** and I'm like, well, I'm gonna implement this part of it.
+
+**[3609.35s → 3611.67s]** The, my dream really would be to be like,
+
+**[3611.67s → 3613.31s]** I don't know, let's say I've got Jeaves,
+
+**[3613.31s → 3616.99s]** my AI agent who has like context about like my product roadmap,
+
+**[3616.99s → 3618.39s]** those all the things I care about.
+
+**[3618.39s → 3620.51s]** And I'm like, all right, Jeaves, like we need to build
+
+**[3620.51s → 3623.19s]** this, this feature, like I'm thinking at a high level
+
+**[3623.19s → 3624.91s]** this, this, this, and then jeaves talk to me,
+
+**[3624.91s → 3625.75s]** ah, like what about this?
+
+**[3625.75s → 3626.79s]** And I'm like, ah yeah, that's cool,
+
+**[3626.79s → 3628.35s]** yeah, we should, we should include that too.
+
+**[3628.35s → 3629.95s]** And jeaves draws out like a diagram.
+
+**[3629.95s → 3631.71s]** And I'm like, okay, this looks cool.
+
+**[3631.71s → 3632.95s]** What do we tweak this, tweak this?
+
+**[3632.95s → 3634.87s]** I think we might do this in just a diagram.
+
+**[3634.87s → 3636.79s]** And I'm like, all right, let's get started working
+
+**[3636.79s → 3638.83s]** on this part of it.
+
+**[3638.83s → 3640.15s]** And then we dive into it.
+
+**[3640.15s → 3642.79s]** And I can see the code written out
+
+**[3642.79s → 3644.75s]** and the diagram as well at the same time
+
+**[3644.75s → 3646.51s]** on the right side of the screen.
+
+**[3646.51s → 3647.71s]** And they're building these things out.
+
+**[3647.71s → 3650.83s]** And then I basically just supervised agent
+
+**[3650.83s → 3652.43s]** as it writes code.
+
+**[3652.43s → 3654.47s]** And for me, that would be incredible.
+
+**[3654.47s → 3656.31s]** I mean, it's very similar to what I'm doing now,
+
+**[3656.31s → 3658.11s]** more or less.
+
+**[3658.11s → 3659.91s]** It's not the most, it's not the most,
+
+**[3659.91s → 3662.71s]** I started by stuff to put hands to keyboard, right?
+
+**[3662.71s → 3665.35s]** And I think that's the, I'm trying to figure out how,
+
+**[3665.35s → 3667.51s]** that would be a pretty cool project.
+
+**[3667.51s → 3671.63s]** But I'm actually not sure how to integrate that with VS code.
+
+**[3671.63s → 3673.55s]** If you have any suggestions on like how.
+
+**[3673.55s → 3677.03s]** I mean, as I understand VS code is mostly,
+
+**[3677.03s → 3679.79s]** it's kind of a web app itself, really.
+
+**[3679.79s → 3684.83s]** I mean, it's, so I think plugins for are essentially
+
+**[3684.83s → 3687.31s]** Java script at the end of the day.
+
+**[3687.31s → 3687.67s]** Right.
+
+**[3687.67s → 3689.67s]** Probably.
+
+**[3689.67s → 3690.67s]** But yeah, it's fun.
+
+**[3690.67s → 3693.07s]** What you described, what made me think it sounds like it
+
+**[3693.07s → 3696.33s]** is describing the software engineer version of Ironman's
+
+**[3696.33s → 3697.79s]** Jarvis or something.
+
+**[3697.79s → 3698.71s]** Yeah.
+
+**[3698.71s → 3699.31s]** Exactly.
+
+**[3699.31s → 3700.31s]** We're painting it together.
+
+**[3700.31s → 3701.63s]** We're building this software together, right?
+
+**[3701.63s → 3704.31s]** I think that's the idea.
+
+**[3704.31s → 3706.39s]** I mean, I think it's great that you
+
+**[3706.39s → 3708.87s]** have been overall vision for that.
+
+**[3708.87s → 3713.93s]** I would say identify somewhat in one part of it,
+
+**[3713.93s → 3715.61s]** modular components of it.
+
+**[3715.61s → 3718.33s]** I think building the whole thing is even
+
+**[3718.33s → 3720.17s]** building all of this is a lot.
+
+**[3720.17s → 3722.73s]** And I mean, as we haven't completely finished this piece of it.
+
+**[3722.73s → 3726.77s]** So I identify modular components that are more immediately
+
+**[3726.77s → 3730.77s]** useful and pick one or two of those to work on first.
+
+**[3730.77s → 3735.25s]** And I definitely hear you that getting it in VS code
+
+**[3735.25s → 3737.85s]** will be key from like the UX of it.
+
+**[3737.85s → 3740.61s]** So that is a problem to figure out fairly early on.
+
+**[3740.61s → 3742.73s]** But it's still not the very first problem to figure out.
+
+**[3742.73s → 3746.41s]** I think the most important problem is like what
+
+**[3746.41s → 3749.49s]** is one or two smaller things that I do often,
+
+**[3749.49s → 3752.93s]** like low-hanging fruit, that something like this can help with.
+
+**[3752.93s → 3755.73s]** And then try to come up with some sort of flow, some sort of
+
+**[3755.73s → 3757.81s]** runnable, right, that will do that.
+
+**[3757.81s → 3760.93s]** Like the LLM will take the input, give you the output.
+
+**[3760.93s → 3766.13s]** And then you figure out, OK, well, I don't actually want it to be a fast API,
+
+**[3766.13s → 3767.45s]** lane-served blah-blah.
+
+**[3767.45s → 3769.13s]** I want it to be.
+
+**[3769.13s → 3773.34s]** I mean, in your case, you might want to look at,
+
+**[3773.34s → 3775.74s]** so I mentioned Olama, there's also Lama file.
+
+**[3775.74s → 3777.50s]** Those are ways to run LLMs locally.
+
+**[3777.50s → 3788.50s]** So if you have an in one architecture or other capable chip, you might be able to run a decent enough coding model locally to do this. You need a code for smaller LLM.
+
+**[3788.50s → 3798.82s]** But otherwise, I mean if you are going to depend on open AI, then it will be something that makes API calls and that's fine.
+
+**[3798.82s → 3805.70s]** But you will probably want to, if the end goal is VS code, it could be wrong here.
+
+**[3805.70s → 3811.06s]** It's not exactly, I'm a Python person, but I would let more of the JavaScript ecosystem
+
+**[3811.06s → 3817.22s]** as a way to build what you're doing because, and there are ways to interact with the open AI,
+
+**[3817.22s → 3821.54s]** API via JavaScript as well, of course. We've used Python for this class because it's sort of the
+
+**[3822.42s → 3827.86s]** main, main way. It's the one that gets all the new features first, but there are ways to do it from
+
+**[3827.86s → 3835.22s]** JavaScript. And I think that might make it smoother for dropping it into VS code. But I don't
+
+**[3835.22s → 3842.09s]** have time. Have you ever developed any like VS code plugins? Yeah, I've got some IntelliJ
+
+**[3842.09s → 3848.09s]** plugins and some other stuff that's mostly in Kotlin, but yes, it's basically an electron app.
+
+**[3849.21s → 3854.81s]** VS code is. I've seen right here at stuff in TypeScript. You can write in JavaScript,
+
+**[3854.81s → 3855.81s]** which can write it.
+
+**[3855.81s → 3857.81s]** It's Microsoft, so of course it's TypeScript.
+
+**[3857.81s → 3861.13s]** That seems to be their happy path to use TypeScript.
+
+**[3861.13s → 3864.65s]** I've just quickly drawn a concept of the kind of sort of
+
+**[3864.65s → 3867.61s]** what we did with, we've done some proprietary stuff,
+
+**[3867.61s → 3869.57s]** so it's a little bit, I don't really share the actual stuff,
+
+**[3869.57s → 3875.07s]** but I've quickly drew a concept of some of the modular approach
+
+**[3875.07s → 3875.83s]** what we might have.
+
+**[3875.83s → 3876.83s]** I've just quickly done it.
+
+**[3876.83s → 3878.35s]** I think it's got a draw-offs through it's talking,
+
+**[3878.35s → 3881.51s]** so I'll just paste it into the thing you've got.
+
+**[3881.51s → 3882.35s]** Amazing.
+
+**[3882.35s → 3883.35s]** Thank you.
+
+**[3883.35s → 3889.48s]** super simple. This is like the front end concept there of the types of things that you do. I don't know
+
+**[3889.48s → 3893.02s]** I don't know if you want to share it actually it's a bit bigger so it's not tiny little I
+
+**[3896.65s → 3898.15s]** Just slap that together
+
+**[3898.55s → 3903.29s]** So the concept it you got a lot of little modules and each of the modules is technically an extension
+
+**[3903.41s → 3909.91s]** But they're all interact with each other and then on the back end you'd have a technically you can have a flask API
+
+**[3909.91s → 3914.47s]** you could have a whatever API and really these just hit that API, whether that's locally running in a
+
+**[3914.47s → 3921.46s]** Docker container. Originally you know the Aaron you know that Docker module thing, the Docker manager,
+
+**[3921.46s → 3925.38s]** I wrote that specifically for things like this, that's what it was originally made for.
+
+**[3926.82s → 3932.02s]** And it used as it orchestrates kind of like Kubernetes but locally on your machine.
+
+**[3932.02s → 3937.21s]** So you have a bunch of Docker's that actually work together in a composed way.
+
+**[3937.21s → 3940.40s]** and it's all in its own sort of thing.
+
+**[3940.40s → 3943.08s]** And then you have your set up so that you can write the code
+
+**[3943.08s → 3945.12s]** if it needs to and make suggestions.
+
+**[3945.12s → 3948.16s]** Kind of like with what's it,
+
+**[3948.16s → 3950.40s]** what's GitHub's one?
+
+**[3950.40s → 3951.24s]** Co-pilot.
+
+**[3951.24s → 3954.04s]** Yeah, bit like co-pilot but local.
+
+**[3954.04s → 3957.56s]** Then you've got feature models where literally
+
+**[3957.56s → 3962.24s]** you can select a few features that you use a lot
+
+**[3962.24s → 3963.08s]** in your code base.
+
+**[3963.08s → 3965.12s]** So it's sitting there, training on your code base
+
+**[3965.12s → 3966.56s]** whilst you're typing.
+
+**[3966.56s → 3967.98s]** So it gets better over time.
+
+**[3968.98s → 3973.12s]** So it basically rags on your code base as you're typing.
+
+**[3973.12s → 3974.12s]** Yeah?
+
+**[3974.12s → 3975.12s]** Cool.
+
+**[3975.12s → 3976.28s]** That's pretty cool.
+
+**[3976.28s → 3978.68s]** Yeah, it does mean you need local LLNM really for that.
+
+**[3978.68s → 3980.36s]** You don't want it to be slapped out there
+
+**[3980.36s → 3981.84s]** and get, oh, especially if you don't want to share,
+
+**[3981.84s → 3982.68s]** or you don't.
+
+**[3982.68s → 3983.60s]** Yeah, and local LLNM,
+
+**[3983.60s → 3986.64s]** I mean, the technology for that keeps getting better.
+
+**[3987.84s → 3992.42s]** I mean, there was a recent code mumble.
+
+**[3992.42s → 3996.26s]** But like, I mean, well, that's just even search
+
+**[3996.26s → 3999.86s]** I'm sure it's changed since I've looked it up and I looked it up probably last week but like
+
+**[4003.20s → 4008.96s]** I mean a lot of the stuff I mean there's so many different things that there's a lot of startups out there doing stuff
+
+**[4008.96s → 4017.04s]** But a lot of it's all proprietary so you can't do much. Yeah, so our code is why I think it's supposed to be okay
+
+**[4017.68s → 4019.68s]** So here's a comparison
+
+**[4019.68s → 4024.75s]** Pope and LLMs drop this into Thread as well,
+
+**[4025.03s → 4027.75s]** just so people have it if they're only a bit later.
+
+**[4027.75s → 4032.75s]** And probably most of these are downloadable
+
+**[4032.75s → 4035.85s]** from hubbing phase, I don't know.
+
+**[4035.85s → 4036.85s]** Yeah, I was gonna say,
+
+**[4036.85s → 4038.41s]** most of the good ones are vital,
+
+**[4038.41s → 4039.73s]** but I'm talking about good vibes.
+
+**[4039.73s → 4044.73s]** Yeah, but, and a lot of them are related,
+
+**[4044.73s → 4048.69s]** maybe different tunings of Lama or something like that.
+
+**[4048.69s → 4052.89s]** But if you're focused on a developer type tool,
+
+**[4052.89s → 4056.69s]** you might want an LLM that's focused on coding, right?
+
+**[4056.69s → 4060.19s]** And so StarCode is a good example of a popular,
+
+**[4060.19s → 4063.69s]** I believe, open, yeah, permissive license.
+
+**[4068.40s → 4072.12s]** Yeah, that's focused on writing code.
+
+**[4072.12s → 4076.36s]** And that will give you, especially when you're using an API,
+
+**[4076.36s → 4077.76s]** you kind of don't care,
+
+**[4077.76s → 4080.52s]** I mean, you care in so much as you're paying for it,
+
+**[4080.52s → 4082.88s]** But you don't necessarily care the GPT-40s,
+
+**[4082.88s → 4086.68s]** a general purpose model that can analyze Shakespeare,
+
+**[4086.68s → 4088.84s]** as long as it can also write your coach.
+
+**[4088.84s → 4090.52s]** But if you're running locally,
+
+**[4090.52s → 4093.68s]** you don't wanna run some big model
+
+**[4093.68s → 4095.68s]** that has more than it needs,
+
+**[4095.68s → 4099.48s]** you want to run a model that's specific
+
+**[4099.48s → 4101.36s]** for what you're asking it to do.
+
+**[4101.36s → 4103.28s]** And I mean, really that's even true for the cloud.
+
+**[4103.28s → 4106.20s]** It's just it matters even more locally.
+
+**[4106.20s → 4107.40s]** Yeah, that makes a lot of sense.
+
+**[4107.40s → 4110.28s]** I think to take your advice of probably the part
+
+**[4110.28s → 4113.00s]** That's most interesting to me is it's probably just like
+
+**[4113.00s → 4116.08s]** the architectural component of like when I code
+
+**[4116.08s → 4118.88s]** because the hard part, like whenever,
+
+**[4118.88s → 4120.48s]** I mean my background is in product
+
+**[4120.48s → 4123.28s]** and so the hard part whenever we build a new feature
+
+**[4123.28s → 4125.40s]** is really thinking about edge cases
+
+**[4125.40s → 4128.20s]** from the user experience and like system design.
+
+**[4128.20s → 4130.16s]** Like for example, like if I have an assistant
+
+**[4130.16s → 4132.28s]** I'm like, hey, I wanna build this feature
+
+**[4132.28s → 4134.32s]** and the user should be able to do this to this.
+
+**[4134.32s → 4135.88s]** And ideally the assistant is like,
+
+**[4135.88s → 4138.28s]** hmm, have you considered like what might happen
+
+**[4138.28s → 4141.00s]** if the user does this or this condition was not met
+
+**[4141.00s → 4141.84s]** and the user does it.
+
+**[4141.84s → 4142.84s]** I'm like, ah, yeah, thank you.
+
+**[4142.84s → 4144.68s]** Thank you, please take these data into account.
+
+**[4144.68s → 4147.68s]** And then Assistant asks me like, ah, how many requests
+
+**[4147.68s → 4148.52s]** are you expecting?
+
+**[4148.52s → 4149.68s]** How many this, how many this?
+
+**[4149.68s → 4152.52s]** And it invests against the code and architecture
+
+**[4152.52s → 4155.64s]** and build something that's robust and flexible
+
+**[4155.64s → 4157.68s]** for future use cases as well.
+
+**[4157.68s → 4159.44s]** And then it spits out like a diagram
+
+**[4159.44s → 4162.88s]** and then API routes and things derived, right?
+
+**[4162.88s → 4164.72s]** Ideally, that's something I would like to have.
+
+**[4164.72s → 4166.68s]** It seems pretty simple.
+
+**[4166.68s → 4170.04s]** What do you recommend for like, diagram drawing?
+
+**[4171.00s → 4173.00s]** Like, is it like, is that so?
+
+**[4173.00s → 4174.16s]** So ultimately that's it.
+
+**[4174.16s → 4176.88s]** It's an ash question, but doesn't he use a scallodraw?
+
+**[4176.88s → 4178.48s]** It's a sound right, Tom.
+
+**[4178.48s → 4181.88s]** Yeah, so it's like, I'll drop that.
+
+**[4181.88s → 4183.68s]** I'll drop that in the thread as well.
+
+**[4183.68s → 4186.20s]** That's exactly what I just quickly slapped that together
+
+**[4186.20s → 4188.08s]** and it's super easy, super fast to just,
+
+**[4188.08s → 4190.84s]** you know, so I drop the AI generate as well.
+
+**[4190.84s → 4192.80s]** It just, no, no, it's not AI generate,
+
+**[4192.80s → 4193.80s]** that's for you drawing.
+
+**[4193.80s → 4195.32s]** Oh, I think you can do it.
+
+**[4195.32s → 4205.95s]** I guess I would, I mean, GPT forum, multi-modal start there. I don't know how well it will really do.
+
+**[4205.95s → 4214.76s]** What is there no markdown format for diagrams? Oh, oh, I see you're saying ask it to write code. Yeah, yeah.
+
+**[4214.76s → 4221.32s]** They're definitely are. What were some of those? You could do that in Oregon mode on Emax if you want to use some really old school.
+
+**[4221.32s → 4225.77s]** What are some of the other, yeah,
+
+**[4225.77s → 4226.77s]** market.
+
+**[4226.77s → 4229.87s]** I don't know.
+
+**[4229.87s → 4232.87s]** Remade diagrams.
+
+**[4232.87s → 4235.87s]** Yeah, create diagrams using text and code.
+
+**[4235.87s → 4237.87s]** Yeah, because ideally, like if I,
+
+**[4237.87s → 4239.87s]** if the AI assistant wants to create it,
+
+**[4239.87s → 4242.87s]** wants to demonstrate an architecture to me,
+
+**[4242.87s → 4244.87s]** ideally, it does like something.
+
+**[4244.87s → 4245.87s]** A ground form as well.
+
+**[4245.87s → 4247.87s]** I mean, I think you and Mel is,
+
+**[4247.87s → 4250.87s]** you and Mel is just the general standard for this.
+
+**[4250.87s → 4254.87s]** So UML is a unified modeling language,
+
+**[4254.87s → 4258.87s]** and I bet you the GPT-40 knows about it out of the box
+
+**[4258.87s → 4261.87s]** because it's a well-discussed topic.
+
+**[4261.87s → 4264.87s]** The weakness to using UML,
+
+**[4264.87s → 4269.51s]** so UML looks very 90s here,
+
+**[4269.51s → 4272.51s]** even the set in the 90s and the picture shows it.
+
+**[4272.51s → 4275.51s]** So yeah, it's a standard that's been around.
+
+**[4275.51s → 4277.51s]** And it's, I believe, like,
+
+**[4277.51s → 4280.51s]** it's a variant of XML like HTML is,
+
+**[4280.51s → 4285.51s]** which basically means, can we see some actual UML source code?
+
+**[4285.51s → 4289.43s]** UML has been on a steady decline.
+
+**[4289.43s → 4294.43s]** So it exists, but it's not the most popular option.
+
+**[4297.59s → 4299.75s]** It's gonna be verbose a little bit in the white.
+
+**[4299.75s → 4302.03s]** I don't know if there's more modern,
+
+**[4302.03s → 4306.43s]** I would look for modern alternatives to UML, I guess.
+
+**[4306.43s → 4309.71s]** But that's like the old school standard standard
+
+**[4309.71s → 4312.43s]** for drawing these sorts of diagrams in code.
+
+**[4315.03s → 4317.27s]** There must be more modern agile.
+
+**[4317.27s → 4321.35s]** Like modern, have all the burdens of you.
+
+**[4321.35s → 4323.18s]** No.
+
+**[4323.18s → 4324.02s]** Right.
+
+**[4324.02s → 4326.48s]** Diagrams, I suppose.
+
+**[4326.48s → 4327.32s]** Cool.
+
+**[4327.32s → 4330.46s]** Yeah.
+
+**[4330.46s → 4333.74s]** Well, no, not just iterations of you, Amal.
+
+**[4333.74s → 4335.58s]** All right, you didn't get it, Al-Al-An.
+
+**[4335.58s → 4336.86s]** All right.
+
+**[4336.86s → 4342.86s]** Modern code, ever, as diagram and theory.
+
+**[4344.35s → 4346.35s]** Okay, yeah, Tom found one.
+
+**[4346.35s → 4349.15s]** Just what I'm sure we use. I don't know one off the top my head.
+
+**[4349.15s → 4350.75s]** I'm sure there's a ton out there.
+
+**[4350.75s → 4352.65s]** I like the diagrams as Python based,
+
+**[4352.65s → 4355.35s]** but I'm biased because I'm a Python person.
+
+**[4355.35s → 4358.65s]** Um, you am at the old school,
+
+**[4358.65s → 4362.35s]** or gorilla standard that you should be aware of that might be
+
+**[4362.35s → 4364.95s]** the starting point and you could use it just because it's a little
+
+**[4364.95s → 4367.85s]** unpopular. It's still I guarantee you there's been so much.
+
+**[4367.85s → 4368.01s]** You know,
+
+**[4368.01s → 4370.95s]** I've written that LLMs would be pretty good at it.
+
+**[4370.95s → 4373.65s]** It's just you am out of the a little bit of knowing if you want
+
+**[4373.65s → 4378.77s]** edit it yourself later. If you just want the other limb to make it and you don't care,
+
+**[4379.87s → 4386.24s]** you and I'll out the box might be the simplest. Got it. Makes sense. Well, I'm inspired.
+
+**[4386.24s → 4392.24s]** All right. Thank you. Thank you for the help. I'll bottle that and hopefully come with more stuff
+
+**[4392.24s → 4397.17s]** to discuss next week. Yeah. Amazing. Thanks folks. I appreciate you taking time.
+
+**[4398.06s → 4402.70s]** Absolutely. Thank you. And thank you everybody who watched all this. It was helpful to you as well.
+
+**[4402.70s → 4408.14s]** just like Hazee, you can get personal feedback for your ideas and thoughts.
+
+**[4408.14s → 4411.50s]** Just share it and if you can't make the class, share it on the channel.
+
+**[4411.50s → 4413.26s]** You also have the Slackworks too.
+
+**[4413.26s → 4420.03s]** So thank you everybody and yeah, that's mind what you should be doing.
+
+**[4420.43s → 4422.11s]** All right, that's all we got.
+
+**[4422.11s → 4422.59s]** Thank you.
+
+**[4425.42s → 4426.14s]** Thanks a lot Aaron.
+
+**[4427.12s → 4427.60s]** Sure.
+

@@ -1,0 +1,1605 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_06/week_6_class_3_2024-06-26.mp4
+**Duration:** 4905.38 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 793
+**Generated:** 2025-08-13 19:41:38
+**File Hash:** 6b8ae4ae2e29f85ea3fbc8016ef0c04c
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_06
+**file_name:** week_6_class_3_2024-06-26.mp4
+
+---
+
+## Transcript
+
+**[6.96s → 10.20s]** All right, welcome to class tonight. So this is the
+
+**[11.97s → 15.65s]** Indivare unit on the introduction to multi-agent systems
+
+**[17.33s → 26.25s]** And science a guided project. So tonight I'm actually going to diverge a little bit from what Aaron did before in terms of style
+
+**[27.00s → 29.00s]** so on Monday
+
+**[29.64s → 36.00s]** We walk through multi-agent architecture and you talked about a hierarchical system. So
+
+**[37.34s → 42.06s]** Tonight, the goal-adguided project is to expose a higher
+
+**[42.06s → 44.42s]** global multi-agent system as an API.
+
+**[44.42s → 47.90s]** So I just want to give you a sense of,
+
+**[47.90s → 53.18s]** let's see, we just show my screen for a second,
+
+**[53.18s → 72.69s]** move this over, and I'm also opening up Slack.
+
+**[72.69s → 77.13s]** So the goal tonight and everything is up and running already,
+
+**[77.13s → 78.77s]** like even before class,
+
+**[78.77s → 84.21s]** Ash and Erin set up code to allow us to access an API endpoint
+
+**[84.21s → 87.01s]** that's live in production today.
+
+**[87.01s → 92.21s]** I need to tell Ash that we need to put some tokens in front of it
+
+**[92.21s → 100.76s]** because it's wide open right now.
+
+**[100.76s → 105.92s]** But the idea is that we can access information,
+
+**[105.92s → 109.12s]** like send information about creating a pull request,
+
+**[109.12s → 113.32s]** prompt from a developer or code from staging that goes to the API,
+
+**[113.32s → 117.52s]** instead of having to implement complex Python agent code,
+
+**[117.52s → 130.02s]** So basically you're extracting away all of the stuff that we've been doing in class for the person using the multi-agent system, which is excellent right.
+
+**[130.02s → 140.52s]** That's what you want to do. You don't want someone to have to implement all your Python code in order to use some of these multi-agent systems.
+
+**[140.52s → 145.77s]** We want to provide a cleaner experience for someone.
+
+**[145.77s → 152.36s]** So at the API is telling the in-between layer that everyone's accessing information from,
+
+**[155.21s → 164.02s]** let's just dive into the different agents in our ecosystem. So we're going to have a manager agent.
+
+**[164.58s → 170.34s]** We're going to call it a supervisor agent, but essentially someone that manages all of the other
+
+**[171.30s → 176.17s]** sub agents in our portfolio. They're going to have people that write code.
+
+**[177.05s → 188.05s]** They're going to do unit testing, reviews, and then also people that do research and do some tech writing.
+
+**[188.05s → 191.05s]** These are all agents in our ecosystem.
+
+**[191.05s → 206.30s]** So the manager decides who to assign up the agents, the code or then goes through its workflow of tools or sub agents depending on
+
+**[206.30s → 211.30s]** how complex we implement a hierarchical system like this.
+
+**[212.24s → 215.32s]** But the coder might, in a simpler context,
+
+**[215.32s → 218.08s]** pay the code written before if so,
+
+**[218.08s → 221.76s]** ragged, does it run yes,
+
+**[221.76s → 223.00s]** does it, if it runs yes,
+
+**[223.00s → 225.40s]** send the code back to the coder,
+
+**[225.40s → 228.62s]** who sends that back up to the manager.
+
+**[228.62s → 232.05s]** If it's not written before, chatty to pee it,
+
+**[232.05s → 233.69s]** check if it runs,
+
+**[233.69s → 236.25s]** it doesn't run, send that information back
+
+**[236.25s → 241.25s]** to ChatGTP4 and evaluate that cycle until we can exit out.
+
+**[243.18s → 245.88s]** Very similar workflows for the code or the taster,
+
+**[245.88s → 249.40s]** but the particular example will work
+
+**[249.40s → 252.08s]** on tonight, Generates Charts.
+
+**[252.08s → 256.76s]** So we could use this code to generate Python charts.
+
+**[260.92s → 264.88s]** You could think about the applications pretty quickly.
+
+**[264.88s → 268.24s]** I think Tom actually built a very similar application
+
+**[268.24s → 270.92s]** Office hours yesterday, I just announced an API.
+
+**[270.92s → 275.40s]** Does that, is that right Tom?
+
+**[275.40s → 276.92s]** Yeah, I was going to say I was going to say I was going to say,
+
+**[276.92s → 278.32s]** I was going to say, I was about an hour before
+
+**[278.32s → 280.28s]** Office hours building it and then we went over it
+
+**[280.28s → 281.66s]** for like, what was it Trevor?
+
+**[281.66s → 283.86s]** Two hours, two and a half hours, that's crazy.
+
+**[283.86s → 284.92s]** Two hours.
+
+**[284.92s → 285.92s]** Yeah, it's going to be.
+
+**[285.92s → 289.12s]** But I think two hours of going over that thing.
+
+**[289.12s → 292.20s]** Yeah.
+
+**[292.20s → 293.12s]** Cool.
+
+**[293.12s → 297.70s]** What's the role of Rag?
+
+**[297.70s → 299.90s]** Of the time.
+
+**[299.90s → 301.58s]** Yeah, so if you're writing code, you
+
+**[301.58s → 310.01s]** want to be able to rag what you've already written and retrieve the relevant pieces.
+
+**[310.01s → 316.79s]** So like I'll give a good example of something I was doing today in this elk of the
+
+**[316.79s → 324.77s]** problem. Sorry, it's going to be a long story. So buckle down for a minute. But I need
+
+**[324.77s → 329.85s]** to generate a time card compliance application because I have an employee in the Netherlands,
+
+**[329.85s → 331.95s]** which was not somewhere we normally have emplaced.
+
+**[333.65s → 338.34s]** They needed to have the way they record time
+
+**[338.34s → 342.42s]** in a very specific string format, which is really annoying,
+
+**[342.42s → 345.16s]** instead of like just the normal time entries that they do.
+
+**[345.16s → 349.02s]** So I used a generally the IJ write-in application
+
+**[350.14s → 352.22s]** that had all the features that we needed.
+
+**[352.22s → 354.42s]** Okay, well my prompt missed up, right?
+
+**[354.42s → 356.70s]** There was like after I opened it and ran it,
+
+**[356.70s → 359.58s]** was missing some features that I would want them to have.
+
+**[361.99s → 367.25s]** If I had a rag, I could review all that code that have been generated previously or
+
+**[367.25s → 374.85s]** written previously, depending on a context. Understand that context and then use that context
+
+**[374.85s → 386.30s]** when it generates the new code. So I think it's like more like rag plus, you know, code
+
+**[386.30s → 394.49s]** generation. So are you using rag to sort of, it's almost like you're generating a prompt.
+
+**[394.49s → 398.58s]** like a more elaborate prompt.
+
+**[398.58s → 402.14s]** Yeah, and I mean at its heart that's what rag is, right?
+
+**[402.14s → 405.18s]** And during a more elaborate prompt to use,
+
+**[405.18s → 407.18s]** like adding context.
+
+**[407.18s → 410.42s]** So what you're really saying with rag is like,
+
+**[410.42s → 414.14s]** in a code example is grab the most relevant pieces of code,
+
+**[414.14s → 425.45s]** and that'll help me decide which one's to modify.
+
+**[425.45s → 429.37s]** So I mean in previous examples we've used rag
+
+**[429.37s → 434.25s]** to ingest a large volume of data,
+
+**[434.25s → 438.17s]** like a bunch of records, maybe plain text records,
+
+**[438.17s → 441.01s]** and then do something with those records after they've been
+
+**[441.01s → 442.97s]** turned into vectors.
+
+**[442.97s → 446.57s]** Whereas now we would have a much smaller data set,
+
+**[446.57s → 448.89s]** basically a small program you wrote,
+
+**[448.89s → 454.25s]** doing just the time cards, and you would rag that.
+
+**[454.25s → 457.09s]** Yes, but here's the kicker though with rag.
+
+**[457.09s → 460.53s]** The vector database isn't essential for rag implementation.
+
+**[460.53s → 463.61s]** The vector database is just to help control the size
+
+**[463.61s → 465.53s]** of the context you need.
+
+**[465.53s → 468.97s]** So because you can't fit everything into the context window,
+
+**[468.97s → 473.69s]** like let's say my dataset was rotten tomatoes,
+
+**[473.69s → 477.78s]** movie reviews, and I wanted to rag portions of that.
+
+**[477.78s → 480.22s]** That whole database won't fit into my prompts.
+
+**[480.22s → 484.10s]** So I'm ragging the 10 most relevant responses.
+
+**[484.10s → 485.74s]** Same with code.
+
+**[485.74s → 487.70s]** Like if my code base was long enough,
+
+**[487.70s → 491.22s]** I don't want to put it into vector database and rag
+
+**[491.22s → 494.14s]** from the vector database and use that context.
+
+**[494.14s → 498.64s]** But in my code base is small enough, like in today's example,
+
+**[498.64s → 501.26s]** just actually finding the relevant files
+
+**[501.26s → 508.94s]** and reading in the whole file would simply be enough.
+
+**[508.94s → 509.58s]** OK?
+
+**[509.58s → 511.13s]** Interesting.
+
+**[511.13s → 512.35s]** Thanks.
+
+**[512.35s → 515.41s]** Yeah, no problem.
+
+**[515.41s → 516.17s]** Cool.
+
+**[516.17s → 531.50s]** Can you question so far about the application?
+
+**[531.50s → 535.55s]** Curious if anybody on the phone, like how
+
+**[535.55s → 540.95s]** might see this being immediately useful or maybe if you don't see it being immediately
+
+**[540.95s → 542.75s]** useful, I'd love to know that too.
+
+**[542.75s → 559.04s]** I mean, I think it sounds amazing that you could put together a quick application for a
+
+**[559.04s → 560.04s]** single employee.
+
+**[560.04s → 566.12s]** Is that what you mean by useful?
+
+**[566.12s → 568.72s]** Not, or just more in a general sense.
+
+**[568.72s → 573.84s]** I meant, yeah, of this particular diagram I'm screen sharing, no, if this application
+
+**[573.84s → 575.52s]** makes sense for the useful.
+
+**[575.52s → 579.68s]** Yeah, the putting together an application for single employee.
+
+**[579.68s → 581.08s]** Yeah, that was super useful.
+
+**[581.08s → 583.88s]** That's a 20 minutes of time today.
+
+**[583.88s → 585.24s]** It was awesome.
+
+**[585.24s → 587.16s]** I mean, that's kind of mind blowing right there.
+
+**[587.16s → 589.20s]** I haven't considered something like that.
+
+**[589.20s → 608.54s]** So I'm already interested in this.
+
+**[608.54s → 611.54s]** So let's take a look at the running application.
+
+**[611.54s → 612.90s]** I think in these kinds of classes,
+
+**[612.90s → 616.98s]** I always like to start with a demo of what's going on first.
+
+**[616.98s → 634.10s]** Just because I think it helps you visualize the end goal.
+
+**[634.10s → 636.90s]** So you should be able to access this link.
+
+**[637.98s → 645.46s]** This is where AI architect is currently hosted
+
+**[645.46s → 648.58s]** and it has a bunch of endpoints exposed.
+
+**[648.58s → 649.42s]** And they're like, okay,
+
+**[649.42s → 651.38s]** one of these different endpoints mean,
+
+**[652.38s → 657.38s]** but they're ways of accessing the generation services.
+
+**[658.10s → 659.58s]** The stuff that you're gonna see,
+
+**[659.58s → 660.90s]** the endpoint you're gonna see me use here
+
+**[660.90s → 663.02s]** in a second is StreamBog.
+
+**[663.02s → 665.90s]** That's the endpoint where you're seeing the models output
+
+**[665.90s → 673.66s]** stream back to you. If you were using this in like a client, client communication or system,
+
+**[673.66s → 679.06s]** I think in focus, probably just fine. We are calling a simple indication of the prompt
+
+**[679.06s → 692.87s]** and getting the responses back. This also allows you to process like a batch of documents as well.
+
+**[692.87s → 701.19s]** We don't need to go into that too much. All of this format is automatically generated by
+
+**[701.19s → 704.47s]** blank chain, which is really, really cool.
+
+**[704.47s → 708.47s]** So when we, if you haven't already peaked in the repository
+
+**[708.47s → 712.19s]** of a personalized project, I'll show you the exact import
+
+**[712.19s → 715.15s]** and where and the one line of code that helps generate
+
+**[715.15s → 716.87s]** this documentation.
+
+**[716.87s → 719.71s]** Essentially, you just need to declare your graph,
+
+**[719.71s → 722.70s]** your agents.
+
+**[722.70s → 724.78s]** And then blank chain will do the rest for you
+
+**[724.78s → 726.74s]** and exposing these endpoints.
+
+**[726.74s → 729.62s]** Really, really handy abstraction.
+
+**[729.62s → 733.62s]** Like probably one of my favorites that I've seen in the line chain ecosystem.
+
+**[739.18s → 748.90s]** Also expose on the application, which is just a simple API application, is our playgrounds.
+
+**[754.32s → 758.72s]** You know, this would be similar. So what you've seen in the SDONIC command line before, right?
+
+**[758.72s → 766.06s]** Or in chat chat, we're going to give the model a message.
+
+**[767.02s → 769.74s]** We're humans. We're going to interact with it as a human.
+
+**[769.74s → 774.74s]** There's also interactive chat, function, and a system,
+
+**[775.96s → 777.88s]** and AI to AI communication.
+
+**[779.44s → 782.48s]** We're just gonna human should be the default
+
+**[782.48s → 783.48s]** for what you're using.
+
+**[786.61s → 789.33s]** The next in our case will always be the supervisor,
+
+**[790.55s → 796.09s]** just like the implementation of our graph of agents.
+
+**[797.17s → 799.69s]** Supervisor will be our entry point always.
+
+**[799.69s → 806.48s]** So if you take a look at, I think I close that graph,
+
+**[807.32s → 808.92s]** that's okay though.
+
+**[808.92s → 811.72s]** If you take a look at that graph of API stuff,
+
+**[811.72s → 813.84s]** the agent, supervisors are entry point.
+
+**[813.84s → 815.72s]** We don't have another entry point.
+
+**[815.72s → 820.76s]** If we did, we could use that here instead of supervisor.
+
+**[822.97s → 825.65s]** Just write a maybe like a really simple question.
+
+**[825.65s → 840.56s]** Like use MATPATlib.
+
+**[840.56s → 842.34s]** Let me see, does someone have something
+
+**[842.34s → 846.10s]** like chart comes to mind right away,
+
+**[846.10s → 854.60s]** like what would you want to see a chart of?
+
+**[854.60s → 857.86s]** I guess like the email is just a stock performance
+
+**[857.86s → 869.00s]** over the last six months, okay?
+
+**[869.00s → 871.53s]** Sorry, it's easy, I didn't need to cut you off.
+
+**[871.53s → 872.37s]** No, you're good at that.
+
+**[872.37s → 873.21s]** I said my question.
+
+**[873.21s → 876.09s]** I was like wondering if you just meant like a generic graph
+
+**[876.09s → 879.00s]** or we could actually, I don't know,
+
+**[879.00s → 882.64s]** ask about information like stock information.
+
+**[882.64s → 884.76s]** It's a set generic.
+
+**[884.76s → 886.96s]** is it's going to do, right, there's a research component too.
+
+**[886.96s → 887.96s]** Right.
+
+**[887.96s → 912.34s]** All right, so first call to our researcher,
+
+**[912.34s → 913.58s]** and then we have our intermediate steps,
+
+**[913.58s → 928.06s]** it's still running by the way.
+
+**[928.06s → 931.18s]** Okay, so the supervisor wrote instructions
+
+**[931.18s → 933.38s]** to create a stock price in the video.
+
+**[933.38s → 938.33s]** They even changed the call signal, stock alpha,
+
+**[938.33s → 943.11s]** and then blah, blah, blah, still running by the way.
+
+**[943.11s → 956.15s]** Okay, all right, and now we got our fun response.
+
+**[956.15s → 958.75s]** I don't think this doesn't execute our code,
+
+**[959.74s → 961.90s]** although we could have our agent do that
+
+**[961.90s → 963.86s]** if we wanted to.
+
+**[963.86s → 964.82s]** As I've mentioned before,
+
+**[964.82s → 967.56s]** I don't always think that that's the best idea.
+
+**[972.55s → 979.15s]** We'll just maybe take a look at the code and generate it.
+
+**[979.15s → 980.71s]** If you haven't caught this already,
+
+**[981.84s → 984.48s]** most still I'll then generate output and markdown.
+
+**[989.64s → 1031.54s]** Making it really easy to do all kinds of stuff with it.
+
+**[1031.54s → 1032.98s]** I'm wondering too,
+
+**[1032.98s → 1035.46s]** signal look at some of our intermediate steps.
+
+**[1035.46s → 1083.91s]** We look at the very last one.
+
+**[1083.91s → 1121.29s]** I don't know why those new line characters are.
+
+**[1121.29s → 1125.98s]** But showing you the idea here is we've got our code that
+
+**[1125.98s → 1128.82s]** will run our agent prompting could probably
+
+**[1128.82s → 1133.74s]** use a little bit of love to enforce that adjust returns
+
+**[1133.74s → 1135.78s]** by bond code instead of having to also
+
+**[1135.78s → 1137.18s]** have these explanations in here.
+
+**[1137.18s → 1148.14s]** But it does have, the code will run if we parse it out and double check it.
+
+**[1148.14s → 1174.88s]** And just to show you a quick, since the calls, I'm just going to reset this.
+
+**[1174.88s → 1179.88s]** Alright, so next time I make a request, you'll see it coming through here.
+
+**[1179.88s → 1182.68s]** We'll do something simple.
+
+**[1182.68s → 1229.63s]** So we're going to write this prompt and check out what's going to happen with our network traffic
+
+**[1229.63s → 1231.79s]** and which endpoints get hit.
+
+**[1231.79s → 1237.11s]** So there's our stream log input getting hit with our query.
+
+**[1237.11s → 1243.52s]** So you can see the nice messages getting sent back and forth.
+
+**[1243.52s → 1245.76s]** We want to wait for that to finish.
+
+**[1245.76s → 1247.72s]** I don't think.
+
+**[1247.72s → 1250.85s]** Thank you.
+
+**[1250.85s → 1259.24s]** So I wanted to show you the network payload just so you can see,
+
+**[1259.24s → 1263.24s]** like making requests to these API endpoints is also very straightforward for you.
+
+**[1265.46s → 1268.02s]** So, you know, take a look back at the docs.
+
+**[1268.82s → 1271.54s]** When you're working on this for your final project or your project,
+
+**[1272.50s → 1275.54s]** and you have a decide on which type you want to use.
+
+**[1277.30s → 1279.54s]** I think in Bevoah will work for most of you best.
+
+**[1283.17s → 1285.73s]** Let's dive into some questions so far.
+
+**[1285.73s → 1302.53s]** So when would this, when would the supervisor hand control over over to the tester, for example?
+
+**[1302.53s → 1312.78s]** Yeah, so actually that happens automatically for us. So here we're getting the output.
+
+**[1312.78s → 1317.78s]** The supervisor is assigning things to the researcher.
+
+**[1317.78s → 1320.78s]** So supervisor next is the researcher.
+
+**[1320.78s → 1324.89s]** The researcher, he's the one that created the list,
+
+**[1324.89s → 1329.96s]** he's he day, humanizing a LLM agent.
+
+**[1329.96s → 1335.29s]** It's did the research here,
+
+**[1335.29s → 1338.76s]** the content, and then it says,
+
+**[1338.76s → 1341.68s]** okay, great, I sent that information back to the supervisor.
+
+**[1341.68s → 1344.56s]** The supervisor says next, hey, coder,
+
+**[1344.56s → 1346.92s]** here's the Python code to print the names.
+
+**[1346.92s → 1350.00s]** Well, F1 drivers, not a foot of order.
+
+**[1350.00s → 1358.38s]** boom, there's the next step. And then finally, that goes to the reviewer. And then the reviewer actually
+
+**[1358.38s → 1366.97s]** does some stuff to make sure the code is the most pipeline possible, et cetera, et cetera. And finally,
+
+**[1366.97s → 1379.07s]** the QA tester would be the next step. This is possible to run the code. I know he talked a bit
+
+**[1379.07s → 1388.16s]** about that. I guess, can we? I'm assuming we'd make a tool to run the string of Python code.
+
+**[1388.16s → 1391.52s]** Maybe like a bash. I'm not sure. How would you go about it?
+
+**[1391.52s → 1396.22s]** Yeah, there's a tool, the Python repo tool, a RobBase tool,
+
+**[1396.22s → 1403.45s]** can execute the code for you. And that would be the best thing to do.
+
+**[1405.77s → 1411.77s]** Or you can wait to tell the model is done to actually decide whether or not you want
+
+**[1411.77s → 1416.89s]** to execute the code. But yeah, this is our protected double-check for the code runs.
+
+**[1416.89s → 1432.06s]** Let me see if I can find.
+
+**[1432.06s → 1434.06s]** So here's the Python code that it's testing.
+
+**[1434.06s → 1437.06s]** And you can tell that it's commented out appropriately too.
+
+**[1437.06s → 1441.06s]** Like from the improved version of the code to see that it works correctly.
+
+**[1441.06s → 1443.06s]** Here's the function.
+
+**[1443.06s → 1446.06s]** That's executing. So it's already doing that is these.
+
+**[1446.06s → 1476.01s]** Let's get into the code.
+
+**[1476.01s → 1491.34s]** Just one second. I'm going to switch branches back to main.
+
+**[1491.34s → 1533.72s]** And then we can talk about the other code in here.
+
+**[1533.72s → 1535.52s]** So going through this project,
+
+**[1538.35s → 1541.11s]** the Python Ruppel Tool, which the user's talking about,
+
+**[1541.11s → 1544.23s]** this is the thing that a live execute arbitrary Python code
+
+**[1547.06s → 1549.82s]** will want to define any system prompts
+
+**[1549.82s → 1551.70s]** that will you want to use,
+
+**[1551.70s → 1554.18s]** especially for the supervisor agent,
+
+**[1554.18s → 1555.86s]** and then customize the members
+
+**[1555.86s → 1560.82s]** that the supervisor has access to.
+
+**[1560.82s → 1564.00s]** Find some options for the supervisor,
+
+**[1564.00s → 1566.72s]** tool calling for OpenAI function calling,
+
+**[1566.72s → 1569.52s]** what the function should do is parameters,
+
+**[1569.52s → 1573.28s]** and then define prompt, the supervisor agents,
+
+**[1573.28s → 1576.62s]** and then initialize our LLM models.
+
+**[1577.58s → 1581.12s]** Then step eight, create our supervisor chain,
+
+**[1584.04s → 1587.56s]** create our state for the agents,
+
+**[1587.56s → 1589.08s]** that nice dictionary state,
+
+**[1589.08s → 1590.56s]** which we talked about on Monday,
+
+**[1596.74s → 1598.02s]** it keep going down the list.
+
+**[1598.02s → 1603.88s]** So creating our function prompt to find an agent,
+
+**[1603.88s → 1606.18s]** creating our functions to create agent nodes,
+
+**[1606.18s → 1610.13s]** and then creating our agents in their corresponding nodes.
+
+**[1610.13s → 1614.45s]** And then finally finding the workflow through the state graph,
+
+**[1614.45s → 1618.45s]** adding edges to the workflow, and getting additional edges,
+
+**[1618.45s → 1623.54s]** set the entry point and compile the graph.
+
+**[1623.54s → 1629.55s]** So pretty long, fun process for us.
+
+**[1629.55s → 1635.18s]** Unless you'll tell me differently, do we want to go through this
+
+**[1635.18s → 1638.86s]** kind of like line by line and talk about these steps as good
+
+**[1638.86s → 1639.46s]** or view?
+
+**[1639.46s → 1649.61s]** Or do you want to review the working implementation?
+
+**[1649.61s → 1653.79s]** I feel like we've put a go through it line by line.
+
+**[1653.79s → 1654.39s]** Great.
+
+**[1654.39s → 1657.55s]** But we can also just kind of have the folks feel.
+
+**[1657.55s → 1660.43s]** Yeah, I'd also like to go through line by line.
+
+**[1660.43s → 1671.50s]** Perfect.
+
+**[1671.50s → 1672.02s]** Two seconds.
+
+**[1672.02s → 1687.56s]** My computer's being sluggish.
+
+**[1687.56s → 1692.68s]** I hope everybody is gearing up for a fun 4th of July weekend.
+
+**[1694.16s → 1695.96s]** And some of us are not based stateside,
+
+**[1695.96s → 1707.70s]** but should be good.
+
+**[1707.70s → 1710.24s]** Hanging there with me just a second,
+
+**[1710.24s → 1712.72s]** I'm just pulling at the other copy on my other screen.
+
+**[1712.72s → 1720.52s]** That's what I'm doing the background.
+
+**[1720.52s → 1723.32s]** By the way, the code, if at any point in the last,
+
+**[1723.32s → 1726.48s]** we don't finish or wondering there are two branches
+
+**[1726.48s → 1733.82s]** the code available already that are complete. So you can take a look at those if you'd like.
+
+**[1733.82s → 1737.82s]** That's what I'm going to be working for tonight as well. I'm going to we'll create a new branch
+
+**[1738.46s → 1781.95s]** here just a second when I get in. So step, I think our imports are set. I don't think there's
+
+**[1781.95s → 1791.96s]** anything else that we need in our imports. So Tavli is our search API tool, which we've talked
+
+**[1791.96s → 1793.68s]** talked about in class before,
+
+**[1793.68s → 1796.40s]** I found Rappl we just talked about.
+
+**[1796.40s → 1821.98s]** So let's talk about the members that we're gonna need.
+
+**[1821.98s → 1824.46s]** Our members are going to be researcher,
+
+**[1824.46s → 1826.98s]** coder, reviewer, and QA tester.
+
+**[1828.31s → 1829.99s]** If I'm thinking about someone that does
+
+**[1831.37s → 1836.59s]** any kind of other work in the sphere,
+
+**[1836.59s → 1837.71s]** we could add them,
+
+**[1837.71s → 1840.52s]** that's kind of the beauty of doing this stuff.
+
+**[1844.56s → 1847.43s]** We also wanna create a system prompt
+
+**[1847.43s → 1849.59s]** where the supervisor, essentially,
+
+**[1849.59s → 1853.20s]** what is the supervisor going to do
+
+**[1853.20s → 1877.17s]** and how are they going to act?
+
+**[1877.17s → 1910.43s]** Just take a second to read through this.
+
+**[1910.43s → 1914.32s]** So our model, our supervisor is going to have access
+
+**[1914.32s → 1917.12s]** to those agents who are putting that inside the prompts.
+
+**[1917.12s → 1919.80s]** Each work performs their task when finished, respond
+
+**[1919.80s → 1922.28s]** to finish, assessing the results
+
+**[1922.28s → 1928.65s]** and status from each worker.
+
+**[1928.65s → 1932.81s]** So for our agent graph to work well,
+
+**[1932.81s → 1936.81s]** We also need to give our models of information about
+
+**[1938.49s → 1942.17s]** our supervisor options to choose from.
+
+**[1942.17s → 1944.37s]** So its options are gonna be finished, right?
+
+**[1944.37s → 1950.40s]** Because it could finish as an option as a next step.
+
+**[1950.60s → 1953.92s]** But we also wanna add members as options to choose from
+
+**[1953.92s → 1964.87s]** for steps in the graph.
+
+**[1964.87s → 1967.63s]** So the next step, we're gonna define a function
+
+**[1967.63s → 1970.90s]** for open AI function calling.
+
+**[1970.90s → 1973.98s]** The function here is going to be routing.
+
+**[1973.98s → 1978.34s]** So we're going to route our agents choice,
+
+**[1978.34s → 1982.12s]** the supervisor to the options.
+
+**[1982.12s → 1995.62s]** So that's the function we want to call our agent to call.
+
+**[1995.62s → 1999.94s]** So the name of the function routes, select the next role,
+
+**[1999.94s → 2003.72s]** routes, schema, title, next.
+
+**[2003.72s → 2006.20s]** And then of course, any of the options
+
+**[2006.20s → 2024.87s]** we just declared up here.
+
+**[2024.87s → 2030.71s]** The next step would be for us to create a prompt for the supervisor agent.
+
+**[2030.71s → 2034.07s]** So remember the system prompt up above.
+
+**[2034.07s → 2038.75s]** That happens at initialization so that initializes, that's the system prompt.
+
+**[2038.75s → 2044.60s]** That's like it's prime directive, so to speak.
+
+**[2044.60s → 2061.92s]** The prompt is the actual instruction of what we want it to do.
+
+**[2061.92s → 2069.46s]** So for us, the supervisor's prompt should be given the system initialization, given the
+
+**[2069.46s → 2071.22s]** results and conversations above.
+
+**[2071.22s → 2073.50s]** So it has all of the previous contexts
+
+**[2073.50s → 2076.50s]** that's happened so far in the conversation.
+
+**[2076.50s → 2078.02s]** Who should act next?
+
+**[2078.02s → 2100.99s]** And it's going to pick one of the options.
+
+**[2100.99s → 2104.95s]** We chose Chatty.tp40 here, but of course,
+
+**[2104.95s → 2107.79s]** you can initialize this with a different model
+
+**[2107.79s → 2116.27s]** if you wanted to.
+
+**[2116.27s → 2120.54s]** So next step, create the supervisor chain.
+
+**[2120.54s → 2124.42s]** So the supervisor is going to take our prompts,
+
+**[2124.42s → 2129.58s]** bind the functions of function definition, function called routes,
+
+**[2129.58s → 2145.94s]** and our JSON output functions parser to our supervisor chain.
+
+**[2145.94s → 2154.22s]** Now here's where we go from a simple chain for our supervisor to an agent
+
+**[2154.22s → 2159.69s]** by starting to remember first state. So we'll create a new class called agent state.
+
+**[2165.75s → 2169.59s]** It's going to be a typed dictionary where we're telling you
+
+**[2169.59s → 2190.81s]** of the type of what we expect keys to be in the dictionary.
+
+**[2190.81s → 2195.00s]** So you've already seen this format.
+
+**[2195.00s → 2198.24s]** This should look familiar to you from the responses
+
+**[2198.24s → 2201.60s]** we've looked at in the playgrounds.
+
+**[2201.60s → 2203.92s]** The messages are an annotated sequence
+
+**[2203.92s → 2207.68s]** of the base message and the operator's next choice.
+
+**[2207.68s → 2225.18s]** And then we're getting that next function.
+
+**[2225.18s → 2245.37s]** So next we need our create agent.
+
+**[2245.37s → 2248.29s]** The notice that create agent is generalized.
+
+**[2248.29s → 2253.09s]** There's like not anything too specific about which agent we're creating here.
+
+**[2260.30s → 2265.66s]** Function to create an agent node. This is what's going to process the state, the change in state
+
+**[2265.66s → 2278.72s]** of our dictionary. So state agent name, agent and folks state return, the result output.
+
+**[2278.72s → 2308.42s]** So in our application we had language, we had our research agents, we had our QA tester,
+
+**[2308.42s → 2313.90s]** who else do we have?
+
+**[2313.90s → 2329.59s]** Go to the writer, forget everybody, but we'll just maybe start with research.
+
+**[2329.59s → 2333.99s]** So now we're going to use those abstracted functions we just created to clear our different
+
+**[2333.99s → 2340.42s]** flavors of agent.
+
+**[2340.42s → 2347.13s]** So our research agent, what we're going to tell them is use the function create agents.
+
+**[2347.13s → 2350.46s]** They're going to use our LLM.
+
+**[2350.46s → 2354.58s]** By the way, I said this before, but I want to get to need to reinforce this.
+
+**[2354.58s → 2359.42s]** Your agents in the graph don't all have to use the same LLM.
+
+**[2359.42s → 2364.50s]** The actual data that's getting passed between them is in this object agent states.
+
+**[2364.50s → 2367.22s]** It's just text data, right?
+
+**[2367.22s → 2372.22s]** like you could connect to the front LLMs in that process.
+
+**[2372.22s → 2380.27s]** And that context is getting passed back and forth across the graph.
+
+**[2380.27s → 2388.34s]** So if you had a use case to do that, you absolutely can mess around with that.
+
+**[2388.34s → 2394.34s]** The only tool that our research agent needs access to is the search API tool.
+
+**[2394.34s → 2401.86s]** So we're just going to give them access to the hourly tool.
+
+**[2401.86s → 2417.74s]** And then finally, we need to give them our prompt.
+
+**[2417.74s → 2419.38s]** Very, very good.
+
+**[2419.38s → 2420.70s]** Your web research research internet
+
+**[2420.70s → 2430.55s]** should be able to go to something super simple.
+
+**[2430.55s → 2464.42s]** So we also need to assign our research agent a node.
+
+**[2464.42s → 2468.50s]** So our research node, reason that function
+
+**[2468.50s → 2473.73s]** tools, assigning an agent node, assigning
+
+**[2473.73s → 2477.25s]** the exact code of our agents, and then providing it
+
+**[2477.25s → 2483.82s]** a nice name.
+
+**[2483.82s → 2493.78s]** And then we can repeat the process for some of the other agents.
+
+**[2493.78s → 2496.47s]** These other ones I'm just going to copy,
+
+**[2496.47s → 2501.36s]** and we can talk about a little bit.
+
+**[2501.36s → 2504.78s]** So the review agent has access to the same tools,
+
+**[2504.78s → 2506.02s]** but then you're a senior developer.
+
+**[2506.02s → 2506.94s]** You have to sell a code review.
+
+**[2506.94s → 2509.50s]** It's just give a little back list of suggestions
+
+**[2509.50s → 2524.97s]** to make the code better.
+
+**[2524.97s → 2542.21s]** Sorry, test agent.
+
+**[2542.21s → 2543.81s]** Test agent is actually going to have access
+
+**[2543.81s → 2557.89s]** to execute that arbitrary Python code.
+
+**[2557.89s → 2560.69s]** Then the last agent we need is the person
+
+**[2560.69s → 2562.57s]** who actually does the coding.
+
+**[2562.57s → 2577.22s]** So our codeer.
+
+**[2577.22s → 2578.78s]** I feel like you all have been quite so far.
+
+**[2578.78s → 2583.99s]** Do you have questions?
+
+**[2583.99s → 2588.99s]** Yeah, I'm wondering, so when you are adding the nodes,
+
+**[2589.51s → 2591.71s]** like research node, review node,
+
+**[2591.71s → 2596.71s]** you include the agent node function.
+
+**[2596.99s → 2598.47s]** Is that a reference to the function
+
+**[2598.47s → 2602.22s]** or are you somehow calling that function?
+
+**[2602.22s → 2605.56s]** Because the function takes three arguments
+
+**[2605.56s → 2613.34s]** if we scroll up and I don't see how that is agent node.
+
+**[2613.34s → 2628.14s]** Yes, your spawn. So we're using function tools and what we're saying which is a base Python operator. And what we're saying is, hey, we know this is going to be partial.
+
+**[2628.14s → 2642.26s]** So we're going to create an instance of agent node and we're going to give it the agents and the name, but the thing it's missing, right of the three arguments is state.
+
+**[2642.26s → 2646.36s]** So that's why we're using function partial,
+
+**[2646.36s → 2650.88s]** because the test node will have access to the state when it's running.
+
+**[2650.88s → 2654.08s]** And that's when it all stitched together.
+
+**[2654.08s → 2657.65s]** Okay, so this is some funky Python syntax.
+
+**[2657.65s → 2661.01s]** This is in fact, a sugar 100%.
+
+**[2661.01s → 2665.77s]** Okay, I'm not crazy about this.
+
+**[2665.77s → 2668.33s]** I don't know a better way to do it off the top of my head,
+
+**[2668.33s → 2680.04s]** but yeah, I think it's hard to read also.
+
+**[2680.04s → 2681.52s]** And so, another question.
+
+**[2681.52s → 2686.51s]** So when you created the code or agent,
+
+**[2686.51s → 2689.11s]** you just pass in the Python Ripple tool,
+
+**[2689.11s → 2693.26s]** which is an instance of a library you included.
+
+**[2693.26s → 2697.94s]** Yeah, the Python Ripple tool is from Langshane.
+
+**[2697.94s → 2699.27s]** Yeah.
+
+**[2699.27s → 2704.03s]** And it just knows, it just knows, oh, this is a thing I can use.
+
+**[2704.03s → 2706.31s]** And the LLM figures out, oh, I should
+
+**[2706.31s → 2713.94s]** be running the results in this REPL and evaluating in line.
+
+**[2713.94s → 2716.46s]** Yeah, you got it.
+
+**[2716.46s → 2718.29s]** Okay.
+
+**[2718.29s → 2720.29s]** So a lot of that's happening in the L.
+
+**[2720.29s → 2721.29s]** That is happening in the L.
+
+**[2721.29s → 2726.32s]** That's not we haven't coded that behavior or is that part of the
+
+**[2726.32s → 2732.99s]** the laying chain library that we're building on top of?
+
+**[2732.99s → 2735.99s]** Oh, do you mean is the where is the code being executed?
+
+**[2735.99s → 2736.99s]** Yeah.
+
+**[2736.99s → 2738.06s]** Code is being executed.
+
+**[2738.06s → 2746.06s]** How was it wired together that it just knows to use that Ripple as part of its work?
+
+**[2746.06s → 2748.05s]** Gotcha.
+
+**[2748.05s → 2750.05s]** The code is agent.
+
+**[2750.05s → 2762.05s]** The code or agent knows that it has access to that tool, which means the code or agent has the ability to run arbitrary Python code on your whatever environments, how so not.
+
+**[2762.05s → 2771.36s]** So what it's saying is, in my toolbox, I know I can run arbitrary Python code.
+
+**[2771.36s → 2776.12s]** So I'm going to write some code and then run it and see what happens basically.
+
+**[2776.12s → 2784.56s]** And then using the error messages as input back into my rewriting of the code.
+
+**[2784.56s → 2792.76s]** So if I handed that repel to an agent that wasn't a coder, I gave the repel to the researcher
+
+**[2792.76s → 2800.41s]** agent with that blow up? What would happen in that case? More than likely, they would also write
+
+**[2800.41s → 2809.90s]** code and execute it because they have access to that tool. Right, I mean, you're using the same LLM
+
+**[2810.62s → 2814.86s]** and just slightly different prompts. There's nothing really to stop it from the researcher from
+
+**[2814.86s → 2820.14s]** you know any Python code. You'd have to be really explicit in your prompts either in your instruction
+
+**[2820.14s → 2829.61s]** prompt or in your system prompts to not write code if you went that route.
+
+**[2829.61s → 2834.01s]** Okay, so these agents are actually running in the LLM.
+
+**[2834.01s → 2841.70s]** They're not, it's not like they're code that's gluing together the results of API calls
+
+**[2841.70s → 2845.36s]** to an 80, to different LLMs.
+
+**[2845.36s → 2848.68s]** The agents themselves are running inside the LLM.
+
+**[2848.68s → 2851.99s]** Is that, is that correct?
+
+**[2851.99s → 2863.13s]** No, the agents in this case are running in a graph coordinated by your, like, let's say I ran
+
+**[2863.13s → 2871.69s]** this on my local machine on my local machine. And then that information is going out to whatever LLM you choose,
+
+**[2872.49s → 2879.05s]** open AI, and then using that context from open AI, and then deciding to go on to the next step.
+
+**[2879.05s → 2886.09s]** the coupling though is really, really tight between open AI and the graph running.
+
+**[2886.09s → 2892.69s]** So basically it's saying like the supervisor I think is a really clean example.
+
+**[2892.69s → 2899.26s]** Like it's doing its research deciding what to do next.
+
+**[2899.26s → 2907.66s]** So when it decides what to do next, your graph is going to kick off another node in your process.
+
+**[2907.66s → 2912.66s]** And that like that kicking off of the next node that happens locally.
+
+**[2912.66s → 2922.07s]** But then what the next node executes, you know, is it's going to call on LLM for the execution.
+
+**[2922.07s → 2928.07s]** And that execution might involve a local tool. So I mean, it's really, really, really tightly coupled.
+
+**[2928.07s → 2934.07s]** But the actual coordination of what's happening with the graph that's happening locally.
+
+**[2934.07s → 2956.44s]** Okay, so if this were using multiple LLMs, each LLM would be responsible for deciding which
+
+**[2956.44s → 2964.90s]** agent to pass control back to or the edges between the nodes.
+
+**[2964.90s → 2971.98s]** So your supervisor in this particular graph is the only one that gets to decide what
+
+**[2971.98s → 2980.78s]** goes next. So in this particular use case, the supervisor would decide, but right, it's
+
+**[2980.78s → 2988.60s]** going to have text from all of, let's say that you decided to use ChatGTB 3.5 to do the
+
+**[2988.60s → 2996.62s]** research component. But ChatGTB 4 is what the supervisor's using. So it's going to send
+
+**[2996.62s → 3001.42s]** not all that information, you're going to get the research and it's going to say I'm finished.
+
+**[3001.42s → 3004.22s]** And then that information goes back to the supervisor.
+
+**[3004.22s → 3010.46s]** So the supervisor is then going to take all that information and stitch it together into
+
+**[3010.46s → 3017.22s]** a prompt and then send that to chat to you before and then send back, hey, you should
+
+**[3017.22s → 3021.18s]** do call on the code writer next.
+
+**[3021.18s → 3029.02s]** And then it will go on.
+
+**[3029.02s → 3036.54s]** actually be really fascinating to see an execution graph of everything because it is really like
+
+**[3038.49s → 3046.87s]** ping-ping-ping-ping back and forth with network traffic. That's one of the downside
+
+**[3046.87s → 3051.59s]** stage, because like the response, there's so many responses going back and forth. The latency is
+
+**[3051.59s → 3077.42s]** terrible, right? I think we were at function tools. We just need to add our workflow edges.
+
+**[3077.42s → 3090.22s]** So our workflow is going to be a state graph of A-NM states.
+
+**[3096.55s → 3109.26s]** State graph, state, lost it.
+
+**[3109.26s → 3114.86s]** Hope there is a state graph is one of the core portions
+
+**[3114.86s → 3128.44s]** of line graph.
+
+**[3128.44s → 3131.28s]** I'm just going to type out the first one just to talk about
+
+**[3131.28s → 3133.64s]** and we'll do, I'll do the next couple,
+
+**[3137.22s → 3138.70s]** just copy pasta.
+
+**[3138.70s → 3141.06s]** So to our workflow from the supervisor,
+
+**[3141.06s → 3145.01s]** we're gonna add a node that's reviewer,
+
+**[3149.71s → 3151.75s]** and that we're gonna use the review node
+
+**[3151.75s → 3161.10s]** that we declared above.
+
+**[3161.10s → 3180.29s]** And then we'll use the same workflow to add everybody else.
+
+**[3180.29s → 3182.17s]** So these are just the nodes.
+
+**[3182.17s → 3184.69s]** So there are no connections right now
+
+**[3186.17s → 3187.41s]** in our workflow.
+
+**[3187.41s → 3192.01s]** So basically just initializing the nodes in the graph.
+
+**[3192.01s → 3194.13s]** So we wanna add edges.
+
+**[3194.13s → 3199.13s]** So for all of the members, we want to add a connection
+
+**[3199.45s → 3202.61s]** to the supervisor, direct connection to the supervisor.
+
+**[3205.55s → 3207.87s]** And that's to ensure all of the workers report
+
+**[3207.87s → 3213.48s]** back to the supervisor.
+
+**[3213.48s → 3219.79s]** Now, the next thing though, is that we also want to make sure
+
+**[3219.79s → 3225.69s]** that we have some conditional information to.
+
+**[3225.69s → 3231.71s]** So we also, our supervisor is the one that decides
+
+**[3232.83s → 3242.08s]** what to happen next. So conditional map finished, right, we have that special command as a member
+
+**[3242.08s → 3249.46s]** finish. That means to end the graph's execution. So we have that conditional map.
+
+**[3264.64s → 3270.24s]** Conditional map here adds connections, optional connections to the supervisor.
+
+**[3270.24s → 3281.33s]** And finally, set our entry point at supervisor and step 17
+
+**[3281.33s → 3282.65s]** to file a graph.
+
+**[3282.65s → 3301.90s]** Any questions about the graphs so far?
+
+**[3301.90s → 3302.90s]** All the stuff?
+
+**[3302.90s → 3310.19s]** I have a small question about the use of the word finish.
+
+**[3310.19s → 3317.42s]** It's, would it be common in this case to define finish as a
+
+**[3317.42s → 3322.08s]** variable at the top and then within your prompt, you know,
+
+**[3322.08s → 3327.90s]** you reference it as a variable rather than plain text.
+
+**[3327.90s → 3343.62s]** Because that's an basically a programmatic.
+
+**[3343.62s → 3346.54s]** I'm trying to think about the best way to think about this.
+
+**[3346.54s → 3347.86s]** When you say as a variable,
+
+**[3347.86s → 3349.80s]** do you just mean like,
+
+**[3349.80s → 3353.54s]** you could change the keyword you'd want to use?
+
+**[3353.54s → 3355.02s]** Well, you probably wouldn't want to,
+
+**[3355.02s → 3359.34s]** but you'd want to guard against typos.
+
+**[3359.34s → 3361.74s]** I mean, it's only a problem while you're writing the code,
+
+**[3361.74s → 3365.54s]** I realize, but I get made it a small thing.
+
+**[3365.54s → 3366.42s]** Yeah, no, totally.
+
+**[3366.42s → 3370.54s]** You could absolutely parameterize that big time.
+
+**[3370.54s → 3373.32s]** So that way you could lengthen and double track
+
+**[3373.32s → 3374.24s]** and stuff like that.
+
+**[3374.24s → 3377.98s]** Yeah, you could just absolutely add something up here
+
+**[3377.98s → 3388.24s]** that's like secrets, the int arrays.
+
+**[3388.24s → 3392.31s]** Well, that's a long variable name.
+
+**[3392.31s → 3393.87s]** Would it need to be secret though?
+
+**[3393.87s → 3396.59s]** I mean, is there a security concern?
+
+**[3396.59s → 3397.66s]** No, no, no.
+
+**[3398.69s → 3409.00s]** It's the end.
+
+**[3409.00s → 3410.72s]** Yeah, and then the same way we use an abstracting
+
+**[3410.72s → 3430.10s]** to form out the system prompt, you could use that in the same way.
+
+**[3430.10s → 3432.90s]** This code, I would maybe be a little cautious about doing
+
+**[3432.90s → 3437.55s]** in this implementation, just because you can see immediately
+
+**[3437.55s → 3440.67s]** like line 39, it would also need to be the same thing.
+
+**[3440.67s → 3443.19s]** So there's like lots of things that could break by us doing that,
+
+**[3443.19s → 3461.74s]** but you could absolutely implement that.
+
+**[3461.74s → 3472.42s]** Other questions?
+
+**[3472.42s → 3474.58s]** Were there any, and I forget,
+
+**[3474.58s → 3480.22s]** were there any instructions given to the QA tester?
+
+**[3480.22s → 3485.25s]** I think that we did, I think we just called him Tester.
+
+**[3495.97s → 3499.17s]** Yeah, review agent and test agents,
+
+**[3499.17s → 3508.48s]** which is test agent.
+
+**[3508.48s → 3509.84s]** And all for Sauer is yesterday,
+
+**[3509.84s → 3513.84s]** we went over the need to generate edge case,
+
+**[3515.16s → 3521.54s]** input data, I guess this QA tester is in as,
+
+**[3522.02s → 3524.86s]** doesn't need to be a thorough.
+
+**[3524.86s → 3528.58s]** Yeah, we could just alter the prompt to have that in
+
+**[3528.58s → 3539.28s]** as well. Or you could honestly, in that case, you could have the LLLM, like a supervisor
+
+**[3539.28s → 3547.93s]** decide whether or not it's worth it to call on an edge case writer. So I mean, that's another
+
+**[3547.93s → 3572.10s]** interesting idea to make the model, make the judgment call. There's just one other thing
+
+**[3572.10s → 3578.61s]** I want to show you the code real quick, just to switch files on you.
+
+**[3578.61s → 3600.49s]** So this uses pass API, and there's also missing work at the very top of this to do this.
+
+**[3600.49s → 3613.86s]** So what we want, ours, our langserv, add routes, it's kind of a fun stuff that we want.
+
+**[3613.86s → 3617.42s]** So our function is anytime we go to the application,
+
+**[3617.42s → 3619.10s]** it's just going to redirect to docs.
+
+**[3619.10s → 3620.58s]** You already see that functionality
+
+**[3620.58s → 3624.75s]** when I've gone to the website before.
+
+**[3624.75s → 3627.87s]** But we're the line of code we're missing,
+
+**[3627.87s → 3629.27s]** which is beautifully simple.
+
+**[3629.27s → 3633.07s]** It's just simply add routes.
+
+**[3634.19s → 3640.10s]** We're going to add routes to the app, graph,
+
+**[3640.10s → 3650.97s]** and then we're also going to enable the feedback endpoint.
+
+**[3650.97s → 3657.13s]** feedback endpoint allows you to say, hey, LLM, or hey supervisor in our case, that wasn't
+
+**[3657.13s → 3661.85s]** exactly what I was looking for, and kind of retrick her everything.
+
+**[3669.53s → 3673.61s]** Cool. And that's it. Langserve does the rest of the heavy lifting.
+
+**[3675.53s → 3680.09s]** So you don't need to do anything else to set up the API structure that we saw.
+
+**[3681.77s → 3685.29s]** Surely there's some other security stuff that you could implement with Langserve.
+
+**[3685.29s → 3688.79s]** I'd have to dig into the docs to know.
+
+**[3688.79s → 3692.29s]** But I definitely want to see some,
+
+**[3692.29s → 3697.13s]** or FAS API, one of the two to implement some light security on top of this.
+
+**[3697.13s → 3709.82s]** So you guys are already, you know, started in reverse order showing you the working demo.
+
+**[3709.82s → 3713.05s]** So you've seen everything running.
+
+**[3713.05s → 3718.65s]** So now, I think we can just switch to maybe open-ended questions.
+
+**[3718.65s → 3727.65s]** the QA portion of tonight's class and I can answer questions about this code or the application or your projects.
+
+**[3727.65s → 3732.32s]** So I'll hand the floor over to you all.
+
+**[3732.32s → 3748.57s]** Let's talk about what you want to talk about.
+
+**[3748.57s → 3751.57s]** Can you just remind me again.
+
+**[3751.57s → 3761.57s]** Like how do you pass in an output from one node to the next node?
+
+**[3761.57s → 3774.82s]** So here when we're here, you were adding an edge in the graph, which is a connection between the two nodes.
+
+**[3774.82s → 3780.82s]** And that's how you're telling it to flow information, like in which direction to flow information.
+
+**[3780.82s → 3787.32s]** In this particular case, the direction is from the member back to the supervisor.
+
+**[3787.32s → 3790.04s]** That's a required connection.
+
+**[3790.04s → 3794.28s]** But the supervisor has an optional connection
+
+**[3794.28s → 3798.28s]** to the member to decide whether or not
+
+**[3798.28s → 3803.51s]** to call on that member.
+
+**[3803.51s → 3806.25s]** Hopefully, that was the question you were asking.
+
+**[3806.25s → 3807.53s]** That makes sense.
+
+**[3807.53s → 3809.53s]** Yeah.
+
+**[3809.53s → 3815.57s]** And typically, would you ever have an agent with multiple tools
+
+**[3815.57s → 3820.28s]** or you just have two separate agents or a node?
+
+**[3820.52s → 3828.12s]** Oh, totally. Yeah, you could absolutely have a number of tools for agent. Yeah, I mean, obviously,
+
+**[3828.12s → 3842.12s]** they need to make some kind of logical grouping. But let's say, I'm trying to think of a good example here.
+
+**[3849.58s → 3854.30s]** Going way back earlier in the class, I used an example that was about a multi-agent system that
+
+**[3854.30s → 3856.64s]** It was like a banking example.
+
+**[3857.90s → 3861.50s]** Let's say I have an agent that's a teller.
+
+**[3861.50s → 3865.30s]** So I might have functions like in tools that help me check
+
+**[3865.30s → 3870.30s]** the positives, balances, that, you know,
+
+**[3870.46s → 3871.98s]** looks at some other stuff.
+
+**[3873.05s → 3875.21s]** And then that might be four or five different tools
+
+**[3875.21s → 3881.75s]** that they have access to.
+
+**[3881.75s → 3883.07s]** Okay, that makes sense.
+
+**[3883.07s → 3902.22s]** Thanks.
+
+**[3902.22s → 3914.10s]** So when you've added the conditional edges supervisor towards, so there's that lambda
+
+**[3914.10s → 3915.94s]** and next.
+
+**[3915.94s → 3926.50s]** What's the purpose of, what's the role of lambda x equals and x, x, hmmm?
+
+**[3926.50s → 3933.50s]** Yeah, so what you're saying, so the conditional map is like a map of member to member.
+
+**[3933.50s → 3937.62s]** So remember, members is a list object
+
+**[3937.62s → 3939.46s]** of all of the different members.
+
+**[3941.49s → 3945.97s]** So the conditional map is saying like what to do next.
+
+**[3945.97s → 3956.54s]** So like I can call basically call myself again.
+
+**[3958.10s → 3960.90s]** So the workflow for the conditional map,
+
+**[3962.40s → 3965.20s]** I initial edges to the supervisor,
+
+**[3965.20s → 3967.20s]** you're just looping through the values
+
+**[3967.20s → 3969.90s]** of the conditional map that you're saying.
+
+**[3969.90s → 3974.90s]** Okay, for the X, X next is going to be the conditional map.
+
+**[3982.77s → 3984.17s]** Sorry, maybe a way to think about it
+
+**[3984.17s → 3993.68s]** is something like actual data object
+
+**[3993.68s → 4026.45s]** is gonna look something like,
+
+**[4026.45s → 4028.05s]** whatever it was when these were called,
+
+**[4028.05s → 4046.12s]** so if we say the viewer,
+
+**[4046.12s → 4047.52s]** that's not exactly right,
+
+**[4047.52s → 4050.84s]** but just to show like the supervisor
+
+**[4050.84s → 4056.71s]** has optional connections to decide
+
+**[4056.71s → 4078.94s]** that the reviewer is next.
+
+**[4078.94s → 4082.02s]** And I know that this is maybe not super clear
+
+**[4082.02s → 4083.34s]** in the conditional map,
+
+**[4083.34s → 4086.66s]** but the X for X in members,
+
+**[4086.66s → 4088.75s]** right, you're saying like,
+
+**[4088.75s → 4089.99s]** what is the current state,
+
+**[4089.99s → 4092.99s]** like where am I today and like what's next?
+
+**[4092.99s → 4097.19s]** So I think finished is a good example where we're saying,
+
+**[4097.19s → 4099.99s]** finished is like the text keyword that we expect
+
+**[4099.99s → 4103.57s]** that you want to parameterize.
+
+**[4103.57s → 4107.65s]** in does an actual function that we want to call it,
+
+**[4107.65s → 4110.49s]** include the graph.
+
+**[4110.49s → 4113.29s]** So I think it's easier to see there.
+
+**[4113.29s → 4117.16s]** That's what would be next in that use case.
+
+**[4117.16s → 4120.12s]** With the supervisor what we're saying is loop through
+
+**[4120.12s → 4125.38s]** all of those options and also add to them next.
+
+**[4157.57s → 4167.36s]** So this is a fairly common construct.
+
+**[4167.36s → 4183.80s]** I'm not sure. I think I might personally rewrite that differently. So it's a little bit more readable myself. So I can't say if this is a common constructs.
+
+**[4186.19s → 4198.35s]** But a different implementation, but it would arrive at the same result. Yes. Yes. Right. There's nothing that creative in this. It's just the choice of syntax.
+
+**[4198.35s → 4201.24s]** Yeah, exactly.
+
+**[4201.24s → 4202.24s]** Okay.
+
+**[4202.24s → 4212.80s]** So when each agent finishes running,
+
+**[4212.80s → 4216.41s]** is that when it finishes running,
+
+**[4216.41s → 4218.41s]** is it returning back to the,
+
+**[4218.41s → 4220.41s]** it's returning a value to the supervisor
+
+**[4220.41s → 4223.41s]** and the supervisor is then running
+
+**[4223.41s → 4224.41s]** and deciding, okay,
+
+**[4224.41s → 4226.41s]** which agent do I call next?
+
+**[4226.41s → 4228.21s]** Exactly.
+
+**[4228.21s → 4229.21s]** Exactly.
+
+**[4229.21s → 4233.86s]** Yeah.
+
+**[4233.86s → 4234.86s]** The supervisor,
+
+**[4234.86s → 4237.86s]** they have to return information back to the supervisor.
+
+**[4237.86s → 4239.86s]** That's a hard edge.
+
+**[4239.86s → 4244.86s]** But the supervisor gets to choose who's next.
+
+**[4245.30s → 4247.14s]** And so what we're saying is,
+
+**[4247.14s → 4249.58s]** that's the conditional connection.
+
+**[4249.58s → 4251.06s]** Yeah, when the supervisor says,
+
+**[4251.06s → 4254.06s]** hey, you're next, you know,
+
+**[4254.06s → 4267.63s]** call on this particular agent.
+
+**[4267.63s → 4272.02s]** And so that next is coming from,
+
+**[4272.02s → 4276.28s]** is that part of the results from the original agent?
+
+**[4276.28s → 4280.48s]** Or is that coming from the results of the supervisor
+
+**[4280.48s → 4283.68s]** doing its LLM based calculations.
+
+**[4283.68s → 4284.82s]** Glad you asked.
+
+**[4286.11s → 4286.95s]** Let's see.
+
+**[4286.95s → 4292.80s]** I mean, actually show you here.
+
+**[4292.80s → 4293.67s]** Ah!
+
+**[4293.67s → 4296.82s]** And plain text.
+
+**[4296.82s → 4298.74s]** Yeah, so it's saying next.
+
+**[4298.74s → 4299.98s]** Who do you call next?
+
+**[4299.98s → 4300.98s]** The QA tester.
+
+**[4300.98s → 4305.10s]** And I mean, even when we initialized things right,
+
+**[4305.10s → 4307.38s]** we're having to specify who's next
+
+**[4307.38s → 4309.38s]** because our entry point is a supervisor.
+
+**[4310.94s → 4314.60s]** Although I find that kind of frustrating
+
+**[4314.60s → 4316.32s]** because the entry point is a supervisor.
+
+**[4316.32s → 4319.20s]** So like for the entry point, you shouldn't have to do that.
+
+**[4319.20s → 4322.49s]** But I was gonna ask about that.
+
+**[4322.49s → 4325.29s]** What other value could you put?
+
+**[4326.54s → 4328.54s]** Well, you could try values that won't work.
+
+**[4328.54s → 4332.42s]** So Tiger came to mind for some reason.
+
+**[4332.42s → 4335.71s]** Let me reset this real quick.
+
+**[4335.71s → 4376.65s]** And that's all the way to bottom.
+
+**[4376.65s → 4378.12s]** Well, that's no.
+
+**[4378.12s → 4379.68s]** Oh, I guess it's running.
+
+**[4382.14s → 4384.62s]** But Tiger isn't a valid option for next.
+
+**[4384.62s → 4388.11s]** So it should grow an error.
+
+**[4388.11s → 4393.05s]** But the valid option is really only supervisor.
+
+**[4393.05s → 4395.53s]** If you trial it, researcher, or reviewer,
+
+**[4398.92s → 4400.40s]** I don't think it'll work.
+
+**[4406.48s → 4410.04s]** But those would be valid options
+
+**[4410.04s → 4412.48s]** if you were somewhere else in the middle of the graph
+
+**[4412.48s → 4419.06s]** and the chain.
+
+**[4419.06s → 4420.58s]** So by looking at this output,
+
+**[4420.58s → 4424.36s]** we can sort of trace the execution
+
+**[4424.36s → 4427.64s]** through the Python code.
+
+**[4427.64s → 4432.44s]** Exactly.
+
+**[4432.44s → 4434.80s]** I'm guessing newbies like us will spend a lot of time
+
+**[4434.80s → 4441.08s]** reading through some of this output to get the concepts.
+
+**[4441.08s → 4442.32s]** Yeah, exactly.
+
+**[4442.32s → 4445.40s]** And I think there's some clean up that we've done here too,
+
+**[4445.40s → 4452.09s]** because in the agent state, for example,
+
+**[4452.09s → 4455.93s]** yes, he is through a nice air.
+
+**[4455.93s → 4457.25s]** So we did start.
+
+**[4457.25s → 4458.09s]** I think funny.
+
+**[4458.09s → 4459.93s]** We did start with the supervisor and said,
+
+**[4459.93s → 4462.25s]** next to research.
+
+**[4462.25s → 4464.57s]** So interesting, okay, this did work.
+
+**[4467.33s → 4471.17s]** But the supervisor, the supervisor did star,
+
+**[4471.17s → 4472.33s]** that's the entry point.
+
+**[4473.37s → 4475.51s]** So it did just override tiger.
+
+**[4478.64s → 4481.72s]** Interesting.
+
+**[4481.72s → 4483.72s]** It said, yeah, tiger isn't the entry point,
+
+**[4483.72s → 4495.47s]** so next should be a supervisor.
+
+**[4495.47s → 4497.99s]** But back to what I was saying though,
+
+**[4497.99s → 4502.59s]** I think the agent state could you do some cleaning up?
+
+**[4502.59s → 4516.20s]** So if you go back into code,
+
+**[4516.20s → 4528.04s]** You might also want to just include some other stuff about the output to help you know
+
+**[4528.04s → 4534.20s]** know what the final output is or any other intermediate information that might be useful
+
+**[4534.20s → 4535.64s]** to you.
+
+**[4535.64s → 4543.47s]** Like intermediate research, you know paragraphs in the report, like you're writing a report
+
+**[4543.47s → 4546.69s]** So that the agent state dictionary actually,
+
+**[4546.69s → 4549.19s]** I think could use a lot of attention
+
+**[4549.19s → 4551.33s]** in this particular use case to help
+
+**[4551.33s → 4552.95s]** make things more intuitive.
+
+**[4557.55s → 4561.23s]** Beyond just figuring out which agents and tools to use,
+
+**[4561.23s → 4568.03s]** the state dictionary is actually pretty important.
+
+**[4568.03s → 4572.87s]** So this agent state is used by all of the agents,
+
+**[4572.87s → 4576.73s]** just the supervisor, exactly.
+
+**[4576.73s → 4580.89s]** And so for the non-supervisor agents,
+
+**[4580.89s → 4583.73s]** the value of next would always be supervisor.
+
+**[4586.60s → 4587.96s]** Exactly.
+
+**[4587.96s → 4603.32s]** Yep.
+
+**[4603.32s → 4609.12s]** John, Cody, I'll branch will be pushing this up to it.
+
+**[4609.12s → 4640.08s]** Let's see.
+
+**[4640.08s → 4642.36s]** Add this.
+
+**[4642.36s → 4650.50s]** It will check that.
+
+**[4650.50s → 4653.70s]** I don't usually use get inside VS code.
+
+**[4653.70s → 4656.42s]** So my usage of it is a little clunky.
+
+**[4658.72s → 4667.38s]** I don't think I actually switched to this branch.
+
+**[4667.38s → 4753.25s]** fix helps when you change the files material 24 a2. All right, I will push this branch to 24 a2 after class. I
+
+**[4753.25s → 4764.07s]** mean, I just need to run that from terminal. But if you have any other last minute questions, feel free to
+
+**[4764.07s → 4771.27s]** ask to. And there are also two other completed branches in there. Mine is probably most similar to
+
+**[4771.27s → 4775.83s]** 24A1 because that's where I was running my code from.
+
+**[4775.83s → 4778.37s]** Aaron's is slightly different.
+
+**[4778.37s → 4781.57s]** AI01, this code is slightly different.
+
+**[4781.57s → 4784.39s]** So if you want to take a look at a slight difference in
+
+**[4784.39s → 4786.87s]** the nomenclature, it's good.
+
+**[4786.87s → 4792.56s]** If you're interested in hosting this and playing around with it yourself,
+
+**[4792.56s → 4798.52s]** you can't app so you can run this locally and it'll run locally on your machine.
+
+**[4798.52s → 4802.12s]** You can also host it on any number,
+
+**[4802.12s → 4810.22s]** any number of services that provide hosting. I forget was it render me? I think that's
+
+**[4811.34s → 4815.82s]** Aaron used in the original lecture and actually where it's hosted today is still on render me.
+
+**[4815.82s → 4865.88s]** I think it's called on render.com. That's right now. No further questions for me. So it's good.
+
+**[4865.88s → 4885.44s]** All right everybody, we'll turn any more questions and I'll let you all go and have a great night.
+
+**[4885.44s → 4893.64s]** Just one quick reminder for we drop next week there's no class for the holiday so I will see everybody the week July 8th
+
+**[4894.00s → 4896.16s]** So have a great week
+

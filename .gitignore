@@ -1,0 +1,58 @@
+# Videos (too large for GitHub - stored in Supabase)
+public/videos/**/*.mp4
+*.mp4
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+
+# Backups
+src/content/.backups/
+*.backup
+*.bak
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Claude
+.claude/
+
+# Transcription package specific
+ai-course-transcription-package/logs/
+ai-course-transcription-package/cohorts.zip
+ai-course-transcription-package/scripts/__pycache__/
+ai-course-transcription-package/.env
+ai-course-transcription-package/venv/

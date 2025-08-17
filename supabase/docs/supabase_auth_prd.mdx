@@ -1,0 +1,213 @@
+# Implementation Plan
+
+## Database & Authentication Setup
+
+- [ ] Step 1: Create SQL migration and rollback scripts for RLS policies
+  - **Task**: Create SQL scripts for applying simplified auth-only policies and reverting them if needed. Includes bucket existence verification and explicit path scoping for security.
+  - **Files**: 
+    - `supabase/migrations/001_mvp_auth_policies.sql`: Forward migration with bucket validation
+    - `supabase/migrations/001_mvp_auth_policies_revert.sql`: Rollback script for quick recovery
+  - **Step Dependencies**: None
+  - **User Instructions**: 
+    - Backup existing RLS policies before running migration
+    - Run forward migration in Supabase SQL editor
+    - Keep revert script ready for quick rollback if issues arise
+
+- [ ] Step 2: Update environment configuration with security checks
+  - **Task**: Create environment variable template with security warnings and validation script to prevent service role key exposure.
+  - **Files**: 
+    - `.env.example`: Template with explicit warnings about service role keys
+    - `src/lib/env.ts`: Environment validation utility
+    - `scripts/verify-no-service-key.sh`: CI/CD script to prevent key exposure
+  - **Step Dependencies**: None
+  - **User Instructions**: 
+    - Copy `.env.example` to `.env.local`
+    - Add ONLY your Supabase URL and anon key (never service role key)
+    - Run `./scripts/verify-no-service-key.sh` before each deployment
+
+## Core Authentication Components
+
+- [ ] Step 3: Enhance AuthContext with full session management
+  - **Task**: Update the existing AuthContext to include comprehensive session management, error handling, automatic token refresh, and redirect URL preservation for post-login navigation.
+  - **Files**: 
+    - `src/contexts/AuthContext.tsx`: Enhanced auth context with full functionality
+  - **Step Dependencies**: Step 2
+  - **User Instructions**: None
+
+- [ ] Step 4: Create AuthModal component
+  - **Task**: Implement a modal-based authentication component with tabs for login/signup, form validation, loading states, and error handling. The modal cannot be dismissed without authentication.
+  - **Files**: 
+    - `src/components/auth/AuthModal.tsx`: Modal component for authentication
+  - **Step Dependencies**: Step 3
+  - **User Instructions**: None
+
+- [ ] Step 5: Create ProtectedRoute HOC
+  - **Task**: Implement a Higher Order Component that wraps protected content and displays the auth modal when users are not authenticated. Includes loading states and redirect URL preservation.
+  - **Files**: 
+    - `src/components/auth/ProtectedRoute.tsx`: Protected route wrapper component
+  - **Step Dependencies**: Step 4
+  - **User Instructions**: None
+
+## Application Integration
+
+- [ ] Step 6: Update App.tsx with correct component hierarchy
+  - **Task**: Modify the main App component to wrap all course routes with ProtectedRoute. Critical: AuthProvider must be INSIDE BrowserRouter to use useNavigate hook.
+  - **Files**: 
+    - `src/App.tsx`: Updated with correct component order (BrowserRouter > AuthProvider > Routes)
+  - **Step Dependencies**: Step 5
+  - **User Instructions**: None
+
+- [ ] Step 7: Remove Login page and update navigation
+  - **Task**: Remove the separate Login page component since authentication is now handled via modal, and update any navigation references.
+  - **Files**: 
+    - `src/pages/Login.tsx`: Delete this file
+    - `src/components/navigation/UserProfile.tsx`: Update to use new auth system
+  - **Step Dependencies**: Step 6
+  - **User Instructions**: None
+
+## Video Access Updates
+
+- [ ] Step 8: Update VideoPlayerSecure for MVP auth
+  - **Task**: Simplify the VideoPlayerSecure component to only check for authentication (not course_access), aligning with MVP requirements where all authenticated users have access.
+  - **Files**: 
+    - `src/components/course/VideoPlayerSecure.tsx`: Simplified auth check
+  - **Step Dependencies**: Step 3
+  - **User Instructions**: None
+
+## Error Handling & User Experience
+
+- [ ] Step 9: Add loading and error states
+  - **Task**: Create reusable loading skeleton and error boundary components to handle various states throughout the application.
+  - **Files**: 
+    - `src/components/ui/loading-skeleton.tsx`: Loading state component
+    - `src/components/ErrorBoundary.tsx`: Error boundary for graceful error handling
+  - **Step Dependencies**: None
+  - **User Instructions**: None
+
+- [ ] Step 10: Implement toast notifications
+  - **Task**: Set up toast notifications for authentication success/failure events using the existing sonner component.
+  - **Files**: 
+    - `src/hooks/useToast.ts`: Toast notification hook
+    - `src/contexts/AuthContext.tsx`: Update to include toast notifications
+  - **Step Dependencies**: Step 3, Step 9
+  - **User Instructions**: None
+
+## Session Management & Security
+
+- [ ] Step 11: Configure redirect persistence strategy
+  - **Task**: Document sessionStorage usage for redirect URLs with limitations and future migration path if needed.
+  - **Files**: 
+    - `src/components/auth/ProtectedRoute.tsx`: Add comments about sessionStorage limitations
+    - `docs/AUTHENTICATION.md`: Document redirect behavior and limitations
+  - **Step Dependencies**: Step 5
+  - **User Instructions**: None
+  - **Note**: Using sessionStorage for MVP (simpler). Add TODO for localStorage + TTL if deep-link persistence becomes critical.
+
+- [ ] Step 12: Add security headers and CSP
+  - **Task**: Configure Content Security Policy and security headers for production deployment, ensuring secure communication with Supabase.
+  - **Files**: 
+    - `index.html`: Add security meta tags
+    - `vercel.json`: Add security headers configuration for Vercel deployment
+  - **Step Dependencies**: None
+  - **User Instructions**: Deploy these changes to Vercel after testing
+
+## Security Validation
+
+- [ ] Step 13: Run security verification checks
+  - **Task**: Verify no service role keys are exposed and RLS policies are correctly scoped.
+  - **Files**: 
+    - Run `scripts/verify-no-service-key.sh`
+  - **Step Dependencies**: Steps 1-12
+  - **User Instructions**: 
+    - Add this script to CI/CD pipeline
+    - Run before every deployment
+    - Never bypass if it fails
+
+## Testing & Validation
+
+- [ ] Step 14: Create authentication test utilities
+  - **Task**: Set up test utilities and mock providers for testing authentication flows, including mock Supabase client for unit tests.
+  - **Files**: 
+    - `src/__tests__/utils/auth-test-utils.tsx`: Test utilities
+    - `src/__tests__/mocks/supabase.ts`: Mock Supabase client
+  - **Step Dependencies**: Step 3, Step 4, Step 5
+  - **User Instructions**: Run `npm test` to execute tests
+
+- [ ] Step 15: Implement E2E authentication tests
+  - **Task**: Create end-to-end tests for critical authentication flows including signup, login, session persistence, and video access.
+  - **Files**: 
+    - `e2e/auth.spec.ts`: E2E test specifications
+    - `playwright.config.ts`: Playwright configuration
+  - **Step Dependencies**: Step 13
+  - **User Instructions**: Run `npm run test:e2e` after setup
+
+## Polish & Optimization
+
+- [ ] Step 16: Add mobile responsive design
+  - **Task**: Ensure AuthModal and all authentication-related components are fully responsive on mobile devices with touch-friendly interactions.
+  - **Files**: 
+    - `src/components/auth/AuthModal.tsx`: Update with responsive styles
+    - `src/components/auth/ProtectedRoute.tsx`: Mobile-optimized loading states
+  - **Step Dependencies**: Step 4, Step 5
+  - **User Instructions**: Test on various mobile devices
+
+- [ ] Step 17: Implement code splitting and lazy loading
+  - **Task**: Add code splitting for heavy components and lazy load course content to improve initial load performance.
+  - **Files**: 
+    - `src/App.tsx`: Add lazy loading for course components
+    - `src/components/course/CourseLayout.tsx`: Update imports for lazy loading
+  - **Step Dependencies**: Step 6
+  - **User Instructions**: None
+
+- [ ] Step 18: Add password reset flow (stretch goal)
+  - **Task**: Implement password reset functionality with email verification for users who forget their passwords.
+  - **Files**: 
+    - `src/components/auth/PasswordResetModal.tsx`: Password reset modal
+    - `src/components/auth/AuthModal.tsx`: Add "Forgot password?" link
+  - **Step Dependencies**: Step 4
+  - **User Instructions**: Configure email templates in Supabase dashboard
+
+## Documentation & Deployment
+
+- [ ] Step 19: Create deployment checklist and documentation
+  - **Task**: Document the authentication system, deployment steps, and create a comprehensive checklist for production deployment.
+  - **Files**: 
+    - `docs/AUTHENTICATION.md`: Authentication system documentation
+    - `docs/DEPLOYMENT.md`: Deployment checklist and guide
+  - **Step Dependencies**: All previous steps
+  - **User Instructions**: Review documentation before production deployment
+
+- [ ] Step 20: Set up monitoring and error tracking
+  - **Task**: Configure error tracking and monitoring for authentication-related issues in production.
+  - **Files**: 
+    - `src/lib/monitoring.ts`: Error tracking setup
+    - `src/contexts/AuthContext.tsx`: Add error tracking to auth events
+  - **Step Dependencies**: Step 3
+  - **User Instructions**: Set up Sentry or similar service and add DSN to environment variables
+
+- [ ] Step 21: Final testing and production readiness check
+  - **Task**: Perform comprehensive testing of all authentication flows, verify session persistence, test video access, and ensure all edge cases are handled.
+  - **Files**: 
+    - `scripts/auth-smoke-test.js`: Automated smoke test script
+  - **Step Dependencies**: All previous steps
+  - **User Instructions**: Run smoke tests and manually verify critical flows before deployment
+
+## Summary
+
+This implementation plan provides a systematic approach to implementing the MVP authentication system for Module Mind. The plan follows a logical progression from database setup through to production deployment, ensuring each component builds upon previous work.
+
+**Key Considerations:**
+1. **Incremental Implementation**: Each step is designed to be completed independently while maintaining a working application
+2. **User-Centric Design**: The modal-based approach ensures users can't bypass authentication while providing a smooth experience
+3. **Security First**: Session management, token refresh, and security headers are prioritized
+4. **Testing Throughout**: Test utilities and E2E tests ensure reliability
+5. **Production Ready**: Includes monitoring, error tracking, and deployment documentation
+
+**Timeline Estimate:**
+- Core Implementation (Steps 1-8): 4-5 hours
+- UX & Polish (Steps 9-12): 2-3 hours  
+- Testing (Steps 13-14): 2 hours
+- Optimization & Documentation (Steps 15-20): 2-3 hours
+- **Total**: 10-13 hours of focused development
+
+The plan maintains backward compatibility while significantly enhancing the authentication system, preparing it for future features like payment integration and course access management.

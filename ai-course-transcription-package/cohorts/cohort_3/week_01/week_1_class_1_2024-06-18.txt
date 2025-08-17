@@ -1,0 +1,1090 @@
+[00:03 - 00:10] Let's get this chat starting. All right folks, welcome. There's a few of you still arriving in so kind of in a few minutes late
+[00:10 - 00:16] That's quite all right. Generally, I try to start as close to on the hour as possible because really we've got quite a
+[00:16 - 00:22] Like a lot of these concepts for a lot of these classes. We're going to have a lot to go over within a
+[00:23 - 00:30] Really short period of time. So with that said, I just want to say hello. I'm looking forward to working with you over the next
+[00:30 - 00:37] eight to ten weeks. My name is Julien Okano. I'm coming I'm coming in from Washington, DC, and I know that we've got
+[00:38 - 00:42] Eupholics coming in from all over the world. I'm really excited to see and
+[00:43 - 00:47] Let's see some of the projects get to learn from you get to learn from like some of them that you're building
+[00:47 - 00:52] But if you're here there is probably a great deal of
+[00:54 - 00:56] background experience and
+[00:56 - 01:01] Interests that you're bringing to the table. So a couple of ground rules that I just wanted to talk about. I am
+[01:02 - 01:07] Pretty I'm pretty much working with three different screens, but that does mean that
+[01:08 - 01:14] When it comes to actually seeing your questions. There's a couple of ways that I generally recommend that you ask questions
+[01:16 - 01:23] For starters, I'm going to have a slack channel as you can see Jonathan Brunt has already posted a blockers thread
+[01:23 - 01:32] Essentially any issue that you may be running into please feel free to ask questions there. I'm also going to set another thread up on slack.
+[01:32 - 01:34] So you have any questions
+[01:34 - 01:37] Please post there
+[01:37 - 01:44] That is the best place for me to kind of generally see the questions as they're coming
+[01:45 - 01:52] The other way that I generally request you ask questions is we're a relative we're probably going to be a relatively small group
+[01:52 - 01:53] I'm not seeing more than 20 people here
+[01:53 - 02:00] So far may go up to 30 but gets any much bigger than that will change our approach, but if you raise your hand on slack
+[02:01 - 02:07] Or on zoom. I am more than happy to kind of stop what I'm saying and just address the question you may have
+[02:07 - 02:13] That feels if you feel too shy to like come off the camera or come off of the mute. That's all right
+[02:13 - 02:16] Please feel free to ask any questions on slack
+[02:16 - 02:22] With that said, I want to start off this session at today's session with a question for you
+[02:22 - 02:29] So if you can navigate over to the slack channel for tonight. My question to you is what if any
+[02:33 - 02:35] I love AI tools
+[02:35 - 02:38] Have you already built
+[02:38 - 02:45] One of the things I like about this class is that it is very much a dynamic class a lot of the way we're going to be working is
+[02:46 - 02:50] Essentially with your capstone project in mind a lot of you have a joy that this program
+[02:50 - 02:57] Knowing that there is perhaps your company is asking you to put together a specific project your company is probably asking you
+[02:57 - 03:01] To build a specific tool for the betterment of the company itself
+[03:01 - 03:06] So if you are you have something in mind. I want to know about it
+[03:06 - 03:08] So if you go ahead and answer infrared
+[03:08 - 03:14] I want to know what you're looking to know. I want to see what kind of experience you've already had a chance to
+[03:15 - 03:23] Begin creating so that I know that what we are teaching here that what we are going over is stuff that you know is not necessarily
+[03:24 - 03:35] Too basic or perhaps not too intense for you perhaps so if you've done none if you are new to this if AI stuff is completely brilliant. That's great
+[03:35 - 03:38] We're going to make sure that you feel comfortable in that in that space
+[03:38 - 03:40] So with that said welcome
+[03:40 - 03:44] Today, we're just going to talk a little bit about the groundwork for water classes are going to look like
+[03:45 - 03:48] What are assignments are going to look like?
+[03:49 - 03:55] You're going to get to know me you're going to get to know a little bit about how we do education and teaching here at
+[03:57 - 04:02] App blue tech and we'll actually end the class having built a very simple script
+[04:02 - 04:11] Very simple open AI base script. That's why you have the open AI API key up on the Slack channel and also introduce a local
+[04:11 - 04:16] Language a large language model that you can use within your local framework
+[04:17 - 04:19] So with that said
+[04:20 - 04:28] Let's get on it. Hi, and welcome. This is yeah, generally I go for a little bit more of a longer introduction
+[04:28 - 04:33] But to be fair like with our time frame. I want to make sure that we cover everything that we need to be covered
+[04:33 - 04:40] So that's that here's our silvets and here on the right you can actually I recommend you take a moment to like read through that content first
+[04:41 - 04:44] We'll download and access some of the content together
+[04:44 - 04:46] But first I want to make sure that you're in the right place
+[04:46 - 04:49] This is why I probably have a question of hey, what have you built so far?
+[04:49 - 04:57] What are you interested in building because every so often you may have a student or someone who comes into the classes that has already built
+[04:57 - 05:05] Perhaps some level of a multi-agent system or has already gone through a lot of curriculum and as much as I like taking people's money
+[05:05 - 05:09] I make sure that I like to take people's money and affair and
+[05:09 - 05:18] And a fair and like trustful way, so I'm not gonna be have you sit here for eight weeks if you've already if you're already familiar with this concept
+[05:19 - 05:24] But yeah, a lot of what we're doing especially today and this week may seem a little bit introductory
+[05:25 - 05:29] It is going to be fast paced but starting next week and starting
+[05:30 - 05:35] the next couple of weeks we're diving right into a rag and based components
+[05:36 - 05:44] The general framework that we're going to be using is a Python package called Lang chain
+[05:44 - 05:50] And as soon as this Thursday, we're actually going to be diving into another component of Lang chains called Lang Smith
+[05:50 - 05:58] Essentially, how we're going to be accessing a lot of the data using the Lang chain framework is going to be based off of the Lang Smith
+[05:58 - 06:00] uh
+[06:00 - 06:05] Website and its own servers. I think we're actually using a couple of different components
+[06:05 - 06:10] Just so that you have access to a lot of different tools as part of the class session
+[06:10 - 06:14] Weeks three and four we talk a little bit about how to change some of the different
+[06:15 - 06:17] Components that we've built so far when I talk about
+[06:18 - 06:25] All rag what are really what I'm referring to is how and how a large language model and connect to outside documents
+[06:26 - 06:32] Learn from those outside documents and bring it into the knowledge basis that it has for a particular
+[06:33 - 06:35] Code or text-based invocation
+[06:36 - 06:44] Um we start building very simple tools or very simple agents as early as week three and four again
+[06:44 - 06:52] That's going to be depending on the pace your feedback your comments how you're feeling with the content experience so far and
+[06:52 - 06:54] the general
+[06:55 - 07:01] Build out or the general architecture for the agents. We're going to be using starts towards the latter end of the class now
+[07:01 - 07:04] I didn't say this is a 10-week course
+[07:05 - 07:09] So I do want to point out that as part of this 10-week course
+[07:09 - 07:12] You're going to be doing a lot of kind of many daily projects
+[07:13 - 07:18] So if you're someone who has quite a bit of experience or conceptually understands what AI
+[07:19 - 07:22] Or what gen AI packages can potentially do it
+[07:22 - 07:28] You've never really built something to kind of showcase that this is a this is actually a very good setup
+[07:28 - 07:34] And a very good environment for you because what we encourage you to do here is learn through building learn through troubleshooting
+[07:35 - 07:38] So as part of the projects that you'll will be assigning
+[07:38 - 07:44] Through your bloom tech portal, which you haven't had access to that yet highly recommend you reach out that ash
+[07:45 - 07:48] Who you've probably seen a little south bar and
+[07:50 - 07:52] Yeah, make sure you have access to the bloom tech
+[07:53 - 07:58] area to like turn in your assignment because that's yeah, you're going to have some homework
+[07:58 - 08:00] And so
+[08:00 - 08:04] These guided projects you'll have a little bit of time on your own to work on this
+[08:05 - 08:07] Outside of class
+[08:07 - 08:10] But the way we do our sessions here is
+[08:11 - 08:15] We spend a good chunk of Tuesdays talk about the conceptual elements
+[08:15 - 08:18] We see some easy examples of the packages we're working with
+[08:19 - 08:25] And eventually we build a simple project together in class. It's less of a code along and more of
+[08:26 - 08:32] Essential like hey, this is what this code does and here's how this builds into the package itself
+[08:33 - 08:36] And you'll be able to follow along, but it's not going to be as tedious as some
+[08:37 - 08:41] Bootcamp level code along sessions that you may have seen in the past
+[08:41 - 08:45] So just want to give you the heads up of what to expect
+[08:46 - 08:52] Each of these projects as you submit them is rated on a pass fail and a lot of ways what we're looking for is whatever you submit is
+[08:53 - 08:57] Returned with a little bit of feedback of like hey, this is really cool. Good job. Here's how you can improve it
+[08:58 - 09:04] Generally, it's hard to fail one of these projects because I assume and I'm presuming that most of you are
+[09:04 - 09:09] Fairly professional and fairly adept at this type of content. So if you've built something that you're comfortable submitting
+[09:10 - 09:15] It's fairly it's fairly likely that it's brought that it's very much likely something good
+[09:15 - 09:20] And of course, we're going to make sure that we offer you some stretch goals concepts and content that you can
+[09:21 - 09:25] Let your creativity shine and go beyond like any minimum requirements that we have
+[09:26 - 09:28] Before I keep talking
+[09:28 - 09:31] Any questions that may have come up so far
+[09:35 - 09:40] This is pretty much just the hello at the first start, but I do want to make sure
+[09:42 - 09:44] We are
+[09:44 - 09:50] Checking in a see about seven replies as to what if any type of ATI tools you have already built
+[09:50 - 09:56] Again, recommend that you submit your feedback like what I want to know is what you've built so far
+[09:56 - 09:58] I want to know what you've had a chance to
+[09:59 - 10:05] Create on your own and honestly, I see some of you hey, I've had no experience with AI
+[10:05 - 10:08] That's great like I want to encourage you to come to that's excellent
+[10:08 - 10:12] I want to hear no experience. I want you to feel comfortable learning and again
+[10:13 - 10:18] One of the components of this class is that hey if I'm going too fast if there's something that's whoa
+[10:18 - 10:21] That was way out of left field that I've never seen this before
+[10:21 - 10:23] This is also a safe space to chime in and let us know
+[10:24 - 10:26] But yeah, we want to make sure that you're
+[10:26 - 10:34] You're comfortable and helps build helps helps you build on what you're looking to build for your particular company
+[10:35 - 10:37] Okay
+[10:37 - 10:39] So with that said
+[10:39 - 10:44] The biggest project or the biggest reason you're probably here we're probably here is because you heard that hey
+[10:44 - 10:46] I had this is going to make you on
+[10:47 - 10:49] AI developer in a very
+[10:49 - 10:56] In a very expert level way or perhaps maybe your company your boss was like I want you to become an AI developer in a very expert
+[10:56 - 11:01] Professional way and I want you to be able to showcase this in a caps like with a capstone now
+[11:02 - 11:08] A lot of the feedback I've heard from both ash from your employers from you as part of
+[11:08 - 11:13] Your interest in this company is that you want to be able to build something that you can bring back to work
+[11:13 - 11:17] So this is going to be my second question that I want to post on slack
+[11:18 - 11:20] What if anything?
+[11:21 - 11:24] Do you have in mind?
+[11:24 - 11:27] For the capstone
+[11:27 - 11:30] That's okay if you don't have anything in mind maybe you'll
+[11:31 - 11:34] Find some inspiration along the way
+[11:34 - 11:37] But if you have already have something in mind, I want to know about it
+[11:37 - 11:39] And I think you've this question hasn't posed to you before
+[11:40 - 11:44] That's great. I want to make sure to hear from it as well because what we are
+[11:45 - 11:52] hoping that you get out of this class is essentially a working architecture for a multi-agent
+[11:52 - 11:53] uh
+[11:53 - 11:55] multi-agent model that essentially
+[11:56 - 11:58] Does what you set yourself up to do
+[11:58 - 12:02] So the last two weeks of the course we're building this capstone project with a
+[12:04 - 12:05] The mindset that it's going to be
+[12:05 - 12:10] Implemented directly into your company's needs or perhaps your team at the company
+[12:10 - 12:12] um
+[12:12 - 12:18] And if you know if we're not hitting the marks in our class sessions then that's something we want to be able to adjust
+[12:19 - 12:22] One of the things I like about working with Blumtech with working with Ash Jonathan
+[12:22 - 12:26] a lot of the other teams uh as part of these uh
+[12:26 - 12:33] A.I.C. Awards is that we are solid at uh pivoting when we need to pivot on the content
+[12:33 - 12:38] And we are solid at making sure to deliver exactly what it is that you might be looking for
+[12:38 - 12:40] So if we're not doing that
+[12:40 - 12:42] Well make sure to reach out to Ash and let us know
+[12:43 - 12:46] But in order to do that a few things that we want to make sure that we are addressing
+[12:46 - 12:49] We want to make sure that you're able to identify the task
+[12:49 - 12:52] Make sure to identify the problem that you're setting yourself up to build
+[12:53 - 12:54] um
+[12:54 - 12:56] That we are able to
+[12:56 - 13:00] Together design a specific solution for that problem
+[13:01 - 13:06] Uh coded together or coded on our own or even coded a very simple
+[13:06 - 13:12] Version of what we're trying to build that you can walk away from this class after 10 weeks with a
+[13:13 - 13:15] codeotype that you can potentially test
+[13:15 - 13:20] Now the idea behind all of this is not to make sure that it works after 10 weeks
+[13:20 - 13:21] That's not the expectation
+[13:21 - 13:26] I wouldn't expect that out of having to learn a package from the
+[13:26 - 13:28] You know it's like from the very first time
+[13:28 - 13:31] What we are looking for is a minimum viable product
+[13:31 - 13:34] And that's generally the best we can start off with
+[13:34 - 13:37] You're working with a team you bring the minimum viable product
+[13:37 - 13:39] You get inspiration from someone else on your team
+[13:39 - 13:42] You help build your content out from there
+[13:43 - 13:47] So let's see I'm seeing some other some some of your comments video
+[13:47 - 13:52] Video and analysis code based insights great how to correct your code excellent better task managing
+[13:53 - 13:55] Excellent. Oh
+[13:55 - 13:57] The input animations to the reads email. Yes, I think
+[13:58 - 14:04] Believe we build something like that towards the end especially when we start talking about the multi agent system
+[14:04 - 14:08] So we'll build up to that that list that is excellent
+[14:08 - 14:10] That's that's an excellent sentence
+[14:11 - 14:13] All right folks
+[14:13 - 14:16] So with that said
+[14:16 - 14:20] I do want to talk a little bit about the schedule is going to look like
+[14:20 - 14:26] This is also a little bit about how we're going to do where I'm going to do a little bit of the brief
+[14:26 - 14:28] Introductions for us today. So
+[14:30 - 14:34] Here you can see the schedule for this week and the next couple of weeks
+[14:35 - 14:43] We don't have classes two weeks from now. That is July 4th. So that entire week you are off enjoy the time enjoy the holiday
+[14:44 - 14:51] But it's also one of the things that's not noted here on this schedule is that tomorrow at least the United States
+[14:51 - 14:57] It is a major federal holiday and most of our office hours is going to be done on Wednesday
+[14:57 - 14:59] So with that I would like to introduce our
+[15:00 - 15:02] excellent
+[15:03 - 15:10] Teaching instructor what's the what's the what's the what's the what's the what's the title is it's learning learning instructor learning assistant
+[15:11 - 15:13] Teaching assistant
+[15:13 - 15:16] Yeah, if it's some play on teaching assistant learning assistants
+[15:18 - 15:23] Whatever it may be yeah, well Jonathan. Please say hello to everyone. Say hello to Jonathan
+[15:25 - 15:27] Hey, everybody. I'm John
+[15:27 - 15:31] I will be the learning assistant for this course
+[15:31 - 15:37] I'll be holding an optional office hours on Wednesdays at the same time at PM eastern
+[15:37 - 15:40] The office hours are completely optional
+[15:41 - 15:44] Anyone and everyone is encouraged to come during the office hours
+[15:44 - 15:51] We'll spend the first 10 to 20 minutes in general going over a solution to the homework that you had the previous day
+[15:51 - 15:57] And the rest of the time is for you to bring questions that you have about the content that we've been covering
+[15:57 - 16:04] And the course in general and AI in general so this week we do have a holiday
+[16:05 - 16:09] I will be holding the office hours as regular this week tomorrow
+[16:10 - 16:18] For anyone that wants to come also I understand that we have quite a few people from India and Thailand from the other side of the world in this course
+[16:19 - 16:23] Ash spoke with me earlier and we're going to set something up starting next week
+[16:23 - 16:28] We're going to have an alternate office hours. It's more conducive to that time zone
+[16:28 - 16:29] I believe
+[16:29 - 16:34] Then Ash is going to set up a poll to see what the best time would be but more on that later
+[16:35 - 16:36] but
+[16:36 - 16:38] Aside from that if you've got any questions
+[16:39 - 16:43] I try to keep up with my slack when I can so feel free to reach out to me and slack
+[16:44 - 16:48] And I'll get back with you when I can and I look forward to working with everybody
+[16:52 - 16:54] so
+[16:54 - 16:57] And as for myself my name like I said earlier is Julio and Okendo
+[16:57 - 16:58] I am
+[16:59 - 17:01] Originally a data science
+[17:01 - 17:06] Professional nowadays these days I have more refer to myself as an automation consultant
+[17:07 - 17:12] Sometimes I use the AI consultant when it comes to some of the companies I work with but I tend to work with
+[17:13 - 17:18] Individuals who are typically a lot more scared of AI. Oh my gosh AI is taking my job
+[17:18 - 17:23] So a lot of times having the term a automation consultant is a little bit more of from the interface
+[17:23 - 17:28] A lot of my work is done with nonprofits and small businesses in the Washington DC area
+[17:28 - 17:31] So I do the type of work where I walk into
+[17:33 - 17:39] I walk into a specific small business and help them automate a lot of their daily processes or some of the management
+[17:40 - 17:42] some of the management
+[17:43 - 17:44] tedious tasks
+[17:44 - 17:47] I think a lot of you have talked a little bit about like how do I
+[17:48 - 17:52] Organize my more tedious tasks into something a little bit more straightforward
+[17:52 - 17:55] So a lot of the type of work that I do even before
+[17:56 - 17:59] The big open AI chat GBT
+[18:00 - 18:05] Breakthrough of last year was essentially showing and teaching people how to make their lives
+[18:06 - 18:10] A lot more efficient a lot more succinct along with the same lines
+[18:10 - 18:13] I also teach data science as a side
+[18:14 - 18:17] Career path if so if there's anyone here who wants to talk statistics
+[18:18 - 18:25] Please by all means hit me up. This is sort of this is the sort of conversation that I I'd love to dive into
+[18:26 - 18:28] But with that being said what we're doing today
+[18:29 - 18:35] Is essentially going to be diving deep into some of our first large language models
+[18:35 - 18:40] Let me go ahead and take a brief moment to pause. I just want to make sure we're all on the same page
+[18:41 - 18:44] Now I asked you all earlier just to make sure
+[18:45 - 18:50] That we had a chance to fork and clone the specific repo is there anyone who
+[18:51 - 18:56] Hasn't had a chance to do that yet. Give me a thumbs down if you haven't had a chance to do that if that's okay
+[18:56 - 18:58] Let's go ahead and do that. I
+[18:59 - 19:02] Said yeah, yeah, like this is this is what we're here for so
+[19:03 - 19:07] I think I shared the link to that on the Slack channel. Yeah, so go ahead
+[19:08 - 19:11] I'll go ahead and share that once again
+[19:12 - 19:13] I'm
+[19:13 - 19:21] Just in case but what we're going to do and what I'm going to walk us through is simply the process of these instructions listed below the idea is
+[19:22 - 19:25] But I want to be able to make sure to create a virtual environment in my local computer
+[19:25 - 19:30] Because I'm going to be installing especially over the next few weeks a lot of different packages some of these packages
+[19:31 - 19:37] Might play well together, but some of them might not and it's certainly a good habit to make sure that all of this is all of these
+[19:38 - 19:42] Different installations are done in a virtual environment. So
+[19:43 - 19:48] With that said there's a couple of different ways you can do this if you have a preferred way to do that
+[19:48 - 19:51] Highly recommend you take that approach
+[19:51 - 19:56] I'm simply going to go over the approach that's listed on the GitHub repository
+[19:57 - 19:58] um
+[19:58 - 20:02] The grab my terminal. That's where did you go?
+[20:03 - 20:05] Problem with having of a Jillian screens
+[20:07 - 20:09] So you never know where you put things
+[20:17 - 20:19] Yeah, here we go
+[20:20 - 20:22] There get that out of the way
+[20:22 - 20:26] Let's set this up
+[20:26 - 20:29] All right, so here's what we're going to need to do
+[20:29 - 20:33] This is the first repository for our class today
+[20:34 - 20:38] But we're going to have pretty much a whole lot of other repositories down the road
+[20:38 - 20:42] So I want to make sure that you have your files relatively organized
+[20:43 - 20:44] so
+[20:44 - 20:50] Most of you should have a documents folder. I'm going to recommend that you create a directory on your local like on your local computer to
+[20:51 - 20:54] Clown and save all of these repositories for today
+[20:55 - 20:59] I'm simply going to navigate over to my documents folder
+[20:59 - 21:01] um
+[21:01 - 21:03] Inside that folder. This is where I'm going to
+[21:05 - 21:07] clone my
+[21:08 - 21:09] Oh my files um
+[21:11 - 21:14] Let's create a folder called let's say
+[21:14 - 21:16] AI dev class
+[21:18 - 21:22] And that's where I'm going to make sure that all of my content is located. So
+[21:23 - 21:25] What I'm doing right now just in case
+[21:26 - 21:28] For anyone who hasn't seen this before just
+[21:29 - 21:34] Happy to reach out like if this is not something you've seen before if you're not familiar with this stick around after class
+[21:34 - 21:39] I will talk a little bit about navigating the the command line in that case
+[21:39 - 21:43] But all I'm doing is creating a folder to you clone
+[21:44 - 21:49] All of the content that's coming from this repository and you can even see the slides located in there as well. So
+[21:50 - 21:52] I am going to
+[21:52 - 21:54] found
+[21:54 - 21:56] The repository that I've just
+[21:57 - 21:59] loaded into this file
+[22:02 - 22:04] And while I'm here
+[22:08 - 22:11] Now let's just go ahead and create the environment right inside
+[22:12 - 22:14] That's folder
+[22:14 - 22:19] So I just want to navigate into the folder and create my environment there. So
+[22:20 - 22:24] I'm presuming that pipe you've had a chance to install Python if you haven't
+[22:25 - 22:26] Okay
+[22:26 - 22:31] Stick around watch the recording get the concepts and then we'll and we'll we'll troubleshoot those questions
+[22:32 - 22:35] Towards the last 30 minutes of the session
+[22:36 - 22:41] But the idea is that I want to create a virtual environment like man for this is pretty standard
+[22:41 - 22:46] It's Python 3 or Python regular as long as you have Python 3.6
+[22:46 - 22:48] You should be good to go
+[22:48 - 22:52] I'm going to create a virtual environment. I'm just going to call this one
+[22:53 - 22:55] You can call this whatever you want. I'm going to call this one
+[22:56 - 22:58] Let's say
+[22:58 - 23:00] AI school
+[23:00 - 23:06] So Python 3.mve and v.ai school that dot
+[23:07 - 23:08] Creates this as a hidden file
+[23:11 - 23:15] It's going to be a little bit of a brief delay and I like to showcase and make sure that my files are working
+[23:15 - 23:19] By just showcasing lsa. There's AI school
+[23:19 - 23:21] Along with all of the other
+[23:21 - 23:23] content that was
+[23:23 - 23:25] brought in from that well-being
+[23:26 - 23:28] From the repo that we just formed
+[23:29 - 23:34] And what I want to make sure is I just want to make sure that this is running in a virtual environment
+[23:34 - 23:36] And we simply activate that with source
+[23:38 - 23:40] dot AI school
+[23:41 - 23:43] Then
+[23:43 - 23:44] Activate
+[23:44 - 23:46] If you're on windows. I think the command
+[23:47 - 23:50] Is scripts activate
+[23:52 - 23:57] So that's my fair warning if you're on windows. It's AI school then scripts activate
+[23:59 - 24:01] And at least on my side you can see that like
+[24:01 - 24:05] This dot AI school at the very beginning needs that I have activated those scripts
+[24:08 - 24:12] Now here's the fun part in order to get some of this code to work
+[24:13 - 24:18] And if it doesn't work for you if there's some if for whatever reason there's a path issue on your local computer
+[24:18 - 24:22] We have alternatives to get that API key to work for your computer
+[24:23 - 24:28] But I need to be able to install some of the files in this requirements folder
+[24:29 - 24:32] So let me just talk a little bit about what's in that requirements folder
+[24:34 - 24:38] I like to showcase. I just used a nano to open up the folder itself
+[24:38 - 24:42] I'm going to I want to showcase that these are the packages. I'm going to be installing it's
+[24:42 - 24:47] Langshane, Langshane Core, OpenAI, and Langshane Community
+[24:49 - 24:51] Actually missing one of the packages here
+[24:51 - 24:55] Alamo, I believe, but we'll see if we get to that towards the end of the class
+[24:56 - 25:01] But the idea is that I want to be able to install all of these requirements in one go
+[25:02 - 25:05] So I'm simply going to use a pip install
+[25:05 - 25:07] Again, if you have a different method for using this that's fine
+[25:08 - 25:11] I just want to install the files from that requirements dot the xt
+[25:12 - 25:14] In this virtual environment
+[25:19 - 25:22] See how we're doing
+[25:22 - 25:25] Again, if we've already gone past
+[25:26 - 25:29] Where you're feeling comfortable with that's okay stick around
+[25:29 - 25:34] After our lecture portion of the pass and we'll talk this through
+[25:35 - 25:40] I just want to make sure that this is one of the steps that we are comfortable with
+[25:41 - 25:44] Ah, it's always one of those things that I really need to get from that creating
+[25:46 - 25:48] All right, so
+[25:48 - 25:55] After that long line of code what I want to do is this part is kind of an optional if you know what you're doing
+[25:55 - 26:00] That's okay, but what I want to do is create a dot environment folder
+[26:00 - 26:02] That we can use to
+[26:03 - 26:05] either access
+[26:05 - 26:06] With
+[26:06 - 26:10] Directly through the pie file or we can access directly from the environment that we're working with
+[26:11 - 26:15] So I'm going to copy the dot EMV file
+[26:15 - 26:18] So this is a file folder that's all that already exists
+[26:19 - 26:21] From the files that we cloned so
+[26:22 - 26:24] Not EMV I just want to showcase
+[26:24 - 26:27] This is the open API key that we've included created earlier
+[26:29 - 26:34] So you can actually add the key to that at this point there
+[26:36 - 26:40] Or you can simply copy the structure of the of the sample
+[26:41 - 26:48] By creating a dot EMV of your again, all of this is up again of repo. I'm simply going to ending this step by step
+[26:49 - 26:53] So now we have both a dot EMV and a dot EMV sample
+[26:54 - 26:56] I want to update
+[26:56 - 27:03] That key value that we created so I'm just going to nano into that environment folder and I'm going to replace
+[27:04 - 27:06] the super secret key text
+[27:10 - 27:13] With the API key that we've just shared
+[27:16 - 27:19] Still you shared that on the slack channel
+[27:23 - 27:27] So I'm going to copy that and include that here
+[27:30 - 27:32] Just make sure that the key name
+[27:32 - 27:37] Or that the environment variable name is exactly open at AI-APA
+[27:38 - 27:42] Excuse me underscore API underscore key
+[27:43 - 27:46] And with that I'm going to save the files
+[27:48 - 27:51] And then just to be on the safest side
+[27:52 - 27:55] Honestly, this part is a little bit overkill
+[27:55 - 28:01] But if you look at the environment, I'm going to kind of embarrass myself a little bit by showing some of the
+[28:04 - 28:08] Terrible work I've done with keeping my environment in a consistent format
+[28:09 - 28:11] With some of the home room content
+[28:11 - 28:16] But one of the things I want to be able to do is I want to be able to
+[28:16 - 28:20] Export the open AI key that we've just created
+[28:20 - 28:25] So I'm showcasing all of the content that is previously in this virtual environment
+[28:25 - 28:28] I want to export
+[28:28 - 28:29] One more variable
+[28:29 - 28:32] Open AI underscore API key
+[28:35 - 28:37] And this is again just overkill
+[28:38 - 28:42] Where I simply I'm creating the API key into my local environment
+[28:44 - 28:48] So when I've heard that environment now I have it in two different locations
+[28:48 - 28:49] Again, this is simply
+[28:50 - 28:54] Being I'm simply playing it safe to be on the safe side
+[28:55 - 28:59] You can do one tool or the other you can essentially take one step or the other
+[29:00 - 29:04] But the idea behind this is that when we start running commands
+[29:07 - 29:09] If you have it to run commands in the command line
+[29:09 - 29:12] We're going to meet we can essentially easily access them
+[29:13 - 29:15] Uh
+[29:15 - 29:19] We could easily access those uh the key itself. So hopefully
+[29:22 - 29:25] Directly from the command line it should work to just use
+[29:26 - 29:29] 5 on 3 in class example and let's say
+[29:30 - 29:31] I have a file called
+[29:33 - 29:34] Uh
+[29:34 - 29:36] What's the first file called
+[29:37 - 29:40] And get simple check history
+[29:40 - 29:42] It's one of them that should work on itself
+[29:46 - 29:47] And if that file runs
+[29:47 - 29:49] Yeah
+[29:49 - 30:00] We're on the right track
+[30:00 - 30:03] I was in here just for a moment to see if any questions might have come up
+[30:05 - 30:07] It's a matter of uh struggling with the
+[30:07 - 30:08] Environment keys
+[30:08 - 30:13] That's fine
+[30:13 - 30:16] If even if you know you did everything correctly and it didn't quite work
+[30:16 - 30:18] The other tool that we can use
+[30:19 - 30:22] The other tool that I can recommend you use is that right here
+[30:22 - 30:24] While you're in this virtual environment
+[30:24 - 30:27] You can also pip install Python
+[30:28 - 30:29] Um
+[30:29 - 30:31] That ENV
+[30:31 - 30:33] Which is the other package
+[30:34 - 30:36] That you can install that you can uh import
+[30:38 - 30:40] As a tool
+[30:40 - 30:42] Into your script to access
+[30:44 - 30:47] The environments that we created
+[30:47 - 30:55] So that's another option
+[30:55 - 30:57] Any questions so far
+[30:57 - 31:00] Cool okay feeling good all right basic stuff
+[31:00 - 31:02] Keeping it basic so
+[31:02 - 31:04] Um
+[31:04 - 31:06] A little bit behind schedule but that's okay
+[31:06 - 31:10] The next bit of the components is actually pretty straightforward
+[31:10 - 31:13] He does at this point I'm getting the sense that you have uh some familiarity with this
+[31:14 - 31:16] But what we're going to be doing is
+[31:16 - 31:19] Essentially talking a little bit about large how large language models work
+[31:19 - 31:22] And in order to understand it we need to know what a large language model is
+[31:22 - 31:25] If you have a large language model is nothing more than just a
+[31:26 - 31:28] Tool that allows you to
+[31:30 - 31:35] Create content or create essentially the structure of one word based on the previous word that exist
+[31:35 - 31:37] There's a little bit of a statistical
+[31:37 - 31:40] Physical properties that are happening behind the scenes that we're going to talk about at just a point
+[31:41 - 31:46] But if you're here it's generally and probably because you are very familiar with what a large language model
+[31:47 - 31:51] Does I'd like to just for the sake of uh
+[31:52 - 31:58] Making sure that we're fairly comfortable with the concepts we are going to discuss a little bit about what Markov chains look like and what they do
+[31:59 - 32:02] But in order to understand how these large language models work
+[32:02 - 32:05] I also want to be able to address how these large language models operate
+[32:05 - 32:07] So we're going to talk a little bit about what these messages
+[32:08 - 32:11] What large language models messages look like when you're
+[32:12 - 32:16] Creating them which how you're programming them from the very beginning for talk a little bit about what
+[32:16 - 32:22] Prompting may look like specifically one zero one shot and few shot prompting may look like specifically
+[32:22 - 32:24] We're going to be addressing more of the prompting components
+[32:25 - 32:27] Later this week when we integrate them with
+[32:27 - 32:30] Mike Smith and for blank views and
+[32:30 - 32:38] Part of our major conversation is just how the prompts and the messages that we use inform our models behaviors
+[32:39 - 32:44] Finally, we're going to be able to end the class with a little bit about a little bit
+[32:44 - 32:46] I'll talk about how chat histories
+[32:47 - 32:53] Essentially help our model remember what has been written out so far
+[32:54 - 33:01] And if we have time, I'll make sure to kind of address how you can install a lot of if you haven't done so already
+[33:02 - 33:06] But it's an excellent fun tool to just have on your
+[33:07 - 33:11] On your local on your local computer if you haven't had a chance to do that all
+[33:13 - 33:14] So with that said
+[33:14 - 33:17] Let's talk a little bit about the intuition behind the map alone
+[33:18 - 33:20] And generally speaking, this is simply a
+[33:21 - 33:23] ask that has a
+[33:23 - 33:24] series of
+[33:24 - 33:30] Understanding what words existed beforehand in order to determine what the next word is going to be
+[33:30 - 33:37] So it's essentially just a token predictor it essentially books at a specific statistic one analysis based on like
+[33:37 - 33:39] simple mark off chain where we are
+[33:40 - 33:44] Determining based on probability what the next word in a sentence might look like
+[33:45 - 33:50] So this is not essentially going to be a magical tool in any way that gives you all the answers to any of the problems
+[33:50 - 33:53] We are going to be engineering these tools
+[33:53 - 33:54] To
+[33:54 - 34:02] To address what like to kind of address and improve what the next word in our chain or our
+[34:03 - 34:07] In our structured language might look like I'm going to share and showcase
+[34:09 - 34:12] This particular notebook we're just going to
+[34:12 - 34:14] Roll over to
+[34:14 - 34:16] Google call that for just a hot second
+[34:17 - 34:19] Because I
+[34:19 - 34:22] Find these mark off chains to be really exciting for a second
+[34:25 - 34:26] And
+[34:32 - 34:34] Okay, well, let's just open that up
+[34:34 - 34:47] All right, and if you aren't following along on the slides
+[34:48 - 34:50] Here's the link if this is something you might want to play on your own
+[34:57 - 35:03] And the idea behind this notebook is just to kind of showcase what how I'm not going to spend too much time on this because
+[35:03 - 35:06] This should be pretty straightforward to all of you
+[35:06 - 35:12] But this is a mark off chain class or we are just manually creating a simple mark off chain
+[35:13 - 35:15] That follows the same properties as the
+[35:17 - 35:20] As the tool we've built so far now mark off chain
+[35:20 - 35:22] named after abrade marga
+[35:23 - 35:24] essentially just
+[35:24 - 35:28] A mathematician from like the early from the
+[35:28 - 35:32] May 1800s kind of love this guy you look there look at that beard just kind of
+[35:33 - 35:38] Kind of that epic work just screams intense Russian mathematician that essentially just
+[35:39 - 35:45] Got really successful at age 19 and essentially started creating these types of tools that we're still using to get
+[35:45 - 35:49] So I don't I just like showing this picture cuz seriously look at that beard
+[35:50 - 35:56] But what a mark off chain is essentially doing is essentially a tool that looks at a particular object
+[35:56 - 35:58] As it exists and based on a probability
+[35:59 - 36:02] On the probability of that particular object. It's going to
+[36:02 - 36:05] Determine whether that object goes in one direction or the other
+[36:06 - 36:13] Essentially in a in a very simplistic term all we're doing with a mark up chain is we're assigning the probability that it's going to be
+[36:14 - 36:19] That it's either going to stay within its own value or shift into the next word
+[36:20 - 36:25] So the way it works behind the scenes just run this anyway
+[36:26 - 36:33] Is that if you have a specific set of words and that class is run first
+[36:34 - 36:36] What this mark off chain does
+[36:38 - 36:39] Is that we are going to build
+[36:40 - 36:45] Want a specific statement so if we have this statement that says this is a test of the mark off chain
+[36:45 - 36:54] What a mark off chain does is it's going to tell you what is the probability that if I have one given word that I'm going to return the next word
+[36:55 - 37:02] And in this small example we have a very structured sentence this is one sentence and the word
+[37:03 - 37:07] And the order of this word is problem like the probability that the next word
+[37:07 - 37:09] is pretty well defined
+[37:10 - 37:11] Given on
+[37:11 - 37:16] How those words were essentially structured so this is a test of the mark on chain
+[37:18 - 37:25] And if you're asking any specific mark off chain to generate text based on any particular word or any starting word
+[37:26 - 37:32] We can expect that the word is going to follow the order of how it was originally created
+[37:34 - 37:35] If you're with me so far
+[37:35 - 37:38] You've probably heard this at some point in this profession obviously
+[37:39 - 37:46] Now as any large language model user knows this is not enough data to actually give us something useful
+[37:47 - 37:52] Any large language model is based on tons and tons of data and tons and tons of information
+[37:52 - 37:56] Scrape from all over the internet depending on what type of fully working with
+[37:57 - 37:59] Open AI of course
+[37:59 - 38:03] Very well known has essentially scraped pretty much everything you could potentially scrape from the internet itself
+[38:04 - 38:07] So what I'm doing here is I'm essentially pulling from the Gutenberg
+[38:08 - 38:11] Text essentially the entire text from the Alice in Wonderland book
+[38:12 - 38:14] And I'm recreating
+[38:14 - 38:17] From that text file that same mark of chain file
+[38:18 - 38:21] And now we have a different set of tools
+[38:21 - 38:27] In this case the next word reference that may come after we work with the word Alice
+[38:28 - 38:30] Is now a little bit
+[38:30 - 38:38] More vague it's there's not just one word that always follows the word Alice in this text Alice is followed by Alice things
+[38:38 - 38:47] Started Alice after there's now a probability that the word Alice is going to be followed by any one of these potential words
+[38:48 - 38:51] And when we see that built into a larger
+[38:52 - 38:55] Generation or a gentler a larger function
+[38:55 - 38:59] We can essentially begin to create or generate language
+[38:59 - 39:01] based on the probability
+[39:01 - 39:04] Of the word Alice starting
+[39:05 - 39:09] To see what is going to occur next so here's the next text that we can expect
+[39:12 - 39:17] And so on and so forth after every word there's a probability that that word is going to be followed by a different word
+[39:18 - 39:26] This is also another example. We essentially start with the word the and we'll see another example of how those words are followed
+[39:27 - 39:35] So this is just a kind of a simple example just to go over the basics of how mark off chains work because it's important to have the context behind scenes
+[39:37 - 39:39] But with that in mind
+[39:39 - 39:46] What we are building is essentially a structure or creating the structure for our llm
+[39:46 - 39:48] Operate smoothly
+[39:48 - 39:51] But in order to do that we need to be able to give it direction
+[39:51 - 39:54] It's not just a matter of giving it a specific text
+[39:55 - 40:02] It's not just a matter of giving it all of the data and seeing where it seems where it goes because if we just allow it to operate in its own
+[40:03 - 40:07] Kind of a just randomly assigned structure like you're going to have
+[40:08 - 40:10] The type of generated text where
+[40:11 - 40:17] Doesn't necessarily make sense. Well, it's getting she generally gave herself up and I can talk at her full size by this time
+[40:17 - 40:22] We are essentially randomly assigning words to follow one word after the other
+[40:23 - 40:25] So we need to be able to give that direction
+[40:26 - 40:32] We need to be able to give it almost a specific prompt or a specific structure or a specific set of instructions
+[40:33 - 40:35] So what I want to talk a little bit now
+[40:36 - 40:41] Well, what I want to talk about here is what is the what are the existing structures
+[40:42 - 40:44] that are already built into
+[40:44 - 40:46] Python packages
+[40:46 - 40:48] because we don't really have to rebuild
+[40:49 - 40:52] probabilistic nature of open AI to
+[40:53 - 40:55] generate a
+[40:55 - 40:57] sentence that makes sense
+[40:57 - 41:03] But we want to be able to structure and build a an llm that has a specific
+[41:05 - 41:07] set of instructions for us to work with
+[41:08 - 41:09] so
+[41:09 - 41:11] Here's what I'm going to do you can look over this code
+[41:12 - 41:15] The code is actually also on your
+[41:16 - 41:18] It's also on your
+[41:19 - 41:24] On the repo we just downloaded, but I want to talk a little bit about the type of messages that we can build into
+[41:26 - 41:28] Langchains
+[41:28 - 41:30] Open AI model
+[41:30 - 41:32] to essentially
+[41:32 - 41:37] Direct how that chat or how that open AI model is going to respond
+[41:38 - 41:41] So there's a few terms that I want to refer to and we're going to have like user messages
+[41:42 - 41:44] Sometimes they're referred to as human messages
+[41:45 - 41:49] These are any text or this is the text that we are asking
+[41:50 - 41:54] Open AI specifically to invoke this is essentially what the human asks
+[41:55 - 42:00] The system message is the message that we as developers prompt the machine to respond
+[42:01 - 42:08] In other words, this is what has the most weight because we are giving
+[42:08 - 42:13] We are putting the guard rails on the open AI language or the open AI model
+[42:14 - 42:19] In other words, if we ask to build a large language model that doesn't curse
+[42:19 - 42:23] We incorporate that into the system message because that way whenever a human prompts
+[42:24 - 42:26] A specific response
+[42:26 - 42:28] We can essentially
+[42:28 - 42:30] Create a model that hey
+[42:31 - 42:34] Make sure that you respond to any of your answers in a way that's not
+[42:35 - 42:37] cursing
+[42:37 - 42:43] There's other tools we can essentially ex there's other tools like AI messages which essentially
+[42:44 - 42:53] Refer to the response from the open AI after or from the LLM after a human has essentially prompted a question
+[42:53 - 43:00] So the reason for this is that we want to be able to influence the behaviors of these packages and we essentially want to be able to
+[43:01 - 43:10] Combine both types of messages to create much more accurate or create LLMs that are much more responsive to what we want to do
+[43:11 - 43:19] So this is an example specifically from the documentation. I'm going to be working in this case in Microsoft VS Code
+[43:19 - 43:23] There's no requirement in this class as to which IDE you might be more interested in working with
+[43:24 - 43:28] You can do this at Jupyter Notebook if you feel the most comfortable you can do this on the command line
+[43:28 - 43:30] But what I'm going to be going over
+[43:31 - 43:34] Is just going over this specific code
+[43:34 - 43:43] I'm talking a little bit about how these specific messages work within the framework of our chat open AI model
+[43:44 - 43:46] I'm going to go ahead and run this within terminal
+[43:47 - 43:51] Here we go. That one's already set up. This is an environment I had set up earlier
+[43:53 - 43:55] But here's here's what we're going so
+[43:56 - 44:00] This is going to come from three of the packages these other packages. We just installed this part of our environment
+[44:02 - 44:05] You have any problem running any of these cells at any point
+[44:06 - 44:09] I'm not going to necessarily use a llama in this case
+[44:10 - 44:12] So I'm going to just comment that out for right now
+[44:13 - 44:18] But just off of chat a open AI. I'm going to be incorporating a system message and a human message
+[44:18 - 44:21] I'm just going to showcase both of these tools together
+[44:22 - 44:23] Chat open AI
+[44:23 - 44:25] I'm just going to be sticking to
+[44:26 - 44:28] 3.5 turdable model to be fair
+[44:28 - 44:31] This one's already a little bit out of date at this point if you're using that
+[44:31 - 44:34] Chat like gpt 4.0 you're more than welcome to
+[44:35 - 44:36] It's a little bit more pricey at this point
+[44:36 - 44:38] But the
+[44:38 - 44:41] I think most of chat you could be right now has moved on to
+[44:42 - 44:44] version 4.0 in both
+[44:45 - 44:48] API and in the chat
+[44:48 - 44:50] It's in the
+[44:50 - 44:52] Like the website we all access
+[44:52 - 44:55] But I'm going to be calling this to a to an object called lm
+[44:56 - 44:59] And I'm going to be calling this as a tool
+[45:01 - 45:05] That asks the question what would be a good company name for company that makes colorful sucks
+[45:07 - 45:11] So the first component of langshade is that I'm going to be building
+[45:12 - 45:15] Calling the open AI not directly from the open AI website
+[45:15 - 45:19] But from the framework that exists within langshade
+[45:19 - 45:24] I would think langshade they already have a specific class called human message
+[45:24 - 45:28] That allows you to specify what that human message is going to look like
+[45:28 - 45:30] So this is a human message that's coming from us the user
+[45:32 - 45:36] So my first step I'm simply going to invoke this particular message in a call
+[45:37 - 45:40] By the way if you're if the last time you work with
+[45:41 - 45:44] Langshade was about 10 months ago. They did change up a little bit
+[45:46 - 45:49] The tools that you use to invoke or prompt messages
+[45:49 - 45:51] So it's no longer
+[45:52 - 45:54] Chat I believe was the old
+[45:55 - 45:57] command of four
+[45:57 - 45:58] prompting messages
+[45:58 - 46:00] so
+[46:00 - 46:02] As part of the tool itself
+[46:02 - 46:08] I'm going to go ahead and run my package python in class example. This is system
+[46:08 - 46:10] versus user.py
+[46:15 - 46:20] So that's my first prompt. I've essentially just had one of those brief conversations with
+[46:21 - 46:23] With chat jbt of those guys
+[46:24 - 46:28] One quick thing to note specifically because I didn't notice that there's a few of you who'd have mentioned that you are
+[46:29 - 46:31] Hey, I'm brand new to
+[46:32 - 46:36] Open AI and I'm brand new to AI. Here's a term that I want to be familiar with
+[46:37 - 46:39] Because this will come up again down the road
+[46:40 - 46:44] And it's one of the arguments or one of the attributes that exists within chat open AI
+[46:44 - 46:48] And you can actually expect to see this at any of the models that we work with whether it's a llama and throbic
+[46:49 - 46:52] Whatever you want to use one of the concept one of the set one of the
+[46:52 - 46:55] Attributes that you should be familiar with is temperature
+[46:56 - 46:58] Temperature specifically refers to
+[46:59 - 47:02] Literally how hot or cold you want your model to run
+[47:03 - 47:05] Terrible choke. I'll never say that one again
+[47:05 - 47:11] But essentially within an argument of zero to one you can determine how
+[47:13 - 47:15] Random do you want your
+[47:16 - 47:18] Variables to look like how much
+[47:19 - 47:22] How much risk do you want it to take when it comes to
+[47:23 - 47:27] What type of terminology you want the open AI to be
+[47:28 - 47:32] sending out or or or or or reflecting so in other words
+[47:33 - 47:39] From the documentation itself if you take a look at the temperature itself. You I think the default is set to
+[47:40 - 47:46] Incorrect to me if I'm wrong. I think the fault is set to 0.07 which is actually fairly high
+[47:46 - 47:50] A temperature of 0.07 means that it's just a little bit above a median
+[47:51 - 47:53] amount where it's going to come up with
+[47:55 - 47:57] not super structured
+[47:58 - 48:00] Language
+[48:00 - 48:08] So just to sort of showcase the set as an example if I have a temperature of 0.01 and I run that same code
+[48:10 - 48:12] Gonna run this code a couple of times here
+[48:12 - 48:15] It's going to return rainbow sock.co
+[48:16 - 48:18] It's gonna return again rainbow sock.co
+[48:18 - 48:23] It's essentially saying that I want to take less risks with what type of terminology
+[48:24 - 48:29] Is sent out like the probability that the word I'm going to be showcased is going to be
+[48:30 - 48:32] Less risky
+[48:32 - 48:37] Now if I increase that temperature, let's take this up all the way to 0.95
+[48:37 - 48:39] It means that now my chat
+[48:40 - 48:41] This chat open AI
+[48:42 - 48:47] Model from GPT 3.5 is going to be a little bit more creative
+[48:49 - 48:50] Cool. This one's rainbow footwear
+[48:51 - 48:56] This next one is again rainbow footwear. Let me try this again. Say if I keep getting into rainbow sock creations
+[48:56 - 48:59] Okay, getting a little bit of differences here
+[48:59 - 49:02] So it's essentially if you want to expect different results
+[49:02 - 49:05] You increase the temperature on the model itself
+[49:06 - 49:08] So we have a little bit
+[49:09 - 49:13] So then the question ends up being I'm probably going to go a little bit over time my apologies
+[49:13 - 49:15] But the question ends up being
+[49:16 - 49:20] What are some components and this is a question for you. I do you want to hear your voices because I've been talking for about
+[49:21 - 49:23] Too long right now
+[49:23 - 49:29] What is a scenario where you might want to have a higher temperature? What kind of output would you want?
+[49:37 - 49:43] I suppose anything where you have a bias for creativity versus just you know producing like a static answer from a static reset
+[49:43 - 49:47] Yeah, perfect. Hey, have you ever written a model a novel
+[49:48 - 49:52] This is how you do it increase the temperature. I do not recommend that you write novels with chat GPT
+[49:53 - 49:58] Technically, there's you know, I'll leave the ethical part of that. I'm to you. That's not my business
+[49:58 - 50:00] So on the flip side
+[50:00 - 50:07] Why would I want my temperature to be much lower? What what kind of work might you you be doing that requires a lower temperature
+[50:09 - 50:14] Probably like the opposite like legal conformity or something like that where you're researching laws or codes
+[50:15 - 50:18] Exactly or perhaps another example is something like
+[50:19 - 50:25] SQL if you want to make sure that you're writing a sequel query you want your temperature to be a much lower scale because you want that
+[50:26 - 50:28] structure of that same taxity much more
+[50:29 - 50:31] Composed
+[50:31 - 50:37] So that's just kind of a general simple overview of like what you can expect from those simple arguments
+[50:37 - 50:42] But the other component the other attribute that you might want to keep in mind is top E that's another way to
+[50:42 - 50:49] Kind of control the probability that your your model is going to select the word based on a certain amount of probability
+[50:49 - 50:56] All in almost like a threshold as to one probability to determine which word to assign to a specific value
+[50:57 - 51:04] Now that's not quite prompting, but it is something that you need to be familiar with when it comes to prompting a lot of what we're talking about is
+[51:04 - 51:11] What is the structure that we are giving or one of the instructions that we are giving are of an AI model in this case
+[51:12 - 51:16] So in this case we started off with just the human message the human prompt
+[51:16 - 51:21] But what I want to do next is I want to add a little bit
+[51:22 - 51:28] Of added context, so I'm going to comment out this step three and I'm going to add some system text
+[51:29 - 51:32] And I've got the set to a sarcastic bond that gives helpful
+[51:33 - 51:35] advice
+[51:35 - 51:40] Sometimes I change this so that it's you know the voice of Madonna singing this like
+[51:40 - 51:46] Some to use pick a pop singer if you want to but as you can see when we add this one of the things that we do
+[51:46 - 51:48] I'm going to go ahead and kind of doubt this context
+[51:50 - 51:54] Is that the messages now includes a system message and a human message
+[51:55 - 51:57] So now I've essentially given the
+[51:57 - 52:01] Model some framework to operate behind the scenes and in this case, it's going to be a sarcastic bond
+[52:02 - 52:05] And when I run that code
+[52:05 - 52:11] The model returns some additional content. Oh wow. What are you going to do? How that's sarcastic? Whatever it says there
+[52:12 - 52:14] Again, I'm still operating on a high temperature here
+[52:16 - 52:18] But it is big now. It's giving me a sarcastic answer
+[52:19 - 52:25] So simply put when we're building our models we want to keep in mind what kind of
+[52:26 - 52:29] Specific prompts are being built into the model itself
+[52:31 - 52:36] Any questions or comments about this before I move onto the next bit
+[52:53 - 52:57] So that's pretty much what a system proper look like the other type of prompts
+[52:57 - 53:04] I'm not going to code this part too much because it's relatively straightforward and we're going to be doing a lot this a more a lot more of this off third step
+[53:05 - 53:10] But the other type of prompt that you're going to inform your model is essentially showcasing
+[53:10 - 53:17] Hey, it's essentially telling any model the more information or any type of like any other type of model the more information
+[53:17 - 53:24] You give the model the better it's trained the better type of information of the better type of output you can expect
+[53:24 - 53:30] From a model that has been provided additional prompting additional data additional language to work with
+[53:31 - 53:32] So the other
+[53:32 - 53:39] Example that you can expect to see or the some of the terminology that you can expect to hear is the difference between zero shot and view shot prompting
+[53:40 - 53:46] In other words, the zero shot prompting is any situation where you're just asking the model to operate with just
+[53:47 - 53:53] Oh with with essentially no learning background. So this zero shot is essentially saying like read a response to the following review
+[53:54 - 54:03] But you don't actually have any reviews for the model to kind of compare against a few shot type prompt here on the right essentially just says
+[54:03 - 54:05] Hey, here's a couple of different types of
+[54:08 - 54:13] Reviews that you can expect to see and here is the response that we've created in the past
+[54:13 - 54:20] So this is where that combination of system message human message system message human message that's shared it before
+[54:21 - 54:24] And so with this set of
+[54:25 - 54:29] Previous prompting we've essentially told the model behind the scenes
+[54:29 - 54:32] What it can explain like how we can expect
+[54:32 - 54:34] What kind of
+[54:34 - 54:38] Gaugard rails were proposing that the model operates with
+[54:39 - 54:41] So this responding from feedback
+[54:41 - 54:46] We're glad to hear you had a great experience and then this bottom is sorry didn't hear those product and meet your expectation
+[54:46 - 54:51] That kind of prompting allows the model to start finding a specific set of patterns to follow
+[54:52 - 54:59] So not going to spend too much time on this type of prompting quite yet because we're going to talk more about this from Thursday
+[55:00 - 55:02] Um
+[55:02 - 55:06] Just take a look and I'd rather talk about chat history. So I'm just kind of gonna
+[55:07 - 55:09] Handwave you over this next slide
+[55:09 - 55:14] But if you want in a lot of ways what's happening behind the scenes is that we are
+[55:15 - 55:20] Specifically defining within the prompt itself some additional context
+[55:20 - 55:27] So you've probably seen this when you're working with chat GPT on its own that when you create a specific set of instructions
+[55:27 - 55:32] The model operates a lot more in a lot more in a much more straightforward way
+[55:32 - 55:37] So any system prompt where you say as a technical support specialist who want to provide clear and concise instructions
+[55:38 - 55:43] To the user's problem you also want to be able to define what the unique problem is looking
+[55:43 - 55:46] So this would be what the human looks tries to respond
+[55:46 - 55:48] Might want to respond as
+[55:48 - 55:54] But you're going to want to give the system prompt a little bit of additional context behind the scenes
+[55:55 - 55:58] Another example of how you can decorate your prompt
+[55:58 - 56:02] Is essentially giving even much more structured card rails
+[56:03 - 56:10] So if you have a prompt with a schema essentially want the answers to be returned as a almost SQL schema table
+[56:11 - 56:16] If you have a table where it's defined as employee table you would want the columns to be specified as
+[56:17 - 56:24] Or creating a specific type of column that's defined with with data type of the particular column you're created
+[56:25 - 56:27] And this is going to be important when it comes to
+[56:28 - 56:30] How to how should we say if we have any type of
+[56:31 - 56:34] input automation that reads emails slack or geratacres
+[56:35 - 56:39] One of the components that you're going to want to keep in mind is how to create a specific setup prompts
+[56:39 - 56:41] That follows this general structure
+[56:43 - 56:45] Won't go into this too much for right now
+[56:46 - 56:53] Because what's the most important for our particular purposes these days is going to be how to understand chat history
+[56:54 - 56:57] Now when you ask a chat to be asked a question within that one page
+[56:57 - 56:59] It's pretty good about keeping track of
+[57:01 - 57:03] most
+[57:03 - 57:07] Some or maybe just like two or three questions behind it's pretty good at keeping track
+[57:07 - 57:09] We're keeping the memory of the specific conversation
+[57:10 - 57:13] Now that's not you know, that's still one of those things that we are continuous
+[57:15 - 57:18] I think programmers are all of the first trying to improve wherever they can like
+[57:19 - 57:22] hallucinations and things like that are still going to be a general problem
+[57:23 - 57:28] But what I'd like to talk about is how do we essentially build a smaller structure of this on our
+[57:29 - 57:31] That we know will still work
+[57:32 - 57:35] Within the model itself where in this case the model for chat you can see will
+[57:36 - 57:40] Will at least be able to collect some amount of the memory itself
+[57:40 - 57:43] And we do that using the same components that we've used here so far
+[57:44 - 57:46] If we're creating a set of messages
+[57:46 - 57:50] Or if we've created that set of messages with an human message and an AI message
+[57:50 - 57:54] We've essentially built and prompted a specific set of conversations to
+[57:55 - 57:57] For our model to operate
+[57:57 - 57:59] And that means that when we invoke that conversation
+[58:00 - 58:04] This is a pretty manual way we're going to be seeing some other tools within the lang chain framework
+[58:04 - 58:08] But I do want you to have something to start working with down the road
+[58:09 - 58:14] So this code is also um built into your
+[58:14 - 58:19] Built into the repo so it's exactly what you're seeing in the in the
+[58:20 - 58:23] In the code for simple chat history
+[58:23 - 58:26] I'm using the message in order to showcase what a conversational look like
+[58:27 - 58:30] Says the chat prompt template but I hope we actually used
+[58:31 - 58:34] Oh, no, I'm using an old one hang on. This is not going to be the second code you add
+[58:37 - 58:39] Let me make sure that's correct
+[58:40 - 58:42] It's yeah, that should still work
+[58:43 - 58:44] All right, so that
+[58:44 - 58:46] Using an outdated
+[58:46 - 58:51] All that work this afternoon Jonathan and I still el-gunned up the note the wrong note book
+[58:53 - 58:58] Awesome, okay, so I'm gonna be calling from AI message human message chat open
+[58:59 - 59:01] So I'm calling out this conversation
+[59:02 - 59:03] AI
+[59:03 - 59:05] Essentially, this is going to be a tool that
+[59:06 - 59:08] Changes the conversation from
+[59:08 - 59:10] English to French love programming
+[59:11 - 59:16] And it says what did you just say so when we have it invoke the messages itself the idea is
+[59:17 - 59:20] That it should return
+[59:20 - 59:22] The message that we've just
+[59:22 - 59:25] Respond into that message should be
+[59:26 - 59:28] printed into the conversation
+[59:28 - 59:33] Hopefully we'll be able to see that and we'll be able to create a tool that looks at the message
+[59:34 - 59:39] Throughout at least see oh, I think I knew what I think I know what I mean wrong here
+[59:40 - 59:42] So if I take my Python 3 we'll just
+[59:44 - 59:46] Write that overall
+[59:47 - 59:50] This might be messy. Yeah, I'm just gonna fix this up
+[59:51 - 59:53] You can do gonna add
+[59:55 - 59:57] content
+[59:57 - 01:00:00] here
+[01:00:00 - 01:00:02] I'm going to add
+[01:00:03 - 01:00:05] Content there
+[01:00:07 - 01:00:10] Let's give that helps this up all right, so
+[01:00:11 - 01:00:14] Well, since we're here one thing to know all of the managed data
+[01:00:14 - 01:00:16] You can still actually see our results as part of the metadata
+[01:00:16 - 01:00:21] But it also gives you a lot of additional information if that's something that's relevant to you
+[01:00:21 - 01:00:25] With chain framework, we're going to be seeing down the road the string out parser
+[01:00:25 - 01:00:27] But you can also just call
+[01:00:28 - 01:00:34] And limit the content you're pulling from the model itself with the dot content
+[01:00:35 - 01:00:36] Uh
+[01:00:36 - 01:00:38] property here, so let me say that let me try that again
+[01:00:41 - 01:00:43] See try that one more time
+[01:00:45 - 01:00:48] That's a little better
+[01:00:48 - 01:00:50] All right, so
+[01:00:50 - 01:00:51] Let's
+[01:00:51 - 01:00:55] Let me just leave this up from that one more time so that it's a little bit more
+[01:00:56 - 01:00:58] straightforward
+[01:00:58 - 01:01:06] And here we have a conversation so this was the first prompt that I shared that I asked share translate the sentence from English to French
+[01:01:07 - 01:01:10] The the prompt that I asked the AI message to
+[01:01:11 - 01:01:15] Share with us. This was something that I included was to say I adore the programation
+[01:01:16 - 01:01:21] And the response we included that we asked into a vote was what did you just say and there's the memory working
+[01:01:22 - 01:01:28] Behind the scenes and it said I said I adore the programation, which I means I love programming in French
+[01:01:29 - 01:01:34] Not kind of like that because it essentially is telling the model itself that it's operating and still looking back
+[01:01:34 - 01:01:37] That information from
+[01:01:37 - 01:01:39] Previously up from previously included
+[01:01:39 - 01:01:42] So I have the ability to prompt from this particular
+[01:01:44 - 01:01:48] From this particular point on model itself is essentially working so that it
+[01:01:50 - 01:01:57] Adds another human message the human message I'm about to include back into this specific list of
+[01:01:58 - 01:02:03] Human message AI messaging problems. So now it says can you try that in Spanish
+[01:02:05 - 01:02:08] For example, I like to show this prompt because
+[01:02:09 - 01:02:12] Once I asked to say can you try that in Spanish it understands
+[01:02:13 - 01:02:20] The previous amount of language that I created earlier which is essentially just I want to translate this sentence from English to French
+[01:02:20 - 01:02:23] That earlier sentence was I love programming
+[01:02:23 - 01:02:25] This is how the memory begins to be built
+[01:02:26 - 01:02:32] Because the otherwise the other problem you may be fit like that you might be facing if you're just calling or invoking a specific
+[01:02:34 - 01:02:40] A specific prompt from that from open AI is that you'll notice that otherwise it forgets the information quickly
+[01:02:40 - 01:02:43] So for example, let's see how far back this goes
+[01:02:45 - 01:02:50] What was my first question to you
+[01:02:52 - 01:02:53] Let's see how well it does
+[01:02:55 - 01:02:59] This is where I pose that question still keeps all the information from translating
+[01:02:59 - 01:03:01] This first
+[01:03:02 - 01:03:07] This first sentence translate the sentence from English to Spanish. I love programming. That's what I said
+[01:03:07 - 01:03:09] That was my first statement
+[01:03:10 - 01:03:13] But technically speaking my first question to it was indeed
+[01:03:14 - 01:03:18] What did you just say? So your first question was indeed. What did you just say?
+[01:03:19 - 01:03:22] So the memory behind the model itself seems to be
+[01:03:24 - 01:03:32] Working fairly well
+[01:03:32 - 01:03:37] Question there go for it. Why didn't you rap man Conta program are in an AI message?
+[01:03:37 - 01:03:42] Like you did in the previous one when you fed it back into the history say that I'm so sorry say that again
+[01:03:42 - 01:03:43] I kind of missed a little bit of that there
+[01:03:45 - 01:03:51] Why didn't you you when you feed everything back into the history you rap all the all the prompts into human messages
+[01:03:52 - 01:03:58] But you don't wrap the responses back into AI messages. Why not? Oh, so what
+[01:04:00 - 01:04:03] So why did that why did I not wrap the oh so the AI
+[01:04:04 - 01:04:05] message
+[01:04:05 - 01:04:07] Let me make sure I understand
+[01:04:07 - 01:04:12] But use it to do the right AI message. Yeah, I said a human message. Can you
+[01:04:12 - 01:04:13] Think of them?
+[01:04:13 - 01:04:15] You true
+[01:04:15 - 01:04:16] Why did I not wrap it?
+[01:04:16 - 01:04:18] Good question. Why did I not wrap it?
+[01:04:19 - 01:04:21] Probably because I forgot
+[01:04:21 - 01:04:26] This looks like kind of an error on my part of like not having wrapped it up as part of a human message component there
+[01:04:28 - 01:04:31] Let's see
+[01:04:31 - 01:04:33] But I miss there human message responses
+[01:04:34 - 01:04:37] Although I think
+[01:04:37 - 01:04:39] Let me just make sure
+[01:04:39 - 01:04:45] You've been message problem with this question to the human message. Yeah, I guess I just forgot to actually specify that I wanted it to
+[01:04:47 - 01:04:49] Yeah, and that would actually create now. You're absolutely right
+[01:04:49 - 01:04:53] I did forget to like wrap that up as an AI message like literally just forgot
+[01:04:54 - 01:04:57] Essentially and the problem that might cause down the road is that
+[01:04:58 - 01:05:03] That's actually try that out. Thank you for calling that out. I'll make sure that's fixed up for the next session
+[01:05:03 - 01:05:06] but let's try
+[01:05:06 - 01:05:09] What that might end up
+[01:05:09 - 01:05:10] Happening
+[01:05:10 - 01:05:13] Is that let's say in try that in Spanish
+[01:05:16 - 01:05:17] Do-do-do
+[01:05:17 - 01:05:19] Says human who can try that mean come to that we're gonna show
+[01:05:20 - 01:05:22] Let's say what was the last thing
+[01:05:25 - 01:05:28] You wrote
+[01:05:28 - 01:05:31] I mean
+[01:05:31 - 01:05:33] Okay, it still recognizes that it's
+[01:05:34 - 01:05:37] I think that might be a little bit of a flip, but I believe that with additional contents that
+[01:05:38 - 01:05:43] That AI message might actually start to hallucinate fairly quickly after giving enough information
+[01:05:43 - 01:05:46] So for example if I were to try what was
+[01:05:48 - 01:05:50] The second thing you wrote
+[01:05:51 - 01:05:54] See if it keeps track of that
+[01:05:54 - 01:05:56] Okay, still okay for the most part
+[01:05:57 - 01:06:04] So I don't want to say that it's not necessary, but I do want to say that it's it like it's probably it's a good practice to make sure to specify that we're possible
+[01:06:05 - 01:06:12] So to make sure I'm following Doug's point we want to wrap the messages append on 16 and 28 with the AI message like
+[01:06:13 - 01:06:15] In situation situation correct where possible and this is just something that
+[01:06:16 - 01:06:18] That we did that I that
+[01:06:18 - 01:06:25] Passion I didn't properly build into the into that while statement. It's a good call out. We'll fix that next time right Jonathan
+[01:06:27 - 01:06:29] Yeah
+[01:06:30 - 01:06:32] Good call out I was like that
+[01:06:33 - 01:06:35] In the end very much
+[01:06:35 - 01:06:37] Fairly soon. This is just like
+[01:06:38 - 01:06:42] Here's what I like about this session. This is very basic and from here
+[01:06:42 - 01:06:49] You can essentially already take this and start to implement this at some of the programming like any programming tool that you might be interested in a lot of ways
+[01:06:50 - 01:07:00] This is kind of your base level needs for a lot of different components if all your need is an easy access to chat gpt's to open a eyes chat gpt's
+[01:07:02 - 01:07:05] 3.5 model. You've got something to get started with
+[01:07:06 - 01:07:11] um and so the idea behind this is again just kind of
+[01:07:12 - 01:07:14] Understanding how
+[01:07:15 - 01:07:23] It like how easily it fits into kind of a Python framework as we move forward starting next Thursday or two days from now
+[01:07:23 - 01:07:28] A lot of how we frame and these type of messages are you know
+[01:07:28 - 01:07:34] It's not going to be good practice for us to kind of store this on a local computer or store this and kind of a temporary variable
+[01:07:35 - 01:07:42] You're probably more likely and not going to be pulling this information from an online rack or like you're going to be pulling from a specific document
+[01:07:42 - 01:07:50] This information is going to be existing on AWS the cloud langs that whatever you want to like wherever you're going to be pulling this information from you're going to expect to have a standing
+[01:07:51 - 01:07:56] But I want to make sure that you're familiar with essentially the step-by-step process that was happened across the states
+[01:07:59 - 01:08:01] So with that said the other tool that you have access to
+[01:08:02 - 01:08:05] If you're not interested in keeping together a
+[01:08:07 - 01:08:09] ongoing
+[01:08:10 - 01:08:15] An ongoing connection to open AI is that wow I am so pastime my apologies
+[01:08:15 - 01:08:22] Is that a llama is super easy to download except for the fact that it's something like six gigabytes of data
+[01:08:23 - 01:08:29] But the framework I know but the framework is fairly simple with a llama and with llama you can essentially
+[01:08:30 - 01:08:37] Create a specific tool that runs on your local computer it runs a little bit slower than most but it is another option
+[01:08:38 - 01:08:40] or
+[01:08:42 - 01:08:47] A specific chatbot if that's what you're invoking questions from a specific chatbot
+[01:08:48 - 01:08:56] But in a lot of ways the only thing that you need to keep in mind is that the structure of those system messages might vary depending on the type of model you're working with
+[01:08:57 - 01:09:04] So keep that in mind like the documentation for that in my chain is actually pretty like is somewhat standardize
+[01:09:04 - 01:09:06] But it's the sort of thing that you might want to be
+[01:09:06 - 01:09:11] Aware of as you're building as as you're building or choosing a model to work with
+[01:09:14 - 01:09:15] um so with that said
+[01:09:17 - 01:09:24] If you want to have a bit something to practice or something to build you act like with what we've covered here so far honestly
+[01:09:26 - 01:09:31] With just this kind of context and with a different model of your choice
+[01:09:32 - 01:09:38] Um, and if it's not a llama you can also use you know create an API key with something like a throbic or any of the other
+[01:09:39 - 01:09:46] Models that are existing within the language and framework you can create a specific tool of you know how models talk to each other
+[01:09:47 - 01:09:49] Which is pretty straightforward
+[01:09:49 - 01:09:56] But if it's something that you want to practice after having gone and seen these tools as we work on them together
+[01:09:57 - 01:10:04] Today you can essentially try to see how well you can keep that chat history going generally speaking like if you get it
+[01:10:05 - 01:10:09] Remember content from three or four levels in you've done pretty well
+[01:10:12 - 01:10:15] Um
+[01:10:15 - 01:10:18] That having been said I am over time
+[01:10:18 - 01:10:23] So I do not expect you to hang out any longer than you have already thank you for your patience
+[01:10:24 - 01:10:26] With that said you are three to go
+[01:10:26 - 01:10:32] But if you have questions I'm here for another 15-20 minutes and happy to answer any questions whether it's about like hey
+[01:10:32 - 01:10:38] What are we doing again or I'm sorry my computer just laid on fire the second I tried to run an environment variable
+[01:10:39 - 01:10:47] We're here for either one of those purposes, but I just want to say thank you or first aid boss great question done
+[01:10:48 - 01:10:51] Something always always being proven content
+[01:10:51 - 01:10:52] Uh
+[01:10:53 - 01:10:56] Yeah, and I'm by the way. Yeah, always call me out if you see messy count
+[01:10:57 - 01:10:59] It's gonna be uh, it's gonna be a thing
+[01:11:00 - 01:11:01] um
+[01:11:01 - 01:11:03] Yeah, if you have any questions
+[01:11:03 - 01:11:08] Feel free to stick around to otherwise have a wonderful evening if you're on the United States enjoy the holiday tomorrow
+[01:11:08 - 01:11:15] Thank you for your time
+[01:11:15 - 01:11:22] Thank you. Thank you. Thank you. Thank you. Thank you. Good night. Have a good night. Thank you. Thank you
+[01:11:25 - 01:11:26] You
+[01:11:27 - 01:11:37] You too. Thanks folks. Oh just in case there are questions. I'm gonna go ahead and pull up the syllabus here
+[01:11:49 - 01:11:50] Sorry
+[01:11:50 - 01:11:56] All right, can you go to the last um the last one? Yeah
+[01:11:57 - 01:12:02] Sorry, you know the last um how do you say it like the last slide? Yeah, yeah, exactly sorry
+[01:12:04 - 01:12:05] Um
+[01:12:05 - 01:12:10] The one of the homework. Yeah, well when when where where it says consider approaches such as summarization
+[01:12:11 - 01:12:19] Practice content context. I don't know if you already said it, but um what would be summarization and proactive context management
+[01:12:19 - 01:12:21] Yeah, let's start let
+[01:12:22 - 01:12:26] Yeah, since we stuck around let's talk about props there a little bit so
+[01:12:27 - 01:12:31] Here's our systems. Okay. Yeah, this is a great example. So
+[01:12:32 - 01:12:36] Let me just go ahead and share this code on the slack channel
+[01:12:37 - 01:12:40] extra
+[01:12:40 - 01:12:42] So extra code for prompts
+[01:12:43 - 01:12:45] So i'm going to share on the slack channel
+[01:12:47 - 01:12:50] this code
+[01:12:50 - 01:12:53] And i'm simply going to work with a couple of those steps here
+[01:12:54 - 01:12:56] You'll see that there's a little bit of things commented out
+[01:12:56 - 01:13:01] So i don't know what i would ask you to do is just create a pie file called prompts.py
+[01:13:02 - 01:13:04] and uh
+[01:13:04 - 01:13:11] What we'll do here is essentially showcase what that summarization look like so um
+[01:13:13 - 01:13:15] Okay, so
+[01:13:15 - 01:13:19] This is pretty much the standard stuff you have uh if you're if you want to use a llama
+[01:13:19 - 01:13:23] You can actually import that from along itself and using chat to be t. Here's my system message
+[01:13:24 - 01:13:27] And the system message like i said earlier. It's like i'm telling the open AI. Hey
+[01:13:28 - 01:13:30] I want you to work like a technical support specialist
+[01:13:30 - 01:13:34] I want you to predict like provide clear and concise instruction, right?
+[01:13:35 - 01:13:39] And what i want the human to respond is hey my computer's running slow freezing properly
+[01:13:39 - 01:13:41] That's what should i do response
+[01:13:41 - 01:13:42] This is what i'm going to have it in vogue
+[01:13:43 - 01:13:44] And
+[01:13:44 - 01:13:48] We actually don't need to worry about step two for right now. So i'm going to leave that commented out
+[01:13:48 - 01:13:51] So if we run this code
+[01:13:51 - 01:13:55] close that up
+[01:13:55 - 01:13:56] Close that up
+[01:13:56 - 01:13:58] Let's clear that out
+[01:13:58 - 01:14:00] So this is going to be python three prompts
+[01:14:02 - 01:14:04] In class example prompts pie
+[01:14:05 - 01:14:08] It's going to take a second and i just want to showcase what that means
+[01:14:12 - 01:14:16] So oh i forgot the included content here. Oh my gosh
+[01:14:16 - 01:14:18] I wonder what i did there so in vogue
+[01:14:19 - 01:14:24] include contents
+[01:14:24 - 01:14:26] Contents
+[01:14:26 - 01:14:28] Let's just make us not messy
+[01:14:28 - 01:14:35] Let's give that a second
+[01:14:36 - 01:14:40] All right that looks a little bit better. All right, so when i asked it for this prompt
+[01:14:41 - 01:14:45] What did it do? Dress your computer running slow freezing frequently. You can you you
+[01:14:46 - 01:14:51] You can try the following steps. Here's step one step two all of these are folded values
+[01:14:52 - 01:14:54] Step three step four step five. Okay
+[01:14:54 - 01:14:56] Cool
+[01:14:56 - 01:14:58] But let's say that i want to try something like
+[01:15:00 - 01:15:03] Hey, i don't want 10 steps here
+[01:15:04 - 01:15:06] What of the components you can do is
+[01:15:06 - 01:15:14] Essentially think about how you would return instructions and i'm like you want instructions in a much more concise manner for example
+[01:15:14 - 01:15:16] So let's say keep your
+[01:15:17 - 01:15:20] or
+[01:15:20 - 01:15:22] respond
+[01:15:22 - 01:15:24] Two questions
+[01:15:24 - 01:15:26] With only one step
+[01:15:27 - 01:15:33] So here i'm adding a little bit of added like context to the what to the system prompt itself
+[01:15:34 - 01:15:36] And it's as simple as that so
+[01:15:36 - 01:15:38] That means that if i'm going to now try
+[01:15:39 - 01:15:41] the same
+[01:15:41 - 01:15:42] question
+[01:15:42 - 01:15:47] Let's see if it works
+[01:15:47 - 01:15:52] Instead of nine steps. I essentially it's just on a trip performing a discipline up to free up space in your computer and group its performance
+[01:15:54 - 01:15:57] So i think i could be like oh sorry, no go ahead
+[01:15:58 - 01:16:04] I was thinking the idea would be like how we can tailor down our own prompt so that like there is we can actually use the
+[01:16:04 - 01:16:06] response as they input for
+[01:16:06 - 01:16:08] For sending the message to the other
+[01:16:09 - 01:16:13] Exactly so the idea exactly so the idea is like
+[01:16:14 - 01:16:22] Uh
+[01:16:22 - 01:16:28] You want to get really weird like you can just like essentially like the answer like the answer is essentially just
+[01:16:29 - 01:16:33] How do you how do you just like how do you create the response in a way that like
+[01:16:34 - 01:16:39] It's your specific needs and if it's in the if it's in the format that essentially is made to
+[01:16:40 - 01:16:44] That you need it to like respond to your to your LLM in a much more
+[01:16:45 - 01:16:48] like
+[01:16:48 - 01:16:50] in uh in a
+[01:16:51 - 01:16:57] In an AI or human message you do want to be able to like like recognize that these messages need to be
+[01:16:57 - 01:17:03] Delivered to the other AI and uh kind of in a structure that the other AI would be able to like understand it
+[01:17:05 - 01:17:11] Great question
+[01:17:11 - 01:17:16] And when you say in order to avoid the conversation going stable be like
+[01:17:17 - 01:17:19] not staying in terms of
+[01:17:21 - 01:17:28] Like hanging is just like diverging into something that it's completely different to what we were actually looking for
+[01:17:28 - 01:17:36] So it's less about so part of what you can expect and this is one of those hard things to avoid with the tools that we're using here so far
+[01:17:36 - 01:17:38] Unless you're connected to like
+[01:17:38 - 01:17:42] Um a lot of data like and especially as we go further in the classes
+[01:17:42 - 01:17:45] Becomes like it like we'll learn ways to prevent this
+[01:17:45 - 01:17:49] But if you're just kind of keeping this simple to like some of the simple
+[01:17:50 - 01:17:53] Like some of these simple steps one of the things are going to notice is that
+[01:17:54 - 01:17:58] Um, let's say that we have two LLM's talking about video games
+[01:17:58 - 01:18:01] What happens what starts to happen is that the
+[01:18:02 - 01:18:06] Conversation start repeating the set themselves the messages start a start to
+[01:18:07 - 01:18:09] Be almost repetitive
+[01:18:09 - 01:18:13] And so like when it repeats itself, it sort of like gets echoed back
+[01:18:13 - 01:18:19] To the LLM and I had an example that I was going to try to show this and like I couldn't get it to work because
+[01:18:20 - 01:18:21] Just didn't have time unfortunately
+[01:18:21 - 01:18:27] But the idea is that what you're going to start to notice is that if you try to create a conversation with these two LLMs
+[01:18:27 - 01:18:29] You could expect to see a very
+[01:18:30 - 01:18:31] Um
+[01:18:31 - 01:18:35] Yeah, like we're essentially a quest to start to repeat themselves over and over again
+[01:18:36 - 01:18:38] Unless you prompted to like stop
+[01:18:41 - 01:18:43] Doesn't work because I was working with a different library
+[01:18:44 - 01:18:46] Sorry, yeah
+[01:18:46 - 01:18:47] Excellent
+[01:18:47 - 01:18:49] No, thank you
+[01:18:49 - 01:18:52] Thank you. So I'll I'll go away then
+[01:18:52 - 01:18:55] No, thank you. You're all right. You've got me for another 10 minutes. So
+[01:18:55 - 01:18:58] You have another process for him, but otherwise have a wonderful evening
+[01:19:00 - 01:19:02] Wonder if full evening for you two guys
+[01:19:04 - 01:19:10] Like
+[01:19:10 - 01:19:13] I kind of like a general question like about the course
+[01:19:14 - 01:19:15] um
+[01:19:15 - 01:19:16] so
+[01:19:16 - 01:19:20] Like right now I'm on my personal computer and I know the capstone project like
+[01:19:20 - 01:19:25] The goal is to do something like for my company for my team. Is it okay? Like is this course
+[01:19:26 - 01:19:29] Fine if I just do the entire thing on my personal computer
+[01:19:30 - 01:19:35] Okay, cool. Oh, yeah. No, like I'm doing this off of a MacBook. Okay. Cool. Yeah
+[01:19:37 - 01:19:40] Yeah, I think the only like the generally the things you might want to be
+[01:19:42 - 01:19:44] Concern on it if you're doing this on your personal computer
+[01:19:44 - 01:19:47] And you're using sensitive data from your company that might not be
+[01:19:48 - 01:19:50] Yeah, definitely not. Yeah
+[01:19:52 - 01:20:05] Cool. Okay. Thank you. Thank you. That was cool about the history. I'd never
+[01:20:06 - 01:20:10] thought like keeping the history like that. I'd never
+[01:20:10 - 01:20:15] Because I've experimented before but it was always like a one prompt kind of thing and I didn't even know
+[01:20:16 - 01:20:18] I was doing
+[01:20:18 - 01:20:25] The few shot prompts. I just like like I gave it a few examples to base off like the generator response off of
+[01:20:26 - 01:20:32] But I was curious like how to make it more of like a historical context to if I wanted to continue asking that same questions
+[01:20:32 - 01:20:36] That was cool. Yeah. Yeah. Yeah. No, I mean and again, this is
+[01:20:37 - 01:20:40] This is just using like we're not even using all of
+[01:20:42 - 01:20:46] We're not even using the the line chain framework yet for that. This is just
+[01:20:47 - 01:20:52] Sticking with Python. Yeah, basic content. So yeah, it gets better
+[01:20:53 - 01:21:05] Cool. Yeah, sweet. And then it's tomorrow
+[01:21:06 - 01:21:07] like
+[01:21:07 - 01:21:10] I think is it just like office hours kind of deal
+[01:21:14 - 01:21:16] Yeah, tomorrow the
+[01:21:16 - 01:21:19] The office hours will be at the same time 80 Stern
+[01:21:20 - 01:21:24] And like I was saying earlier we'll go over the first 10 to 20 minutes
+[01:21:25 - 01:21:29] Solution to the homework and the rest of it will basically
+[01:21:29 - 01:21:32] The bring your questions and okay
+[01:21:33 - 01:21:38] Completely optional, but definitely encourage for anybody that then wants to come
+[01:21:40 - 01:21:43] Sweet
+[01:21:43 - 01:21:47] All right, awesome. That was it for me. Thank you guys very much
+[01:21:48 - 01:21:50] Yeah, have a good night. Yeah, you too

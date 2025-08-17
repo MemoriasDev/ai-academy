@@ -1,0 +1,205 @@
+{
+  "description": "Cohort 3 Complete Video Manifest for Transcription",
+  "cohort": 3,
+  "base_url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/",
+  "transcription_config": {
+    "model_size": "base",
+    "device": "cpu",
+    "max_workers": 2,
+    "cleanup_temp_files": true
+  },
+  "videos": [
+    {
+      "comment": "Week 1 - AI Development Fundamentals",
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_1_class_1_2024-06-18.mp4",
+      "cohort": 3,
+      "week": 1,
+      "lesson": 1,
+      "date": "2024-06-18",
+      "output_path": "cohorts/cohort_3/week_01/week_1_class_1_2024-06-18"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_1_class_2_2024-06-19.mp4",
+      "cohort": 3,
+      "week": 1,
+      "lesson": 2,
+      "date": "2024-06-19",
+      "output_path": "cohorts/cohort_3/week_01/week_1_class_2_2024-06-19"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_1_class_3_2024-06-20.mp4",
+      "cohort": 3,
+      "week": 1,
+      "lesson": 3,
+      "date": "2024-06-20",
+      "output_path": "cohorts/cohort_3/week_01/week_1_class_3_2024-06-20"
+    },
+    {
+      "comment": "Week 2",
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_2_class_1_2024-06-24.mp4",
+      "cohort": 3,
+      "week": 2,
+      "lesson": 1,
+      "date": "2024-06-24",
+      "output_path": "cohorts/cohort_3/week_02/week_2_class_1_2024-06-24"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_2_class_2_2024-06-26.mp4",
+      "cohort": 3,
+      "week": 2,
+      "lesson": 2,
+      "date": "2024-06-26",
+      "output_path": "cohorts/cohort_3/week_02/week_2_class_2_2024-06-26"
+    },
+    {
+      "comment": "Week 3",
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_3_class_1_2024-07-01.mp4",
+      "cohort": 3,
+      "week": 3,
+      "lesson": 1,
+      "date": "2024-07-01",
+      "output_path": "cohorts/cohort_3/week_03/week_3_class_1_2024-07-01"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_3_class_2_2024-07-02.mp4",
+      "cohort": 3,
+      "week": 3,
+      "lesson": 2,
+      "date": "2024-07-02",
+      "output_path": "cohorts/cohort_3/week_03/week_3_class_2_2024-07-02"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_3_class_3_2024-07-03.mp4",
+      "cohort": 3,
+      "week": 3,
+      "lesson": 3,
+      "date": "2024-07-03",
+      "output_path": "cohorts/cohort_3/week_03/week_3_class_3_2024-07-03"
+    },
+    {
+      "comment": "Week 4",
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_4_class_1_2024-07-08.mp4",
+      "cohort": 3,
+      "week": 4,
+      "lesson": 1,
+      "date": "2024-07-08",
+      "output_path": "cohorts/cohort_3/week_04/week_4_class_1_2024-07-08"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_4_class_2_2024-07-09.mp4",
+      "cohort": 3,
+      "week": 4,
+      "lesson": 2,
+      "date": "2024-07-09",
+      "output_path": "cohorts/cohort_3/week_04/week_4_class_2_2024-07-09"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_4_class_3_2024-07-10.mp4",
+      "cohort": 3,
+      "week": 4,
+      "lesson": 3,
+      "date": "2024-07-10",
+      "output_path": "cohorts/cohort_3/week_04/week_4_class_3_2024-07-10"
+    },
+    {
+      "comment": "Week 5",
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_5_class_1_2024-07-15.mp4",
+      "cohort": 3,
+      "week": 5,
+      "lesson": 1,
+      "date": "2024-07-15",
+      "output_path": "cohorts/cohort_3/week_05/week_5_class_1_2024-07-15"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_5_class_2_2024-07-16.mp4",
+      "cohort": 3,
+      "week": 5,
+      "lesson": 2,
+      "date": "2024-07-16",
+      "output_path": "cohorts/cohort_3/week_05/week_5_class_2_2024-07-16"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_5_class_3_2024-07-18.mp4",
+      "cohort": 3,
+      "week": 5,
+      "lesson": 3,
+      "date": "2024-07-18",
+      "output_path": "cohorts/cohort_3/week_05/week_5_class_3_2024-07-18"
+    },
+    {
+      "comment": "Week 6",
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_6_class_1_2024-07-22.mp4",
+      "cohort": 3,
+      "week": 6,
+      "lesson": 1,
+      "date": "2024-07-22",
+      "output_path": "cohorts/cohort_3/week_06/week_6_class_1_2024-07-22"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_6_class_2_2024-07-23.mp4",
+      "cohort": 3,
+      "week": 6,
+      "lesson": 2,
+      "date": "2024-07-23",
+      "output_path": "cohorts/cohort_3/week_06/week_6_class_2_2024-07-23"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_6_class_3_2024-07-24.mp4",
+      "cohort": 3,
+      "week": 6,
+      "lesson": 3,
+      "date": "2024-07-24",
+      "output_path": "cohorts/cohort_3/week_06/week_6_class_3_2024-07-24"
+    },
+    {
+      "comment": "Week 7",
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_7_class_1_2024-07-29.mp4",
+      "cohort": 3,
+      "week": 7,
+      "lesson": 1,
+      "date": "2024-07-29",
+      "output_path": "cohorts/cohort_3/week_07/week_7_class_1_2024-07-29"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_7_class_2_2024-07-31.mp4",
+      "cohort": 3,
+      "week": 7,
+      "lesson": 2,
+      "date": "2024-07-31",
+      "output_path": "cohorts/cohort_3/week_07/week_7_class_2_2024-07-31"
+    },
+    {
+      "comment": "Week 8",
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_8_class_1_2024-08-05.mp4",
+      "cohort": 3,
+      "week": 8,
+      "lesson": 1,
+      "date": "2024-08-05",
+      "output_path": "cohorts/cohort_3/week_08/week_8_class_1_2024-08-05"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_8_class_2_2024-08-07.mp4",
+      "cohort": 3,
+      "week": 8,
+      "lesson": 2,
+      "date": "2024-08-07",
+      "output_path": "cohorts/cohort_3/week_08/week_8_class_2_2024-08-07"
+    },
+    {
+      "comment": "Week 9",
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_9_class_1_2024-08-12.mp4",
+      "cohort": 3,
+      "week": 9,
+      "lesson": 1,
+      "date": "2024-08-12",
+      "output_path": "cohorts/cohort_3/week_09/week_9_class_1_2024-08-12"
+    }
+  ],
+  "notes": [
+    "URLs are based on the pattern from the provided example",
+    "Dates are estimated based on typical cohort schedules",
+    "Some weeks may have 2 or 3 classes - adjust as needed",
+    "If a URL returns 404, check the actual filename on S3",
+    "You may need to add authentication parameters to URLs"
+  ]
+}

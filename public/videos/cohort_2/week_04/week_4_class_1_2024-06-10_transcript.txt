@@ -1,0 +1,1637 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_04/week_4_class_1_2024-06-10.mp4
+**Duration:** 4432.10 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 809
+**Generated:** 2025-08-13 18:37:02
+**File Hash:** bd9d57d808b48073e44438f0d2c050c6
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_04
+**file_name:** week_4_class_1_2024-06-10.mp4
+
+---
+
+## Transcript
+
+**[81.46s → 83.46s]** We'll just wait a
+
+**[83.46s → 87.22s]** Just a handful of minutes before we have started the quorum
+
+**[140.26s → 142.26s]** Coming up on seven or five
+
+**[143.26s → 178.61s]** So those kind of light
+
+**[178.61s → 200.24s]** All right, let's go and get started. All right welcome everyone to
+
+**[201.04s → 204.24s]** We forward so we are going to now be talking about
+
+**[204.88s → 210.12s]** What's chain is best known for as you can imagine with the name chain
+
+**[210.96s → 212.96s]** We're going to be talking about chains
+
+**[214.27s → 216.67s]** So we're going to discuss training and introduce
+
+**[216.67s → 219.15s]** like training expressions.
+
+**[219.15s → 222.49s]** I'll see it yell, which helps build out
+
+**[222.49s → 224.95s]** more quickly and conveniently.
+
+**[224.95s → 229.07s]** So I'll throw, like show you some simple examples,
+
+**[229.07s → 230.19s]** and then walk you through.
+
+**[230.19s → 232.63s]** And then if we get to it, there's a really
+
+**[232.63s → 238.06s]** specificity of rag example that we can talk about as well,
+
+**[238.06s → 244.74s]** what chains.
+
+**[244.74s → 247.50s]** So we want you to walk away from today's class,
+
+**[247.50s → 251.42s]** understanding what training is, how that fits in the lane
+
+**[251.42s → 253.82s]** chain ecosystem, and how that's different from what we've covered
+
+**[253.82s → 258.10s]** so far. Then we want to have you be able to implement a basic
+
+**[258.18s → 264.29s]** example using the lane chain expressive language, LCEL. And then
+
+**[264.33s → 270.20s]** we want to talk about how to pass and extract data with LCEL. And
+
+**[270.20s → 274.32s]** then finally, we'll talk about concurrency. So should be a
+
+**[274.32s → 277.72s]** super fun class today. This is just slightly different,
+
+**[277.72s → 282.72s]** Essentially, then what we've seen from previous classes,
+
+**[283.92s → 287.24s]** one way to think about it is as syntactic sugar.
+
+**[287.24s → 288.64s]** So like before I show you any code
+
+**[288.64s → 290.28s]** or talk about anything,
+
+**[291.32s → 293.44s]** it's really designed to help simplify
+
+**[293.44s → 295.44s]** a lot of the tasks that we've already done,
+
+**[295.44s → 298.04s]** even starting in like week one, week two, week three.
+
+**[299.81s → 301.89s]** But we didn't want to abstract that completely away
+
+**[301.89s → 305.57s]** from you because we want you to understand what's happening.
+
+**[305.57s → 313.95s]** They'll hang on just a second.
+
+**[313.95s → 315.15s]** I'm going to close the door.
+
+**[315.15s → 335.11s]** I'll get some background noise for my stool.
+
+**[335.11s → 337.67s]** Hey, sorry about that.
+
+**[337.67s → 342.47s]** So chains are going to involve a series of different components.
+
+**[342.47s → 346.50s]** It's actually really similar to just any kind of,
+
+**[346.50s → 349.78s]** if you've worked with DAGs directed to select graphs before,
+
+**[349.78s → 352.54s]** chains are going to feel very natural to you.
+
+**[352.54s → 355.06s]** Or any kind of pipeline tool is going to feel
+
+**[355.06s → 357.82s]** very similar to chains.
+
+**[357.82s → 360.78s]** Chains are going to follow a very static path.
+
+**[360.78s → 363.46s]** That's kind of why they're good analogies
+
+**[363.46s → 365.50s]** is something like a DAG.
+
+**[365.50s → 367.62s]** Except it also is going to include some features
+
+**[367.62s → 370.06s]** like asynchronous code and error handling,
+
+**[371.06s → 376.06s]** just like Qflow or using any of those kinds of technologies.
+
+**[378.61s → 382.77s]** So side by side agents versus chains,
+
+**[382.77s → 386.01s]** agents which we saw last to be redesigned for decision making.
+
+**[386.01s → 389.01s]** So the LLIM is the one that's going to make the decision
+
+**[389.01s → 390.65s]** about what to do next.
+
+**[390.65s → 392.41s]** And it's going to do that based on the information
+
+**[392.41s → 394.81s]** of the context that you've given it.
+
+**[394.81s → 398.17s]** Chains in the other hand are out to achieve
+
+**[398.17s → 401.85s]** very specific tasks focused on structured processes
+
+**[401.85s → 403.13s]** or outcomes.
+
+**[403.13s → 407.71s]** So an example of where an agent in a chain might be
+
+**[408.79s → 411.35s]** like a good difference.
+
+**[411.35s → 414.03s]** We had a problem at work a few weeks ago
+
+**[414.95s → 417.71s]** where we had a couple hundred videos
+
+**[417.71s → 420.39s]** from a series of conferences.
+
+**[420.39s → 423.79s]** So what we wanted to do was take those videos,
+
+**[423.79s → 426.67s]** transcribe them, and then create blog posts
+
+**[426.67s → 429.33s]** that the original speaker could vet,
+
+**[429.33s → 431.47s]** and then we could publish on our internal
+
+**[431.47s → 433.93s]** Bella relations website.
+
+**[433.93s → 437.87s]** So an agent doesn't really make sense in that example.
+
+**[437.87s → 440.95s]** Like we had very structured sequence of things we needed to do.
+
+**[440.95s → 443.51s]** And actually there were a couple things we needed to do,
+
+**[443.51s → 445.95s]** like transcribe the videos,
+
+**[445.95s → 449.38s]** then actually running the chain on top of the transcript.
+
+**[449.38s → 453.18s]** So we chose to do chains because we were looking
+
+**[453.18s → 455.42s]** for that very specific linear pathway
+
+**[455.42s → 459.46s]** just to be repeated over and over and over again.
+
+**[459.46s → 461.90s]** Now in terms of functionality,
+
+**[461.90s → 466.22s]** agents are invoking that decision-making cycle
+
+**[466.22s → 470.10s]** until they've exhausted what they need to do.
+
+**[470.10s → 471.94s]** So they're self-evaluating,
+
+**[471.94s → 474.06s]** depending on how you structure your agent,
+
+**[474.06s → 476.69s]** and they're gonna be pretty dynamic.
+
+**[476.69s → 480.29s]** Change the other ends very, very exactly
+
+**[480.29s → 481.77s]** what you're gonna tell it to do.
+
+**[483.15s → 484.91s]** So you're gonna structure information
+
+**[484.91s → 486.59s]** and field is a good fit for chains
+
+**[486.59s → 488.15s]** and efficient for structured work flows,
+
+**[488.15s → 491.20s]** like I just described.
+
+**[491.20s → 494.72s]** Now to kind of zoom way back out into
+
+**[494.72s → 500.20s]** like the ecosystem of chain agents are gonna be suitable
+
+**[500.68s → 502.40s]** for really complex tasks.
+
+**[502.40s → 506.52s]** Like I gave the copy purchasing example last week
+
+**[506.52s → 509.24s]** where somebody sits down and they fog into
+
+**[509.24s → 513.08s]** with what I call the application, but by beans.
+
+**[514.24s → 516.96s]** And it's kind of a blend of a research tool
+
+**[516.96s → 518.86s]** and a purchasing tool.
+
+**[518.86s → 520.50s]** That's a very complex scenario
+
+**[520.50s → 523.26s]** with a nonlinear process.
+
+**[523.26s → 525.14s]** The analyst or the buyer may have decided
+
+**[525.14s → 527.58s]** to do a variety of different tasks
+
+**[527.58s → 530.21s]** based on the research that they're interacting with.
+
+**[531.82s → 533.86s]** Chains on the other hands,
+
+**[533.86s → 536.98s]** that's probably gonna be much more structured, right?
+
+**[536.98s → 540.42s]** like getting into the process of filling out the inverse
+
+**[540.42s → 544.58s]** footer forms for something like purchasing coffee.
+
+**[544.58s → 549.66s]** You're gonna have that nice, well-documented workflow.
+
+**[549.66s → 551.98s]** So I'd love to maybe just have a few minutes of discussion
+
+**[551.98s → 553.90s]** and feel free to either go off mute
+
+**[553.90s → 556.30s]** or ask my question for Ed.
+
+**[556.30s → 559.90s]** Like when do you all think that it would be better to use
+
+**[559.90s → 571.22s]** an agent or a chain?
+
+**[571.22s → 572.78s]** I think the first thing that comes to mind for me
+
+**[572.78s → 575.38s]** is like similar to DAVS, right?
+
+**[575.38s → 578.94s]** where you're querying data and then transforming it.
+
+**[578.94s → 582.58s]** I could see chain being useful in a situation
+
+**[582.58s → 585.86s]** where you're querying data using an LLand,
+
+**[585.86s → 589.54s]** what does that say, do classification
+
+**[589.54s → 591.86s]** or something else, some other operation.
+
+**[591.86s → 593.90s]** And you have another operator
+
+**[593.90s → 598.34s]** for measuring the outcome.
+
+**[598.34s → 604.70s]** Something like that, I guess, is pretty restrictive
+
+**[604.70s → 607.89s]** and seems like a chain to be useful there.
+
+**[607.89s → 608.89s]** Yeah totally.
+
+**[613.67s → 615.91s]** Yes, like any task or the outcome is like,
+
+**[615.91s → 627.16s]** it's supposed to be restricted.
+
+**[627.16s → 628.76s]** Yeah, you could use it.
+
+**[628.76s → 629.84s]** Sorry, go ahead, hand it through.
+
+**[629.84s → 631.20s]** What else are we gonna talk?
+
+**[631.20s → 632.66s]** Yeah, we use chains.
+
+**[634.02s → 636.14s]** Because like, what we've been talking about
+
+**[636.14s → 638.74s]** with the Bragg in the context,
+
+**[638.74s → 641.18s]** giving like, the LLM to the context
+
+**[641.18s → 642.90s]** to give a good response with,
+
+**[644.71s → 648.71s]** using that with chaining can really help you
+
+**[648.71s → 649.95s]** get the outputs that you want.
+
+**[651.42s → 661.74s]** We use it as a chatbot, but with the context of whatever the customer has in the app at a given time.
+
+**[661.74s → 664.77s]** Yeah, totally.
+
+**[664.77s → 675.06s]** Yeah, and you'll see that in tonight's class too, is that we use Rags as a great example of when chaining is very beneficial.
+
+**[675.06s → 681.62s]** And I mean, even thinking back to Rags, we too, you know, you are following a sequence, right,
+
+**[681.62s → 690.88s]** a graph of nodes that you're following in a certain order. There was a question or comment in the thread,
+
+**[690.88s → 696.96s]** chains are a subset of agents, agents rely on LLM, spilling a chain versus static chain built by human.
+
+**[698.08s → 704.80s]** Not quite. So they're different where agents are making their own decisions about what to do next.
+
+**[704.80s → 712.08s]** chains are following the order that you give them. So I think our code in class last week was very
+
+**[712.08s → 718.08s]** very simple, right? We're like the agent didn't have any options to choose from, but the idea that
+
+**[718.08s → 725.44s]** the agent could have many many more things to choose from and could follow a nonlinear path down
+
+**[725.44s → 746.80s]** those options. So LCEL, the chain expression language is going to be used for constructing and
+
+**[746.80s → 752.22s]** managing past chains effectively and efficiently.
+
+**[752.22s → 755.22s]** So it's going to support streaming asynchronous processing
+
+**[755.22s → 758.22s]** and built-in observability.
+
+**[758.22s → 763.73s]** By the way, you're just to kind of skip ahead a little bit.
+
+**[763.73s → 765.73s]** The LCELA, right?
+
+**[765.73s → 767.73s]** This is what a chain's going to look like.
+
+**[767.73s → 773.94s]** Like template pipe LLM pipe string output processor.
+
+**[773.94s → 777.94s]** So the advantages of doing this are going to make it really easy
+
+**[777.94s → 783.22s]** for modification. So for those of you that are prototyping this stuff really quickly,
+
+**[784.48s → 787.44s]** that makes it really nice to be able to experiment.
+
+**[790.26s → 796.42s]** Native support is going to automatically help with a lot of the parallelization type tasks that
+
+**[796.42s → 805.73s]** happen. And then the observability that LCEL is going to provide helps track all this stuff
+
+**[805.73s → 815.36s]** really nicely too. So from our very kind of first few classes, we could take a look at something
+
+**[815.36s → 821.62s]** like the prompt template, tell me the capital of the country and we provided an input variable
+
+**[821.62s → 828.74s]** and then we created an instance of our LLM connection and then we changed it to the prompt.
+
+**[828.74s → 834.34s]** Like prompt equals the template, format the country, results, LLM, and operative prompt.
+
+**[834.34s → 844.85s]** So you're looking at maybe five lines of code, four lines of code, that one's wrapped around,
+
+**[844.85s → 853.71s]** versus the length chain expression language ways, just to take that template that we already have,
+
+**[853.71s → 863.78s]** create that instance of the LLM and process it and save us these results right here.
+
+**[863.78s → 878.88s]** You want to see what's happening underneath the hood.
+
+**[878.88s → 879.88s]** Let's take a look.
+
+**[879.88s → 881.88s]** No need to try anything up right now.
+
+**[881.88s → 884.88s]** This is just going to be kind of playing around with the terminal.
+
+**[884.88s → 888.88s]** Environment is set up with the open AI.
+
+**[888.88s → 891.88s]** Key for this week and the requirements.
+
+**[891.88s → 913.05s]** Let's just take our imports.
+
+**[913.05s → 931.86s]** Just a quick line break problem.
+
+**[931.86s → 946.92s]** So Nikita says there's an easy visualization mechanism for these
+
+**[946.92s → 950.92s]** chains to see the full graph of possible steps and inputs into each.
+
+**[950.92s → 959.41s]** So for agents, there's a lane graph, which we haven't touched on yet, but that's really
+
+**[959.41s → 965.21s]** for complex agent workflows where you're trying to coordinate the actions of a bunch different
+
+**[965.21s → 970.85s]** stuff and you need to understand what's happening across a graph with possibilities.
+
+**[970.85s → 978.49s]** And then lane Smith can help you visualize things that are happening in the chain as well.
+
+**[978.49s → 980.53s]** So there are a couple tools out there.
+
+**[980.53s → 983.80s]** I honestly don't find them to be great.
+
+**[985.86s → 1000.48s]** I'm not sure that I have a better alternative right now.
+
+**[1000.48s → 1003.77s]** So we take a look at our prompt template, which you remember
+
+**[1003.77s → 1005.69s]** from early on in the class.
+
+**[1005.69s → 1008.81s]** This is where we're going to create the prompt,
+
+**[1008.81s → 1011.37s]** but we're going to add in a input variable.
+
+**[1011.37s → 1014.45s]** It's basically like a fancy upstream in Python.
+
+**[1034.06s → 1052.93s]** And then we'll create our connection to Chatch and Tp.
+
+**[1052.93s → 1059.04s]** Apparently my key didn't make it in.
+
+**[1059.04s → 1060.72s]** We'll top-up in the right Python environment.
+
+**[1060.72s → 1064.16s]** that would be embarrassing.
+
+**[1064.16s → 1078.72s]** Hang on a second, let me grab the key.
+
+**[1078.72s → 1080.40s]** So we're seeing at work right now,
+
+**[1080.40s → 1084.24s]** we're seeing many, many, many more people using chains
+
+**[1084.24s → 1086.04s]** and we are agents.
+
+**[1088.38s → 1092.58s]** One of the reasons for that is just because I think part
+
+**[1092.58s → 1097.92s]** of it on our side is that where you host an agent
+
+**[1097.92s → 1101.60s]** doesn't necessarily, isn't necessarily easy for us.
+
+**[1101.60s → 1104.24s]** I'm really curious to see how other businesses
+
+**[1104.24s → 1123.51s]** are doing it.
+
+**[1123.51s → 1125.03s]** All right, so if we're taking our,
+
+**[1125.03s → 1126.43s]** this is the manual way of doing it.
+
+**[1126.43s → 1128.03s]** So going back into the code,
+
+**[1128.03s → 1150.50s]** it's for prompt formatting, which is the country name France.
+
+**[1150.50s → 1152.38s]** Capital of France is Paris.
+
+**[1152.38s → 1155.82s]** Woo, right.
+
+**[1155.82s → 1159.10s]** That's not quite as great.
+
+**[1159.10s → 1162.66s]** What we want to do is just eliminate these three lines.
+
+**[1162.66s → 1167.18s]** So we want you to create a rough chain
+
+**[1168.90s → 1170.94s]** that links everything together.
+
+**[1170.94s → 1174.82s]** So we're going to declare a chain.
+
+**[1174.82s → 1176.66s]** And then the string alpha parser basically
+
+**[1176.66s → 1181.82s]** does the pretty printing at the end.
+
+**[1181.82s → 1203.63s]** So then when we invoke a chain, we'll change countries.
+
+**[1203.63s → 1208.15s]** I'm getting a slightly different experience as a developer.
+
+**[1208.15s → 1210.87s]** Now this example is super, super simple, right?
+
+**[1210.87s → 1212.95s]** But I hope you're seeing right away
+
+**[1212.95s → 1217.83s]** that what's happening with the chain is helping
+
+**[1217.83s → 1220.79s]** stitch together a lot of this different stuff.
+
+**[1220.79s → 1222.63s]** So the template I still need,
+
+**[1222.63s → 1226.51s]** I still need my LLM instance to know what's going in.
+
+**[1226.51s → 1228.63s]** So I'm passing my template into the LLM
+
+**[1228.63s → 1244.91s]** and I'm outputting the nice structured format.
+
+**[1244.91s → 1250.28s]** So are there, there's a lot happening here underneath the hood
+
+**[1250.28s → 1251.44s]** and I don't, I want to make sure
+
+**[1251.44s → 1253.84s]** that can spend time diving into it.
+
+**[1255.78s → 1258.18s]** But I also think that that may not be worthwhile
+
+**[1258.18s → 1259.02s]** for some of you.
+
+**[1259.02s → 1261.06s]** So I just want to do a quick gut check.
+
+**[1261.06s → 1264.43s]** is anyone having any question so far about,
+
+**[1264.43s → 1272.66s]** especially the chain objects?
+
+**[1272.66s → 1273.50s]** Here's what it's curious,
+
+**[1273.50s → 1276.85s]** what is structured output parser doing?
+
+**[1276.85s → 1280.50s]** Colleagues and path and eight grandmeters today.
+
+**[1280.50s → 1283.70s]** Yeah, so, yeah, what's that doing in the good?
+
+**[1283.70s → 1285.94s]** Yeah, so structured output, this one.
+
+**[1287.82s → 1290.79s]** That is just taking the output from the LLM
+
+**[1290.79s → 1297.22s]** and figuring it out of pretty printed, essentially.
+
+**[1297.22s → 1310.93s]** So if I take a look at CEDs or all the methods in the chain,
+
+**[1310.93s → 1320.18s]** Let me see what it is to print out the steps.
+
+**[1324.24s → 1334.27s]** Steps maybe.
+
+**[1334.27s → 1336.67s]** But very succinctly,
+
+**[1336.67s → 1338.71s]** it's just grabbing a concept from the LLM.
+
+**[1338.71s → 1340.11s]** So once we get our,
+
+**[1340.11s → 1345.11s]** it's essentially processing this step LLM.pric from
+
+**[1347.20s → 1348.32s]** and making it look nicer.
+
+**[1348.32s → 1357.38s]** Cause the raw output is not great.
+
+**[1357.38s → 1369.54s]** So the LCEL, is that basically like a shorthand syntax that's where the only thing we need is that single pipe?
+
+**[1370.73s → 1381.02s]** Yeah, exactly. And is it always these arguments positional? So it's always an array of three components?
+
+**[1381.02s → 1384.11s]** No, it doesn't have to be an array of three components.
+
+**[1384.11s → 1388.87s]** It could be much more, many more components than three.
+
+**[1388.87s → 1393.90s]** That's just this simple example.
+
+**[1393.90s → 1396.02s]** Okay.
+
+**[1396.02s → 1399.50s]** Actually, I don't think I've seen a chain example with
+
+**[1399.50s → 1403.39s]** like more than like, I don't know, five, seven,
+
+**[1403.39s → 1408.01s]** ten elements in a while.
+
+**[1408.01s → 1412.61s]** So I'm actually not sure what the LCEL formatting
+
+**[1412.61s → 1414.37s]** looks like when you have many,
+
+**[1414.37s → 1418.37s]** any more steps than that, but surely there must be some
+
+**[1418.37s → 1423.37s]** better syntax than just writing them out like that.
+
+**[1423.37s → 1426.96s]** The most I've seen is like seven, but it's always just,
+
+**[1426.96s → 1429.40s]** but they make like mini chains, so they'll divide
+
+**[1429.40s → 1432.40s]** three and then define another one with like
+
+**[1432.40s → 1435.40s]** a small one's inside of it, so it's like seven, but it's like
+
+**[1435.40s → 1439.40s]** three and a four, but that's what I've seen.
+
+**[1439.40s → 1445.86s]** No, no, sorry, saying kind of like
+
+**[1445.86s → 1446.95s]** Oh, no, sorry.
+
+**[1446.95s → 1452.15s]** Say in Kalikupli pipelines, you have your components that are essentially pipelines into
+
+**[1452.15s → 1456.98s]** themselves, calling them stitching them all together.
+
+**[1456.98s → 1458.90s]** Do you have to start with the prompt?
+
+**[1458.90s → 1461.78s]** Like for the first item, you know, CEO?
+
+**[1461.78s → 1464.54s]** I guess I don't really, I guess, yeah.
+
+**[1464.54s → 1467.83s]** Is there another component that you can start off with?
+
+**[1467.83s → 1472.34s]** It seems like you'd have to start off with the prompt template.
+
+**[1472.34s → 1475.38s]** Um, not necessarily.
+
+**[1475.38s → 1479.38s]** And anyone think of an example where they wouldn't need to start out with a prop template?
+
+**[1479.38s → 1495.56s]** It would be nice if you could query data or get data, like, you know,
+
+**[1495.56s → 1499.60s]** with some sort of rag operation and then give it to your prop template.
+
+**[1499.60s → 1502.35s]** I don't know how that would work here.
+
+**[1502.35s → 1504.35s]** Like is that possible to do with LCO?
+
+**[1504.35s → 1510.77s]** Get, you know, get data that you want to then add to the prop template context.
+
+**[1510.77s → 1512.77s]** So how do you ask?
+
+**[1512.77s → 1515.83s]** Oh, okay.
+
+**[1515.83s → 1518.23s]** It's giving to the next slide already.
+
+**[1518.23s → 1519.23s]** I love it.
+
+**[1519.23s → 1520.90s]** All right.
+
+**[1520.90s → 1527.34s]** Let's keep moving.
+
+**[1527.34s → 1528.54s]** I don't remember you said this earlier,
+
+**[1528.54s → 1531.74s]** but they were talking about how they're using chains for rag.
+
+**[1531.74s → 1535.46s]** And that's because LCEL is really great at providing
+
+**[1535.46s → 1539.90s]** that support for number one parallel execution,
+
+**[1539.90s → 1542.26s]** but then also being able to add in that context
+
+**[1542.26s → 1544.02s]** in a structured way.
+
+**[1544.02s → 1546.38s]** So it's going to simplify chaining together
+
+**[1546.38s → 1549.66s]** a lot of the tasks that we've done for rag originally.
+
+**[1549.66s → 1552.94s]** Yeah, before we're doing that context,
+
+**[1555.02s → 1557.14s]** get relevant documents,
+
+**[1557.14s → 1560.70s]** prompt with context, get the results,
+
+**[1560.70s → 1565.70s]** and then in LCEL, the syntax is a little bit different.
+
+**[1565.82s → 1568.70s]** So we're gonna just create a chain that is all of that once.
+
+**[1568.70s → 1570.66s]** So instead of having to write like a function,
+
+**[1570.66s → 1573.02s]** but wrap around all this stuff,
+
+**[1573.02s → 1576.02s]** I have just that chain object.
+
+**[1576.02s → 1578.02s]** So now run in parallel,
+
+**[1578.02s → 1582.74s]** get the query, get the results, pass them through to the template,
+
+**[1582.74s → 1586.82s]** pass them through the LLM, structure the output as a string,
+
+**[1586.82s → 1598.70s]** and then print everything out.
+
+**[1598.70s → 1599.94s]** And we could go back and take a look.
+
+**[1599.94s → 1604.90s]** This is built off the rag code, I think, from week two.
+
+**[1604.90s → 1610.06s]** It's maybe not great to go back and show.
+
+**[1610.06s → 1614.25s]** But I do want to point out there are a couple new ideas
+
+**[1614.25s → 1615.21s]** that we're introducing.
+
+**[1615.21s → 1619.25s]** So runable parallel, which I'll talk about a little bit more.
+
+**[1619.25s → 1621.29s]** and then run a poll pass through.
+
+**[1621.29s → 1626.25s]** So just saying that, hey, I can run multiple queries
+
+**[1626.25s → 1628.81s]** in parallel to one another.
+
+**[1628.81s → 1631.93s]** But then the data that I get from the query
+
+**[1631.93s → 1637.48s]** needs to pass through to the resulting steps.
+
+**[1637.48s → 1640.84s]** So as these, there's your example, right?
+
+**[1640.84s → 1644.40s]** Something that's starting out right away with something
+
+**[1644.40s → 1657.28s]** that's not a prompt template.
+
+**[1657.28s → 1660.24s]** So let's build out something like really simple,
+
+**[1660.24s → 1662.22s]** slightly different example.
+
+**[1662.22s → 1664.38s]** where we're going to build a rag,
+
+**[1664.38s → 1669.70s]** doing exactly using the cell C, EL language.
+
+**[1669.70s → 1671.58s]** We're going to initialize the necessary libraries
+
+**[1671.58s → 1673.70s]** and all that jazz.
+
+**[1673.70s → 1676.10s]** Define our prompt template that we want to use.
+
+**[1676.10s → 1677.90s]** Construct the chain.
+
+**[1677.90s → 1697.14s]** And invoke the chain to query everything together.
+
+**[1697.14s → 1709.76s]** Let's get back into the code.
+
+**[1709.76s → 1723.92s]** It's running as imports.
+
+**[1723.92s → 1729.05s]** So our vector store here, fast.
+
+**[1729.05s → 1733.62s]** Did anyone read about fast yet?
+
+**[1733.62s → 1737.86s]** Ash, if you can drop the documentation on fast,
+
+**[1737.86s → 1738.38s]** please do.
+
+**[1738.38s → 1740.70s]** It's a fast-digit read.
+
+**[1740.70s → 1742.58s]** We don't need to necessarily go into that right now,
+
+**[1742.58s → 1750.18s]** but that's what we're going to use for our embedding store.
+
+**[1750.18s → 1751.66s]** Now, our sample is going to be answered
+
+**[1751.66s → 1753.54s]** question based on the following context.
+
+**[1753.54s → 1754.54s]** What's our question?
+
+**[1754.54s → 1758.20s]** And answer in the following language.
+
+**[1758.20s → 1762.69s]** I am of even, and we should have a little fun.
+
+**[1762.69s → 1766.05s]** So let's still say where did Byron work?
+
+**[1767.13s → 1770.05s]** Maybe we can change the who in the example,
+
+**[1770.05s → 1777.12s]** but let's figure out where else Byron could have worked
+
+**[1777.12s → 1788.46s]** besides the rain.
+
+**[1788.46s → 1793.39s]** And of course I ran that directly
+
+**[1793.39s → 1796.84s]** instead of changing the variable.
+
+**[1796.84s → 1804.62s]** So I'll just type this out.
+
+**[1804.62s → 1805.46s]** Let's see.
+
+**[1812.36s → 1815.46s]** I'm gonna say John Cody worked in the video
+
+**[1815.46s → 1818.78s]** and let's also add somebody else.
+
+**[1819.98s → 1822.22s]** I've never worked in the video just for context.
+
+**[1822.22s → 1829.17s]** I'm making that up.
+
+**[1829.17s → 1831.86s]** And let's pick on somebody else,
+
+**[1831.86s → 1835.58s]** see somebody else want to volunteer where they're from,
+
+**[1835.58s → 1848.06s]** or a made up name.
+
+**[1848.06s → 1850.46s]** All right, we're going to say Susie,
+
+**[1850.46s → 1878.07s]** worked at a passenger, and I had a slight typo.
+
+**[1878.07s → 1886.33s]** Looks like I'm missing the fast library once a second.
+
+**[1886.33s → 1893.52s]** I'm just going to grab the code we just wrote
+
+**[1893.52s → 1908.42s]** and keep that in my copy paste buffer.
+
+**[1908.42s → 1910.26s]** I don't have a GPU attached to my machine,
+
+**[1910.26s → 1928.45s]** So I'm going to install the fast CPU version.
+
+**[1928.45s → 1943.80s]** We run these imports.
+
+**[1943.80s → 1964.42s]** So what we're doing now is just I'm setting up the Rage example
+
+**[1964.42s → 1985.62s]** and one more to the initial quick guys.
+
+**[1985.62s → 2011.46s]** The issue is that I was not in my virtual environment.
+
+**[2011.46s → 2032.65s]** Yeah, one more time.
+
+**[2032.65s → 2034.97s]** I'm not going to keep going back to that example.
+
+**[2034.97s → 2038.93s]** I'm just missing that OpenAI API key.
+
+**[2038.93s → 2040.49s]** But I do want to just keep moving on
+
+**[2040.49s → 2043.73s]** to what's happening with the actual vector store.
+
+**[2043.73s → 2050.86s]** So we're using LC, LCEL to help write our chain.
+
+**[2050.86s → 2054.39s]** So we're creating that context.
+
+**[2054.39s → 2059.41s]** We're going to get the question and pipe together the retriever.
+
+**[2059.41s → 2066.06s]** Then our question is going to add in question
+
+**[2066.06s → 2068.42s]** into the template and then the language,
+
+**[2068.42s → 2071.81s]** whatever language everything is written in.
+
+**[2071.81s → 2076.36s]** So we're going to then pipe that into the prompt,
+
+**[2076.36s → 2078.88s]** pipe that into the model and then parse the string output.
+
+**[2078.88s → 2082.04s]** So we can invoke the question, where did Byron work
+
+**[2082.04s → 2085.90s]** and ask for it in Italian.
+
+**[2085.90s → 2088.78s]** So that shows us slightly more complicated example
+
+**[2088.78s → 2090.34s]** with LCEL.
+
+**[2090.34s → 2094.67s]** So you're showing what's happening in this first step,
+
+**[2094.67s → 2096.35s]** where multiple things are happening.
+
+**[2096.35s → 2099.07s]** But all of that context is grouped together.
+
+**[2099.07s → 2101.79s]** And then you're piping it into the prompt
+
+**[2101.79s → 2107.38s]** in the next step in the chain.
+
+**[2107.38s → 2108.98s]** A very, very simple rag, right?
+
+**[2108.98s → 2122.44s]** but we're grounding in the truth of the embeddings that we have.
+
+**[2122.44s → 2128.20s]** Questions here.
+
+**[2128.20s → 2133.30s]** We talk about the syntax before the pipe and prompt.
+
+**[2133.30s → 2138.94s]** Like context, item, get a question, retriever.
+
+**[2138.94s → 2141.26s]** Yeah.
+
+**[2141.26s → 2145.91s]** I guess we can just talk about that.
+
+**[2145.91s → 2150.11s]** Yeah, whereas passing into information.
+
+**[2150.11s → 2151.11s]** Yeah.
+
+**[2151.11s → 2153.71s]** So item, getter is taking a look at what's
+
+**[2153.71s → 2159.16s]** happening inside the question here.
+
+**[2159.68s → 2160.96s]** So when we're invoking the chain,
+
+**[2160.96s → 2162.80s]** it's just going to the dictionary and saying,
+
+**[2162.80s → 2164.36s]** like dictionary look up,
+
+**[2164.36s → 2166.88s]** get the question, where the barren work,
+
+**[2166.88s → 2170.56s]** question, get the question, language, get the language.
+
+**[2170.56s → 2172.52s]** It's basically just dictionary look up.
+
+**[2172.52s → 2191.50s]** And operators just face Python, I'm pretty sure.
+
+**[2191.50s → 2193.74s]** You got the order of the questions?
+
+**[2197.62s → 2198.98s]** Maybe I don't have to run out.
+
+**[2198.98s → 2200.06s]** Okay.
+
+**[2200.06s → 2201.66s]** Yeah, we can run our cookies.
+
+**[2202.24s → 2206.00s]** Yeah, totally. So get item getter. The reason you would use that is so that way you don't
+
+**[2206.00s → 2211.26s]** to know the name of the dictionary. It's kind of like, it's not exactly like this, but you could
+
+**[2211.26s → 2216.46s]** think about it like an anonymous dictionary look up, right? I could just say a set of item
+
+**[2216.46s → 2225.73s]** getter, I could say lambda dict question, you know, and then I would get the value for that key
+
+**[2225.73s → 2279.26s]** question. Here, this will work. All right, sorry, I kind of switch examples there for a second.
+
+**[2282.40s → 2289.68s]** Any other questions on this one? Oh, okay. Effie, through the like the context key is saying
+
+**[2290.74s → 2297.74s]** get the question and then also retrieve Doc documents. I'll get the him. Yeah.
+
+**[2299.01s → 2304.37s]** Yes, exactly. We'll just answer the vector store. Okay. Yeah, exactly. So we want to preserve
+
+**[2304.37s → 2311.41s]** the original question, but the context is going to search the vector store for the most similar
+
+**[2311.41s → 2369.07s]** vectors. So let's try running this example. I think that'll help clear it up. One typo and embeddings.
+
+**[2374.50s → 2378.66s]** Right, so now we've got our templates. So our vector store is instantiated, so we've got that
+
+**[2378.66s → 2394.53s]** in memory. It's got our prompt and template going. But GC, I put in a collab for you to make it faster.
+
+**[2394.53s → 2396.98s]** here.
+
+**[2396.98s → 2408.31s]** Thanks Ash.
+
+**[2408.31s → 2411.62s]** You have a typo.
+
+**[2411.62s → 2412.62s]** Capital queue.
+
+**[2412.62s → 2417.06s]** Let's grab Ashes.
+
+**[2417.06s → 2420.53s]** I'll have no book.
+
+**[2420.53s → 2423.53s]** I'll sign curious where you get the model.
+
+**[2423.53s → 2428.33s]** I don't see model being defined or imported anywhere.
+
+**[2428.33s → 2432.27s]** Here.
+
+**[2432.27s → 2433.82s]** Yeah.
+
+**[2433.82s → 2438.31s]** Yeah, I think.
+
+**[2438.31s → 2446.54s]** I think model is something we declared actually in a previous example.
+
+**[2446.54s → 2449.54s]** Yeah, I put in the previous example, so I didn't put over the next slide,
+
+**[2449.54s → 2451.98s]** You'll notice on this one, I'll put it back in as the LLM.
+
+**[2451.98s → 2479.60s]** So good catch Trevor on that one.
+
+**[2479.60s → 2495.73s]** Right, just running the installs real quick on stuff.
+
+**[2498.74s → 2500.82s]** All those done with that last install,
+
+**[2500.82s → 2504.04s]** da da da da da da.
+
+**[2504.04s → 2507.00s]** I'm sure everybody has music for installs.
+
+**[2507.00s → 2511.86s]** Mine is definitely Mario hands down.
+
+**[2511.86s → 2518.36s]** Right, so now we're running the vector store,
+
+**[2518.36s → 2522.14s]** creating that context,
+
+**[2522.14s → 2525.23s]** firing worked at rain and it's not client.
+
+**[2525.23s → 2532.51s]** And if we just change the vector store context a little bit,
+
+**[2532.51s → 2548.68s]** I'm gonna use the quick list that I created.
+
+**[2548.68s → 2552.27s]** And I'm gonna change this to where did Suzy work?
+
+**[2552.27s → 2557.58s]** And instead I'm gonna get the response in English.
+
+**[2557.58s → 2562.61s]** Yes, we know that chat GDP or GDB can translate
+
+**[2563.53s → 2569.92s]** into multiple languages.
+
+**[2569.92s → 2571.68s]** So Suzy's words are that sure.
+
+**[2571.68s → 2573.16s]** And we have that nice chain, right?
+
+**[2573.16s → 2576.72s]** So like, you know, the benefit of having the chain objects
+
+**[2576.72s → 2579.12s]** in this increasingly sophisticated example
+
+**[2579.12s → 2582.72s]** is to show it's making it much easier
+
+**[2582.72s → 2584.60s]** to put together these pipelines
+
+**[2584.60s → 2589.40s]** other than having to create complex functions.
+
+**[2589.40s → 2592.54s]** If you remember, Rag from week two,
+
+**[2592.54s → 2594.12s]** codebase is much more complex,
+
+**[2594.12s → 2620.69s]** even though the examples were just as simple.
+
+**[2620.69s → 2622.85s]** Let's talk a little bit about,
+
+**[2625.05s → 2626.13s]** we'll have a little bit of time
+
+**[2626.13s → 2629.05s]** to talk about our more sophisticated example today.
+
+**[2629.05s → 2631.01s]** This notebook is pretty long,
+
+**[2631.01s → 2633.37s]** So we're just going to take a, like in terms of runtime.
+
+**[2633.37s → 2635.81s]** So we're just going to take a look at the pre-existing output.
+
+**[2635.81s → 2640.21s]** But I do want to talk about the overall architecture.
+
+**[2640.21s → 2646.05s]** So building on that use case of LCEL for complex rag
+
+**[2646.05s → 2648.37s]** pipelines, a really good use case
+
+**[2648.37s → 2652.05s]** would be multimodal search and information retrieval
+
+**[2652.05s → 2655.61s]** to be able to augment images and documents together
+
+**[2655.61s → 2661.30s]** to work through a particular problem.
+
+**[2661.30s → 2666.07s]** So in this case, we're going to take some scholarly literature.
+
+**[2666.07s → 2669.59s]** We're going to transform that into, that's in PDF documents,
+
+**[2669.59s → 2673.06s]** or just in documents, transform that into text.
+
+**[2673.06s → 2675.74s]** Then we're going to take some image data sets.
+
+**[2675.74s → 2678.46s]** And we're going to embed all of this stuff
+
+**[2678.46s → 2683.38s]** to create a multimodal embedding per each document.
+
+**[2683.38s → 2687.26s]** All of that information is going to go into a Chroma database.
+
+**[2687.26s → 2689.46s]** And then we're going to use Langchain and Chroma
+
+**[2689.46s → 2700.32s]** actually do the raw information retrieval with our multimodal LLM. I think we wrote this using
+
+**[2700.32s → 2706.40s]** Clip which is what I'm also seeing most use most often than a work context for multimodal AI,
+
+**[2706.40s → 2714.27s]** information retrieval problems like this works pretty darn well. So if any of you have large databases
+
+**[2714.27s → 2721.63s]** at work where those data stores have both images and text, you also definitely be dialed into this
+
+**[2721.63s → 2729.30s]** kind of architecture. So the question of course could have an image or text that's where multimodal
+
+**[2729.30s → 2734.98s]** gets fun and spicy and we're going to take that question and use the same embedding technique
+
+**[2734.98s → 2740.90s]** that we use to embed the source data and then that question is going to go through our chain
+
+**[2741.70s → 2745.54s]** or LCEL, chaining through retrieve everything and provide a clear answer.
+
+**[2748.80s → 2753.84s]** This example that we're going to take a look at is based off of a example from Langchain itself
+
+**[2753.84s → 2759.12s]** So you all can take a look at this example as well.
+
+**[2759.12s → 2762.16s]** I do think birch controlling stuff is really important,
+
+**[2762.16s → 2766.08s]** like we've talked about before, the stuff is changing every day.
+
+**[2766.08s → 2768.72s]** And if not every day, at least once a month.
+
+**[2768.72s → 2773.34s]** So worth keeping it high out on major changes in this space.
+
+**[2773.34s → 2823.38s]** All right, so let's take a look at the notebook from today's class.
+
+**[2823.38s → 2829.62s]** I do just want to maybe talk a little bit about the different
+
+**[2829.62s → 2833.78s]** multimodal options that you could use.
+
+**[2833.78s → 2838.46s]** So, I'm searching to be four plus
+
+**[2838.46s → 2840.02s]** is it going to be multimodal,
+
+**[2841.50s → 2843.34s]** but there are other ways to do it.
+
+**[2843.34s → 2846.18s]** So the way we're going to do it today is using clip
+
+**[2846.18s → 2848.94s]** that all of that images and text together.
+
+**[2848.94s → 2851.70s]** Same thing, we're going to retrieve using similarity search
+
+**[2851.70s → 2855.02s]** in the same way that we used previous rag examples.
+
+**[2855.02s → 2858.26s]** And then we're going to pass the raw images and text chunks
+
+**[2858.26s → 2861.22s]** to a multimodal LLM for Anthr.
+
+**[2861.22s → 2864.38s]** Anthr, excuse me, Anthr synthesis.
+
+**[2865.50s → 2868.10s]** But there are other options on how to architect
+
+**[2868.10s → 2870.53s]** your multimodal rag.
+
+**[2870.53s → 2875.53s]** So option two would just be to use a straight multimodal LLM
+
+**[2876.53s → 2880.09s]** and produce text summaries from images and embed
+
+**[2880.09s → 2882.25s]** and retrieve those text summaries.
+
+**[2882.25s → 2885.73s]** So that's option two, option three would be to use
+
+**[2885.73s → 2890.14s]** same multi-model models and produced text and recruitment images,
+
+**[2890.14s → 2895.14s]** but then embedded retrieve image summaries with a reference to the raw image.
+
+**[2895.14s → 2900.62s]** That's what's different about option to.
+
+**[2900.62s → 2906.46s]** So the reason we're highlighting opt 1x because it's the easiest from a teaching example.
+
+**[2906.46s → 2913.84s]** So we're going to try and show the library unstructured pars images text and tables from PDFs.
+
+**[2913.84s → 2920.12s]** I saw unstructured at NVIDIA DTC this year and got to see a demo on the floor of their stuff.
+
+**[2920.12s → 2924.08s]** Really, really cool. I was very impressed with what they're doing in this space.
+
+**[2924.08s → 2930.92s]** Then we'll show a little bit about the information retrieval happening.
+
+**[2930.92s → 2945.16s]** So all the fun imports, all the data that we're taking a look at is in PDF text and images.
+
+**[2945.16s → 2949.05s]** So we're going to look at art from the Paul Getty Museum.
+
+**[2949.05s → 2952.87s]** Ashtardy extracted all this information for us.
+
+**[2952.87s → 2960.54s]** So you can take a look, but we can open it up so you can kind of get a sense of what's going on.
+
+**[2960.54s → 2973.22s]** By the way, the Getty Museum has a massive set of open source images.
+
+**[2973.22s → 2976.50s]** So definitely worth digging into if you are, you know,
+
+**[2976.50s → 2978.50s]** you really want to explore that space.
+
+**[2978.50s → 2983.10s]** Okay, so it's a nice,
+
+**[2983.10s → 2986.83s]** lovely book about all the master pieces in the Getty.
+
+**[2986.83s → 2997.92s]** And you all can scroll through the book.
+
+**[2997.92s → 3002.68s]** You want to know more, but it's going to have different style of paintings and information
+
+**[3002.68s → 3003.68s]** about the artist.
+
+**[3003.68s → 3014.97s]** Then we're also going to include famous photos and library of Congress, where I think unstructured
+
+**[3014.97s → 3020.13s]** is really magical or some of these functions like partitioned PDF.
+
+**[3020.13s → 3027.97s]** So instead of, if you've done text analytics before OCR before, it's actually very challenging
+
+**[3027.97s → 3032.34s]** to extract information from PDF documents.
+
+**[3032.34s → 3035.42s]** And so this partition PDF does a great job
+
+**[3035.42s → 3037.46s]** of figuring out how to divide your PDF up
+
+**[3037.46s → 3043.88s]** and extract those text and images in a nice, tidy way.
+
+**[3043.88s → 3045.44s]** There are a couple dependencies
+
+**[3045.44s → 3050.58s]** that unstructured it is going to use beneath the hood.
+
+**[3050.58s → 3055.62s]** Poplar and Tesseract, which need to be pre-installed
+
+**[3055.62s → 3058.10s]** because they're biogenetic and not necessarily
+
+**[3058.10s → 3065.65s]** Python packages, scrolling, scrolling,
+
+**[3073.76s → 3074.76s]** plot it and solve.
+
+**[3077.29s → 3078.49s]** All right, so our data,
+
+**[3079.24s → 3080.64s]** because all sitting in the art folder in their
+
+**[3080.64s → 3084.52s]** repository, and then we're going to partition our PDFs,
+
+**[3085.04s → 3088.68s]** loop through them, and then raw PDF elements is just
+
+**[3088.68s → 3093.66s]** going to be a lot of raw raw data.
+
+**[3094.56s → 3097.20s]** But we want to categorize those into different types.
+
+**[3097.20s → 3099.88s]** So we're going to categorize them into tables and text.
+
+**[3099.88s → 3106.44s]** So for each of the elements, if it's an element type table, if it's in composite elements,
+
+**[3106.44s → 3108.04s]** add those two together.
+
+**[3108.04s → 3110.56s]** This is actually really important.
+
+**[3110.56s → 3117.76s]** This is where we're deciding from the multimol perspective, we're using unstructured data
+
+**[3117.76s → 3121.84s]** elements that are adding in to figure out how to parse things out and appropriately embed
+
+**[3121.84s → 3126.20s]** them.
+
+**[3126.20s → 3131.00s]** Now we're getting into the actual embedding, so we've extracted the raw data.
+
+**[3131.00s → 3132.00s]** Yeah, sorry.
+
+**[3132.00s → 3133.06s]** Go ahead.
+
+**[3133.06s → 3135.06s]** Let's go and start to set up straight.
+
+**[3135.06s → 3138.06s]** Let's try to talk about documents, that elements, that table.
+
+**[3138.06s → 3141.28s]** What exactly does that have?
+
+**[3141.28s → 3143.76s]** Let's see.
+
+**[3143.76s → 3144.76s]** I'm sorry.
+
+**[3144.76s → 3146.76s]** Are you talking about this one or are you talking about this?
+
+**[3146.76s → 3147.76s]** Oh, yeah, 28.
+
+**[3147.76s → 3149.76s]** Yeah, that's so to the end.
+
+**[3149.76s → 3151.92s]** Yeah, some sort of path.
+
+**[3151.92s → 3153.92s]** So I'm trying to understand, like what is table.
+
+**[3153.92s → 3155.92s]** Where's composite element.
+
+**[3155.92s → 3157.53s]** Hmm.
+
+**[3157.53s → 3158.53s]** Totally. Yeah.
+
+**[3158.53s → 3161.53s]** So raw PDF elements is just the raw stuff that was extracted from part two.
+
+**[3161.53s → 3164.41s]** extracted from partition PDF.
+
+**[3164.41s → 3168.61s]** So you could think about it as partition PDF unstructured.
+
+**[3168.61s → 3170.09s]** I'd have to look at the documentation
+
+**[3170.09s → 3171.89s]** to know exactly how it works.
+
+**[3171.89s → 3173.71s]** But what it's going to do is just return
+
+**[3173.71s → 3179.49s]** a bunch of elements from the PDF that's figured out exist.
+
+**[3179.49s → 3182.93s]** And then those elements kind of like an XML document,
+
+**[3182.93s → 3188.41s]** or a HTML document, are going to have a path that you could follow.
+
+**[3188.41s → 3190.93s]** So if that element in the raw PDF elements
+
+**[3190.93s → 3195.96s]** is this type of element added in to our list of stuff.
+
+**[3197.72s → 3198.88s]** Oh, okay.
+
+**[3198.88s → 3201.60s]** Yeah, so they're like sort of,
+
+**[3201.60s → 3205.28s]** I guess, types of elements in a PDF.
+
+**[3205.28s → 3208.54s]** Right, exactly, you got it, okay.
+
+**[3208.54s → 3213.11s]** Yep.
+
+**[3213.11s → 3215.27s]** Nikita asks, how do I know when to use Clip Fast
+
+**[3215.27s → 3217.63s]** or the other types of vector stores
+
+**[3217.63s → 3221.67s]** or maybe you could benchmark each for your specific chain?
+
+**[3221.67s → 3223.83s]** Yeah, that's a great question.
+
+**[3223.83s → 3225.99s]** Well, Clip is an embedding model,
+
+**[3225.99s → 3228.07s]** so Clip is going to be what you use
+
+**[3229.60s → 3234.28s]** to actually transfer stuff into a dense spectrospace.
+
+**[3235.12s → 3238.64s]** Fast is going to be great for local storage.
+
+**[3238.64s → 3244.00s]** Ash is right though, most people lean on Chroma,
+
+**[3244.00s → 3249.00s]** but fast is also really, really simple too.
+
+**[3251.48s → 3258.94s]** Yeah, I'm pine cone is absolutely the cheapest.
+
+**[3258.94s → 3262.50s]** We see our developers do a bunch different stuff.
+
+**[3262.50s → 3267.92s]** We haven't settled on our enterprise vector store
+
+**[3267.92s → 3269.20s]** ourselves.
+
+**[3269.20s → 3284.95s]** So I know that that's kind of up in the air for us.
+
+**[3284.95s → 3287.51s]** So here's just a couple piece of information
+
+**[3287.51s → 3290.19s]** about the model that we're using,
+
+**[3290.19s → 3304.28s]** because there are many different versions of Clip.
+
+**[3304.28s → 3310.86s]** So we want to use the bigger model right now performance.
+
+**[3310.86s → 3314.54s]** So we're going to create our local vector store from Chroma,
+
+**[3314.54s → 3319.58s]** add in our open clip embeddings call,
+
+**[3319.58s → 3321.98s]** and then we're going to get our image URL
+
+**[3321.98s → 3326.36s]** as with the JPEG extensions only.
+
+**[3326.36s → 3328.00s]** Remember there are two data sets.
+
+**[3328.00s → 3330.44s]** There's the Getty PDF,
+
+**[3330.44s → 3333.12s]** and then there's the Library of Congress images.
+
+**[3333.12s → 3334.52s]** So what we're working with right here,
+
+**[3334.52s → 3337.12s]** the Library of Congress images.
+
+**[3337.12s → 3339.72s]** So we're going to add the images to the vector store,
+
+**[3339.72s → 3344.18s]** And then we're going to add the documents.
+
+**[3344.18s → 3348.82s]** And documents up here is going to be the text
+
+**[3348.82s → 3353.62s]** that we got from extracting the PDF.
+
+**[3353.62s → 3356.82s]** And then the retriever is going to be just a wrapper
+
+**[3356.82s → 3358.38s]** around the vector store.
+
+**[3358.38s → 3368.87s]** VectorStore is retriever.
+
+**[3368.87s → 3371.27s]** So now we're getting to the actual rag.
+
+**[3371.27s → 3374.35s]** So we've got vector store add images
+
+**[3374.35s → 3377.47s]** that'll actually upload the images that we extracted.
+
+**[3377.47s → 3383.86s]** So we got our getty images are already in there.
+
+**[3383.86s → 3388.86s]** The only kicker here is that when we add images to the vector store,
+
+**[3389.50s → 3392.50s]** they're going to be base 64 encoded strings.
+
+**[3393.70s → 3398.30s]** That's important for us because that needs as what can be passed to GTP for.
+
+**[3400.37s → 3402.93s]** So just make sure you're conscious of that.
+
+**[3403.49s → 3405.21s]** That's a pretty common web thing anyway.
+
+**[3405.21s → 3408.33s]** So I think many of you would think to do that already.
+
+**[3408.33s → 3418.31s]** There's nothing in here that's going to be too specific to us right now except split image text,
+
+**[3419.46s → 3424.58s]** where the documents that we got from our PDF parser, we're just going to go through the docs,
+
+**[3424.58s → 3430.82s]** extract the contents, and then append the basic 64 image to the vector store.
+
+**[3444.98s → 3447.86s]** Now this should look familiar, this is the code we used before.
+
+**[3447.86s → 3454.93s]** a very similar example. Our problem function is going to, we're going to take our dictionary
+
+**[3454.93s → 3465.74s]** with data, add an image to the message if it's present, and then add any text for analysis
+
+**[3465.74s → 3471.97s]** if there's any text in the original image present. And then our rag pipeline is going to look
+
+**[3471.97s → 3478.01s]** like context, retrieve the information that's a runable lambda, split image text types.
+
+**[3478.01s → 3485.74s]** So the runable pass through just means that the data is getting passed through from the previous step into the question.
+
+**[3485.74s → 3492.12s]** And then we're going down the next steps in the chain.
+
+**[3492.12s → 3515.18s]** Runable lambda, I think is really cool because we're not necessarily take a look back at split image text, right there doing a lambda function on top of all of that.
+
+**[3515.18s → 3525.18s]** So it's used the word vectorized, but it knows to apply that function across all of the list elements.
+
+**[3525.18s → 3545.82s]** And then finally, we're going to run our test retrieval rag.
+
+**[3545.82s → 3556.52s]** So just a quick, you know, this is more iphone, Jupiter stuff, but create an HTML image tag with a 64 string inside of it.
+
+**[3556.52s → 3559.52s]** So that way we can display the image.
+
+**[3559.52s → 3569.07s]** if it comes up. And then we're going to say retrieve women with children. That's the thing that we're
+
+**[3569.07s → 3578.67s]** ragging for, the query that we have. We're going to take up to K context windows. And this is the
+
+**[3578.67s → 3598.34s]** rag response that we got. I'm not sure what happened with that call with our chain.moke at the very end.
+
+**[3603.25s → 3608.61s]** Oh, that's just me because my file system on that one, I put the wrong one.
+
+**[3608.61s → 3612.37s]** So then it was going into random things where it wasn't vectorized, so that's the error that's probably
+
+**[3612.37s → 3625.02s]** shorter. Oh got it got it okay cool all right now I know there was a lot of really
+
+**[3625.02s → 3632.11s]** that's information. I just want to slow down and make sure people don't have questions
+
+**[3636.93s → 3640.61s]** key to ask does this work well for diagrams tables and other types of images you might see
+
+**[3640.61s → 3653.15s]** in technical documents. Ash already answered yes absolutely yep the only caveat I will say is
+
+**[3653.15s → 3659.07s]** is depends on what your diagrams are and how well you can
+
+**[3659.07s → 3660.39s]** represent them as an embedding.
+
+**[3660.39s → 3662.03s]** That's the kicker.
+
+**[3662.03s → 3668.46s]** So let's say you're dealing with a complex engineering
+
+**[3668.46s → 3676.39s]** diagram or like an architectural diagram,
+
+**[3676.39s → 3680.91s]** that may be harder to represent as an embedding.
+
+**[3680.91s → 3683.83s]** Only then I'll be active area of research on that.
+
+**[3683.83s → 3689.50s]** So just things to think about.
+
+**[3689.50s → 3694.30s]** But yes, for just traditional diagrams, absolutely,
+
+**[3694.30s → 3703.75s]** especially where the diagram is an image.
+
+**[3703.75s → 3705.71s]** Sorry, I'm still on the image diagram thing.
+
+**[3705.71s → 3710.21s]** So my last thought on that too is, let's say
+
+**[3710.21s → 3714.85s]** you have a lot of images of diagrams, like thousands
+
+**[3714.85s → 3717.45s]** or hundreds of thousands.
+
+**[3717.45s → 3721.65s]** It might make sense to tune your own embedding model
+
+**[3721.65s → 3724.59s]** on those particular images.
+
+**[3724.59s → 3729.15s]** So you could probably fine tune a pre-existing embedding model.
+
+**[3729.15s → 3731.43s]** It would probably be the best way to do it.
+
+**[3731.43s → 3741.49s]** It's that way you could increase the performance of your model.
+
+**[3741.49s → 3742.73s]** How would you go about that?
+
+**[3742.73s → 3747.07s]** Yeah.
+
+**[3747.07s → 3749.11s]** It kind of depends on which embedding model you're using,
+
+**[3749.11s → 3754.71s]** but that's where you're getting into probably pie towards
+
+**[3754.71s → 3760.79s]** your most people and you're taking into preset weights
+
+**[3760.79s → 3762.99s]** and finallyening.
+
+**[3762.99s → 3764.63s]** I've never used it, but I'm pretty
+
+**[3764.63s → 3772.63s]** sure hugging face has some handy tools to help fine tune models as well. Like the API calls are pretty straightforward.
+
+**[3772.63s → 3784.76s]** Although I haven't used them myself. So there's like a the way I would do it as easy, but I think the way I would do it is probably like two or three years old in terms of API calls.
+
+**[3784.76s → 3787.76s]** I think there's probably easier ways to do it today.
+
+**[3787.76s → 3796.09s]** I have a somewhat topic question actually.
+
+**[3796.09s → 3799.46s]** I don't know if they're like more slides.
+
+**[3799.46s → 3801.70s]** So I can also ask after class.
+
+**[3801.70s → 3803.26s]** Yeah, let's just go back.
+
+**[3803.26s → 3806.34s]** I think there's talk a little bit about your homework for
+
+**[3806.34s → 3811.00s]** this week on the early end.
+
+**[3811.00s → 3813.72s]** We didn't cover this slide,
+
+**[3813.72s → 3817.57s]** but I will just try and glance over this.
+
+**[3817.57s → 3821.53s]** So useful LCEL techniques.
+
+**[3821.53s → 3827.53s]** So you saw this in the example, but the land does creating a runable parallel with the runable pass through.
+
+**[3827.53s → 3834.53s]** That's going to allow us to basically do a bunch of operations and parallel together.
+
+**[3834.53s → 3845.39s]** So like if I'm adding numbers together, like multiplying them by three, I can run all of these pass through examples together.
+
+**[3845.39s → 3850.85s]** And when I run the chain, the output's going to be fast.
+
+**[3850.85s → 3855.70s]** That way I'm not doing all this operation sequence.
+
+**[3855.70s → 3858.74s]** Streaming is going to be a retrieval chain that retrieves
+
+**[3858.74s → 3862.42s]** context and questions being runnable pass through.
+
+**[3862.42s → 3864.74s]** And it's going to sign the output to a generation chain
+
+**[3864.74s → 3869.54s]** and print each chunk for the question where did Byron work.
+
+**[3869.54s → 3872.62s]** So sometimes I've seen this streaming used in Rags
+
+**[3872.62s → 3876.02s]** as like it's writing the response
+
+**[3876.02s → 3877.66s]** and retrieve that context.
+
+**[3879.73s → 3884.36s]** So you might wanna do that in a more complex example
+
+**[3886.25s → 3888.17s]** so that way you're getting intermediate output
+
+**[3888.17s → 3889.29s]** as it's writing.
+
+**[3897.30s → 3901.65s]** So your homework this week is going to be to create a chain.
+
+**[3901.65s → 3903.05s]** That's gonna take a review for a movie
+
+**[3903.05s → 3905.33s]** and pass it onto two different LLMs
+
+**[3905.33s → 3907.13s]** for sentiment analysis.
+
+**[3907.13s → 3911.36s]** So what you wanna do with the chain is actually compare
+
+**[3911.36s → 3915.36s]** to see if the output is the same between the two different models.
+
+**[3915.36s → 3919.36s]** And then try and run a third L and if they don't,
+
+**[3919.36s → 3921.68s]** equate so you can break the tie.
+
+**[3921.68s → 3924.90s]** So you could try that for something really simple,
+
+**[3924.90s → 3930.90s]** like you've got Mail Review or pick another movie if you want.
+
+**[3930.90s → 3935.90s]** I would definitely try and use data that has both POSO and negative words
+
+**[3935.90s → 3938.06s]** and play with it a little bit.
+
+**[3938.06s → 3941.76s]** And then also just try a couple of different
+
+**[3941.76s → 3944.48s]** movie reviews. So write your chain, go and
+
+**[3944.48s → 3947.36s]** rot in tomatoes and like copy and paste
+
+**[3947.36s → 3965.47s]** a couple different examples.
+
+**[3965.47s → 3968.67s]** We all let's transition into the
+
+**[3968.67s → 3972.75s]** office hour questions. So happy to answer questions about today's content
+
+**[3972.75s → 3976.59s]** or other questions that you all have about gendered AI.
+
+**[3976.59s → 3981.63s]** So the floor is yours. We all want to talk about.
+
+**[3981.63s → 3984.60s]** Yeah, not topic questions. So
+
+**[3984.60s → 3991.16s]** Oh, I guess I was curious about we may have talked about the flash pass. What reasons to go there for like converting
+
+**[3991.96s → 3997.85s]** text into like summary diagrams. I'm asking for personal reasons. I'm playing the
+
+**[3997.85s → 4003.13s]** tabletop game and some of the rules are very complicated and it'd be very nice to be able to like
+
+**[4004.24s → 4010.08s]** convert some of those rules into like just straight up diagrams. So yeah, just curious what
+
+**[4010.08s → 4020.16s]** least is out there for doing that. That's a super interesting problem. I don't think I've seen anything
+
+**[4021.93s → 4030.64s]** like that that immediately leaves out at me. I can maybe make some educated guesses, but I haven't
+
+**[4030.64s → 4035.76s]** seen anything where you're extracting a graph because that's the problem that you're dealing with
+
+**[4035.76s → 4043.12s]** right is extracting a graph from the text using an LLM. I've seen some stuff that's done it
+
+**[4043.12s → 4052.30s]** with traditional NLP but that's brutal. But maybe you could do an agent to reason through some of the
+
+**[4052.30s → 4060.54s]** rules too. This may be the way I would approach it. I'm not sure if that's the best way to approach it
+
+**[4060.54s → 4065.18s]** to. I'll be in the same boat as you trying to research and figure out how to address that.
+
+**[4065.18s → 4067.74s]** unless other people have heard of stuff.
+
+**[4067.74s → 4068.70s]** I make that.
+
+**[4068.70s → 4070.70s]** My back in the intelligence like research,
+
+**[4070.70s → 4074.81s]** how to make it more concise.
+
+**[4076.08s → 4078.24s]** No, I mean, I think what JC said too,
+
+**[4078.24s → 4081.36s]** you make one tool for extracting the data,
+
+**[4081.36s → 4082.80s]** another tool for summarizing,
+
+**[4082.80s → 4084.64s]** and then you connect it to a map plot
+
+**[4084.64s → 4086.16s]** lib for the graphic.
+
+**[4086.16s → 4086.88s]** I think it's possible.
+
+**[4090.51s → 4093.39s]** Also, there's a diagram in the language you can connect it to.
+
+**[4093.39s → 4095.55s]** You make a tool for the diagram in language as well.
+
+**[4095.55s → 4105.09s]** If you have a template for a table, you can also fill in the template and just ask the
+
+**[4105.09s → 4106.59s]** LLM to fill in.
+
+**[4106.59s → 4107.59s]** A template?
+
+**[4107.59s → 4108.59s]** Yeah.
+
+**[4108.59s → 4109.59s]** That's so awesome.
+
+**[4109.59s → 4115.63s]** What I've seen before is does everybody know teachers pay teachers?
+
+**[4115.63s → 4118.11s]** The website for work sheets that teachers sell each other.
+
+**[4118.11s → 4119.27s]** I don't know if you guys know this.
+
+**[4119.27s → 4124.03s]** But what a lot of people are doing now, at least for elementary school, is they'll take
+
+**[4124.03s → 4128.03s]** a worksheet for like a fifth grade class and it's just a template. And they just make
+
+**[4128.67s → 4133.39s]** a hundred worksheets on different topics using one template. So you can make any template you
+
+**[4133.39s → 4138.11s]** want and then just fill in the information and have the LOM fill in the information. You can use
+
+**[4138.11s → 4144.43s]** like a pdpdf to just fill in the information. Or you can actually just type it in. But yeah,
+
+**[4144.43s → 4150.22s]** that's what I would do. Templates are tools to extract data that summarize and then graph.
+
+**[4150.22s → 4160.61s]** Yeah. And then there are tools that are, so like most all limbs output text and markdown. So,
+
+**[4161.97s → 4167.25s]** if you wanted to create a graph to you could take a look at something like Mermaid or X-Caladrol,
+
+**[4167.25s → 4173.81s]** both of which are marked down specifications for graphs, which would be another good way to
+
+**[4173.81s → 4180.29s]** look at things too. I really like X-Caladrol. I think Mermaid's a little bit harder to use for my
+
+**[4180.29s → 4187.57s]** experience but the graphs are more complicated. Oh, I'm just seeing this chat. Anthony, I love
+
+**[4187.57s → 4201.28s]** that the thing you built is these are my main. See, I saw a question from Kia. The interest in
+
+**[4201.28s → 4206.96s]** the examples of change used for particular dev workflows and practice for things like code
+
+**[4206.96s → 4221.87s]** reviews. I haven't seen people use chains for code reviews, although at least at LN, but you
+
+**[4221.87s → 4225.39s]** definitely could use it to do that really. That would actually be a really, really good use case.
+
+**[4228.46s → 4236.62s]** I've, we use a lot of chains for automating non-depth task, but like just stuff that has a lot of data
+
+**[4236.62s → 4245.46s]** that's text like blog posts, like our one of our blogs that we run internally is marked on
+
+**[4245.46s → 4252.66s]** based. So we would use something like a chain to take a look at the text and suggest edits
+
+**[4253.78s → 4260.53s]** as a chain we've run before. So that way anytime someone creates a pull request or creates a new
+
+**[4260.53s → 4267.09s]** piece of content and just creates suggestions for them because in mark down you obviously don't have
+
+**[4267.09s → 4273.09s]** the same grammar controls as you might and you know, Microsoft Word or something like that.
+
+**[4273.09s → 4324.70s]** What are the questions you'll have? I feel like Ash might be better equipped to answer this one
+
+**[4324.70s → 4328.70s]** to Keita, but I think for the movie you need to just include the text, but I think a great
+
+**[4328.70s → 4348.05s]** stretch probably to include the video frames. I think for the code review question there's someone
+
+**[4348.05s → 4355.65s]** in GoHor one who made a graph that every time one of their teammates merges something into the repo,
+
+**[4355.65s → 4358.97s]** It does like a or it tries to open up a pull request.
+
+**[4358.97s → 4362.21s]** It reviews it, but based on their documentation,
+
+**[4362.21s → 4364.61s]** but it's not a very simple chain.
+
+**[4364.61s → 4367.25s]** Rather, it's a graph with a bunch of nodes on it,
+
+**[4367.25s → 4369.45s]** and the nodes are individual chains.
+
+**[4369.45s → 4373.17s]** I think chains are still very a little too simple.
+
+**[4373.17s → 4375.89s]** I think we're going to get to something more complex.
+
+**[4375.89s → 4378.37s]** But when we do get to the thing that's more complex,
+
+**[4378.37s → 4380.77s]** we'll be able to see the workflow from N10.
+
+**[4380.77s → 4402.38s]** But I'll share that video out with the rest of the class right now.
+
+**[4402.38s → 4406.54s]** bully all of there aren't any other questions we'll close out for tonight.
+
+**[4407.74s → 4414.79s]** Thanks for coming to class and have fun and homework this week and I will see you all on Wednesday.
+
+**[4419.98s → 4421.98s]** Thanks everybody.
+

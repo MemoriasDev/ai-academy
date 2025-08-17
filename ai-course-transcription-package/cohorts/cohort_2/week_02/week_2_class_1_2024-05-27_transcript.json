@@ -1,0 +1,18 @@
+{
+  "source_file": "../cohorts/cohort_2/week_02/week_2_class_1_2024-05-27.mp4",
+  "output_file": "../cohorts/cohort_2/week_02/week_2_class_1_2024-05-27_transcript.txt",
+  "file_hash": "ecadf737dc6242b5d1ef6f3a0d77d489",
+  "file_size": 464618774,
+  "language": "en",
+  "language_probability": 1.0,
+  "duration_seconds": 6215.68,
+  "model_used": "base",
+  "segment_count": 1330,
+  "transcription_timestamp": "2025-08-13 18:28:09",
+  "processing_time_seconds": 0,
+  "custom_metadata": {
+    "cohort": "cohorts",
+    "week": "week_02",
+    "file_name": "week_2_class_1_2024-05-27.mp4"
+  }
+}

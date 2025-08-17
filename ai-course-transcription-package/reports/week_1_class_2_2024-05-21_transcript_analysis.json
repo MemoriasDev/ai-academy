@@ -1,0 +1,1936 @@
+{
+  "session_info": {
+    "cohort": "cohorts",
+    "week": "week_01",
+    "title": "Cohorts - Week 01",
+    "duration": 2943.87,
+    "summary": "Session covered 14 key principles across 6 categories. Main focus areas: control_flow (6 concepts), tools (2 concepts), data_structures (2 concepts). Included 169 instructional segments."
+  },
+  "learning_principles": [
+    {
+      "title": "Ide Concept",
+      "description": "not a good idea to do that in real world terms but I've just unmatched quickly. Get it shown.",
+      "category": "tools",
+      "keywords": [
+        "ide"
+      ],
+      "timestamp_start": 129.86,
+      "timestamp_end": 134.9,
+      "context": "the import system. So we're actually importing OS so we can grab a key from the .emv. At this point I'm not doing that in the collab. I'm just kind of hard-coded in it. So it's probably not a good idea to do that in real world terms but I've just unmatched quickly. Get it shown. And again loading th...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Set Concept",
+      "description": "sort of like show that we've definitely got that set.",
+      "category": "data_structures",
+      "keywords": [
+        "set"
+      ],
+      "timestamp_start": 182.41,
+      "timestamp_end": 184.73,
+      "context": "that's been dropped in the chat by Ash. For now, I'll just print the API key to make it, sort of like show that we've definitely got that set. So I'll just click on this one and run it one more time, just to make sure all the imports are in.",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Sort Concept",
+      "description": "sort of like show that we've definitely got that set.",
+      "category": "algorithms",
+      "keywords": [
+        "sort"
+      ],
+      "timestamp_start": 182.41,
+      "timestamp_end": 184.73,
+      "context": "that's been dropped in the chat by Ash. For now, I'll just print the API key to make it, sort of like show that we've definitely got that set. So I'll just click on this one and run it one more time, just to make sure all the imports are in.",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Exception Concept",
+      "description": "So we have a tricatch block because this could generate an exception.",
+      "category": "control_flow",
+      "keywords": [
+        "exception"
+      ],
+      "timestamp_start": 304.37,
+      "timestamp_end": 309.25,
+      "context": "Now prompt is a variable that's been passed in along with the engine. So this is part of the overall building blocks of it. So we have a tricatch block because this could generate an exception. So we want to kind of catch that exception if it happens just to clean the and gracefully move out of it.",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Catch Concept",
+      "description": "So we have a tricatch block because this could generate an exception.",
+      "category": "control_flow",
+      "keywords": [
+        "catch"
+      ],
+      "timestamp_start": 304.37,
+      "timestamp_end": 309.25,
+      "context": "Now prompt is a variable that's been passed in along with the engine. So this is part of the overall building blocks of it. So we have a tricatch block because this could generate an exception. So we want to kind of catch that exception if it happens just to clean the and gracefully move out of it.",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "For Concept",
+      "description": "how many times do we want to kind of generate a response for whatever prompt we give it. So in this",
+      "category": "control_flow",
+      "keywords": [
+        "for"
+      ],
+      "timestamp_start": 333.78,
+      "timestamp_end": 341.18,
+      "context": "also wants to know how many of the maximum tokens that we want to use. So we can kind of tweak that a little bit. 150 seems to work out as a general basis to start with. The end is basically how many times do we want to kind of generate a response for whatever prompt we give it. So in this case, we'...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "If Concept",
+      "description": "So we're going to take the end area because if you think about it's going okay give me",
+      "category": "control_flow",
+      "keywords": [
+        "if"
+      ],
+      "timestamp_start": 883.42,
+      "timestamp_end": 887.98,
+      "context": "a single word so we're using it as a corpus, so we're using that complex to test as our corpus then we're jumping over every single word in the reverse of those complexity words. So we're going to take the end area because if you think about it's going okay give me the complexity score so it'll be n...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Return Concept",
+      "description": "are a digit so if they're numbers we want to return that word as an integer because that",
+      "category": "control_flow",
+      "keywords": [
+        "return"
+      ],
+      "timestamp_start": 900.21,
+      "timestamp_end": 906.08,
+      "context": "the complexity score so it'll be near the end hopefully when it's being generated. So at this point we're going to reverse sort of read through it and if any of those words are a digit so if they're numbers we want to return that word as an integer because that will be the complexity score based upo...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Git Concept",
+      "description": "are a digit so if they're numbers we want to return that word as an integer because that",
+      "category": "tools",
+      "keywords": [
+        "git"
+      ],
+      "timestamp_start": 900.21,
+      "timestamp_end": 906.08,
+      "context": "the complexity score so it'll be near the end hopefully when it's being generated. So at this point we're going to reverse sort of read through it and if any of those words are a digit so if they're numbers we want to return that word as an integer because that will be the complexity score based upo...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Function Concept",
+      "description": "So that's the reason why we're making these sort of functionalities",
+      "category": "concepts",
+      "keywords": [
+        "function"
+      ],
+      "timestamp_start": 1205.57,
+      "timestamp_end": 1208.13,
+      "context": "so we can say, hey, can you summarise everything we spoke about today in a single summary? and assess conversational complexity dynamically. So that's the reason why we're making these sort of functionalities to kind of give this some sort of utility as such. Without making tooling,",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Functional Concept",
+      "description": "So that's the reason why we're making these sort of functionalities",
+      "category": "paradigms",
+      "keywords": [
+        "functional"
+      ],
+      "timestamp_start": 1205.57,
+      "timestamp_end": 1208.13,
+      "context": "so we can say, hey, can you summarise everything we spoke about today in a single summary? and assess conversational complexity dynamically. So that's the reason why we're making these sort of functionalities to kind of give this some sort of utility as such. Without making tooling,",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Try Concept",
+      "description": "That's just because we're trying to keep it real simple",
+      "category": "control_flow",
+      "keywords": [
+        "try"
+      ],
+      "timestamp_start": 1965.8,
+      "timestamp_end": 1969.0,
+      "context": "should go in one direction or not. Right now I've just made it 50. That's just because we're trying to keep it real simple to show you guys, but the thought process here is, but you guys can play with that.",
+      "difficulty_level": "beginner",
+      "code_examples": []
+    },
+    {
+      "title": "Graph Concept",
+      "description": "So the answer is, how do you do it in production? You use Lenggraph, but",
+      "category": "data_structures",
+      "keywords": [
+        "graph"
+      ],
+      "timestamp_start": 2870.71,
+      "timestamp_end": 2873.59,
+      "context": "And so once that generation is complete, then you're able to then maintain that memory without having anything to lose. So the answer is, how do you do it in production? You use Lenggraph, but and there are definitely methods that are we'll talk about how to make sure that accuracy is good. But next...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Method Concept",
+      "description": "and there are definitely methods that are we'll talk about how to make sure that accuracy is good.",
+      "category": "concepts",
+      "keywords": [
+        "method"
+      ],
+      "timestamp_start": 2874.47,
+      "timestamp_end": 2878.71,
+      "context": "then you're able to then maintain that memory without having anything to lose. So the answer is, how do you do it in production? You use Lenggraph, but and there are definitely methods that are we'll talk about how to make sure that accuracy is good. But next week, we'll talk about just using some r...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    }
+  ],
+  "instruction_segments": [
+    {
+      "step_number": 1,
+      "instruction": "All right, so here's how office hours works.",
+      "timestamp_start": 3.38,
+      "timestamp_end": 6.74,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 2,
+      "instruction": "we'll take the take home activity at the end of last lecture.",
+      "timestamp_start": 8.98,
+      "timestamp_end": 12.26,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 3,
+      "instruction": "We're going to do that with you in the beginning of the session.",
+      "timestamp_start": 17.98,
+      "timestamp_end": 20.42,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 4,
+      "instruction": "Then we open it up for any questions that you guys may have.",
+      "timestamp_start": 20.42,
+      "timestamp_end": 24.9,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 5,
+      "instruction": "You guys can then ask any questions regarding the course itself,",
+      "timestamp_start": 24.9,
+      "timestamp_end": 29.54,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 6,
+      "instruction": "And then usually it takes about 40 minutes to an hour.",
+      "timestamp_start": 35.3,
+      "timestamp_end": 38.34,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 7,
+      "instruction": "But that's the plan for today. I'm going to hand it up to Tom first,",
+      "timestamp_start": 44.66,
+      "timestamp_end": 48.1,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 8,
+      "instruction": "initial stuff, you'll kind of want to make your virtual environment first like it says in the",
+      "timestamp_start": 101.82,
+      "timestamp_end": 106.86,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 9,
+      "instruction": "readme and then do a pip install or requirements to the requirements file and that will grab all of",
+      "timestamp_start": 106.86,
+      "timestamp_end": 113.02,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 10,
+      "instruction": "the bits and pieces and the stuff to actually make this work. Then you want to kind of look at the",
+      "timestamp_start": 113.02,
+      "timestamp_end": 121.38,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 11,
+      "instruction": "And again loading the load.emv from .emv to kind of load it in. And then we're importing OpenAI.",
+      "timestamp_start": 136.04,
+      "timestamp_end": 143.24,
+      "action_type": "instruction",
+      "related_concepts": [
+        "import"
+      ],
+      "code_snippets": [
+        "load.emv"
+      ]
+    },
+    {
+      "step_number": 12,
+      "instruction": "Now obviously under real world circumstances later on you'd probably be using something like",
+      "timestamp_start": 143.24,
+      "timestamp_end": 147.88,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 13,
+      "instruction": "but right now we haven't actually introduced it,",
+      "timestamp_start": 147.88,
+      "timestamp_end": 150.32,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 14,
+      "instruction": "so we're pretending that doesn't exist right now.",
+      "timestamp_start": 150.32,
+      "timestamp_end": 153.52,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 15,
+      "instruction": "So we're going to import OpenAI,",
+      "timestamp_start": 153.52,
+      "timestamp_end": 155.56,
+      "action_type": "instruction",
+      "related_concepts": [
+        "import"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 16,
+      "instruction": "Then if you've got this inside a .emv file,",
+      "timestamp_start": 160.55,
+      "timestamp_end": 164.39,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 17,
+      "instruction": "and then you'll be basically pulling in the API key",
+      "timestamp_start": 166.19,
+      "timestamp_end": 169.55,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 18,
+      "instruction": "For now, I'll just print the API key to make it,",
+      "timestamp_start": 180.05,
+      "timestamp_end": 182.41,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 19,
+      "instruction": "We'll just load in the API key.",
+      "timestamp_start": 190.05,
+      "timestamp_end": 192.57,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 20,
+      "instruction": "Then we'll make sure that the API key is there,",
+      "timestamp_start": 192.57,
+      "timestamp_end": 194.53,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 21,
+      "instruction": "So the next thing is we need to work on a function",
+      "timestamp_start": 197.25,
+      "timestamp_end": 199.97,
+      "action_type": "instruction",
+      "related_concepts": [
+        "function"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 22,
+      "instruction": "So now we want it to return a string,",
+      "timestamp_start": 227.79,
+      "timestamp_end": 230.75,
+      "action_type": "instruction",
+      "related_concepts": [
+        "return"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 23,
+      "instruction": "So we take a look at the implementation",
+      "timestamp_start": 235.28,
+      "timestamp_end": 237.0,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 24,
+      "instruction": "to kind of be GPT-3 turbo for now,",
+      "timestamp_start": 244.68,
+      "timestamp_end": 247.26,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 25,
+      "instruction": "Now prompt is a variable that's been passed in along with the engine.",
+      "timestamp_start": 294.49,
+      "timestamp_end": 300.12,
+      "action_type": "instruction",
+      "related_concepts": [
+        "variable"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 26,
+      "instruction": "also wants to know how many of the maximum tokens that we want to use. So we can kind of tweak",
+      "timestamp_start": 322.61,
+      "timestamp_end": 327.41,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 27,
+      "instruction": "response and then have the user kind of decide on a weighted average of what sort of response",
+      "timestamp_start": 349.98,
+      "timestamp_end": 355.86,
+      "action_type": "instruction",
+      "related_concepts": [
+        "sort",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 28,
+      "instruction": "chat completion then it will just send us none. We can decide what we want to send back",
+      "timestamp_start": 364.66,
+      "timestamp_end": 369.58,
+      "action_type": "instruction",
+      "related_concepts": [
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 29,
+      "instruction": "fine. And then the temperature, we're keeping it a fair medium sort of temperature. We're",
+      "timestamp_start": 375.3,
+      "timestamp_end": 380.98,
+      "action_type": "instruction",
+      "related_concepts": [
+        "sort"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 30,
+      "instruction": "basic sort of thing to gain us a response. Now we would possibly come up with a problem",
+      "timestamp_start": 390.88,
+      "timestamp_end": 398.86,
+      "action_type": "instruction",
+      "related_concepts": [
+        "sort"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 31,
+      "instruction": "response and we won't have choices so we're going to get some errors. So what we need to do is make sure",
+      "timestamp_start": 407.38,
+      "timestamp_end": 413.3,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 32,
+      "instruction": "response then we're going to return a choice 0 which is the first choice in this case it's only",
+      "timestamp_start": 420.05,
+      "timestamp_end": 427.14,
+      "action_type": "instruction",
+      "related_concepts": [
+        "return"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 33,
+      "instruction": "got one anyway and then give us the message but gives the content of the message what we're going to",
+      "timestamp_start": 427.14,
+      "timestamp_end": 431.65,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 34,
+      "instruction": "let it know, let us know that it's had an unexpected response format and then give us kind of what",
+      "timestamp_start": 444.54,
+      "timestamp_end": 448.94,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 35,
+      "instruction": "working. The other unhappy case we need to deal with is if there's an exception, I'm kind of",
+      "timestamp_start": 463.82,
+      "timestamp_end": 467.82,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if",
+        "exception"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 36,
+      "instruction": "probably want to have more of them down here. Just for now, I've just done a catch-all exception",
+      "timestamp_start": 478.22,
+      "timestamp_end": 483.33,
+      "action_type": "instruction",
+      "related_concepts": [
+        "catch",
+        "for",
+        "exception"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 37,
+      "instruction": "just falls out and we fall down here, we just return an empty string. So we don't, you know,",
+      "timestamp_start": 488.29,
+      "timestamp_end": 493.57,
+      "action_type": "instruction",
+      "related_concepts": [
+        "return"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 38,
+      "instruction": "questions or anything about this before we move on to the next one? Specifically for this function?",
+      "timestamp_start": 506.9,
+      "timestamp_end": 512.1,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if",
+        "function"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 39,
+      "instruction": "is that what we're going to use?",
+      "timestamp_start": 524.43,
+      "timestamp_end": 527.43,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 40,
+      "instruction": "we'll probably use newer stuff.",
+      "timestamp_start": 532.43,
+      "timestamp_end": 533.43,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 41,
+      "instruction": "So literally next week we'll be using newer versions.",
+      "timestamp_start": 544.43,
+      "timestamp_end": 546.43,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 42,
+      "instruction": "So just on the sort of times or constraints, we're going to move forward and move on to the next function that we're going to be talking about.",
+      "timestamp_start": 579.89,
+      "timestamp_end": 587.89,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "sort",
+        "function"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 43,
+      "instruction": "The next freestanding function we've got here is create summarized text function.",
+      "timestamp_start": 587.89,
+      "timestamp_end": 591.89,
+      "action_type": "instruction",
+      "related_concepts": [
+        "function"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 44,
+      "instruction": "Engine what we're going to use for the summarization and then what it returns is a simple summary of the input text",
+      "timestamp_start": 612.31,
+      "timestamp_end": 618.47,
+      "action_type": "review",
+      "related_concepts": [
+        "for",
+        "return"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 45,
+      "instruction": "so I don't know whether there'll be any questions for this,",
+      "timestamp_start": 709.25,
+      "timestamp_end": 710.89,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 46,
+      "instruction": "So again, we're going to create another setup.",
+      "timestamp_start": 729.6,
+      "timestamp_end": 731.68,
+      "action_type": "instruction",
+      "related_concepts": [
+        "set"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 47,
+      "instruction": "We're going to create another free standing function.",
+      "timestamp_start": 731.68,
+      "timestamp_end": 734.24,
+      "action_type": "instruction",
+      "related_concepts": [
+        "function"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 48,
+      "instruction": "So we're going to be only showing you kind",
+      "timestamp_start": 747.28,
+      "timestamp_end": 750.52,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 49,
+      "instruction": "pattern here the engine so it's going to take in the engine to identify what we're going to be",
+      "timestamp_start": 771.06,
+      "timestamp_end": 776.66,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 50,
+      "instruction": "used to assess the complexity. Then it's going to just return a simple integer representing the",
+      "timestamp_start": 776.66,
+      "timestamp_end": 782.74,
+      "action_type": "instruction",
+      "related_concepts": [
+        "return"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 51,
+      "instruction": "So, a possible way of implementing this based upon this criteria would be first creating",
+      "timestamp_start": 787.62,
+      "timestamp_end": 796.87,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 52,
+      "instruction": "complexity prompt, so we'll say assess the complexity of this conversation.",
+      "timestamp_start": 796.87,
+      "timestamp_end": 802.9,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 53,
+      "instruction": "and then we expect to get a complexity score.",
+      "timestamp_start": 811.97,
+      "timestamp_end": 814.73,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 54,
+      "instruction": "So the thing here is the history and everything, we're going to be using that prompt to initially",
+      "timestamp_start": 820.75,
+      "timestamp_end": 827.71,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 55,
+      "instruction": "start it, we're going to then generate a response, utilizing the complexity prompt and passing",
+      "timestamp_start": 827.71,
+      "timestamp_end": 834.78,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 56,
+      "instruction": "So we'll have some text with, okay, here's the complexity of this stuff.",
+      "timestamp_start": 835.78,
+      "timestamp_end": 841.96,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 57,
+      "instruction": "So we'll have a bunch of text here with some verbose information, some text, but somewhere",
+      "timestamp_start": 841.96,
+      "timestamp_end": 847.86,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 58,
+      "instruction": "hey this is how complex it is, it might have a 50, it might have a 35, it might have a",
+      "timestamp_start": 852.62,
+      "timestamp_end": 857.06,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 59,
+      "instruction": "So that's the number what we're going to be using and to extract that number we can",
+      "timestamp_start": 861.04,
+      "timestamp_end": 865.24,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 60,
+      "instruction": "corpus then we're jumping over every single word in the reverse of those complexity words.",
+      "timestamp_start": 876.58,
+      "timestamp_end": 883.42,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 61,
+      "instruction": "So we're going to take the end area because if you think about it's going okay give me",
+      "timestamp_start": 883.42,
+      "timestamp_end": 887.98,
+      "action_type": "explanation",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 62,
+      "instruction": "So at this point we're going to reverse sort of read through it and if any of those words",
+      "timestamp_start": 894.89,
+      "timestamp_end": 900.21,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if",
+        "sort"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 63,
+      "instruction": "the end, which means we'll get to it faster by looking at it in reverse. If we get to",
+      "timestamp_start": 912.4,
+      "timestamp_end": 920.56,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 64,
+      "instruction": "of 20. Now this is completely arbitrary, we could change this to tweak it now and then, but that's",
+      "timestamp_start": 926.8,
+      "timestamp_end": 933.04,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 65,
+      "instruction": "That's just what we decided to just put there for now.",
+      "timestamp_start": 933.04,
+      "timestamp_end": 936.34,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 66,
+      "instruction": "But for now, sort of defaulting it",
+      "timestamp_start": 942.82,
+      "timestamp_end": 944.46,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "sort"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 67,
+      "instruction": "or any of it and then the stuff in it",
+      "timestamp_start": 955.44,
+      "timestamp_end": 958.56,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 68,
+      "instruction": "to say, if we have something to a certain complexity, then we want to automatically summarize it.",
+      "timestamp_start": 975.21,
+      "timestamp_end": 981.81,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 69,
+      "instruction": "So we're giving it a general idea of if it's too complex, then we want to summarize it",
+      "timestamp_start": 981.81,
+      "timestamp_end": 986.13,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 70,
+      "instruction": "So, what we probably would do is work out, for example,",
+      "timestamp_start": 1031.86,
+      "timestamp_end": 1035.34,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 71,
+      "instruction": "So see how we've got a max tokens.",
+      "timestamp_start": 1038.1,
+      "timestamp_end": 1039.9,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 72,
+      "instruction": "if we're going to kind of get cut off at some point",
+      "timestamp_start": 1046.65,
+      "timestamp_end": 1050.13,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 73,
+      "instruction": "If we don't want it to just be cut mid-sentence, for instance.",
+      "timestamp_start": 1051.13,
+      "timestamp_end": 1055.81,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 74,
+      "instruction": "So now, if we want to, we're just basically calling this.",
+      "timestamp_start": 1097.45,
+      "timestamp_end": 1101.09,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 75,
+      "instruction": "if it's got more than the amount of the Mac tokens can handle, then summarize.",
+      "timestamp_start": 1127.47,
+      "timestamp_end": 1133.14,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 76,
+      "instruction": "Okay. Let's see what else we got.",
+      "timestamp_start": 1155.63,
+      "timestamp_end": 1157.47,
+      "action_type": "instruction",
+      "related_concepts": [
+        "else"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 77,
+      "instruction": "We've got a whole class to look at.",
+      "timestamp_start": 1158.63,
+      "timestamp_end": 1160.11,
+      "action_type": "instruction",
+      "related_concepts": [
+        "class"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 78,
+      "instruction": "So now to utilize these functions,",
+      "timestamp_start": 1161.28,
+      "timestamp_end": 1164.48,
+      "action_type": "instruction",
+      "related_concepts": [
+        "function"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 79,
+      "instruction": "are off-screen, just to give us a bit of space. So now this summarisation chatbot, or summarising",
+      "timestamp_start": 1178.99,
+      "timestamp_end": 1190.74,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 80,
+      "instruction": "because we'll talk about tooling further on down the line.",
+      "timestamp_start": 1212.69,
+      "timestamp_end": 1218.53,
+      "action_type": "explanation",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 81,
+      "instruction": "So the first parameter again, I'll just explain,",
+      "timestamp_start": 1251.72,
+      "timestamp_end": 1254.96,
+      "action_type": "explanation",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 82,
+      "instruction": "Second, we're going to be the length,",
+      "timestamp_start": 1256.16,
+      "timestamp_end": 1258.56,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 83,
+      "instruction": "Then we'll give it the base history length",
+      "timestamp_start": 1306.54,
+      "timestamp_end": 1307.9,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 84,
+      "instruction": "with which the bunch then responds to.",
+      "timestamp_start": 1334.86,
+      "timestamp_end": 1337.65,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 85,
+      "instruction": "So first, we're going to take all the current chat history,",
+      "timestamp_start": 1344.58,
+      "timestamp_end": 1348.82,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 86,
+      "instruction": "going to be on its own line. Then we're going to make our prompt be the chat",
+      "timestamp_start": 1354.69,
+      "timestamp_end": 1359.7,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 87,
+      "instruction": "history, but then add the user prompt being the input text. And then what we're",
+      "timestamp_start": 1359.7,
+      "timestamp_end": 1367.14,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 88,
+      "instruction": "going to do is we're going to have the bot preceded with the word bot so that",
+      "timestamp_start": 1367.14,
+      "timestamp_end": 1370.98,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 89,
+      "instruction": "with the response. So then we utilize this utility function of",
+      "timestamp_start": 1380.22,
+      "timestamp_end": 1384.58,
+      "action_type": "instruction",
+      "related_concepts": [
+        "function"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 90,
+      "instruction": "generate response, given the prompt that's been taken from this prompt here, and then also",
+      "timestamp_start": 1384.58,
+      "timestamp_end": 1391.59,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 91,
+      "instruction": "that function does, so now programmatically this will give us a response, but then what we'll do",
+      "timestamp_start": 1397.8,
+      "timestamp_end": 1403.08,
+      "action_type": "instruction",
+      "related_concepts": [
+        "function"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 92,
+      "instruction": "is we'll add the response to our history. We haven't spoken about what the update history does yet,",
+      "timestamp_start": 1403.08,
+      "timestamp_end": 1408.44,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 93,
+      "instruction": "but we'll kind of get to that in a moment, but in essence it just adds it to this list pretty much.",
+      "timestamp_start": 1408.44,
+      "timestamp_end": 1414.63,
+      "action_type": "instruction",
+      "related_concepts": [
+        "list"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 94,
+      "instruction": "Then we just return the response. So it's fairly straightforward again.",
+      "timestamp_start": 1424.31,
+      "timestamp_end": 1427.67,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "return"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 95,
+      "instruction": "Then we've got the update history. So the thing that this course here, this",
+      "timestamp_start": 1433.72,
+      "timestamp_end": 1438.95,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 96,
+      "instruction": "We need to summarize something here.",
+      "timestamp_start": 1448.39,
+      "timestamp_end": 1449.59,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 97,
+      "instruction": "and then the bot response as well.",
+      "timestamp_start": 1456.06,
+      "timestamp_end": 1458.06,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 98,
+      "instruction": "So here we're going to say self.chat.history.extend.",
+      "timestamp_start": 1459.83,
+      "timestamp_end": 1463.51,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": [
+        "self.chat",
+        "history.extend"
+      ]
+    },
+    {
+      "step_number": 99,
+      "instruction": "And once it's done that, we now have a longer history with the current things.",
+      "timestamp_start": 1486.24,
+      "timestamp_end": 1492.32,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 100,
+      "instruction": "But then what we want to do is we want to figure out is it too complex?",
+      "timestamp_start": 1492.32,
+      "timestamp_end": 1495.62,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 101,
+      "instruction": "Does it take up too much space and is it going to be causing us problems then line?",
+      "timestamp_start": 1495.62,
+      "timestamp_end": 1500.96,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 102,
+      "instruction": "This then gives us a complexity score.",
+      "timestamp_start": 1509.93,
+      "timestamp_end": 1512.45,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 103,
+      "instruction": "Then we need to decide on, well, is the score bad or good?",
+      "timestamp_start": 1512.45,
+      "timestamp_end": 1516.17,
+      "action_type": "instruction",
+      "related_concepts": [
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 104,
+      "instruction": "So now we need to make an adaptive history length.",
+      "timestamp_start": 1516.17,
+      "timestamp_end": 1519.25,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 105,
+      "instruction": "and then we pass it the min of either fifth day",
+      "timestamp_start": 1524.76,
+      "timestamp_end": 1527.56,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 106,
+      "instruction": "And then we go, if the length of our chat history",
+      "timestamp_start": 1544.67,
+      "timestamp_end": 1546.71,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 107,
+      "instruction": "longer than the adaptive history length times two, then we want to summarise the history.",
+      "timestamp_start": 1546.71,
+      "timestamp_end": 1553.53,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 108,
+      "instruction": "Then what we do is we reset the chat history to be the summarised history.",
+      "timestamp_start": 1567.54,
+      "timestamp_end": 1572.62,
+      "action_type": "instruction",
+      "related_concepts": [
+        "set"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 109,
+      "instruction": "full of that summarized history. Then we're adding the chat history, but we're adding it",
+      "timestamp_start": 1585.53,
+      "timestamp_end": 1591.42,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 110,
+      "instruction": "by 5 then we're going to set it to that.",
+      "timestamp_start": 1701.3,
+      "timestamp_end": 1706.76,
+      "action_type": "instruction",
+      "related_concepts": [
+        "set"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 111,
+      "instruction": "Otherwise we're going to be setting it, we're just going to leave it as it is basically,",
+      "timestamp_start": 1706.76,
+      "timestamp_end": 1711.04,
+      "action_type": "instruction",
+      "related_concepts": [
+        "set"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 112,
+      "instruction": "So that's just to give us a known quotient of how long we want the history to be at that",
+      "timestamp_start": 1713.43,
+      "timestamp_end": 1721.4,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 113,
+      "instruction": "So imagine the history contains, let's say, imagine the history has a score of 500.",
+      "timestamp_start": 1722.48,
+      "timestamp_end": 1736.3,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 114,
+      "instruction": "If it is, then what we want to do is kind of like set that to the thing to chop it.",
+      "timestamp_start": 1774.57,
+      "timestamp_end": 1781.7,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if",
+        "set"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 115,
+      "instruction": "the thing, if you're going to be cut off mid-sentence, then we need to summarize.",
+      "timestamp_start": 1788.03,
+      "timestamp_end": 1794.4,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 116,
+      "instruction": "We need to chop it up, by the way, that's the idea.",
+      "timestamp_start": 1812.32,
+      "timestamp_end": 1815.32,
+      "action_type": "instruction",
+      "related_concepts": [
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 117,
+      "instruction": "then you can continuously change",
+      "timestamp_start": 1833.56,
+      "timestamp_end": 1835.44,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 118,
+      "instruction": "And then you summarize that and then send the summary over.",
+      "timestamp_start": 1840.52,
+      "timestamp_end": 1843.24,
+      "action_type": "review",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 119,
+      "instruction": "we'll actually tip it over after a certain point of complexity",
+      "timestamp_start": 1852.84,
+      "timestamp_end": 1855.44,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 120,
+      "instruction": "And then someone asked a really good question,",
+      "timestamp_start": 1860.64,
+      "timestamp_end": 1862.44,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 121,
+      "instruction": "then why are we multiplying it by two in the following line?",
+      "timestamp_start": 1895.52,
+      "timestamp_end": 1900.47,
+      "action_type": "explanation",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 122,
+      "instruction": "I think this, I don't know if anybody had that question,",
+      "timestamp_start": 1952.96,
+      "timestamp_end": 1955.04,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 123,
+      "instruction": "Right now I've just made it 50.",
+      "timestamp_start": 1963.92,
+      "timestamp_end": 1965.8,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 124,
+      "instruction": "something you need to be bothered by, if you know what I mean.",
+      "timestamp_start": 2030.36,
+      "timestamp_end": 2033.52,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 125,
+      "instruction": "Yeah, I'll be honest, I don't know what exactly it does.",
+      "timestamp_start": 2110.23,
+      "timestamp_end": 2113.23,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 126,
+      "instruction": "So next Tuesday, we'll be using TikTok in with pine cone to chunk it and then embed it and then send it to the vector database.",
+      "timestamp_start": 2113.23,
+      "timestamp_end": 2120.23,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 127,
+      "instruction": "The only other thing I'll bring up is the Langshan example.",
+      "timestamp_start": 2125.23,
+      "timestamp_end": 2129.31,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 128,
+      "instruction": "Lenshane let's you do that out of the box. We will explore this in the future,",
+      "timestamp_start": 2195.96,
+      "timestamp_end": 2199.24,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 129,
+      "instruction": "but I do want to point that out now for anybody that's going to try out that solution,",
+      "timestamp_start": 2199.24,
+      "timestamp_end": 2202.6,
+      "action_type": "exercise",
+      "related_concepts": [
+        "for",
+        "try"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 130,
+      "instruction": "Okay, so those are the two things I want to call out now.",
+      "timestamp_start": 2244.04,
+      "timestamp_end": 2247.16,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 131,
+      "instruction": "Now, there's three alternatives to Langsmith,",
+      "timestamp_start": 2302.4,
+      "timestamp_end": 2304.68,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 132,
+      "instruction": "There's GenTreece, and then DataDog just announced today",
+      "timestamp_start": 2314.68,
+      "timestamp_end": 2318.84,
+      "action_type": "instruction",
+      "related_concepts": [
+        "tree"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 133,
+      "instruction": "Now a lot of you might be thinking,",
+      "timestamp_start": 2354.44,
+      "timestamp_end": 2355.72,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 134,
+      "instruction": "So then, link use does the same,",
+      "timestamp_start": 2361.52,
+      "timestamp_end": 2363.0,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 135,
+      "instruction": "So we'll see tomorrow with Langsmith,",
+      "timestamp_start": 2372.04,
+      "timestamp_end": 2373.88,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 136,
+      "instruction": "and then save it to personalized data sets",
+      "timestamp_start": 2377.24,
+      "timestamp_end": 2379.48,
+      "action_type": "instruction",
+      "related_concepts": [
+        "set"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 137,
+      "instruction": "that you can then use in the future for fine tuning.",
+      "timestamp_start": 2379.48,
+      "timestamp_end": 2382.12,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 138,
+      "instruction": "Now, GenTrace is up and coming, they just started out.",
+      "timestamp_start": 2393.68,
+      "timestamp_end": 2396.92,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 139,
+      "instruction": "And then obviously DataDog was something I just mentioned.",
+      "timestamp_start": 2412.84,
+      "timestamp_end": 2414.88,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 140,
+      "instruction": "So you guys can sort of just get to know it a little bit",
+      "timestamp_start": 2425.32,
+      "timestamp_end": 2428.12,
+      "action_type": "instruction",
+      "related_concepts": [
+        "sort"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 141,
+      "instruction": "that are very important for creating these applications.",
+      "timestamp_start": 2435.92,
+      "timestamp_end": 2438.48,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "import"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 142,
+      "instruction": "and what we're covering next Tuesday?",
+      "timestamp_start": 2441.56,
+      "timestamp_end": 2453.97,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 143,
+      "instruction": "And then the code is already available to you. It's in a branch called",
+      "timestamp_start": 2458.23,
+      "timestamp_end": 2461.75,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 144,
+      "instruction": "and then we have a little setup guide for you as well. Any questions?",
+      "timestamp_start": 2472.68,
+      "timestamp_end": 2480.04,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "set",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 145,
+      "instruction": "But for now, we should just read on Lensmiths.",
+      "timestamp_start": 2498.92,
+      "timestamp_end": 2502.28,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 146,
+      "instruction": "So just for now, do the links I showed you, I will be posting.",
+      "timestamp_start": 2502.8,
+      "timestamp_end": 2506.96,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 147,
+      "instruction": "But it's important that we expose you to the alternatives.",
+      "timestamp_start": 2513.88,
+      "timestamp_end": 2516.16,
+      "action_type": "instruction",
+      "related_concepts": [
+        "import"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 148,
+      "instruction": "So tomorrow, we'll be focusing on Langsmith and Langfuse.",
+      "timestamp_start": 2516.16,
+      "timestamp_end": 2519.76,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 149,
+      "instruction": "Now I'm just excited to see how the current cohort,",
+      "timestamp_start": 2541.08,
+      "timestamp_end": 2547.88,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 150,
+      "instruction": "But I understand that you have to build the foundation first.",
+      "timestamp_start": 2600.84,
+      "timestamp_end": 2604.04,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 151,
+      "instruction": "And then everything leading up to it is going to be just setting up the stage for that guided",
+      "timestamp_start": 2609.8,
+      "timestamp_end": 2613.4,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "set",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 152,
+      "instruction": "project. So next week is the technical writer agent, which should aims to completely automate",
+      "timestamp_start": 2613.4,
+      "timestamp_end": 2619.64,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 153,
+      "instruction": "By the way, that link is live right now. So if you want to look at that project, you can on the app.plumtech.com.",
+      "timestamp_start": 2624.44,
+      "timestamp_end": 2629.56,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": [
+        "app.plumtech"
+      ]
+    },
+    {
+      "step_number": 154,
+      "instruction": "and you can look at the starter repo for that,",
+      "timestamp_start": 2629.56,
+      "timestamp_end": 2633.6,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 155,
+      "instruction": "It's always hard to get that balance of technical and simple to read and simple to look at.",
+      "timestamp_start": 2660.12,
+      "timestamp_end": 2667.84,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 156,
+      "instruction": "Something that might work for this cohort may not work for next cohort if they have a",
+      "timestamp_start": 2676.56,
+      "timestamp_end": 2681.2,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 157,
+      "instruction": "And then another question is something",
+      "timestamp_start": 2706.69,
+      "timestamp_end": 2708.77,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 158,
+      "instruction": "but then it's also changing it out to summary",
+      "timestamp_start": 2746.88,
+      "timestamp_end": 2749.68,
+      "action_type": "review",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 159,
+      "instruction": "Okay, and then a more ap another practical application",
+      "timestamp_start": 2754.42,
+      "timestamp_end": 2758.38,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 160,
+      "instruction": "so in the future we'll talk about this.",
+      "timestamp_start": 2761.98,
+      "timestamp_end": 2763.62,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 161,
+      "instruction": "Let's see you're ragging 100 documents.",
+      "timestamp_start": 2763.62,
+      "timestamp_end": 2766.54,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 162,
+      "instruction": "and have summaries on top so it can query based on the summary much quicker than it can then reading the whole document.",
+      "timestamp_start": 2776.17,
+      "timestamp_end": 2783.17,
+      "action_type": "review",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 163,
+      "instruction": "So what is another practical application of using summaries over actually, you know, just sending or not using summaries is in brag when you're trying to decide what is actually relevant or irrelevant when trying to make a decision and pulling into your chat or into whatever LLM application you have.",
+      "timestamp_start": 2783.17,
+      "timestamp_end": 2802.17,
+      "action_type": "exercise",
+      "related_concepts": [
+        "try",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 164,
+      "instruction": "that you actually consider important.",
+      "timestamp_start": 2825.19,
+      "timestamp_end": 2828.19,
+      "action_type": "instruction",
+      "related_concepts": [
+        "import",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 165,
+      "instruction": "and then that doesn't have an answer",
+      "timestamp_start": 2835.19,
+      "timestamp_end": 2837.19,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 166,
+      "instruction": "you do IRG and then that is where it works for you,",
+      "timestamp_start": 2837.19,
+      "timestamp_end": 2839.91,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 167,
+      "instruction": "then you're able to then maintain that memory without having anything to lose.",
+      "timestamp_start": 2866.15,
+      "timestamp_end": 2870.71,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 168,
+      "instruction": "and there are definitely methods that are we'll talk about how to make sure that accuracy is good.",
+      "timestamp_start": 2874.47,
+      "timestamp_end": 2878.71,
+      "action_type": "instruction",
+      "related_concepts": [
+        "method"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 169,
+      "instruction": "But next week, we'll talk about just using some resets of holes, so just locally not in production.",
+      "timestamp_start": 2880.31,
+      "timestamp_end": 2885.11,
+      "action_type": "instruction",
+      "related_concepts": [
+        "set"
+      ],
+      "code_snippets": []
+    }
+  ],
+  "key_topics": [
+    "tools",
+    "algorithms",
+    "data_structures",
+    "concepts",
+    "control_flow",
+    "paradigms"
+  ],
+  "difficulty_progression": [
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "beginner",
+    "intermediate",
+    "intermediate"
+  ],
+  "statistics": {
+    "total_principles": 14,
+    "total_instructions": 169,
+    "unique_categories": 6,
+    "avg_segment_duration": 4.368165680473369
+  }
+}

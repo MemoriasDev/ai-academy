@@ -1,0 +1,30 @@
+{
+  "description": "Cohort 3 Week 1 Test with Signed URLs",
+  "cohort": 3,
+  "videos": [
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_1_class_1_2024-06-18.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA6ELKOKYDDOCGTW4H%2F20250814%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20250814T184219Z&X-Amz-Expires=3600&X-Amz-Signature=2139f2597bdf38a90b4454b49d036325ac605035d1ef25e1172bce1da4a4edb8&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "cohort": 3,
+      "week": 1,
+      "lesson": 1,
+      "date": "2024-06-18",
+      "output_path": "cohorts/cohort_3/week_01/week_1_class_1_2024-06-18"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_1_class_2_2024-06-19.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA6ELKOKYDDOCGTW4H%2F20250814%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20250814T194232Z&X-Amz-Expires=3600&X-Amz-Signature=089ecb5bee708fc57bcf8d2c7ebb709708e87adfadc628dc27c17017b8c5c722&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "cohort": 3,
+      "week": 1,
+      "lesson": 2,
+      "date": "2024-06-19",
+      "output_path": "cohorts/cohort_3/week_01/week_1_class_2_2024-06-19"
+    },
+    {
+      "url": "https://aitra-main.s3.us-east-2.amazonaws.com/afdp_cohort_3_recordings/week_1_class_3_2024-06-20.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA6ELKOKYDDOCGTW4H%2F20250814%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20250814T194307Z&X-Amz-Expires=3600&X-Amz-Signature=196177c74d0647e74cf1cd55e4c6c30f373f8f8f99b69132badf7847718030ff&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "cohort": 3,
+      "week": 1,
+      "lesson": 3,
+      "date": "2024-06-20",
+      "output_path": "cohorts/cohort_3/week_01/week_1_class_3_2024-06-20"
+    }
+  ]
+}

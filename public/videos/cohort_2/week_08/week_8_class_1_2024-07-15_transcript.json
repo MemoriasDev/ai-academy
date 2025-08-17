@@ -1,0 +1,18 @@
+{
+  "source_file": "../cohorts/cohort_2/week_08/week_8_class_1_2024-07-15.mp4",
+  "output_file": "../cohorts/cohort_2/week_08/week_8_class_1_2024-07-15_transcript.txt",
+  "file_hash": "8869c505f3e28bc5b3f8f64edf474a0b",
+  "file_size": 175444905,
+  "language": "en",
+  "language_probability": 1.0,
+  "duration_seconds": 3832.416,
+  "model_used": "base",
+  "segment_count": 902,
+  "transcription_timestamp": "2025-08-13 20:32:08",
+  "processing_time_seconds": 0,
+  "custom_metadata": {
+    "cohort": "cohorts",
+    "week": "week_08",
+    "file_name": "week_8_class_1_2024-07-15.mp4"
+  }
+}

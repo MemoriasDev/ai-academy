@@ -1,0 +1,1789 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_02/week_2_class_2_2024-05-29.mp4
+**Duration:** 5817.70 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 885
+**Generated:** 2025-08-13 18:29:47
+**File Hash:** 33c6f27a6888de884f33f88baa6e249f
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_02
+**file_name:** week_2_class_2_2024-05-29.mp4
+
+---
+
+## Transcript
+
+**[28.43s → 30.98s]** from Tom and Janel.
+
+**[30.98s → 32.98s]** Make sure you review those.
+
+**[32.98s → 34.98s]** I'll go over them as we get started, but
+
+**[34.98s → 36.98s]** make sure you get free of the I key.
+
+**[36.98s → 39.23s]** For open a I set.
+
+**[39.23s → 45.76s]** And if you don't have a GitHub developer token,
+
+**[45.76s → 47.76s]** go ahead and create one of those.
+
+**[47.76s → 49.76s]** Again, I'll show you guys that during class.
+
+**[49.76s → 54.76s]** But give you a few more minutes if you don't already have one set up.
+
+**[54.76s → 132.70s]** Well, let's see.
+
+**[132.70s → 137.56s]** I think we've reached enough people to just say that we have quorum.
+
+**[137.56s → 142.36s]** quorum so I'll go ahead and get started. I will take a little bit of a slow start too.
+
+**[146.54s → 153.26s]** And sorry I had to cut off early last night. I had a terrible doubt of food poisoning.
+
+**[154.30s → 158.14s]** They just started to hit me in that like last 10-15 minutes of class. So
+
+**[159.98s → 166.22s]** feeling much better today and thankful to be feeling much better. So let us dive in.
+
+**[166.22s → 176.45s]** So tonight is your first guided project.
+
+**[176.45s → 180.45s]** So what we're going to be doing today is really hands-on keyboard.
+
+**[180.45s → 182.45s]** Yeah, the past three classes.
+
+**[182.45s → 189.48s]** It's been a blend of slides looking at code and me walking through code.
+
+**[189.48s → 199.48s]** Today's the first time that we really want you to begin to fork this repository and implement your own changes.
+
+**[199.48s → 205.48s]** This repository will become the basis for one of the four projects that you need to do to complete the course.
+
+**[206.28s → 210.36s]** The projects aren't due until the very end of the course, so if you decide to
+
+**[211.24s → 217.24s]** kind of start this now or start this this week, then you can continue to work on it through the end of the
+
+**[217.24s → 226.60s]** course. This passable lessons on Ragn and the very intro prompt engineering is really to help
+
+**[226.60s → 232.68s]** get you into that mindset of how do I improve my own developer productivity. So we're going to
+
+**[232.68s → 238.84s]** implement a project today called Technical Writer Agent that will help you enhance productivity
+
+**[239.64s → 245.80s]** by using GitHub actions to add additional documentation in your RE-V file on your projects.
+
+**[247.99s → 255.66s]** Now the challenge for you as a project outside of the warm start of today
+
+**[255.66s → 259.72s]** is to personalize this project and turn it into a solution
+
+**[259.72s → 261.98s]** that addresses something that you're doing at work.
+
+**[263.54s → 266.50s]** Has a developer advocate and leading a team
+
+**[266.50s → 267.86s]** of developer advocates.
+
+**[267.86s → 271.38s]** This is the kind of stuff that my team goes out
+
+**[271.38s → 274.42s]** and teaches other developers to do all the time.
+
+**[274.42s → 276.94s]** It's kind of funky, slight change
+
+**[276.94s → 279.30s]** as we use GitLab at work.
+
+**[279.30s → 283.18s]** So the actions work flows slightly different.
+
+**[283.18s → 285.18s]** not a major difference,
+
+**[285.18s → 287.82s]** if some of the syntax is slightly different,
+
+**[287.82s → 290.78s]** but same idea, and it's exciting to see more and more people
+
+**[290.78s → 293.42s]** start to adopt these sorts of technologies
+
+**[293.42s → 296.94s]** in their dev workflows.
+
+**[296.94s → 298.62s]** So the minimum requirements of the project,
+
+**[298.62s → 300.22s]** you need to do some rag.
+
+**[301.38s → 304.18s]** And if you think about rag, just abstractly,
+
+**[304.18s → 307.62s]** as just, I need to augment my prompt
+
+**[307.62s → 310.54s]** with some additional information, right?
+
+**[310.54s → 312.02s]** That's kind of what we're doing today.
+
+**[312.02s → 315.30s]** we're not gonna necessarily have a vector database
+
+**[316.97s → 318.61s]** immediately in this implementation
+
+**[318.61s → 320.45s]** because we're just dealing with a code base
+
+**[320.45s → 322.57s]** and we're pulling information from our commits
+
+**[322.57s → 324.49s]** and from the changes in the file.
+
+**[325.96s → 327.52s]** And so that could be
+
+**[327.52s → 330.54s]** in a really, really basic level considered rack.
+
+**[330.54s → 333.50s]** But for your project, you need that rack implementation
+
+**[333.50s → 337.62s]** and then you also need a vector database implementation.
+
+**[337.62s → 339.98s]** That's really something we want you to get exposure to
+
+**[339.98s → 342.06s]** as you work through the project.
+
+**[342.06s → 343.98s]** There are some additional stretch goals
+
+**[343.98s → 345.86s]** that you're welcome to read through.
+
+**[347.29s → 350.84s]** You don't necessarily have to hit all of them,
+
+**[350.84s → 352.48s]** but I highly recommend you try
+
+**[352.48s → 355.26s]** and mess around with it yourself.
+
+**[356.52s → 361.42s]** Everything needs to be really nicely packaged.
+
+**[361.42s → 365.42s]** We suggest putting together a loom video,
+
+**[366.22s → 369.46s]** showcasing your work, kind of how it works.
+
+**[369.46s → 371.50s]** You can just submit your repo if you want.
+
+**[371.50s → 373.62s]** I would challenge you to submit the video.
+
+**[373.62s → 378.62s]** I think that as your learning stuff from Plume Tech
+
+**[378.70s → 380.94s]** from this course, you can take that video
+
+**[380.94s → 383.46s]** and also share it with your coworkers
+
+**[383.46s → 386.02s]** as a way to help them build the reps
+
+**[386.02s → 388.14s]** and increase productivity.
+
+**[388.14s → 390.10s]** And of course, please don't share any,
+
+**[390.10s → 391.98s]** if you work in this in a work context,
+
+**[391.98s → 394.90s]** please make sure you're not sharing any sensitive information
+
+**[394.90s → 397.90s]** and that you are submitting a public repository.
+
+**[397.90s → 404.22s]** If you do decide to do something that involves sensitive information, just make sure that you
+
+**[404.22s → 409.42s]** submit bloom videos out of the code, and that you're following all policies and procedures of your
+
+**[409.42s → 418.97s]** employer in the potential of exposing confidential information. So Tom already dropped the link
+
+**[419.69s → 424.89s]** for the starter repo. So if you don't see that, it's just called starter repo in today's code
+
+**[424.89s → 433.13s]** to the top. The very first thing we need to do is create a GitHub access token. It's called
+
+**[433.13s → 440.18s]** a personal access token. I call them Pats. There are a couple of different ways to do this.
+
+**[441.94s → 451.22s]** I personally like to create, because I don't use GitHub at work. I generally like to create
+
+**[451.22s → 455.42s]** my GitHub hats at the person level,
+
+**[455.42s → 459.46s]** although it is possible to create them at the repo level.
+
+**[459.46s → 461.42s]** In a work context with GitLab,
+
+**[461.42s → 465.34s]** I prefer to create individual repository
+
+**[465.34s → 467.72s]** personal access tokens.
+
+**[467.72s → 470.16s]** Okay, so to create your profile,
+
+**[470.16s → 472.76s]** personal access token, click on your profile,
+
+**[472.76s → 478.48s]** go down to developer settings,
+
+**[478.48s → 480.64s]** click on personal access tokens.
+
+**[482.43s → 483.83s]** There's fine grained tokens,
+
+**[483.83s → 487.99s]** That's where you would create the repository level tokens
+
+**[487.99s → 489.95s]** or the classic tokens.
+
+**[489.95s → 492.87s]** Classic tokens are spine for our use case.
+
+**[492.87s → 495.63s]** There aren't too many crazy things
+
+**[495.63s → 499.42s]** that are gonna be happening.
+
+**[499.42s → 502.85s]** Right, hit generate new token.
+
+**[502.85s → 504.53s]** Again, classic token.
+
+**[511.86s → 512.70s]** Call it whatever you want.
+
+**[512.70s → 513.78s]** I'll call this one.
+
+**[515.44s → 523.21s]** This cohort is 24.
+
+**[523.21s → 525.95s]** See you at two.
+
+**[525.95s → 529.59s]** I'm going to set my expiration date just for seven days,
+
+**[529.59s → 531.15s]** because I probably won't use the sokeny
+
+**[531.15s → 532.55s]** and after this class.
+
+**[532.55s → 535.99s]** For those of you that are working on this project
+
+**[535.99s → 539.19s]** and other materials for the program longer than that,
+
+**[539.19s → 542.19s]** make sure that you set a longer scope,
+
+**[542.19s → 544.95s]** really frustrating when you token expires.
+
+**[545.87s → 548.39s]** We just need a full repo scope.
+
+**[548.39s → 550.11s]** If you're interested in learning more about
+
+**[550.11s → 554.39s]** what the repo scopes does and what it has access to,
+
+**[554.39s → 556.35s]** you could read about it in the docs.
+
+**[556.35s → 559.67s]** There's a lot of this stuff in here that we don't need.
+
+**[559.67s → 562.07s]** Like for instance, I don't need access
+
+**[562.07s → 564.95s]** to repository and for invitations,
+
+**[564.95s → 567.03s]** but that does allow me full control
+
+**[567.03s → 569.31s]** of private repositories, which is what we're gonna need
+
+**[569.31s → 571.98s]** for today's GitHub actions workflow.
+
+**[571.98s → 573.58s]** And there's a bunch of other cool stuff
+
+**[573.58s → 577.26s]** down here that you can check out too, right?
+
+**[577.26s → 581.56s]** Generate that token, right?
+
+**[581.56s → 585.72s]** I use one password for storing a lot of my tokens
+
+**[585.72s → 591.86s]** credentials. So you're going to notice that pop up and I'm going to save it. But I'm also going
+
+**[591.86s → 598.82s]** to copy it based on my keyboard. For those of you that aren't easy on password, just make sure
+
+**[598.82s → 620.82s]** you copy down this token now or you navigate away from the page. All right, I've got my token saved
+
+**[620.82s → 638.47s]** in one password. By the way, you can do nifty things with these tokens. As a great way to authenticate
+
+**[638.79s → 643.79s]** through a bunch of different tools like the one password,
+
+**[644.11s → 646.71s]** GitHub CLI tool integration is really nice.
+
+**[646.71s → 652.50s]** You can use that same token for that work.
+
+**[652.50s → 666.03s]** Let's go back to our repository.
+
+**[666.03s → 670.34s]** And let's just poke around for a second
+
+**[670.34s → 672.18s]** and then we'll clone the code.
+
+**[674.29s → 677.01s]** Make sure if you still have that token though
+
+**[677.01s → 679.85s]** in your copy paste buffer before you navigate away
+
+**[679.85s → 686.50s]** anything else, that you save that in text file for a second somewhere. So don't get that
+
+**[686.50s → 691.62s]** send your copy paste buffer. Nothing more annoying than building a token because you can't read it again.
+
+**[693.83s → 701.99s]** So what we are going to do is modify this repository to every time that there's a closed pull request,
+
+**[702.95s → 709.77s]** modify the readme file. So every time the pull request is closed, we're going to update the readme
+
+**[709.77s → 715.09s]** with some information about what's changed in the file.
+
+**[715.09s → 716.61s]** This is the template version,
+
+**[716.61s → 718.37s]** so we're gonna be working on building that out
+
+**[718.37s → 719.85s]** during today's class,
+
+**[719.85s → 723.57s]** and we'll add some information in about what's happened.
+
+**[723.57s → 724.65s]** Let me take a look,
+
+**[724.65s → 753.19s]** let me show you what the solution looks like.
+
+**[753.19s → 761.06s]** So these actions you can see are updating the readme.
+
+**[761.06s → 762.34s]** Some kind of warnings in the air,
+
+**[762.34s → 778.20s]** but you'll see the steps that are going on.
+
+**[778.20s → 781.56s]** So I want to review just at a super high level.
+
+**[781.56s → 783.16s]** So that way as we dive into code,
+
+**[783.16s → 786.48s]** everybody knows what we need to do for today's class.
+
+**[787.44s → 788.84s]** So the very first thing we need to do
+
+**[788.84s → 791.44s]** is set up our local development environment.
+
+**[791.44s → 793.80s]** So we're gonna clone the repository,
+
+**[793.80s → 797.03s]** make sure that we have our appropriate secrets in place.
+
+**[797.03s → 799.91s]** Once we have our local development environment set up,
+
+**[799.91s → 804.91s]** we're going to first modify the GitLab actions code
+
+**[806.39s → 808.23s]** to help us get everything set up
+
+**[808.23s → 813.83s]** fill out and that actions work flow and we'll talk through it a little bit more. Then the last thing
+
+**[813.83s → 819.43s]** we're going to be doing is we're going to be mostly working in this utility.py file. There's
+
+**[819.43s → 824.55s]** already some template code in there for us. So we're going to be modifying the utility.py with the
+
+**[824.55s → 831.11s]** information that we need to actually or the code that we need to rewrite the readme or update the
+
+**[831.11s → 835.83s]** readme. And then finally the last thing we're going to be doing is actually going back into
+
+**[835.83s → 839.53s]** to GitHub, the UI, and enabling actions
+
+**[839.53s → 842.33s]** and trying to create a new branch
+
+**[842.33s → 847.33s]** and create a pull request into your main copy
+
+**[847.33s → 849.33s]** and triggering the workflow.
+
+**[849.33s → 850.83s]** There are a couple different ways we can do that
+
+**[850.83s → 853.15s]** to mess around with it.
+
+**[853.15s → 854.80s]** All right.
+
+**[854.80s → 870.91s]** Any questions so far in today's flow for class?
+
+**[870.91s → 873.35s]** All right.
+
+**[873.35s → 874.53s]** Well, let's get started.
+
+**[874.53s → 890.28s]** I'm not seeing any.
+
+**[890.28s → 906.96s]** Let me switch over to VS Code.
+
+**[906.96s → 909.28s]** and let me just make sure I'm in the right place
+
+**[909.28s → 934.26s]** to store this repo real quick.
+
+**[934.26s → 935.70s]** All right, a CD issue.
+
+**[935.70s → 937.42s]** That's picking up a different virtual environment
+
+**[937.42s → 942.61s]** that I use in terminal one second.
+
+**[942.61s → 944.33s]** You switch over and I need to clone the repo
+
+**[944.33s → 969.60s]** in this location.
+
+**[969.60s → 972.36s]** Sorry, y'all, that is annoying.
+
+**[972.36s → 975.12s]** I'm not sure why that broke between then and now.
+
+**[975.12s → 1004.06s]** I'm gonna just clone it via HTTPS.
+
+**[1004.06s → 1045.55s]** Perfect.
+
+**[1045.55s → 1047.27s]** Sorry, y'all, to have it in a terrible time,
+
+**[1047.27s → 1048.43s]** just clone that repo.
+
+**[1048.43s → 1055.90s]** I don't think it is a struggle with me.
+
+**[1072.24s → 1075.60s]** I'm going to try plenty of different places because I'm getting an empty repo when I'm
+
+**[1075.60s → 1099.18s]** planning it. Perfect. That works. Sorry about that, y'all. My fancy
+
+**[1100.51s → 1106.83s]** off of one password and get a CLI stop working for some reason.
+
+**[1106.83s → 1119.84s]** Hey, so we're still in step one of the class workflow setting up our local environment.
+
+**[1119.84s → 1125.90s]** So the next thing we need to do is make sure we install variables,
+
+**[1125.90s → 1137.71s]** we install the requirements and create our Python environment to use.
+
+**[1137.71s → 1141.64s]** You can use virtual environments,
+
+**[1141.64s → 1143.64s]** kind of whatever you like.
+
+**[1143.64s → 1146.64s]** You don't necessarily have to use.
+
+**[1146.64s → 1155.38s]** Docker, some people like docker, some people like.
+
+**[1155.38s → 1160.38s]** I've been experimenting with UV from Astral.
+
+**[1160.38s → 1166.38s]** It's something that seems to work really well and it's a lot faster than just using traditional pip.
+
+**[1166.38s → 1182.72s]** All right, installing the requirements.txt.
+
+**[1182.72s → 1184.72s]** See the lazingly fast.
+
+**[1184.72s → 1188.90s]** Love UV for that reason.
+
+**[1188.90s → 1189.90s]** All right.
+
+**[1189.90s → 1218.09s]** Can anyone guess what the environment variables are that we're going to need today?
+
+**[1218.09s → 1219.09s]** Make sure.
+
+**[1219.09s → 1223.92s]** I think I skipped one key piece of instruction.
+
+**[1223.92s → 1230.81s]** I cloned the Bloom Tech version of the repository.
+
+**[1230.81s → 1239.68s]** Make sure that you are creating your own fork of this.
+
+**[1239.68s → 1246.40s]** So I already have a fork of it, so I could create a second one, but make sure that you
+
+**[1246.40s → 1257.03s]** are using your work for the repository.
+
+**[1257.03s → 1279.66s]** So let's add in our environment variables, the GitHub token, and then we're also going
+
+**[1279.66s → 1285.77s]** to open API, open AI API key.
+
+**[1285.77s → 1292.06s]** It was a mouthful to say.
+
+**[1292.06s → 1309.80s]** So you should have the key in Slack.
+
+**[1309.80s → 1311.84s]** All right, and while we're thinking about secrets,
+
+**[1311.84s → 1314.99s]** let's create one other secret real quick.
+
+**[1314.99s → 1334.39s]** Let's go back into our repository on the GitHub UI
+
+**[1334.39s → 1336.11s]** and let's also add in that secret
+
+**[1336.11s → 1337.63s]** into the settings of the repository
+
+**[1337.63s → 1341.21s]** that open AI API key.
+
+**[1341.21s → 1343.41s]** So it still should be in your copy and paste buffer
+
+**[1343.41s → 1345.21s]** if you've been following along.
+
+**[1345.21s → 1347.77s]** So scroll down and go to secrets and variables
+
+**[1347.77s → 1352.01s]** and then actions.
+
+**[1352.01s → 1368.82s]** And we're gonna create a new environment secrets.
+
+**[1368.82s → 1371.38s]** It doesn't matter what you call the environment,
+
+**[1371.38s → 1372.22s]** don't think.
+
+**[1374.70s → 1378.38s]** I called mine main.
+
+**[1378.38s → 1381.34s]** And then we can add in our environment secret.
+
+**[1381.34s → 1386.34s]** Okay, so open AI API key.
+
+**[1396.42s → 1398.94s]** Now I think if you watched the previous recording
+
+**[1398.94s → 1402.78s]** of this class or if you, I think look
+
+**[1402.78s → 1412.54s]** the instructions for today. The secrets could, there is a option to use my GitHub key as well.
+
+**[1413.74s → 1427.10s]** But let me show you what would happen if I tried to just use GitHub. This is the open AI,
+
+**[1427.10s → 1434.90s]** if the Ikea I'm doing this so it'll break here in a second. Filled as secret, secret names must not
+
+**[1434.90s → 1444.18s]** start with GitHub. So if you haven't used GitHub actions before, it'll actually automatically create
+
+**[1444.18s → 1449.70s]** a couple secrets for you. So you don't need to create a personal access token that scope to
+
+**[1449.70s → 1456.18s]** their repository because it will do that for you as part of that action workflow. That's why GitHub
+
+**[1457.14s → 1463.86s]** pre-effects is protected on the secrets. We don't need to go through all the list of what is
+
+**[1463.86s → 1468.44s]** is automatically created, but good for everybody to know.
+
+**[1468.44s → 1471.28s]** So once you have your OpenAI API key in there,
+
+**[1471.28s → 1489.46s]** we're all set, let's go back to the code.
+
+**[1489.46s → 1491.82s]** Right, so we're moving on to step two of the class.
+
+**[1491.82s → 1495.98s]** And we're gonna take a look at our ReadMe update,
+
+**[1495.98s → 1498.10s]** ReadMe action workflow.
+
+**[1498.10s → 1502.78s]** So I imagine many of you are familiar with CI, CD workflows
+
+**[1502.78s → 1505.54s]** like GitHub actions, but for those of you
+
+**[1505.54s → 1508.70s]** that may not be, even if this is painful,
+
+**[1508.70s → 1510.54s]** if you do it just a quick overview,
+
+**[1510.54s → 1518.32s]** These are workflow steps that are determined by a YAML file or configured by a YAML file
+
+**[1518.32s → 1523.83s]** that will run succession that can pass information from step to step.
+
+**[1523.83s → 1528.63s]** So you need to specify when the action is going to occur.
+
+**[1528.63s → 1531.75s]** So for us, it's going to be when a pull request is closed.
+
+**[1531.75s → 1538.94s]** So in other words, after the pull request is merged in, this job will run.
+
+**[1538.94s → 1545.22s]** And then we're going to add in what's going to happen.
+
+**[1545.22s → 1549.40s]** So the steps for us are going to be check out their repository, because we need to analyze
+
+**[1549.40s → 1552.68s]** the contents of their repository.
+
+**[1552.68s → 1555.92s]** Then we're going to set up a Python environment.
+
+**[1555.92s → 1556.92s]** Why?
+
+**[1556.92s → 1559.13s]** Because the code is written in Python.
+
+**[1559.13s → 1563.37s]** Then we're going to need to install the same dependencies that we just installed in our
+
+**[1563.37s → 1565.88s]** local environment.
+
+**[1565.88s → 1573.38s]** And then there are some additional steps that we're going to add in to help us modify the
+
+**[1573.38s → 1586.39s]** information and the pull request to create that new reading file.
+
+**[1586.39s → 1587.39s]** All right.
+
+**[1587.39s → 1596.56s]** Any questions so far?
+
+**[1596.56s → 1599.42s]** So the, okay.
+
+**[1599.42s → 1606.55s]** So this pipeline is basically just, there's no business logic here.
+
+**[1606.55s → 1615.62s]** It's just dealing with the overhead and then in the script itself, we're going to actually
+
+**[1615.62s → 1625.74s]** figure out what content is being carried?
+
+**[1625.74s → 1627.30s]** Yeah, exactly, Chris.
+
+**[1627.30s → 1629.70s]** The idea is to make a change.
+
+**[1629.70s → 1636.90s]** And either the change will make it in a comment or will make an empty commit actually and
+
+**[1636.90s → 1639.30s]** just use the commit message.
+
+**[1639.30s → 1646.90s]** And one of those two pieces of data, or both, will help modify the readme file and repository
+
+**[1646.90s → 1651.33s]** using the GitHub action.
+
+**[1651.33s → 1654.57s]** So like, what can you just tell me visualized?
+
+**[1654.57s → 1658.85s]** What's the example of what's gonna be in that updated reme?
+
+**[1658.85s → 1660.29s]** It's like an overall updated reme
+
+**[1660.29s → 1664.18s]** or are we like adding something to the top?
+
+**[1664.18s → 1667.86s]** Yeah, it honestly depends on the actual prompt we use.
+
+**[1667.86s → 1672.10s]** So it could be something as simple as
+
+**[1672.10s → 1675.06s]** like the large language model will edit the readme
+
+**[1675.06s → 1678.90s]** as it feels appropriate for the change we make.
+
+**[1678.90s → 1684.18s]** So like, the change could be we add a new Python module
+
+**[1685.28s → 1689.08s]** and then that needs to update what's in the readme,
+
+**[1689.08s → 1690.92s]** where we change a major version of Python
+
+**[1690.92s → 1694.64s]** and that updates the context of the descriptions
+
+**[1694.64s → 1697.00s]** for setting up your virtual environment in the readme.
+
+**[1697.00s → 1698.36s]** That is kind of,
+
+**[1700.69s → 1702.49s]** we can't predict what the hunter sent certainly
+
+**[1702.49s → 1704.69s]** because it would depend on the context of the change.
+
+**[1704.69s → 1706.61s]** Yeah, okay, so I mean, this whole project
+
+**[1706.61s → 1708.01s]** is basically flexible and helpful.
+
+**[1708.01s → 1713.01s]** we can say, okay, any get-up hook, any output,
+
+**[1713.01s → 1718.01s]** any target of the data, and that's pretty much it, right?
+
+**[1718.73s → 1724.37s]** Like we can swap out any of these things for something else.
+
+**[1724.37s → 1725.76s]** Right, exactly.
+
+**[1725.76s → 1729.28s]** Like the same type of project you could use to,
+
+**[1729.28s → 1731.64s]** or workload update documentation.
+
+**[1731.64s → 1735.32s]** So anytime a new function or class is created,
+
+**[1735.32s → 1737.40s]** you could scan it to see if there's documentation,
+
+**[1737.40s → 1740.53s]** that there's not added in.
+
+**[1741.93s → 1744.57s]** So there are a bunch of different possibilities
+
+**[1744.57s → 1749.80s]** with this kind of workflow.
+
+**[1749.80s → 1752.44s]** Yeah, and sorry, one last question here.
+
+**[1752.44s → 1756.28s]** There was a couple of examples here.
+
+**[1758.72s → 1762.57s]** Okay, auto-generant tasks, at least notes.
+
+**[1762.57s → 1763.57s]** Okay, sweet.
+
+**[1763.57s → 1764.41s]** All right, thank you.
+
+**[1764.41s → 1766.17s]** This is cool.
+
+**[1766.17s → 1768.25s]** I mean, there's a bunch I want to do with it.
+
+**[1768.25s → 1773.79s]** I'm wondering like, I mean, we're used drone.
+
+**[1773.79s → 1778.79s]** So same thing, camel, and I can put a Python script
+
+**[1778.79s → 1781.50s]** in the pipeline anywhere.
+
+**[1781.50s → 1789.61s]** Would it make sense to have a, okay, you know what,
+
+**[1789.61s → 1790.81s]** I'm gonna stop talking.
+
+**[1790.81s → 1791.73s]** Let's please continue.
+
+**[1791.73s → 1793.61s]** I need more time to think about what my question is,
+
+**[1793.61s → 1794.93s]** but I'm excited.
+
+**[1794.93s → 1798.13s]** It's totally, hold on to it.
+
+**[1798.13s → 1800.66s]** Keep it percolating.
+
+**[1800.66s → 1801.58s]** All right.
+
+**[1801.58s → 1810.58s]** So the next little chunker code is really just this particular section extract the PR number and commit hash from the GitHub event context.
+
+**[1810.58s → 1817.58s]** This has nothing to do with our Python code. This is literally just straight GitHub actions kind of information.
+
+**[1817.58s → 1825.58s]** But it's input data that we're going to need to extract from GitHub to put into our Python script as inputs.
+
+**[1825.58s → 1829.58s]** So that's why it's an important step that we want it to call out.
+
+**[1829.58s → 1835.48s]** So you'll notice the first thing we need to specify in an action step is a name for the step.
+
+**[1838.06s → 1848.04s]** Now we're going to call this one get pr info. And Tom, if you can as I complete each step,
+
+**[1848.04s → 1853.08s]** would you mind copy and paste in from the solution into Slack at the end of each of these steps?
+
+**[1854.72s → 1867.28s]** Cool. Thank you. All right. The next thing we need to do is add a ID. This one is going to be
+
+**[1867.52s → 1877.69s]** PR info. The reason that we're saving this one as a ID is because we're going to call on it later.
+
+**[1877.69s → 1883.77s]** I'm going to need that information that's extracted in this step. So I need to go back to it
+
+**[1884.81s → 1893.00s]** and grab that. All right. Then here are the actual commands we're going to run. We're going to run
+
+**[1893.00s → 1903.53s]** four different commands. We're going to get the PR number. We're going to get the commits
+
+**[1906.14s → 1921.85s]** hash. All right. And then I am going to print all those out and store them into my GitHub
+
+**[1923.40s → 1936.32s]** environment. All right. So what I need to get is actually from an environment variable
+
+**[1936.32s → 1945.91s]** I'm going to pull out this one I'm going to copy, so I don't make it typo.
+
+**[1945.91s → 1958.30s]** We're going to get the pull request number from the GitHub and path.
+
+**[1958.30s → 1960.30s]** So that's what we're going to pull out in this step.
+
+**[1960.30s → 1980.57s]** The commit hash is a similar syntax, except we're just simply grabbing the pull request merge commit hash instead of the pull request number, just a slight variable change.
+
+**[1980.57s → 2000.50s]** And then finally we're going to put these things into our environment.
+
+**[2000.50s → 2025.63s]** And then same type of construct for the commit hash.
+
+**[2025.63s → 2028.63s]** I'm just going to create that new environment.
+
+**[2028.63s → 2050.89s]** Right.
+
+**[2050.89s → 2053.89s]** Live coding is always fun.
+
+**[2053.89s → 2055.99s]** So I'll ask any of you.
+
+**[2055.99s → 2058.99s]** Does anyone notice any obvious errors?
+
+**[2058.99s → 2061.99s]** I don't think there are any, but I'm also skating myself real quick.
+
+**[2061.99s → 2082.95s]** real quick. I think we're okay and we'll find out we try and run the action later.
+
+**[2086.53s → 2091.73s]** So now we're going to, so Tom will drop that step for you if you weren't typing out while I was
+
+**[2091.73s → 2097.88s]** going. We're going to move on to the next step in our actions workflow which is going to be a
+
+**[2097.88s → 2103.00s]** trigger the Python script. If you don't remember this from before the primary Python script we're
+
+**[2103.00s → 2109.96s]** going to be messing with is the update.py Python script. That's going to be the thing that actually
+
+**[2109.96s → 2120.63s]** does the updating of the readme. This is going to be the fun step, generate updated.
+
+**[2127.49s → 2132.93s]** Here we're going to need some of the environment variables, though, that we talked about.
+
+**[2132.93s → 2137.76s]** So the first one that we're going to need is the one that we created and GitHub,
+
+**[2138.48s → 2144.10s]** and also have an our local environment. So the open AI API key,
+
+**[2144.10s → 2155.87s]** So super secret notation here, $1 sign, curly brackets, secrets.
+
+**[2155.87s → 2166.73s]** If you're curious about this notation or this notation,
+
+**[2166.73s → 2170.73s]** I would recommend diving into the GitHub actions documentation.
+
+**[2170.73s → 2178.73s]** It has really great overviews of how to access the various information.
+
+**[2178.73s → 2181.17s]** Obviously, you need to know how to access secrets,
+
+**[2181.17s → 2185.33s]** but there are lots and lots of pieces of metadata stored
+
+**[2185.33s → 2188.45s]** in the action path that you might be able to access.
+
+**[2188.45s → 2192.33s]** So, great way to get you were creative juices blowing to.
+
+**[2192.33s → 2204.98s]** Okay, the next thing we need is our GitHub token.
+
+**[2204.98s → 2208.46s]** Now, you'll notice when we created our secrets,
+
+**[2208.46s → 2211.38s]** I didn't create anything called GitHub token
+
+**[2211.38s → 2213.22s]** and we tried to break it, right?
+
+**[2213.22s → 2216.26s]** So now this is why I don't have to create it
+
+**[2216.26s → 2231.17s]** that's already there. And I can just call on secrets.getHubToken. Beautiful. There are three other things
+
+**[2231.17s → 2237.17s]** that we need. We're going to need our repo path and then the two variables that we just created in
+
+**[2237.17s → 2243.09s]** the previous step, which will be in the GitHub environment. So the notation for those will be
+
+**[2243.09s → 2252.55s]** slightly different for all three of those. So our next one for the repo path, instead of secrets,
+
+**[2252.55s → 2279.06s]** we use GitHub.repository. And then for the PR number, here where we stored commit hash
+
+**[2279.06s → 2292.23s]** into GitHub environments, this now allows us to access the environment variables as InVeb.full
+
+**[2292.23s → 2320.86s]** request number. And similar for the commit. So even though we're modifying, mostly are
+
+**[2320.86s → 2326.65s]** update.py we are you know I'm going to still follow some good Python practices and use
+
+**[2326.65s → 2333.37s]** main.py to actually run the project so that is the file that we're going to run. We'll
+
+**[2333.37s → 2337.89s]** take a look in main.py before we dive into updating update.
+
+**[2337.89s → 2344.56s]** Let's bring that out.
+
+**[2344.56s → 2347.26s]** All right, cool.
+
+**[2347.26s → 2382.23s]** Any questions there so far. I am going to go ahead and just commit this file. Start by adding
+
+**[2382.23s → 2406.16s]** it and then was just to add a helpful commit message. I try to make mine as helpful as possible.
+
+**[2407.01s → 2411.25s]** I've hidden the character limit a few times which is hilarious on a commit message.
+
+**[2415.89s → 2423.99s]** I'm just going to add something really simple. Build out template, e-m-l, get the actions.
+
+**[2433.60s → 2437.60s]** Right, so we have our action scripts set up, so we have our local environments set up with our
+
+**[2437.60s → 2443.68s]** repository and our environment variables in our local repository. We have the action scripts
+
+**[2443.68s → 2451.68s]** set up. Let's take a look at the actual Python code and dive into updating utility.py.
+
+**[2456.29s → 2461.25s]** So remember, main.py is what we're going to run from the action script.
+
+**[2461.97s → 2469.01s]** So here we have GitHub installed in the requirements.txt. So it has a Python SDK to GitHub.
+
+**[2469.73s → 2473.49s]** And then we're going to import some other utility functions.
+
+**[2473.49s → 2477.81s]** So we're going to initialize the GitHub API instance.
+
+**[2477.81s → 2481.81s]** So we're going to be communicating from the GitHub action step
+
+**[2481.81s → 2483.81s]** out to the GitHub API.
+
+**[2483.81s → 2486.10s]** So I'm going to get the repo path.
+
+**[2486.10s → 2490.26s]** I'm going to get that environment pull request number that we just
+
+**[2490.26s → 2492.26s]** attached to the workflow.
+
+**[2492.26s → 2494.80s]** Get the full repo object.
+
+**[2494.80s → 2496.80s]** In other words, get the code of the repo.
+
+**[2496.80s → 2501.00s]** And then I'm going to get the contents of the readme file.
+
+**[2501.00s → 2511.92s]** right. If I want to, I can print it out and then I can go ahead and fetch any information
+
+**[2511.92s → 2521.52s]** about the pull request. In this particular chunk of code will help me compare the difference
+
+**[2521.52s → 2532.30s]** between the file name, the files that are actually in the pull request that changed, get
+
+**[2532.30s → 2538.59s]** the commit messages associated with each of the pull request, and then finally, we're
+
+**[2538.59s → 2543.51s]** We're going to format the data for the open AI prompt.
+
+**[2543.51s → 2548.53s]** So format data for open AI.
+
+**[2548.53s → 2551.21s]** And then finally, we're going to call open AI to generate
+
+**[2551.21s → 2564.53s]** the updated readme content and create a PR for the updated PR.
+
+**[2564.53s → 2569.12s]** So those functions that we're just seeing here,
+
+**[2569.12s → 2571.77s]** that at the end are all in utility.
+
+**[2571.77s → 2578.60s]** Let's pop over and start playing.
+
+**[2578.60s → 2580.68s]** Sorry, I have not been monitoring the questions thread.
+
+**[2580.68s → 2590.71s]** So hopefully, OK, good.
+
+**[2590.71s → 2599.52s]** So utility.py, our format data for OpenAI is going to be probably the most important function
+
+**[2599.52s → 2600.84s]** that we do.
+
+**[2600.84s → 2627.89s]** Combining all the changes, decoding the readmeat content, and then constructing the prompt.
+
+**[2627.89s → 2641.00s]** So let's go ahead and create our changes.
+
+**[2641.00s → 2648.90s]** So we're going to join all of the changes and create a really nice little list dictionary
+
+**[2648.90s → 2657.42s]** thing to file the difference and then the patch. So list comprehension that's going to
+
+**[2657.42s → 2667.12s]** join everything together into a nice string of changes. So it'll look really tidy. And
+
+**[2667.12s → 2672.60s]** if we wanted to, if you all wanted to do this, run this locally on save on multiple changes
+
+**[2672.60s → 2677.20s]** in your repository, this would be a great thing to just play around with. In the interest
+
+**[2677.20s → 2683.04s]** of time, I don't want to run this to print it out mainly because nothing's going to be too
+
+**[2683.04s → 2684.04s]** spicy.
+
+**[2684.04s → 2688.88s]** I'm going to delete this prompt because that's the output variable, so just a reminder.
+
+**[2688.88s → 2698.10s]** Okay, so if that's all the changes, we also want to combine all the commit messages.
+
+**[2698.10s → 2701.08s]** So the commit messages can be a little bit simpler.
+
+**[2701.08s → 2707.12s]** I need quite as big of a loop.
+
+**[2707.12s → 2718.04s]** I am going to use that same join syntax.
+
+**[2718.04s → 2727.96s]** Remember commit messages is an input into the function and I'm going to add a couple new
+
+**[2727.96s → 2742.16s]** lines at the end. Now, if you're wondering what the base 64 stuff is for, that's because
+
+**[2742.16s → 2753.72s]** the content is written in base 64, UTF 8. We just want to make sure that's nice and decoded.
+
+**[2753.72s → 2776.19s]** So, if you read me content, we're going to decode it. And now, here is the fun part, our prompt.
+
+**[2776.19s → 2797.04s]** Does anyone have any ideas on what they think a good prompt might be?
+
+**[2797.04s → 2817.06s]** It depends on what we're trying to get it to do.
+
+**[2817.06s → 2818.06s]** Yeah.
+
+**[2818.06s → 2826.28s]** In one example, I have from work and it looks like this was done by one of the other students in generating release notes.
+
+**[2826.28s → 2833.47s]** Something similar is adding an entry to a change log like a public facing change log.
+
+**[2833.47s → 2838.60s]** there's public facing changes to the API.
+
+**[2838.60s → 2843.60s]** Now, one challenge there is a lot of the changes
+
+**[2843.60s → 2847.72s]** that are made aren't necessarily changing the structure of the API,
+
+**[2847.72s → 2850.72s]** and it's not something that we would add to a public facing change law.
+
+**[2850.72s → 2859.43s]** So I actually want to have some sort of prompt that asks it to determine
+
+**[2859.43s → 2864.97s]** and if there is a public facing change,
+
+**[2866.03s → 2869.55s]** and if so, generate a change log entry,
+
+**[2869.55s → 2871.51s]** and then I can figure out what to do with it later.
+
+**[2873.71s → 2877.70s]** I'm thinking of doing few shots maybe,
+
+**[2877.70s → 2882.82s]** like saying New York examples of when we think
+
+**[2887.12s → 2888.84s]** the change we would need an entry,
+
+**[2888.84s → 2893.84s]** And maybe it's simply, maybe it's also simply
+
+**[2893.84s → 2897.60s]** any files in a particular directory being changed
+
+**[2897.60s → 2898.92s]** would change the documentation.
+
+**[2898.92s → 2902.26s]** So what do you think about that?
+
+**[2902.26s → 2905.38s]** And actually, yeah, and Chris, I think a great thing to do
+
+**[2905.38s → 2908.50s]** for that would be true prompt engineering
+
+**[2908.50s → 2912.10s]** where you're tracking the prompts that are being submitted
+
+**[2912.10s → 2916.70s]** and then the generated output with like laying views
+
+**[2916.70s → 2918.70s]** or another tool of that help.
+
+**[2918.70s → 2921.34s]** And then you create your data set
+
+**[2921.34s → 2923.62s]** from those track prompts and outputs,
+
+**[2923.62s → 2925.50s]** and then you decide what you wanna use
+
+**[2925.50s → 2927.62s]** as your few shy example from that.
+
+**[2927.62s → 2930.62s]** So it allows you to generate a data set
+
+**[2930.62s → 2933.54s]** that you could figure out what you like
+
+**[2933.54s → 2934.82s]** the results of better.
+
+**[2934.82s → 2937.18s]** And that way it's a little bit more systematic
+
+**[2937.18s → 2944.45s]** than just trying out different things.
+
+**[2944.45s → 2946.17s]** Okay.
+
+**[2946.17s → 2949.60s]** I'm gonna need a little help in the figured out.
+
+**[2949.60s → 2956.14s]** Yeah, totally.
+
+**[2956.14s → 2962.26s]** So we're just going to ask, review the following changes
+
+**[2963.60s → 2980.12s]** and commit messages from a GitHub full request.
+
+**[2980.44s → 2994.58s]** We're to say code changes from full request,
+
+**[2994.58s → 3012.51s]** and then we're going to estring in our changes.
+
+**[3012.51s → 3015.67s]** Right, and if all the new lines characters
+
+**[3015.67s → 3017.63s]** are just helping us ensure that the prompt
+
+**[3017.63s → 3020.51s]** is like actually nicely spaced.
+
+**[3020.51s → 3023.39s]** So that way, you know, it's not running together
+
+**[3023.39s → 3030.89s]** the same line and confusing that. We also want to include the changes from the RE-V file,
+
+**[3032.27s → 3066.70s]** or we also want to include the current RE-V file. So the last thing I'm just going to copy is
+
+**[3066.70s → 3092.28s]** it's kind of long. Grab the full prompts. There we go. So when Byron McKay wrote this or Ash originally
+
+**[3092.28s → 3098.68s]** wrote this prompt, they were doing some experimentation with what worked best, some prompt engineering,
+
+**[3098.68s → 3104.76s]** how it, Chris and I were talking about and doing it kind of had Hock to figure out what works best.
+
+**[3106.52s → 3112.36s]** What happened with the very first couple of passes is that I just completely rewrote the readme
+
+**[3112.36s → 3118.84s]** every time, which is absolutely what we don't want to happen. We actually just wanted to edit the
+
+**[3118.84s → 3124.60s]** readme. So what we're really asking is considering the code changes and commit message,
+
+**[3124.60s → 3131.29s]** determine if the readme needs to be updated at all. Then if so, edit the readme,
+
+**[3131.29s → 3139.82s]** ensuring to maintain its existing style and clarity. So very clear, right? We just want you to
+
+**[3139.82s → 3145.34s]** determine if it needs to be updated and then maintain exactly what it's doing. And you could probably
+
+**[3145.34s → 3153.02s]** add more specificity. There's just not enough in our repository right now to make that hyper-efficient.
+
+**[3153.02s → 3158.63s]** But then the little prompt style that I really like is,
+
+**[3160.53s → 3171.67s]** give me the updated readme, right?
+
+**[3171.67s → 3174.95s]** So you're just saying, the next thing I want you to print out,
+
+**[3174.95s → 3177.71s]** I don't want sure, like, thanks, great.
+
+**[3177.71s → 3179.15s]** The next thing I want you to print out
+
+**[3179.15s → 3180.95s]** is the actual updated readme.
+
+**[3180.95s → 3193.71s]** So I love the, this little style choice then.
+
+**[3193.71s → 3197.79s]** That's our function format data for Open API,
+
+**[3197.79s → 3201.33s]** Excuse me, open AI API.
+
+**[3201.33s → 3206.21s]** And then we also need to do some other stuff, call,
+
+**[3206.21s → 3208.29s]** actually call open AI.
+
+**[3208.29s → 3213.60s]** And then I'll actually update the readme and the stuff.
+
+**[3213.60s → 3220.44s]** All right, in the interest of time,
+
+**[3220.44s → 3236.29s]** I'm going to copy pasta and talk through this code.
+
+**[3236.29s → 3239.17s]** So you've seen this before, make an explicit connection
+
+**[3239.17s → 3242.06s]** to open AI.
+
+**[3242.06s → 3245.22s]** Then we're going to construct a chat, the conversation.
+
+**[3245.22s → 3248.10s]** So our message is, the system message,
+
+**[3248.10s → 3250.02s]** we're going to initialize the connection with.
+
+**[3250.02s → 3252.46s]** You are an AI trying to help with upbeat Ruby files
+
+**[3252.46s → 3253.98s]** based on code changes.
+
+**[3255.46s → 3258.26s]** We're going to have you function as user
+
+**[3258.26s → 3261.40s]** and your content is going to be the prompt.
+
+**[3261.40s → 3266.40s]** Then make the call to open AI chat interface
+
+**[3267.36s → 3275.14s]** and specify to use the chat gtp35 turbo model.
+
+**[3275.42s → 3277.66s]** Then of course, if there's an error make the connection,
+
+**[3277.66s → 3279.98s]** print out the information out the error.
+
+**[3279.98s → 3284.18s]** Like, JC didn't copy the entire key,
+
+**[3284.18s → 3285.90s]** or something really silly.
+
+**[3285.90s → 3290.77s]** I wish error messages were that descriptive and sarcastic.
+
+**[3290.77s → 3294.08s]** I would love sarcastic error messages.
+
+**[3294.08s → 3301.71s]** Update, read me and create PR.
+
+**[3301.71s → 3305.91s]** OK, so just a quick note here.
+
+**[3305.91s → 3309.03s]** Response choices, zero message.content.
+
+**[3309.03s → 3311.51s]** that's the actual updated readme file.
+
+**[3311.51s → 3330.08s]** So that's what we're gonna be using in the next step.
+
+**[3330.08s → 3332.62s]** So what we're gonna do is propose a readme
+
+**[3332.62s → 3336.28s]** based on recent code changes,
+
+**[3336.28s → 3340.74s]** create a new branch, okay?
+
+**[3340.74s → 3342.26s]** Then we're gonna get the main branch,
+
+**[3342.26s → 3346.44s]** and the new branch name is going to be update readme
+
+**[3346.44s → 3348.16s]** from the particular commit
+
+**[3349.56s → 3352.51s]** of the original commit,
+
+**[3352.51s → 3358.06s]** all this stuff is built around.
+
+**[3358.06s → 3361.42s]** So we may not need to assign this particular thing
+
+**[3361.42s → 3364.50s]** to a variable, because it's actually just running,
+
+**[3364.50s → 3366.94s]** sorry, I added that note in for myself.
+
+**[3366.94s → 3371.22s]** But what we're doing here is repo.create, get reference.
+
+**[3371.22s → 3376.40s]** So adding in a new branch name and commit information.
+
+**[3376.40s → 3378.65s]** So we've got our new branch,
+
+**[3378.65s → 3381.41s]** and then updating the file with the information
+
+**[3381.41s → 3386.99s]** that we have repo update file, readme, commit message,
+
+**[3386.99s → 3400.92s]** updated readme ssa. Then finally we create a pull request based on the new readme. So this
+
+**[3400.92s → 3407.64s]** happens on the close of pull request of a code change and then creates a new pull request if
+
+**[3407.64s → 3425.66s]** it decides the readme needs to be updated. Perfect. I think we are all set. Any questions so far
+
+**[3425.66s → 3452.86s]** about the code before we switch into GitHub Actions.
+
+**[3452.86s → 3459.63s]** Seems like the answer to that is no.
+
+**[3459.63s → 3461.95s]** If you remember really early on in class,
+
+**[3461.95s → 3466.31s]** I accidentally set the, I used the loom tech version
+
+**[3466.31s → 3468.35s]** to clone not my port.
+
+**[3468.35s → 3469.79s]** So I'm just going to fix that problem
+
+**[3469.79s → 3475.11s]** before we commit the code back to the main repository.
+
+**[3475.11s → 3476.39s]** So this is not a step you all need
+
+**[3476.39s → 3477.91s]** to do if this is just a step I need
+
+**[3477.91s → 3507.30s]** to do to fix my silly mistake,
+
+**[3507.30s → 3534.76s]** grabbing the link to that other repository.
+
+**[3534.76s → 3536.60s]** And so everything looks good.
+
+**[3536.60s → 3539.52s]** Think, let's just make sure I'm working on main right now.
+
+**[3539.52s → 3546.63s]** So let's check out a different branch.
+
+**[3546.63s → 3548.63s]** I'm gonna call this branch live.
+
+**[3548.63s → 3553.66s]** This we're doing live.
+
+**[3553.66s → 3554.94s]** All right, the only thing I've modified
+
+**[3554.94s → 3556.78s]** is my utility.py.
+
+**[3558.56s → 3563.39s]** Also modify the updated readme.eml.
+
+**[3563.39s → 3571.29s]** I don't remember if we already committed that.
+
+**[3571.29s → 3573.69s]** Yeah, I already did commit it to main.
+
+**[3573.69s → 3575.93s]** So I think we'll just be a couple changes ahead
+
+**[3575.93s → 3595.54s]** and not do branch.
+
+**[3595.54s → 3612.87s]** Let's commit that change, add a helpful message
+
+**[3612.87s → 3614.47s]** and let's go ahead and get push that
+
+**[3614.47s → 3636.93s]** to the remote origin.
+
+**[3636.93s → 3642.48s]** Let me just make sure I set this.
+
+**[3642.48s → 3686.30s]** That's still an issue with my remote configuration.
+
+**[3686.30s → 3687.88s]** I realized my own issue there.
+
+**[3687.88s → 3691.58s]** I was trying to push a branch that didn't exist locally.
+
+**[3691.58s → 3696.63s]** I was switched from live to dev there.
+
+**[3696.63s → 3701.95s]** get push origin that get push origin origin life.
+
+**[3704.77s → 3709.02s]** Buntimes, all right.
+
+**[3709.02s → 3714.62s]** Let's pop over into GitHub and make sure everything looks good.
+
+**[3714.62s → 3719.05s]** Right, so I have my open AI environment variable in here.
+
+**[3719.05s → 3729.95s]** It's refresh.
+
+**[3729.95s → 3734.28s]** Right, so I had my recent pushes 25 seconds ago.
+
+**[3734.28s → 3743.09s]** Let's go in here and make sure, right.
+
+**[3743.09s → 3745.37s]** My YAML file didn't come through my commit,
+
+**[3745.37s → 3747.49s]** because I switched branches after I'd already committed
+
+**[3747.49s → 3750.01s]** that YAML file.
+
+**[3750.01s → 3762.13s]** Just to clean that up, let me do a quick,
+
+**[3762.13s → 3782.24s]** just gonna add a node near to trigger something,
+
+**[3782.24s → 3804.48s]** right, committing that updated demo.
+
+**[3804.48s → 3806.96s]** Right, so what we're gonna do now
+
+**[3806.96s → 3809.56s]** is we're gonna go into actions
+
+**[3809.56s → 3812.48s]** and we're going to enable actions.
+
+**[3812.48s → 3815.48s]** The first time that we create the full request,
+
+**[3815.48s → 3817.08s]** this is going to break, right,
+
+**[3817.08s → 3820.96s]** because the code that's in right now,
+
+**[3820.96s → 3824.36s]** the main folders, the not filled out template,
+
+**[3824.36s → 3828.32s]** which is okay, but I just want everybody to know
+
+**[3828.32s → 3832.30s]** that that's what's gonna happen ahead of time.
+
+**[3832.30s → 3838.86s]** So go over to the actions tab.
+
+**[3838.86s → 3846.95s]** I've already enabled actions in this repository.
+
+**[3846.95s → 3856.71s]** So let's create a new pull request.
+
+**[3856.71s → 3858.93s]** So make sure that you are merging
+
+**[3858.93s → 3863.17s]** into the right repository.
+
+**[3863.17s → 3868.01s]** So if you're familiar with GitHub flow,
+
+**[3868.01s → 3870.91s]** it's a fork and then pull back into
+
+**[3870.91s → 3880.18s]** kind of flow. So we want to, we are just trying to merge back into our local repository, our
+
+**[3880.18s → 3893.15s]** same repository. So make sure you're using SOKJC. And I'm going to do the SOKJC live branch,
+
+**[3893.15s → 3930.52s]** create the pull request, everything's good to go, let's merge it all together. All right,
+
+**[3930.52s → 3937.40s]** So like I said, that failed as we intended it to,
+
+**[3938.20s → 3942.31s]** because the actions code is not filled out yet.
+
+**[3942.31s → 3944.95s]** There was nothing even to show.
+
+**[3944.95s → 3949.64s]** The workflow file was not valid.
+
+**[3949.64s → 3953.90s]** Let's go ahead and trigger another change though.
+
+**[3953.90s → 3958.90s]** So if you remember the code also uses commit messages
+
+**[3958.90s → 3960.34s]** as well as code changes.
+
+**[3960.34s → 3963.78s]** So what we're gonna do now to trigger a new change
+
+**[3963.78s → 3968.26s]** we're going to make just a commit message with a empty commit.
+
+**[3969.78s → 3981.64s]** So go back to your local repository for a second. I'm sure you do a get pull, a bit fetch,
+
+**[3992.07s → 4003.60s]** and then we're going to check out a new branch. I'm going to call this branch demo,
+
+**[4003.60s → 4013.59s]** and we're going to create some really dumb commit messages that can maybe help us with the
+
+**[4013.59s → 4022.39s]** read me. So let's go back to show you what's in the read me. So now it's your turn, minimum
+
+**[4022.39s → 4032.63s]** requirements, stretch goals, privacy and submission guidelines. Why don't we add in something
+
+**[4032.63s → 4038.55s]** about minimum requirements and stretch goals and hopefully our read me file will pick
+
+**[4038.55s → 4068.42s]** that up. All right, so we're going to do Git, commit, dash dash, allow, empty. Okay. So that's
+
+**[4068.42s → 4070.34s]** the key secret sauce here.
+
+**[4070.34s → 4093.03s]** And we're going to say adding in and adding a minimum requirement to use a, use,
+
+**[4093.03s → 4098.38s]** Chanchi TP 3.5 turbo.
+
+**[4098.38s → 4103.08s]** All right, that's not an actual requirement.
+
+**[4103.08s → 4106.48s]** I'm giving you all by the way, just as a demo for demo purposes.
+
+**[4106.48s → 4123.11s]** I forgot a L and allow.
+
+**[4123.11s → 4135.97s]** All right, I'm going to do that again and just add in another note here.
+
+**[4135.97s → 4155.58s]** So we're adding in stretch goal to experiments with other models like Lama 3 as a stretch goal.
+
+**[4155.58s → 4161.36s]** Okay, so now we have our two empty commit messages.
+
+**[4161.36s → 4170.79s]** We're going to push these commit messages back out to origin.
+
+**[4170.79s → 4172.79s]** And remember my branch is called demo.
+
+**[4172.79s → 4188.36s]** Right, those changes from demo came through.
+
+**[4188.36s → 4193.25s]** Let's create our pull request and trigger the job.
+
+**[4193.25s → 4236.73s]** Yeah, I don't, don't forget to add in a, a PR comment.
+
+**[4238.08s → 4241.24s]** Oh, man. Yeah, let's, let's add in a comment here.
+
+**[4242.24s → 4250.08s]** Being in some additional information for students in the assignment.
+
+**[4257.63s → 4259.95s]** I wonder what the emoji would be.
+
+**[4262.11s → 4263.63s]** Right. Now I'm going to hit merge.
+
+**[4288.04s → 4289.88s]** That should have triggered off our new action.
+
+**[4289.88s → 4290.88s]** Let's see it in progress.
+
+**[4290.88s → 4310.10s]** I got a fail there.
+
+**[4310.10s → 4318.13s]** The insratch goal looked like it worked on.
+
+**[4318.13s → 4331.96s]** Let's go double check the configuration file real quick.
+
+**[4331.96s → 4333.96s]** I'm glad that some of you have already gotten that around now.
+
+**[4333.96s → 4336.96s]** It looks pretty funny from glancing at the message.
+
+**[4336.96s → 4362.22s]** I saw right.
+
+**[4362.22s → 4364.22s]** I'm just double checking that everything looks right.
+
+**[4364.22s → 4373.25s]** I think it might be line 44 where you have the github token.
+
+**[4373.25s → 4377.15s]** I had to change the line for it to work.
+
+**[4377.15s → 4387.71s]** Did you use my GitHub token instead? Yeah, it's okay. Cool. Actually, I think I think you're spot on.
+
+**[4399.60s → 4404.00s]** Yeah, I was going to say literally on number 44 where it says secrets start to get hub token.
+
+**[4405.39s → 4409.31s]** Remember that we can't use the word get hub at the start of a secret so it must have been either my
+
+**[4409.31s → 4425.58s]** GitHub token or something else get a token instead. Yeah, that's actually really frustrating.
+
+**[4425.58s → 4436.16s]** The documentation has a written exactly that way.
+
+**[4436.16s → 4437.16s]** Oh, I got it.
+
+**[4437.16s → 4442.24s]** Slight change.
+
+**[4442.24s → 4443.24s]** Love it.
+
+**[4443.24s → 4447.36s]** It's actually changed from secrets to GitHub.
+
+**[4447.36s → 4459.00s]** That's the change that we need to have.
+
+**[4459.00s → 4464.85s]** Fixed action environment variable.
+
+**[4464.85s → 4479.97s]** I just need to fix that again.
+
+**[4479.97s → 4480.97s]** I didn't fix the whole thing.
+
+**[4480.97s → 4482.97s]** GitHub just dot token.
+
+**[4482.97s → 4483.97s]** Low all over case.
+
+**[4483.97s → 4486.39s]** Like this.
+
+**[4486.39s → 4537.21s]** We just make that same change again real quick call us demo to and I'm just gonna use those actual same
+
+**[4538.74s → 4540.22s]** Commit messages
+
+**[4540.22s → 4599.24s]** It's great hard pull requests. Are there any questions? Oh wrapping this up. I was gonna say I do have a slight side note
+
+**[4600.44s → 4603.05s]** as it stands
+
+**[4603.37s → 4604.97s]** the
+
+**[4604.97s → 4608.10s]** prompt
+
+**[4608.10s → 4612.42s]** Could be we could add to it where you know where it's changed reading the code
+
+**[4612.94s → 4614.68s]** He says
+
+**[4614.68s → 4616.76s]** Oh, James, some pull requests.
+
+**[4616.76s → 4619.90s]** Kindly like how we've added extra context to the part
+
+**[4619.90s → 4620.88s]** underneath the read me.
+
+**[4620.88s → 4622.52s]** We can do the same to the code one.
+
+**[4622.52s → 4624.56s]** To have it read like Doc strings and make sure
+
+**[4624.56s → 4627.08s]** it pulls in any information from that as well.
+
+**[4627.08s → 4629.27s]** What's the way?
+
+**[4629.27s → 4630.87s]** Yeah, that's a great idea.
+
+**[4630.87s → 4659.08s]** That's an absolutely great idea.
+
+**[4659.08s → 4663.72s]** It's something else must be going on.
+
+**[4663.72s → 4670.67s]** Find valid error in my Yemelson tax on line 35.
+
+**[4670.67s → 4672.83s]** So I don't think that environment variable
+
+**[4672.83s → 4691.85s]** was actually the issue.
+
+**[4691.85s → 4694.65s]** It may be an indentation issue.
+
+**[4694.65s → 4697.85s]** Maybe you have to indent, see where it's red and just look.
+
+**[4697.85s → 4699.85s]** That little bit underneath the run,
+
+**[4699.85s → 4702.29s]** I think all of that needs slightly indentation.
+
+**[4702.29s → 4706.03s]** Yeah, all of those just need to indent.
+
+**[4706.03s → 4709.20s]** Because remember, Yamel's based upon indent.
+
+**[4709.20s → 4718.61s]** I'll explain more.
+
+**[4718.61s → 4722.81s]** I was just playing with the Red Hat Jamel Extendition BS code
+
+**[4722.81s → 4724.45s]** this week at work.
+
+**[4724.45s → 4728.45s]** And it is amazing at linting Yamel files.
+
+**[4731.28s → 4735.62s]** especially if you have a schema associated with them.
+
+**[4735.62s → 4737.32s]** We had a project where we're using
+
+**[4737.32s → 4741.26s]** like a blend of Markdown and EML.
+
+**[4741.26s → 4745.18s]** That was super great for linting your EML,
+
+**[4745.18s → 4761.60s]** which would have saved my bacon there with that error.
+
+**[4761.60s → 4767.60s]** Last GIP fetch.
+
+**[4767.60s → 4770.20s]** So there are questions on what you could do.
+
+**[4770.20s → 4772.14s]** If you guys all want a brainstorm,
+
+**[4772.14s → 4774.95s]** your ideas for this project,
+
+**[4774.95s → 4801.24s]** I'm happy to spend a few minutes doing that.
+
+**[4801.24s → 4806.53s]** Yeah, a couple things I'm thinking, one is adding change log entries.
+
+**[4806.53s → 4815.53s]** I've got them in a CSV right now and then we massage them into a markdown format for the public facing docs.
+
+**[4815.53s → 4823.36s]** So I'm going to try and get the all on to output a specific format.
+
+**[4823.36s → 4825.62s]** I haven't tried that yet.
+
+**[4825.62s → 4836.38s]** I don't know if there's an API or there's an endpoint for the GitHub suggestion.
+
+**[4836.38s → 4839.38s]** You know, when you're reviewing code, you can make it code suggestion.
+
+**[4839.38s → 4843.38s]** And then the author can accept the code changed directly.
+
+**[4843.38s → 4849.38s]** I'd be curious to see if we can just do a poll on a different hook.
+
+**[4849.38s → 4851.89s]** You know, review the code.
+
+**[4851.89s → 4854.89s]** And I have so many ideas for how I want to actually the root code.
+
+**[4854.89s → 4859.13s]** code, but I'd be curious to see if we can just have it automatically make suggestions about
+
+**[4859.13s → 4863.21s]** how to improve the code, and then the author can just accept their genie.
+
+**[4863.21s → 4866.62s]** Oh, yeah, I'm sure you can do that.
+
+**[4866.62s → 4873.78s]** Yeah, I don't, I would have to look at API endpoints, but you could definitely do it with this
+
+**[4873.78s → 4882.41s]** workflow for sure, like almost identically, and that could be really cool to see.
+
+**[4882.41s → 4884.79s]** And yeah, okay, good.
+
+**[4884.79s → 4920.58s]** Well, that's an interesting one.
+
+**[4920.58s → 4923.58s]** It all may not be why I'm not bound.
+
+**[4928.59s → 4931.35s]** I will continue to debug this for a few minutes.
+
+**[4931.35s → 4936.35s]** I think one of the challenges of doing live instruction
+
+**[4936.79s → 4941.20s]** and live typing is the risk that you miss.
+
+**[4941.20s → 4946.44s]** I think the word Python probably might be.
+
+**[4946.44s → 4948.84s]** Yeah, I think it might be a file.
+
+**[4948.84s → 4953.38s]** Yeah, that's exactly what it is, Tom.
+
+**[4953.38s → 4955.44s]** It's been probably live code.
+
+**[4955.44s → 4960.98s]** Yeah.
+
+**[4960.98s → 4963.98s]** You know, we don't know where it's actually running it.
+
+**[4963.98s → 4964.98s]** It's done a bit.
+
+**[4964.98s → 4967.24s]** Yeah, literally.
+
+**[4967.24s → 4988.71s]** So Chris was talking about his idea for projects.
+
+**[4988.71s → 4998.98s]** Does anyone else have ideas based on what they've seen today?
+
+**[4998.98s → 5003.72s]** About maybe just generating with a PR description.
+
+**[5003.72s → 5008.01s]** Based on maybe the code and maybe like.
+
+**[5008.01s → 5012.19s]** I think it'd be interesting if you could.
+
+**[5012.19s → 5015.71s]** I don't know, taking let's say the ticket if possible.
+
+**[5019.74s → 5023.74s]** Let's say that again, like taking the ticket like the issue.
+
+**[5025.04s → 5032.08s]** Yeah, so for example, I guess I can might or whenever we make branches for tickets,
+
+**[5032.08s → 5035.52s]** technically the branch name is based off the ticket.
+
+**[5036.40s → 5036.72s]** Yeah.
+
+**[5036.72s → 5037.36s]** Name and Jura.
+
+**[5038.18s → 5044.58s]** So I guess what I'm thinking is it could be me if you could regenerate PR descriptions.
+
+**[5046.42s → 5053.28s]** in the pull request based off the ticket information and the code.
+
+**[5053.28s → 5059.95s]** Yeah, I think you could absolutely do that. Do you all use get laver GitHub?
+
+**[5059.95s → 5072.56s]** GitHub. Yeah, I think yeah, these are just a matter of reading through the issue API documentation in the GitHub actions to see how you would call on the text of the action.
+
+**[5072.56s → 5086.13s]** But yeah, I think that's a great idea. That would be really fun.
+
+**[5086.13s → 5096.58s]** I think we'll have to figure out if we can hit the jury if I don't know who can do that
+
+**[5096.58s → 5099.59s]** but maybe we can get a service account for it.
+
+**[5099.59s → 5104.71s]** I'm assuming we have that because I see people just automatically take it from the century.
+
+**[5104.71s → 5109.95s]** Well, that's a built-in century feature that we have.
+
+**[5109.95s → 5115.66s]** I know there's some slack plots that deal with jury stuff so maybe we can...
+
+**[5115.66s → 5119.89s]** We're going to have to get help somewhere but I like the idea.
+
+**[5119.89s → 5122.37s]** Yeah, the JRA API is really nice.
+
+**[5122.37s → 5124.01s]** It's been a couple of years since I've used it,
+
+**[5124.01s → 5127.66s]** but I have interacted with it before.
+
+**[5127.66s → 5152.14s]** It works really well.
+
+**[5152.14s → 5154.70s]** Well, so it looks like based on the error message here,
+
+**[5156.23s → 5157.91s]** I was joking way earlier in class
+
+**[5157.91s → 5161.91s]** about cutting off the OpenAI API token.
+
+**[5163.36s → 5166.56s]** It looks like that's exactly what happened here
+
+**[5167.71s → 5200.41s]** with the instance connection.
+
+**[5200.41s → 5219.34s]** You go back in here.
+
+**[5219.34s → 5223.02s]** John, we've got a quick question in the question thread from Augustine.
+
+**[5224.30s → 5224.78s]** Yeah.
+
+**[5225.45s → 5230.13s]** About the GitHub.token syntax use instead of create token.
+
+**[5230.13s → 5231.13s]** The big impact.
+
+**[5232.54s → 5233.06s]** Yeah.
+
+**[5233.06s → 5237.10s]** So that the syntax I use and the one you mentioned in the question.
+
+**[5238.42s → 5242.94s]** That is because GitHub.token is already exists as an environment variable
+
+**[5242.94s → 5245.54s]** accessible to you and they get up action workflow.
+
+**[5246.02s → 5249.42s]** So and there are quite a, every time you run a GitHub action,
+
+**[5249.42s → 5253.02s]** it automatically creates a personal access token.
+
+**[5253.02s → 5254.06s]** So that way you don't have,
+
+**[5254.06s → 5256.90s]** and it's scope to just that particular run
+
+**[5256.90s → 5258.34s]** of that GitHub action.
+
+**[5259.26s → 5263.06s]** So it's a really secure way to do token management
+
+**[5263.06s → 5265.38s]** versus having to create one and then store it
+
+**[5265.38s → 5266.76s]** in the repository.
+
+**[5267.90s → 5270.98s]** GitLab also has the same functionality too.
+
+**[5270.98s → 5274.42s]** And then there are other environment variables
+
+**[5274.42s → 5280.40s]** associated with the GitHub part of the environment
+
+**[5280.40s → 5283.36s]** we call it something else, I think it was the name of their repository, for example.
+
+**[5286.30s → 5291.26s]** What is still like appear the author of the committee of the changes to be myself,
+
+**[5291.26s → 5297.58s]** because with the personal epitokin, everything shows as I did the changes, right?
+
+**[5297.58s → 5303.50s]** But with that default token, who is going to be the author of those changes?
+
+**[5305.09s → 5306.53s]** That's a great question.
+
+**[5306.53s → 5310.05s]** Yeah, I think the action itself would be the author of the token in that case.
+
+**[5310.05s → 5314.49s]** Okay, so I wish a lot of something like meet hub, meet hub action.
+
+**[5314.49s → 5322.54s]** Right. Yeah, I give you the action ID as the author. I think I don't remember.
+
+**[5322.54s → 5333.03s]** Yeah, I wouldn't necessarily be scope to you. In GitLab, it's a little different.
+
+**[5333.03s → 5336.15s]** So that's why I don't remember exactly what it looks like in GitHub.
+
+**[5336.15s → 5341.42s]** Because there's like a fake user in GitLab that it's associated with.
+
+**[5341.42s → 5347.17s]** So it's like a little funky, but that will not funky.
+
+**[5347.17s → 5381.81s]** It's actually clear, but I think about it to spend with what I call my environments.
+
+**[5381.81s → 5395.74s]** Do you remember what the environment was configured with the secret?
+
+**[5395.74s → 5408.05s]** What I was going to say, the actual thing for the secrets, I can't remember where the
+
+**[5408.05s → 5413.28s]** environmentally. Are you on about to do production rules or do you mean do you
+
+**[5413.28s → 5418.06s]** want to add an extra environment sacred so that you can kind of do the other
+
+**[5418.06s → 5423.62s]** case? I had to do the last one. The repository something.
+
+**[5423.62s → 5427.06s]** Not the computer, the computer, the computer, the computer, the computer.
+
+**[5427.06s → 5446.24s]** Actions and then that green button, that works it.
+
+**[5446.24s → 5451.68s]** The security. I just tried changing the token from my personal token,
+
+**[5451.68s → 5454.24s]** and I see that the PR that I created,
+
+**[5454.24s → 5457.68s]** it shows us the top actions.
+
+**[5457.68s → 5489.45s]** We're going to send the link.
+
+**[5489.45s → 5498.98s]** Okay, 10 number four is same as to be our last attempt
+
+**[5498.98s → 5520.74s]** whether or not it works.
+
+**[5520.74s → 5538.58s]** So I'm going to create a new pull request.
+
+**[5538.58s → 5540.06s]** So one of the really cool models
+
+**[5540.06s → 5541.78s]** that came out in the past 24 hours,
+
+**[5541.78s → 5545.62s]** I'm coached, the new menstrual license,
+
+**[5546.98s → 5549.10s]** super interesting choice.
+
+**[5549.10s → 5551.06s]** It's like you can't use in production environments,
+
+**[5551.06s → 5554.50s]** kind of more for demo and research purposes.
+
+**[5554.50s → 5565.71s]** Fascinating stuff, but I would love to try and see,
+
+**[5565.71s → 5567.35s]** I feel like that kind of model would,
+
+**[5567.35s → 5570.03s]** for you all as students, that would actually
+
+**[5570.03s → 5573.87s]** be a great model to experiment with for this use case,
+
+**[5573.87s → 5575.51s]** as long as you're not turning around
+
+**[5575.51s → 5604.37s]** and using that model in a production setting.
+
+**[5604.37s → 5617.88s]** So you've got the info where actually in the Python code now,
+
+**[5617.88s → 5620.76s]** it's good that it's taking this long.
+
+**[5620.76s → 5629.32s]** Perfect, there we go.
+
+**[5629.32s → 5640.35s]** we should now have a new full request.
+
+**[5640.35s → 5665.48s]** And let's take a look at the proposed changes.
+
+**[5665.48s → 5666.32s]** Oh, interesting.
+
+**[5666.32s → 5669.79s]** Okay.
+
+**[5669.79s → 5674.22s]** Didn't remove the space.
+
+**[5674.22s → 5682.02s]** And then also added in a change log at the end.
+
+**[5682.02s → 5690.13s]** So nothing too funny here.
+
+**[5690.13s → 5692.53s]** I was gonna say, I did a quick test just to say,
+
+**[5692.53s → 5698.30s]** I added a bit more context to the bit by the code part
+
+**[5698.30s → 5700.14s]** and then just made a quick,
+
+**[5700.14s → 5703.70s]** like a hello world Flask API that just does some random number generation.
+
+**[5704.22s → 5709.58s]** Shops some docs strings on it and then done the same in the JavaScript.
+
+**[5709.62s → 5711.62s]** And then it's gave kind of like recent updates,
+
+**[5711.62s → 5715.82s]** where it says added Flask API shows the changes, update docs
+
+**[5715.82s → 5718.74s]** string, random numbers, API blah, blah, blah.
+
+**[5719.22s → 5722.50s]** Then it does the same for the express and kind of breaks and down to bullet points.
+
+**[5724.30s → 5724.94s]** I love that.
+
+**[5725.34s → 5726.82s]** It seems to be working right.
+
+**[5728.02s → 5730.02s]** Yeah. I think it's working perfectly.
+
+**[5730.02s → 5739.02s]** All right, everybody.
+
+**[5739.02s → 5741.86s]** Well, thanks for sticking around a few minutes.
+
+**[5741.86s → 5744.17s]** A couple minutes later.
+
+**[5744.17s → 5747.21s]** I hope you enjoyed today's live session.
+
+**[5747.21s → 5750.25s]** And remember that this is part of your assignment.
+
+**[5750.25s → 5752.73s]** So you'll be building off the same workflow,
+
+**[5752.73s → 5757.65s]** kind of story, going into the next couple of weeks.
+
+**[5757.65s → 5759.77s]** So definitely think about the project now
+
+**[5759.77s → 5761.97s]** and just get your hands dirty with the code
+
+**[5761.97s → 5765.13s]** and think about how you can expand on it.
+
+**[5765.13s → 5769.37s]** And then we'll pick up class on Monday.
+
+**[5769.37s → 5772.05s]** So back to our normal schedule of Monday,
+
+**[5772.05s → 5774.81s]** Wednesday next week for live instruction.
+
+**[5774.81s → 5779.57s]** And then you'll have office hours on Tuesday.
+
+**[5779.57s → 5780.59s]** All right, everybody.
+
+**[5780.59s → 5782.23s]** Well, I hope you enjoyed today's class.
+
+**[5783.31s → 5785.91s]** And if you need some inspiration,
+
+**[5785.91s → 5787.61s]** definitely check out the student projects
+
+**[5787.61s → 5790.47s]** that Tom shared from the previous cohort.
+
+**[5790.47s → 5796.46s]** They are really, really cool.
+
+**[5796.46s → 5797.50s]** Cool.
+
+**[5797.50s → 5798.69s]** Thank you.
+
+**[5800.54s → 5804.18s]** Thanks everybody.
+
+**[5804.18s → 5805.27s]** Thanks.
+
+**[5805.27s → 5806.27s]** Bye.
+

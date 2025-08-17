@@ -1,0 +1,2111 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_03/week_3_class_2_2024-06-04.mp4
+**Duration:** 4707.97 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 1046
+**Generated:** 2025-08-13 18:33:47
+**File Hash:** f85ecbd2d2cf70cb6613a18b72d1798c
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_03
+**file_name:** week_3_class_2_2024-06-04.mp4
+
+---
+
+## Transcript
+
+**[6.29s → 11.29s]** Hello and welcome to the AI developer for Productivity Office hours.
+
+**[11.29s → 16.29s]** Today we're going to be talking a little bit about tooling.
+
+**[16.29s → 23.29s]** We're going to go over the basic sort of math tooling example that I've been given to get a guy over for you.
+
+**[23.29s → 30.29s]** And then we'll kind of open up some stuff and start playing about with things and see what we can actually get done.
+
+**[30.29s → 37.29s]** So for this we're talking about lang chain. So basically lang chain as a review, you've
+
+**[37.29s → 42.04s]** kind of already had to play with and stuff so it's just a bunch of agents that we're going
+
+**[42.04s → 46.92s]** to be doing. It's designed to mimic the intelligent entities that perceive the environment. So
+
+**[46.92s → 53.28s]** it's designed to be, Christopher what you was kind of semi-illuding to in the first place.
+
+**[53.28s → 58.08s]** I'm going to say it's the best of the worst at the moment.
+
+**[58.08s → 62.64s]** It's something which we use a lot and it's got the biggest sort of market share in that
+
+**[62.64s → 67.54s]** it's been in the space very, very long.
+
+**[67.54s → 74.10s]** So it's kind of become the predominant sort of thing that seems to be used.
+
+**[74.10s → 77.42s]** Again, there's other things that can be used, but this is kind of the one that seems
+
+**[77.42s → 78.42s]** to be out there.
+
+**[78.42s → 82.46s]** And the thing is, it's having a lot of active development on.
+
+**[82.46s → 87.84s]** So what tends to happen is the downside to that as well as the upside is a lot of new
+
+**[87.84s → 89.32s]** things come out.
+
+**[89.32s → 93.00s]** The new things that come out sometimes happen to have breaking changes to your previous
+
+**[93.00s → 94.60s]** one.
+
+**[94.60s → 99.44s]** So you'll find that if you try to keep on top of all of the latest stuff, you end up
+
+**[99.44s → 106.32s]** with this disjointed piece of broken stuff that doesn't work for your old stuff and doesn't
+
+**[106.32s → 108.59s]** work for your new stuff.
+
+**[108.59s → 113.39s]** And this is why we sometimes end up with slightly older versions of Langchained stuff,
+
+**[113.39s → 120.16s]** older versions of the agent stuff so that we can get it working versus using the bleeding edge
+
+**[120.16s → 124.48s]** which then gives us broken code. So it's sometimes best to kind of keep it a little bit
+
+**[125.47s → 130.38s]** outside of being latest because even the latest just says you've got deprecated things
+
+**[130.38s → 137.00s]** so it's kind of one of those where it's in a bit of flux. We'll have a look here at the moment we're
+
+**[137.00s → 142.12s]** just going to install chain so I'll just get that started now. I've done a quick drive run through
+
+**[142.12s → 148.04s]** this so just making sure there wasn't any errors before we start. That's the most annoying
+
+**[148.04s → 152.35s]** moment you kind of explain to somebody and then just nothing works. So I'll figure,
+
+**[152.35s → 156.67s]** rather than do my normal live code one, we're doing it this way for now.
+
+**[157.55s → 162.51s]** And then again, whichever works best for you guys, let me know, you prefer the sort of live code,
+
+**[162.51s → 167.95s]** sort of format for this. Then we can go back to doing that, but either way works for me.
+
+**[167.95s → 170.99s]** So that's still doing a bit of an install.
+
+**[170.99s → 179.07s]** I mean, this has all been installed anyway, but it took kind of, and then again, we're
+
+**[179.07s → 183.59s]** going to install Langchain Open AI, which is the actual kind of link up things and the
+
+**[183.59s → 188.75s]** libraries of stuff that actually work and allow us to use Open AI within Langchain.
+
+**[188.75s → 190.55s]** So that has to do the most things.
+
+**[190.55s → 192.64s]** So that's done.
+
+**[192.64s → 197.78s]** We've been asking one so shall I.
+
+**[197.78s → 199.34s]** There we go.
+
+**[199.34s → 202.44s]** Then we're going to, these are just answeries.
+
+**[202.44s → 204.04s]** These are nothing to do with Langchain.
+
+**[204.04s → 208.52s]** and nothing to do with the AI side of things is just to help facilitate one of the tools that we're
+
+**[208.52s → 215.72s]** going to be looking at. This is going to be Matplot Lib and Non-Pi to do the drawing on the screen if
+
+**[215.72s → 224.38s]** you like. I'll add those to it. And once it's finished adding them, we'll do the imports again.
+
+**[224.38s → 229.26s]** We're going to be taking these agents. We're going to have an agent executor and we're going to have
+
+**[229.26s → 234.46s]** the Create Open AI Tool Agent or Tools Agent, which is going to kind of consolidate
+
+**[234.46s → 236.70s]** they tool that we're pulling in.
+
+**[237.70s → 239.22s]** And then our Langchain Open AI,
+
+**[239.22s → 241.94s]** we're gonna use the chat Open AI to use as our actual
+
+**[241.94s → 243.74s]** LLM slash chatbot, so I think.
+
+**[245.60s → 248.00s]** Then we're using the tools, Langchain Tools.
+
+**[248.00s → 251.20s]** Now this one, we're gonna have a base tool,
+
+**[251.20s → 254.64s]** which is just to me the standardized tooling,
+
+**[254.64s → 258.04s]** a structured tool, and then the general tool
+
+**[258.04s → 259.88s]** annotation part there.
+
+**[261.24s → 262.64s]** We're gonna be using the prompts,
+
+**[262.64s → 264.52s]** so we're gonna have a chat prompt template,
+
+**[264.52s → 266.52s]** and we're going to be using a message placeholder as well
+
+**[266.52s → 269.56s]** for if we accidentally don't put any messages.
+
+**[269.56s → 270.96s]** So I'm going to do the imports for that.
+
+**[270.96s → 273.80s]** We're also importing OS just for doing this part here,
+
+**[273.80s → 276.16s]** the environment, setup.
+
+**[276.16s → 280.64s]** So again, we'll paste the actual base field.
+
+**[280.64s → 283.64s]** This is today's Opener IK.
+
+**[283.64s → 285.80s]** So we'll paste that in if it's not already in there
+
+**[285.80s → 289.56s]** and then just run that so that we've got it in the environment.
+
+**[289.56s → 291.68s]** Then we do a bit of setup for the map plot lib.
+
+**[291.68s → 294.80s]** Now this is all again just to do a few other bits
+
+**[294.80s → 298.80s]** pieces that we're going to be doing as a separate tooling thing, so we'll add that anyway.
+
+**[299.84s → 303.60s]** So here's where we're creating the tools. As you can see, very, very, very contrived and
+
+**[303.60s → 308.40s]** very, very simplistic. We've got like literally an add tool to add two numbers together.
+
+**[308.40s → 313.28s]** We multiply tool to multiply numbers. Square tool to give us the square of
+
+**[314.96s → 320.72s]** a specific size. So we take the number and give us square of it. Then we've got this
+
+**[320.72s → 325.44s]** find area of a circle. Now obviously this isn't that accurate, we're just using 3.14.
+
+**[325.60s → 332.32s]** as pie so it's kind of we personally I'd probably want to use like an actual
+
+**[332.32s → 337.91s]** pie that I have math library just used pie there but that's fine and then
+
+**[337.91s → 341.87s]** display circle now this is the one which uses my plot liban stuff to actually
+
+**[341.87s → 348.19s]** draw out a circle based on the given radius so it's just gonna set it up
+
+**[348.19s → 354.94s]** plot the circle add the circle to the thing and then just basically keep it
+
+**[354.94s → 359.74s]** within bounds. So even if we give it like, I want a radius of 10,000, it's not going to go
+
+**[359.74s → 367.11s]** off the screen and stuff. So it kind of sizes it to fit the screen. So let's add those to
+
+**[367.11s → 371.35s]** all. So we'll just run that again, just to make sure it's out of them. Then we're going
+
+**[371.35s → 375.23s]** to create a prompt. So this prompt is we're giving it a system prompt. So we're going to
+
+**[375.23s → 380.19s]** use the templates. We use chat prompt template and we're going to pass it a list of messages
+
+**[380.19s → 385.11s]** to build out this initial prompt. So our initial prompt, we have a system prompt which says
+
+**[385.11s → 390.79s]** you are a mathematical assistant, use your tools to answer questions. If you do not have
+
+**[390.79s → 395.87s]** a tool to answer the question, say so. So we don't want it kind of going off and hallucinating
+
+**[395.87s → 400.31s]** things and just making up some answers for us. If you can't find a tool that's suitable
+
+**[400.31s → 407.80s]** in the job, return only the answer. For example, if the human says, what is one plus one?
+
+**[407.80s → 413.96s]** We're expecting the AI to respond with just a two, not with like one plus one is a function
+
+**[413.96s → 419.08s]** or a one plus one is a sum or what you know we don't want it to explain the thing,
+
+**[419.08s → 425.65s]** we don't want it to do anything other than just give it some answer. We're also going to keep
+
+**[425.65s → 431.97s]** the chat history so we're going to have message place older for what we're doing and then our
+
+**[431.97s → 438.85s]** human is going to take some input so we're going to give some input from us and then we're going
+
+**[438.85s → 442.77s]** to have an agent scratch pad at the end of that so it's going to be kind of the shape of our
+
+**[442.77s → 453.35s]** messages on that template. I want to run that so it makes that prompt basically just taking
+
+**[453.35s → 459.00s]** quite some time for such trivial things. I don't know the fact we're doing a tick box.
+
+**[472.50s → 480.18s]** Okay, I want to move forward and hope that the dumpsterman broke between us like starting and not.
+
+**[481.30s → 486.82s]** So here's where we're actually setting up the actual LLM. So we're setting up the chat open AI,
+
+**[486.82s → 492.10s]** which is going to be using the turbo model for this purpose, but you can use 4R, you can use
+
+**[492.10s → 496.98s]** something else if you want to, or install an adult or something like that. But notice how we're
+
+**[496.98s → 501.94s]** actually giving it a temperature of zero, because when we do math, we don't want it to be too creative,
+
+**[501.94s → 507.52s]** we don't want it to go off and go off on a tangent and to not give us an answer. So we don't want
+
+**[507.52s → 513.57s]** it to go, hey yeah, this is this thing, and I'm going to fund this. One problem that you can get when
+
+**[513.57s → 523.70s]** using tooling or toolkits is that the more tools that you chain together and go down, the more
+
+**[523.70s → 530.10s]** chance of it hallucinating and making up some stuff and then give you not saying data
+
+**[530.10s → 535.38s]** to pass on to the next tool. And then the more of them in that chain, the more chance
+
+**[535.38s → 540.82s]** for it to just kind of go, not Chinese whisper them, just going all over the place as opposed to just
+
+**[540.82s → 547.82s]** giving it a concise thing. So this is one of the reasons why we want the temperature
+
+**[547.82s → 555.26s]** to be as low as possible. Just jump to the lowest place. Temperature to be as low as possible
+
+**[555.26s → 560.69s]** in this situation. And then for toolkit, which is just this could just be called tools
+
+**[560.69s → 564.05s]** or whatever it doesn't really matter. We just call it something to the set of what we're
+
+**[564.05s → 570.94s]** using. So we just add a list of all of the actual tools that we want to use. So again,
+
+**[570.94s → 574.62s]** easy enough to add another tool you just literally write the tool and then add it to this.
+
+**[577.12s → 582.08s]** So now that we've got a toolkit we've got an LLM. That means we can build out an agent. So we can
+
+**[582.08s → 588.72s]** create, open our tools agent and pass it our LLM and pass it our toolkit and also pass it our prompt
+
+**[589.77s → 595.77s]** which is our kind of template version of prompt them. So now it becomes a tool agent,
+
+**[595.77s → 603.66s]** something that can use and deal with tools by asking you a question. We then have to create
+
+**[604.38s → 610.86s]** like an agent execute or something that can run things, utilizing the toolkit and also
+
+**[610.86s → 617.50s]** talking to the agent. So this is kind of a bit of a, it looks a bit redundant because we're
+
+**[617.50s → 624.60s]** passing toolkit here and then we're also passing toolkit here. So there's kind of a bit of
+
+**[624.60s → 630.28s]** redundancy here but they require certain things in there and this is just simply using that code.
+
+**[630.28s → 634.36s]** There's probably going to be a few other ways of doing that. So in this case we've got this
+
+**[634.36s → 639.36s]** agent executeer so we can then actually I've run that just so we've actually got it.
+
+**[640.08s → 643.92s]** So I've got the prompt. I've run that so we've actually instantiated that.
+
+**[644.86s → 650.86s]** At this point if you had an incorrect open AI key at the top it will give us an error in
+
+**[650.86s → 654.54s]** loan that it's an incorrect type of AI key and that would be oh and it's gone
+
+**[654.54s → 659.28s]** ready for me right oh no it's happy now that must have just been a bit of
+
+**[659.28s → 667.09s]** lag so if you get an error saying that it's an invalid tool invalid API key then
+
+**[667.09s → 672.81s]** you need to go back up the top and make sure this is at the top is a valid key
+
+**[672.81s → 679.19s]** and just run that again to make sure it's in the environment that being said
+
+**[679.19s → 682.79s]** now we're gonna take a prompt we're gonna invoke it like what is one two
+
+**[682.79s → 685.99s]** Let's give it a simple prompt first.
+
+**[685.99s → 687.95s]** We can test the add.
+
+**[687.95s → 692.95s]** So what is the sum of one plus two?
+
+**[696.03s → 699.95s]** Something simple should be really easy for you to do.
+
+**[699.95s → 700.79s]** So there you go.
+
+**[700.79s → 703.79s]** It's invoking add, so it knows to use the add tool
+
+**[703.79s → 708.87s]** based upon a saying that we want a sum of one plus two.
+
+**[708.87s → 710.63s]** And it's give us three.
+
+**[710.63s → 713.27s]** That looks like it's saying three there, but that's just,
+
+**[713.27s → 718.83s]** It's returning 3 and it's printing 3 and then it's giving us the finished chain and it returns the 3 to us.
+
+**[720.68s → 722.56s]** And this is its thought process at this point.
+
+**[723.04s → 728.40s]** Now if we wanted to do 1 plus 2, that's great, but we've only got add, we don't have minus.
+
+**[728.40s → 738.26s]** So what if we say minus 2, it's still using add, it's now, it's got the idea that we're hanging on.
+
+**[738.26s → 739.54s]** We want to take away 2.
+
+**[739.54s → 741.06s]** So we're going to do a minus 2.
+
+**[741.06s → 748.12s]** So we're adding one and minus two to give us the final sum of one takeaway two which gives us
+
+**[749.46s → 756.52s]** a minus one so it kind of gives us this finished chain but notice how it's still even
+
+**[757.62s → 765.14s]** the sum of minus one and one minus two is negative one so it's not really adhering to our previous
+
+**[766.52s → 773.67s]** things saying where's it gone only the answer so at this point you might need to do some more
+
+**[773.67s → 779.11s]** prompt engineering at this point and give it a little like a multi-shot rather than a one-shot
+
+**[779.11s → 783.99s]** have a many-shot or a multi-shot sort of thing where you give it multiple examples of what
+
+**[783.99s → 788.55s]** are correct and maybe show them a couple of incorrect ones and explain why it's incorrect
+
+**[789.80s → 796.52s]** because it's kind of not completely adhering to I think but it is kind of figuring out that
+
+**[796.52s → 806.61s]** they need to use ad versus any other sort of thing. Now, we could always literally add a
+
+**[808.95s → 817.12s]** minus to this as well. We could add a subtract as a tool fairly easily. So adding a tool to this is
+
+**[817.12s → 821.62s]** really, really, really, really, really simple. Because all you need to know is your business logic,
+
+**[821.62s → 829.83s]** what you want it to do. And literally define it with the ad tool annotation, then define with something
+
+**[829.83s → 838.87s]** like subtract for this simple idea and give it like A which is an integer and V which is also an
+
+**[838.87s → 846.18s]** integer and then telling it okay I want to return an integer we may not want to return integers we
+
+**[846.18s → 856.05s]** might want to return other sort of things but for now this is just let's say subtract a number
+
+**[856.05s → 871.35s]** I'm going to just give it a subtract a from a and it's simply sort of time there.
+
+**[871.35s → 875.35s]** We could word it probably a bit better than that, but it's just a normal region.
+
+**[875.35s → 878.86s]** We're just going to return a minus big.
+
+**[878.86s → 881.31s]** So that's super ridiculously simple.
+
+**[881.31s → 884.31s]** But there's a two part process just to this.
+
+**[884.31s → 886.31s]** We've had to define the tool.
+
+**[886.31s → 888.54s]** So let's run that again.
+
+**[888.54s → 893.44s]** But we also down here, we have to actually add it to the toolkit
+
+**[893.44s → 898.17s]** so there's no reference to be inside the actual LLM.
+
+**[898.17s → 904.75s]** So here we could add, add, subtract,
+
+**[904.75s → 907.83s]** and whatever other sort of things you want it to add.
+
+**[907.83s → 910.27s]** So at this time, we probably don't need to read it
+
+**[910.27s → 912.63s]** the prompt because we're not using any of the variables
+
+**[912.63s → 915.15s]** that we've dealt with so we can just run this.
+
+**[915.15s → 918.23s]** And then if we try this subtract again or minus,
+
+**[918.23s → 925.23s]** it's now utilising the subtract instead of the add to do that job.
+
+**[925.23s → 932.68s]** So, I understood that now we have a new tool to do the job.
+
+**[932.68s → 939.52s]** Now we have pretty much super basic stuff in here to do really ridiculously rudimentary
+
+**[939.52s → 940.52s]** things.
+
+**[940.52s → 945.92s]** Now, if we require it to draw pictures, we could have a tool to do that like we have here
+
+**[945.92s → 948.58s]** to display a circle.
+
+**[948.58s → 952.58s]** So what we can do is we could maybe ask it to display a circle here.
+
+**[952.58s → 958.64s]** Could literally say, okay, well, let's give it a prompt to display a circle.
+
+**[958.64s → 969.53s]** So say display today circle with a radius of seven.
+
+**[969.53s → 974.80s]** Let's try running that.
+
+**[974.80s → 976.80s]** It knows that display circle is a thing.
+
+**[976.80s → 979.80s]** It's past it, the radius of seven.
+
+**[979.80s → 981.80s]** And it's now displayed that circle.
+
+**[981.80s → 991.04s]** So it's given us the output that we hopefully were expecting.
+
+**[991.04s → 996.84s]** Now things that you probably can't do is saying something like display a green circle.
+
+**[996.84s → 1004.03s]** And then if I say a display a green circle, it's not going to do that because it doesn't,
+
+**[1004.03s → 1005.43s]** it's nothing to do with the tool.
+
+**[1005.43s → 1010.52s]** So there's no color or anything like that in the actual tool.
+
+**[1010.52s → 1014.68s]** So you'd have to augment the tool and add things to it if you wanted to have a more descriptive
+
+**[1014.68s → 1023.24s]** thing than just doing the mathematics and kind of building out the things in that way.
+
+**[1023.24s → 1029.76s]** But that's kind of the basics of what we have and the concepts of what we need.
+
+**[1029.76s → 1033.04s]** So is there any observations or questions about any of this?
+
+**[1033.04s → 1037.80s]** Because I mean, this is super rudimentary things, but the concepts follow through with just
+
+**[1037.80s → 1040.04s]** about everything that we do.
+
+**[1040.04s → 1042.36s]** So is there any of these parts that are unclear for anyone?
+
+**[1042.36s → 1048.48s]** Or is there any questions or observations or anything at all?
+
+**[1048.48s → 1051.48s]** There's any tools someone wants to just randomly write right now.
+
+**[1051.48s → 1080.20s]** We can have a go at plugging it in and see what we can build.
+
+**[1080.20s → 1083.20s]** Give you guys a few seconds to think of something.
+
+**[1083.20s → 1092.12s]** And then what I'll do is I'll go around the room and see if anyone's got anything that they can think of that we could possibly make into a tool.
+
+**[1092.12s → 1096.12s]** Some algorithm they have or some thought process they've got.
+
+**[1096.12s → 1100.83s]** It needs to be fairly rudimentary because of obviously time.
+
+**[1100.83s → 1105.55s]** but ideally we want something to build on this. We want to go, okay, well what tool can we make in this
+
+**[1105.55s → 1140.24s]** ecosystem currently that's there? What can we build on? I think I'm just going to randomly choose
+
+**[1140.24s → 1151.82s]** on the name in a minute. Watch me choose someone who's not actually even here. As easy, are you still here?
+
+**[1151.82s → 1159.42s]** I'm here. Awesome. Have you got any thoughts on what tool we can make? A simple python,
+
+**[1159.42s → 1165.90s]** some sort of a python function that we can feed to the actual AI and say, hey, this is a tool you
+
+**[1165.90s → 1168.12s]** can use and this is what it does.
+
+**[1168.12s → 1170.12s]** These thoughts?
+
+**[1170.12s → 1172.12s]** Spapasoid?
+
+**[1172.12s → 1174.12s]** What sorry?
+
+**[1174.12s → 1176.19s]** A Trappasoid?
+
+**[1176.19s → 1178.19s]** Trappasoid that means that you have a Trappasoid.
+
+**[1178.19s → 1180.19s]** Maybe you can do that.
+
+**[1180.19s → 1183.47s]** Let's have a go.
+
+**[1183.47s → 1185.47s]** I can't even think of what the algorithm would be for that.
+
+**[1185.47s → 1189.32s]** It's a bit of a bit.
+
+**[1189.32s → 1199.37s]** Find a area of Trappasoid that's even right-spending a Trappasoid.
+
+**[1199.37s → 1206.37s]** Oh boy, hang on, trapezoid can have, it's basically a rectangle isn't it?
+
+**[1206.57s → 1208.37s]** It's sort of on a skew, right?
+
+**[1210.69s → 1217.84s]** So it can have, I suppose it could have a length, a length of width I suppose.
+
+**[1219.82s → 1221.10s]** Are we going to bother with an angle?
+
+**[1226.81s → 1230.65s]** I'm going to give it a simple, I length and width,
+
+**[1231.79s → 1234.15s]** into finite, and we can always do all done.
+
+**[1234.15s → 1250.00s]** So firstly, we want to calculate the area of a stripper'soid given the length and the width,
+
+**[1250.00s → 1258.95s]** probably enough to give it something.
+
+**[1258.95s → 1263.07s]** Now, any ideas on the algorithm?
+
+**[1263.07s → 1265.42s]** Is there any sort?
+
+**[1265.42s → 1268.42s]** I can tell you the formula.
+
+**[1268.42s → 1269.68s]** Yeah.
+
+**[1269.68s → 1278.67s]** Yeah, so the formula is in the right top bottom over team times the height.
+
+**[1278.67s → 1282.31s]** Also, we still need the height as well then.
+
+**[1282.31s → 1284.31s]** Yeah, we need the height as well.
+
+**[1284.31s → 1288.37s]** Okay, so we need top bottom and height.
+
+**[1288.37s → 1295.63s]** Top bottom, oh, okay, so trapezoid.
+
+**[1295.63s → 1307.67s]** we want the top bottom, five.
+
+**[1309.82s → 1311.52s]** And it's gonna output.
+
+**[1312.68s → 1314.48s]** Do we want it output in, yeah,
+
+**[1314.48s → 1316.00s]** we're just gonna keep it simple and outputting it
+
+**[1316.00s → 1318.44s]** so it'll round if it needs to.
+
+**[1318.44s → 1320.86s]** So calculate the error of a trapezoid given,
+
+**[1323.80s → 1331.55s]** the top, bottom and five.
+
+**[1338.02s → 1338.86s]** So what is it?
+
+**[1338.86s → 1351.64s]** So it's basically top was it's top plus bottom over two times height right
+
+**[1351.64s → 1360.37s]** Yeah, that's what it is. Yeah, so I looked up this. Okay. So what will say it?
+
+**[1360.37s → 1365.97s]** I was gonna say it's definitely been some that's a question I've never been at
+
+**[1365.97s → 1374.70s]** I'll put it in brackets anyway just for now, a plus b.
+
+**[1374.70s → 1377.70s]** I'm going to divide it by two.
+
+**[1377.70s → 1391.56s]** Probably don't need brackets list, but I'm going to do it just to be clear on what we're doing.
+
+**[1391.56s → 1398.00s]** Multiply by, I just realized I'm saying a plus b.
+
+**[1398.00s → 1405.08s]** top, bottom, divided by two, multiplied by height.
+
+**[1408.75s → 1410.50s]** And it feels bad, right?
+
+**[1410.50s → 1411.86s]** We'll find out in a minute anyway,
+
+**[1411.86s → 1413.74s]** but it's interesting to see what it does.
+
+**[1413.74s → 1414.78s]** So now we've got a tool.
+
+**[1414.78s → 1416.66s]** Now remember, we have to add that tool.
+
+**[1416.66s → 1418.62s]** So I'm gonna copy the name of the tool.
+
+**[1418.62s → 1420.10s]** It needs to be added to the,
+
+**[1421.10s → 1425.04s]** sorry, it's a copy of the name of the tool.
+
+**[1425.04s → 1428.76s]** Then it needs to be added to that list of tools
+
+**[1428.76s → 1430.56s]** somewhere over here, there we go.
+
+**[1430.56s → 1437.04s]** So find area of circle and find area of trapezoid.
+
+**[1440.80s → 1443.76s]** So in theory, we should be able to utilize that tool
+
+**[1443.76s → 1444.60s]** in a moment.
+
+**[1444.60s → 1445.92s]** So what I need to do is I need to add it to the tool
+
+**[1445.92s → 1450.09s]** to fame by running the creation of the tool.
+
+**[1450.09s → 1451.93s]** We shouldn't need to redo the prompt.
+
+**[1455.04s → 1456.36s]** Yeah, we still need to do this part
+
+**[1456.36s → 1459.79s]** because we've got to add the tools to the actual LLM
+
+**[1459.79s → 1462.35s]** and then we can ask it a question.
+
+**[1462.35s → 1470.63s]** What is the area of a graph per side?
+
+**[1470.63s → 1481.25s]** This would have been even more fun if we didn't give it the those actual things.
+
+**[1481.25s → 1490.25s]** And we gave it like each of the edge lengths and then have it figure out the height as well at some point.
+
+**[1490.25s → 1493.25s]** at some point but you know we'll just use this for them.
+
+**[1493.25s → 1501.56s]** I have a trapersoid given the bytes of arg.
+
+**[1501.56s → 1506.66s]** I think how would you actually know for a fact the height you'd have to have seen.
+
+**[1506.66s → 1511.85s]** You'd have to have given a height of I don't know.
+
+**[1511.85s → 1514.92s]** 10. I'm just making up some of these points.
+
+**[1514.92s → 1522.01s]** a top of 5 and a bottom of 12.
+
+**[1522.01s → 1527.17s]** Let's give that a run.
+
+**[1527.17s → 1532.75s]** Invoking find area of trapezoid, top 5, bottom is 12 and that's 10.
+
+**[1532.75s → 1534.75s]** 85, apparently.
+
+**[1534.75s → 1538.75s]** I'm going to get a trapezoid calculator and do that.
+
+**[1538.75s → 1539.75s]** So what do we give it?
+
+**[1539.75s → 1542.97s]** We gave it a height of 10,
+
+**[1542.97s → 1556.55s]** and a top of five and a bottom of 12, which gives us 85.
+
+**[1556.55s → 1562.34s]** Yeah, so our version of it and another just Google's
+
+**[1562.34s → 1566.03s]** trapezoid area sort of give the same answer.
+
+**[1566.03s → 1570.56s]** So that looks like it should be correct.
+
+**[1570.56s → 1571.94s]** There we go.
+
+**[1571.94s → 1577.13s]** So anybody else have any other functionalities or tooling?
+
+**[1577.13s → 1579.41s]** maybe more complex than this or something,
+
+**[1579.41s → 1598.00s]** we can kind of get a teeth into it.
+
+**[1598.00s → 1603.35s]** Trevor, are you there if you got any thoughts?
+
+**[1603.35s → 1606.23s]** Yeah, I'm here, but I was a bit later the party today,
+
+**[1606.23s → 1607.87s]** so I'm kind of catching up.
+
+**[1607.87s → 1609.51s]** All right, well, basically what we've done is,
+
+**[1609.51s → 1612.19s]** we've run through the lane chain stuff,
+
+**[1612.19s → 1615.35s]** so in the simply sense, we just installed it,
+
+**[1615.35s → 1616.75s]** explain that it's just a toolkit
+
+**[1616.75s → 1621.11s]** to be able to talk to different sort of like LLMs.
+
+**[1621.11s → 1624.47s]** We have imported all the bits that we need.
+
+**[1624.47s → 1629.69s]** we've also set the environment of our open-air eye kit.
+
+**[1629.69s → 1634.88s]** This actual, not actually, yeah, so this actual colab
+
+**[1635.60s → 1640.60s]** is inside the 24a to channel inside the questions thread.
+
+**[1641.68s → 1644.88s]** So there's a link to that, you'll see it locally.
+
+**[1644.88s → 1647.36s]** And then what we did was we ran over the idea of each
+
+**[1647.36s → 1649.20s]** of the tools like ad,
+
+**[1649.20s → 1652.24s]** and they're very simplistic mathematical tools at this point,
+
+**[1652.24s → 1657.53s]** multiply square, find area of circle and display circle.
+
+**[1659.21s → 1663.38s]** Then what we did, we went through the,
+
+**[1663.38s → 1664.86s]** so like the fact that display circle
+
+**[1664.86s → 1666.82s]** is just literally using that plot
+
+**[1666.82s → 1669.36s]** lived to draw a circle of whatever radius.
+
+**[1671.12s → 1674.76s]** We then have a prompt where we have this chat prompt template
+
+**[1674.76s → 1676.40s]** and we can build about the template,
+
+**[1676.40s → 1678.40s]** building it from a bunch of messages.
+
+**[1678.40s → 1680.52s]** So we give it a system prompt saying,
+
+**[1680.52s → 1683.28s]** You are a mathematical assistant.
+
+**[1683.28s → 1685.96s]** Use your tools to answer questions.
+
+**[1685.96s → 1688.52s]** If you do not have a tool to answer the questions say so,
+
+**[1688.52s → 1690.08s]** so let us know.
+
+**[1690.08s → 1692.52s]** Then we give it like a one shot sort of prompt here
+
+**[1692.52s → 1695.60s]** where we return only answer, example, human.
+
+**[1695.60s → 1696.84s]** What is one plus one?
+
+**[1696.84s → 1698.40s]** AI, too.
+
+**[1698.40s → 1700.24s]** Now it's not completely adhering to that
+
+**[1700.24s → 1701.92s]** when we ask more complex questions
+
+**[1701.92s → 1706.03s]** it does kind of trying to go off script for that.
+
+**[1706.03s → 1708.31s]** We've then got the chat history available to us
+
+**[1708.31s → 1712.14s]** and also what the human prompt is going to be.
+
+**[1712.14s → 1715.76s]** And then any sort of things where the agent itself
+
+**[1715.76s → 1718.20s]** is going to store its thoughts, if you like,
+
+**[1718.20s → 1722.01s]** so it's got that as a prompt.
+
+**[1722.01s → 1725.29s]** Then basically we make an LLM based upon,
+
+**[1725.29s → 1729.49s]** we're just using like chat GPT 3.5 turbo.
+
+**[1730.25s → 1732.45s]** We could use a different one.
+
+**[1732.45s → 1735.09s]** This is probably the most sort of like simple sort of thing
+
+**[1735.09s → 1736.97s]** solution for what we're doing.
+
+**[1736.97s → 1738.81s]** And we're giving it a temperature of zero
+
+**[1738.81s → 1740.85s]** So it doesn't sort of go too creative
+
+**[1740.85s → 1744.96s]** and try and go off book and hallucinate and stuff.
+
+**[1744.96s → 1747.56s]** Then, you know, there's tools what we just made.
+
+**[1747.56s → 1750.12s]** We then have a list of them.
+
+**[1750.12s → 1751.88s]** So this list is giving context
+
+**[1751.88s → 1754.80s]** of what tools are available for the LLM.
+
+**[1754.80s → 1758.88s]** We do that by making it create open AI tools agent,
+
+**[1758.88s → 1761.20s]** passing it the LLM, the toolkit,
+
+**[1761.20s → 1764.24s]** and also the prompt that we created.
+
+**[1764.24s → 1768.36s]** That agent now needs to a way of executing things.
+
+**[1768.36s → 1771.36s]** So we have this agent executor.
+
+**[1771.36s → 1773.92s]** The agent executor takes in the agent,
+
+**[1773.92s → 1776.72s]** takes in a list of tools and also we put verbose.
+
+**[1776.72s → 1778.88s]** So it gives us its thought process
+
+**[1778.88s → 1780.04s]** as it's doing it sort of thing.
+
+**[1780.04s → 1782.56s]** You know, it sort of verbose and it prints out
+
+**[1782.56s → 1785.99s]** these things like invoking this and stuff like that.
+
+**[1785.99s → 1789.31s]** Then we give it a prompt and the input is whatever we want
+
+**[1789.31s → 1793.15s]** to, you know, whatever question we want to ask you.
+
+**[1793.15s → 1797.65s]** Once we've done that, what I did was I asked to see
+
+**[1797.65s → 1801.81s]** who wants to make a tooling for it, you know, make up one.
+
+**[1801.81s → 1804.89s]** But we had as he's making up a find area of trappers
+
+**[1804.89s → 1806.77s]** or anything.
+
+**[1806.77s → 1810.53s]** So my question to you is, any thoughts on a function
+
+**[1810.53s → 1813.37s]** to make what sort of, you know,
+
+**[1813.37s → 1815.49s]** what sort of function that we can build out
+
+**[1815.49s → 1820.06s]** as a tool for this to build on in some way, shape.
+
+**[1820.06s → 1825.22s]** Ideally, mathematical, but it could be anything, you know?
+
+**[1825.22s → 1827.70s]** It could be like a list sort of it could be something
+
+**[1827.70s → 1828.90s]** that could be anything.
+
+**[1849.26s → 1850.94s]** That doesn't have to be super complex,
+
+**[1850.94s → 1858.10s]** could be pretty easy.
+
+**[1858.10s → 1861.94s]** OK, so my question is, we've got a set of them
+
+**[1861.94s → 1864.58s]** at least relative similar tools.
+
+**[1864.58s → 1871.25s]** And this is kind of like a toy example here
+
+**[1871.25s → 1876.09s]** in agents that can do math, right?
+
+**[1876.09s → 1888.22s]** like the, uh, what was cool was how it could use the building block of ad and then figure
+
+**[1888.22s → 1897.29s]** out the subtract. So, I mean, like, isn't like, are these all taking tokens in the prompt?
+
+**[1897.29s → 1902.75s]** Because at some point we hit some limit where the more we try to actually give it in terms
+
+**[1902.75s → 1906.23s]** of tools, the more it's going to cost.
+
+**[1906.23s → 1914.52s]** Yeah, there is a separate list. It's more of the prompt is usually kind of taking the name
+
+**[1914.52s → 1919.92s]** of it or the reference to it. So it's probably taking tokens of what reference, like the memory
+
+**[1919.92s → 1924.56s]** address or the reference to the tool rather than the content of the tool. So it's the tools
+
+**[1924.56s → 1930.86s]** getting the internals of that. You can make like a million lines of code and it's not really
+
+**[1930.86s → 1935.02s]** anything to do with the prompt. We're just handing it that one thing. So the prompt
+
+**[1935.02s → 1941.80s]** knows that it's passing it an int and this is the name of the function. That's what OpenAI
+
+**[1941.80s → 1946.28s]** knows. The content of this is irrelevant. This could be anything. This could have a million lines
+
+**[1946.28s → 1951.34s]** code. It could have no lines code. Then it's waiting for an output and then whatever that output is
+
+**[1951.34s → 1960.23s]** is also probably taken up tokens. That makes sense. So every tool that we add to it, really,
+
+**[1960.23s → 1965.38s]** if we add more functionality that we're doing, we're costing less on tokens because we're only
+
+**[1965.38s → 1970.29s]** passing, taking data, passing data. We're not passing this
+
+**[1970.29s → 1973.77s]** entire option to it. Yeah, I'm confused about the execution
+
+**[1973.77s → 1978.65s]** of Python code. Right, okay. Well, this is our local execution.
+
+**[1978.65s → 1981.61s]** So this is happening locally. That's not, that's nothing to do with
+
+**[1981.61s → 1985.21s]** the LLM. All the LLM's doing is it's got a list of tools, so it's
+
+**[1985.21s → 1990.86s]** got access to, it's taking in a question that's taking up some
+
+**[1991.10s → 1995.38s]** tokens. Yeah, it's taking in this prompt, which is taking up some
+
+**[1995.38s → 2001.45s]** tokens. Yeah? It's a little bit more tokens because we're keeping the chat
+
+**[2001.45s → 2005.37s]** history but that's the same as how any prompt would be. It doesn't matter what
+
+**[2005.37s → 2009.13s]** tooling you're using or not using at that point. It's just a history of what we've
+
+**[2009.13s → 2017.59s]** asked it and what it's answered. Then based upon what we've asked it, it's then
+
+**[2017.59s → 2022.60s]** looking in a list that we've gave it of these things. And the most it's actually
+
+**[2022.60s → 2027.16s]** reading into it is actually kind of this part here.
+
+**[2029.64s → 2032.44s]** And then reasoning about is this the right tool to do that job?
+
+**[2033.35s → 2035.35s]** Or is this the right tool to do that job?
+
+**[2035.83s → 2037.59s]** Or is this the right tool to do that job?
+
+**[2037.59s → 2043.19s]** So I suppose, it depends on what order it does these in as to how many tokens you might take.
+
+**[2043.19s → 2046.31s]** So I suppose in real reality we're adding a little bit of token there,
+
+**[2046.87s → 2047.91s]** a little bit of token there.
+
+**[2047.91s → 2049.43s]** So imagine it being mostly the
+
+**[2049.43s → 2054.88s]** the dock string that's taken up the tokens.
+
+**[2056.32s → 2059.34s]** And then once it's took those tokens up,
+
+**[2059.34s → 2061.38s]** it goes, well, which one of these shall I use?
+
+**[2061.38s → 2063.74s]** What's the most likely to be based upon what's been
+
+**[2063.74s → 2065.10s]** asked of us?
+
+**[2065.10s → 2067.86s]** So if it then chose add,
+
+**[2067.86s → 2072.27s]** it's then going to just reply with the tool to use,
+
+**[2072.27s → 2073.63s]** as you can see it down here,
+
+**[2073.63s → 2075.47s]** is what it's replied with.
+
+**[2075.47s → 2079.91s]** It's replied with the data in a format
+
+**[2079.91s → 2085.23s]** which it can deal with and the fact that it's invoking something can name the thing.
+
+**[2085.23s → 2087.63s]** So here's a bit of tokens to use.
+
+**[2087.63s → 2093.10s]** So the agent executor is just making the alarm calls and orchestrating the pay time.
+
+**[2093.10s → 2094.10s]** The rest of it I'm good.
+
+**[2094.10s → 2099.54s]** There's a lot of stuff under the hood and that's the whole point of using, like something
+
+**[2099.54s → 2100.54s]** like Langcheng.
+
+**[2100.54s → 2104.82s]** It's because it's already a whole framework of things for us to actually utilize.
+
+**[2104.82s → 2108.86s]** So we don't have to do all those calls ourselves.
+
+**[2108.86s → 2120.53s]** If we wanted to do certain calls ourselves, open API reference.
+
+**[2120.53s → 2123.56s]** So you've got the actual API reference here.
+
+**[2123.56s → 2126.56s]** I'm hoping this has an example of the Pippin store.
+
+**[2126.56s → 2128.56s]** That's a bit different.
+
+**[2128.56s → 2130.56s]** There we go. That's what I wanted.
+
+**[2130.56s → 2137.72s]** So it shows you the idea of doing your curl calls and you can literally write all this manually,
+
+**[2137.72s → 2144.04s]** utilizing like hitting the end points, you know what I mean. But this is what it's doing under the hood.
+
+**[2144.54s → 2154.77s]** So it's formed it's been optimized to a point where it tries to minimize the amount of tokens used based upon what we give it.
+
+**[2155.54s → 2166.92s]** It's not always going to do a perfect job. But without it, what it is, you'd have to decide on how to minimize that. You know what I mean. So it's so you'd have to be the framework itself.
+
+**[2166.92s → 2174.96s]** because you can just do it raw and literally send all the data there, pull it back, formulate
+
+**[2174.96s → 2179.20s]** what you're going to do, pass that on to the tool and do all this pretty much manually
+
+**[2179.20s → 2186.23s]** without it. But the idea behind having something like lang chain is though that you can sort
+
+**[2186.23s → 2191.97s]** of leverage off the multitude of sort of developers that have built it out so you don't actually
+
+**[2191.97s → 2193.45s]** have to write as much as yourself.
+
+**[2193.45s → 2201.37s]** So what's the agenda for tomorrow or the next week? Like what's the project? Like what are the what are the actual tools we're gonna be trying to build?
+
+**[2202.57s → 2207.93s]** Question I'd have to look up to at least let's have a look. I did have a duck on that
+
+**[2216.78s → 2218.97s]** I think I might have it in my docs somewhere
+
+**[2219.29s → 2223.21s]** It's got good docs
+
+**[2223.21s → 2229.82s]** Should be in that line of
+
+**[2229.82s → 2248.98s]** simulation once. Here we go. Something like top week of it. We've done tool calling
+
+**[2248.98s → 2260.04s]** up. So the hands on project, what you're probably doing is build a React tool calling
+
+**[2260.04s → 2265.92s]** agent inside a code base, create, update an edit file automatically. So the overarching
+
+**[2265.92s → 2272.30s]** thing over this tool calling part and then the next section of things is agents. So those
+
+**[2272.30s → 2279.05s]** the two kind of subject matter. So for the tool calling, so we're building on, we've done
+
+**[2279.05s → 2284.57s]** the LLM essentials, which was just the super basic stuff that side ridiculously, you know,
+
+**[2284.57s → 2290.17s]** rudimentary. Then we did rack. So the idea of those two portions was to be able to use rack
+
+**[2290.17s → 2295.64s]** to update technical documentation deal with stuff and deal with a technical writer as an agent.
+
+**[2296.76s → 2302.52s]** Then the tool calling one is eventually to make like a software developer, but if you like. So
+
+**[2302.52s → 2304.44s]** So we ask it to do stuff.
+
+**[2304.44s → 2308.79s]** Maybe we'll give it tools to be able to make directories,
+
+**[2308.79s → 2312.95s]** read files, search for files, write to files,
+
+**[2312.95s → 2316.45s]** update files, and stuff like that.
+
+**[2316.45s → 2319.29s]** That way then, we could turn around to an AI and say,
+
+**[2319.29s → 2324.36s]** hey, I want to build a webpage that's got a game in it.
+
+**[2327.44s → 2329.00s]** Let's say I'm going to punk,
+
+**[2329.00s → 2329.84s]** what's up, I don't know,
+
+**[2329.84s → 2331.86s]** which is making up stuff at this point.
+
+**[2331.86s → 2336.66s]** So then it should have enough tools to be able to make
+
+**[2336.66s → 2340.99s]** a new direct tree called Pong, write the file structure
+
+**[2340.99s → 2341.99s]** of let's say a HTML.
+
+**[2341.99s → 2344.59s]** And so imagine you said I want it to be a vanilla HTML CSS
+
+**[2344.59s → 2347.07s]** JavaScript application.
+
+**[2347.07s → 2350.11s]** Write HTML file like a blank HTML file
+
+**[2350.11s → 2354.79s]** like we touch or whatever until we want it to give it.
+
+**[2354.79s → 2359.81s]** Then the JavaScript file and the CSS file, let's say.
+
+**[2359.81s → 2362.57s]** Then free it to be able to update those files with the code
+
+**[2362.57s → 2370.57s]** it formulates for those things. Once it updates those with that code, we've then got an application
+
+**[2370.57s → 2375.21s]** we've asked it to build. So something similar to what you might do if you was asking it, literally
+
+**[2375.21s → 2380.65s]** inside chat GPT, but instead of you having to look at it, copy and paste the code, update the code
+
+**[2380.65s → 2387.16s]** and whatever it's going and doing it. So any tool that you possibly have that you want it to use,
+
+**[2387.16s → 2393.71s]** you could technically have it used. That's the idea of that next agent that we're aiming towards next.
+
+**[2393.71s → 2396.15s]** and to do that, we need to understand tool calling,
+
+**[2396.15s → 2399.60s]** and we also need to understand agents next.
+
+**[2399.60s → 2411.56s]** So how are we going to be using, like, bash?
+
+**[2411.56s → 2412.08s]** Or something?
+
+**[2412.08s → 2414.20s]** Like, we're talking about CLI that's
+
+**[2414.20s → 2418.34s]** going to be able to mess with our local directory
+
+**[2418.34s → 2421.77s]** and with bash, and we give it bash functions.
+
+**[2421.77s → 2424.25s]** Yeah, we can give bash functions.
+
+**[2424.25s → 2425.41s]** We can give it whatever we want.
+
+**[2425.41s → 2427.57s]** We could write a program in a different language
+
+**[2427.57s → 2429.49s]** and give it access to that if we wanted to,
+
+**[2429.49s → 2431.99s]** we can do almost anything.
+
+**[2431.99s → 2434.79s]** We could give it access to an API of something
+
+**[2434.79s → 2436.51s]** that does something, can have you pull the data
+
+**[2436.51s → 2438.77s]** from there if you wanted to.
+
+**[2438.77s → 2440.65s]** So we can just build it out to do whatever,
+
+**[2440.65s → 2442.57s]** but in general, for the basics of it,
+
+**[2442.57s → 2445.57s]** just to get the idea of multitude of things.
+
+**[2445.57s → 2448.37s]** Yeah, I'll show you what, this is outside of scope.
+
+**[2448.37s → 2450.88s]** I'll just show you a quick,
+
+**[2450.88s → 2453.44s]** here's one I built earlier if you like,
+
+**[2453.44s → 2456.12s]** but basics of what, let's see if I can share that.
+
+**[2456.12s → 2461.49s]** or just do a new share, and new share.
+
+**[2461.49s → 2465.17s]** Let's just share this function calling function.
+
+**[2465.17s → 2470.79s]** I got it somewhere around tooling structure,
+
+**[2470.79s → 2473.19s]** server notes, tooling,
+
+**[2473.19s → 2475.35s]** a function calling agent and then we got it.
+
+**[2475.35s → 2480.60s]** So this is basically that's an example of some agent.
+
+**[2481.80s → 2483.36s]** So we've been kind of building this out,
+
+**[2483.36s → 2485.22s]** playing with it,
+
+**[2485.22s → 2490.20s]** moving that out the way, it's to be open.
+
+**[2490.20s → 2491.68s]** So this one's got a prompt,
+
+**[2491.68s → 2498.49s]** you can ask you to do stuff. I can't remember where this has a current open AI API keys
+
+**[2498.49s → 2518.68s]** for my crash. Let's say build a vanilla JavaScript HTML CSS app. I don't know. I can't even
+
+**[2518.68s → 2531.63s]** think of anything now with a I'm losing it I'm just coming up with a blank so I'm
+
+**[2531.63s → 2552.03s]** planning this. Just make it a text box to do yeah. So it should be able to do it to do this right?
+
+**[2555.61s → 2562.33s]** Let's see how well all budget does this so it says okay create direct trees created direct trees
+
+**[2563.40s → 2565.80s]** So it's going to create a directory called to do list app.
+
+**[2565.80s → 2567.56s]** It's going to make files called index.
+
+**[2567.56s → 2570.36s]** HTML, style.css and JavaScript.
+
+**[2570.36s → 2571.56s]** And it's script.js.
+
+**[2571.56s → 2572.76s]** Now it's having a little think.
+
+**[2572.76s → 2574.67s]** Let's see how long it takes.
+
+**[2574.67s → 2575.43s]** Oh, there we go.
+
+**[2575.43s → 2576.75s]** It's invoked.
+
+**[2576.75s → 2580.83s]** That now successfully created a file called JavaScript
+
+**[2580.83s → 2583.36s]** of the script.js as well.
+
+**[2583.36s → 2584.48s]** And the styles.
+
+**[2584.48s → 2587.54s]** Let's just let it do its thing.
+
+**[2587.54s → 2590.35s]** Feels very slow.
+
+**[2590.35s → 2591.83s]** I did a race with this at one point.
+
+**[2591.83s → 2592.19s]** I got it.
+
+**[2592.19s → 2594.59s]** I'll go to make an entire backend and frontend.
+
+**[2594.59s → 2597.64s]** And just a simple sort of like contacts API
+
+**[2597.64s → 2600.40s]** and like can express.
+
+**[2600.40s → 2603.68s]** And then a frontend in vanilla HTML JavaScript.
+
+**[2603.68s → 2607.73s]** I popped it to one side and I'll start building it myself.
+
+**[2607.73s → 2609.69s]** Just to give it a quick test.
+
+**[2609.69s → 2610.65s]** It's interesting.
+
+**[2610.65s → 2611.33s]** Oh, finished.
+
+**[2611.33s → 2613.37s]** OK, let's see how badly it's made it.
+
+**[2613.37s → 2614.53s]** So where is it?
+
+**[2614.53s → 2615.93s]** It called it, what was it?
+
+**[2615.93s → 2617.49s]** To do that.
+
+**[2617.49s → 2619.37s]** To do that.
+
+**[2619.37s → 2621.21s]** To do this stuff, there it is.
+
+**[2621.21s → 2622.29s]** So some look at what it's made.
+
+**[2622.29s → 2625.45s]** So it made basically a super basic thing,
+
+**[2625.45s → 2628.39s]** but it's there, it's wrote that file.
+
+**[2628.39s → 2631.83s]** It's made script.js with some very very,
+
+**[2631.83s → 2634.35s]** a bit of knowledge there.
+
+**[2634.35s → 2636.11s]** And then it's got some styles.
+
+**[2636.11s → 2638.19s]** It's always interesting to what it does with styles.
+
+**[2638.19s → 2639.23s]** So I've noticed a lot of it.
+
+**[2639.23s → 2643.72s]** If it has a, it does not do CSS too well.
+
+**[2643.72s → 2647.24s]** If it has like a form where you might have something centered,
+
+**[2647.24s → 2649.08s]** instead it might have it slightly off-central,
+
+**[2649.08s → 2649.92s]** or similar to those.
+
+**[2649.92s → 2652.00s]** But what are the functions that you've set up
+
+**[2652.00s → 2653.40s]** for the decision to use?
+
+**[2653.40s → 2655.32s]** So I've added tweak it along the way.
+
+**[2655.32s → 2658.40s]** I've added doing CNC plus plus and all sorts as well.
+
+**[2658.40s → 2660.52s]** So functionality wise,
+
+**[2660.52s → 2663.48s]** it goes to the agent for now.
+
+**[2663.48s → 2664.84s]** So first of all,
+
+**[2664.84s → 2667.68s]** what value tool like file types we can work on
+
+**[2667.68s → 2669.40s]** is because we don't want it to start looking
+
+**[2669.40s → 2670.68s]** at all sorts of files.
+
+**[2670.68s → 2673.12s]** We started with a very slim amount of files
+
+**[2673.12s → 2676.12s]** to start with and types and then build it up
+
+**[2676.12s → 2678.76s]** in saying amounts in OK,
+
+**[2678.76s → 2681.72s]** saying amounts because obviously you don't want it
+
+**[2681.72s → 2683.84s]** just touching every single file that you've got
+
+**[2683.84s → 2687.70s]** So you kind of want to do me in some way.
+
+**[2687.70s → 2691.54s]** So here's just for a life, we did a create react app with
+
+**[2691.54s → 2695.18s]** Vite. So we said if we ask it to create react app, it will go
+
+**[2695.18s → 2698.62s]** off and create a boilerplateed via app. So it's got that
+
+**[2698.62s → 2702.37s]** functionality. And this is super simple. For now, just sub
+
+**[2702.37s → 2705.01s]** process run, not the best of things to use, but it does the
+
+**[2705.01s → 2707.97s]** job. So at this point, we're doing an mpm create fight,
+
+**[2707.97s → 2711.57s]** thinking of the template, react and saying that we should
+
+**[2711.57s → 2717.05s]** actually create that thing. If it doesn't, we give it an error. So then it utilizes that
+
+**[2717.05s → 2721.89s]** error to reiterate on what it's doing. So if it has a problem, it knows it needs to move
+
+**[2721.89s → 2728.04s]** on to think of a different way of trying to solve the problem. So, or you can let us know
+
+**[2728.04s → 2733.18s]** that it's not working. And it will keep trying until eventually it comes up with a solution
+
+**[2733.18s → 2738.18s]** or fails completely. At this point, that's just the way it's set, but you can play about
+
+**[2738.18s → 2742.83s]** with then change how you want to deal with that.
+
+**[2742.83s → 2745.39s]** So then we've got another one to just create directories.
+
+**[2745.39s → 2750.27s]** And again, the key is to have a clear sort of doc string to explain to what they're
+
+**[2750.27s → 2751.47s]** totally supposed to do.
+
+**[2751.47s → 2755.97s]** So we've tried to help it with a little bit of prompt engineering just inside each of
+
+**[2755.97s → 2758.21s]** these sort of doc strings.
+
+**[2758.21s → 2762.57s]** And this is just to literally create a new writable directory so that we kind of, if
+
+**[2762.57s → 2763.57s]** it's not existing.
+
+**[2763.57s → 2766.49s]** So give it a little bit of parameters.
+
+**[2766.49s → 2771.21s]** can do on body actually returns a successor error message so it knows to expect a successor
+
+**[2771.21s → 2778.60s]** or an error. So if we're sort of like if it's a what's it type directory then we kind
+
+**[2778.60s → 2783.16s]** of can't make the directory in the dot dot in path because it's kind of going to mess about
+
+**[2783.16s → 2788.80s]** with it because that's like a going outside of the you know we're keeping it within current directory.
+
+**[2788.80s → 2795.20s]** If we start telling to go outside that leads us to be allowed to go okay go dot dot slash dot
+
+**[2795.20s → 2799.24s]** dot slash dot slash and create a directory somewhere in wherever,
+
+**[2799.44s → 2804.04s]** you know, so that was just there to stop it going off and deciding to do some
+
+**[2804.04s → 2808.56s]** recursive course to this and going off on one and messing with following that
+
+**[2808.56s → 2812.88s]** main file system. So it's kind of limited at this point to its current directory
+
+**[2812.88s → 2820.93s]** of being the base. Otherwise, it tries to make directory based upon what we've
+
+**[2820.93s → 2826.89s]** got. And it just does the sub process run, changes the mode to be basically
+
+**[2826.89s → 2836.60s]** right to pull. And then returns when it's been successful and created that directory as right to pull. So if it works then the AI agent knows.
+
+**[2836.60s → 2839.60s]** Okay, it worked. I can move on to my next thing.
+
+**[2839.60s → 2848.60s]** If it failed, then it knows it failed. Therefore, it can either spit out of warning to you and let you know and stop or it can try another way of doing the same thing.
+
+**[2848.60s → 2855.35s]** I've had it before trying invoke another command for me before when I didn't have the
+
+**[2856.70s → 2858.70s]** Den have very very clear concise
+
+**[2859.30s → 2864.50s]** Pumpting on it and that led some interesting weird things. So you've got to be very careful when you
+
+**[2864.74s → 2871.86s]** Playing with the stuff like this or just running in a VM or a you know some sort of visualized area where it's not touching you actual system
+
+**[2873.37s → 2877.81s]** Let's see so then there's a find file so if we go and ask it to update a file
+
+**[2877.81s → 2885.22s]** it can go off and look for files. So you've got, okay, is this file here? Okay, there's the file
+
+**[2885.22s → 2890.02s]** that I'm looking for. Let's update that file. Or you could ask it to you could add read file and all
+
+**[2890.02s → 2896.80s]** sorts of matter, kind of get some context, maybe to update in a specific part of it and stuff like that.
+
+**[2896.80s → 2901.67s]** So you can play about within, do things like that. Then we've got a create file just so we can literally
+
+**[2901.67s → 2909.03s]** just create files. So none of this is on on us on the LLM itself. This is all our code. So we have made
+
+**[2909.03s → 2914.79s]** the agent to do that work. And all we're leveraging the LLM for is to choose the tool to use
+
+**[2915.67s → 2924.13s]** and to reason some sort of solution to what we're asking. So we're giving the actual LLM
+
+**[2924.13s → 2930.21s]** minimal sort of work. I mean in essence with this, with a few tweaks you could probably set this
+
+**[2930.21s → 2935.01s]** up on some like O-Lama and have a local LLM do pretty much the same sort of thing. It's
+
+**[2935.01s → 2942.13s]** or go into hooking face and grab some other form of local model and have it do things using that.
+
+**[2945.03s → 2955.03s]** But yeah, so that's that. We also have shelter. So we do go off book and tries to do a command on
+
+**[2955.03s → 2959.75s]** the system. We've given it access to shelter which is basically like bash commands. Do whatever,
+
+**[2959.75s → 2965.43s]** do what you want. But what we've done is ask human input equals true. So if it does go to do that,
+
+**[2965.43s → 2971.48s]** it stops and asks us is it okay if I do that? Because we don't want it to go. You know what? I think
+
+**[2971.48s → 2976.52s]** somebody asked me to delete the whole hard drive. Yeah. And then just have nothing coming out.
+
+**[2977.16s → 2979.96s]** So we've got to be a bit careful and give it some sort of guard rails.
+
+**[2980.82s → 2984.42s]** And then we just got this list of tools. So again, this would have been our toolkit in the other
+
+**[2984.42s → 2990.95s]** example. And then we're configuring it with chat open AI. At the moment we're using the 4-0
+
+**[2991.59s → 2995.83s]** model, which you can use whatever. And again, very carefully, temperature of zero to give it a
+
+**[2995.83s → 3000.35s]** bit of card, Godrowsky, you do not want it, using all these different things and just going
+
+**[3000.35s → 3006.29s]** off on one and hallucinating to wreck everything basically.
+
+**[3006.29s → 3009.77s]** And the simple template, at the moment, you can play about with this, this is just like
+
+**[3009.77s → 3014.09s]** you're an expert web developer, but you can put like you're an expert CS engineer or
+
+**[3014.09s → 3021.60s]** an expert, whatever you want to give it as a type of persona if you like, in that way
+
+**[3021.60s → 3026.32s]** it kind of builds out stuff, which is why I was asking vanilla HCM on CSHGARV script because
+
+**[3026.32s → 3028.96s]** I've told you that it's an expert web developer to start with.
+
+**[3028.96s → 3035.60s]** You know, I could say you're an expert at system design or an expert at operating system development
+
+**[3035.60s → 3036.60s]** or something like that.
+
+**[3036.60s → 3044.36s]** But yeah, and then we've got the user input and then we've got a scratch pad for it to kind
+
+**[3044.36s → 3046.32s]** of pass the information back to itself.
+
+**[3046.32s → 3052.71s]** And that scratch pad is part of the key to having a workable multi-tool system where
+
+**[3052.71s → 3057.22s]** it can work off the different tools and chain them together in some way, because it's got
+
+**[3057.22s → 3061.97s]** some sort of context to play with and do stuff with.
+
+**[3061.97s → 3065.08s]** And then we're binding all the tools to the other them
+
+**[3065.08s → 3068.26s]** to make sure that it's got those tools.
+
+**[3068.26s → 3070.70s]** And then we're building out the agent,
+
+**[3070.70s → 3072.94s]** we're giving it any input, we're taking the input,
+
+**[3072.94s → 3077.78s]** we're also formatting whatever the messages that we get back,
+
+**[3077.78s → 3079.74s]** this is kind of like our history if you like.
+
+**[3079.74s → 3082.08s]** So we're building that.
+
+**[3082.08s → 3083.40s]** And then it's building out the history
+
+**[3083.40s → 3086.32s]** and making the scratch pad have the information
+
+**[3086.32s → 3087.36s]** and the trail back.
+
+**[3087.36s → 3090.76s]** but then we're also shoving the prompt with it.
+
+**[3090.76s → 3092.20s]** We pass it around tools,
+
+**[3092.20s → 3094.96s]** and again, from previously your question
+
+**[3094.96s → 3097.68s]** before about the pipe thing,
+
+**[3097.68s → 3099.08s]** we found out that this is specifically
+
+**[3099.08s → 3100.32s]** an overridden chaining,
+
+**[3100.32s → 3102.52s]** and to do with the lang chain sort of
+
+**[3102.52s → 3103.68s]** way how they do things.
+
+**[3103.68s → 3105.04s]** So this is just saying,
+
+**[3105.04s → 3107.56s]** I wanna use this in conjunction with this,
+
+**[3107.56s → 3109.20s]** in conjunction with this,
+
+**[3109.20s → 3111.72s]** and then I wanna pass what output it's got.
+
+**[3111.72s → 3113.08s]** So I wanna deal with that output
+
+**[3113.08s → 3115.76s]** and make it some sort of readable format
+
+**[3115.76s → 3118.72s]** where I can then use it as the OpenAI agent,
+
+**[3118.72s → 3123.05s]** import a game, and literally remediate over that.
+
+**[3123.05s → 3126.93s]** Then again, same as we did in the simple math problem one,
+
+**[3126.93s → 3131.37s]** we go build out the agent executor, pass it an agent,
+
+**[3131.37s → 3134.13s]** pass it some tools, tell it to one to be a boasts,
+
+**[3134.13s → 3137.42s]** so we can see what it's kind of thinking.
+
+**[3137.42s → 3139.90s]** And then what I've done here is I've said,
+
+**[3139.90s → 3141.06s]** well true, we're gonna loop,
+
+**[3141.06s → 3143.10s]** and we're just gonna take in some information from the user
+
+**[3143.10s → 3146.82s]** and say, hey, go and do your thing.
+
+**[3146.82s → 3148.26s]** and rinse and repeat.
+
+**[3148.26s → 3149.26s]** So it's not a lot there.
+
+**[3149.26s → 3151.88s]** It's like, what, 175 lines code?
+
+**[3151.88s → 3155.37s]** You could break this out into different classes
+
+**[3155.37s → 3158.65s]** and build it as a modular thing that you could then add
+
+**[3158.65s → 3160.69s]** tools to like yesterday when you're patched together
+
+**[3160.69s → 3163.65s]** that little repo with the different tooling
+
+**[3163.65s → 3165.93s]** where you can just have it add stuff.
+
+**[3167.58s → 3170.62s]** Another thing that you could do is maybe make say
+
+**[3170.62s → 3173.05s]** a flask API.
+
+**[3173.05s → 3176.05s]** So you could have this sitting on a server
+
+**[3176.05s → 3178.99s]** and do all the work on the server.
+
+**[3178.99s → 3181.03s]** And then literally have the FASC API there
+
+**[3181.03s → 3185.25s]** in some sort of front end where you then interact with it
+
+**[3185.25s → 3190.04s]** and it gives you say downloadable applications that it's built.
+
+**[3190.04s → 3193.63s]** So kind of light the way how you got chat GPT.
+
+**[3193.63s → 3196.27s]** Then you could also build on that and use Rags
+
+**[3196.27s → 3198.35s]** from what we talked about before
+
+**[3198.35s → 3202.57s]** and turn it into an agent where you can pass it some stuff.
+
+**[3202.57s → 3204.01s]** So you could pass it a code base to say,
+
+**[3204.01s → 3206.01s]** okay, go update that
+
+**[3206.01s → 3207.93s]** and then it will create the files, do the stuff
+
+**[3207.93s → 3209.89s]** and then maybe add a thing,
+
+**[3209.89s → 3212.13s]** say, zip files or tar files
+
+**[3212.13s → 3214.21s]** or something they call compressed files.
+
+**[3214.21s → 3216.45s]** And then have it so it makes a little zip file
+
+**[3216.45s → 3221.13s]** and then sends it back to the caller on the front end
+
+**[3221.13s → 3223.25s]** and you've kind of got these files
+
+**[3223.25s → 3225.25s]** and have it a little agent to do different things.
+
+**[3225.25s → 3228.77s]** Obviously that's just a contrived use case,
+
+**[3228.77s → 3231.53s]** but it's all down to really your imagination
+
+**[3231.53s → 3234.61s]** on what you think that you could use it for.
+
+**[3234.61s → 3238.05s]** because it's down to the tooling is whatever you make.
+
+**[3238.05s → 3240.37s]** There's no, there's there's no real limitation
+
+**[3240.37s → 3245.12s]** in that sense, you know, and you can even,
+
+**[3245.12s → 3248.78s]** if you wanted to use like open source like Lama,
+
+**[3248.78s → 3251.94s]** there's, I think there's Lama CPP,
+
+**[3251.94s → 3255.02s]** which allows you to do tooling and all sorts with Lama
+
+**[3255.02s → 3256.34s]** and you can kind of build out stuff
+
+**[3256.34s → 3259.95s]** in all different sort of stuff with that as well.
+
+**[3259.95s → 3263.47s]** So it's really down to what use cases you can find
+
+**[3263.47s → 3267.29s]** in your domain and decide, I'm going to use case.
+
+**[3267.29s → 3269.13s]** So I'd break it and start small.
+
+**[3269.13s → 3274.02s]** I wouldn't go crazy and build out an entire engineering system
+
+**[3274.02s → 3276.58s]** to begin with, I'd kind of get it in a small case.
+
+**[3276.58s → 3280.57s]** Use it's like one application or one feature of something.
+
+**[3280.57s → 3284.57s]** And then you kind of, as you get it more and more tweaked
+
+**[3284.57s → 3288.56s]** and more and more sort of customized
+
+**[3288.56s → 3290.96s]** to what you wanted to do, then build it out.
+
+**[3290.96s → 3294.94s]** like any project that you kind of build out.
+
+**[3294.94s → 3299.95s]** Kind of went off on a website for that,
+
+**[3299.95s → 3307.97s]** but does that make sense as well follow-ups to that?
+
+**[3307.97s → 3310.03s]** That makes sense to me.
+
+**[3310.03s → 3312.74s]** How about you Chris,
+
+**[3312.74s → 3315.62s]** are you personally follow-ups or something?
+
+**[3315.62s → 3323.67s]** It's just...
+
+**[3323.67s → 3328.49s]** Yeah, it's helpful to have very specific examples
+
+**[3328.49s → 3332.89s]** of what people are doing in production at their companies.
+
+**[3332.89s → 3333.89s]** Yeah.
+
+**[3333.89s → 3338.33s]** I mean, especially with code, code gen is such a crap shoot.
+
+**[3338.33s → 3339.33s]** Yeah.
+
+**[3339.33s → 3343.59s]** I mean, we know that it's not ready.
+
+**[3343.59s → 3344.59s]** Right?
+
+**[3344.59s → 3346.23s]** And so like, I don't really believe that.
+
+**[3346.23s → 3350.87s]** It's a problem, so I think we're close where we have code gen to automate things or
+
+**[3350.87s → 3352.87s]** worth investing time in.
+
+**[3352.87s → 3358.23s]** Unless we're doing like really specific things, which I'm interested in, but like really
+
+**[3358.23s → 3362.18s]** small, like, validatable things.
+
+**[3362.18s → 3366.54s]** Yeah, I definitely wouldn't trust it to do a production base of any of the other, I mean,
+
+**[3366.54s → 3369.85s]** we haven't even ran it to see whether that to do list works.
+
+**[3369.85s → 3373.81s]** I mean, I've done a few trials with it and it's came out with a pong game where you've
+
+**[3373.81s → 3380.63s]** got the paddle is the wrong way around and going side to side the opposite way and the
+
+**[3380.63s → 3383.79s]** other one's going up and down for instance, after you've asked it to make a pong game.
+
+**[3383.79s → 3387.03s]** So that's a simple, simple thing that it should be able to do.
+
+**[3387.03s → 3393.06s]** So there are limitations in different ways.
+
+**[3393.06s → 3398.00s]** But this is more about showing that it can interact with your server in different ways.
+
+**[3398.00s → 3400.88s]** So you can have it do different things in different general tasks.
+
+**[3400.88s → 3404.74s]** You can have it run crime jobs, you can have it do basically.
+
+**[3404.74s → 3407.74s]** You just anything you want to interact with you can.
+
+**[3407.74s → 3409.16s]** You know what I mean?
+
+**[3409.16s → 3410.16s]** Yeah.
+
+**[3410.16s → 3411.16s]** Yeah.
+
+**[3411.16s → 3413.70s]** I understand that there's a massive amount of flexible in upshare.
+
+**[3413.70s → 3417.88s]** What I want is what's narrowed down and what are people actually doing with it?
+
+**[3417.88s → 3418.88s]** Right.
+
+**[3418.88s → 3420.96s]** I have to research exactly what people do with it.
+
+**[3420.96s → 3429.08s]** but a lot of them are using it more for creative writing than they are for tech if you like.
+
+**[3429.08s → 3434.88s]** They're moving more towards that sort of space when they're using things like this.
+
+**[3434.88s → 3443.81s]** Personally, I like it when I have an open model, not see, open AI, have some great stuff
+
+**[3443.81s → 3450.45s]** in their toolkit, but I actually prefer, when I'm doing say it, I'm doing a penetration
+
+**[3450.45s → 3451.45s]** test.
+
+**[3451.45s → 3457.33s]** simple use case. If I'm doing a penetration test and I want it to do the grunt work, I
+
+**[3457.33s → 3463.01s]** don't want to hire like 50 sort of like juniors to go off and do the little bits and pieces
+
+**[3463.01s → 3469.24s]** for me and I don't want to do it myself. So a nice option for that, if you had let's
+
+**[3469.24s → 3475.08s]** imagine using the armour or something, you could use like dolphin armour with no restrictions
+
+**[3475.08s → 3478.40s]** and go and have it do a bunch of penetration tests and you could have a bunch of little
+
+**[3478.40s → 3487.03s]** workers and how to choose the right tool based upon the feedback from what the other tools are doing.
+
+**[3487.75s → 3493.14s]** So you could start a penetration test in order of one network. Leave that going. You could have
+
+**[3493.14s → 3499.94s]** this running on a little embedded thing that sends the information back to the server. The LLM
+
+**[3499.94s → 3505.54s]** then chooses a tool to run on that and then you kind of spider it out and you can do a bit more
+
+**[3505.54s → 3512.05s]** of an interesting penetration test without having to send a load of scripts over to and pay somebody
+
+**[3512.05s → 3518.05s]** to go after the site to do that so you can literally drop off a box like a router to plug into
+
+**[3518.05s → 3524.92s]** their system walk away and have full sort of like on site penetration testing without actually
+
+**[3524.92s → 3530.96s]** even being that you can go off and get a coffee and come back and the AIs done a nice little bit of
+
+**[3530.96s → 3535.60s]** grunt work for you. And then when you're finished you can go over and analyze it on little red
+
+**[3535.60s → 3540.24s]** red flag anything that needs further, you know, real intervention from a real engineer or a real
+
+**[3542.16s → 3547.16s]** penetration tester. And then you've got a nice set of things. And then when you're finished,
+
+**[3547.16s → 3551.48s]** you could have it write a report based on actually it's okay at writing reports for most things
+
+**[3551.48s → 3558.52s]** as long as you structure the prompting correctly. That's a real world case what I use in my day-to-day
+
+**[3559.89s → 3566.39s]** sort of business as well, just as a simple basic thing. I'm going to say simple basic,
+
+**[3566.39s → 3570.95s]** Obviously wrote the firmware onto a writing system.
+
+**[3570.95s → 3575.19s]** So I don't tend to use that WRT because it's got some limitations.
+
+**[3575.19s → 3577.89s]** So I tend to write my own stuff for that.
+
+**[3580.37s → 3584.58s]** So it's used in that sort of space when possible.
+
+**[3587.51s → 3591.27s]** Personally, I do like it to do certain boilerplate grunt work on a camper.
+
+**[3591.27s → 3593.91s]** You know, when you can't be bothered doing something, it's not going to generate
+
+**[3593.91s → 3597.03s]** anything really complex, but a little bit of boilerplate here and there.
+
+**[3597.03s → 3605.59s]** that you could probably do by writing a simple script to do it, but it gives it that little bit of extra sort of input.
+
+**[3605.59s → 3612.51s]** Just go remember, there is the limitations. An LLM is like T9 text completion from the 90s.
+
+**[3612.51s → 3621.80s]** It's not going to do everything right. I don't know how old most of you are, but when we had that new, awesome,
+
+**[3621.80s → 3628.28s]** the ultimate in everything which was the text completion T9 agent in your old phones
+
+**[3629.12s → 3634.17s]** And you get into all sorts of trouble because you'd be swearing at everybody and all sorts apparently
+
+**[3634.69s → 3638.28s]** You know what I mean? So it's basically a growth of that
+
+**[3638.28s → 3640.56s]** So it's not like the be all an end all of things
+
+**[3641.24s → 3648.99s]** It can't it's got a lot of limitations, but even it takes us as engineers to think of useful
+
+**[3648.99s → 3656.37s]** situations to use in. It's not like people are seeing it a lot as a silver bullet, but like you say, it's not
+
+**[3657.17s → 3664.14s]** there yet on the generative sort of side. And it doesn't really have much in the way of real reasoning.
+
+**[3664.86s → 3670.06s]** If you think about it, it's a big graph. It's almost like you're handing a bunch of text to a
+
+**[3670.06s → 3675.50s]** graph problem, shoving a bag of words at and going, hey, what should I be saying next? Maybe I'll say this,
+
+**[3675.50s → 3682.32s]** they sort of this and it just chooses one of those. So that's really all it's doing. It's not
+
+**[3682.32s → 3689.81s]** doing anything magical under the hood. It's like with I think for I'm I'm surmising this because
+
+**[3689.81s → 3695.25s]** I've actually not seen the source code for for I want anything like that but I'm really presuming
+
+**[3695.25s → 3701.15s]** it's doing a lot of rag under the hood and other things so it's so it looks smarter than it is
+
+**[3704.27s → 3708.83s]** especially in a closed system you need to get loads of to go off and do loads of stuff
+
+**[3709.82s → 3717.86s]** As we're developing, should we be thinking in terms of minimizing the number of tokens
+
+**[3717.86s → 3720.98s]** were required?
+
+**[3720.98s → 3722.42s]** Absolutely.
+
+**[3722.42s → 3726.62s]** That's a clever prompt engineering sort of question really.
+
+**[3726.62s → 3734.10s]** This is why prompt engineering exists is to kind of optimize and at least in a monetary
+
+**[3734.10s → 3739.94s]** scale to optimize the sheer amount of tokens that you are passing through and costing for
+
+**[3739.94s → 3740.94s]** the company.
+
+**[3741.26s → 3746.70s]** Again, if your company has virtual unlimited funds, it doesn't really matter.
+
+**[3746.70s → 3751.60s]** If you can throw loads of money at it, you're going to be able to be less optimal.
+
+**[3751.60s → 3757.32s]** But ideally, you want to try and keep things tight enough if you're paying for it, especially
+
+**[3757.32s → 3760.58s]** if you're a smaller company or an individual.
+
+**[3760.58s → 3764.31s]** You don't want to be 14-year massive bill for that.
+
+**[3764.31s → 3769.31s]** Plus, if things are going out through the internet or out through some sort of connection,
+
+**[3769.31s → 3774.46s]** the more text that you're sending and the more text that you're receiving in a large
+
+**[3774.46s → 3778.38s]** sort of use case, it's going to be slower.
+
+**[3778.38s → 3784.49s]** I mean, the main latency on any like distributed application is usually the network.
+
+**[3784.49s → 3788.37s]** Even when people make really, really badly made algorithms, it's usually the bottom
+
+**[3788.37s → 3792.05s]** of it's usually not the algorithm, it's usually the actual network connections and the
+
+**[3792.05s → 3794.37s]** data that's been sent to and from.
+
+**[3794.37s → 3799.65s]** That's not true for everything because I've seen some situations where you fix an algorithm
+
+**[3799.65s → 3804.81s]** and it makes so much difference, but not always most of the larger companies will throw money
+
+**[3804.81s → 3812.06s]** a better hardware and better like network infrastructure versus paying a developer fix
+
+**[3812.06s → 3821.60s]** now. So there is that. But I did test a few things in the sense that I checked it against
+
+**[3821.60s → 3825.48s]** embedded code because I tell you one thing it never the one thing it used to not be able
+
+**[3825.48s → 3829.24s]** to do at all, you ask it to write a boot sector and an operating system, it couldn't do
+
+**[3829.24s → 3836.10s]** that. Or parts of it like the GDT and all the bits and pieces. It's getting better because
+
+**[3836.10s → 3842.20s]** it can do that now. So it's definitely getting there. It's just, it's very slowly getting
+
+**[3842.20s → 3847.05s]** there. So there's certain bits of boilerplate when you're making an operating system that
+
+**[3847.05s → 3850.93s]** you need to just get it done in the assembly. Get it out of the way, move on to actually
+
+**[3850.93s → 3855.25s]** building the general business logic of the operating system and the other things. It can
+
+**[3855.25s → 3860.81s]** boil the plate most of that now. Not all of it, but most of it. So it is getting better
+
+**[3860.81s → 3863.45s]** around the genitive side, it's just not.
+
+**[3863.45s → 3865.93s]** You know, you still need a person to actually look over
+
+**[3865.93s → 3869.44s]** and go, well, hang on a minute, that's not right.
+
+**[3869.44s → 3872.64s]** What I have a feeling is that some companies are literally
+
+**[3872.64s → 3877.26s]** seeing it like said as a silver bullet that just can do this.
+
+**[3877.26s → 3878.90s]** And they're giving it to junior devs
+
+**[3878.90s → 3884.08s]** who don't really have the knowledge to look over the things.
+
+**[3884.08s → 3886.72s]** And then they're getting really bad code out there.
+
+**[3886.72s → 3888.72s]** So that's why I say it could take over jobs.
+
+**[3888.72s → 3889.76s]** It could take over the jobs
+
+**[3889.76s → 3891.76s]** with people who can't do the job.
+
+**[3891.76s → 3893.40s]** That's where you can take the other jobs off.
+
+**[3893.40s → 3898.69s]** Like, you could probably be comparable to that.
+
+**[3898.69s → 3901.41s]** So it is taking us, as the engineers,
+
+**[3901.41s → 3903.89s]** building out agents that actually make it
+
+**[3903.89s → 3906.57s]** do its job better.
+
+**[3906.57s → 3909.17s]** There will be a point where you're doing,
+
+**[3909.17s → 3910.57s]** after you've done the agent stuff,
+
+**[3910.57s → 3914.39s]** you'll be doing things like chaining and fine tuning.
+
+**[3914.39s → 3916.19s]** Now, the fine tuning will probably be the time
+
+**[3916.19s → 3919.35s]** where you can make it better and reiterate over a model
+
+**[3919.35s → 3922.87s]** and maybe remake the models and then store a new version
+
+**[3922.87s → 3928.18s]** the model and then read it's right over that and build it out and train it. So that's where
+
+**[3928.18s → 3934.80s]** kind of the fine tuning comes in and you'll be using I think hogging face so you'll be you'll
+
+**[3934.80s → 3940.40s]** get some fine tuning models and grab some models from say hogging face and then fine tune them for
+
+**[3940.40s → 3946.96s]** a specific purpose and things like that. Then we might be thinking about things like land graph
+
+**[3946.96s → 3952.64s]** which is you can make like deploy a bunch of agents and how you somewhat okay that we just bedrock
+
+**[3952.64s → 3959.92s]** and stuff and make it so you've got some sort of an architect agent that architects the idea of
+
+**[3959.92s → 3965.84s]** what you want to do and deployments and stuff so that would be another kind of thing that we want
+
+**[3965.84s → 3971.08s]** to get towards. So we're using like land graph and then deploying agents and things like that.
+
+**[3971.94s → 3975.86s]** And then I think your capstone project will be literally a multi-agent system using all those other
+
+**[3975.86s → 3982.66s]** things. That's where you'd be building your business logic in the use case that you could then think of
+
+**[3982.66s → 3989.01s]** because I think with all these little bits it's not as easy to see the big picture of what
+
+**[3989.01s → 3993.49s]** it can be used for. It's like if you hand some of the apparent brush and say yeah yeah what you can
+
+**[3993.49s → 4000.40s]** do you can put a dot on a piece of paper. Then I'm going to see that you can now make someone's face
+
+**[4000.40s → 4006.00s]** in a perfect picture of it. Then I'm going to see that you can make an entire landscape.
+
+**[4006.00s → 4011.52s]** Well they're going to see you yeah it's great I've learned I can put a dot on it. Yeah it's great
+
+**[4011.52s → 4019.32s]** It's amazing. Or if you go and learn martial arts, you may get taught to block one single block,
+
+**[4019.32s → 4022.76s]** you know, just one thing and repeat this and like, well, what can I do? Well, I can come in
+
+**[4022.76s → 4027.16s]** with my arm, okay, yeah, that's what I can do. It's like, okay, well, this martial art must be awful.
+
+**[4028.13s → 4031.89s]** It doesn't teach you anything, but these are all the building blocks and the tiny, tiny little bits
+
+**[4031.89s → 4037.59s]** that we've got access to right now. So that's where these contrived bits. Yeah, Christopher,
+
+**[4037.59s → 4043.03s]** oh, he's heading up. All right, so these are like more the contrived samples and the contrived
+
+**[4043.03s → 4046.39s]** bits are just teaching those little building blocks and then with those building blocks,
+
+**[4046.39s → 4051.19s]** like anything, you can kind of stick them together in different ways and use them in a modular form
+
+**[4051.83s → 4055.75s]** to then build whatever you want. It's like saying, oh, what uses a program language?
+
+**[4056.55s → 4065.01s]** Well, it's supposed to abstract the switches inside your CPU to say, hey, do something.
+
+**[4065.57s → 4069.49s]** It's like say, program languages and things are here for people, not for computers.
+
+**[4069.49s → 4074.28s]** So it's just another way of obstructing a way from the system.
+
+**[4074.28s → 4078.22s]** So you could think of AI as the next programming language.
+
+**[4078.22s → 4083.04s]** It's basically what we thought C and C++ was going to be.
+
+**[4083.04s → 4088.56s]** You know, the new hotness C++, you'll be able to just tell it what you want.
+
+**[4088.56s → 4090.48s]** And you'll do it.
+
+**[4090.48s → 4093.12s]** So this is kind of the next generation of programming.
+
+**[4093.12s → 4094.12s]** We do think about it.
+
+**[4094.12s → 4100.92s]** Have you seen developers have much success in working with existing code bases
+
+**[4100.92s → 4109.16s]** like maybe a really old cold base where they're giving instructions to refactor or you know
+
+**[4110.56s → 4120.48s]** yeah you do yeah it's kind of like hurting cats you can it's not the best right now
+
+**[4120.48s → 4125.84s]** I definitely not hurt it can do it with a lot of nudging and a lot of prompt engineering
+
+**[4125.84s → 4135.17s]** On average, you're probably looking about a 30% less workload on your part as the engineer.
+
+**[4135.17s → 4136.97s]** So it's not going to save you.
+
+**[4136.97s → 4140.85s]** It's not going to be the magic thing where it's like, oh yeah, just leave it in AI or fix it.
+
+**[4140.85s → 4144.72s]** AI is not necessarily a fix or a solution for every problem.
+
+**[4144.72s → 4146.52s]** It's there to kind of be used as a tool.
+
+**[4146.52s → 4148.16s]** It's like saying, you know, how much?
+
+**[4148.16s → 4149.36s]** Can't use them for anything.
+
+**[4149.36s → 4150.88s]** It's like, well, they don't do much.
+
+**[4150.88s → 4151.88s]** They just sit there.
+
+**[4151.88s → 4152.88s]** There's nothing.
+
+**[4152.88s → 4155.97s]** but you give it to a really good panel biter.
+
+**[4155.97s → 4159.50s]** They can make an awful car look amazing.
+
+**[4159.50s → 4161.94s]** So it depends what you do with it really.
+
+**[4161.94s → 4162.94s]** At the moment, there's,
+
+**[4162.94s → 4165.46s]** I know a few companies that are actually doing some good
+
+**[4165.46s → 4169.58s]** refactoring and restoring things to stuff.
+
+**[4169.58s → 4171.30s]** There's a lot in the retro community
+
+**[4172.48s → 4179.12s]** where they're taking sort of what should work
+
+**[4179.76s → 4183.46s]** in a chip, let's say, on an old piece of hardware.
+
+**[4183.46s → 4192.04s]** And having the AI build out that logic in an actual like PPLD and stuff, you know, just
+
+**[4192.04s → 4198.80s]** program, making like a program logic data array program and writing that in so that you
+
+**[4198.80s → 4202.58s]** can replace the old hardware that's failing.
+
+**[4202.58s → 4205.78s]** So it's really good in the hardware space and where it's just pure logic that you're trying
+
+**[4205.78s → 4206.78s]** to give it.
+
+**[4206.78s → 4207.94s]** You know what I mean?
+
+**[4207.94s → 4212.82s]** The clue to why it seems to be okay now assembly because there's not much there to deal
+
+**[4212.82s → 4213.82s]** with.
+
+**[4213.82s → 4215.74s]** So not much to go wrong.
+
+**[4215.74s → 4218.18s]** When you hand it the more abstract languages,
+
+**[4218.18s → 4219.50s]** that's where it has problems.
+
+**[4219.50s → 4222.58s]** Because it doesn't have a real critical thought.
+
+**[4222.58s → 4224.24s]** It's literally a text completion engine.
+
+**[4224.24s → 4226.00s]** That's it.
+
+**[4226.00s → 4228.64s]** There's nothing there really.
+
+**[4228.64s → 4229.48s]** It's smoke and mirrors.
+
+**[4229.48s → 4230.48s]** It's like a CPU.
+
+**[4230.48s → 4232.04s]** It doesn't really do them much.
+
+**[4232.04s → 4235.69s]** It sits there asking you what you want me to do.
+
+**[4235.69s → 4236.53s]** You know what I mean?
+
+**[4236.53s → 4237.37s]** That's it.
+
+**[4237.37s → 4239.32s]** It doesn't do anything.
+
+**[4239.32s → 4241.64s]** So it's all about what you're doing
+
+**[4241.64s → 4246.60s]** because the engineer that really makes it happen.
+
+**[4246.60s → 4250.84s]** So it's down to your thought process and what you want to have it do.
+
+**[4250.84s → 4255.88s]** It's like, like anything, just another tool for you to utilize.
+
+**[4257.89s → 4261.65s]** When you start thinking of it as the solution for everything, you'll find that your
+
+**[4261.65s → 4262.97s]** end up just breaking things.
+
+**[4266.65s → 4268.13s]** I haven't actually been keeping on the time.
+
+**[4268.13s → 4270.05s]** Let's probably gone over like crazy.
+
+**[4273.44s → 4274.72s]** Yeah, we've gone a little bit over.
+
+**[4276.77s → 4278.37s]** Any observations, any questions?
+
+**[4278.37s → 4279.57s]** John, think you want to say anything?
+
+**[4279.57s → 4297.77s]** No, not really. I'm just listening in to get a feel for things, but you were talking about
+
+**[4297.77s → 4308.16s]** using it to refactor code. There may be some places on the bleeding edge of trying to use it to refactor
+
+**[4308.16s → 4315.16s]** old code or an old code base, but you can't even trust it to write code. I was just a week ago.
+
+**[4315.16s → 4325.32s]** a go. We were working on a model and it was GPT, the latest GPT was throwing out some crazy
+
+**[4325.32s → 4332.08s]** stuff for PyTorch that when you started working within the layers of the model, it was throwing
+
+**[4332.08s → 4340.80s]** off the dimensions of the linear algebra just showing again. It's a text completion,
+
+**[4340.80s → 4345.24s]** like you say, but as far as reasoning goes today, it's still limited.
+
+**[4345.24s → 4350.00s]** Where will be in six months, three years, five years, nobody knows.
+
+**[4350.24s → 4356.84s]** But I have, I have yet to master away in a year and a half of getting it to
+
+**[4356.84s → 4363.45s]** write reliable code in a fashion that I can tease it to you.
+
+**[4363.45s → 4368.97s]** I would never trust it to write code and push that code without somebody looking
+
+**[4368.97s → 4374.41s]** over it, even if it were to rate the tests and all the tests passed.
+
+**[4374.41s → 4380.43s]** But yeah, that's just a matter of course.
+
+**[4380.43s → 4386.31s]** That's almost a good thing in the sense that it's less chance of it taking over any jobs
+
+**[4386.31s → 4390.43s]** really as far as like everybody losing their job because there's a lot of people out there
+
+**[4390.43s → 4394.32s]** who are like panicking and going, we're going to lose all that jobs.
+
+**[4394.32s → 4397.08s]** And like I said at the moment, it could take over the job that people who can't do their
+
+**[4397.08s → 4398.08s]** job.
+
+**[4398.08s → 4401.29s]** That's the only job it can really take over right now.
+
+**[4401.29s → 4404.85s]** don't get me wrong, there are people out there who literally can't do their job and it would
+
+**[4404.85s → 4409.13s]** be just as comparable to pay a open AI, a few cents to do the job instead.
+
+**[4409.13s → 4419.92s]** But have you seen cases where you start with the tests and you have the LLM rate code that
+
+**[4419.92s → 4423.27s]** makes the passes those tests?
+
+**[4423.27s → 4427.27s]** Yes, but that's then down to you making good tests.
+
+**[4427.27s → 4429.39s]** This is where you've got to have,
+
+**[4429.39s → 4432.63s]** as the engineer making basically enough edge cases
+
+**[4432.63s → 4435.27s]** to make sure it's bulletproof.
+
+**[4435.27s → 4438.27s]** But again, people aren't completely like infallible.
+
+**[4438.27s → 4439.59s]** We're not perfect.
+
+**[4439.59s → 4443.53s]** We're not gonna not make a mistake ever.
+
+**[4443.53s → 4446.17s]** But LLMs, because of their limitations
+
+**[4446.17s → 4451.32s]** of lack of reasoning, lack of really pure judgment,
+
+**[4451.32s → 4454.67s]** they can only work with whatever going front of them.
+
+**[4454.67s → 4461.86s]** I've noticed one thing, if you train it, a local LLM on your specific code base, and
+
+**[4461.86s → 4466.30s]** the all the documentation to that language what you're using and every single framework
+
+**[4466.30s → 4472.73s]** that you're using with RAC, give you access to search a specific set of data on the internet,
+
+**[4472.73s → 4476.41s]** not just give it free rein over the internet because then you've got opinions of just
+
+**[4476.41s → 4479.13s]** anybody and everything.
+
+**[4479.13s → 4486.41s]** you can kind of coerce it to write very very junior level boilerplate and a little bit of logic.
+
+**[4487.13s → 4493.93s]** You're not going to want to trust it to do anything really really intensive but as far as speeding
+
+**[4493.93s → 4499.85s]** off workflows concerned like I said doing boilerplate you don't always want to write 200 lines of
+
+**[4499.85s → 4506.62s]** code that's boilerplate that you could just have it generate. Just saves you a few minutes of
+
+**[4506.62s → 4512.70s]** work here and there. And again, this is where the sort of like 30, 40% reduction of time is just
+
+**[4512.70s → 4518.68s]** in the boilerplate and the little mundane jobs that you don't want to do. Usually the things that
+
+**[4518.68s → 4525.28s]** you would hand off to a junior dev, you know what I mean? But not all the things that you'd hand
+
+**[4525.28s → 4531.87s]** off to a junior dev because it makes more mistakes than your average junior dev. And don't get
+
+**[4531.87s → 4537.55s]** wrong, you can get plenty of junior devs that make plenty of mistakes. But they don't tend to hallucinate
+
+**[4537.55s → 4542.59s]** and go off on one and just make up loads of stuff that's not correct or at least I hope
+
+**[4542.59s → 4549.38s]** that I don't, yeah, don't be wrong, I probably had a few junior devs who do that, but then
+
+**[4549.38s → 4561.27s]** they don't keep their job very long. But cost versus output of work, I'd say it's cheaper
+
+**[4561.27s → 4572.84s]** to have a mix of a medium level developer plus some very well-made agent to deal with your code base.
+
+**[4573.92s → 4578.72s]** Then it is to get all or five basic junior devs to do the job.
+
+**[4581.14s → 4587.22s]** So when leverage correctly, it can be a time saver for more advanced courses and developer.
+
+**[4587.22s → 4592.64s]** But anyway, I'll better stop now.
+
+**[4592.64s → 4595.84s]** At least I'll be stopping recording because somebody's going to have to sit there watching
+
+**[4595.84s → 4600.56s]** the whole thing.
+
+**[4600.56s → 4605.14s]** But yeah, any closing things or any questions or observations, because I'm going to
+
+**[4605.14s → 4608.38s]** kind of call it because we're getting quite out of time.
+
+**[4608.38s → 4619.80s]** Okay, in that case, it's been awesome.
+
+**[4619.80s → 4624.28s]** Ideally I think in these ones, try and bring some, if I have something we're working on,
+
+**[4624.28s → 4627.92s]** I'd love for you guys to just have some input and have a go at playing with the stuff.
+
+**[4627.92s → 4635.08s]** You know what I mean? I'll probably end up calling people out and going to just naming people and asking them to do stuff.
+
+**[4635.08s → 4647.08s]** So I'd like some volunteers going to be amazing because they did the whole interaction causes more learning versus just me just rabbating about stuff and everyone just sitting there.
+
+**[4647.08s → 4652.24s]** So it's always good to have some sort of backward forward dialogue as well.
+
+**[4652.24s → 4654.56s]** But again, it's been a lot of fun.
+
+**[4654.56s → 4659.34s]** I look forward to seeing you guys in the next lecture as well.
+
+**[4659.34s → 4661.98s]** And if you ever have any questions or anything,
+
+**[4661.98s → 4664.78s]** feel free to reach out on Slack.
+
+**[4664.78s → 4667.02s]** And my DMs are always open.
+
+**[4667.02s → 4670.66s]** I'm usually at work like seven days a week anyway.
+
+**[4670.66s → 4672.78s]** So I'm about.
+
+**[4672.78s → 4676.85s]** So anything you need, just let me know.
+
+**[4676.85s → 4678.17s]** Have a good one, everyone.
+
+**[4678.17s → 4678.69s]** OK.
+
+**[4678.69s → 4679.99s]** Thanks, Tom.
+
+**[4679.99s → 4680.67s]** Wait.
+
+**[4680.67s → 4691.06s]** Bye, bye.
+
+**[4691.06s → 4692.10s]** All right, John.
+
+**[4692.10s → 4694.10s]** Johnson you have a good one mate.
+
+**[4694.10s → 4696.64s]** Yeah, you have a good one too.
+
+**[4696.64s → 4698.64s]** I will see you around.
+

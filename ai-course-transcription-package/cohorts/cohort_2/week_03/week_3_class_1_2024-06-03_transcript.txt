@@ -1,0 +1,2247 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_03/week_3_class_1_2024-06-03.mp4
+**Duration:** 5495.71 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 1114
+**Generated:** 2025-08-13 18:31:40
+**File Hash:** 60a432d353ae8e943f4dc0f013c1499c
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_03
+**file_name:** week_3_class_1_2024-06-03.mp4
+
+---
+
+## Transcript
+
+**[96.50s → 98.50s]** about just intro material and
+
+**[100.03s → 107.73s]** Ragh and this week we're switching into agents. So we're going to start with just some very simple tool calls today and
+
+**[108.13s → 112.69s]** Talk through the process of what it looks like to send something to your model
+
+**[113.41s → 115.54s]** Have it execute a function
+
+**[115.54s → 120.42s]** Ish you are still executing the function, but it's helping parse the inputs and outputs
+
+**[121.06s → 125.74s]** And a really exciting way. So helping streamline complex API integrations
+
+**[125.74s → 129.02s]** The examples we'll talk about today are very bare bones.
+
+**[129.02s → 134.54s]** You're just to help wrap your head around what's happening, but we can talk a little bit about
+
+**[135.62s → 141.85s]** what's possible and think about how to begin adapting it to some of your work for us as well.
+
+**[144.39s → 146.79s]** Okay, we go ahead and start sharing my screen.
+
+**[171.72s → 178.04s]** So like I alluded to earlier, tool calling is really going to be about helping us transform
+
+**[178.04s → 182.12s]** interactions with our LLMs beyond just simple prompts that we've been
+
+**[182.12s → 190.49s]** interacting with before. So really structured outputs, some code execution, and really getting into
+
+**[190.49s → 197.70s]** nice JSON objects. For those of you that have just joined here in the past few minutes, any code
+
+**[197.70s → 202.42s]** that I showed today will be referenced from the repository that Tom shared in the question thread.
+
+**[203.14s → 208.50s]** This p-eversion of slides is also available in there. You don't need to send anything up locally
+
+**[208.50s → 214.18s]** tonight, although there are positive reas instructions on how to do that if you'd like to do that during
+
+**[214.18s → 224.33s]** or after class. So tonight we're going to cover three main areas. Number one, understand the function
+
+**[226.09s → 231.61s]** understanding function and tool calling and kind of talk about the difference a little bit.
+
+**[232.62s → 237.50s]** The second thing we're going to talk about is the ability to implement tool calling using Langchain.
+
+**[237.50s → 242.94s]** So we're going to take a look at a very simple example using Langchain and implementate,
+
+**[242.94s → 249.21s]** implementing a nice tool call. And then the third thing we're going to do is familiarity with
+
+**[249.21s → 257.43s]** viewing tool calling and Langsmith. So as you're building really complex workflows using tool calling
+
+**[257.43s → 262.71s]** and or function calling, you're going to want to diagnose what's going on. Like what are the inputs
+
+**[262.71s → 267.11s]** and outlets that are passing between your different steps.
+
+**[267.11s → 277.24s]** So if you have heard a tool calling before,
+
+**[277.24s → 279.40s]** maybe just a quick reaction in the Zoom,
+
+**[296.81s → 298.17s]** they're not getting too many reactions,
+
+**[298.17s → 300.73s]** so I'm going to assume that maybe most people
+
+**[302.17s → 304.65s]** may not be familiar with the standard of the hood.
+
+**[306.01s → 310.97s]** But if you've interacted with quite a few personalized GTBTs
+
+**[311.93s → 313.53s]** like from the GTB marketplace,
+
+**[313.53s → 319.00s]** you probably interact with this before and maybe just not necessarily realized it.
+
+**[319.72s → 324.44s]** So tool calling is going to be the process where models are going to generate a response for you
+
+**[324.44s → 330.71s]** that can form to a predefined user schema. So that's going to suggest actions rather than
+
+**[330.71s → 339.98s]** taking them directly. So a user is going to ask the question, that question is going to go into
+
+**[339.98s → 344.99s]** to the LLM, the LLM is going to parse the user question
+
+**[344.99s → 350.94s]** and identify the correct tool, extract an observation,
+
+**[350.94s → 354.70s]** send that information back into the LLM,
+
+**[354.70s → 359.78s]** and then generate the final output.
+
+**[359.78s → 363.94s]** The tool could be like a simple local Python function
+
+**[363.94s → 365.94s]** as the example we'll start with today,
+
+**[365.94s → 370.70s]** but in a production setting, that tool would be something
+
+**[370.70s → 374.32s]** like an API, whether that's internal or external.
+
+**[374.32s → 377.16s]** So you could do something like,
+
+**[377.16s → 382.16s]** I would like to send a email or I like account details.
+
+**[382.28s → 384.24s]** I'm gonna write a user question,
+
+**[384.24s → 387.24s]** I'm gonna say, what is my current account balance?
+
+**[387.24s → 391.64s]** The LLM is going to parse that into a structured,
+
+**[391.64s → 393.92s]** you know, JSON input object.
+
+**[393.92s → 395.14s]** So it's gonna say, hey, like,
+
+**[395.14s → 398.72s]** how do I format the inputs into the function?
+
+**[398.72s → 401.28s]** And then I'm gonna pick this appropriate tool,
+
+**[401.28s → 405.78s]** which is our API call, send that information out
+
+**[405.78s → 409.36s]** and then get the structured output from whatever API
+
+**[409.36s → 411.46s]** is checking bank's balance.
+
+**[411.46s → 414.42s]** And then send that data back into the LLM.
+
+**[414.42s → 418.36s]** And then the LLM is gonna write the nice text output.
+
+**[418.36s → 423.36s]** Your bank balances, you know, 20K as of this morning.
+
+**[423.46s → 428.12s]** So that's the process that we're looking at.
+
+**[428.12s → 430.10s]** Now the terms tool calling and function
+
+**[430.10s → 434.08s]** call are going to be used pretty much interchangeably.
+
+**[434.08s → 436.68s]** But function calling refers specifically
+
+**[436.68s → 439.48s]** to the indication of a particular function.
+
+**[439.48s → 443.43s]** So that's the slight nuance difference.
+
+**[443.43s → 448.27s]** Practically speaking, they're going to work the same way.
+
+**[448.27s → 451.67s]** A tool call is going to be defined by its name
+
+**[451.67s → 454.51s]** and have a dictionary of arguments, where
+
+**[454.51s → 456.11s]** the dictionary is pretty well format.
+
+**[456.11s → 464.45s]** So whether that's a dictionary of Python or JSON objects.
+
+**[464.45s → 466.97s]** Now, LLMs can be configured,
+
+**[466.97s → 470.69s]** and we'll see this when we get into the example code,
+
+**[470.69s → 473.77s]** the parameters the past where an LLM can actually
+
+**[473.77s → 476.17s]** recommend multiple tools or functions
+
+**[476.17s → 477.89s]** and a single interaction.
+
+**[477.89s → 482.73s]** So that's where you get into some really complex setups.
+
+**[482.73s → 486.53s]** So let's maybe talk about extending that example
+
+**[486.53s → 491.40s]** into thinking about banking.
+
+**[491.40s → 496.16s]** I would like to figure out what the closest ATM to me is,
+
+**[496.16s → 498.16s]** or I'd like to check my balance.
+
+**[498.16s → 500.44s]** I'd like to deposit a check.
+
+**[500.44s → 502.04s]** You think about all of these actions
+
+**[502.04s → 507.05s]** that might be associated with normal banking workflows.
+
+**[507.05s → 508.97s]** And there are a bunch of functions
+
+**[508.97s → 512.47s]** that would be connected to the bank services.
+
+**[512.47s → 515.11s]** And then the interaction is going to help
+
+**[515.11s → 517.27s]** choose between that menu of options
+
+**[517.27s → 519.05s]** to complete the transaction.
+
+**[519.05s → 520.65s]** I'd like to check my balance.
+
+**[520.65s → 522.57s]** I'd like to deposit a check.
+
+**[522.57s → 525.97s]** I'd like to move money from my checking account
+
+**[525.97s → 528.05s]** to my savings account.
+
+**[528.05s → 530.29s]** All of those might be different function calls
+
+**[530.29s → 536.80s]** and the LLM is trying to decide between them.
+
+**[536.80s → 557.11s]** Any questions so far?
+
+**[557.11s → 560.95s]** So here's how the general workflow of the work
+
+**[560.95s → 566.48s]** would open its API.
+
+**[566.48s → 570.12s]** Initialize a client and create a nice connection objects.
+
+**[570.12s → 572.60s]** We've done it a million times now.
+
+**[572.60s → 574.04s]** To find a weather function,
+
+**[574.04s → 578.64s]** we're gonna do a very, very silly kind of static weather
+
+**[578.64s → 582.80s]** function that's gonna take a handful of locations.
+
+**[582.80s → 585.96s]** Then we're going to set up a conversation
+
+**[585.96s → 588.35s]** and prepare a specific query
+
+**[588.35s → 591.26s]** and specify the functions we wanna call.
+
+**[591.26s → 596.32s]** We're gonna have the LLM generate the survey
+
+**[596.32s → 599.12s]** and then we're going to execute whatever function we need
+
+**[599.12s → 601.78s]** and record the response that comes out.
+
+**[601.78s → 604.62s]** And then finally that data that we get out,
+
+**[604.62s → 606.72s]** we're gonna use it to update the actual conversation
+
+**[606.72s → 609.90s]** through that it's exposed to the user.
+
+**[609.90s → 612.26s]** So at the final step of the pipeline,
+
+**[612.26s → 614.66s]** you're gonna get that nice complete conversation,
+
+**[614.66s → 627.55s]** including the model and function responses.
+
+**[627.55s → 634.86s]** We'll take a look.
+
+**[634.86s → 636.78s]** And again, the code I'm about to show you
+
+**[636.78s → 640.12s]** is inside the repository,
+
+**[640.12s → 653.29s]** but you should have access to now.
+
+**[653.29s → 660.14s]** So just to give you a sense,
+
+**[660.14s → 666.62s]** we'll just run it really quickly.
+
+**[666.62s → 668.18s]** And you can see chat completions
+
+**[668.18s → 671.59s]** happening in the background.
+
+**[671.59s → 674.75s]** The current weather in San Francisco is 72 degrees,
+
+**[674.75s → 676.51s]** Tokyo, 10 degrees in Paris.
+
+**[676.51s → 684.29s]** It is 22 degrees Celsius.
+
+**[684.29s → 685.77s]** I didn't print out the input message,
+
+**[685.77s → 689.85s]** but the input message is what's the weather in San Francisco,
+
+**[689.85s → 691.17s]** Tokyo and Paris.
+
+**[691.17s → 699.90s]** So we're getting a nice response back from our query.
+
+**[699.90s → 702.46s]** So our function, get current weather,
+
+**[702.46s → 706.79s]** is the function call we're going to make.
+
+**[706.79s → 709.43s]** So we're going to pretend, like I mentioned,
+
+**[709.43s → 713.19s]** This is a very dumb function.
+
+**[713.19s → 716.87s]** We're not hitting a live API in this example.
+
+**[716.87s → 718.55s]** But let's pretend that get current weather
+
+**[718.55s → 722.35s]** does actually access dynamic weather data.
+
+**[722.35s → 725.19s]** And then the other example in this repository,
+
+**[725.19s → 728.95s]** there is a live weather API that it's.
+
+**[728.95s → 732.75s]** So I'm going to take in location as my input.
+
+**[732.75s → 738.66s]** And if I want a Celsius temperature, I can ask for it.
+
+**[738.66s → 743.41s]** And then I have kind of a farm-coded value.
+
+**[743.41s → 746.21s]** I'm sure at least a couple of you live in a Bay area,
+
+**[746.21s → 750.93s]** and I'm sure 72 probably is right in the money today
+
+**[750.93s → 752.81s]** or pretty close to it, hopefully.
+
+**[752.81s → 755.13s]** It's a little warmer than that here in Memphis.
+
+**[756.96s → 758.96s]** I don't have a good sense of scale for Tokyo,
+
+**[758.96s → 765.79s]** but I think 10 degrees Celsius is probably pretty good.
+
+**[765.79s → 768.63s]** So if that is our API,
+
+**[768.63s → 771.99s]** then let's take a look at the conversation workflow.
+
+**[771.99s → 775.61s]** So you saw those seven steps that I laid out before.
+
+**[775.61s → 777.05s]** So step one is we wanna send
+
+**[777.05s → 780.88s]** the conversation available functions to the model.
+
+**[780.88s → 784.52s]** So here's our question, the prompt that we're using.
+
+**[784.52s → 786.50s]** What's the weather like?
+
+**[786.50s → 790.94s]** And then we are going to take this really handy dandy
+
+**[790.94s → 794.81s]** JSON specification for the function.
+
+**[794.81s → 799.81s]** So this is the specification lines 23 through 38.
+
+**[799.81s → 801.69s]** I have highlighted it right now,
+
+**[801.69s → 805.97s]** that indicates that the model, the LLLM,
+
+**[805.97s → 808.01s]** has a function it can call.
+
+**[810.68s → 813.12s]** This is something that you could write by hands.
+
+**[814.46s → 817.58s]** You could use an LLLM to create the specification yourself
+
+**[817.58s → 819.78s]** to accelerate the process.
+
+**[819.78s → 823.18s]** You could write your own nice schema to length this
+
+**[823.18s → 825.06s]** if you wanted to as well.
+
+**[825.06s → 827.74s]** But we're saying it's a function.
+
+**[827.74s → 830.02s]** We're giving the function a name.
+
+**[830.02s → 832.26s]** I would recommend that the name is identical to the name
+
+**[832.26s → 836.14s]** of whatever Python function you're using is.
+
+**[836.14s → 839.38s]** And then the description is actually really important.
+
+**[839.38s → 843.28s]** So the description is going to help the model process
+
+**[843.28s → 846.18s]** and decide which function it's going to use.
+
+**[846.18s → 851.34s]** So you should absolutely be writing good descriptions.
+
+**[851.34s → 853.38s]** Get the function, get the current weather,
+
+**[853.38s → 855.74s]** any given location.
+
+**[855.74s → 857.82s]** I'd maybe try and use the same variable names
+
+**[857.82s → 861.97s]** or pretty close to it as well if you can.
+
+**[861.97s → 864.65s]** Then our parameters are going to be whatever actually
+
+**[864.65s → 868.09s]** goes into the function, our location,
+
+**[868.09s → 870.25s]** and then also write a good description
+
+**[870.25s → 872.77s]** of what the location should look like
+
+**[872.77s → 879.68s]** beyond the type enforcement.
+
+**[879.68s → 880.44s]** OK.
+
+**[880.44s → 883.48s]** I know that was a lot at you at once.
+
+**[883.48s → 894.43s]** Let's see.
+
+**[894.43s → 897.73s]** I love that y'all are just saying that through this.
+
+**[897.73s → 901.29s]** Okay, so we have our function specified now.
+
+**[901.29s → 906.29s]** So now we can send our message and our choice of tools
+
+**[907.78s → 908.78s]** to the model.
+
+**[908.78s → 911.28s]** And we can say automatically choose
+
+**[912.46s → 914.98s]** which tool or function to call from.
+
+**[916.33s → 917.73s]** This behavior is configurable.
+
+**[917.73s → 921.25s]** You can dig through the chain APIs,
+
+**[922.41s → 924.93s]** API docs to look at other options.
+
+**[924.93s → 927.13s]** But I just wanted to call out that's a choice
+
+**[927.13s → 931.46s]** that you can make.
+
+**[931.46s → 934.90s]** So we're going to call GTP Turbo with our prompt
+
+**[934.90s → 936.74s]** and the choice of tools.
+
+**[936.74s → 939.83s]** And then we're going to get the response message back.
+
+**[939.83s → 943.83s]** Then there's going to be this really cool Boolean set tool
+
+**[943.83s → 945.59s]** calls.
+
+**[945.59s → 951.91s]** If there are any tool calls, that is a none, not none.
+
+**[951.91s → 953.99s]** And then we're actually going to call the particular function
+
+**[953.99s → 955.43s]** mentioned.
+
+**[955.43s → 957.51s]** So we have our list of available functions, which
+
+**[957.51s → 961.82s]** is maps between whatever we calls
+
+**[961.82s → 965.86s]** in the JSON objects between lines 23 and 38,
+
+**[965.86s → 968.87s]** the actual Python code.
+
+**[968.87s → 971.74s]** But we could have other examples
+
+**[971.74s → 981.46s]** like get precipitation that would be mapped
+
+**[981.46s → 983.74s]** onto a function that doesn't exist.
+
+**[983.74s → 994.10s]** But so then we're going to take a look at our message
+
+**[994.10s → 999.74s]** and add in the response message that we got.
+
+**[999.74s → 1004.59s]** So for tool and tool calls, our function name
+
+**[1004.59s → 1014.91s]** is available to us, call the function
+
+**[1014.91s → 1016.87s]** and then parse the response.
+
+**[1016.87s → 1019.54s]** So we're going to say function2call.
+
+**[1019.54s → 1026.94s]** Here's the function arguments, get location, get units.
+
+**[1026.94s → 1028.34s]** And then the message that's happening
+
+**[1028.34s → 1031.82s]** in the context of our chat, we're going to append to it.
+
+**[1031.82s → 1037.42s]** The tool call ID we made, the role of the interaction,
+
+**[1037.42s → 1038.66s]** name of the function we used.
+
+**[1038.66s → 1041.10s]** and the actual content of the response.
+
+**[1041.10s → 1044.22s]** So you might be asking yourself, like, okay, JC,
+
+**[1044.22s → 1047.14s]** what, why on earth would I include these lines
+
+**[1047.14s → 1049.98s]** if it's just going back into the chat for the user?
+
+**[1051.62s → 1053.70s]** This information is actually really handy
+
+**[1053.70s → 1056.54s]** if you're debugging more complex workflows.
+
+**[1056.54s → 1061.54s]** So let's say that I get into creating a function chain
+
+**[1061.62s → 1065.10s]** or tool chain that might involve multiple options,
+
+**[1065.10s → 1067.46s]** going back to that bank example before,
+
+**[1067.46s → 1071.96s]** like knowing exactly which function my model calls
+
+**[1071.96s → 1074.44s]** to return their response is actually pretty important.
+
+**[1074.44s → 1077.84s]** Because what if in my theoretical example
+
+**[1078.80s → 1081.28s]** instead of checking my checking balance,
+
+**[1081.28s → 1083.96s]** I'd actually check to my savings balance.
+
+**[1085.88s → 1088.28s]** Because the user, I'm like, oh well,
+
+**[1088.28s → 1090.64s]** I've got 75K in my savings
+
+**[1091.60s → 1095.68s]** or my brokerage account or whatever account I mischecked.
+
+**[1095.68s → 1098.82s]** And that answer is wronged.
+
+**[1098.82s → 1100.54s]** You're gonna wanna, some way to debug
+
+**[1100.54s → 1102.36s]** what actually happens.
+
+**[1102.36s → 1103.70s]** And so you're gonna wanna know
+
+**[1103.70s → 1109.25s]** which tool call and function name gave you that result.
+
+**[1109.25s → 1111.29s]** So once the message is appended,
+
+**[1111.29s → 1113.85s]** then we're going to get a second response.
+
+**[1113.85s → 1115.57s]** So we're going to, right,
+
+**[1115.57s → 1117.89s]** we're just adding that information about the weather
+
+**[1117.89s → 1120.29s]** back to the message context.
+
+**[1120.29s → 1122.73s]** And then we're gonna get another new response.
+
+**[1122.73s → 1125.93s]** And then that's actually what we return to the user.
+
+**[1125.93s → 1129.49s]** So second response is actually what we're printing out
+
+**[1129.49s → 1132.53s]** when we print out the final answer.
+
+**[1132.53s → 1134.61s]** So when I ran the code earlier,
+
+**[1136.52s → 1139.92s]** we're actually seeing the weather is being looked up
+
+**[1139.92s → 1166.16s]** based on the dictionary that I had earlier.
+
+**[1166.16s → 1168.68s]** All right, y'all, we ran through that example
+
+**[1168.68s → 1170.60s]** really quickly.
+
+**[1170.60s → 1171.60s]** Are there questions?
+
+**[1171.60s → 1174.36s]** Are there things you'd wanna see us modify in here?
+
+**[1174.36s → 1183.04s]** I'm curious for those that haven't encountered this before,
+
+**[1183.04s → 1188.04s]** affidus explanation, are you seeing how this could be immediately useful in some of your workflows?
+
+**[1188.04s → 1228.61s]** Let's move on.
+
+**[1228.61s → 1239.25s]** Yeah, I think it would have been more useful if we had an actual API call instead of just a dummy function.
+
+**[1239.25s → 1246.12s]** I've been trying to do that in the background here.
+
+**[1246.12s → 1253.86s]** Yeah. Yeah, actually if we take a look at the next Python function,
+
+**[1253.86s → 1259.91s]** Lang chain tool call, Chris, this one actually does hit a real whether you API
+
+**[1261.54s → 1272.52s]** where you're passing it a city. Okay. So it's slightly different. So you're going to take the,
+
+**[1272.52s → 1277.32s]** it's going to parse the city example and then send it into the LLM call.
+
+**[1277.32s → 1284.70s]** from a teaching perspective, we want to show you kind of what's happening from the work
+
+**[1284.70s → 1292.54s]** one completely underneath the hood. And then the Langchain tool call uses this nice annotation
+
+**[1292.54s → 1328.45s]** to help abstract a lot of what we just talked about away. So I think Chris actually set
+
+**[1328.45s → 1336.32s]** me up well for switching in examples a little bit. So now going from just function calling
+
+**[1336.32s → 1341.04s]** and moving more into the more advanced sophisticated ecosystem.
+
+**[1342.64s → 1345.52s]** Since you've got you guys have a good solid foundation and function calling.
+
+**[1346.40s → 1353.07s]** Tool calling inside the Langchain is going to be a lot easier in my opinion.
+
+**[1354.11s → 1358.03s]** I think it's a very important point that not all large language models
+
+**[1358.03s → 1365.71s]** supports tool calling. So this is super, super critical. Now of course, GTP 3.5 and up,
+
+**[1365.71s → 1369.71s]** We're going to support tool calling no problem.
+
+**[1369.71s → 1373.71s]** Mixed-stral supports tool calling as well.
+
+**[1373.71s → 1376.80s]** And they have good documentation on it.
+
+**[1376.80s → 1382.80s]** I don't remember the whole crosswalk of models and whether or not they support tool calling.
+
+**[1382.80s → 1389.22s]** But really only a handful of models do this or at least do it well.
+
+**[1389.22s → 1392.22s]** So if you're looking at open source models,
+
+**[1392.22s → 1395.46s]** If you're bringing that into your own infrastructure,
+
+**[1395.46s → 1399.54s]** like we do at Lockheed, we host our own open source models,
+
+**[1399.54s → 1401.98s]** where models that we bring in the open source community.
+
+**[1401.98s → 1403.26s]** And so this is definitely one of the things
+
+**[1403.26s → 1405.54s]** that we consider when we're evaluating
+
+**[1405.54s → 1409.42s]** what we can use.
+
+**[1409.42s → 1412.70s]** So the tool annotation is going to be a way for us
+
+**[1412.70s → 1415.26s]** to recognize the function so it can be converted
+
+**[1415.26s → 1418.74s]** into open AI's function calling structure.
+
+**[1418.74s → 1421.42s]** So just to show you what I mean
+
+**[1421.42s → 1430.78s]** by function calling structure, this,
+
+**[1430.78s → 1437.80s]** the fun, beautiful JSON objects
+
+**[1437.80s → 1453.96s]** is the function calling structure that we're talking about.
+
+**[1453.96s → 1457.62s]** So then it's important to think about
+
+**[1459.31s → 1461.31s]** inside the function explanation, right?
+
+**[1461.31s → 1462.95s]** You saw I said, hey, make sure
+
+**[1462.95s → 1464.39s]** that there's a good doc string here
+
+**[1464.39s → 1466.37s]** inside the function specification.
+
+**[1466.37s → 1467.83s]** Well now you need to make sure
+
+**[1467.83s → 1470.43s]** that the doc string is actually attached to your function
+
+**[1470.43s → 1474.51s]** is that the annotation is going to automatically pick it up.
+
+**[1474.51s → 1476.67s]** And if this isn't immediately obvious to you all,
+
+**[1476.67s → 1480.19s]** I hope you are currently using large language models
+
+**[1480.19s → 1484.75s]** to write doc strings for your functions, especially in Python.
+
+**[1484.75s → 1487.35s]** That's something that I do regularly
+
+**[1487.35s → 1489.39s]** with developers at work.
+
+**[1489.39s → 1493.53s]** It's one of the first things that we have them implement.
+
+**[1493.53s → 1495.57s]** So make sure you have good doc strings.
+
+**[1495.57s → 1498.93s]** Then initialize your language model.
+
+**[1498.93s → 1503.13s]** we're using ChattyDB35 and then buying the tools here at LLM.
+
+**[1503.13s → 1506.25s]** So we're gonna bind FetchWeather to the model,
+
+**[1506.25s → 1533.30s]** allowing it to make its own function calls.
+
+**[1533.30s → 1537.95s]** So our nice tool annotation, FetchWeather is going to go ahead
+
+**[1537.95s → 1544.34s]** and access the weather API.
+
+**[1544.34s → 1550.47s]** Let me show you just a quick example of what the data looks like.
+
+**[1550.47s → 1554.72s]** This is the weather for Memphis.
+
+**[1554.72s → 1559.40s]** Let me just refresh.
+
+**[1559.40s → 1560.60s]** So if you all didn't catch this,
+
+**[1560.60s → 1563.46s]** I'm based in Memphis, Tennessee.
+
+**[1563.46s → 1565.94s]** So this is the current weather here.
+
+**[1565.94s → 1571.35s]** It's currently 77 outside, overcast, that checks out.
+
+**[1571.98s → 1573.90s]** So what we want our model to do
+
+**[1573.90s → 1576.42s]** is I'm going to ask it for the weather in Memphis
+
+**[1576.42s → 1580.94s]** and we want it to provide extract this information
+
+**[1580.94s → 1583.46s]** from this structured API endpoint.
+
+**[1583.46s → 1588.56s]** So this is hot so we can change the city, you know,
+
+**[1588.56s → 1599.88s]** say New York and not a valid response,
+
+**[1599.88s → 1610.94s]** to say Seattle.
+
+**[1610.94s → 1613.57s]** So we pass on our city as a string,
+
+**[1613.57s → 1617.13s]** and then we're going to get the current condition text.
+
+**[1617.13s → 1622.34s]** So the current condition, current condition,
+
+**[1622.34s → 1626.50s]** and then text is the data we're gonna get out of the response.
+
+**[1626.50s → 1629.02s]** I could parse the whole thing if I wanted to,
+
+**[1629.02s → 1631.02s]** but just to symbol by the example,
+
+**[1631.02s → 1635.93s]** like we're just gonna extract that current condition.
+
+**[1635.93s → 1638.65s]** All right, LLM with tools that saved us
+
+**[1638.65s → 1641.45s]** quite a bit of code compared to the previous example.
+
+**[1641.45s → 1645.45s]** So between annotation and line 13, those two things
+
+**[1645.45s → 1649.06s]** immediately are saving you a bunch of code.
+
+**[1649.06s → 1652.55s]** So what's the weather like in Salt Lake City?
+
+**[1652.55s → 1655.75s]** Envoke the call, get the results,
+
+**[1655.75s → 1660.21s]** and then print out the weather in the current city.
+
+**[1660.21s → 1661.05s]** Right.
+
+**[1661.05s → 1662.65s]** Do you all want to give it a shot?
+
+**[1662.65s → 1667.81s]** We'll run Salt Lake by defaults,
+
+**[1667.81s → 1669.61s]** and then we can just switch out the city real quick
+
+**[1669.61s → 1688.33s]** to see it working interactively.
+
+**[1688.33s → 1690.59s]** Okay?
+
+**[1690.59s → 1695.56s]** Current weather in Salt Lake City is partly cloudy.
+
+**[1695.56s → 1711.65s]** Anybody else have another city they want to try?
+
+**[1711.65s → 1712.73s]** Well, we'll try Memphis,
+
+**[1712.73s → 1714.81s]** because I showed you all the, that example.
+
+**[1745.60s → 1747.36s]** I think that I just saw a question from Zach
+
+**[1747.36s → 1752.51s]** does Lanchine use a specific starter prompt
+
+**[1752.51s → 1755.38s]** for writing doctrines?
+
+**[1755.38s → 1756.22s]** You know, I'm not sure.
+
+**[1756.22s → 1757.98s]** I'd have to look at what is happening
+
+**[1757.98s → 1761.31s]** in the tool annotation.
+
+**[1761.31s → 1763.55s]** Maybe if I'm understanding your question.
+
+**[1771.63s → 1772.55s]** Oh, I see.
+
+**[1772.55s → 1776.44s]** No, no, no, that depends on the context
+
+**[1776.44s → 1778.36s]** of the developer and the projects.
+
+**[1779.00s → 1784.35s]** So we don't have a starter prompt that we consistently use.
+
+**[1784.35s → 1788.88s]** I personally like the numpy, doctering style.
+
+**[1788.88s → 1793.48s]** So like a lot of prompts I use will provide at least one example of that
+
+**[1793.48s → 1809.15s]** in a prompt that I use.
+
+**[1809.15s → 1820.89s]** Right. Do you all have questions about this workflow?
+
+**[1820.89s → 1823.89s]** And of course, you were asking me about a live API.
+
+**[1823.89s → 1825.89s]** Is this kind of what you were curious about getting working
+
+**[1825.89s → 1833.85s]** or is there something else that you were looking to see here?
+
+**[1833.85s → 1850.98s]** Yeah, this is it.
+
+**[1850.98s → 1859.80s]** You know, I think these are fine as toy problems, but like, I'm having a trouble with the jump to
+
+**[1861.42s → 1869.86s]** how this would look in prod. You know, yeah. What prod problem would you want to tackle?
+
+**[1871.00s → 1878.74s]** Well, I mean, I'm not just going to sprinkle in packed like random functions and LM calls and class
+
+**[1878.74s → 1886.42s]** creation into wherever. Like I need to integrate it in at some high level
+
+**[1886.42s → 1895.61s]** potentially and then figure out where like how to access it from different parts of my
+
+**[1895.61s → 1902.15s]** file structure right. So that's like one thing. I don't know how in depth we can go without
+
+**[1902.15s → 1911.34s]** understanding what the code is that I have today but like yeah does that make sense?
+
+**[1911.34s → 1915.82s]** Yeah, how do you make this way more sophisticated, right?
+
+**[1915.82s → 1917.78s]** Yeah.
+
+**[1917.78s → 1922.78s]** Yeah, and like, you know, like if you look at this example, I'm fetching whether, okay.
+
+**[1922.78s → 1933.54s]** So I've got this tool thing, this tool, um, decorator, like, what if that's doing things under the hood or,
+
+**[1933.54s → 1942.54s]** do I really want to parse, do I really want to just like access these string, um, keys from the JSON without,
+
+**[1942.54s → 1947.37s]** Any protection or what if there's a we get a 500 from the API
+
+**[1949.25s → 1954.09s]** Then like you know am I instantiating an LLM
+
+**[1954.81s → 1961.81s]** Every time I want to make a call or is there like a big grand centralized context manager class that
+
+**[1962.25s → 1972.57s]** We're inheriting wherever we're using or instantiating calls or like when do yeah like how is where's the where's the context being managed from is it
+
+**[1972.61s → 1977.77s]** down in the component that's using it,
+
+**[1977.77s → 1980.63s]** or is there some overarching thing?
+
+**[1983.30s → 1984.82s]** You know, what about testing?
+
+**[1984.82s → 1987.26s]** Do we have any testing over this type of stuff?
+
+**[1987.26s → 1993.93s]** Like, yeah, I think these are all really fun questions.
+
+**[1994.57s → 1998.89s]** So I'll try and break down a couple things.
+
+**[1998.89s → 2003.17s]** So I think one on adapting like a complex code base.
+
+**[2003.17s → 2005.49s]** So going back to say that banking example
+
+**[2005.49s → 2009.55s]** before. One of the things that you could do, right,
+
+**[2009.55s → 2014.07s]** let's assume all of your functions around the core banking
+
+**[2014.07s → 2017.43s]** operations that you would want to expose to a user first of all,
+
+**[2017.43s → 2019.95s]** I think it's important to acknowledge not everything.
+
+**[2019.95s → 2023.19s]** You want them to be able to do in an interactive chat.
+
+**[2025.14s → 2029.82s]** So that's one, then you would just annotate the functions
+
+**[2029.82s → 2031.46s]** quickly in that code base.
+
+**[2031.46s → 2033.58s]** So assume that everything has a good doc string,
+
+**[2033.58s → 2035.42s]** to format you expect.
+
+**[2035.42s → 2039.96s]** So that quick annotation is going to accelerate enabling
+
+**[2039.96s → 2043.50s]** the functions into a chat.
+
+**[2043.50s → 2048.78s]** So really, once you bind an instance of the LLM,
+
+**[2048.78s → 2052.57s]** you could write their plinious smart ways
+
+**[2052.57s → 2055.57s]** to write which functions are annotated,
+
+**[2055.57s → 2058.57s]** but I could bind my LLM with.
+
+**[2058.57s → 2061.57s]** And there might be some particular custom business logic
+
+**[2061.57s → 2064.81s]** that you could use to apply how to select the tools.
+
+**[2064.81s → 2067.45s]** Right now, the LLM is automatically picking
+
+**[2067.45s → 2068.81s]** which tool to choose.
+
+**[2068.81s → 2070.17s]** Of course, it only has one option here,
+
+**[2070.17s → 2072.97s]** so that's not as powerful in the examples.
+
+**[2074.45s → 2076.45s]** So I think that was one part of your question.
+
+**[2076.45s → 2078.49s]** And the next part of your question
+
+**[2078.49s → 2080.25s]** was on context management.
+
+**[2082.09s → 2084.09s]** The only context management I've ever seen
+
+**[2084.09s → 2085.97s]** is done per user chat.
+
+**[2085.97s → 2089.69s]** So like if I'm logging on to check my user balance,
+
+**[2089.69s → 2092.61s]** So I'm going to create a connection to the LLM.
+
+**[2092.61s → 2096.93s]** And that user context is going to be kind of the instance
+
+**[2096.93s → 2101.05s]** that's happening back and forth because the services
+
+**[2101.05s → 2103.13s]** are disparate, right?
+
+**[2103.13s → 2107.41s]** You're just creating a connection to the ChatGT API
+
+**[2107.41s → 2114.05s]** and sending that context back and forth for a particular user.
+
+**[2114.05s → 2117.17s]** But context management at scale is most certainly
+
+**[2117.17s → 2119.25s]** not my area of developer expertise.
+
+**[2119.25s → 2122.33s]** So I'm just to lay that on the table where you,
+
+**[2122.33s → 2126.07s]** but what I've seen is typically at the per user level
+
+**[2127.90s → 2130.38s]** in regards to LLMs.
+
+**[2130.38s → 2134.14s]** And I've also seen a lot of interesting stuff
+
+**[2134.14s → 2136.62s]** that we're doing at Lockheed.
+
+**[2136.62s → 2138.74s]** It's all in browsers.
+
+**[2138.74s → 2141.62s]** So we don't send stuff server-side for security reasons.
+
+**[2141.62s → 2143.82s]** So like we send off the request at LLM,
+
+**[2143.82s → 2150.81s]** but the context is happening in the open tab of the browser.
+
+**[2150.81s → 2152.85s]** I think I got all your questions.
+
+**[2152.85s → 2154.45s]** Maybe I missed one and I too.
+
+**[2154.45s → 2155.45s]** OK.
+
+**[2155.45s → 2159.69s]** Here's what I want to understand more is, yeah.
+
+**[2159.69s → 2161.68s]** How do I put this in front?
+
+**[2161.68s → 2165.24s]** Like, how do I structure my entire directory
+
+**[2165.24s → 2170.76s]** so that I have, OK, here's the base class of how I'm invoking
+
+**[2170.76s → 2175.60s]** in LLM and then here's where I'm inheriting what models
+
+**[2175.60s → 2176.92s]** are selecting ones.
+
+**[2176.92s → 2180.16s]** And then in that class, when I instantiate it,
+
+**[2180.16s → 2183.24s]** It's already inherited the tools that I've found to it
+
+**[2183.24s → 2185.16s]** from the parent-based class.
+
+**[2185.16s → 2187.72s]** And then here's my directory where I have all
+
+**[2187.72s → 2192.04s]** of my utility functions about prompt management.
+
+**[2192.04s → 2194.12s]** And then here's where I, you know, a pattern
+
+**[2194.12s → 2197.72s]** where I instantiate it in a way that is, you know,
+
+**[2197.72s → 2200.16s]** a light on memory that I can do in any component
+
+**[2200.16s → 2202.36s]** and in, and there's, we're not gonna have any
+
+**[2202.36s → 2205.96s]** context like override from other functions
+
+**[2205.96s → 2210.96s]** or maybe it's using only the tokens or window that I need.
+
+**[2212.24s → 2213.08s]** You know what I mean?
+
+**[2213.08s → 2216.62s]** Like, I can see how this all works.
+
+**[2216.62s → 2218.14s]** Like, this is fine.
+
+**[2218.14s → 2219.30s]** I get this, but like,
+
+**[2221.75s → 2225.60s]** like, how do I get this into,
+
+**[2225.60s → 2227.88s]** like, how do I structure this whole thing
+
+**[2227.88s → 2232.06s]** in my repository in a way that isn't just dumping it
+
+**[2232.06s → 2234.55s]** all over the place?
+
+**[2234.55s → 2235.99s]** Yeah, yeah.
+
+**[2235.99s → 2238.31s]** I completely understand the question.
+
+**[2239.03s → 2243.14s]** I don't know that I have a clear answer.
+
+**[2243.14s → 2244.90s]** I think it's something we could think through together as a group,
+
+**[2244.90s → 2246.94s]** because we actually burn through the examples.
+
+**[2246.94s → 2250.74s]** So just in everyone else's interests,
+
+**[2250.74s → 2254.90s]** I think this is a great exercise to take the content that we went through today
+
+**[2254.90s → 2257.14s]** and just think about it at the next level.
+
+**[2257.14s → 2266.84s]** So most of the co-bases I've seen are adapting over pre-existing APIs.
+
+**[2266.84s → 2271.84s]** So let's say that it's something like a weather API.
+
+**[2271.96s → 2275.42s]** So maybe just to switch context again,
+
+**[2275.42s → 2278.38s]** let's say it's like our enterprise white pages tool.
+
+**[2278.38s → 2281.93s]** So you've got the API in point specified,
+
+**[2281.93s → 2283.85s]** you've got an API wrapper.
+
+**[2285.01s → 2288.69s]** Let's even go so far as to say you've got a Python SDK
+
+**[2288.69s → 2292.07s]** for that API, more than client.
+
+**[2293.61s → 2297.09s]** You could create a fork about library and annotate it.
+
+**[2297.45s → 2305.97s]** Or an even clever way to do it would be to have your LLM actually do the annotation.
+
+**[2305.97s → 2308.41s]** So let's say your code base is massive.
+
+**[2308.41s → 2314.65s]** So what you want to do is take a look back at TechRider and you want to say,
+
+**[2314.65s → 2322.83s]** I want you to take a look at all of these functions that annotate them so that they become tools.
+
+**[2322.83s → 2325.55s]** And then you might take a look at the merge requests,
+
+**[2325.55s → 2330.39s]** review them, and then boom, you have a nice library
+
+**[2330.39s → 2331.99s]** of options to use.
+
+**[2334.05s → 2336.69s]** And then in terms of what you're exposing to the user,
+
+**[2338.33s → 2340.53s]** it kind of depends on how the rest of your applications
+
+**[2340.53s → 2341.45s]** are detected.
+
+**[2341.45s → 2343.93s]** So then we're beginning to get into questions
+
+**[2343.93s → 2347.21s]** about what's the end use case as well
+
+**[2347.21s → 2348.41s]** that you're trying to resolve,
+
+**[2348.41s → 2350.81s]** because this could just be entire server side,
+
+**[2350.81s → 2354.17s]** communicate server to server, server to client.
+
+**[2354.17s → 2359.06s]** So I'm not sure if you want to go into that level
+
+**[2359.06s → 2360.28s]** of architecture discussion,
+
+**[2360.28s → 2361.58s]** and I'm more than happy to spend some time
+
+**[2361.58s → 2398.79s]** down with curming, diagramming it for everybody.
+
+**[2398.79s → 2419.76s]** Let's take a look, do do.
+
+**[2419.76s → 2423.13s]** Maybe I didn't use the right extension there.
+
+**[2423.13s → 2425.61s]** Hang on just a second.
+
+**[2425.61s → 2428.05s]** Before I switch into that diagram exercise,
+
+**[2428.05s → 2429.69s]** I do, I think there's one last slide
+
+**[2429.69s → 2431.57s]** that I do want to talk through to everybody.
+
+**[2431.57s → 2436.66s]** And then we can go back into that higher view exercise.
+
+**[2436.66s → 2446.65s]** The last thing that we haven't talked about is all of the information when we're doing complex
+
+**[2446.65s → 2452.17s]** lows like that, like the weather example I just used where it's making the interactive call
+
+**[2452.17s → 2453.57s]** up and down.
+
+**[2453.57s → 2460.81s]** One of the other things that you need to keep in mind is your LLM can actually hallucinate.
+
+**[2460.81s → 2467.60s]** So just to make sure that the output that you're getting is correct, you are going to
+
+**[2467.60s → 2479.82s]** validate in some way what you expect. AMD bug as you do much, much more complex projects than a simple current weather status.
+
+**[2479.82s → 2489.85s]** So what we want to take a look at are what are the information about the weather was just logged.
+
+**[2489.85s → 2493.85s]** So let's take a look at the two records that we have in Langsmith.
+
+**[2493.85s → 2496.15s]** What does actually represents?
+
+**[2496.15s → 2498.05s]** And then any information that we go,
+
+**[2498.05s → 2501.07s]** I'm going to add the call to help us analyze
+
+**[2501.07s → 2509.93s]** what the tool did.
+
+**[2509.93s → 2513.79s]** I think I opened Langsmith earlier.
+
+**[2513.79s → 2516.44s]** Let's open up Langsmith.
+
+**[2516.44s → 2526.98s]** This was all logged by the fault in the backgrounds for us.
+
+**[2526.98s → 2528.46s]** All right, so these are the two records
+
+**[2528.46s → 2530.10s]** that were associated with the last call
+
+**[2530.10s → 2531.66s]** because the last thing we asked for was,
+
+**[2531.66s → 2534.56s]** what's the weather and Memphis?
+
+**[2534.56s → 2545.44s]** So this is the fetch weather function, right?
+
+**[2545.44s → 2548.88s]** input, now put, like, right, not crazy.
+
+**[2550.40s → 2553.18s]** This is where I would just want to debug things
+
+**[2553.18s → 2554.32s]** that are happening with my function.
+
+**[2554.32s → 2557.36s]** So making sure that I'm parsing the correct input
+
+**[2557.36s → 2560.02s]** and I'm getting the right output.
+
+**[2560.02s → 2564.98s]** Because my LLM is identifying Memphis as the location
+
+**[2564.98s → 2567.22s]** and deciding that Memphis is what we should put
+
+**[2567.22s → 2568.10s]** with the function.
+
+**[2568.10s → 2569.98s]** So this is what you would be debugging,
+
+**[2569.98s → 2583.38s]** is making sure that your inputs systematically are right.
+
+**[2583.38s → 2584.66s]** Then this is the call of the model,
+
+**[2584.66s → 2586.34s]** what's the weather like in Memphis?
+
+**[2586.34s → 2589.86s]** We called Feshweather, we got the city Memphis.
+
+**[2591.83s → 2595.65s]** And then I got my actual outputs
+
+**[2595.65s → 2601.89s]** to the weather in Memphis's overcast.
+
+**[2601.89s → 2604.41s]** And then you can see the individual function call too.
+
+**[2604.41s → 2609.41s]** And again, as you do this in a more systematic fashion,
+
+**[2609.69s → 2612.67s]** you might have multiple functions
+
+**[2612.67s → 2614.89s]** that share together that would allow you
+
+**[2614.89s → 2619.48s]** to do things like that's the weather,
+
+**[2619.48s → 2621.44s]** check the winds, check the precipitation,
+
+**[2621.44s → 2622.94s]** going back to the banking context,
+
+**[2622.94s → 2648.22s]** chaining multiple outputs together.
+
+**[2648.22s → 2653.22s]** So tomorrow, when you switch into getting your hands on
+
+**[2653.22s → 2655.66s]** in the office hour projects,
+
+**[2655.66s → 2658.67s]** I think there are a couple different functions
+
+**[2658.67s → 2661.57s]** that you can play around with.
+
+**[2661.57s → 2664.25s]** Simple quadratic equation solver,
+
+**[2664.25s → 2667.53s]** Bivinachi sequence generator, currency converter,
+
+**[2667.53s → 2672.88s]** All of which are straight forward projects to mess around with,
+
+**[2673.64s → 2676.68s]** but you can see the death and breadth of what's possible,
+
+**[2678.28s → 2680.56s]** especially when you start to think about
+
+**[2680.56s → 2683.04s]** the way people talk about currency.
+
+**[2683.04s → 2685.16s]** And I would really encourage all of you
+
+**[2685.16s → 2688.12s]** to write interesting questions.
+
+**[2688.12s → 2692.32s]** So try edge cases that might be possible
+
+**[2692.32s → 2696.03s]** for what a user would do or wouldn't do.
+
+**[2696.03s → 2700.92s]** like currencies that maybe not make sense,
+
+**[2700.92s → 2703.56s]** or any kind of crazy edge cases,
+
+**[2703.56s → 2714.15s]** I think are great ways to test what's happening.
+
+**[2714.15s → 2715.23s]** So like I mentioned earlier,
+
+**[2715.23s → 2719.07s]** we burned through the course content in a beautiful way.
+
+**[2719.07s → 2722.31s]** And Chris was asking some really great questions
+
+**[2722.31s → 2726.03s]** on high level architecture for what this would look like
+
+**[2726.03s → 2728.63s]** to do over a complex code base.
+
+**[2728.63s → 2731.23s]** So I'd love to go back and revisit that question,
+
+**[2731.23s → 2734.99s]** and take a look at what it might look like across the board.
+
+**[2736.11s → 2739.79s]** Before we dive into that kind of longer question,
+
+**[2739.79s → 2742.34s]** were there any other shorter,
+
+**[2742.34s → 2747.89s]** short-hit questions people had about so far function calling
+
+**[2748.73s → 2766.70s]** any of you could have shown so far, anything else?
+
+**[2766.70s → 2768.66s]** All right, I'll give everyone a few more seconds
+
+**[2768.66s → 2798.27s]** and while we do that, I'll go ahead and get this set up.
+
+**[2798.27s → 2801.75s]** So I'm gonna use X-caldrop for this
+
+**[2801.75s → 2812.62s]** little exercise real quick. I didn't have this installed in my local VS Code, so give me just a second to double track that things are good.
+
+**[2812.62s → 2824.73s]** For those of you that use of city in for your note tracking stuff, I used a lot of ex kalidraw at work.
+
+**[2824.73s → 2828.95s]** And there's also a website that does static.
+
+**[2828.95s → 2832.34s]** You can download the stuff and it's all in your browser
+
+**[2832.34s → 2848.58s]** instead of being sent to a remote repository.
+
+**[2848.58s → 2873.70s]** It will check in that I'm doing this right.
+
+**[2873.70s → 2876.82s]** So that extension is loading.
+
+**[2876.82s → 2880.82s]** Chris, what is the like just either the real problem
+
+**[2880.82s → 2882.82s]** that you're looking to solve with this kind of workflow
+
+**[2882.82s → 2886.82s]** or maybe like a generalized version of it if you can.
+
+**[2886.82s → 2889.82s]** I'm not sure how much how sensitive the.
+
+**[2889.82s → 2901.04s]** There she is. I think there's no particular issue. I think what I'm operating at a level of
+
+**[2901.76s → 2908.98s]** How do I enable all the developers to use all these tools in a common pattern and
+
+**[2911.00s → 2913.35s]** like I need to
+
+**[2913.59s → 2924.29s]** Like what is the what is the thing? I'm gonna build for them some sort of library some sort of set of classes or something
+
+**[2924.97s → 2927.77s]** That I can use and I can put them in our common
+
+**[2927.77s → 2932.60s]** and Python service framework, for instance, so that all of the services get them.
+
+**[2934.01s → 2936.33s]** And then like, how do I structure that?
+
+**[2937.45s → 2938.81s]** How do I enable the feed?
+
+**[2938.81s → 2944.17s]** To actually do the thing and then say, okay, here's how I'm going to register, like,
+
+**[2944.17s → 2949.69s]** here's a simple way I'm going to register new functions into this function tools property.
+
+**[2949.69s → 2955.74s]** You're like, see what I'm saying? I'm trying to figure out how to enable other teams.
+
+**[2955.74s → 2958.78s]** I don't have a featured problem that I'm trying to solve in this conversation.
+
+**[2960.33s → 2960.93s]** I gotcha.
+
+**[2960.93s → 2963.46s]** OK.
+
+**[2963.46s → 2965.42s]** Let's take a look at maybe think about it
+
+**[2965.42s → 2976.50s]** from the perspective of thinking about it as like a CI
+
+**[2976.50s → 2977.74s]** CD pipeline problem.
+
+**[2977.74s → 2979.58s]** Like I'm assuming your developers probably
+
+**[2979.58s → 2984.94s]** do quite a bit of processing code.
+
+**[2984.94s → 2994.47s]** Do they do like type checking, formatting?
+
+**[2994.47s → 2995.47s]** Yeah.
+
+**[2995.47s → 2997.05s]** Sure.
+
+**[2997.05s → 3005.22s]** So let's assume the problem looks like.
+
+**[3005.22s → 3013.40s]** So I know that there are tools to do this natively.
+
+**[3013.40s → 3026.91s]** So let's say I want to expose clients in multiple languages.
+
+**[3026.91s → 3032.49s]** So there are some automated tools that can help you do this today.
+
+**[3032.49s → 3037.68s]** Like let's say my app, my base application is written in.
+
+**[3037.68s → 3044.76s]** Some flavor of JavaScript or maybe I'm getting fancy and using Rust.
+
+**[3044.76s → 3049.08s]** And so I want to expose multiple clients in things like,
+
+**[3049.08s → 3070.04s]** we'll say Python, I'm going to pick arbitrarily silly programming languages like Julia,
+
+**[3070.04s → 3079.60s]** but I might want to add something else and I don't know, Java or TypeScript.
+
+**[3079.60s → 3083.04s]** Might be a better example.
+
+**[3083.04s → 3089.98s]** So my current developer workflow, then,
+
+**[3089.98s → 3092.98s]** what I'm going to do to make this accessible,
+
+**[3092.98s → 3094.78s]** and I want to use an LLM to help me
+
+**[3094.78s → 3097.90s]** automatically compile into my library,
+
+**[3097.90s → 3100.18s]** into those other functions.
+
+**[3100.18s → 3106.52s]** So what Chris might do to help facilitate that
+
+**[3106.52s → 3122.42s]** is Chris is going to write Python package.
+
+**[3122.42s → 3132.83s]** His purpose is to review codebase and source
+
+**[3132.83s → 3145.19s]** language and write the client's SDK and target languages.
+
+**[3152.39s → 3154.91s]** So Chris, you might write a Python packet
+
+**[3154.91s → 3157.87s]** which is gonna be pretty like general.
+
+**[3157.87s → 3162.79s]** So something like, it might have functions
+
+**[3162.79s → 3164.27s]** for each of the source languages
+
+**[3164.27s → 3166.23s]** or that might be a parameter class
+
+**[3166.23s → 3168.87s]** kind of whatever you're feeling
+
+**[3170.90s → 3172.18s]** and we could take a look at architecture
+
+**[3172.18s → 3173.94s]** of that Python package real quick.
+
+**[3173.94s → 3181.19s]** So I'm gonna go over here.
+
+**[3181.19s → 3198.50s]** You're going to create a big area.
+
+**[3198.50s → 3207.35s]** So here is where you're going to have your code,
+
+**[3207.35s → 3212.06s]** your LLM stuff is actually here.
+
+**[3212.06s → 3215.30s]** Let's assume for a second that the thing that you're
+
+**[3215.30s → 3218.82s]** trying to expose in multiple languages,
+
+**[3218.82s → 3223.50s]** let's say that you have a huge developer base.
+
+**[3223.50s → 3225.50s]** So let's say you're at a company that
+
+**[3225.50s → 3232.06s]** has 20,000 developers.
+
+**[3232.06s → 3237.06s]** So you're going to write a library or an API specification,
+
+**[3237.14s → 3240.50s]** but there might be hundreds or thousands of other developers
+
+**[3240.50s → 3242.38s]** that need to access that,
+
+**[3242.38s → 3245.34s]** but they aren't familiar with language that you've programed in.
+
+**[3245.34s → 3249.09s]** And it's not necessarily immediately,
+
+**[3251.53s → 3253.13s]** like one or two API calls,
+
+**[3253.13s → 3257.21s]** they really need that nice, tidy client SDK
+
+**[3257.21s → 3259.56s]** in the language they're using.
+
+**[3259.56s → 3260.84s]** So that's a hard problem, right?
+
+**[3260.84s → 3263.52s]** because you don't have to re-engineer that by hand.
+
+**[3263.52s → 3267.28s]** And the kind of original function may not be
+
+**[3267.28s → 3269.86s]** anything to do with LLLMs at all.
+
+**[3269.86s → 3272.70s]** So could be something like the banking example
+
+**[3272.70s → 3274.50s]** that I was using before, right?
+
+**[3274.50s → 3277.10s]** All of those banking services,
+
+**[3277.10s → 3279.10s]** let's say that I'm just trying to glue together
+
+**[3279.10s → 3282.14s]** the services inside each other and it's simpler.
+
+**[3282.14s → 3284.30s]** Like I'm a large multinational bank
+
+**[3284.30s → 3286.34s]** and I need to figure out how to glue together
+
+**[3286.34s → 3288.86s]** transferring money between legal entity day
+
+**[3288.86s → 3294.58s]** legal entity B and all the business logic that goes back and forth between those.
+
+**[3294.58s → 3301.84s]** So to have my developers integrate that, I want to expose those client SDKs in a really
+
+**[3301.84s → 3303.12s]** tidy way.
+
+**[3303.12s → 3310.48s]** So I wrote this Python package that will take the original one, read through it, and then
+
+**[3310.48s → 3318.80s]** compile using an LOM, each of those SDKs and publish them to my internal package repositories.
+
+**[3318.80s → 3330.91s]** So our Python architecture at a high level is going to take our LLM stuff and its goal
+
+**[3330.91s → 3360.24s]** is to, and let's say that the general use is going to be something like intended for
+
+**[3360.24s → 3374.02s]** CI, CD workflows and it's going to be generalizable between multiple problems.
+
+**[3374.02s → 3379.54s]** So like it's not just going to be one package and then every time I make a merge request
+
+**[3379.54s → 3383.10s]** or something like that, it's going to recompile a client SDKs.
+
+**[3383.10s → 3384.78s]** That's not very useful.
+
+**[3384.78s → 3387.54s]** We could probably figure out how to do that automatically.
+
+**[3387.54s → 3390.26s]** What I want to do instead is generalize this.
+
+**[3390.26s → 3392.26s]** And this is where the LLM comes in.
+
+**[3392.26s → 3395.06s]** So that way, any developer that writes something
+
+**[3395.06s → 3400.08s]** that needs multiple versions of the same SDK
+
+**[3400.08s → 3402.88s]** and different clients, different client languages
+
+**[3402.88s → 3405.04s]** can hit this in their CI-CD script.
+
+**[3405.04s → 3407.28s]** So from their perspective, there's
+
+**[3407.28s → 3411.26s]** adding a GitHub action or whatever my CI CD runner is,
+
+**[3411.26s → 3412.96s]** that includes this Python package
+
+**[3412.96s → 3415.72s]** and then calling the appropriate API calls
+
+**[3415.72s → 3424.70s]** within the package to get things done.
+
+**[3424.70s → 3426.50s]** So I just wanna do a quick sanity check, Chris,
+
+**[3426.50s → 3428.26s]** is this kind of the thing you were thinking?
+
+**[3428.26s → 3434.04s]** And then,
+
+**[3434.04s → 3436.96s]** I guess so, I mean, all we really, yeah,
+
+**[3436.96s → 3439.38s]** I mean we're just saying we're gonna make a Python package.
+
+**[3441.50s → 3446.44s]** But yeah, I guess like it's gonna have the ability
+
+**[3446.44s → 3450.42s]** to purchase someone a specify which models they want,
+
+**[3450.42s → 3456.82s]** Like the register different function calls.
+
+**[3458.10s → 3462.03s]** I don't really follow the transforming a source SDK
+
+**[3462.03s → 3463.51s]** into multiple language SDK,
+
+**[3463.51s → 3467.45s]** but I think that's okay that I don't get it.
+
+**[3468.83s → 3471.80s]** But I think we're on the right track.
+
+**[3471.80s → 3474.78s]** Okay, let me continue with the Python package.
+
+**[3474.78s → 3477.62s]** I think hopefully that clears up a little bit.
+
+**[3479.62s → 3482.34s]** So let's say the Python package,
+
+**[3482.34s → 3484.92s]** This is where all of your LLM work is going to happen.
+
+**[3484.92s → 3487.98s]** So you were asking about standardizing
+
+**[3487.98s → 3490.06s]** a lot of the core components.
+
+**[3490.06s → 3497.04s]** So I'm going to make my LLM choice here.
+
+**[3500.22s → 3502.54s]** So let's say I'm going to use like,
+
+**[3502.54s → 3505.70s]** I've decided for this particular use case
+
+**[3505.70s → 3511.34s]** that GTP for looks the best for this particular problem.
+
+**[3511.34s → 3520.93s]** for this particular problem.
+
+**[3520.93s → 3529.54s]** And then from the user's perspective,
+
+**[3529.54s → 3531.82s]** they're going to write code that looks like,
+
+**[3531.82s → 3547.85s]** what I am not a JavaScript developer,
+
+**[3547.85s → 3551.57s]** what is a, like if I develop a JavaScript package,
+
+**[3551.57s → 3556.77s]** what would the file extension be of a JavaScript package
+
+**[3556.77s → 3563.98s]** or library just, is it dot, just JS?
+
+**[3563.98s → 3566.26s]** Thanks, just JavaScript.
+
+**[3566.26s → 3571.45s]** Cool.
+
+**[3571.45s → 3573.68s]** What else would it be?
+
+**[3573.68s → 3579.06s]** Yeah, maybe we'll get that.
+
+**[3579.06s → 3585.50s]** So my command is going to look something like bank services.
+
+**[3585.50s → 3589.38s]** It's, all right.
+
+**[3589.38s → 3595.93s]** So bank services, dot JavaScript.
+
+**[3595.93s → 3611.80s]** And then I'm going to say, let's say my targets are,
+
+**[3611.80s → 3620.77s]** then Python, Julia, typescripts.
+
+**[3620.77s → 3621.13s]** All right.
+
+**[3621.13s → 3635.32s]** So I'm going to take bank services, which
+
+**[3635.32s → 3637.36s]** has been written by one developer,
+
+**[3637.36s → 3640.76s]** and that developer then wants to write client SDKs
+
+**[3640.76s → 3644.56s]** in Python, Julian TypeScript for other developers.
+
+**[3644.56s → 3648.48s]** So our script is gonna work something like Python,
+
+**[3648.48s → 3658.38s]** bank services.js, transform that into Python, Julian TypeScript.
+
+**[3658.66s → 3659.66s]** Everybody with me so far?
+
+**[3659.66s → 3669.01s]** Did that clear it up a little bit?
+
+**[3669.01s → 3670.25s]** Honestly, I'm more confused now.
+
+**[3670.25s → 3675.10s]** I think when you drew the box as LLM choice here,
+
+**[3675.10s → 3676.82s]** that was like what I was going for.
+
+**[3676.82s → 3678.86s]** It's like, okay, LMChoice here,
+
+**[3678.86s → 3682.06s]** that means we're defaulting a model in the base class.
+
+**[3682.06s → 3684.74s]** Then what else are we doing?
+
+**[3684.74s → 3689.24s]** Like, is this the,
+
+**[3689.24s → 3690.20s]** what you're writing there,
+
+**[3690.20s → 3694.26s]** is that somebody registering a function
+
+**[3694.26s → 3696.95s]** into the base class,
+
+**[3696.95s → 3697.99s]** into the package?
+
+**[3697.99s → 3700.42s]** I'm confused about that.
+
+**[3700.42s → 3708.34s]** No, so let's say you as the developer
+
+**[3708.34s → 3711.79s]** of the Python package architecture
+
+**[3711.79s → 3719.26s]** has picked GTP for, you have written the tool calling
+
+**[3731.96s → 3733.97s]** that's gonna go here.
+
+**[3733.97s → 3741.88s]** And then any prompts that you're gonna use
+
+**[3741.88s → 3747.70s]** that are kinda special.
+
+**[3747.70s → 3754.33s]** So all of this stuff is going to your Python package.
+
+**[3754.33s → 3757.13s]** So Python bank, when you run the command
+
+**[3757.13s → 3763.20s]** or the application, excuse me,
+
+**[3763.20s → 3769.04s]** miss the core part of the application here.
+
+**[3769.12s → 3775.62s]** We'll just say we'll call it a transform rights.
+
+**[3783.85s → 3790.31s]** We'll call it right clients
+
+**[3790.31s → 3796.41s]** and then we'll call this one the Python right client.py.
+
+**[3796.41s → 3799.37s]** That's your application that takes your source
+
+**[3799.37s → 3802.17s]** JavaScript library and creates clients
+
+**[3802.17s → 3804.25s]** in Python, Julian type scripts.
+
+**[3804.25s → 3809.09s]** So right client.py makes your choice of the model you're using,
+
+**[3809.09s → 3812.49s]** the tool calls you're going to use in prompts.
+
+**[3812.49s → 3819.06s]** So you might make a choice to have things that are like,
+
+**[3819.06s → 3829.69s]** my first tool call might be identify the language
+
+**[3829.69s → 3852.25s]** of the source package, then stuff like that.
+
+**[3852.25s → 3880.08s]** So identify and enumerate.
+
+**[3880.08s → 3886.00s]** And then, you know, it's the function, the library here would be a lot bigger than I could
+
+**[3886.00s → 3888.32s]** possibly cover in a diagram.
+
+**[3888.32s → 3892.04s]** I'm just trying to give you a sense of what would happen at a high level.
+
+**[3892.04s → 3900.45s]** But, you know, the next thing might be then, you know, writes the, we'll say the Julia
+
+**[3900.45s → 3906.76s]** package or the, you know, for each target.
+
+**[3906.76s → 3955.72s]** And then finally, it's going to publish that.
+
+**[3955.72s → 3961.51s]** So they're going back to the bigger view from the developers
+
+**[3961.51s → 3966.31s]** perspective, the one that wrote the original bank services.javascripts.
+
+**[3966.31s → 3984.66s]** Then their experience is going to be something like this.
+
+**[3984.66s → 3988.61s]** I know that's tiny.
+
+**[3988.61s → 3999.32s]** So they're going to write bank services.js and push to get lab.
+
+**[3999.32s → 4010.74s]** A CI CD scripts configured on the bank services, repo,
+
+**[4010.74s → 4032.61s]** kicks off the transformation, then your Python package
+
+**[4032.61s → 4049.65s]** that we wrote, the one that we called write clients,
+
+**[4049.65s → 4068.76s]** uses an LLM and tool calling to create the client SDKs.
+
+**[4068.76s → 4070.92s]** And then it could happen, we wrote it
+
+**[4070.92s → 4074.04s]** to happen inside the same package,
+
+**[4074.04s → 4078.14s]** but it could happen another step, which
+
+**[4078.14s → 4088.20s]** is the CI CD scripts, publishes new SDKs.
+
+**[4098.30s → 4103.40s]** So from your developers perspective,
+
+**[4103.40s → 4105.16s]** like what was the point of doing that
+
+**[4105.16s → 4110.72s]** from your developers perspective?
+
+**[4110.72s → 4113.44s]** They're like, how did that save me any time?
+
+**[4114.93s → 4128.57s]** Well, the actual time saved was in this step
+
+**[4128.57s → 4134.39s]** because essentially you used an LLM
+
+**[4134.39s → 4136.03s]** to augment your workforce, right?
+
+**[4136.03s → 4140.15s]** you went from having one developer right one framework
+
+**[4140.15s → 4142.53s]** to all of a sudden, I've used an LLM
+
+**[4142.53s → 4145.07s]** and written three client SDKs
+
+**[4145.07s → 4149.71s]** and depending on how complex bank services.js is,
+
+**[4149.71s → 4153.11s]** that could take a day, that could take multiple weeks,
+
+**[4153.11s → 4156.70s]** if it's really complex, it could take months.
+
+**[4156.70s → 4164.10s]** So I use an LLM to save the labor of republishing
+
+**[4164.10s → 4188.76s]** of republishing and rewriting multiple clients of the same stuff.
+
+**[4188.76s → 4196.88s]** The important thing to note is that it's not going to be perfect.
+
+**[4196.88s → 4205.73s]** It's a time-saber, not a perfect solution.
+
+**[4205.73s → 4210.21s]** So, like, the multiple clients you're going to get, they're going to look really good
+
+**[4210.21s → 4214.57s]** and be really, really close.
+
+**[4214.57s → 4219.09s]** But I highly doubt you're going to come out, especially with the complex code base with
+
+**[4219.09s → 4220.09s]** a perfect solution.
+
+**[4220.09s → 4225.53s]** You're going to run it and you're talking about something that's going to save maybe,
+
+**[4225.53s → 4235.66s]** from some of the survey data I've seen in literature, like 30 to 45% decrease in time
+
+**[4235.66s → 4250.90s]** spent.
+
+**[4250.90s → 4259.96s]** Okay, so if you go up to the Python package, these four boxes, GPT-4, tool calling problems,
+
+**[4259.96s → 4261.60s]** That's what I'm asking about.
+
+**[4261.60s → 4264.10s]** What is this set of tools?
+
+**[4264.10s → 4266.24s]** What is this base class?
+
+**[4266.24s → 4268.88s]** What are we providing in this thing?
+
+**[4268.88s → 4275.44s]** And assume that it's just going to get shot out all of the Python services at my company.
+
+**[4275.44s → 4280.36s]** And what are the things that I'm giving them that are, it's all dating at one or allowing
+
+**[4280.36s → 4283.28s]** them to swap in different models?
+
+**[4283.28s → 4289.28s]** We've got tracing or whatever we want to put in there built out of the box.
+
+**[4289.28s → 4294.00s]** We've got some sort of prompt, like guidelines,
+
+**[4294.00s → 4296.76s]** or maybe there's base prompts that we're all using,
+
+**[4296.76s → 4299.60s]** or maybe that we're registering,
+
+**[4299.60s → 4303.28s]** we allow them to register function calls
+
+**[4303.28s → 4305.60s]** from their own service to be called,
+
+**[4305.60s → 4308.32s]** pass that to the LLM in that instance,
+
+**[4308.32s → 4311.44s]** or maybe we have context managers
+
+**[4311.44s → 4316.12s]** because they're gonna be dealing with chat hot things.
+
+**[4316.12s → 4317.94s]** Like, what is that?
+
+**[4317.94s → 4321.32s]** Like how do I do that?
+
+**[4321.32s → 4323.44s]** Yeah.
+
+**[4323.44s → 4326.44s]** I think that what you're really talking about,
+
+**[4326.44s → 4328.96s]** that is I think the really purpose of chain.
+
+**[4328.96s → 4330.48s]** When you think about it, essentially,
+
+**[4330.48s → 4332.88s]** what is interacting with your models?
+
+**[4335.34s → 4337.66s]** What you are really talking about, Chris,
+
+**[4337.66s → 4339.30s]** is the purpose of chain.
+
+**[4339.30s → 4341.66s]** So like a systematic way of helping people
+
+**[4341.66s → 4344.78s]** accelerate developing against an LLM.
+
+**[4345.90s → 4347.82s]** Because a lot of what you're trying to do
+
+**[4347.82s → 4350.46s]** is dependent on context.
+
+**[4350.46s → 4353.86s]** So for us at Lockheed,
+
+**[4354.94s → 4359.62s]** like developers would use and do use Langsmith
+
+**[4359.66s → 4362.46s]** and a lot of the other similar tools
+
+**[4362.46s → 4365.62s]** to develop applications against our inner source models.
+
+**[4365.62s → 4367.74s]** So we have a generative AI platform
+
+**[4368.66s → 4371.62s]** that documents the models and the endpoints available,
+
+**[4371.62s → 4376.14s]** the licensing and which models are licensed
+
+**[4376.14s → 4377.66s]** for which appropriate use.
+
+**[4377.66s → 4381.42s]** So a developer can log in and see what's available to them.
+
+**[4382.42s → 4385.50s]** And then we publish a lot of internal tutorials,
+
+**[4386.46s → 4389.98s]** help people kind of accelerate projects.
+
+**[4389.98s → 4394.30s]** But there's not kind of a one-size-fits-all application
+
+**[4394.30s → 4397.42s]** that at least I've seen from an architecture perspective
+
+**[4397.42s → 4398.66s]** that makes sense yet
+
+**[4400.67s → 4405.92s]** other than like a just true chat interface.
+
+**[4405.92s → 4410.56s]** is because I think what you're really getting at is like that
+
+**[4410.56s → 4411.72s]** lancement idea.
+
+**[4411.72s → 4414.80s]** Like how do I systematically interact with an LOM
+
+**[4414.80s → 4417.24s]** and make my choice of model whether or not
+
+**[4417.24s → 4420.28s]** to use tool calling and prompts?
+
+**[4420.28s → 4440.84s]** If I think I'm understanding you correctly.
+
+**[4440.84s → 4444.16s]** So if you're looking to accelerate what your developers are
+
+**[4444.16s → 4447.70s]** doing, the best thing you could do
+
+**[4447.70s → 4451.06s]** is to create a repository of solutions that
+
+**[4451.06s → 4454.90s]** going to help them on particular use cases.
+
+**[4454.90s → 4459.46s]** So you want to take lengthmith and instead of thinking about it
+
+**[4459.46s → 4463.34s]** from one size fits all architecture, instead documenting
+
+**[4463.34s → 4464.74s]** the best practices.
+
+**[4464.74s → 4470.80s]** How do we create a library of prompts?
+
+**[4470.80s → 4472.56s]** Like where do we store prompts?
+
+**[4472.56s → 4477.48s]** Is a lot of people would immediately go to length use
+
+**[4477.48s → 4481.44s]** to store prompts systematically.
+
+**[4481.44s → 4484.84s]** If I want to create an instruction tune data set
+
+**[4484.84s → 4486.92s]** and publish them within my company,
+
+**[4486.92s → 4489.44s]** my infuse would also be a good place to do that.
+
+**[4489.44s → 4492.08s]** So I think there's a blend of different things
+
+**[4492.08s → 4494.24s]** that you're asking about at once.
+
+**[4494.24s → 4500.89s]** It's like MLOPS a little bit, LLMOPS,
+
+**[4500.89s → 4504.01s]** and then also the just overall architecture.
+
+**[4506.20s → 4510.50s]** So I know that's not made the answer you wanted to hear,
+
+**[4510.50s → 4515.86s]** but in my experience so far with this stuff,
+
+**[4515.86s → 4516.86s]** I think it's hard.
+
+**[4516.86s → 4520.22s]** I think Lang Smith, or Lexus me Lang chain,
+
+**[4520.22s → 4553.08s]** as a Python package is really what we're getting at.
+
+**[4553.08s → 4555.80s]** So I know that that was kind of me
+
+**[4555.80s → 4557.36s]** entering a little bit everybody.
+
+**[4557.36s → 4561.96s]** I do want to check into everybody else.
+
+**[4561.96s → 4564.36s]** Are you kind of see where I'm going with that overall?
+
+**[4564.36s → 4566.16s]** Like this particular diagram I drew out
+
+**[4566.16s → 4569.36s]** in that particular example.
+
+**[4569.36s → 4580.24s]** Maybe there are other questions about what I've said so far.
+
+**[4580.24s → 4585.77s]** Yeah, so in this example, could you sort of show us again
+
+**[4585.77s → 4592.76s]** how the tool calling is fitting into all this?
+
+**[4592.76s → 4596.96s]** The four wide boxes down there identify the language,
+
+**[4596.96s → 4600.12s]** identify in a numerate API endpoints.
+
+**[4600.12s → 4604.15s]** Is that being achieved by tool calling?
+
+**[4604.15s → 4606.79s]** This is probably no steps.
+
+**[4606.79s → 4610.55s]** function calling exercise with these particular steps.
+
+**[4612.71s → 4615.99s]** We wouldn't maybe just need to rewrite the example a little bit.
+
+**[4615.99s → 4623.76s]** So instead of, let's see, think about it for a hot second.
+
+**[4634.34s → 4638.66s]** Because this particular package is translating code to code,
+
+**[4640.02s → 4644.10s]** maybe not the best example of hitting a live API.
+
+**[4644.10s → 4655.14s]** What you could do though, let's say you develop tools for marketing purposes and you need to
+
+**[4655.14s → 4668.04s]** send a lot of emails. You could write like a, sorry, I'm really thinking my example to answer your
+
+**[4668.04s → 4677.89s]** question in real time. So let me re-stay the question to make sure I'm catching it. So you were asking
+
+**[4677.89s → 4683.11s]** how does tool calling fit into the example of code translation
+
+**[4683.11s → 4685.31s]** and then you're also doing a little bit more
+
+**[4685.31s → 4689.40s]** than code translation here to you.
+
+**[4689.40s → 4690.94s]** Right.
+
+**[4690.94s → 4693.34s]** So I think in one use case you could have
+
+**[4693.34s → 4695.64s]** for tool calling in particular.
+
+**[4695.64s → 4699.64s]** Right. So bank services, there is a live API
+
+**[4699.64s → 4703.64s]** behind the hood that everything is supporting.
+
+**[4703.64s → 4707.44s]** So let's say that everything else so far has been function calling.
+
+**[4707.44s → 4709.84s]** Like you write it in LL and function that's going to say,
+
+**[4709.84s → 4711.88s]** translate the languages.
+
+**[4711.88s → 4715.68s]** But you might include a tool call function.
+
+**[4715.68s → 4730.00s]** It's actually going to test the API endpoints in the client.
+
+**[4730.00s → 4734.07s]** So yeah, let's assume everything's gone right.
+
+**[4734.07s → 4738.15s]** And you've translated the language.
+
+**[4738.15s → 4739.47s]** You've got the new endpoints.
+
+**[4739.47s → 4741.79s]** You've written the Julia package.
+
+**[4741.79s → 4744.27s]** Well, I want to validate that the Julia package
+
+**[4744.27s → 4747.07s]** that the LLM group actually works.
+
+**[4747.07s → 4752.42s]** So I included in my prompts, make sure to annotate with
+
+**[4754.70s → 4757.30s]** the LLLTool annotation,
+
+**[4757.30s → 4759.78s]** and then I could write something that's just simply,
+
+**[4759.78s → 4763.38s]** here's my test data that's in test.py,
+
+**[4763.38s → 4765.98s]** or whatever the Julia version that is.
+
+**[4765.98s → 4770.14s]** And I wanna test the tool function against the live API
+
+**[4771.85s → 4774.93s]** and make sure it can validate that their response is correct.
+
+**[4774.93s → 4778.69s]** That would be a great application of true API testing
+
+**[4780.45s → 4782.17s]** that you could do.
+
+**[4782.17s → 4783.85s]** And that would be abstracted away, right?
+
+**[4783.85s → 4788.21s]** Let's assume that your test cases were in the source,
+
+**[4788.21s → 4790.25s]** bankservices.js.
+
+**[4790.25s → 4793.26s]** And at some point in the process,
+
+**[4793.26s → 4795.98s]** your LLIM is translating those test cases as well.
+
+**[4797.62s → 4800.94s]** Or maybe you're saying ignore the test cases entirely there
+
+**[4800.94s → 4803.62s]** and just raw JSON format.
+
+**[4803.62s → 4808.62s]** and don't touch those, just copy them over to the library
+
+**[4808.62s → 4811.62s]** and then test the endpoints against them.
+
+**[4811.62s → 4815.54s]** That could be a great use case.
+
+**[4815.54s → 4831.55s]** Don't mark these.
+
+**[4831.55s → 4861.68s]** So, and then also publish if you're,
+
+**[4861.68s → 4863.68s]** if this is done by your LLM publishing
+
+**[4863.68s → 4864.68s]** to the appropriate repository,
+
+**[4864.68s → 4867.68s]** it could also be a tool call.
+
+**[4867.68s → 4872.23s]** Because if you ever interacted with like say the GitHub
+
+**[4872.23s → 4876.23s]** or GitLab API endpoints for package publishing.
+
+**[4876.23s → 4884.07s]** that could also be done with the tool called.
+
+**[4884.07s → 4888.07s]** This example seems like it's one that must have been solved
+
+**[4888.07s → 4890.19s]** already many times.
+
+**[4890.19s → 4892.59s]** Would we have a chance of finding
+
+**[4892.59s → 4895.39s]** like a pre-existing solution to this
+
+**[4895.39s → 4897.71s]** that we could learn from?
+
+**[4897.71s → 4899.83s]** I think Tom shared LLM tools,
+
+**[4899.83s → 4903.01s]** which is pretty similar, I think to this problem.
+
+**[4903.01s → 4904.77s]** I haven't used that package myself before.
+
+**[4904.77s → 4917.07s]** Is that right, Tom?
+
+**[4917.07s → 4918.43s]** I was saying that, but I'm muted.
+
+**[4918.43s → 4920.19s]** Sorry, I was double muted, yeah.
+
+**[4920.19s → 4922.07s]** That was a package I was literally just writing,
+
+**[4922.07s → 4925.67s]** whilst you were speaking, just to example it
+
+**[4925.67s → 4929.15s]** as a quick thing to build on.
+
+**[4929.15s → 4932.19s]** What I did was I made a base class for tools.
+
+**[4932.19s → 4934.03s]** I made a tool loader.
+
+**[4934.03s → 4935.83s]** I made a prompt loader and a base thing
+
+**[4935.83s → 4937.91s]** for having your prompt seen.
+
+**[4937.91s → 4940.99s]** Made a bunch of modularization to turn it into modules
+
+**[4940.99s → 4942.99s]** for a Python module setup.
+
+**[4942.99s → 4945.35s]** And I've just been building it on whilst we've been doing
+
+**[4945.35s → 4946.79s]** the thing.
+
+**[4946.79s → 4949.23s]** So it's going to have examples.
+
+**[4949.23s → 4950.67s]** And then he suggested there's always,
+
+**[4950.67s → 4953.47s]** well, I can just add it a weather API,
+
+**[4953.47s → 4956.71s]** caller tool to it, just to show an example.
+
+**[4956.71s → 4958.03s]** And when you're building tools out,
+
+**[4958.03s → 4960.67s]** you'll just be adding those tools in that tooling folder.
+
+**[4960.67s → 4963.55s]** And then you can use the tool loader API that I wrote
+
+**[4963.55s → 4966.15s]** to just pull those tools in.
+
+**[4966.15s → 4968.95s]** And then we can always build up a management tool
+
+**[4968.95s → 4971.71s]** in a wrapper to add whatever you want them.
+
+**[4971.71s → 4974.71s]** That was my thought process while you were speaking.
+
+**[4974.71s → 4976.95s]** So Christopher, I used your sort of thought process
+
+**[4976.95s → 4978.31s]** when I was kind of thinking through it
+
+**[4978.31s → 4982.23s]** just writing up quickly as much as I could get. And I've just been pushing to it just
+
+**[4982.23s → 4990.60s]** probably speaking. Well, we know that helps us to just as a general basic thing to play
+
+**[4990.60s → 4997.61s]** about with. But there are realistically, long chain was the attempt at building kind
+
+**[4997.61s → 5002.82s]** of what you're talking about. General, and they still haven't completely figured it out
+
+**[5002.82s → 5007.97s]** yet. And it changes a lot. They have a lot of breaking chains with everything. So if
+
+**[5007.97s → 5012.77s]** If you wanted to go more in depth, I'd say maybe if you wanted to make more of a RESTful
+
+**[5012.77s → 5018.29s]** API to talk to OpenAI directly, if you wanted to take them directly out of the loop or
+
+**[5018.29s → 5023.29s]** if you had the, or you wanted to use the actual APIs of Open Source one specifically.
+
+**[5023.29s → 5025.54s]** So, yeah.
+
+**[5025.54s → 5029.06s]** And Tom, Tom is spot on.
+
+**[5029.06s → 5033.66s]** That I think you noticed, you all probably noticed there was a warning message even in
+
+**[5033.66s → 5041.62s]** output that I had, and I was using the latest version of Lanchine, like the APIs of Lanchine
+
+**[5041.62s → 5047.14s]** are not very stable. And that's, if you dig into the documentation, like the community
+
+**[5047.14s → 5052.04s]** around it, that's a common complaint. And there are a couple of competitors that are
+
+**[5052.04s → 5057.34s]** beginning to shape up from that space too, but they're not as well adopted. That's the
+
+**[5057.34s → 5063.88s]** kicker. Adoptions always the if your developers struggle to figure out what to use,
+
+**[5065.50s → 5071.66s]** then it's probably not worth using. So Langsmith has market dominance among developers,
+
+**[5072.70s → 5079.44s]** so it's still what I would recommend for that reason, but it does have downsides. So NTom
+
+**[5079.44s → 5087.44s]** spun on, like if you had a use case that was business critical, I would definitely bypass and develop
+
+**[5087.44s → 5101.56s]** directly against the open AI APIs themselves. In order to avoid the APIs changing underneath you.
+
+**[5103.26s → 5110.52s]** Right, exactly. Yeah. But sadly it's a little bit like Wild West with the APIs at the moment.
+
+**[5111.53s → 5118.80s]** So you've got to be careful what you rely on. At least as production code. So it's a good space to
+
+**[5118.80s → 5123.76s]** kind of be making your own API, but then you've got the upkeep
+
+**[5123.76s → 5128.16s]** object and then the sort of has its own sort of downside.
+
+**[5128.16s → 5129.92s]** So it's like a double-edged sword.
+
+**[5129.92s → 5132.12s]** But like I said, I mean, how long did that take to write?
+
+**[5132.12s → 5134.24s]** Well, let's say 20 minutes, far, far,
+
+**[5134.24s → 5137.32s]** and that's the basis of the startup and API if you like.
+
+**[5137.32s → 5138.80s]** So we've just literally made one more.
+
+**[5138.80s → 5140.08s]** We've been talking.
+
+**[5140.08s → 5143.36s]** So it's not that hard if you've got a team of developers.
+
+**[5143.36s → 5144.36s]** Yeah.
+
+**[5144.36s → 5147.40s]** I mean, Thomas Spada and I think like if you see like
+
+**[5147.40s → 5151.48s]** the code from the beginning of class, right, which is just based open API.
+
+**[5151.48s → 5153.52s]** It's exactly what we're talking about right now.
+
+**[5153.96s → 5157.67s]** It's like there's no chain in this example at all, right?
+
+**[5157.67s → 5160.43s]** If you take a look at the code, it was happening underneath the hood.
+
+**[5161.36s → 5163.84s]** It's really not that intensive.
+
+**[5166.52s → 5171.28s]** You can go a step further and literally just do raw API calls directly to the
+
+**[5171.28s → 5173.72s]** open AI API as well.
+
+**[5173.72s → 5176.68s]** So I did put some documentation on that in there.
+
+**[5176.68s → 5180.86s]** I'm going to dive a bit more into that, but again, that's taken away abstraction.
+
+**[5180.86s → 5185.44s]** That's really, really going more low level.
+
+**[5185.44s → 5187.20s]** But again, for some use cases, that's useful.
+
+**[5187.20s → 5190.60s]** I mean, most of the time, writing operating systems and embedded code.
+
+**[5190.60s → 5197.84s]** So for me, I tend to prefer hitting the API that as far as it can be to do things.
+
+**[5197.84s → 5204.34s]** But having that tooling and that whole chain on top and all that stuff sometimes helps
+
+**[5204.34s → 5206.48s]** for more rapid application development.
+
+**[5206.48s → 5211.77s]** So it's really kind of depends on what you're aiming for.
+
+**[5211.77s → 5217.45s]** From sort of Christopher's perspective, I think, architecting out, not necessarily putting
+
+**[5217.45s → 5223.17s]** it directly into production first, get some testing out there, get some small scale, maybe
+
+**[5223.17s → 5227.49s]** with a small team, get it work into a point where it does for one use case and then building
+
+**[5227.49s → 5231.97s]** on it, like something I made there was something like you might use in a very small office
+
+**[5231.97s → 5238.65s]** base structure, and then build it out and add more classes as you want and keep it modular.
+
+**[5238.65s → 5243.49s]** So you're always making it in it.py, you're always kind of adding a new module to it and
+
+**[5243.49s → 5249.20s]** then building out tests with every single bit. It's like if you notice in the testing folder,
+
+**[5249.20s → 5253.00s]** we've got a test for every single one. They're very simplistic contrived ones but they're
+
+**[5253.00s → 5258.92s]** just there. So you make your module, you make your tool, you make your test, or opposite
+
+**[5258.92s → 5262.36s]** way around, you make your test case, and then you build your tool based on the test, depending
+
+**[5263.16s → 5267.56s]** whether you're doing my test driven development or whether you're doing more sort of just
+
+**[5267.56s → 5276.12s]** getting it out there and making it work. So it is scalable. It's just a lot of hours can go into
+
+**[5276.12s → 5280.92s]** that, depending upon how many features you want to add. But once you've got a framework sorted,
+
+**[5280.92s → 5284.92s]** then you can build on that and figure out your use cache as well.
+
+**[5284.92s → 5290.15s]** But anyway, I'll sit back to the jump for us, continues.
+
+**[5290.15s → 5293.15s]** No, no, you're all good.
+
+**[5293.15s → 5299.17s]** I will say to, I think for everybody to know,
+
+**[5299.17s → 5304.17s]** like the stuff is actually even though it's accelerating the time to use,
+
+**[5304.17s → 5310.75s]** it's still not a magic bill.
+
+**[5310.75s → 5315.55s]** a lot of the use cases that are blockies working on
+
+**[5315.55s → 5318.55s]** for its digital transformation using generative AI,
+
+**[5320.43s → 5324.03s]** are very, very challenging large-scale projects.
+
+**[5325.03s → 5327.35s]** Everything from our own implementation
+
+**[5327.35s → 5332.17s]** of our internal chat tool, which is like,
+
+**[5332.17s → 5333.93s]** very similar to ChatGDP.
+
+**[5336.44s → 5338.56s]** It's complex, right?
+
+**[5338.56s → 5340.72s]** There's a whole team of developers working on
+
+**[5340.72s → 5346.24s]** just exposing the UI, Munchat, and the Rags services that are going into that.
+
+**[5348.43s → 5352.48s]** The Rags of Service Platform that our team built and maintains.
+
+**[5355.16s → 5360.05s]** And then some of the other use cases, which I wish I could talk more about.
+
+**[5361.41s → 5366.09s]** And they're all digital transformation cases, not necessarily like they're super secretive, but
+
+**[5366.09s → 5371.71s]** I'll probably talk about them more and one on one.
+
+**[5371.71s → 5375.07s]** So if anybody is curious, things like our engineering workflows
+
+**[5377.34s → 5382.54s]** stop to accelerate our engineering processes, not software, but actual
+
+**[5382.54s → 5387.82s]** engineering processes, mechanical, electrical systems.
+
+**[5388.38s → 5400.62s]** All right.
+
+**[5400.62s → 5404.78s]** Well, everybody, I think this class, I'm kind of happy the way it turned,
+
+**[5404.78s → 5407.82s]** just to like, for us to think about big architecture stuff.
+
+**[5408.70s → 5412.94s]** I know that we moat through these examples.
+
+**[5412.94s → 5415.38s]** So I think when we come into class on Wednesday,
+
+**[5415.38s → 5417.22s]** we'll definitely just try to increase
+
+**[5417.22s → 5421.12s]** the breadth of what we're covering,
+
+**[5421.12s → 5422.84s]** because we went really quick today.
+
+**[5424.66s → 5427.02s]** Get your hands on on the examples.
+
+**[5428.46s → 5431.70s]** If you have kind of more detailed questions to
+
+**[5432.82s → 5433.98s]** feel free to reach out.
+
+**[5433.98s → 5436.90s]** If you have a question about tonight's content
+
+**[5436.90s → 5439.98s]** or you process kind of what we talked about,
+
+**[5439.98s → 5442.38s]** don't hesitate to reach out on Slack.
+
+**[5442.38s → 5444.28s]** I don't necessarily check in every day,
+
+**[5445.93s → 5448.85s]** but Tom and Ash will be there to help answer questions.
+
+**[5448.85s → 5450.17s]** And then when I'm on,
+
+**[5450.17s → 5453.39s]** I'll be checking in to see how you all are doing too.
+
+**[5453.39s → 5457.04s]** So, and also if you all have any questions
+
+**[5457.04s → 5458.56s]** about stuff I've talked about here today,
+
+**[5458.56s → 5461.00s]** don't be afraid of DM me.
+
+**[5461.00s → 5464.52s]** And I'm more than happy to get back out to you too.
+
+**[5464.52s → 5472.39s]** Might just take me a minute, right?
+
+**[5472.39s → 5474.24s]** Thank you, everyone.
+
+**[5474.24s → 5475.08s]** Oh, thank you.
+
+**[5475.08s → 5477.16s]** Yeah, thanks.
+
+**[5477.16s → 5478.04s]** Thanks, everybody.
+
+**[5478.04s → 5480.04s]** Hope you enjoyed tonight's class, and I'll see you in,
+
+**[5480.04s → 5481.75s]** soon.
+
+**[5481.75s → 5482.67s]** I love a good one.
+

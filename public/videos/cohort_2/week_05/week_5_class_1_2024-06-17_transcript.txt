@@ -1,0 +1,2047 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_05/week_5_class_1_2024-06-17.mp4
+**Duration:** 4994.88 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 1014
+**Generated:** 2025-08-13 18:41:59
+**File Hash:** fae8f85df089476f57f76368d68863d2
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_05
+**file_name:** week_5_class_1_2024-06-17.mp4
+
+---
+
+## Transcript
+
+**[2.90s → 8.86s]** Take it off.
+
+**[8.86s → 10.86s]** Welcome everybody to week five.
+
+**[10.86s → 14.76s]** So tonight we are going to be talking about fine tuning.
+
+**[14.76s → 19.76s]** So fine tuning is really about adjusting the weights of a large language model
+
+**[19.76s → 22.92s]** to improve its performance for specific tasks.
+
+**[22.92s → 28.96s]** So I think very early on in this class, maybe I'm complaining classes,
+
+**[28.96s → 34.76s]** but we talked about what happens with different stages of LLMs.
+
+**[34.76s → 38.68s]** So you've got your raw performance, let's say like GTP.
+
+**[38.68s → 41.68s]** And then there's some tuning that happens layer upon layer
+
+**[41.68s → 46.36s]** and until you get to what's called an instruction tuned model.
+
+**[46.36s → 50.06s]** So fine tuning is really about an even further
+
+**[50.06s → 54.06s]** refinement of the instructions you want your model to output.
+
+**[54.06s → 56.78s]** Typically it's just to get a better structured output
+
+**[56.78s → 57.66s]** of some kind.
+
+**[57.66s → 59.42s]** And we're going to talk about that in the case
+
+**[59.42s → 61.33s]** of developers tonight.
+
+**[61.33s → 62.85s]** So I think it's really fun class.
+
+**[62.85s → 66.33s]** I think this is really resonates hopefully with all of you
+
+**[66.33s → 69.29s]** as you write units test for your software.
+
+**[69.29s → 72.17s]** I'm going to matter what code base you're using.
+
+**[72.17s → 74.33s]** I hope that this project that we demoed tonight
+
+**[74.33s → 81.30s]** is immediately useful to you, walking out of class.
+
+**[81.30s → 84.18s]** And somebody has asked you out of fine tuning last week.
+
+**[84.18s → 86.50s]** It's actually kind of, this is fun for me
+
+**[86.50s → 87.86s]** because it work.
+
+**[87.86s → 89.98s]** We don't have fine tuning as a service
+
+**[89.98s → 93.42s]** on top of our open source models that we use.
+
+**[93.42s → 95.52s]** Most of our fine tuning is done by hand.
+
+**[95.52s → 97.82s]** Somebody was asking me how I would fine tune a model
+
+**[97.82s → 101.06s]** and I was talking about how I would do it,
+
+**[101.06s → 103.36s]** given the tools that I have in my toolbox at work.
+
+**[104.66s → 107.94s]** So it's really cool to have fine tuning APIs
+
+**[107.94s → 111.18s]** to play around with just because it makes my experience
+
+**[111.18s → 112.34s]** a lot better too.
+
+**[113.42s → 115.24s]** So I love that.
+
+**[115.24s → 137.65s]** So you guys don't have to go through this same pain.
+
+**[137.65s → 141.69s]** Right, so tonight we're gonna cover six spring competencies
+
+**[141.69s → 143.93s]** if we can get all the way to six.
+
+**[143.93s → 146.41s]** I think hopefully there's a lot of questions.
+
+**[146.41s → 148.57s]** So hopefully we only cover the first five.
+
+**[150.08s → 152.44s]** But we're gonna talk about fine tuning
+
+**[152.44s → 154.24s]** and when you should use it.
+
+**[154.24s → 157.20s]** It's actually not as straightforward as you might think.
+
+**[157.20s → 159.96s]** There's actually a lot that goes into choosing
+
+**[159.96s → 161.56s]** whether or not to fine tune a model.
+
+**[162.72s → 165.32s]** We'll talk a little bit about model selection criteria.
+
+**[165.32s → 169.92s]** So which model to choose from to begin with.
+
+**[169.92s → 174.68s]** So we've been focused very exclusively on ChatchyTP,
+
+**[174.68s → 177.36s]** on GTP, three, five, and up.
+
+**[177.36s → 179.56s]** But I do just, this is a great class to point out
+
+**[179.56s → 180.56s]** that there are other models,
+
+**[180.56s → 182.60s]** there might be other models for you to try.
+
+**[184.35s → 187.64s]** We'll talk a little bit about gathering information data.
+
+**[187.64s → 190.32s]** So one and two are in slides.
+
+**[191.36s → 193.28s]** Three, four, and five are going,
+
+**[193.28s → 196.00s]** I'll talk about the process on the slide
+
+**[196.00s → 197.68s]** and then demo something in code.
+
+**[197.68s → 205.24s]** and we'll do an interactive demonstration of what's happening inside the repo
+
+**[205.24s → 207.28s]** that you should all have access to now.
+
+**[207.28s → 216.86s]** So quick overview on fine tuning.
+
+**[216.86s → 223.72s]** So fine tuning begins with selecting a pre-trained model.
+
+**[223.72s → 226.32s]** So yeah, of course it's called fine tuning, right?
+
+**[226.32s → 229.96s]** But you do just want to make sure that you're choosing the right model,
+
+**[229.96s → 232.12s]** which we'll talk about in the next section.
+
+**[232.12s → 235.52s]** That's going to be trained on a pretty large diverse set of data.
+
+**[235.52s → 239.60s]** It's not magic though.
+
+**[239.60s → 242.44s]** You do have to actually prepare and structure the data
+
+**[242.44s → 244.00s]** that you want to fine tune on.
+
+**[244.00s → 246.84s]** So you're going to have to gather and prepare a data set
+
+**[246.84s → 250.44s]** specific to the tasks you're trying to accomplish.
+
+**[250.44s → 253.24s]** Tonight we're going to be creating synthetic data
+
+**[253.24s → 257.53s]** and formatting it to help fine tune our model.
+
+**[257.53s → 263.22s]** But you could, and I'll talk a little bit about this,
+
+**[263.22s → 265.70s]** use your own data and just structure it in such a way
+
+**[265.70s → 267.38s]** that it would be great for fine tuning.
+
+**[267.38s → 269.82s]** So in the case of unit tests,
+
+**[269.82s → 272.86s]** I'm sure many of you work places
+
+**[272.86s → 276.06s]** where you have large libraries of unit test
+
+**[276.06s → 279.58s]** and you either some specific style that's hard to replicate.
+
+**[280.58s → 282.94s]** You could use all of those unit tests
+
+**[282.94s → 287.23s]** just fine tuning training data.
+
+**[287.23s → 290.67s]** Step three is actually really where the magic
+
+**[290.67s → 295.26s]** of fine tuning is a service happens.
+
+**[295.26s → 297.26s]** It's in adjusting the model weights.
+
+**[297.26s → 302.26s]** So the actual matrices that are behind an LLM
+
+**[303.26s → 305.26s]** that are going to be updated vis-a-vis
+
+**[305.26s → 308.14s]** on flavor of gradient descent
+
+**[308.14s → 311.36s]** to adjust the performance for your specific task.
+
+**[312.54s → 315.58s]** This part, I think, is beautifully abstracted away from you.
+
+**[315.58s → 318.54s]** So you actually, when you're submitting your training data
+
+**[318.54s → 320.98s]** and it's giving you a progress report,
+
+**[320.98s → 322.66s]** the progress report is just saying that,
+
+**[322.66s → 326.10s]** you know, it's getting better at adjusting the weights.
+
+**[326.10s → 330.66s]** And then finally, you're going to evaluate and validate the output.
+
+**[330.66s → 336.18s]** So you're going to assess where the fine tune model actually does what you want it to do.
+
+**[338.13s → 343.73s]** That's at a bare minimum going to require human validation. And we'll do a little bit of human
+
+**[343.73s → 354.29s]** validation tonight just to see the difference between normal 3.5 and then fine tuned 3.5.
+
+**[354.29s → 363.18s]** And also, just to make one quick adjustment on my other screen, because I realized that I
+
+**[363.18s → 368.32s]** don't have your questions throughout open if any of you have questions.
+
+**[368.32s → 373.62s]** Just one seconds.
+
+**[373.62s → 382.20s]** Yeah.
+
+**[382.20s → 386.00s]** Well, okay, John Cody, what happens though?
+
+**[386.00s → 391.86s]** When on earth do I decide to bind tune?
+
+**[391.86s → 396.54s]** There are a bunch of different use cases where you make shoes to bind tune or a bunch of
+
+**[396.54s → 400.02s]** use cases where you decide, and probably not worth it.
+
+**[400.02s → 402.20s]** As somebody pointed out, it can be really expensive,
+
+**[402.20s → 406.95s]** depending on the calls that you're making, the service
+
+**[406.95s → 410.16s]** that you're using, the data.
+
+**[410.16s → 412.64s]** I honestly think that the most intuitive to me
+
+**[412.64s → 417.54s]** on when to consider fine tuning is really on cost.
+
+**[417.54s → 423.15s]** So if you are sending prompts with few shot examples,
+
+**[423.15s → 426.22s]** and the few shot examples are really, really long,
+
+**[426.22s → 434.13s]** So like, say you had a specific style of writing
+
+**[434.13s → 439.13s]** like just to take it out of this world for a second.
+
+**[439.89s → 444.76s]** And I always wanted to create hex
+
+**[444.76s → 447.72s]** that was in like a Jane Austen style of writing.
+
+**[447.72s → 449.76s]** So every time I send a prompt,
+
+**[449.76s → 453.60s]** I send paragraphs of dialogue from Jane Austen book.
+
+**[453.60s → 458.28s]** Well, I'm actually sending a lot of tokens every time I do that.
+
+**[458.28s → 461.00s]** And so to help me reduce the cost,
+
+**[461.00s → 463.44s]** I can fine tune my model.
+
+**[463.44s → 467.32s]** And that's going to help significantly reduce the total cost
+
+**[467.32s → 470.04s]** each time you send a request.
+
+**[470.04s → 473.68s]** To me, that's the most intuitive reason to fine tune
+
+**[473.68s → 478.72s]** is when the prompts you're sending are just really expensive,
+
+**[478.72s → 482.00s]** token-wise, and you need to reduce cost.
+
+**[482.00s → 483.72s]** And the fine tuning can help reduce cost,
+
+**[483.72s → 485.28s]** because you don't have to send as much data
+
+**[485.28s → 487.82s]** with each request.
+
+**[487.82s → 491.26s]** Now there are the other reasons
+
+**[491.26s → 496.26s]** begin to fall into less cotton dry reasons to fine tune.
+
+**[498.90s → 503.35s]** So one use case would be where your model
+
+**[503.35s → 507.39s]** doesn't quite have the intuition that you want it to
+
+**[507.39s → 510.01s]** because it's really hard to describe.
+
+**[510.01s → 516.80s]** So let's say for a second that
+
+**[517.84s → 520.92s]** I don't know if any of your F1 fans,
+
+**[520.92s → 526.15s]** Well, let's say that I'm asking for commentary on F1 races.
+
+**[528.74s → 531.74s]** So for those of you that are F1 fans,
+
+**[531.74s → 533.58s]** and you're really in the weeds,
+
+**[533.58s → 536.38s]** you might know that the announcers on ESPN
+
+**[536.38s → 540.90s]** and the announcers on F1 TV have very different styles.
+
+**[540.90s → 543.30s]** So like what they say about the race
+
+**[543.30s → 546.46s]** and what they comment on, it's very different.
+
+**[548.64s → 550.68s]** That's actually really hard to describe, right?
+
+**[550.68s → 552.68s]** like how do you describe that style?
+
+**[552.68s → 553.96s]** It would take you a lot of words
+
+**[553.96s → 556.64s]** and wouldn't be very exact.
+
+**[556.64s → 560.92s]** So that intuition, you can't describe in words.
+
+**[560.92s → 563.48s]** And so then you want to just provide lots
+
+**[563.48s → 565.04s]** and lots of examples, right?
+
+**[565.04s → 566.72s]** You want to provide what happened on the race,
+
+**[566.72s → 569.12s]** you want to provide a commentary that you want.
+
+**[570.68s → 574.04s]** And then you want to find in your model
+
+**[574.04s → 578.37s]** to give you that really, really nice context.
+
+**[578.37s → 580.61s]** Now to put that in a developer world,
+
+**[580.61s → 584.65s]** say you're writing unit tests or say you're generating code.
+
+**[584.65s → 587.49s]** Often engineers, especially at larger organizations,
+
+**[587.49s → 589.01s]** have very clear styles.
+
+**[589.01s → 592.01s]** Those styles are very hard to put into words.
+
+**[592.01s → 596.37s]** Like what you decide to be a class or module and Python
+
+**[596.37s → 599.21s]** might be very different from engineer to engineer,
+
+**[599.21s → 600.97s]** but you build a culture of that.
+
+**[600.97s → 604.09s]** And so you want to fine tune a model that generates code
+
+**[604.09s → 605.33s]** that's close to your style.
+
+**[605.33s → 614.71s]** The other reason is to train a model to perform very specific tasks better,
+
+**[614.71s → 619.59s]** help some prove the efficiency and accuracy of different targeted tasks.
+
+**[619.59s → 627.70s]** So an example of this might be say you want to generate some kind of structured output over and over and over again.
+
+**[627.70s → 632.30s]** Like you deal with a lot of EML configuration files.
+
+**[632.30s → 634.78s]** Like you do a lot of infrastructure as code.
+
+**[634.78s → 642.12s]** So you might want to fine tune your model to understand what you want your YAML, the kind of stuff that you want to see,
+
+**[642.12s → 645.32s]** configuration questions that you might want to ask.
+
+**[645.32s → 654.31s]** And that fine tuning is going to help you instead of having to path.
+
+**[654.31s → 660.47s]** It's kind of the same interlaced here with crop savings.
+
+**[660.47s → 663.07s]** You're going to have to provide fewer examples.
+
+**[663.07s → 669.15s]** but at the same time that fine tuning is going to help you get that structure to output much much better.
+
+**[671.07s → 676.11s]** And then finally, the last use case is also to just narrow the range of possibilities.
+
+**[676.11s → 679.63s]** So, if you think about a model being able to generate anything,
+
+**[679.63s → 682.51s]** and if you've tried the same prompts multiple times,
+
+**[683.47s → 686.67s]** either the same chat instance or new chat instances,
+
+**[687.39s → 689.63s]** or maybe you played with a temperature parameter,
+
+**[689.63s → 693.87s]** are probably noticed that the answers can pretty, pretty
+
+**[693.87s → 695.60s]** diversion.
+
+**[695.60s → 699.88s]** Fine tuning can help increase alignment.
+
+**[699.88s → 703.60s]** And by alignment, I mean, the thing you're trying to accomplish,
+
+**[703.60s → 706.50s]** your model might be better aligned with that goal if you
+
+**[706.50s → 709.76s]** fine tune.
+
+**[709.76s → 712.32s]** Now, it does make your model a lot more brittle.
+
+**[712.32s → 715.72s]** So if this is your goal to narrow the range of possibilities
+
+**[715.72s → 718.08s]** output of your model, be warned.
+
+**[718.08s → 721.14s]** don't try to use this model for something else.
+
+**[721.14s → 722.74s]** But I'm fine tuning this model
+
+**[722.74s → 725.90s]** to narrow the range of output to write Jane Austin
+
+**[725.90s → 727.70s]** style dialogue.
+
+**[727.70s → 729.94s]** I wouldn't then all of a sudden switch
+
+**[729.94s → 734.94s]** and ask the model to generate dialogue in the style of,
+
+**[739.48s → 743.20s]** I might immediately go to some musicians for some reason.
+
+**[743.20s → 747.14s]** I'm looking to author in K. Jensen.
+
+**[747.14s → 755.74s]** you know, modern author wildly different.
+
+**[755.74s → 759.10s]** So let's do a quick check for understanding.
+
+**[759.10s → 761.30s]** I've been talking about use cases for fine tuning,
+
+**[761.30s → 766.42s]** but when might a use case for fine tuning
+
+**[766.42s → 768.46s]** be different from fine tuning,
+
+**[768.46s → 776.13s]** or excuse me, a use case for rag?
+
+**[776.13s → 777.41s]** I guess like what I've heard before
+
+**[777.41s → 780.09s]** is like fine tuning is better for when you want
+
+**[780.09s → 784.05s]** to do how the Ellen does the test.
+
+**[784.05s → 787.65s]** like rag is going to be something that's going to be what it knows.
+
+**[787.65s → 790.53s]** So I'm not going to affect the rag that's about to be like,
+
+**[790.53s → 795.26s]** what's rag in these certain contexts, because it doesn't have to.
+
+**[795.26s → 797.26s]** It can't be the task that we're trying to.
+
+**[797.26s → 799.26s]** I just want to prove how it does.
+
+**[799.26s → 800.46s]** It has made more complicated.
+
+**[800.46s → 807.83s]** Maybe it's classification, for example, ragging up in the cities.
+
+**[807.83s → 813.24s]** And also, yeah, so releasing them out of token descent.
+
+**[813.24s → 815.96s]** Oh yeah, I mean, if you were, for instance,
+
+**[817.06s → 821.26s]** like, racking, using rags help you write examples of code
+
+**[821.26s → 826.26s]** for like a, my mind goes through a new React component.
+
+**[826.30s → 829.66s]** So you're, you know, like we're trying to rag to find things
+
+**[829.66s → 830.86s]** that might be similar.
+
+**[833.78s → 836.54s]** And that's a use case where you could still do both,
+
+**[836.54s → 838.74s]** fun tune and rag and see what happens,
+
+**[838.74s → 848.43s]** but it might still be better to fun tune.
+
+**[848.43s → 852.29s]** We had a question in Slack.
+
+**[852.29s → 853.77s]** Is it possible to find you the model
+
+**[853.77s → 856.97s]** giving more weights to comments from more senior engineers?
+
+**[856.97s → 860.54s]** Saying we have 10x genius engineer
+
+**[860.54s → 865.83s]** can the model be taught to pay 10x the attention from learning.
+
+**[865.83s → 870.38s]** I would say that instead of giving more weights,
+
+**[870.38s → 873.94s]** what I would recommend is maybe just sampling the comments
+
+**[873.94s → 875.22s]** differently.
+
+**[875.22s → 880.22s]** So, you could up sample the comments that you have
+
+**[880.26s → 881.98s]** from the more senior engineers,
+
+**[881.98s → 884.14s]** or just use that for your training dataset.
+
+**[887.24s → 889.72s]** I think Ash just said the exact same thing.
+
+**[896.02s → 899.02s]** I think ranking does get in terms of waiting
+
+**[899.02s → 901.66s]** that I think that that gets kind of funky
+
+**[903.02s → 904.34s]** in my personal opinion.
+
+**[906.14s → 907.14s]** I don't like doing that.
+
+**[907.14s → 909.10s]** I like sampling because the sampling
+
+**[909.10s → 918.46s]** is much more reproducible because the annotations are something done by hands. Unless you're systematically
+
+**[918.46s → 926.22s]** annotating with code. That's why I like the up sampling. It's more intuitive to me, but that's my
+
+**[926.22s → 932.30s]** personal preference. And I'll have strong data to back up one or the other.
+
+**[933.65s → 938.88s]** So we know what up sampling means. We all know something never write that. Maybe I miss something.
+
+**[938.88s → 945.66s]** Yeah, totally. So let's say in Akita's question, let's say that the engineers,
+
+**[945.66s → 951.74s]** yeah, senior engineers, and you have junior engineers. The junior engineers wrote
+
+**[953.34s → 961.74s]** a hundred comments. The senior engineers only wrote 10 comments. So what you would do is you would,
+
+**[962.70s → 968.78s]** you could either down sample the number of junior engineer comments to 10, just randomly select 10.
+
+**[968.78s → 972.54s]** So that way you have equal number of comments from both groups.
+
+**[972.54s → 978.78s]** Up sampling would mean you just repeat the comments from the more senior engineers.
+
+**[978.78s → 983.38s]** So that way you have 50 comments from the senior engineers and fit to comments from the junior engineers.
+
+**[983.38s → 1001.86s]** So let's talk a little bit about model selection.
+
+**[1001.86s → 1009.37s]** So talking about model selection is very important when you're in the context of fine tuning.
+
+**[1009.37s → 1014.97s]** You know, GTP is going to be the
+
+**[1014.97s → 1017.59s]** performance. GTP for off is going to be the most
+
+**[1017.59s → 1019.29s]** performance across the most tasks.
+
+**[1019.29s → 1022.93s]** You know, that's the current state of industry today.
+
+**[1022.93s → 1025.93s]** Although stuff is changing constantly.
+
+**[1025.93s → 1030.33s]** So like, even, you know, might be doing some how some
+
+**[1030.33s → 1033.09s]** model that somebody releases starts just blowing
+
+**[1033.09s → 1035.33s]** GTP out of the water.
+
+**[1035.33s → 1038.33s]** For example, I've been hearing a lot of people talk about
+
+**[1038.33s → 1043.33s]** hybrid models between Mamba and Transformers.
+
+**[1044.97s → 1047.25s]** Cutting a dark texture is outside the scope of this class,
+
+**[1047.25s → 1052.25s]** but that kind of innovation could shape things up quickly.
+
+**[1055.43s → 1059.47s]** So it's really important to just keep in mind
+
+**[1059.47s → 1061.79s]** what the benchmarks are requirements.
+
+**[1061.79s → 1064.27s]** So I'm not suggesting that you all need to know
+
+**[1064.27s → 1067.57s]** the state of our architectures and what's up.
+
+**[1067.57s → 1075.83s]** But selecting an LLM to fine-tune is actually, there's a process you can follow to help you figure out what to do.
+
+**[1075.83s → 1082.99s]** One thing is to make sure that you're picking a task that's actually aligned with what you need to do.
+
+**[1082.99s → 1086.99s]** So for most of you that's going to be picking a coding based model.
+
+**[1086.99s → 1091.99s]** Take a look at the overall correctness and efficiency of generated code.
+
+**[1091.99s → 1095.99s]** That's what the evaluations are going to do in this space.
+
+**[1095.99s → 1099.53s]** and also the ability to problem solve.
+
+**[1099.53s → 1102.69s]** So all of these in this column are benchmarks
+
+**[1102.69s → 1105.37s]** that you can review.
+
+**[1105.37s → 1108.13s]** There's the human e-vow benchmark.
+
+**[1108.13s → 1114.71s]** Let's look.
+
+**[1114.71s → 1117.55s]** If human e-vow benchmark is a bunch of code
+
+**[1117.55s → 1123.41s]** that has been measured for functional correctness
+
+**[1123.41s → 1125.77s]** by humans.
+
+**[1125.77s → 1133.00s]** And so let's see if we can show the image.
+
+**[1133.00s → 1136.60s]** It's going to take part of the stuff out,
+
+**[1136.60s → 1139.85s]** interview what's going on.
+
+**[1139.85s → 1145.16s]** You can read about a lot of the different how the data sets
+
+**[1145.16s → 1148.01s]** are created and all that stuff.
+
+**[1148.01s → 1151.09s]** Something you're going to notice right away glancing
+
+**[1151.09s → 1154.53s]** at this is all of the models in the leaderboard
+
+**[1154.53s → 1165.61s]** are fine-tuned models, which is really cool to see.
+
+**[1165.61s → 1169.37s]** and you can see all the papers that might go on this.
+
+**[1170.89s → 1173.13s]** So before you even go on,
+
+**[1176.95s → 1179.31s]** just using ChatGTB, just take a look at these benchmarks
+
+**[1179.31s → 1180.91s]** and see if there's another fine tune model
+
+**[1180.91s → 1185.24s]** that might be really good at your problem.
+
+**[1185.24s → 1188.32s]** Really like, okay, it stills not how we choose which one.
+
+**[1190.20s → 1194.23s]** Honestly, just pick the highest one
+
+**[1194.23s → 1195.95s]** with a performance metric on a task
+
+**[1195.95s → 1198.07s]** that you're most comfortable with
+
+**[1198.07s → 1201.82s]** and then see how easy it is to implement.
+
+**[1201.82s → 1204.75s]** Like if I can just call on LED,
+
+**[1204.75s → 1206.71s]** which is the current leader on the Spenchmark,
+
+**[1209.22s → 1213.58s]** then I can just call on that model and not worry about it.
+
+**[1213.58s → 1215.30s]** There might be some models in here though
+
+**[1215.30s → 1218.10s]** that are open source that are not hosted on GTP,
+
+**[1218.10s → 1220.18s]** and I can't just call it by that model name.
+
+**[1231.68s → 1234.88s]** If you're interested in some of the other task areas,
+
+**[1234.88s → 1238.32s]** probably the one that everyone keep an eye on
+
+**[1238.32s → 1243.60s]** to see the widely considered best-reforming model is going to be in chatbot arena.
+
+**[1270.83s → 1276.59s]** And this is going to give you a sense of who the widely considered best model is
+
+**[1278.11s → 1283.23s]** for interactive chat. You can see chatchetv4os dominating,
+
+**[1283.23s → 1288.29s]** and gym and eyes close behind.
+
+**[1288.76s → 1294.22s]** So, you know, not bad.
+
+**[1294.22s → 1296.36s]** And you can just stroll through here
+
+**[1296.36s → 1301.56s]** to see who else is chugging along.
+
+**[1301.56s → 1303.68s]** You're gonna notice some other names that you've heard of,
+
+**[1303.68s → 1307.44s]** like, Mixed Droll, Lama 3 is gonna be in here.
+
+**[1308.96s → 1311.74s]** And you're gonna see lots of models
+
+**[1311.74s → 1313.46s]** that you've never heard of before too,
+
+**[1313.46s → 1322.24s]** which I always think is interesting to dive into.
+
+**[1322.24s → 1326.92s]** Our team is, I think, reviewing the Lama 3 license right now,
+
+**[1326.92s → 1328.72s]** just to make sure that we're clear to use it.
+
+**[1328.72s → 1330.36s]** I think we're still in large part
+
+**[1330.36s → 1337.94s]** using a lot of mixed-stroke models.
+
+**[1337.94s → 1345.77s]** I see someone having a question back to the slide.
+
+**[1345.77s → 1350.99s]** So just as a smattering, like a very, very tiny smattering
+
+**[1350.99s → 1356.01s]** of metrics that you can use to evaluate performance.
+
+**[1356.01s → 1358.23s]** So metric is going to be excuse me,
+
+**[1358.23s → 1361.85s]** hack your C1, like how often is your LLM
+
+**[1361.85s → 1364.17s]** that you're evaluating generating the correct answer?
+
+**[1365.17s → 1368.05s]** Your blue score, that's gonna be alignment
+
+**[1368.05s → 1371.71s]** between generated text and human reference text.
+
+**[1371.71s → 1373.55s]** That's a really good one with code,
+
+**[1374.70s → 1378.22s]** just to see, right, like is the generated code matching
+
+**[1378.22s → 1379.18s]** what was written.
+
+**[1381.11s → 1386.52s]** Perplexity, the model surprise confusion, lower is better.
+
+**[1386.52s → 1390.52s]** And then finally human evaluation, expert judgment on quality,
+
+**[1390.52s → 1392.52s]** relevant circle hearings.
+
+**[1392.52s → 1394.76s]** Human evaluation is obviously the most expensive.
+
+**[1394.76s → 1406.48s]** So there are fewer gold standard data sets of human evaluation.
+
+**[1406.48s → 1409.28s]** Model selection is a challenging beast.
+
+**[1409.28s → 1416.27s]** So if any project where you're experimenting, especially with
+
+**[1416.27s → 1421.71s]** generating code, just try a couple different models.
+
+**[1421.71s → 1424.78s]** Really nothing wrong with that.
+
+**[1424.78s → 1430.46s]** Yeah, if you are in your infrastructure, it will work limited to like one major provider. That's okay too.
+
+**[1431.82s → 1437.58s]** But most of the other major providers at this point offer several models. So, you know, try, like with chat,
+
+**[1437.58s → 1442.94s]** GDP, chat, chat, TV3, 3.5, 4.4.
+
+**[1453.07s → 1456.51s]** Yeah, ask what's the minimum number of samples or fine genie started to make sense?
+
+**[1461.31s → 1465.79s]** Chat should be four fails generate. I think go for the latest version of its own official library,
+
+**[1465.79s → 1468.96s]** even if you give it the official docs to go off.
+
+**[1468.96s → 1471.08s]** How many lines of open AI Python code
+
+**[1471.08s → 1474.16s]** when I need to or fine tuning to help
+
+**[1474.16s → 1482.12s]** that learn correctly to write OAI 1.0 code correctly?
+
+**[1482.12s → 1484.60s]** How many lines I don't think anyone
+
+**[1484.60s → 1489.81s]** can give you an exact answer?
+
+**[1489.81s → 1496.30s]** More is always going to be better with most LLMs.
+
+**[1496.30s → 1499.93s]** And the short answer, though, is generally
+
+**[1499.93s → 1508.09s]** I would not consider fine tuning until you have examples that are a thousand plus.
+
+**[1508.09s → 1514.58s]** There are probably good exceptions to that, especially with structured output, like going
+
+**[1514.58s → 1517.06s]** back to the reasons to fine tune.
+
+**[1517.06s → 1521.82s]** If your goal is just to narrow the range of possibilities to like, you know, the type
+
+**[1521.82s → 1526.70s]** of output you need, like I'm generating a bunch of yaml docs, I don't need 10,000 examples
+
+**[1526.70s → 1530.30s]** of a yaml doc for now, I'll let them figure out what I'm trying to accomplish.
+
+**[1530.30s → 1533.90s]** I can maybe use like 100 or 200 of them.
+
+**[1533.90s → 1538.50s]** For these other three use cases,
+
+**[1538.50s → 1544.02s]** you might, these two use cases,
+
+**[1544.02s → 1547.54s]** you're definitely going to need examples in the thousands.
+
+**[1547.54s → 1553.86s]** This use case tokens on shorter prompts,
+
+**[1553.86s → 1557.70s]** probably several hundred to several thousand at a minimum.
+
+**[1557.70s → 1560.58s]** So all four of those numbers I just gave are minimum.
+
+**[1560.58s → 1569.67s]** So just to review a couple hundred, a couple hundred, a couple thousand,
+
+**[1569.67s → 1574.71s]** depending on what you're trying to do, a couple thousand for sure on YouTube.
+
+**[1583.01s → 1587.65s]** There are different between, um, this creates like, using a, uh,
+
+**[1587.65s → 1590.45s]** fine tuning on a larger model, versus a smaller model.
+
+**[1591.72s → 1596.76s]** Like, just fine tuning on a larger model, going to be inherently give you like better results.
+
+**[1597.80s → 1602.56s]** Yeah. Like in like, like Gemini, like Gemma, for example.
+
+**[1605.01s → 1614.29s]** Yeah, I mean, makes sense. Yes, no, it totally makes sense. Obviously, I can't save with certainty,
+
+**[1614.29s → 1620.93s]** but the intuition says training on a bigger model should give you better results, definitely.
+
+**[1623.01s → 1633.11s]** Or most probably. But there's no guarantee that it could also just be that there's less to choose from
+
+**[1633.11s → 1639.91s]** already in a smaller model. And so the model is already giving good answers aligned. And so the
+
+**[1639.91s → 1649.32s]** alignment just needs a little push on the right direction. So I think it really just depends on
+
+**[1649.32s → 1672.96s]** the two models we're comparing. Right. So I think we're about to switch into the use case part of
+
+**[1672.96s → 1678.72s]** tonight. But before I do, are there any other like super high level questions on fine tuning?
+
+**[1678.72s → 1688.08s]** I'm just curious, how do you make sure that you don't overfit?
+
+**[1688.08s → 1689.56s]** Or that also one of those things,
+
+**[1689.56s → 1695.22s]** which just depends on the task and how you evaluate?
+
+**[1695.22s → 1701.54s]** Yeah, I'd say with generally with a smaller data set,
+
+**[1703.55s → 1705.31s]** if you're doing pre-finetuning,
+
+**[1705.31s → 1708.19s]** you're more likely to overfit with smaller data sets.
+
+**[1708.19s → 1710.95s]** So the bigger your fine tuning data set is,
+
+**[1710.95s → 1715.88s]** the less likely you're truly able to overfit.
+
+**[1715.92s → 1720.34s]** So, that's one thing.
+
+**[1720.34s → 1726.20s]** I think one of the beauties though about LLMs is,
+
+**[1726.20s → 1731.20s]** it's not too hard if you do overfit.
+
+**[1731.20s → 1736.33s]** So, because you have the baseline model to revert to,
+
+**[1736.33s → 1739.33s]** and it's very easy for you to do that.
+
+**[1739.33s → 1743.33s]** Now, knowing whether you've overfit,
+
+**[1743.33s → 1747.20s]** That is a harder problem to assess.
+
+**[1747.20s → 1750.91s]** You won't really know until you start asking your model
+
+**[1750.91s → 1754.35s]** to do things that are slightly outside of its swim line.
+
+**[1754.35s → 1757.03s]** So going back to that Jane Austen example.
+
+**[1757.03s → 1762.15s]** Yeah, if I ask you for MK Gymson texts,
+
+**[1762.15s → 1763.35s]** I'm not gonna get it, right?
+
+**[1763.35s → 1765.71s]** That's way outside the model scope.
+
+**[1765.71s → 1769.55s]** But if I ask it for like a bronze sister,
+
+**[1769.55s → 1774.58s]** which is just like slightly adjacent to Jane Austen.
+
+**[1774.58s → 1778.62s]** I'm gonna get something, it's gonna be pretty close,
+
+**[1778.62s → 1782.66s]** but it's still gonna probably be Jane Austen have your ex
+
+**[1782.66s → 1785.20s]** it's over a bit to that example.
+
+**[1787.31s → 1790.87s]** And then only human evaluation is gonna be able to tell you
+
+**[1790.87s → 1793.03s]** but that's the case unless you're using
+
+**[1795.05s → 1796.97s]** a strong evaluation metric.
+
+**[1796.97s → 1807.07s]** So, like this blue score would be a good example of something that you could use in that particular Jane Austin example to assess what's going on.
+
+**[1807.07s → 1819.12s]** Yeah. For custom tasks, like, is it reasonable to use the LLM for evaluation?
+
+**[1819.12s → 1824.15s]** Well, let's say if it's not accuracy, but it's for preferences, a human evaluation.
+
+**[1824.15s → 1828.84s]** Yeah, there's a reasonable to like have not all on the evaluation.
+
+**[1828.84s → 1830.26s]** Totally, yeah.
+
+**[1830.26s → 1831.66s]** People do that all the time.
+
+**[1831.66s → 1833.59s]** Okay.
+
+**[1833.59s → 1834.59s]** Yeah.
+
+**[1834.59s → 1837.52s]** Yeah.
+
+**[1837.52s → 1842.52s]** I would maybe suggest using a set entirely separate model just for efficacy of the results.
+
+**[1842.52s → 1851.74s]** Like, you know, if you're using GTP 40, you maybe you have GTP 3.5 to the evaluation or Gemma
+
+**[1851.74s → 1852.74s]** or whatever else.
+
+**[1852.74s → 1865.72s]** Yeah, people come up with test harnesses like that all the time.
+
+**[1865.72s → 1867.10s]** Thanks.
+
+**[1867.10s → 1879.20s]** I think there was another question to thread that I want to acknowledge.
+
+**[1879.20s → 1886.06s]** After the answer, but he was asking it to find to me cost at least thing to try.
+
+**[1886.06s → 1891.06s]** I am not sure how the open AI find to be API is priced.
+
+**[1891.06s → 1896.09s]** would imagine it's per token, like there are other API endpoints.
+
+**[1896.09s → 1900.58s]** But Ashes spot on though, like there are much cheaper.
+
+**[1900.58s → 1903.98s]** If you really need to fine tune, but need a lower investment cost,
+
+**[1903.98s → 1912.65s]** you can grab a open source model and fine tune it, way cheaper.
+
+**[1912.65s → 1915.85s]** Well, my issue is one use piece.
+
+**[1915.85s → 1918.37s]** I'm thinking of is code review.
+
+**[1918.37s → 1923.09s]** So we'll have years and years of code review, you know,
+
+**[1923.09s → 1925.53s]** spend of thousands of comments.
+
+**[1925.53s → 1929.07s]** And a cheaper model would even find two
+
+**[1929.07s → 1931.37s]** to probably perform worse than, let's say,
+
+**[1931.37s → 1933.49s]** a llama three out of the box.
+
+**[1934.85s → 1937.89s]** But I guess I could find two llama three
+
+**[1937.89s → 1940.49s]** on all those code comments.
+
+**[1940.49s → 1943.25s]** And after spending 20, 30, 40, thousand dollars,
+
+**[1943.25s → 1944.77s]** it would be better.
+
+**[1944.77s → 1948.69s]** But would Chlora give me a good glimpse
+
+**[1948.69s → 1952.04s]** of fine two llama three?
+
+**[1952.04s → 1959.24s]** Oh yeah, I mean, I'm not sure I've heard this at work with Lama 3, but definitely other
+
+**[1959.24s → 1966.20s]** models in that same parameter scale. With QLORI you could fit in on a single GPU node because
+
+**[1966.20s → 1974.09s]** it's about floating point precision. So like the weights, Lama 3, don't quote me on this,
+
+**[1974.09s → 1980.33s]** but let's say they're floating point, you know, 64 precision or 32 precision.
+
+**[1980.33s → 1989.33s]** like then the Q and Q lower standing per quantization, they're going to take it down to like an 8-bit floating point or a 4-bit floating point.
+
+**[1989.33s → 2000.33s]** And that decrease in, you know, basically number size is going to make it fit on the GPU more easily.
+
+**[2000.33s → 2008.17s]** So you could probably tune Lama 2 or Lama 3 with Qlora on like an A100.
+
+**[2008.17s → 2013.69s]** Not even the unique H100 single node A100 would probably work beautifully.
+
+**[2014.41s → 2020.57s]** Which is super cheap. Like I think an A100 per hour on AWS is like maybe a few dollars.
+
+**[2020.57s → 2028.89s]** So like if you're fine tuning for like even 36 hours which that sounds like a long time to fine
+
+**[2028.89s → 2036.69s]** to model, I mean, maybe like 150 bucks, not bad.
+
+**[2036.69s → 2058.20s]** Oh, let's get into the fun part of class.
+
+**[2058.20s → 2060.20s]** I mean, a whole thing's been fun so far.
+
+**[2060.20s → 2063.20s]** Let's get into the most fun part of class.
+
+**[2063.20s → 2068.84s]** So we're going to take a look at generating better unit tests tonight.
+
+**[2068.84s → 2074.84s]** So similar to Nikita's code review example.
+
+**[2074.84s → 2078.84s]** We're just going to switch it a little bit and talk about unit test.
+
+**[2078.84s → 2083.10s]** So we're going to showcase the fine tuning process from start to finish.
+
+**[2083.10s → 2088.10s]** We're going to use chat to be 3.5 to generate unit tests.
+
+**[2088.10s → 2092.10s]** All the code is available to you in the repo already.
+
+**[2092.10s → 2094.10s]** Everything runs.
+
+**[2094.10s → 2100.10s]** Almost all the examples I'm going to show tonight are in the in class examples subfolder.
+
+**[2100.10s → 2104.39s]** So you can run them if you want.
+
+**[2104.39s → 2108.77s]** You can watch me, you run them, and we can talk about it,
+
+**[2108.77s → 2112.38s]** and then you can run them later, really up to you.
+
+**[2112.38s → 2114.38s]** So here's how things are going to go.
+
+**[2114.38s → 2117.99s]** We're going to create synthetic data.
+
+**[2117.99s → 2120.99s]** So we're going to try and create synthetic data
+
+**[2120.99s → 2123.99s]** that are synthetic unit tests.
+
+**[2123.99s → 2126.99s]** This slide, I think we just left accidentally left this reference
+
+**[2126.99s → 2129.31s]** is referenced in from an old class,
+
+**[2129.31s → 2132.59s]** but we're synthesizing unit tests,
+
+**[2132.59s → 2134.01s]** not pirate themed dialogue.
+
+**[2135.62s → 2139.32s]** Then we're gonna format the data into a really nice structure
+
+**[2139.32s → 2142.40s]** and it's the structure that Shaxi GP expects
+
+**[2142.40s → 2144.00s]** for their fine tuning API.
+
+**[2145.96s → 2147.16s]** That'll vary a little bit
+
+**[2147.16s → 2148.88s]** and then like the JSON object styles
+
+**[2148.88s → 2151.24s]** from provider to provider.
+
+**[2152.32s → 2154.84s]** So just double check that.
+
+**[2154.84s → 2157.96s]** And then finally we'll use the fine tuning endpoints
+
+**[2157.96s → 2161.76s]** and get everything configured.
+
+**[2161.76s → 2167.36s]** Now our evaluation, we are just going to do human evaluation.
+
+**[2167.36s → 2169.36s]** We're just going to literally look at the results
+
+**[2169.36s → 2172.36s]** and see how everything went.
+
+**[2172.36s → 2175.36s]** If you had a bunch of unit tests, though,
+
+**[2175.36s → 2180.63s]** you could absolutely pull some back
+
+**[2180.63s → 2189.20s]** and see what wasn't tested or what use cases weren't tested,
+
+**[2189.20s → 2191.04s]** that kind of stuff.
+
+**[2191.04s → 2193.92s]** So just to combine two thoughts from previous in the class,
+
+**[2193.92s → 2198.40s]** Aziz was asking me, hey, can you use another LLM
+
+**[2198.40s → 2201.88s]** to evaluate a model's performance?
+
+**[2201.88s → 2207.92s]** And looking at Nikita's code review question, right?
+
+**[2207.92s → 2210.76s]** If I'm having my model, if I hold out, say,
+
+**[2210.76s → 2217.88s]** 5% of the code reviews, and I had my model generate
+
+**[2217.88s → 2221.76s]** code reviews for that 5%.
+
+**[2221.76s → 2226.58s]** I would my fine tune model, like how do the results compare,
+
+**[2226.58s → 2231.16s]** because it's like code reviews are pretty nebulous.
+
+**[2231.16s → 2233.84s]** It's like a matter of interpretation.
+
+**[2233.84s → 2237.84s]** So you could have your second LLM, like
+
+**[2237.84s → 2242.80s]** summer by the original code review, or just check
+
+**[2242.80s → 2247.24s]** to see, hey, it was everything covered in this review.
+
+**[2247.24s → 2250.68s]** Can you tell me which ones weren't covered in the code review that was generated?
+
+**[2251.91s → 2257.63s]** Or was there new stuff that the model identified that was not in the previous code review or the human code review?
+
+**[2259.15s → 2263.23s]** That would be a great example of how to use a second LLM to evaluate performance.
+
+**[2270.52s → 2272.76s]** So we are going to synthesize our data.
+
+**[2273.48s → 2279.14s]** So we're going to create a connection to lengthment, to save our generated data sets,
+
+**[2280.86s → 2283.82s]** to find our generate function, generate unit test.
+
+**[2285.02s → 2292.39s]** And then we're going to create some partial functions.
+
+**[2292.39s → 2296.59s]** It's going to allow us to generate multiple functions concurrently
+
+**[2296.59s → 2301.34s]** and save the directed data directly to Langsmith.
+
+**[2301.34s → 2304.22s]** And finally, we're going to invoke chain for reviews.
+
+**[2304.22s → 2308.06s]** So combine the prompt and the LM to a chain and invoke it
+
+**[2308.06s → 2313.09s]** for to review each response efficiently.
+
+**[2314.47s → 2318.31s]** And then finally, we're going to have the synthesized step
+
+**[2318.31s → 2329.96s]** format, everything for open AI correctly.
+
+**[2329.96s → 2344.12s]** Right, so you look at some code,
+
+**[2344.12s → 2346.12s]** move this little screen over the way,
+
+**[2346.12s → 2357.11s]** and then, about a bit, about a bit.
+
+**[2357.11s → 2360.19s]** Excuse me.
+
+**[2360.19s → 2363.02s]** All right.
+
+**[2363.02s → 2365.02s]** So our simple prompt, right?
+
+**[2365.02s → 2369.02s]** You were at AI the generate unit test for Python functions,
+
+**[2369.02s → 2371.21s]** generate a unit test for this function,
+
+**[2371.21s → 2373.21s]** let me pass the Python function.
+
+**[2373.21s → 2381.62s]** Our chain is going to be the prompts, the LLM,
+
+**[2381.62s → 2383.84s]** invoking the chain,
+
+**[2383.84s → 2391.73s]** And then we'll return the response content.
+
+**[2391.73s → 2398.92s]** So you're thinking, hey, why are we reusing prompt again,
+
+**[2398.92s → 2400.48s]** and then the completion?
+
+**[2400.48s → 2406.12s]** Well, that's because what we want to do is in our training
+
+**[2406.12s → 2409.12s]** fine tuning data set, we want to show what we instructed
+
+**[2409.12s → 2414.04s]** the model to do and what we expect the output to be.
+
+**[2414.04s → 2417.48s]** So you're like, low, isn't this like crazy Russian
+
+**[2417.48s → 2422.04s]** nesting dolls all the way down because we're creating synthetic data.
+
+**[2423.04s → 2424.28s]** Yes, absolutely.
+
+**[2427.20s → 2430.64s]** Little funny to be using the same model to create our synthetic data set.
+
+**[2433.17s → 2434.61s]** So keep that in mind too.
+
+**[2435.45s → 2438.09s]** You can do exactly what I'm doing to find to your model.
+
+**[2438.53s → 2443.69s]** Then many always be the best thing to do using real world data is definitely best.
+
+**[2445.96s → 2449.56s]** We have a couple functions that we want to write units has four really,
+
+**[2449.56s → 2451.52s]** really simple based Python functions,
+
+**[2451.52s → 2455.12s]** track multiple I divide, back to real.
+
+**[2458.44s → 2460.84s]** And then our partial function generate unit test
+
+**[2460.84s → 2464.24s]** is gonna do that across all of these
+
+**[2464.24s → 2468.28s]** with our concurrent thread extractor.
+
+**[2468.28s → 2473.12s]** So map our generate synthetic data onto functions test
+
+**[2473.12s → 2482.68s]** and then we'll get all of our synthetic data together.
+
+**[2482.68s → 2507.89s]** All right, let's give it a shot.
+
+**[2507.89s → 2509.29s]** Ooh, that was fast.
+
+**[2509.29s → 2523.97s]** So this is, see this block code here is what we just ran.
+
+**[2523.97s → 2529.83s]** So we've already gotten our data back.
+
+**[2529.83s → 2560.39s]** All right, so here's what our data looks like that was generated.
+
+**[2560.39s → 2572.31s]** So you can see, you know, your original Python function and the unit that was created.
+
+**[2572.31s → 2577.31s]** Oh, JC, I did do some cleaning up here because there was like this weird sentence.
+
+**[2577.31s → 2580.67s]** Oh, the unit test for this function is,
+
+**[2580.67s → 2582.31s]** and then it also give us the unit test,
+
+**[2582.31s → 2583.67s]** so I have removed that.
+
+**[2583.67s → 2585.99s]** So there's some cleaning that I've done.
+
+**[2585.99s → 2598.85s]** So cool, perfect.
+
+**[2598.85s → 2600.73s]** So that's our synthetic dataset.
+
+**[2600.73s → 2612.07s]** Then the next step is for us to actually fine tune everything.
+
+**[2612.07s → 2614.03s]** So here's where we're gonna import our data,
+
+**[2614.03s → 2616.67s]** which we dumped into the data.py file,
+
+**[2618.37s → 2621.53s]** split everything into training and validation,
+
+**[2621.53s → 2632.73s]** And then our training function,
+
+**[2632.73s → 2635.49s]** when we are creating our training data
+
+**[2635.49s → 2638.07s]** and training validation,
+
+**[2638.07s → 2648.06s]** sorry, totally lost my trainer thought there.
+
+**[2648.06s → 2655.74s]** We're just dumping out the data into these two files.
+
+**[2655.74s → 2659.02s]** Then we want to upload the files to OpenAI
+
+**[2659.02s → 2662.54s]** and get the file IDs that is just going to help with latency
+
+**[2662.54s → 2667.30s]** instead of having to upload like each of the data sets on batch
+
+**[2667.30s → 2673.31s]** or something like that, files are pretty tiny.
+
+**[2673.31s → 2680.01s]** And then this will kick off the fine tuning job.
+
+**[2680.01s → 2683.25s]** For those of you familiar with deep learning,
+
+**[2683.25s → 2686.13s]** these hyperparameters should look familiar to you.
+
+**[2686.13s → 2691.76s]** Epic's batch size learning rate multiplier.
+
+**[2691.76s → 2694.12s]** I think there's some pretty smart defaults already
+
+**[2694.12s → 2696.54s]** in place here.
+
+**[2696.54s → 2702.30s]** These set hyperparameters are also a health R.A. sample,
+
+**[2702.30s → 2710.35s]** improved performance. If you're not sure what to set these to it and your particular use case,
+
+**[2711.07s → 2717.47s]** I would recommend phoning it for friends like either researching the use case that you're trying to do
+
+**[2720.28s → 2726.04s]** or figure out somebody on your team as an experienced deep learning engineer can help.
+
+**[2731.08s → 2736.12s]** I think the rest of the stuff is relatively self-explanatory and just checking if the job
+
+**[2736.12s → 2745.56s]** succeeded or failed. This will take a while. I think when I ran this earlier, it took maybe 10 events.
+
+**[2745.56s → 2755.77s]** I don't think we're going to get the full example live in class tonight. I'm just going to kick it
+
+**[2755.77s → 2773.42s]** off so you all can see it in the work. At the very end, we'll get an output, they'll say,
+
+**[2773.42s → 2776.25s]** Hey, fine tuning successful.
+
+**[2776.25s → 2781.77s]** I'm going to get a handy dandy ID that looks like this fine tune
+
+**[2781.77s → 2784.21s]** and the model that's fine.
+
+**[2784.21s → 2788.51s]** The name of the model that's fine tune.
+
+**[2788.51s → 2792.47s]** Also, everyone feel free to use our school API key.
+
+**[2792.47s → 2795.43s]** The cost for fine tuning per person is very low.
+
+**[2795.43s → 2797.83s]** So it only costs about $1.
+
+**[2797.83s → 2798.95s]** So you know worries.
+
+**[2798.95s → 2815.93s]** Feel free to do it as many times you want.
+
+**[2815.93s → 2819.05s]** Maybe we can let this just rip for a second.
+
+**[2819.05s → 2843.31s]** Any questions so far?
+
+**[2843.31s → 2844.87s]** All right, everybody's got it.
+
+**[2844.87s → 2854.68s]** They're so sad on fine tuning.
+
+**[2854.68s → 2860.86s]** I think we set this to run for 15 FX.
+
+**[2860.86s → 2864.90s]** Ash, do you remember if this status prints out on the FX
+
+**[2864.90s → 2868.45s]** or in the batch?
+
+**[2868.45s → 2870.92s]** I'm not sure.
+
+**[2870.92s → 2887.66s]** It's probably the batch that's a guess.
+
+**[2887.66s → 2889.70s]** There also just could be the streaming of the events
+
+**[2889.70s → 2890.66s]** from OpenAI.
+
+**[2890.66s → 2893.60s]** So it might not be connected to anything.
+
+**[2893.60s → 2898.84s]** We'll then, we'll leave that running.
+
+**[2898.84s → 2904.87s]** All right, let's go take a look at what we're going to generate unit test for.
+
+**[2904.87s → 2910.88s]** So let's take a look in, not data.
+
+**[2910.88s → 2918.33s]** So we have this handy dandy folder called app that has three very, very simple functions in
+
+**[2918.33s → 2927.64s]** it, factorial, Fibonacci, string reversal, not too fancy.
+
+**[2927.64s → 2930.88s]** If anyone has any other Python code that they want to
+
+**[2930.88s → 2934.99s]** slap in here real quick, we definitely can.
+
+**[2934.99s → 2937.35s]** And we're going to generate unit tests against these
+
+**[2937.35s → 2948.26s]** three Python functions.
+
+**[2948.26s → 2951.58s]** So tester.py is our agents.
+
+**[2951.58s → 2955.66s]** A lot of this code should be super familiar already.
+
+**[2955.66s → 2959.67s]** Grab page content, generate.
+
+**[2959.67s → 2965.70s]** Here's our new function, generate the unit tests,
+
+**[2965.70s → 2970.10s]** update the file, create a new file,
+
+**[2970.10s → 2973.96s]** all of this stuff should look familiar to you already.
+
+**[2973.96s → 2976.84s]** I am just going to make one tiny tweak in here
+
+**[2976.84s → 2987.95s]** to update our model to use GTP 3.5.
+
+**[2987.95s → 2994.60s]** So if you're following along, that's in line 50.
+
+**[2994.60s → 2996.64s]** I think that'll help just with performance.
+
+**[2996.64s → 3010.59s]** And I'm also going to create a new terminal session here.
+
+**[3010.59s → 3012.99s]** So I can create the new terminal session
+
+**[3012.99s → 3027.23s]** so I can leave the previous fine tuning job running.
+
+**[3027.23s → 3031.03s]** And I'm just gonna double check that I have my OpenAI API key
+
+**[3032.03s → 3035.87s]** here, because I was spending up a new environment.
+
+**[3035.87s → 3048.80s]** Yep, I don't care with me just one second.
+
+**[3048.80s → 3079.80s]** I just grab these two keys.
+
+**[3079.80s → 3102.80s]** Love it when my fingers are struggling.
+
+**[3102.80s → 3104.36s]** All right, so I've got my OpenAI key
+
+**[3104.36s → 3124.56s]** and now I need my encampment API key.
+
+**[3124.56s → 3126.32s]** I think there are two other environment variables
+
+**[3126.32s → 3129.48s]** I'm not too worried about setting them right now.
+
+**[3129.48s → 3135.51s]** see our models still fine tuning in the backgrounds.
+
+**[3135.51s → 3137.19s]** Right.
+
+**[3137.19s → 3143.88s]** So let's go ahead and run tester.py and generate our unit test.
+
+**[3143.88s → 3145.88s]** Remember, we are generating unit test
+
+**[3145.88s → 3148.88s]** for those three very simple Python functions
+
+**[3148.88s → 3159.44s]** and side app, the app holder.
+
+**[3159.44s → 3161.08s]** OK, sorry if I missed this somewhere,
+
+**[3161.08s → 3165.08s]** but can we look at the training data?
+
+**[3165.08s → 3172.08s]** Yeah, totally.
+
+**[3172.08s → 3174.36s]** This is what the training data looks like, Chris.
+
+**[3174.36s → 3175.00s]** Oh, sorry.
+
+**[3175.00s → 3178.81s]** Is this what's uploaded to open?
+
+**[3178.81s → 3183.64s]** Yeah, in our folder, it's split between training data
+
+**[3183.64s → 3186.00s]** and then there'll be a validation data set.
+
+**[3186.00s → 3189.80s]** But these are the two files that would be uploaded to open AI.
+
+**[3189.80s → 3190.40s]** Okay.
+
+**[3190.40s → 3192.00s]** Training data and validation data.
+
+**[3192.00s → 3193.72s]** Yeah. Thanks.
+
+**[3193.72s → 3197.84s]** They're just changed to JSONL files because they require,
+
+**[3197.84s → 3200.76s]** opening out requires you to convert them to JSONL.
+
+**[3200.76s → 3203.20s]** So you'll notice that when you do run the program,
+
+**[3203.20s → 3205.32s]** though we converted, but it's the same data,
+
+**[3205.32s → 3218.56s]** just different format.
+
+**[3218.56s → 3220.56s]** There was another question.
+
+**[3220.56s → 3223.16s]** Does this also validate the unit test
+
+**[3223.16s → 3225.40s]** execute successfully?
+
+**[3225.40s → 3228.16s]** And no, I don't think we do that,
+
+**[3228.16s → 3231.20s]** but you could easily extend this code to do that.
+
+**[3231.20s → 3238.04s]** No reason you couldn't.
+
+**[3238.04s → 3240.16s]** All right, so let's give it our prompts.
+
+**[3240.16s → 3241.52s]** Write units test for the files
+
+**[3241.52s → 3243.12s]** and then after I create and save them
+
+**[3243.12s → 3260.04s]** to a file called test.py.
+
+**[3260.04s → 3261.32s]** When I change the model name,
+
+**[3261.32s → 3267.68s]** I didn't use the appropriate parameter.
+
+**[3267.68s → 3269.32s]** All right, since everybody's,
+
+**[3269.32s → 3274.51s]** it might have been a trick that I've laid down.
+
+**[3274.51s → 3284.38s]** What is the chat to DP 3.5 code name?
+
+**[3284.38s → 3312.99s]** What is wrong in this string?
+
+**[3312.99s → 3314.55s]** You have to have like turbo.
+
+**[3314.55s → 3316.07s]** Yeah, turbo.
+
+**[3316.07s → 3331.00s]** Yeah, now it's like, you know, turbo, right?
+
+**[3331.00s → 3336.70s]** Now I think it's, it's like this.
+
+**[3336.70s → 3338.96s]** Wait, sure.
+
+**[3338.96s → 3342.04s]** Ash, is that right?
+
+**[3342.04s → 3346.52s]** Yep, you could use like different versions of it with the dates, but we'll just use the turbo.
+
+**[3347.72s → 3348.48s]** Yeah, that's fine.
+
+**[3357.23s → 3372.48s]** We're going to rerun our tester and we're going to do the prompt again.
+
+**[3405.04s → 3408.48s]** So now we have a new file called test.py.
+
+**[3410.17s → 3412.69s]** I'm going to close out of this prompt chain.
+
+**[3414.10s → 3415.46s]** Let's take a look at our new file.
+
+**[3426.24s → 3428.08s]** So here's our test.
+
+**[3430.43s → 3435.42s]** Okay, nothing too crazy and actually it looks like it's missing.
+
+**[3435.42s → 3437.42s]** So I'm going to do a couple of things too.
+
+**[3437.42s → 3442.48s]** So I've only got a test for reverse string.
+
+**[3442.48s → 3458.44s]** Looks like so interesting and a couple different examples.
+
+**[3458.44s → 3465.49s]** So I'm going to just duplicate this file actually.
+
+**[3465.49s → 3467.72s]** Or rename it.
+
+**[3467.72s → 3471.72s]** And then we're going to rerun the model with our fine tune version.
+
+**[3471.72s → 3473.00s]** So we're going to say.
+
+**[3473.00s → 3483.73s]** This one is 3.5 Turbo.
+
+**[3483.73s → 3494.60s]** Now let's go back and see if our fine tune model has finished.
+
+**[3494.60s → 3496.20s]** It has.
+
+**[3496.20s → 3499.84s]** So now we have this fancy new fine tune version.
+
+**[3499.84s → 3502.92s]** I'm going to copy this fine tune ID.
+
+**[3502.92s → 3506.00s]** You can see that way down here in the highlighted corner
+
+**[3506.00s → 3512.37s]** of my screen.
+
+**[3512.37s → 3514.85s]** I'm going to go back to tester.py and then where
+
+**[3514.85s → 3518.13s]** I change the model to be 3.5 Turbo,
+
+**[3518.13s → 3524.65s]** Now I'm just going to change that to be our fine-tuned version.
+
+**[3524.65s → 3525.76s]** OK.
+
+**[3525.76s → 3527.20s]** Everything else is the same, right?
+
+**[3527.20s → 3529.20s]** Just that I just update a fine-tuned model.
+
+**[3529.20s → 3546.74s]** I'll use the exact same prompt to generate things.
+
+**[3546.74s → 3548.18s]** All right, same prompts.
+
+**[3548.18s → 3574.63s]** Let's kick it off.
+
+**[3574.63s → 3581.71s]** And then writing, it's writing our output now.
+
+**[3581.71s → 3626.99s]** Let's do a little quick comparison.
+
+**[3626.99s → 3629.95s]** All right, so here is the example difference.
+
+**[3629.95s → 3634.22s]** So on the left is our fine-tuned example.
+
+**[3634.22s → 3647.29s]** And on the right is what we got from 3.5 turbo.
+
+**[3647.29s → 3651.48s]** I think the agent was replacing the tests
+
+**[3651.48s → 3653.68s]** for each function as it wrote it.
+
+**[3653.68s → 3654.88s]** So just prompt it.
+
+**[3654.88s → 3657.12s]** Yeah, so it did do all three, but it just was like,
+
+**[3657.12s → 3661.97s]** OK, now we're replaced its entire file with the next test.
+
+**[3661.97s → 3675.23s]** Yeah, we could rewrite the prompt a little bit.
+
+**[3675.23s → 3678.43s]** You can see the use kits are just slightly different.
+
+**[3678.43s → 3681.27s]** And the style is actually also a little different to you.
+
+**[3681.27s → 3685.04s]** I mean, we're still getting the basic Python unit tests.
+
+**[3685.04s → 3688.40s]** functionality with test case.
+
+**[3688.40s → 3700.24s]** This is actually a little bit more what we'd expect.
+
+**[3700.24s → 3710.30s]** All of this has the additional patch decorator to try.
+
+**[3710.30s → 3712.98s]** Right, so the difference is pretty subtle.
+
+**[3712.98s → 3716.06s]** This is where we're fine tuning I think can be frustrating.
+
+**[3716.06s → 3719.08s]** It's like, okay, I mean, yeah,
+
+**[3719.08s → 3721.72s]** the code is pretty much the same.
+
+**[3721.72s → 3724.08s]** But it is important, right?
+
+**[3724.08s → 3728.64s]** like if what was on the left was a stronger style of what you expect.
+
+**[3730.32s → 3736.80s]** I mean, even down to like not having the name, if people's main and then actually invoking the unit test in the bottom, right?
+
+**[3736.80s → 3748.15s]** If Turbo is consistently excluding that invocation down at the end, then you don't really have a great way to run your unit test by calling out a file.
+
+**[3749.38s → 3754.58s]** So that slight style of friends could be worth wine tuning, right?
+
+**[3754.58s → 3759.46s]** instead of having to pass an example every time to do that.
+
+**[3759.46s → 3763.10s]** So that's where the human evaluation comes into play.
+
+**[3763.10s → 3764.50s]** Just deciding what's best for you
+
+**[3764.50s → 3766.14s]** in your particular use case.
+
+**[3780.88s → 3783.92s]** And we can actually also do some evaluation on our data set
+
+**[3783.92s → 3788.84s]** and take a look at what we expected
+
+**[3788.84s → 3790.64s]** between the two different versions.
+
+**[3793.03s → 3794.59s]** I know we're about 10 minutes over,
+
+**[3794.59s → 3798.20s]** so I wanna make sure that there are,
+
+**[3798.20s → 3800.20s]** Are there any other questions that you want me to address
+
+**[3800.20s → 3806.78s]** before we take a look at this?
+
+**[3806.78s → 3811.43s]** There's a few questions that I'm going to confirm.
+
+**[3811.43s → 3813.83s]** I guess like one, to this format,
+
+**[3813.83s → 3815.71s]** I'm gonna be the same for OpenAI.
+
+**[3815.71s → 3818.79s]** And that typically the case for Fintiny LLM
+
+**[3818.79s → 3820.69s]** was where it's just, I know,
+
+**[3820.69s → 3823.48s]** it looks like we're just passing in the chat history.
+
+**[3823.48s → 3826.72s]** So, you know, like, this is the message that we sent
+
+**[3826.72s → 3829.20s]** and then this is the message that was returned.
+
+**[3829.20s → 3832.22s]** That typically the structure.
+
+**[3832.22s → 3837.41s]** Yeah, I mean, you're giving it a prompt,
+
+**[3837.41s → 3839.45s]** and then you're giving it the output that you expect.
+
+**[3839.45s → 3845.58s]** So that it's a classification task.
+
+**[3845.58s → 3850.88s]** Isn't quite the right way, I'd put it, but you are telling
+
+**[3850.88s → 3852.72s]** your model exactly what you want it to do
+
+**[3852.72s → 3855.16s]** given certain circumstances.
+
+**[3855.16s → 3857.36s]** And so you're just trying to make sure
+
+**[3857.36s → 3860.24s]** that the text, your model, the generating
+
+**[3860.24s → 3863.64s]** matches what you're showing it as an example
+
+**[3863.64s → 3865.60s]** during the fine tuning process.
+
+**[3865.60s → 3867.40s]** So the short answer is yes.
+
+**[3868.91s → 3871.87s]** Although it's not a chat history, right?
+
+**[3871.87s → 3876.73s]** You're actually showing it a single example at a time.
+
+**[3876.73s → 3877.93s]** Got it.
+
+**[3877.93s → 3881.29s]** And then it's like an easy way to just export
+
+**[3884.11s → 3888.64s]** like I don't know, the messages from the length of it
+
+**[3888.64s → 3890.80s]** to just be training data set up.
+
+**[3890.80s → 3891.64s]** Totally.
+
+**[3894.49s → 3898.00s]** Let's see.
+
+**[3898.00s → 3902.28s]** I will say when you are doing the fine tuning on other models, the syntax changes.
+
+**[3902.44s → 3906.28s]** So the syntax we use right now was for open AI, but if you were to do Lama,
+
+**[3906.28s → 3909.08s]** they have their own little decorators.
+
+**[3909.78s → 3914.30s]** They represent the same input output structure, but the decorators do change.
+
+**[3914.66s → 3917.18s]** We will see that on Thursday though, when we do it with Lama too.
+
+**[3917.62s → 3919.22s]** What do you mean by the decorators change?
+
+**[3920.11s → 3922.27s]** For example, yeah, go ahead, JCD.
+
+**[3922.27s → 3925.31s]** Oh, you, I'll show you.
+
+**[3926.30s → 3927.18s]** It would be something.
+
+**[3927.18s → 3943.02s]** be open a clean file. Like instead of prompt it might be something like in strokes that would be
+
+**[3943.02s → 3961.30s]** kind of akin to that you have like proof data and then I forget what the special decorators are
+
+**[3961.30s → 3966.60s]** for response but it would be something like that. No, like don't quote me on the second one.
+
+**[3970.87s → 3981.85s]** It's just user but yeah but the structure is the same. Decorators are just like everyone's choice.
+
+**[3981.85s → 3983.85s]** I said, I want to try to be different.
+
+**[3983.85s → 3999.64s]** I was actually just thinking this morning that the open source
+
+**[3999.64s → 4003.66s]** community needs to come up with a standard for these decorators.
+
+**[4003.66s → 4006.54s]** Because they're actually not well documented.
+
+**[4006.54s → 4009.30s]** It's another huge problem.
+
+**[4009.30s → 4010.66s]** Open AI makes it really easy.
+
+**[4010.66s → 4017.78s]** But it took people a while to figure out the stuff in Lama.
+
+**[4017.78s → 4019.50s]** We had some traffic at work last week
+
+**[4019.50s → 4022.22s]** where people were trying to figure out
+
+**[4022.22s → 4026.90s]** what all of the different special indicators and tags are that exist in the model.
+
+**[4027.62s → 4028.54s]** That was interesting.
+
+**[4030.16s → 4030.58s]** Yeah.
+
+**[4031.02s → 4034.22s]** It'd be cool if Lanchin you'd have some way to like abstract that away.
+
+**[4034.22s → 4038.46s]** I don't know if that's the thing or you just like manually do it.
+
+**[4040.58s → 4043.98s]** I don't know if it would surprise me if they didn't for a couple of the major models,
+
+**[4044.46s → 4047.30s]** or at least like an abstract API to do that.
+
+**[4049.01s → 4052.81s]** That was extensible like an abstract base class for that.
+
+**[4052.81s → 4057.38s]** But yeah, I agree.
+
+**[4057.38s → 4062.38s]** Like yeah, I don't want to have to memorize 10 or 15 of these.
+
+**[4062.38s → 4077.02s]** I'm going to go ahead and kick off this evaluate script real quick.
+
+**[4077.02s → 4080.02s]** Oh, I didn't connect the database.
+
+**[4080.02s → 4084.02s]** There's no data set created in links for it. So it's not going to do anything.
+
+**[4084.02s → 4086.02s]** But I could show that example.
+
+**[4086.02s → 4087.02s]** It has connected my actions.
+
+**[4087.02s → 4089.02s]** It's going to be the problem.
+
+**[4089.02s → 4091.46s]** What are you doing here?
+
+**[4091.46s → 4093.98s]** So I have to share the data set widely,
+
+**[4093.98s → 4095.58s]** and then you guys can try it out.
+
+**[4095.58s → 4102.68s]** Well, we can walk through the code.
+
+**[4102.68s → 4105.72s]** It just basically asks GPT to score 1 or 0
+
+**[4105.72s → 4109.16s]** if the actual response is better or worse.
+
+**[4109.16s → 4120.09s]** Yeah. These will also ask you to show what the data set looks like.
+
+**[4120.09s → 4122.17s]** Go back to do that real quick.
+
+**[4122.17s → 4129.65s]** Oh, you have to do it on the actual chat open AI instance and not the runable. So that's why it's shown it's not created.
+
+**[4129.65s → 4139.19s]** So on the chat opening anyone, yeah. Just if you guys are trying to do this yourself, you have to do it on the chat open AI and then you can click add to add to it.
+
+**[4139.19s → 4147.22s]** And then on the bottom, you should be able to pick yours or make one.
+
+**[4147.22s → 4154.92s]** Great, anyone.
+
+**[4154.92s → 4157.92s]** Ingellable Savior is a really great name for unit test though.
+
+**[4157.92s → 4172.86s]** Maybe we'll just add a second example to that unit test.
+
+**[4172.86s → 4195.38s]** Data set.
+
+**[4195.38s → 4201.38s]** And then actually you can use this data set programmatically so you don't necessarily need to download the CSV.
+
+**[4201.38s → 4207.38s]** I can go into Langsmith and actually call this and bring it to my code base, which is the best way to use it.
+
+**[4207.38s → 4212.70s]** And of course you can actually also just download it to but.
+
+**[4212.70s → 4216.46s]** So much more boring.
+
+**[4216.46s → 4230.26s]** And then it's got the nice JSON-L exports for you, too.
+
+**[4230.26s → 4231.86s]** Yeah, I think something I'm thinking about that could be
+
+**[4231.86s → 4235.87s]** really cool is, like, I don't know, if you have a length
+
+**[4235.87s → 4240.38s]** Smith doing tracing and production, and if you were able to
+
+**[4240.38s → 4244.87s]** like take that, and not just messages in tracing and just
+
+**[4244.87s → 4248.79s]** convert those to a dataset automatically, and just use that
+
+**[4248.79s → 4250.03s]** sample per evaluation.
+
+**[4250.03s → 4255.06s]** But that could be really cool if you could do that programmatically.
+
+**[4255.06s → 4256.06s]** Yes, totally.
+
+**[4256.06s → 4262.73s]** You totally could because you could just have people continuously annotate the data set.
+
+**[4262.73s → 4267.53s]** Like you just check in on health, like once or twice a week, annotate a couple examples,
+
+**[4267.53s → 4270.21s]** add them to the data set.
+
+**[4270.21s → 4275.84s]** And that triggers some kind of downstream evaluation.
+
+**[4275.84s → 4278.56s]** What you are talking about are LLM ops.
+
+**[4278.56s → 4284.80s]** So if you've been exposed to ML ops, machine learning operations before, that's the same
+
+**[4284.80s → 4289.84s]** kind of problem. I'll maybe use a different example that'll make it like say you're doing a computer
+
+**[4289.84s → 4300.91s]** vision system like inspecting the quality of Apple cases in the factory in China. You know,
+
+**[4300.91s → 4307.71s]** you're going to check in, have an expert relabel your data set every few minutes or have a model
+
+**[4308.43s → 4314.19s]** look for anomalies and metal that might trigger a human to relabel something. And then you know,
+
+**[4314.19s → 4317.87s]** you're going to look for drift and retrain your model and do all kinds of stuff.
+
+**[4319.70s → 4326.66s]** LLM ops are same idea but the workflows aren't quite as well developed yet because there aren't too
+
+**[4326.66s → 4334.98s]** many people doing what you're describing yet. So I imagine in the wonderful world of tools more and
+
+**[4334.98s → 4342.66s]** more companies we'll get into that LLM ops space to do what you're describing. Lang Smith is a
+
+**[4342.66s → 4346.02s]** probably a key player in that kind of workflow going forward.
+
+**[4348.05s → 4350.69s]** I'm sure that's in their business strategy for the next 12 months.
+
+**[4365.62s → 4369.73s]** It's like another question I had was just like, actually, I guess, wait, do we have other
+
+**[4369.73s → 4373.39s]** topics for class? I don't want to just ask a bunch of questions.
+
+**[4373.39s → 4380.75s]** No, that was that was it. I think just the last thing I want to talk about is for everyone,
+
+**[4380.75s → 4386.01s]** hands on, there are a couple options to play around.
+
+**[4387.17s → 4391.10s]** So you could fine tune your compile standards,
+
+**[4391.86s → 4394.38s]** compile your standards across your organization
+
+**[4395.70s → 4397.66s]** and use that to fine tune your model,
+
+**[4398.74s → 4400.46s]** try and generate synthetic data set.
+
+**[4400.46s → 4402.90s]** So you saw me do that with a unit test.
+
+**[4402.90s → 4403.98s]** This is something that
+
+**[4405.22s → 4406.94s]** developers at work create about all the time
+
+**[4406.94s → 4409.82s]** using LLM to create synthetic data.
+
+**[4409.82s → 4414.82s]** which is to be very challenging to get high quality real-world data sets.
+
+**[4414.82s → 4423.26s]** Do your own fine-to-unit evaluation and then increase data for reliability.
+
+**[4423.26s → 4427.26s]** So whether using Lang Smith or additional synthetic data right,
+
+**[4427.26s → 4430.26s]** if you're evaluating your models performance consistently,
+
+**[4430.26s → 4435.26s]** you might quickly identify the need for more synthetic data or more real-world data.
+
+**[4435.26s → 4454.58s]** So that was the end of our class content for tonight.
+
+**[4454.58s → 4461.08s]** So we can switch, I got an extra 10 minutes to ground, answer questions that you all might have.
+
+**[4463.03s → 4464.39s]** Anything that you want to chat about?
+
+**[4465.03s → 4466.71s]** On tuning questions, other questions?
+
+**[4469.02s → 4477.58s]** Yeah, maybe I know that you and Tom have built some, I must say you've done some fine tuning
+
+**[4477.58s → 4483.82s]** for your own companies. If you could talk about that, but your personal experience.
+
+**[4483.82s → 4492.98s]** I personally have not, I've done a little bit of fine tuning, but on older classes and models.
+
+**[4492.98s → 4499.91s]** I've seen, I've worked with a lot of developers that are fine tuning,
+
+**[4499.91s → 4503.75s]** Lama, too, in particular, mostly using Qlora.
+
+**[4506.74s → 4510.34s]** Unfortunately, I can't talk about those particular use cases because they're extremely
+
+**[4510.34s → 4519.98s]** but I have seen it done quite a bit. I would say the challenge is always
+
+**[4519.98s → 4525.50s]** increasing high quality synthetic data so like in the handful of use cases I have seen our developers do that in.
+
+**[4525.50s → 4533.75s]** Most of what they spend their time doing is figuring out how to generate the best quality synthetic data sets.
+
+**[4533.75s → 4539.75s]** The particular problems that they were working on were in the engineering space.
+
+**[4539.75s → 4545.39s]** like aerospace engineering space, not software engineering space.
+
+**[4545.39s → 4551.93s]** So it's cool. I think it's.
+
+**[4551.93s → 4561.92s]** And then the other we have, we work on bare metal. We don't, we hardly ever run things in the cloud. So the other thing I can say.
+
+**[4561.92s → 4568.04s]** is that Kulora makes it super super easy to find tune stuff.
+
+**[4568.60s → 4572.20s]** Like I've seen people find tune models
+
+**[4572.20s → 4576.80s]** in like five, 10 minutes, I'm just massive, massive data sets.
+
+**[4578.43s → 4584.18s]** Some of our GPUs are nodes are pretty big, but still.
+
+**[4584.18s → 4584.86s]** All right, thanks.
+
+**[4584.86s → 4589.86s]** Yeah, that I, I have saw this cost like $25,000 minimum,
+
+**[4590.42s → 4591.86s]** I guess that was wrong.
+
+**[4591.86s → 4594.54s]** I'm going to go ahead and try some.
+
+**[4594.54s → 4598.74s]** basic fine tuning later this week.
+
+**[4598.74s → 4602.46s]** Yeah, I mean, it just depends on your training data set size
+
+**[4602.46s → 4603.46s]** too.
+
+**[4603.46s → 4608.51s]** I mean, the actual, I mean, if it's possible, you
+
+**[4608.51s → 4610.87s]** might have gigabytes or terabytes of training data
+
+**[4610.87s → 4612.43s]** that you want to fine tune your model on.
+
+**[4612.43s → 4618.39s]** And yeah, that might get into the multi-thousands of dollars
+
+**[4618.39s → 4619.59s]** of compute cost.
+
+**[4619.59s → 4623.43s]** So I'd say to you to just maybe try
+
+**[4623.43s → 4629.19s]** create an estimate of your particular data set and you can sample the cost and see what's going on.
+
+**[4631.96s → 4635.72s]** I know I'm getting ahead of myself a little bit but if you want to save some time you can grab
+
+**[4635.72s → 4640.44s]** the data set off hugging phase. We're going to be grabbing off a bunch of data sets off hugging phase
+
+**[4640.44s → 4647.59s]** on Thursday but it might help you save some time if you just grab the data instead of having to make
+
+**[4647.59s → 4653.78s]** yourself. What I like to do is I grab some data then use it as examples to make more data. You can
+
+**[4653.78s → 4655.46s]** who never have enough data?
+
+**[4655.46s → 4658.94s]** That's the crux of the problem.
+
+**[4658.94s → 4660.41s]** Yeah.
+
+**[4660.41s → 4661.97s]** Actuals are reminded to be something
+
+**[4661.97s → 4666.09s]** that I think was announced and slack in some other places.
+
+**[4666.09s → 4668.97s]** I am out Wednesday through Sunday this week.
+
+**[4668.97s → 4672.93s]** So Wednesday's class is going to be on Thursday,
+
+**[4672.93s → 4675.65s]** Thursday, same time.
+
+**[4675.65s → 4680.01s]** And my friend and co-instructor Aaron
+
+**[4680.01s → 4683.69s]** is going to be coming in to be instructor on Thursday night.
+
+**[4683.69s → 4685.77s]** So give them a really hard time,
+
+**[4685.77s → 4687.93s]** make sure you hammer in with hard questions,
+
+**[4689.13s → 4695.47s]** but it'll be to support you on Thursday.
+
+**[4695.47s → 4696.95s]** And we have the federal holiday on Wednesday,
+
+**[4696.95s → 4699.68s]** so everybody enjoyed the day off.
+
+**[4699.68s → 4702.80s]** Yeah, everybody enjoyed Juneteenth.
+
+**[4702.80s → 4710.39s]** Celebrations started here in Memphis on Sunday.
+
+**[4710.39s → 4711.23s]** Oh, question.
+
+**[4711.23s → 4713.15s]** I know we looked at Hockingbaths.
+
+**[4715.26s → 4717.02s]** And it's like that's the place where you can serve
+
+**[4717.02s → 4718.02s]** for fine-to-models.
+
+**[4718.02s → 4722.13s]** Where is my other place that you can serve for fine-to-models
+
+**[4722.13s → 4724.17s]** for specific cases.
+
+**[4724.17s → 4726.01s]** I feel it's just be useful to know, like, okay,
+
+**[4726.01s → 4728.09s]** if I have this problem in mind,
+
+**[4728.09s → 4730.25s]** like what benchmarks are other folks using?
+
+**[4730.25s → 4731.09s]** You know what I mean?
+
+**[4731.09s → 4732.09s]** Like data sets.
+
+**[4734.38s → 4735.22s]** So yeah.
+
+**[4735.22s → 4740.25s]** So I will say safely, this may be important to point out here.
+
+**[4742.25s → 4744.65s]** You could probably find lots of fine-tune models
+
+**[4744.65s → 4747.85s]** in data sets in plenty of odd places.
+
+**[4747.85s → 4751.93s]** Like maybe GitHub being the most among them.
+
+**[4752.61s → 4754.65s]** One of the nice things about hugging face, though,
+
+**[4754.65s → 4759.65s]** is that they do enforce how the weights are stored
+
+**[4760.09s → 4763.33s]** and certain, like, safe formats
+
+**[4763.33s → 4765.89s]** so that people can't stop, say, like,
+
+**[4765.89s → 4768.03s]** arbitrary code inside the weights.
+
+**[4769.69s → 4772.94s]** So that's pretty important when you're dealing
+
+**[4772.94s → 4775.34s]** with the enterprises that many of you work at.
+
+**[4777.62s → 4783.54s]** But yeah, I think papers with code
+
+**[4783.54s → 4784.70s]** a great place to go.
+
+**[4784.70s → 4786.54s]** That's where I'll drop this in Zoom Chacks
+
+**[4786.54s → 4788.10s]** and looking at it.
+
+**[4788.10s → 4790.02s]** Just to see what models are out there.
+
+**[4790.02s → 4791.54s]** And then you could see their performance,
+
+**[4791.54s → 4795.62s]** and then see if the implementation is on hugging face.
+
+**[4798.90s → 4800.38s]** I would start with hugging face though.
+
+**[4800.38s → 4802.78s]** It pretty much has a lot.
+
+**[4802.78s → 4805.14s]** Like you can definitely find six or seven models
+
+**[4805.14s → 4806.78s]** already trained, fine tuned,
+
+**[4806.78s → 4808.62s]** and you can find thousands of data sets.
+
+**[4808.62s → 4810.06s]** If you need something beyond that,
+
+**[4810.06s → 4813.30s]** then it's like, yeah, look elsewhere.
+
+**[4813.30s → 4815.62s]** Yeah, I've been looking for a specific case
+
+**[4815.62s → 4817.42s]** and I couldn't find what I wanted,
+
+**[4817.42s → 4819.74s]** but maybe I gotta get some more search in there.
+
+**[4820.94s → 4822.94s]** What is your specific use case?
+
+**[4822.94s → 4826.84s]** Oh, specifically, I want to like generate like headlines.
+
+**[4826.84s → 4828.56s]** Oh, I did see a trick.
+
+**[4828.56s → 4830.24s]** I think you can find something adjacent.
+
+**[4830.24s → 4833.70s]** So there was like a Twitter tweet one,
+
+**[4833.70s → 4837.58s]** like a tweet dataset, which you kind of use, you can use.
+
+**[4837.58s → 4839.14s]** So you try looking for like stuff
+
+**[4839.14s → 4842.46s]** that like newspaper article, like something adjacent
+
+**[4842.46s → 4844.46s]** that you can then turn into headlines.
+
+**[4852.83s → 4855.27s]** Oh man, y'all, I just noticed something cool.
+
+**[4857.23s → 4860.83s]** A huge grammar leap in and I can't use it at work
+
+**[4860.83s → 4864.47s]** because the data leaves our internal internet.
+
+**[4864.47s → 4866.79s]** I just noticed they have models on hugging face
+
+**[4866.79s → 4868.15s]** and I'm like, ooh, wow.
+
+**[4869.15s → 4869.99s]** Nice.
+
+**[4872.15s → 4873.63s]** Let me check in that out later.
+
+**[4879.19s → 4883.27s]** Also, just because a model is on hugging face,
+
+**[4883.31s → 4890.21s]** It is worth having, if you're going to use it in a production setting, definitely worth
+
+**[4891.57s → 4895.09s]** thinking about your legal process to vet the licenses of models.
+
+**[4896.61s → 4904.29s]** For instance, the latest model from Mixedral, the code one is not designed for production code
+
+**[4904.29s → 4908.69s]** writing. It's for research and academic purposes only. So you couldn't use it to write code that
+
+**[4908.69s → 4911.73s]** that you benefit from your customer application.
+
+**[4911.73s → 4916.53s]** We all know why they're doing that, right, JC?
+
+**[4916.53s → 4919.23s]** They're going to make us pay for it.
+
+**[4919.23s → 4922.97s]** Oh yeah, you know it.
+
+**[4923.97s → 4927.94s]** So Lama 2 and Lama 3 have some of the most
+
+**[4927.94s → 4930.00s]** permissive licenses set of mixed role.
+
+**[4930.00s → 4932.68s]** So generally, you don't have to worry about it so much.
+
+**[4932.68s → 4938.60s]** Our Hangup Lama 3 is unique to the defense industry.
+
+**[4938.60s → 4946.50s]** shouldn't affect most of you. So yeah, you had definitely checked the license on stuff.
+
+**[4951.93s → 4977.19s]** Oh, especially for anything from a university, the Trap. It's Trap. See you guys, I'm going to hop.
+
+**[4978.81s → 4982.73s]** Yeah, I think we're out time, but some great questions tonight. I had a glass in class,
+
+**[4983.85s → 4991.66s]** so I will see you all next week and have fun on Aaron on Thursday. Bye everybody.
+

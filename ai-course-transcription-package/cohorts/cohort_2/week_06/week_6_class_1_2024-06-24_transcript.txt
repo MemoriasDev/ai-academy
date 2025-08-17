@@ -1,0 +1,2051 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_06/week_6_class_1_2024-06-24.mp4
+**Duration:** 5082.18 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 1016
+**Generated:** 2025-08-13 19:07:01
+**File Hash:** 3d9d89ab2481db4b567dfa37e3b9dde0
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_06
+**file_name:** week_6_class_1_2024-06-24.mp4
+
+---
+
+## Transcript
+
+**[5.04s → 16.84s]** All right, welcome everybody.
+
+**[16.84s → 19.12s]** We are back for week six.
+
+**[19.12s → 22.24s]** So today we're going to be talking about LANGGRAPH.
+
+**[22.24s → 26.40s]** And really the reason we're going to talk about LANGGRAPH
+
+**[26.40s → 28.72s]** is in the context of multi-agent systems.
+
+**[28.72s → 32.08s]** So last week you talked about fine tuning.
+
+**[32.08s → 38.48s]** You knew we did the API fine tuning using open AI.
+
+**[38.48s → 43.11s]** And then you got into doing fine tuning with Qlora.
+
+**[43.11s → 47.60s]** Basically, you did it on Thursdays how I would do it, probably,
+
+**[47.60s → 50.98s]** for the most part myself, just because that's more of what I'm
+
+**[50.98s → 55.18s]** working really with and work we don't have access to fine tuning
+
+**[55.18s → 55.86s]** as a service.
+
+**[55.86s → 60.62s]** So I would have to do a Thursdays option.
+
+**[60.62s → 63.34s]** So I hope you really enjoy it, class with Aaron.
+
+**[63.34s → 65.26s]** Today's going to be a slight change of pace
+
+**[65.26s → 67.50s]** where we are switching back to agent systems.
+
+**[67.50s → 70.18s]** So keep fine tuning it back to your head.
+
+**[70.18s → 73.10s]** But let's talk a little bit about building out
+
+**[73.10s → 81.38s]** graphs of agents doing different tasks. So, Lyng Graph is going to be a library built in the
+
+**[81.38s → 88.18s]** LankSmeth ecosystem, so it's going to support LankSmeth, LankChain, and work really well together.
+
+**[89.30s → 97.38s]** It's built with the design of Apache Beam and Preble in mind to allow a coordination and
+
+**[97.38s → 102.38s]** and check wanting multiple chains, but really multiple agents.
+
+**[102.38s → 106.18s]** Most of the APIs are going to seem really familiar.
+
+**[106.18s → 108.18s]** If you're already familiar with Network X,
+
+**[108.18s → 112.18s]** so it sounds like somebody that's had some interactions with Neo4j,
+
+**[112.18s → 116.18s]** like a lot of the concepts shouldn't be too foreign,
+
+**[116.18s → 121.18s]** nodes, edges, state, should all be familiar to those of you that are familiar with graphs.
+
+**[121.18s → 122.18s]** If you're not, that's okay.
+
+**[122.18s → 134.64s]** So at the end of the class,
+
+**[134.64s → 136.80s]** we'll talk about the components of an AI graph,
+
+**[136.80s → 139.64s]** graph and AI, chain graph.
+
+**[139.64s → 141.84s]** There's actually just a distinguish,
+
+**[141.84s → 144.24s]** and I'll talk about this on the next section a little bit.
+
+**[144.24s → 146.80s]** There's actually a bunch of different types of AI graph
+
+**[146.80s → 148.52s]** structures.
+
+**[148.52s → 153.46s]** So in this use case, we're just talking about one graph.
+
+**[153.46s → 154.94s]** We're going to talk about the value of state
+
+**[154.94s → 157.50s]** in this particular application and why
+
+**[157.50s → 162.54s]** this useful property to allow for multi-agent systems.
+
+**[162.54s → 164.66s]** We'll talk about use cases for graphs.
+
+**[164.66s → 167.70s]** when you would enter that level of complexity,
+
+**[167.70s → 169.78s]** because if you're thinking about an application
+
+**[169.78s → 171.46s]** for developer productivity,
+
+**[171.46s → 174.82s]** like a lot of the stuff we showed you is quick wins,
+
+**[174.82s → 178.34s]** like stuff that you can implement to help summarize,
+
+**[178.34s → 181.86s]** read me, is on commence to help you review code.
+
+**[181.86s → 183.38s]** There's a bunch of different stuff
+
+**[183.38s → 185.86s]** that could accelerate your workflows developer.
+
+**[185.86s → 189.58s]** Now we're beginning to enter a level of system
+
+**[189.58s → 192.98s]** that is really your building a tool for other developers,
+
+**[192.98s → 198.62s]** and that's much more comprehensive and requires a lot more thought.
+
+**[198.62s → 202.41s]** We'll talk about the multi-agent graph concept.
+
+**[202.41s → 206.37s]** I cannot elude it to this, but this is why one of the reasons you want graphs,
+
+**[206.37s → 209.21s]** they're really good for multi-agent systems and even in the loop stuff.
+
+**[209.21s → 214.69s]** The last three sections, four, five, and six on the slides are basically different
+
+**[214.69s → 221.41s]** in versions of graph implementations, multi-agents, supervisor and hierarchical collaboration
+
+**[221.41s → 224.45s]** or all different paradigms that we'll discuss.
+
+**[226.23s → 231.23s]** As you guys know, today's class will be a lot of conceptual work.
+
+**[231.23s → 236.05s]** There will be code as attached to the repo for today's class.
+
+**[236.05s → 238.75s]** You are welcome to set that up and run it if you'd like.
+
+**[238.75s → 240.65s]** There's no requirement to do that though.
+
+**[240.65s → 243.19s]** I'll be demonstrating the code that's in our repository
+
+**[243.19s → 244.99s]** as we go through class today.
+
+**[244.99s → 249.99s]** And then Wednesday's class will be hands-on keyboard project style.
+
+**[263.41s → 266.97s]** Okay, so it's just not my little fun laser pointer thing is not working.
+
+**[268.20s → 275.89s]** So the components of AI graphs, we're going to break it down into the concept of nodes and edges.
+
+**[275.89s → 282.69s]** In this particular example, a node is going to represent some kind of function.
+
+**[282.69s → 287.57s]** So for us, when it's executed, it's going to receive some kind of input data, process that data,
+
+**[287.57s → 291.01s]** and then return the data onto the next node in the graph, BZB and edge.
+
+**[291.01s → 294.67s]** And edge is going to represent that path, right?
+
+**[294.67s → 296.81s]** The connection between different nodes.
+
+**[296.81s → 299.91s]** And it's also going to have some indication of flow.
+
+**[299.91s → 301.59s]** So edges can be static.
+
+**[301.59s → 303.93s]** Like there's always data that flows between one node
+
+**[303.93s → 306.51s]** to the next node.
+
+**[306.51s → 309.71s]** Or they can be some kind of conditional or dynamic connection.
+
+**[309.71s → 315.36s]** So yeah, I can decide to go here versus there.
+
+**[315.36s → 317.44s]** And you might be thinking if you're
+
+**[317.44s → 320.16s]** familiar with the concept of a DAG or a directic oscillate
+
+**[320.16s → 327.32s]** graph, like what's the difference between a DAG and a graph in this concept. Really state
+
+**[327.32s → 334.72s]** is probably the big concept difference between this and a DAG. And then also the concepts
+
+**[334.72s → 340.80s]** of having that dynamic connection. Of course, you can do like if then statements and all kinds
+
+**[340.80s → 351.15s]** of stuff and a DAG. But having that state information in a DAG graph is going to be a big change.
+
+**[351.15s → 354.15s]** So just to walk you through this example,
+
+**[354.15s → 357.91s]** let's say I'm just trying to generate some kind of code.
+
+**[357.91s → 361.23s]** I'm gonna ask it to give it my prompts,
+
+**[361.23s → 364.63s]** with how my generation node's gonna generate something.
+
+**[364.63s → 369.63s]** It's gonna go into my answer and create a nice little object.
+
+**[371.08s → 373.12s]** Pre-M will be free me, import statements,
+
+**[373.12s → 375.80s]** the actual code, and then I'm gonna have another node
+
+**[375.80s → 377.20s]** that checks the code.
+
+**[377.20s → 380.96s]** And does it pass?
+
+**[380.96s → 384.20s]** No, then it goes on to execute it.
+
+**[384.20s → 386.52s]** I understand where it fails.
+
+**[386.52s → 390.92s]** And if it fails, then I'm gonna go back to the drawing board.
+
+**[390.92s → 393.12s]** You know, I'm gonna take the stack trace, go back
+
+**[393.12s → 395.38s]** and use that as additional retrieval
+
+**[395.38s → 398.88s]** and then information to do regionering the code.
+
+**[398.88s → 400.16s]** And go through the process again
+
+**[400.16s → 411.05s]** until the code doesn't fail anymore.
+
+**[411.05s → 413.85s]** So state is going to be the dictionary
+
+**[413.85s → 415.93s]** or relative information, right?
+
+**[415.93s → 420.73s]** a state that's passed on from one node to the next node
+
+**[420.73s → 423.09s]** of the graph, and it's going to be represented
+
+**[423.09s → 425.90s]** as the graph is executed.
+
+**[425.90s → 428.98s]** This is going to be for our purposes,
+
+**[428.98s → 431.14s]** going back to this example, really important
+
+**[431.14s → 433.34s]** for deciding what to do next.
+
+**[433.34s → 435.62s]** So the state of the graph at any one point
+
+**[435.62s → 439.46s]** tells us what's going on with our execution.
+
+**[439.46s → 442.02s]** So like, hey, I'm actually on this node right now.
+
+**[442.02s → 443.70s]** That state is important.
+
+**[443.70s → 450.20s]** that test did with the code checks, double check in the see if the password failed, and I'm deciding what to do next.
+
+**[450.20s → 454.94s]** So there's always a state in our model.
+
+**[454.94s → 465.94s]** It also means that it allows us to begin to pause portions of the state in the graph and create what it might be called checkpoints or breakpoints.
+
+**[465.94s → 468.94s]** And we'll talk about those in a little bit.
+
+**[468.94s → 483.61s]** But here is a slightly different example, which will break down into code that should be familiar to you. It's a research report writer. So we're going to write our query.
+
+**[483.61s → 487.37s]** We're going to go search our browser for information.
+
+**[487.37s → 490.61s]** That's going to hit our search APIs.
+
+**[490.61s → 493.73s]** It's going to start to edit some information together.
+
+**[493.73s → 495.73s]** That's going to go to our researcher.
+
+**[495.73s → 499.13s]** Our researcher is going to view everything together.
+
+**[499.13s → 503.00s]** And that's going to go to an editor or a visor.
+
+**[503.00s → 506.68s]** And that information is going to go back through and through to our state.
+
+**[506.68s → 509.44s]** And then finally, it's going to go to the writer,
+
+**[509.44s → 512.32s]** who's going to stitch everything together with the research.
+
+**[512.32s → 519.20s]** and then finally to a publisher. And I might have multiple editors doing this area of the graph
+
+**[519.20s → 525.60s]** multiple times. Like I might have a researcher doing, you know, let's say I'm writing a new thought
+
+**[525.60s → 534.08s]** piece on, you know, the next best program in languages. You know, I might have a researcher research rust.
+
+**[534.08s → 543.34s]** the future of Python, Julia, you know, in my picks and old languages just for shiggles,
+
+**[543.34s → 547.74s]** like foretraned, you know, and each of those researchers is stitching everything together.
+
+**[548.97s → 556.00s]** So this class research state is telling us what has been done
+
+**[557.36s → 567.55s]** as we go through this final researcher report graph workflow. So research research
+
+**[568.11s → 576.59s]** state tells us what's been done and hasn't been done as we traverse this particular workflow.
+
+**[578.59s → 584.03s]** So we're going to regard query, get that data, it's going to update the task,
+
+**[584.91s → 588.51s]** then we're going to do an initial research, that's going to update the initial research.
+
+**[589.79s → 594.11s]** We're going to create the sections, that's what the editor is going to do. And that way I have,
+
+**[594.11s → 598.67s]** I know exactly what's going on in my graph and I'm traveling.
+
+**[605.60s → 610.00s]** Now you might be wondering too and I hope you are. I hope you've gotten really curious about this.
+
+**[613.85s → 621.13s]** So we talked about tools, chains, agents, and now graphs, which do I use and why.
+
+**[624.14s → 628.62s]** So you can think about it in the level of sophistication, right? Tool being the very simple thing.
+
+**[629.50s → 633.58s]** So I might make my model have access to tools.
+
+**[634.38s → 646.38s]** You know, my chat and I could pick which tool to use, but I may not have them chained together in a certain way. So what like where tools are the table stakes for all three of these.
+
+**[646.38s → 653.41s]** Chains agents and graphs are in this particular table ordered in sophistication.
+
+**[653.41s → 657.41s]** So chains are of course sequential execution,
+
+**[657.41s → 661.41s]** highly composable and modular.
+
+**[661.41s → 664.41s]** Right, we took a look at LCEL
+
+**[664.41s → 667.41s]** and talked about some of the sequential execution
+
+**[667.41s → 672.92s]** and chaining language you can use to create those modular chains.
+
+**[672.92s → 675.92s]** Agents are more dynamic.
+
+**[675.92s → 678.92s]** They're actually going to be interacting with a certain environment.
+
+**[678.92s → 680.92s]** I make dynamic decisions.
+
+**[680.92s → 687.00s]** they're not necessarily sequential. They can be self-reflexive and dual kinds of stuff.
+
+**[688.28s → 693.88s]** Graphs are the next level of complexity, where that node and edge representation is driving
+
+**[695.24s → 699.16s]** very complex visualization of different dependencies of different agents.
+
+**[700.04s → 708.81s]** So for us, right, using a graph is going to provide that clear understanding of what's actually
+
+**[708.81s → 715.69s]** going on in my code base. So when I have a huge set of agents and a huge map of things happening,
+
+**[715.69s → 722.68s]** it's going to help you visualize and understand what your code base is doing. Now that gets clutter
+
+**[722.68s → 731.40s]** pretty quickly and can be overly complicated. So it may be too much for many use cases.
+
+**[733.74s → 738.88s]** We've tried some multi-agent architectures on a couple of trivial problems at work.
+
+**[739.68s → 743.60s]** and graphs and multi-agent architectures didn't work
+
+**[743.60s → 745.92s]** for those trivial problems.
+
+**[745.92s → 747.68s]** And by trivial, I mean very trivial,
+
+**[747.68s → 753.99s]** like reviewing large corpses of video data
+
+**[753.99s → 756.95s]** and figuring out how to write coherence,
+
+**[758.07s → 761.83s]** blogs and a certain style of all those videos.
+
+**[761.83s → 764.55s]** Instead, we ended up finding that chains
+
+**[764.55s → 766.75s]** were actually the best to use for that use case.
+
+**[766.75s → 773.89s]** But you're wondering then, what are the use cases?
+
+**[773.89s → 776.65s]** We'll talk a lot more about graph use cases,
+
+**[776.65s → 781.41s]** but at our ultra high level knowledge representation
+
+**[781.41s → 783.17s]** and complex workflows.
+
+**[783.17s → 786.57s]** Those are the two biggest use cases for our graphs.
+
+**[786.57s → 788.61s]** Like I want to do a bunch of stuff at agents.
+
+**[788.61s → 792.13s]** I want to visualize a complex process.
+
+**[792.13s → 794.33s]** Go ahead and use graphs.
+
+**[794.33s → 796.93s]** The other reason which is not listed here too
+
+**[796.93s → 801.93s]** is that if you use the chain paid services,
+
+**[801.93s → 807.93s]** so if your company decides to invest in using LangWrap Hostin,
+
+**[807.93s → 813.93s]** it makes it really easy for you to host agents and graphs there.
+
+**[813.93s → 817.64s]** So that is another advantage.
+
+**[817.64s → 822.18s]** Before I rehash the pros and cons and use cases of chains and agents,
+
+**[822.18s → 825.18s]** I'd like to turn it back to you all.
+
+**[825.18s → 832.68s]** So far of what you've heard from graphs, do you have any confusion about what to use and
+
+**[832.68s → 835.52s]** where, or any questions so far?
+
+**[835.52s → 846.42s]** Well, is a graph basically more advanced chain that can, or the next step is decided by
+
+**[846.42s → 852.14s]** the agent, can be dynamic and decided by the agent versus being static, is that, would
+
+**[852.14s → 855.32s]** you say that's the main difference?
+
+**[855.32s → 857.72s]** It's more like a graph of agents.
+
+**[857.72s → 860.44s]** Maybe that's an imperfect analogy,
+
+**[860.44s → 863.36s]** but maybe that's the best way to describe it.
+
+**[863.36s → 866.32s]** It's like agents that have state
+
+**[866.32s → 868.12s]** about what the other agents are doing
+
+**[868.12s → 873.58s]** and the past set of information back and forth.
+
+**[873.58s → 876.02s]** I also remember in the previous lesson
+
+**[876.02s → 880.02s]** we've spoken about how the further you let
+
+**[882.02s → 886.54s]** LLMs regurgitate their own input and output
+
+**[886.54s → 890.70s]** without an intermediate deterministic step
+
+**[890.70s → 893.30s]** or human in the loop, the more likely you are
+
+**[893.30s → 896.54s]** to end up with garbage.
+
+**[896.54s → 897.90s]** But in this case, it looks like we're
+
+**[897.90s → 902.94s]** changing multiple LLMs without an intermediate validation
+
+**[902.94s → 906.34s]** step of some sort, a non-nil element.
+
+**[906.34s → 906.82s]** Yeah.
+
+**[906.82s → 911.58s]** That's actually, I think, one of the really fun applications
+
+**[911.58s → 916.06s]** of graphs is you can actually add any human in the loop step.
+
+**[916.06s → 919.50s]** And there's a bunch of different paradigms on how to do that.
+
+**[919.50s → 925.11s]** So you can create a checkpoint in your graph flow
+
+**[925.11s → 927.79s]** to make sure that everything's going right.
+
+**[927.79s → 930.83s]** And there's a couple different ways to structure that.
+
+**[930.83s → 933.47s]** But in the API calls, I think there's
+
+**[933.47s → 935.35s]** something called a checkpoint and something called a break
+
+**[935.35s → 939.47s]** point, both of which can be used to create a human and the loop
+
+**[939.47s → 949.58s]** moment to validate what's going on.
+
+**[949.58s → 960.56s]** OK, thanks.
+
+**[960.56s → 969.40s]** So here's an example of a multi agent graph.
+
+**[969.40s → 973.44s]** So we'll take a look at this code in just a second.
+
+**[973.44s → 978.44s]** But this is going back to that research.
+
+**[978.44s → 981.32s]** Application we talked about earlier in class.
+
+**[981.32s → 985.04s]** So if I wanted to ask a query, like generate a chart of average
+
+**[985.04s → 988.60s]** and mature in a last, however, the past decade,
+
+**[988.60s → 991.32s]** well, first, I make that prompt as a user.
+
+**[991.32s → 993.64s]** That goes first to the researcher.
+
+**[993.64s → 997.73s]** The researcher is going to call a search function.
+
+**[997.73s → 1005.29s]** That search function is then going to go over to a routing function and decide what to
+
+**[1005.29s → 1006.29s]** do.
+
+**[1006.29s → 1009.65s]** Is it going to call a tool?
+
+**[1009.65s → 1013.65s]** Is it going to generate the chart?
+
+**[1013.65s → 1017.01s]** But the router first is probably going to start with a tool call.
+
+**[1017.01s → 1020.82s]** So I'm going to get that information.
+
+**[1020.82s → 1023.30s]** I'm going to call a tool.
+
+**[1023.30s → 1030.11s]** I'm going to say research everything, send everything back to the router, decide which tool
+
+**[1030.11s → 1037.57s]** I need to use, go back to the charge generator, generate the chart, and then send the chart
+
+**[1037.57s → 1042.23s]** output back to the router and decide at the answer's final, and then send everything back
+
+**[1042.23s → 1043.23s]** to the user.
+
+**[1043.23s → 1046.91s]** So you can see, right, this is a pretty complex flow.
+
+**[1046.91s → 1048.55s]** It's not necessarily linear.
+
+**[1048.55s → 1055.43s]** And so we have that state being passed back and forth with our researcher continuously trying
+
+**[1055.43s → 1058.07s]** to find the information that answers the question,
+
+**[1058.07s → 1060.31s]** generated chart of average temperature in Alaska.
+
+**[1060.31s → 1066.34s]** So the researcher is constantly trying to learn more until we have enough information
+
+**[1066.34s → 1067.46s]** that we can generate at chart.
+
+**[1069.08s → 1076.92s]** Now, one thing that's important to be wary of once we start getting into these types of graphs
+
+**[1076.92s → 1082.05s]** and we've already done it with agents a little bit,
+
+**[1082.05s → 1086.05s]** is that you can start to execute arbitrary code.
+
+**[1086.05s → 1091.05s]** So it's important to be aware that your model
+
+**[1091.05s → 1096.05s]** and graph to me doing this, especially for us as developers
+
+**[1096.05s → 1100.05s]** are trying to build use cases for developer productivity workflows.
+
+**[1100.05s → 1105.87s]** So our code execution is actually the thing that makes the chart
+
+**[1105.87s → 1107.35s]** the chart, not the LLM, right?
+
+**[1107.35s → 1109.15s]** The LLM's just finding the broad data.
+
+**[1112.35s → 1114.47s]** Right, let's take a look at the code
+
+**[1114.47s → 1135.01s]** of implementing the multi-agent graph.
+
+**[1135.01s → 1138.73s]** So this example is just gonna break down
+
+**[1138.73s → 1141.05s]** what's going on at a super high level
+
+**[1141.05s → 1143.69s]** before we go into the next example with the code.
+
+**[1146.26s → 1150.62s]** So you can see what's going on with the graph structure.
+
+**[1150.62s → 1153.78s]** So we're gonna initialize an empty graph first.
+
+**[1153.78s → 1160.08s]** That's what we're going to model on all of the steps that we're going to add.
+
+**[1160.08s → 1165.08s]** This example is just going to add a Oracle, which is going to call the model at the given
+
+**[1165.08s → 1166.27s]** input.
+
+**[1166.27s → 1174.67s]** Then we're going to add an edge to the Oracle node, and that is going to mean that our graph
+
+**[1174.67s → 1177.07s]** is going to end after the current node.
+
+**[1177.07s → 1182.73s]** There's very simple graph being ends, nothing else.
+
+**[1182.73s → 1191.08s]** we're going to start our graph at the Oracle entry point and then compile everything together.
+
+**[1192.58s → 1196.82s]** So, right, super dumb graph use case, it's a single node,
+
+**[1198.84s → 1201.40s]** Oracle, but just to show you some of the
+
+**[1204.06s → 1207.10s]** nomenclature and API calls are going to be happening underneath the hood.
+
+**[1209.16s → 1211.64s]** And then our prompt is simply what is one plus one.
+
+**[1211.64s → 1234.12s]** And let's take a look at that.
+
+**[1234.12s → 1236.28s]** All right, y'all, I'm gonna go check on something real quick.
+
+**[1236.28s → 1237.28s]** I'll be right back.
+
+**[1238.24s → 1267.46s]** Give me just a second.
+
+**[1267.46s → 1268.58s]** Make it a little bit softer,
+
+**[1268.58s → 1270.34s]** which I think is probably a good thing in the context
+
+**[1270.34s → 1273.58s]** of spell and using words like collaboration,
+
+**[1273.58s → 1274.94s]** final answer,
+
+**[1288.54s → 1307.93s]** about to do our key imports.
+
+**[1307.93s → 1311.97s]** Then our next step is going to be doing our tools.
+
+**[1311.97s → 1315.09s]** So we want some pipeline code,
+
+**[1315.09s → 1320.09s]** Remember that the use case generated chart of information in Alaska to mature in Alaska.
+
+**[1320.09s → 1326.59s]** We want the Python code to generate our charts.
+
+**[1326.59s → 1332.20s]** And we want to outputs that information at the very end.
+
+**[1332.20s → 1340.02s]** And here we're this is actually where we're running the code.
+
+**[1340.02s → 1344.02s]** Important to know though, right, the LLM is generated code.
+
+**[1344.02s → 1348.34s]** So if you can see here annotated code,
+
+**[1348.34s → 1354.32s]** this is Python code and we're using a Python comment in here.
+
+**[1354.32s → 1356.44s]** So we don't know what the code is going to be into the L
+
+**[1356.44s → 1357.36s]** and gives it to us.
+
+**[1357.36s → 1380.90s]** In other words, now we're going to create our graph.
+
+**[1380.90s → 1383.50s]** This is the agent state, the thing that's
+
+**[1383.50s → 1386.22s]** going to maintain our information about where
+
+**[1386.22s → 1393.35s]** we're at and traversing the graph.
+
+**[1393.35s → 1396.31s]** Now this is where things started to get really fun and messy.
+
+**[1396.31s → 1400.03s]** So in the very basic simple message graph, I showed you
+
+**[1400.03s → 1403.43s]** which is the Oracle and one node graph.
+
+**[1403.43s → 1405.15s]** Right, there's just that one node.
+
+**[1405.15s → 1408.95s]** Here is where we begin to define all of the connections
+
+**[1408.95s → 1410.27s]** that are happening.
+
+**[1410.27s → 1414.72s]** So what we're saying is, here's an agent node.
+
+**[1414.72s → 1422.04s]** It's going to start everything, kind of our stutter node.
+
+**[1422.04s → 1425.82s]** And then we're going to have our research agents.
+
+**[1425.82s → 1427.98s]** It's going to have access to tably, which
+
+**[1427.98s → 1430.50s]** is the search API tool we used earlier.
+
+**[1432.47s → 1435.78s]** And then we're going to have our chart generator node.
+
+**[1435.78s → 1437.34s]** And then we're going to assign the functions
+
+**[1437.34s → 1444.23s]** that are available to those.
+
+**[1444.23s → 1446.95s]** You can also, and a lot of people do this,
+
+**[1446.95s → 1452.15s]** you can also use different LLLMs, both in chains.
+
+**[1452.15s → 1456.78s]** And well, I haven't seen it that much in chains,
+
+**[1456.78s → 1460.22s]** but I've seen it done in agents and in graphs,
+
+**[1460.22s → 1462.26s]** implementations where you switch LLMs.
+
+**[1462.26s → 1466.66s]** So like save for generating your code for your chart,
+
+**[1466.66s → 1469.42s]** like mixed rule does a better job at that.
+
+**[1469.42s → 1472.30s]** Or I think somebody was just talking about Opus,
+
+**[1472.30s → 1474.10s]** it was really good at code generation.
+
+**[1474.10s → 1476.34s]** You could switch to using Opus for this,
+
+**[1476.34s → 1495.46s]** but Jima or Chatchee D.P. for your research agent.
+
+**[1495.62s → 1497.66s]** So our tool node in that graph,
+
+**[1497.66s → 1499.74s]** we were just looking at kind of,
+
+**[1499.74s → 1502.38s]** we've got our main executor tool node
+
+**[1502.38s → 1504.91s]** that's gonna have everything choose from.
+
+**[1504.91s → 1509.80s]** And then we have our router, right, tool call and continue
+
+**[1509.80s → 1519.81s]** making the decisions between which function to go to next.
+
+**[1519.81s → 1522.53s]** So our researcher, our chart generator,
+
+**[1522.53s → 1526.90s]** and our call tool, and then our conditional edges,
+
+**[1526.90s → 1529.38s]** the stuff you solve the dotted lines in between
+
+**[1529.38s → 1533.74s]** going through the graph.
+
+**[1533.74s → 1536.06s]** I know I'm just lazy to this code.
+
+**[1537.02s → 1539.34s]** So if you all have questions, feel free.
+
+**[1540.30s → 1546.30s]** I'm more than happy to spend some time answering questions.
+
+**[1546.30s → 1551.75s]** We need to have an additional edge function a bit.
+
+**[1552.03s → 1552.99s]** I don't know about understanding
+
+**[1552.99s → 1558.08s]** like what the third parameter detection area is about.
+
+**[1558.08s → 1559.88s]** Let's see this one.
+
+**[1559.88s → 1563.58s]** Yeah, just any of them if we could.
+
+**[1563.58s → 1568.10s]** Yeah, so this is what this is saying is like what's next.
+
+**[1568.10s → 1572.06s]** So, right, like these are the optional edges
+
+**[1572.06s → 1573.38s]** that I can go from.
+
+**[1573.38s → 1575.34s]** So like these are the conditional edges,
+
+**[1575.34s → 1577.54s]** chart generator, router.
+
+**[1577.54s → 1579.86s]** these are what I would do next.
+
+**[1579.86s → 1584.36s]** So, continue, which would mean to use the researcher again,
+
+**[1585.58s → 1588.42s]** tool call would mean to use tool call again,
+
+**[1588.42s → 1590.22s]** end would mean end.
+
+**[1590.22s → 1593.30s]** And those are the message and the appropriate note
+
+**[1593.30s → 1598.54s]** that it would use next.
+
+**[1598.54s → 1605.26s]** Okay, why are the key and value always call tool?
+
+**[1605.26s → 1606.30s]** Right here.
+
+**[1606.30s → 1608.37s]** Yeah.
+
+**[1608.37s → 1610.21s]** You know, I'm not sure actually,
+
+**[1611.17s → 1613.94s]** I have to double check here.
+
+**[1613.94s → 1617.78s]** I think the node itself is called tool.
+
+**[1617.78s → 1622.54s]** And then I think our agent is also called call tool.
+
+**[1622.54s → 1662.75s]** So that might be by, let's take a look.
+
+**[1662.75s → 1665.27s]** Yeah, so the router is evaluating
+
+**[1665.27s → 1668.70s]** that literal call tool.
+
+**[1668.70s → 1676.21s]** Previous agent is evoking a tool, return call tool.
+
+**[1676.21s → 1679.86s]** I think that's just what it's saying is,
+
+**[1679.86s → 1681.02s]** these are the options.
+
+**[1681.02s → 1698.58s]** This is what to do next.
+
+**[1698.58s → 1701.58s]** So this is a visualization of what our graph looks like.
+
+**[1701.58s → 1703.74s]** Because I already saw this.
+
+**[1703.74s → 1707.28s]** So start researcher,
+
+**[1707.28s → 1712.88s]** cool tool, call tool, can either go back to the researcher
+
+**[1713.14s → 1714.86s]** or go back to charge generator,
+
+**[1714.86s → 1719.42s]** charge generator, call it tool again.
+
+**[1719.42s → 1721.87s]** And then we create that loop.
+
+**[1721.87s → 1723.83s]** And then finally, the charge generator
+
+**[1723.83s → 1725.91s]** is the one that controls the end.
+
+**[1725.91s → 1729.48s]** Charge is generated, then it gets the end signal.
+
+**[1729.48s → 1732.52s]** The researcher can also end as well.
+
+**[1733.68s → 1737.36s]** Presumably that's if something doesn't go well, right?
+
+**[1737.36s → 1744.90s]** Like, questions and answerable or something.
+
+**[1744.90s → 1747.98s]** So let's try fetching a slightly different question.
+
+**[1747.98s → 1750.30s]** Fetch the UK's GDP over the past five years
+
+**[1750.30s → 1751.78s]** and draw a line of it.
+
+**[1751.78s → 1756.18s]** Once you finish, once you coat it up, finish, right?
+
+**[1756.18s → 1758.38s]** So we're telling it, okay, this beard done
+
+**[1758.38s → 1769.43s]** once you complete this task.
+
+**[1769.43s → 1778.85s]** All right, so it's telling us where it got the data.
+
+**[1778.85s → 1780.15s]** Here's, we got a really helpful message,
+
+**[1780.15s → 1783.17s]** the search results, not provide exact numerical values,
+
+**[1783.17s → 1793.03s]** and write a way extractable format.
+
+**[1793.03s → 1794.99s]** And so your team is dialogue right
+
+**[1794.99s → 1796.79s]** between the agents in the graph,
+
+**[1796.79s → 1799.27s]** the researcher in a call tool,
+
+**[1799.27s → 1801.43s]** where the researcher is analyzing data
+
+**[1801.43s → 1823.55s]** that's giving that we're getting.
+
+**[1823.55s → 1825.33s]** I love this.
+
+**[1825.33s → 1826.73s]** Seems we have reached an impasse
+
+**[1826.73s → 1828.85s]** in attending the exact numerical GDP data
+
+**[1828.85s → 1843.72s]** for the UK for 2018 and 2022.
+
+**[1843.72s → 1844.72s]** We're just waiting on that.
+
+**[1844.72s → 1856.78s]** charts, awesome, right?
+
+**[1856.78s → 1861.10s]** Like pretty powerful stuff.
+
+**[1861.10s → 1862.94s]** It's be able to generate a chart
+
+**[1862.94s → 1870.91s]** like that automatically.
+
+**[1870.91s → 1873.33s]** Best part though is even after it generates the chart,
+
+**[1873.33s → 1875.23s]** though, it's still having dialogue
+
+**[1875.23s → 1876.63s]** about what's going on, right?
+
+**[1876.63s → 1878.91s]** So it generates the chart.
+
+**[1880.51s → 1884.35s]** And we told it to end once you code it,
+
+**[1884.35s → 1887.03s]** finish, draw a line graph, finish up.
+
+**[1887.03s → 1903.42s]** This is where something like an intervillage platform like Langsmith is extremely important for us to understand and actually read what's going on here and like why it's still moving through this dialogue.
+
+**[1903.42s → 1915.70s]** I am not interrupted here.
+
+**[1915.70s → 1937.78s]** We can give it a slightly different example if we wanted to, but I do want to keep us moving.
+
+**[1937.78s → 1947.78s]** So slightly different flavor of so if what we just saw is a multi agent graph where we've got a researcher agent, we've got a chart generator agent.
+
+**[1947.78s → 1951.58s]** I'm in a router agent.
+
+**[1951.58s → 1958.82s]** All of which have a series of tools they can call from.
+
+**[1958.82s → 1960.82s]** Here, we're going to switch things up a little bit.
+
+**[1960.82s → 1966.04s]** But we're going to have our user, but our users are only going to interface with the supervising
+
+**[1966.04s → 1967.04s]** agents.
+
+**[1967.04s → 1973.18s]** And the supervising agent is going to have sub agents that it decides whether or not to
+
+**[1973.18s → 1974.18s]** call on.
+
+**[1974.18s → 1975.18s]** Right?
+
+**[1975.18s → 1976.18s]** They're actually all optional routes.
+
+**[1976.18s → 1981.54s]** See these nice fun dash lines are optional routes to the agent, but the agents are required
+
+**[1981.54s → 1986.53s]** to report the results back to the supervisor.
+
+**[1986.53s → 1989.07s]** This is a great use case.
+
+**[1989.07s → 1993.39s]** Once you start to get into something like a map-reduced paradigm, which line chain graphs
+
+**[1993.39s → 1994.39s]** are really good at supporting.
+
+**[1994.39s → 1997.71s]** So, like, say you've needed a process of buncher data at once.
+
+**[1997.71s → 2002.19s]** You could, you know, hand it to a supervising agent and that supervising agent could figure
+
+**[2002.19s → 2009.38s]** out, you know, the best strategies to map things up and plan a larger execution code.
+
+**[2009.38s → 2016.50s]** So that could be really great in the use case of writing unit tests, like a project or
+
+**[2016.50s → 2020.66s]** review in unit tests that you might currently have written in your code base.
+
+**[2021.22s → 2025.94s]** But you say hey, Supervisor, here's the set of unit tests. You know,
+
+**[2025.94s → 2058.26s]** have your agents evaluate all of those different unit tests. So in this use case, it's still the
+
+**[2058.26s → 2066.10s]** same flavor, right? We're going to have a research, a problem, and take a look at creating plots.
+
+**[2066.10s → 2070.50s]** We're just switching the paradigm so you can see the slight differences in implementation.
+
+**[2070.50s → 2095.57s]** Right, it's create agent is just to help her function to help us create new agents like not just
+
+**[2095.57s → 2126.38s]** boilerplate code in our use case. So these are the researcher and coder are going to be the two
+
+**[2126.38s → 2135.28s]** members of our function. So you're a supervisor, task admin and conversation between our researcher and
+
+**[2135.28s → 2149.53s]** code. So given the following request, you're going to respond to within with the worker to act next. So at each worker will perform a task and respond to the results and status when finish respond with finish.
+
+**[2149.53s → 2165.06s]** So our team supervisor that supervisors the researchers and the coders is going to be a nice LLM node.
+
+**[2165.06s → 2169.26s]** For this particular use case, we use the open AI function calling to make it easier for
+
+**[2169.26s → 2170.26s]** output parsing.
+
+**[2170.26s → 2175.48s]** As you guys have seen, you can do this in native.
+
+**[2175.48s → 2180.72s]** Well, this particular highlighting is native open AI.
+
+**[2180.72s → 2185.93s]** If you want to work with the abstraction of the chain, you can.
+
+**[2185.93s → 2192.80s]** I think I'm actually not sure why Ash shows to do this particular way of parsing the output.
+
+**[2192.80s → 2195.32s]** It's one of the questions that I have for him
+
+**[2195.32s → 2196.96s]** that I didn't have a chance to touch base
+
+**[2196.96s → 2197.84s]** the time of about.
+
+**[2199.74s → 2205.91s]** But there's also ways to parse this in line chain too.
+
+**[2205.91s → 2207.55s]** So then from our prompts,
+
+**[2209.82s → 2211.46s]** this is where we're saying,
+
+**[2211.46s → 2213.46s]** given the conversation about who should act next,
+
+**[2213.46s → 2215.14s]** and that's gonna be what our supervisor
+
+**[2215.14s → 2251.19s]** used to determine whether or not to finish.
+
+**[2251.19s → 2253.23s]** Again, code reagent caution,
+
+**[2253.23s → 2256.95s]** run an X-Fedar arbitrary Python code.
+
+**[2256.95s → 2259.79s]** Our agent state is what we're using to store input
+
+**[2259.79s → 2262.87s]** from an end to each node of the graph.
+
+**[2262.87s → 2268.21s]** And then we're creating our workflow
+
+**[2268.21s → 2270.81s]** at a researcher and coder and supervisor
+
+**[2270.81s → 2278.62s]** knows the graph.
+
+**[2278.62s → 2284.92s]** Now before you were adding the nodes to the graph,
+
+**[2284.92s → 2286.02s]** for member and members,
+
+**[2286.02s → 2288.96s]** those are our researcher and coders.
+
+**[2288.96s → 2292.86s]** We always want them to have an edge back to the supervisor.
+
+**[2292.86s → 2294.70s]** So you saw on the graph in the slides
+
+**[2294.70s → 2296.38s]** I had a solid line, right?
+
+**[2296.38s → 2299.70s]** Adding a hard edge is making that
+
+**[2299.70s → 2302.72s]** a required report back.
+
+**[2302.72s → 2306.00s]** But conditional for each of the members,
+
+**[2307.28s → 2309.08s]** I can have a conditional map of finish
+
+**[2309.08s → 2312.80s]** and I have conditional edges of the supervisor
+
+**[2312.80s → 2315.95s]** onto that particular agent.
+
+**[2315.95s → 2319.36s]** So this code, right, conditional edges back
+
+**[2319.36s → 2323.74s]** from the supervisor to the node.
+
+**[2323.74s → 2326.02s]** And then finally, start with the supervisor.
+
+**[2326.02s → 2334.14s]** Don't go to one of the workers first.
+
+**[2334.14s → 2337.42s]** So we're gonna start with a couple different examples.
+
+**[2337.42s → 2344.11s]** start with a really simple one, CodeHell world and print it to the terminal.
+
+**[2344.11s → 2362.91s]** Actually maybe, yeah, we'll go about.
+
+**[2362.91s → 2366.53s]** So Supervisor decided to call the code or next, right?
+
+**[2366.53s → 2371.61s]** The code or read the code and the Supervisor determined that
+
+**[2371.61s → 2376.29s]** the project was finished.
+
+**[2376.29s → 2380.32s]** Okay, now this is starting to get a little bit more complicated.
+
+**[2380.32s → 2393.52s]** So now we're going to write a brief researcher report on Pekas.
+
+**[2393.52s → 2396.32s]** So the Supervisor is determining that the researcher
+
+**[2396.32s → 2414.38s]** should be next.
+
+**[2414.38s → 2426.14s]** Research is doing this thing because they're small,
+
+**[2426.14s → 2427.86s]** endless animals.
+
+**[2427.86s → 2447.06s]** Let's try just one example where we use both.
+
+**[2447.06s → 2460.95s]** So let's try something going back to that chart example.
+
+**[2460.95s → 2463.40s]** I'm gonna switch actually,
+
+**[2463.40s → 2480.20s]** chart of,
+
+**[2480.20s → 2488.47s]** create a chart of Japanese population trends from 1950 to 2022.
+
+**[2488.47s → 2496.63s]** And I'm gonna add just a little bit more information.
+
+**[2496.63s → 2499.43s]** Earth rate should be,
+
+**[2499.43s → 2518.41s]** the why.
+
+**[2518.41s → 2520.71s]** So for this example, I were switching,
+
+**[2521.94s → 2529.44s]** so we're gonna start with a researcher,
+
+**[2529.44s → 2531.96s]** start with a computer, but as an AI based text assistant,
+
+**[2531.96s → 2533.24s]** I'm not able to create visual charts,
+
+**[2533.24s → 2536.88s]** so I go into this platform.
+
+**[2536.88s → 2540.12s]** Right, I don't have a tool that's explicitly assigned
+
+**[2540.12s → 2542.44s]** to help me generate charts.
+
+**[2542.44s → 2546.88s]** Like I did in my multi-agent collaboration example.
+
+**[2546.88s → 2549.28s]** So going back to the drawing board, right,
+
+**[2549.28s → 2551.72s]** I would need to make sure that my agent graph
+
+**[2551.72s → 2553.40s]** includes that tool, my tool,
+
+**[2553.40s → 2558.04s]** The box to help.
+
+**[2558.04s → 2562.04s]** Now the LM curious if it gave me like a nice markdown table.
+
+**[2562.04s → 2566.64s]** Now it's just giving a nice research report.
+
+**[2566.64s → 2600.89s]** But you can see where the stuff breaks really easily.
+
+**[2600.89s → 2607.20s]** So the last paradigm.
+
+**[2607.20s → 2612.20s]** In graphs. So there's a bunch of stuff you could do with like graph structures.
+
+**[2612.20s → 2617.42s]** Just thinking about increasing sophistication of graph.
+
+**[2617.42s → 2620.42s]** It's like overall multi-agent graph.
+
+**[2620.42s → 2622.42s]** There's no sense of hierarchy.
+
+**[2622.42s → 2626.42s]** Here, there's a single supervisor agent that's deciding, you know,
+
+**[2626.42s → 2629.42s]** code or research or code or researcher.
+
+**[2629.42s → 2633.52s]** Here, we're going to introduce a hierarchical team structure.
+
+**[2633.52s → 2637.52s]** So like more like what you encounter work, right?
+
+**[2637.52s → 2645.20s]** So for you guys as developers, you can think about this as a user could be like a product manager
+
+**[2647.74s → 2653.18s]** or user could be going, your analogy could be a product manager as a supervisor agent.
+
+**[2654.84s → 2663.68s]** So like say I want a new feature to have users, I can't think we have a feature right now but like
+
+**[2666.09s → 2668.33s]** enter their credit card and the data more easily.
+
+**[2670.46s → 2674.86s]** So the supervisor might go assign the UX research team,
+
+**[2674.86s → 2677.60s]** going to do some search information,
+
+**[2677.60s → 2680.72s]** report that data back to the research team,
+
+**[2680.72s → 2683.86s]** might require some additional web scraping,
+
+**[2683.86s → 2685.92s]** go back and do some more research.
+
+**[2685.92s → 2687.86s]** Finally, once the research team is satisfied,
+
+**[2687.86s → 2690.30s]** it's going to send information back to the supervisor,
+
+**[2690.30s → 2692.18s]** and the supervisor might then decide,
+
+**[2692.18s → 2698.39s]** hey, go write some documents, go write some code.
+
+**[2698.39s → 2702.39s]** If I'm writing research reports like on GDP,
+
+**[2702.39s → 2705.81s]** you could see where this structure is also useful.
+
+**[2705.81s → 2707.77s]** I kind of signed the research team,
+
+**[2707.77s → 2709.61s]** this great data from the internet,
+
+**[2709.61s → 2711.61s]** to search for data,
+
+**[2711.61s → 2714.09s]** and then pass all the information back up,
+
+**[2714.09s → 2716.57s]** and then look at somebody to take notes,
+
+**[2716.57s → 2718.81s]** and keep that state of notes.
+
+**[2718.81s → 2721.71s]** Somebody to generate a chart,
+
+**[2721.71s → 2725.11s]** somebody to include that chart part of a written report,
+
+**[2725.11s → 2726.99s]** that information in a document,
+
+**[2726.99s → 2730.11s]** goes back up to the supervisor and they set to size or done,
+
+**[2730.11s → 2761.64s]** thought of being about a bit of a ship back out to the user.
+
+**[2761.64s → 2762.88s]** So in this use case,
+
+**[2762.88s → 2764.80s]** we're gonna introduce a couple new tools,
+
+**[2764.80s → 2768.86s]** scrape web pages using beautiful soup,
+
+**[2768.86s → 2771.96s]** and just get the page content.
+
+**[2771.96s → 2774.24s]** And then we're also gonna create a couple of document
+
+**[2774.24s → 2776.54s]** team writing tools.
+
+**[2776.54s → 2777.86s]** They're gonna create outlines,
+
+**[2777.86s → 2779.38s]** they're gonna read documents,
+
+**[2779.38s → 2780.50s]** they're gonna write the document,
+
+**[2780.50s → 2787.09s]** they're gonna edit the document.
+
+**[2787.09s → 2797.64s]** And then we have our charge generator here too.
+
+**[2797.64s → 2803.68s]** Now our helper utilities create a worker agents,
+
+**[2803.68s → 2812.75s]** and then we're gonna create a supervisor for the sub-graph.
+
+**[2812.75s → 2817.08s]** So our team supervisor,
+
+**[2817.08s → 2819.00s]** even the conversation about who should act next
+
+**[2819.00s → 2834.91s]** or should we finish like one of the options, right?
+
+**[2834.91s → 2837.75s]** And here we're gonna define our agent teams.
+
+**[2837.75s → 2839.83s]** All right, so our research team,
+
+**[2839.83s → 2860.65s]** our search agent, our research agent, supervising agent.
+
+**[2860.65s → 2861.77s]** So let's give this,
+
+**[2864.02s → 2866.46s]** this graph is kinda showing a little bit what's going on,
+
+**[2866.46s → 2874.67s]** but what was called in this particular example.
+
+**[2874.67s → 2879.67s]** So let's try out just the kind of research teams graph
+
+**[2880.43s → 2890.48s]** here.
+
+**[2890.48s → 2895.17s]** Sorry, y'all, I didn't start around all these cells.
+
+**[2895.17s → 2898.76s]** One second.
+
+**[2898.76s → 2900.58s]** What happens when you're just talking about code
+
+**[2900.58s → 2915.44s]** and not actually running the cells?
+
+**[2915.44s → 2920.44s]** Has anyone thought about multi-agent architectures yet
+
+**[2920.44s → 2923.56s]** for like either their projects or applications at work?
+
+**[2923.56s → 2934.63s]** Yeah, I think the, for me, it's probably code reviews.
+
+**[2934.63s → 2944.91s]** If it could give some, if it could give some suggestions, suggestions for things to improve based off historical patterns.
+
+**[2944.91s → 2953.94s]** I'm debating whether it could be done by some sort of an agent architecture or whether we need a fine tune of historical code reviews.
+
+**[2953.94s → 2965.40s]** Yeah, totally. Yeah, I mean, if you just add thousands and thousands at the store,
+
+**[2965.40s → 2974.00s]** code reviews, you know, two, three, five thousand, ten thousand or more. Yeah, I mean,
+
+**[2974.00s → 2978.34s]** absolutely. Fine tuning makes a lot of sense. Pick up that like latent style, right?
+
+**[2978.34s → 2988.57s]** That's not necessarily the same as what's going to be in your text. Right? So that's
+
+**[2988.57s → 2998.14s]** the research writing team. We also want to create a document writing team. So kind of same style,
+
+**[2998.14s → 3002.70s]** right? We're going to have our members, what goes next, what they're currently working on,
+
+**[3005.28s → 3009.52s]** any prelude states, like stuff that's already written, stuff that's in work.
+
+**[3013.45s → 3020.67s]** And then we're going to have a writer agent, note-taking agents, our charging agent agents,
+
+**[3020.67s → 3024.67s]** and our context aware chart generated agent.
+
+**[3024.67s → 3029.76s]** And then of course all of this is going to need to be coordinated by its own supervisor, right?
+
+**[3029.76s → 3034.76s]** So kind of that like same example that I used with a product manager in a work context.
+
+**[3034.76s → 3050.21s]** You don't have sub team supervisors.
+
+**[3050.21s → 3055.76s]** So this is what our writing team graph looks like.
+
+**[3055.76s → 3067.00s]** There's the entry point goes to the supervisor, the supervisor decide what to do next.
+
+**[3067.00s → 3076.30s]** So write an outline for a poem and write the poem to disk.
+
+**[3076.30s → 3077.42s]** So the note taker says,
+
+**[3077.42s → 3078.58s]** now that we have an outline for the poem,
+
+**[3078.58s → 3081.32s]** let's proceed with the writing.
+
+**[3081.32s → 3084.24s]** Doc writer does the doc and actually says,
+
+**[3084.24s → 3093.84s]** here's the poem, whispers of the ancient grove.txc.
+
+**[3093.84s → 3101.95s]** Not sure where that got saved, but we'll find it later.
+
+**[3105.69s → 3108.69s]** So we have our two separate right graphs.
+
+**[3108.69s → 3111.13s]** So now we're gonna stitch them back up together
+
+**[3111.13s → 3115.42s]** to create our hierarchical graph representation.
+
+**[3115.42s → 3118.57s]** So we have our team supervisor,
+
+**[3118.57s → 3120.97s]** but now our members are gonna be the research team
+
+**[3120.97s → 3123.45s]** and a paper writing team versus like all of the subnotes
+
+**[3123.45s → 3125.24s]** down below.
+
+**[3125.24s → 3133.57s]** So we're creating that nice and nested super graph structure.
+
+**[3133.57s → 3135.09s]** Here it's nicely abstracted, right?
+
+**[3135.09s → 3137.13s]** I don't have everything that's in the paper writing team
+
+**[3137.13s → 3139.17s]** or everything that's in the research team.
+
+**[3139.17s → 3148.00s]** I just have that nice clean representation, right?
+
+**[3148.00s → 3151.04s]** Write a brief research report on North American sturgeon.
+
+**[3154.48s → 3157.16s]** I wanna change this back to Japanese population growth
+
+**[3157.16s → 3181.40s]** just so we can.
+
+**[3181.40s → 3182.88s]** Okay, while this is running,
+
+**[3184.70s → 3186.58s]** do we want to switch into some questions?
+
+**[3186.58s → 3188.22s]** What kind of questions you'll have for me
+
+**[3188.22s → 3191.86s]** about graphs, multi-Asian architectures,
+
+**[3195.65s → 3204.80s]** life in general?
+
+**[3204.80s → 3209.08s]** I think we also talked about adding,
+
+**[3209.08s → 3212.04s]** I guess, good interface for adding the human
+
+**[3212.04s → 3217.09s]** into the loop, ideally in a way that can be,
+
+**[3217.09s → 3221.11s]** like factory work for them,
+
+**[3221.11s → 3225.19s]** at the factory style, where the human gets tasked
+
+**[3225.19s → 3228.95s]** in their inbox and then the bot will wait for response
+
+**[3228.95s → 3230.74s]** and so on.
+
+**[3230.74s → 3231.70s]** Yeah, absolutely.
+
+**[3231.70s → 3236.78s]** So in that case, you need to obviously,
+
+**[3236.78s → 3239.58s]** because of that saying you can't run your code locally
+
+**[3239.58s → 3242.46s]** and do that, I mean, unless you're the person interacting
+
+**[3242.46s → 3246.74s]** with the agent or the graph on your local machine.
+
+**[3246.74s → 3250.26s]** In that use case, you would need to initiate an interaction
+
+**[3250.26s → 3251.26s]** in a hosted setting.
+
+**[3251.26s → 3253.54s]** and it can absolutely preserve the state and wait
+
+**[3253.54s → 3255.14s]** until it gets a response back.
+
+**[3258.51s → 3260.91s]** I'm not 100% sure about this,
+
+**[3260.91s → 3263.79s]** but I think it's possible to persist the state too.
+
+**[3263.79s → 3268.92s]** So even if you pause the interaction for some reason,
+
+**[3269.24s → 3272.72s]** like the hosting of the agent needed to be turned off,
+
+**[3272.72s → 3274.68s]** that you could re-initialize the state
+
+**[3274.68s → 3276.72s]** assuming that that information is stored,
+
+**[3278.60s → 3280.40s]** which would be a really great way
+
+**[3280.40s → 3283.68s]** that for like long running responses,
+
+**[3283.68s → 3286.20s]** where you need to wait for somebody to do something
+
+**[3286.20s → 3288.20s]** like a couple of days.
+
+**[3289.96s → 3292.36s]** But yes, that's definitely possible.
+
+**[3295.74s → 3300.18s]** We could add in a step in our workflow
+
+**[3300.18s → 3301.86s]** where we're asking you to read the report
+
+**[3301.86s → 3304.62s]** and provide feedback and then taking that feedback.
+
+**[3307.38s → 3316.79s]** So in our use case, we would go in
+
+**[3316.79s → 3321.52s]** and use something called check.
+
+**[3321.52s → 3323.92s]** So you probably check point is the best
+
+**[3323.92s → 3338.13s]** for somebody reviewing a text.
+
+**[3338.13s → 3343.13s]** I love when I think this is exactly what I was just wondering
+
+**[3343.13s → 3345.83s]** out loud about preserving the state.
+
+**[3348.41s → 3380.24s]** That is not what I was looking for though.
+
+**[3380.24s → 3384.12s]** Yeah, so here's what the syntax begins to look like
+
+**[3384.12s → 3385.24s]** for a check pointer.
+
+**[3385.24s → 3388.48s]** So like this is an async save into SQL lights.
+
+**[3389.25s → 3394.84s]** Right, create a graph, saving the memory of that state,
+
+**[3394.84s → 3422.55s]** check pointy at all and the memory.
+
+**[3422.55s → 3425.11s]** So here's where we get into interacting with it
+
+**[3425.11s → 3427.47s]** to see what going on.
+
+**[3427.47s → 3430.31s]** So in this particular case, you're persisting
+
+**[3430.31s → 3436.88s]** the state of the agent, just chat, like remember chat history.
+
+**[3436.88s → 3439.68s]** So this is like, if you wanted to create a super long running chat
+
+**[3439.68s → 3443.55s]** history, you could persist the context back.
+
+**[3443.55s → 3447.31s]** This is an example of using it in a graph like we're talking about,
+
+**[3447.31s → 3449.61s]** but help you get that.
+
+**[3451.30s → 3454.82s]** You get that at the other option is called in-line graph,
+
+**[3454.82s → 3461.91s]** it's called a break point.
+
+**[3461.91s → 3470.40s]** So that would be the other term you should investigate.
+
+**[3470.40s → 3483.88s]** Let's go back, take a look at what our model from up with.
+
+**[3483.88s → 3485.20s]** Oh, I forgot we are missing,
+
+**[3486.46s → 3488.66s]** seems like we're missing beautiful soup for
+
+**[3488.66s → 3506.74s]** a hidden dependency that hadn't been called since I switched prompts.
+
+**[3506.74s → 3508.50s]** Other questions I can answer?
+
+**[3508.50s → 3525.08s]** I guess what do you have any examples from your development experience?
+
+**[3525.08s → 3530.79s]** Some specific graphs you can share that have been helpful for you personally.
+
+**[3530.79s → 3546.43s]** Um, like, uh, one type of graph that has been theorized in our field that's under active research is on, um, path planning for UAVs and autonomous vehicles.
+
+**[3546.43s → 3556.91s]** So, for cars and tractors, um, which would probably be the most famous autonomous vehicles today.
+
+**[3556.91s → 3559.19s]** Pretty sure it's forward, right?
+
+**[3559.19s → 3562.65s]** Like, especially for like a tractor or farm element.
+
+**[3564.70s → 3567.58s]** It's a little bit more complicated with objects flying.
+
+**[3568.70s → 3571.79s]** And so for UAV path planning,
+
+**[3571.79s → 3575.33s]** you need to be able to write super complex instructions
+
+**[3575.33s → 3577.27s]** if the vehicle's completely autonomous.
+
+**[3578.73s → 3582.27s]** So being able to take an agent that can translate
+
+**[3582.27s → 3586.15s]** something like flag drone around Eiffel Tower
+
+**[3586.15s → 3589.51s]** And to have an interaction where it's like,
+
+**[3589.51s → 3590.63s]** what does that mean to you?
+
+**[3590.63s → 3595.63s]** Do you mean like us to fly at our radius of 30 feet
+
+**[3595.91s → 3598.03s]** and take pictures or does that mean
+
+**[3598.03s → 3600.39s]** like you like to do an inspection,
+
+**[3600.39s → 3604.07s]** put by photo of the Eiffel Tower and then plan a path
+
+**[3604.07s → 3607.89s]** that makes sense for that UAV to do the inspection.
+
+**[3609.75s → 3613.43s]** Like am I going to go up and over, right?
+
+**[3613.43s → 3615.99s]** So you're not having to hand code,
+
+**[3615.99s → 3621.75s]** step by step the path that the drone needs to take to do the inspection.
+
+**[3621.75s → 3627.99s]** And also, of course, eliminating the cognitive load of operating a mission like that for hours
+
+**[3627.99s → 3634.19s]** and hours on end, which can be very intensive for a human, which is going to be error prone
+
+**[3634.19s → 3635.79s]** right to.
+
+**[3635.79s → 3645.28s]** But having it in graph agent, that necessarily operate the drone itself, but to write the mission
+
+**[3645.28s → 3652.14s]** plan like these specifications, like go here, go there, you know, do this, do that.
+
+**[3653.90s → 3660.30s]** Is definitely an active area of research, kind of in the field of stuff that you can imagine
+
+**[3660.30s → 3696.77s]** we do. I will say a lot of of the teams that I've hopefully I explain this well in the
+
+**[3696.77s → 3701.33s]** in a class, but hopefully some of you all will come to help.
+
+**[3701.33s → 3702.81s]** I'm linked in.
+
+**[3702.81s → 3707.25s]** My role at Lockheed is as the head of AI development relations.
+
+**[3707.25s → 3710.73s]** So my team works with teams across organization,
+
+**[3710.73s → 3714.17s]** implementing AI projects and helps them with solutions
+
+**[3714.17s → 3717.41s]** architecture, tutorials, getting started, best practices
+
+**[3717.41s → 3719.97s]** and the context of Lockheed.
+
+**[3719.97s → 3723.33s]** So I end up interviewing a lot of teams doing a bunch
+
+**[3723.33s → 3725.81s]** different projects.
+
+**[3725.81s → 3733.62s]** And one of the things I keep hearing from, at least the teams from us that have tried agents,
+
+**[3735.02s → 3741.26s]** the graph, multi-agent architectures, not individual agents, multi-agent architectures,
+
+**[3741.98s → 3747.50s]** the problems that those seem to work well on are extremely sophisticated and complex.
+
+**[3747.50s → 3753.82s]** I mean, just like way more complex even than what we're showing in these examples,
+
+**[3753.82s → 3756.62s]** which are largely drawn from the link chain documentation.
+
+**[3759.14s → 3763.30s]** Like path-linear for drones, firefighting, 3D simulation,
+
+**[3764.82s → 3768.26s]** scene creation, which I think we talked about a few classes ago.
+
+**[3770.74s → 3777.36s]** Use cases that present a much greater need for coordination and collaboration.
+
+**[3780.19s → 3783.63s]** The way I'm beginning to think about multi-age and architecture is in my head.
+
+**[3783.63s → 3787.63s]** I'm not sure if this is represented in literature yet,
+
+**[3787.63s → 3792.63s]** but is like when I need a team of humans to do something,
+
+**[3792.63s → 3796.63s]** is when I would apply a multi agent architecture.
+
+**[3796.63s → 3801.05s]** That's kind of what I'm hearing and seeing on the ground
+
+**[3801.05s → 3803.05s]** from developers at Lockheed.
+
+**[3803.05s → 3807.05s]** I don't know that that's a hard and fast rule that's emerging
+
+**[3807.05s → 3810.05s]** in the community, but that's how I'm beginning to see it.
+
+**[3810.05s → 3813.05s]** Multi agent is really when I need like a team of humans
+
+**[3813.05s → 3858.08s]** a team of humans to do the same job.
+
+**[3858.08s → 3859.28s]** Any other questions, y'all?
+
+**[3859.28s → 3863.97s]** On tonight's class, multi-agent architectures.
+
+**[3863.97s → 3867.32s]** Let's go back and just talk a little bit about
+
+**[3867.32s → 3882.24s]** the whole assignment.
+
+**[3882.24s → 3885.12s]** So code and AI graph that writes reports
+
+**[3885.12s → 3887.36s]** and rewrite support in a number of times.
+
+**[3887.36s → 3889.52s]** Use lane graph to build a node, track state,
+
+**[3889.52s → 3890.56s]** and produce result.
+
+**[3891.60s → 3893.12s]** So you've got the code, right?
+
+**[3893.12s → 3896.68s]** From today's class, multi-agent architecture
+
+**[3896.68s → 3898.08s]** that's gonna write a report.
+
+**[3898.08s → 3908.20s]** The fun thing that I think you get to practice those adding in a new step in the workflow.
+
+**[3908.20s → 3919.87s]** So rewriting and taking a look at the critique of models, rewriting it so many times.
+
+**[3919.87s → 3923.87s]** I might also challenge you if you want to take it even a further stretchable.
+
+**[3923.87s → 3928.87s]** It's a great opportunity to try different model in your multi agent architecture.
+
+**[3928.87s → 3935.43s]** Like I noticed last week when we were talking about models that were available in a hugging
+
+**[3935.43s → 3941.27s]** sort on hugging phase that Grammarly now has some of their models available in hugging
+
+**[3941.27s → 3942.94s]** phase.
+
+**[3942.94s → 3948.54s]** A writing a research report, a great opportunity to use something like Grammarly to evaluate
+
+**[3948.54s → 3955.98s]** your writing, right, and provide feedback and then give that feedback to an agent that
+
+**[3955.98s → 3957.54s]** rewrites things.
+
+**[3957.54s → 3962.54s]** So stretchable, trying to incorporate another model
+
+**[3963.80s → 3969.92s]** into your multi-agent flow.
+
+**[3969.92s → 3971.14s]** Tom, is there anything else you wanna add
+
+**[3971.14s → 3977.99s]** and for office hours tomorrow?
+
+**[3977.99s → 3979.13s]** No, I think that's good.
+
+**[3979.13s → 3981.59s]** I think we'll just dive a bit deeper into this stuff
+
+**[3981.59s → 3984.63s]** for office hours and kind of look at the different
+
+**[3984.63s → 3986.49s]** possibly as to what we can build out.
+
+**[3988.58s → 3991.18s]** I've got a specific plan set up for office hours.
+
+**[3991.18s → 3995.38s]** So I will kind of think on that this evening.
+
+**[3995.99s → 4007.67s]** But yeah, definitely the use cases for the graph stuff can be very, very,
+
+**[4007.67s → 4013.47s]** though it's like the problem with graphs in general, forgetting about like
+
+**[4013.47s → 4018.23s]** land graph or any of this is really that everything can anything can be
+
+**[4018.23s → 4027.33s]** actually modeled as a graph, literally. But in the case of AI, as John said, a lot
+
+**[4027.33s → 4031.80s]** of it is more about the stuff that goes a lot deeper into things.
+
+**[4031.80s → 4037.68s]** So the use cases for something like this would be way outside of a real scope for the time
+
+**[4037.68s → 4041.55s]** frame what we have.
+
+**[4041.55s → 4046.87s]** A lot of the sort of things would be like, if you need to model really complex things
+
+**[4046.87s → 4051.33s]** and complex systems, you can build it out in a graph.
+
+**[4051.33s → 4060.04s]** So anything that sort of like from modeling basically different genetic structures all the
+
+**[4060.04s → 4067.00s]** way through sort of like scenarios for attack patterns for drones or anything.
+
+**[4067.00s → 4071.94s]** So it's quite a large subject.
+
+**[4071.94s → 4074.98s]** Standard graphs are everywhere.
+
+**[4074.98s → 4079.58s]** If you've ever used a graphic program of any sort, even if you've used paint with a flood
+
+**[4079.58s → 4082.71s]** fill, there's a graph algorithm.
+
+**[4082.71s → 4086.96s]** So they're everywhere, literally.
+
+**[4086.96s → 4092.68s]** In L.A.M.s, the hard part as per usual is figuring out what it is that you want it to do,
+
+**[4092.68s → 4094.68s]** what your actual use case is.
+
+**[4094.68s → 4099.44s]** That's always going to be the hardest part of any of this.
+
+**[4099.44s → 4104.88s]** Absolutely.
+
+**[4104.88s → 4108.96s]** Has anybody got anything they'd like to see in the office hours as well that maybe we
+
+**[4108.96s → 4110.96s]** get time to incorporate into?
+
+**[4110.96s → 4129.55s]** Yeah, I think it'd be useful to see more examples of what people are actually doing.
+
+**[4129.55s → 4136.83s]** planning for drones, that's cool. But my company we do ads, right?
+
+**[4136.83s → 4144.26s]** The examples that we walked through today were like, pretty, I mean, they were out
+
+**[4144.26s → 4150.84s]** of the box on the wingsmith docs. I think what is, there's like the gap between
+
+**[4150.84s → 4155.22s]** what we're learning and how to apply it. And I think like a little bit of
+
+**[4155.22s → 4167.99s]** creativity on my part, I can bridge the gap, but I'm sitting like, it'd be nice to know
+
+**[4167.99s → 4171.03s]** what other people are doing with this stuff.
+
+**[4171.03s → 4177.72s]** I was going to say the interesting stuff most of the times are all under NDAs, so it's
+
+**[4177.72s → 4184.07s]** hard to get hold of anything to model without sort of breaching a lot of stuff.
+
+**[4184.07s → 4189.75s]** But I definitely think what we'll do is we'll just try and grab as much as I can and
+
+**[4189.75s → 4194.91s]** we'll go over many different scenarios we can in the time we've got a lot of it.
+
+**[4194.91s → 4200.47s]** We just as boldly we may go over time a little bit but that'll depend whether you guys
+
+**[4200.47s → 4201.47s]** got time or not.
+
+**[4201.47s → 4205.76s]** Yeah, I can see a lot of the value here being useful.
+
+**[4205.76s → 4213.70s]** I don't know, sales adjacent or marketing adjacent, whatever.
+
+**[4213.70s → 4217.50s]** But like in my org, I'm not having a hard time
+
+**[4217.50s → 4221.46s]** to figure out where me and my teams can add this into our
+
+**[4221.46s → 4226.40s]** work day to day and have much value.
+
+**[4226.40s → 4232.36s]** Like I think does make sense like to first augmentation
+
+**[4232.92s → 4238.66s]** of people's work in some ways, but I don't really see it
+
+**[4238.66s → 4241.14s]** in my realm very much.
+
+**[4241.14s → 4243.22s]** I don't see a make in that big of a difference.
+
+**[4243.22s → 4247.58s]** Like, specifically, like the example is with that today,
+
+**[4247.58s → 4249.98s]** you know, a research, like, what was it?
+
+**[4249.98s → 4253.94s]** It was someone was researching the GP
+
+**[4253.94s → 4254.90s]** and then graphing it.
+
+**[4254.90s → 4259.91s]** Well, nobody really does that at my company, you know what I mean.
+
+**[4263.09s → 4265.65s]** I guess maybe though, Chris,
+
+**[4265.65s → 4270.65s]** to flip that example into marketing use case though,
+
+**[4273.92s → 4275.80s]** I can't say whether or not people are doing this,
+
+**[4275.80s → 4276.64s]** I don't know.
+
+**[4276.64s → 4285.17s]** just, you know, wild guess of how you could use this. Yeah. Yeah. And let's say you're, oh no,
+
+**[4285.17s → 4291.51s]** uh, go ahead. Yeah, I mean, that's what I'm saying. Like I can see uses of this type of thing
+
+**[4291.51s → 4299.41s]** for these like sales adjacent roles, but why wouldn't they just go out and buy a really great tool
+
+**[4299.41s → 4304.93s]** of a company that's spending millions of VC money on building something that's specifically
+
+**[4304.93s → 4306.57s]** to their use case.
+
+**[4306.57s → 4309.43s]** Like it doesn't seem like a good use of resources
+
+**[4309.43s → 4314.73s]** from my teams to try and actually spend any of this up
+
+**[4314.73s → 4318.29s]** because, well, A, it's just like,
+
+**[4318.29s → 4320.49s]** it's not gonna be good enough.
+
+**[4320.49s → 4323.72s]** B, then we're gonna be in the hope for maintaining it.
+
+**[4323.72s → 4326.72s]** Like it just doesn't seem like a good use of time.
+
+**[4326.72s → 4331.72s]** So all of the like sales adjacent type uses,
+
+**[4331.72s → 4334.58s]** is I would say to my colleagues,
+
+**[4334.58s → 4336.10s]** like, do I not buy something?
+
+**[4340.66s → 4343.02s]** Yeah, I mean, I could see that.
+
+**[4343.02s → 4346.14s]** It's so hard to know they can think about
+
+**[4346.14s → 4346.98s]** what our recommendation would be
+
+**[4346.98s → 4349.54s]** without understanding use cases.
+
+**[4350.90s → 4352.02s]** And I don't know how much you can share
+
+**[4352.02s → 4353.38s]** about what your team does.
+
+**[4357.13s → 4358.33s]** Yeah, I mean, one of the teams I managed
+
+**[4358.33s → 4360.41s]** is owns all the billion payments infrastructure
+
+**[4360.41s → 4362.75s]** for ads that I read it.
+
+**[4362.75s → 4365.43s]** You know, we don't really do much creativity
+
+**[4365.43s → 4369.47s]** in terms of temperatures low on that one, I would say.
+
+**[4370.63s → 4373.07s]** Another team I managed is business manager tooling,
+
+**[4373.07s → 4375.91s]** we're dealing with authorization, authentication,
+
+**[4375.91s → 4380.23s]** all of the login type stuff for people managing
+
+**[4380.23s → 4381.27s]** their businesses.
+
+**[4381.27s → 4383.61s]** It's really just a set of tools.
+
+**[4383.61s → 4385.39s]** And then the other team that I directly manage
+
+**[4385.39s → 4388.03s]** is Stads API team.
+
+**[4388.03s → 4392.39s]** And there's some applications around code review
+
+**[4392.39s → 4396.66s]** or vetting open API specs,
+
+**[4396.66s → 4403.89s]** maybe even writing that at some point, which is, I think we're going to start exploring
+
+**[4403.89s → 4406.80s]** and we have started exploring.
+
+**[4406.80s → 4416.31s]** But to me, it's, you know, I'm not sold on the Lang ecosystem over just writing Python
+
+**[4416.31s → 4418.03s]** for these things yet.
+
+**[4418.03s → 4426.16s]** Yeah, I mean, maybe I've looked at that example on its head though, actually with the Reddit
+
+**[4426.16s → 4428.16s]** API.
+
+**[4428.16s → 4431.12s]** Instead of you guys developing tools,
+
+**[4431.12s → 4433.60s]** like the ads API could be really cool to see
+
+**[4433.60s → 4437.68s]** as tools on the other side, right?
+
+**[4437.68s → 4438.76s]** Where you're developing tools
+
+**[4438.76s → 4441.92s]** that then the broader ecosystem is using in line chain.
+
+**[4443.67s → 4445.95s]** And you let other developers see
+
+**[4445.95s → 4447.79s]** what they're coming up with, basically.
+
+**[4449.06s → 4450.94s]** So because you could have other people
+
+**[4450.94s → 4452.50s]** that are interfacing with your API,
+
+**[4452.50s → 4455.34s]** these would be so kind of, you know,
+
+**[4455.34s → 4457.58s]** generic AI ecosystem.
+
+**[4457.58s → 4460.74s]** and write on their own ad copy or analyzing ad performance
+
+**[4460.74s → 4462.58s]** or something.
+
+**[4462.58s → 4466.06s]** That could be a really cool use case for you guys.
+
+**[4466.06s → 4467.58s]** So it's like you were saying like,
+
+**[4467.58s → 4471.18s]** publish to the actual Langtrain Open Community
+
+**[4472.22s → 4476.18s]** like a Langtrain Community Reddit ads package.
+
+**[4476.18s → 4480.70s]** And then yeah, I see what you're saying.
+
+**[4480.70s → 4483.68s]** I like how to do, that's cool.
+
+**[4483.68s → 4485.84s]** Yeah, and let me see.
+
+**[4485.84s → 4493.39s]** I think they're called.
+
+**[4493.39s → 4498.97s]** Yeah.
+
+**[4498.97s → 4503.97s]** Could you maybe GPL 3 that and then pull back loads of stuff if anyone makes anything interesting.
+
+**[4503.97s → 4510.74s]** That's why you utilize the community to help all the things maybe.
+
+**[4510.74s → 4526.97s]** That way it's technically open source but GPL 3 is quite nice where you can kind of come and pull in lots and lots of stuff from anything and everything that anyone makes.
+
+**[4526.97s → 4528.97s]** We've completed completing puniting.
+
+**[4528.97s → 4548.57s]** Totally.
+
+**[4548.57s → 4553.05s]** Yeah, I can see authentication is like a great counter example, though.
+
+**[4553.05s → 4560.89s]** Yeah, these cases are not obvious to me how an agent would work in an authentication ecosystem,
+
+**[4560.89s → 4565.77s]** except developer product, straight up developer productivity code review, security checks.
+
+**[4565.77s → 4573.08s]** I don't know how bureaucratic your cybersecurity protocols are, but yeah,
+
+**[4573.08s → 4578.00s]** That's like another thing where you could have somebody helping
+
+**[4578.00s → 4580.60s]** accelerate this Iverse Cater reviews for integrating a new
+
+**[4580.60s → 4584.78s]** application.
+
+**[4584.78s → 4586.77s]** That kind of stuff.
+
+**[4586.77s → 4590.13s]** But that may not be as sophisticated as the graph that
+
+**[4590.13s → 4598.26s]** might just be a simple chain of evaluating inputs and outputs.
+
+**[4598.26s → 4600.90s]** The structure data that's got the structure data that's
+
+**[4600.90s → 4605.24s]** kept past between nodes here is that, do we
+
+**[4605.24s → 4606.56s]** write that somewhere in the code?
+
+**[4606.56s → 4607.40s]** I don't think we did.
+
+**[4607.40s → 4609.46s]** Is that out of the box?
+
+**[4609.46s → 4616.86s]** Like the, the, yeah, that's, that's, support is out of the box.
+
+**[4616.86s → 4618.36s]** So you can take a look.
+
+**[4618.36s → 4621.42s]** If you run all the examples from class tonight,
+
+**[4621.42s → 4625.18s]** that data will be automatically logged for you and Langsmith.
+
+**[4625.18s → 4627.06s]** So you can go back, we didn't do this in class,
+
+**[4627.06s → 4630.38s]** but you can go back and inspect the data structures
+
+**[4630.38s → 4635.89s]** that are getting past between the nodes in the graph.
+
+**[4635.89s → 4643.36s]** And we can override that and write our own.
+
+**[4643.36s → 4645.28s]** I'm sure you can.
+
+**[4645.28s → 4647.20s]** I'm not sure how to do that right now,
+
+**[4647.20s → 4651.44s]** but I don't think that that's more than a lookup
+
+**[4651.44s → 4652.96s]** in the API docs.
+
+**[4654.40s → 4658.76s]** Although I will give a word of warning this week,
+
+**[4658.76s → 4663.82s]** there was a blog post from, I think it was Optimize
+
+**[4665.32s → 4667.16s]** that was talking about the limitations
+
+**[4667.16s → 4669.08s]** of the chain abstraction,
+
+**[4669.08s → 4671.48s]** but sometimes it's pretty inflexible.
+
+**[4671.48s → 4674.84s]** So I would assume that that's easier to do, Chris,
+
+**[4674.84s → 4676.68s]** customizing the data structure,
+
+**[4676.68s → 4678.44s]** but that may not actually be the case.
+
+**[4678.44s → 4680.42s]** I don't know.
+
+**[4680.42s → 4682.14s]** Yeah, it seems a little bizarre to me
+
+**[4682.14s → 4687.14s]** that the router that we're using is kind of janky.
+
+**[4691.30s → 4694.66s]** I mean, I know that this is in out of the box example,
+
+**[4694.66s → 4695.42s]** but basically they're like,
+
+**[4695.42s → 4697.74s]** hey, if the final answer is in the content,
+
+**[4697.74s → 4700.50s]** just, you know, it's over.
+
+**[4700.50s → 4706.33s]** Like, I don't know, it just seems kind of a weird way to do this.
+
+**[4706.33s → 4709.65s]** And then, I mean, it's also based on the assumption
+
+**[4709.65s → 4714.05s]** that this initial agent that we're creating is, you know,
+
+**[4714.05s → 4722.64s]** an helpful AI that, like, it just seems weird that that's not
+
+**[4722.84s → 4727.80s]** that the whole routing and agent instantiation is
+
+**[4727.80s → 4733.46s]** and out of the box also, almost like, I mean, I know
+
+**[4733.46s → 4738.82s]** they're writing it, I can obviously just copy and paste it, but it's just kind of like a weird,
+
+**[4738.82s → 4741.54s]** I don't know, it feels weird to me. You know what I'm saying? They don't know so that way.
+
+**[4744.09s → 4748.25s]** Yeah, I know exactly what you mean. Yeah, like the start of the entry and exit points are
+
+**[4748.25s → 4754.25s]** are a little rough around the edge. It's, I mean, we're using it, we're saying in basically
+
+**[4754.25s → 4761.66s]** in a non-deterministic way, starting to begin. Like, there's no actual trust there that's going to
+
+**[4761.66s → 4763.94s]** that happened the way we want for a guarantee.
+
+**[4763.94s → 4768.33s]** I mean, not trust.
+
+**[4768.33s → 4771.41s]** Yeah, there's no guarantee you're going to get the right answer,
+
+**[4771.41s → 4773.13s]** for sure.
+
+**[4773.13s → 4779.40s]** And if it ends, or just wrote forever.
+
+**[4779.40s → 4779.92s]** Right.
+
+**[4779.92s → 4781.92s]** Well, that actually you can't control.
+
+**[4781.92s → 4783.76s]** So if you notice in my code, they're
+
+**[4783.76s → 4787.84s]** like maximum number of iterations parameter.
+
+**[4787.84s → 4789.16s]** Yeah, that's controlling how many times
+
+**[4789.16s → 4793.78s]** it's going to loop back through the conversation in the graph.
+
+**[4793.78s → 4800.88s]** So yes, you can control that aspect of it pretty well,
+
+**[4800.88s → 4803.84s]** because otherwise it absolutely could run endlessly
+
+**[4803.84s → 4813.06s]** if it doesn't identify like the stopping point.
+
+**[4813.06s → 4814.98s]** You could try and break it.
+
+**[4814.98s → 4819.46s]** This is an, I'm assuming this is an active area of LLM security
+
+**[4819.46s → 4825.14s]** research, but what would a, I like to say dark gromp,
+
+**[4825.14s → 4828.82s]** look like to just continuously loop things,
+
+**[4828.82s → 4831.62s]** like what's the answer to the life universe and everything.
+
+**[4831.62s → 4837.10s]** I mean, I was sure now that I'm with Spit 42 back out at you
+
+**[4837.10s → 4839.10s]** because that's a pretty common phrase.
+
+**[4839.10s → 4844.10s]** But assuming that, you know, not book didn't exist,
+
+**[4844.10s → 4850.80s]** you know, that might be crunching for a while.
+
+**[4850.80s → 4856.06s]** They also don't think I would want to hand this agent
+
+**[4856.06s → 4860.74s]** or multi agent agent, a Python repel,
+
+**[4860.74s → 4863.72s]** without any of these guarantees about
+
+**[4863.72s → 4865.44s]** what the fuck they're gonna do with it, you know?
+
+**[4865.44s → 4869.54s]** Like, we have no idea, right?
+
+**[4869.54s → 4873.31s]** And I have a hard time putting this into prod or something.
+
+**[4873.31s → 4874.83s]** Like I was thinking of a use case
+
+**[4874.83s → 4879.08s]** where maybe we're dealing with an incident review
+
+**[4879.08s → 4882.32s]** and we have agents that are looking at some graphs
+
+**[4882.32s → 4885.56s]** or in our making code deployments
+
+**[4885.56s → 4888.28s]** or even suggestions on what's going wrong.
+
+**[4888.28s → 4891.48s]** But like, I wouldn't give any of them access
+
+**[4891.48s → 4894.96s]** like the keys to actually do stuff, you know.
+
+**[4897.61s → 4901.56s]** So maybe it's just about reading and forcing the data.
+
+**[4901.56s → 4902.40s]** Right?
+
+**[4902.40s → 4904.09s]** I don't know.
+
+**[4904.09s → 4906.37s]** Yeah, I mean, no, I think Chris, you're spun on.
+
+**[4906.37s → 4908.37s]** That's like, I think the number one concern
+
+**[4908.37s → 4910.93s]** people should have with arbitrary code execution
+
+**[4910.93s → 4913.05s]** and LLM's and agents.
+
+**[4913.05s → 4915.41s]** Yeah, you've got to be pretty confident
+
+**[4915.41s → 4918.85s]** that what you're doing is has low security risk,
+
+**[4918.85s → 4920.49s]** like making a charter graph.
+
+**[4920.49s → 4929.78s]** But I wouldn't necessarily give my LLM admin access to my Postgres database.
+
+**[4929.78s → 4942.25s]** I was going to say one thing that you definitely always try and do is encapsulate anything like that. So it's either in a darker or somewhere
+
+**[4942.25s → 4945.57s]** where it's going to find it hard to get outside of anywhere
+
+**[4945.57s → 4947.57s]** or do anything to a real fast system.
+
+**[4949.49s → 4953.21s]** And again, you'd have, instead of it janking to end
+
+**[4953.21s → 4955.29s]** or something, you'd probably have a human in the loop sort
+
+**[4955.29s → 4958.68s]** of area you're going to use that as well
+
+**[4958.68s → 4961.36s]** in a more real world sort of situation.
+
+**[4961.36s → 4964.92s]** Because we have used code executors and stuff
+
+**[4964.92s → 4970.16s]** in LLM to do some mundane sort of pen testing stuff.
+
+**[4970.16s → 4972.64s]** But you always keep it kind of encapsulated
+
+**[4972.64s → 4975.76s]** because especially when it's any file writing or anything like that,
+
+**[4975.76s → 4981.00s]** you don't want it kind of like spiring at control and becoming literally like a sky net type thing
+
+**[4981.00s → 4982.56s]** where you're like, oh, I was just thinking I'll do this.
+
+**[4983.63s → 4984.51s]** Re-write everything.
+
+**[4986.11s → 4989.43s]** There is still the danger of it literally,
+
+**[4989.43s → 4992.99s]** especially in a pentastane situation where it can actually break out of the,
+
+**[4995.47s → 4996.59s]** out of a dock container.
+
+**[4997.46s → 5000.82s]** So sometimes you have to have mitigation in the way for that as well.
+
+**[5000.82s → 5007.49s]** So it's been quite, we've had some interesting sort of outbreaks before when you give it code
+
+**[5007.49s → 5012.65s]** execution, especially if you give it enough to the point where it can install things.
+
+**[5012.65s → 5017.21s]** So you'll have it installing software inside a Docker container and then going off on one
+
+**[5017.21s → 5022.76s]** and doing stuff. But you have to be very careful with a lot of guard rail in place.
+
+**[5022.76s → 5027.72s]** So it's a lot of setup work. It's like, I don't know, imagine sort of botting a computer
+
+**[5027.72s → 5036.20s]** game. A lot of that work would be upfront work. So there's no real work during it, apart
+
+**[5036.20s → 5042.04s]** from the odd nudging in the right direction. Same sort of thing with, by pen testing or
+
+**[5042.04s → 5047.11s]** most things where you would have any code execution going on. It is one of those where you
+
+**[5047.11s → 5050.83s]** don't leave that in production anyway. It's more of a tool that you internally use for
+
+**[5050.83s → 5053.03s]** something like to get one specific job done.
+
+**[5053.03s → 5070.76s]** Yeah, well, unfortunately, I've got to drop off, but thank you all for class night and I will
+
+**[5070.76s → 5075.66s]** see you all on Wednesday night.
+
+**[5075.66s → 5076.66s]** So guys, thank you.
+
+**[5076.66s → 5077.66s]** Thank you.
+
+**[5077.66s → 5078.66s]** That's a good one.
+

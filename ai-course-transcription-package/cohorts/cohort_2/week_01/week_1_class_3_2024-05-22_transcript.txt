@@ -1,0 +1,1669 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_test/week_01/week_1_class_3_2024-05-22.mp4
+**Duration:** 4632.00 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 825
+**Generated:** 2025-08-13 18:03:51
+**File Hash:** bb251a0a2d733e93bb203a69e309cae9
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_01
+**file_name:** week_1_class_3_2024-05-22.mp4
+
+---
+
+## Transcript
+
+**[0.05s → 3.01s]** It's kind of similar idea with beginning to report
+
+**[3.01s → 5.78s]** and understand prompts and behavior.
+
+**[5.78s → 7.90s]** So Langspot is going to allow us to keep track
+
+**[7.90s → 12.57s]** of all of those LLM calls and track over things over time.
+
+**[12.57s → 15.05s]** And then begin to score on the back end,
+
+**[15.05s → 18.66s]** the responses that your model is giving you.
+
+**[18.66s → 20.18s]** I think the cool part of those
+
+**[20.18s → 23.42s]** be able to save LLM responses to data sets,
+
+**[23.42s → 24.54s]** which I think is a really great way
+
+**[24.54s → 29.54s]** to help you curate high quality instruction data sets downstream.
+
+**[29.54s → 42.55s]** All right, so let's go ahead and take a look.
+
+**[42.55s → 45.35s]** Actually, maybe before we set things up,
+
+**[45.35s → 46.55s]** you just want to ask,
+
+**[46.55s → 49.95s]** does anyone have any questions about Langsmith so far?
+
+**[49.95s → 76.30s]** So let's go ahead and set up your Langsmith environment.
+
+**[76.30s → 77.74s]** You're going to see me using
+
+**[77.74s → 79.78s]** the S code for most of the course.
+
+**[79.78s → 82.66s]** Of course, your all season developers,
+
+**[82.66s → 84.54s]** whether or not your Python developers.
+
+**[84.54s → 86.62s]** If you're not a Python developer,
+
+**[86.62s → 88.66s]** I hope you followed Asher's and one of
+
+**[88.66s → 92.50s]** Ashes methods help get your Python environment set up.
+
+**[92.50s → 99.22s]** I've got mine set up here for science class,
+
+**[105.10s → 108.02s]** and we'll take a look at just a very simple
+
+**[108.02s → 109.78s]** Langsmith environment.
+
+**[109.78s → 114.18s]** So go ahead and pick install it and then add your API key.
+
+**[114.18s → 117.54s]** You're going to need three environment variables.
+
+**[117.54s → 120.02s]** You're a Langchained tracking true.
+
+**[120.02s → 123.86s]** It means here.
+
+**[123.86s → 125.78s]** So I don't lose people.
+
+**[125.78s → 128.70s]** I give everyone just about two minutes to do this.
+
+**[128.70s → 135.70s]** two or three minutes.
+
+**[135.70s → 140.06s]** Is there a file that we're working off of
+
+**[140.06s → 143.96s]** or we're writing it for the scratch?
+
+**[143.96s → 147.85s]** You can, you're not working off of a file right now,
+
+**[147.85s → 150.70s]** but we can copy basis code for you.
+
+**[150.70s → 182.64s]** OK, yeah, great.
+
+**[182.64s → 183.64s]** Great.
+
+**[183.64s → 186.90s]** Code is now in the bread, the health bread,
+
+**[186.90s → 220.34s]** and then the main channel.
+
+**[220.34s → 222.62s]** I think everyone's still upon those instructions
+
+**[222.62s → 227.02s]** and leave Tom shared them in the slides.
+
+**[227.02s → 235.30s]** Let's take a look. I'm going to run my code and talk, continue to talk while you're going through things. Just a quick note on what's happening.
+
+**[236.67s → 244.79s]** With the code. So Langsmith, the just a wrapper around a couple of different. It'll wrap a couple different libraries.
+
+**[244.79s → 251.87s]** It works very nicely because it's developed by the same team that develops lane chain.
+
+**[251.87s → 255.51s]** So lane Smith, lane chain, tightly coupled.
+
+**[255.51s → 261.73s]** So it will wrap anything in the lane chain ecosystem extremely well.
+
+**[261.73s → 266.45s]** So we're just going to toss a decorator on a pipeline function that will send a very simple
+
+**[266.45s → 270.48s]** prompt to ChatGDP.
+
+**[270.48s → 284.50s]** Then we're going to take a look at the output and log the calls altogether.
+
+**[284.50s → 290.10s]** So if you're thinking about what the developer perspective is of using this stuff, you're
+
+**[290.10s → 294.56s]** considering the open source alternatives that I'll talk about in a minute, there is
+
+**[294.56s → 298.82s]** a strong motivation to use Lank Smith because it is so tightly coupled with Lank Chain.
+
+**[298.82s → 303.42s]** It's going to make it a lot easier on your developers to help implement this stuff at
+
+**[303.42s → 305.48s]** scale.
+
+**[305.48s → 309.84s]** So we ran our prompts, we just got a very simple output, right?
+
+**[309.84s → 314.84s]** We're asking you to model hello worlds and then get a simple output.
+
+**[314.84s → 348.28s]** Let's take a look at what happens in Langsmith.
+
+**[348.28s → 351.12s]** So once you log in, you're going to notice a quick overview
+
+**[351.12s → 357.55s]** of different projects, data sets, annotations, and prompts.
+
+**[357.55s → 360.71s]** We are loading everything into a default project.
+
+**[360.71s → 363.80s]** So if you go into the Projects tab,
+
+**[363.80s → 366.64s]** you'll see I just found I was experimenting with some stuff
+
+**[366.64s → 374.54s]** before class.
+
+**[374.54s → 380.02s]** This is our most recent run.
+
+**[380.02s → 382.10s]** There's some really great information in here.
+
+**[382.10s → 385.02s]** If you take a look at, if I go back to Project,
+
+**[385.02s → 389.38s]** I love the idea of knowing what the air rate is
+
+**[389.38s → 394.54s]** and the total token cost overall latency.
+
+**[394.54s → 398.05s]** I think that's really great information.
+
+**[398.05s → 403.05s]** The stuff we run at work because we're hosting our own open source
+
+**[403.05s → 405.05s]** models on bare metal.
+
+**[405.05s → 408.05s]** We don't necessarily worry about cost all that we monitor token usage
+
+**[408.05s → 411.05s]** just to kind of see what's going on.
+
+**[411.05s → 415.78s]** But fascinating to me to know what the cost would look like.
+
+**[415.78s → 424.70s]** it look like. So if I'm looking at my pipeline, then I'll start to notice input output,
+
+**[424.70s → 429.66s]** and then I can go ahead and add some, I can know whether or not a particular call is added to a data
+
+**[429.66s → 438.30s]** setter annotation. When I open up the individual observation, I'm going to see the overall trace of
+
+**[438.30s → 445.14s]** everything that was called. I asked Ash to share with you a list of all of the stuff that's
+
+**[445.14s → 450.98s]** automatically tracked by Langsmith. So you can take a look and just browse through to that.
+
+**[451.38s → 452.86s]** That's also available in their documentation,
+
+**[452.86s → 454.50s]** but figure we'd pull it out for you
+
+**[454.50s → 456.66s]** so you can take a look at all the stuff
+
+**[456.66s → 460.45s]** that's going to be tracked in this trace automatically.
+
+**[460.45s → 462.49s]** So you can see the pipeline run, that was the function
+
+**[462.49s → 467.69s]** that we call, and then we called ChatGTPs.
+
+**[467.69s → 470.13s]** And we can see the amount of time it took,
+
+**[470.13s → 472.17s]** the number of tokens that were sent,
+
+**[472.17s → 481.95s]** and the number of tokens that were returned.
+
+**[481.95s → 483.07s]** Less important for us right now,
+
+**[483.07s → 486.07s]** but of course there's great metadata in here too.
+
+**[486.07s → 487.55s]** You know, like the language and version
+
+**[487.55s → 489.79s]** that's being used, Sython.
+
+**[491.94s → 494.34s]** Not terribly important for us at the moment,
+
+**[494.34s → 510.06s]** but good information overall.
+
+**[510.06s → 512.90s]** You can also take a look at individual LLM calls.
+
+**[512.90s → 528.75s]** So I know exactly what was sent.
+
+**[528.75s → 531.07s]** And then there are some other fun things that we can do.
+
+**[531.07s → 532.39s]** Of course, we can set up our product
+
+**[532.39s → 539.55s]** a little bit more simply monitor overall usage and dashboard.
+
+**[539.55s → 540.67s]** It'll take a second load.
+
+**[540.67s → 541.63s]** There's not too much data in here,
+
+**[541.63s → 553.63s]** so it's not too spicy.
+
+**[553.63s → 556.39s]** We don't have any threads yet.
+
+**[556.39s → 558.55s]** I think we won't be doing this today,
+
+**[558.55s → 561.83s]** but you can play around with how to log threads
+
+**[561.83s → 584.10s]** and more complex conversations do.
+
+**[584.10s → 585.94s]** And if you didn't already watch it,
+
+**[585.94s → 589.78s]** there's a great video of blank Smith
+
+**[589.78s → 591.58s]** that the Langshan team put together,
+
+**[591.58s → 593.66s]** demonstrating a lot of the tracking capabilities
+
+**[593.66s → 597.06s]** with much, much more data than we have available to us in class,
+
+**[598.42s → 600.70s]** which is a great way for you to see kind of what's going on
+
+**[600.70s → 605.18s]** in depth, not just for the instruction time playing the video for you,
+
+**[605.18s → 608.22s]** but it's linked in the slides and in the side channel.
+
+**[608.22s → 614.57s]** Definitely check that out.
+
+**[614.57s → 618.65s]** As you can imagine, Langsmith is a sastyl.
+
+**[618.65s → 623.27s]** So you're going to have to price in and use it,
+
+**[623.27s → 627.68s]** according to the levels and users that you have.
+
+**[627.68s → 631.64s]** A great open source alternative is Langfuse.
+
+**[631.64s → 633.76s]** It's going to be a lot cheaper.
+
+**[633.76s → 638.74s]** It is open source freemium models.
+
+**[638.74s → 641.26s]** You can host it yourself if you'd like,
+
+**[641.26s → 643.90s]** which is great for a lot of use cases
+
+**[643.90s → 647.34s]** where kind of like mine are Lockheed,
+
+**[647.34s → 649.38s]** where we need to be able to monitor
+
+**[649.38s → 651.58s]** these chains and usage patterns,
+
+**[651.58s → 654.62s]** but we don't cancel that data out
+
+**[654.62s → 656.86s]** outside of our private networks.
+
+**[660.92s → 664.16s]** Great use case,
+
+**[664.16s → 675.16s]** Only downside is of course it's not developed by a chain team so it might be slightly more challenging to integrate and what you've seen in LANGSMIT.
+
+**[675.16s → 681.26s]** So, later on if it's good alternative if you want to investigate.
+
+**[681.26s → 701.45s]** So we're going to, this is being the second iteration of the course, we've rearranged a couple of content pieces.
+
+**[701.45s → 717.25s]** So what we are going to do is take a look at a Rage example from a couple classes down the line and look at the data that's implemented on top of that we're capturing with Langsmith.
+
+**[717.25s → 721.63s]** So what are the steps captured at a RagnPyplein?
+
+**[721.63s → 723.37s]** How long are those steps taking?
+
+**[723.37s → 725.97s]** What documents are retrieved?
+
+**[725.97s → 728.33s]** How the prompt is going?
+
+**[728.33s → 730.97s]** And we want to take a look at essentially all six
+
+**[730.97s → 733.42s]** of these questions.
+
+**[733.42s → 738.02s]** The RagnExample, if you all just want to sit back for a second,
+
+**[738.02s → 741.02s]** I'll generate some of the data going into it.
+
+**[741.02s → 743.02s]** That is a more complicated setup to get
+
+**[743.02s → 745.06s]** the whole example working.
+
+**[745.06s → 747.30s]** But I'm happy to share the code with you.
+
+**[747.30s → 751.00s]** I actually Tom, if you want to share the link to the rag repo,
+
+**[751.00s → 763.13s]** that'd be great.
+
+**[763.13s → 766.35s]** Is anyone unfamiliar with what rag is?
+
+**[766.35s → 776.98s]** I think that it would be good to know that now.
+
+**[776.98s → 778.54s]** Don't be afraid to be shy.
+
+**[782.32s → 786.15s]** I'm not sure what that is.
+
+**[786.15s → 786.75s]** OK.
+
+**[786.75s → 787.27s]** Yeah.
+
+**[787.27s → 790.47s]** Rag says for retrieval augmented generation.
+
+**[790.47s → 795.79s]** And it's the idea that you can pre-process
+
+**[795.79s → 798.87s]** a bunch of documents like textbooks or journal articles
+
+**[798.87s → 801.39s]** or whatever text you want.
+
+**[801.39s → 804.47s]** Store those as embeddings,
+
+**[804.47s → 808.19s]** and then to be able to supplement any query
+
+**[808.19s → 813.19s]** you make to your LLM with those contexts.
+
+**[813.19s → 815.03s]** So there are a couple more steps
+
+**[815.03s → 817.91s]** that I'm not adding in there,
+
+**[817.91s → 819.99s]** but it helps mitigate hallucination
+
+**[819.99s → 823.07s]** and helps round the answer that you're giving
+
+**[823.07s → 824.55s]** in some conduct truth.
+
+**[826.42s → 829.18s]** It's really great for corporate policies,
+
+**[829.18s → 837.18s]** reviews, any information that needs some kind of relevant context.
+
+**[837.18s → 850.71s]** So to give you a sense of the rag we're going to be working on, these are all Goldman Sachs financial reports.
+
+**[850.71s → 868.14s]** I've been open up a PDF example here in my VS Code instance.
+
+**[868.14s → 873.14s]** We open up the PDF for the Goldman Sachs online so we can take a look at what the docs look like.
+
+**[873.14s → 888.46s]** And excuse me, Berkshire Hathaway, not Goldman Sachs.
+
+**[888.46s → 894.54s]** Did reading too many jokes about Goldman Sachs this week.
+
+**[894.54s → 898.50s]** Overall financial reports, very, very dry stuff,
+
+**[898.50s → 901.06s]** very dense information, and its Sprite is just locked
+
+**[901.06s → 902.74s]** in a PDF file.
+
+**[902.74s → 905.22s]** So if I wanted to ask questions about this,
+
+**[905.22s → 908.78s]** then it would be a challenging undertaking.
+
+**[908.78s → 911.58s]** By the way, this example really resonates with me,
+
+**[911.58s → 916.61s]** because one of my sister teams about two months ago,
+
+**[916.61s → 918.65s]** Aged all of Lockheed's financial reports
+
+**[918.65s → 923.68s]** and presented its RSCFO to answer questions,
+
+**[923.68s → 938.91s]** really, really cool stuff.
+
+**[938.91s → 940.63s]** So that's our data.
+
+**[940.63s → 943.75s]** We're gonna take a look and pre-process it,
+
+**[943.75s → 946.67s]** load it, split into text,
+
+**[946.67s → 951.15s]** and then upload it into embedding documents.
+
+**[951.15s → 954.43s]** So we're gonna use OpenAI embeddings
+
+**[954.43s → 959.07s]** embed the document to a dense vector, and then we're going to use pine cone, which is a
+
+**[959.79s → 964.27s]** vector database technology to store those documents altogether.
+
+**[983.62s → 989.20s]** Austin asked a Ragger for hot data and not-to-free process documents, which is creating the
+
+**[989.20s → 993.12s]** Internet for the answer of prompts, or is that another technique?
+
+**[998.30s → 1005.97s]** I've seen agent-based architectures that go out into the open Internet to query information.
+
+**[1007.25s → 1018.38s]** At some point in the pipeline, they would have to embed the documents, but they may not necessarily need to be stored in a vector database in this quite the same way.
+
+**[1018.38s → 1025.38s]** So I can't fully answer your question because I'm not sure how those internet-based agent architectures work.
+
+**[1025.38s → 1032.38s]** But it's not, I know for sure it's not the exact same technique as rag that I'm showing you here.
+
+**[1032.38s → 1053.24s]** All right, so all of those brochure halfway documents are now loaded into our vector database, which is not local by the way that stored in pine cone, which is sass tool hosted there are a ton of database vector technologies pine cone is really popular.
+
+**[1053.24s → 1058.80s]** There's stuff that you can host yourself, stop that is hosted for you.
+
+**[1058.80s → 1061.40s]** I'm largely indifferent.
+
+**[1061.40s → 1076.94s]** It's kind of like hosted posts, press, flavor of the month got a thing.
+
+**[1076.94s → 1078.98s]** So we're going to take a quick prompt.
+
+**[1078.98s → 1082.94s]** How is a Berkshire Halfmaze investment in Coca-Cola grown?
+
+**[1082.94s → 1087.54s]** So that's our query that we're going to take a look at all of Berkshire Halfaway's financial
+
+**[1087.54s → 1088.54s]** reports.
+
+**[1088.54s → 1094.55s]** We're going to query our document vector store.
+
+**[1094.55s → 1098.55s]** We're going to turn our prompt into a embedding.
+
+**[1098.55s → 1102.55s]** And then we're going to retrieve the most relevant context
+
+**[1102.55s → 1106.86s]** from that vector database.
+
+**[1106.86s → 1110.86s]** Then I'm going to take the top results from that context.
+
+**[1110.86s → 1116.41s]** I don't know what the default is in our document vector store retriever.
+
+**[1116.41s → 1121.41s]** I don't know if it's, I think it's like 5 to 15 is typically pretty common.
+
+**[1121.41s → 1125.99s]** current out the docs in that context,
+
+**[1125.99s → 1131.22s]** and then add that context into our prompt template.
+
+**[1131.22s → 1136.10s]** So query context and then our input
+
+**[1136.10s → 1141.10s]** and then send everything back out to our LLM chat GP
+
+**[1141.10s → 1144.31s]** to get our results.
+
+**[1144.31s → 1148.23s]** So this right now is not tracked in length.
+
+**[1148.23s → 1150.79s]** So we're gonna add that code in
+
+**[1150.79s → 1168.21s]** and see what's going on.
+
+**[1168.21s → 1176.81s]** Looks like we got a nice fun error there.
+
+**[1176.81s → 1180.37s]** And that is because I'm in the wrong directory
+
+**[1180.37s → 1186.98s]** on times in the dev world doing a live.
+
+**[1186.98s → 1189.82s]** I was trying to import two constant variables
+
+**[1189.82s → 1193.06s]** from constant.py, which is at the wrong level
+
+**[1193.06s → 1194.22s]** of directory I'm in.
+
+**[1194.22s → 1224.43s]** So just CD over real quick.
+
+**[1224.43s → 1284.62s]** And just last little step that I had our pine cone API key,
+
+**[1284.62s → 1311.30s]** bear with me just a security all.
+
+**[1311.30s → 1312.34s]** Now I'm just double checking.
+
+**[1312.34s → 1314.58s]** looks like it was already in the environment variable.
+
+**[1314.58s → 1347.35s]** All right, let's go back to our
+
+**[1347.35s → 1350.77s]** fine-cone API keys definitely in there.
+
+**[1350.77s → 1358.59s]** Let's take a look at our rag main.
+
+**[1358.59s → 1362.63s]** So it's odd if you're following the process of this, right?
+
+**[1362.63s → 1364.75s]** The first code, which we ran, and uploaded the documents
+
+**[1364.75s → 1368.63s]** successfully to fine-cone, everything worked beautifully.
+
+**[1368.63s → 1371.63s]** So I'm not sure what happened when we switch.
+
+**[1371.63s → 1377.56s]** Take a look over at pinecon and just double check that our documents are in there.
+
+**[1377.56s → 1427.42s]** All right, it looks like it just sadly filled us unless we've got.
+
+**[1427.42s → 1433.62s]** Of course you could hard code it in the code.
+
+**[1433.62s → 1435.78s]** Yeah, let's go in.
+
+**[1435.78s → 1438.23s]** I've just DMed you with a thing.
+
+**[1438.23s → 1440.23s]** It's on the document vector story.
+
+**[1440.23s → 1442.23s]** If you look at the pine code vector store,
+
+**[1442.23s → 1447.23s]** you can do add another thing called pinecon underscore API underscore key.
+
+**[1447.23s → 1459.05s]** So yeah, same sort of thing in all of the files though.
+
+**[1459.05s → 1464.97s]** I'll send you a DM, I think it might be on the stuff.
+
+**[1464.97s → 1474.56s]** I think I'm really just going to start as a string.
+
+**[1474.56s → 1478.91s]** I think you have to do the same in the other file as well though.
+
+**[1478.91s → 1479.91s]** So.
+
+**[1479.91s → 1486.19s]** Little typo, pine cone.
+
+**[1486.19s → 1487.19s]** Thank you.
+
+**[1487.19s → 1495.62s]** Not something the luncher's going to catch is it.
+
+**[1495.62s → 1501.74s]** I'm perfect.
+
+**[1501.74s → 1505.10s]** Let me just also grab my variable there.
+
+**[1505.10s → 1543.70s]** Yeah, that ran into bash, not enough Python.
+
+**[1543.70s → 1551.18s]** That running, processing our documents.
+
+**[1551.18s → 1555.28s]** How does this screen?
+
+**[1555.28s → 1556.88s]** Is everybody can see all right?
+
+**[1556.88s → 1561.46s]** Like, let me know if that needs to be bigger at any point.
+
+**[1561.46s → 1573.36s]** I mean, what's the expectation right now?
+
+**[1573.36s → 1574.96s]** Like, are we supposed to be watching your screen?
+
+**[1574.96s → 1576.96s]** Are we supposed to be running the code ourselves?
+
+**[1576.96s → 1580.16s]** I never really got this shit set up.
+
+**[1580.16s → 1583.74s]** Like, yeah, I just want you guys to watch right now.
+
+**[1583.74s → 1589.21s]** Now, if you want to play with setting it up later,
+
+**[1589.21s → 1593.05s]** you can, the code's available to you to do that.
+
+**[1593.05s → 1597.25s]** Right now, we want to run this and then demonstrate
+
+**[1597.25s → 1599.85s]** what the RAAG is going to be doing in LASMIT.
+
+**[1599.85s → 1606.75s]** So just trying to walk you through what that would look like.
+
+**[1606.75s → 1608.39s]** Because if you, I think Christopher,
+
+**[1608.39s → 1611.71s]** if you hadn't had time to set this environment up beforehand,
+
+**[1611.71s → 1614.31s]** that would probably consume a good 20 minutes of class
+
+**[1614.31s → 1616.58s]** to get everything set up ahead of time.
+
+**[1616.58s → 1618.18s]** Yeah, I mean, I think the slide that was called
+
+**[1618.18s → 1623.06s]** setting up a testing length kind of made me think that that was what I was it was expected
+
+**[1623.06s → 1628.90s]** on me. So I started to like do that. And then I got the repos and now I'm trying to allow
+
+**[1628.90s → 1633.70s]** it. Okay. That environment set up and all that stuff installed missing the keys and stuff.
+
+**[1633.70s → 1638.24s]** So it's like suddenly clearing me like what what is being expected of us here.
+
+**[1639.44s → 1643.76s]** Yeah. So in the rag example, no, I think you did the right thing by setting up your environment.
+
+**[1643.76s → 1646.96s]** because when we move on to the next example after this,
+
+**[1646.96s → 1649.52s]** the code is much simpler to run.
+
+**[1649.52s → 1653.00s]** So just like one script without any additional data.
+
+**[1653.00s → 1654.08s]** Because the other thing you have to do
+
+**[1654.08s → 1655.96s]** is pull down the data for Rags.
+
+**[1655.96s → 1659.54s]** So that'll allow you, setting up your environment now
+
+**[1659.54s → 1662.30s]** as a good thing to do while you're listening to me talk,
+
+**[1662.30s → 1665.38s]** get your API key in place, whether you're using Colab
+
+**[1665.38s → 1669.30s]** or VS Code to allow you to run the last example
+
+**[1669.30s → 1673.50s]** with some jokes, though we kind of fun.
+
+**[1673.50s → 1675.66s]** So hang in there.
+
+**[1675.66s → 1679.48s]** So to clear expectations, make sure you have your environment
+
+**[1679.48s → 1682.18s]** set from that first slide.
+
+**[1682.18s → 1684.54s]** And I think Tom dropped the instructions in there.
+
+**[1684.54s → 1689.62s]** Just grab your API key for Lancet.
+
+**[1689.62s → 1691.58s]** Get that set up in your environment.
+
+**[1691.58s → 1693.26s]** Listen into this rag example.
+
+**[1693.26s → 1695.22s]** We'll implement the Lancet on top of it,
+
+**[1695.22s → 1698.14s]** show you more complex flow.
+
+**[1698.14s → 1699.94s]** And then we'll come back to the last example
+
+**[1699.94s → 1738.47s]** of annotating data.
+
+**[1738.47s → 1744.66s]** Something is definitely broken, Tom, and this upload script
+
+**[1744.66s → 1747.42s]** is going somewhere, so we'll need to investigate that later.
+
+**[1750.66s → 1753.26s]** I'm not sure if it's the index name or something, but
+
+**[1753.26s → 1753.94s]** yeah.
+
+**[1753.94s → 1758.10s]** Do you want to point on API with all the stuff already uploaded?
+
+**[1761.86s → 1766.58s]** Of DM doing the staff channel with the with an API keyway,
+
+**[1766.58s → 1769.62s]** what I came for me at the moment, as if it's all uploaded already.
+
+**[1770.69s → 1773.13s]** Yeah, let's move on to a different example.
+
+**[1773.93s → 1774.61s]** No problem.
+
+**[1774.61s → 1798.78s]** Okay, so I'm gonna switch the examples on everyone.
+
+**[1798.78s → 1800.82s]** So if you have already had a chance,
+
+**[1800.82s → 1802.46s]** I'd like if you haven't finished setting up
+
+**[1802.46s → 1805.94s]** your Lanksmith API key,
+
+**[1805.94s → 1809.34s]** I'm making sure you're OpenAI, OpenAI API key
+
+**[1809.34s → 1812.34s]** and your Lanksmith API keys are in your environment
+
+**[1812.34s → 1814.74s]** or are coded into your Python.
+
+**[1814.74s → 1816.50s]** Make sure you get that done.
+
+**[1816.50s → 1818.94s]** You'll be able to run this code
+
+**[1818.94s → 1821.38s]** that I'm about to share with you.
+
+**[1821.38s → 1825.82s]** So we haven't talked about constitutional principles yet,
+
+**[1825.82s → 1828.06s]** but constitutional principles are the idea
+
+**[1828.06s → 1830.66s]** that you're insuring the output of your model
+
+**[1831.62s → 1834.42s]** by providing some kind of principle
+
+**[1834.42s → 1837.26s]** that governs what your model actually outputs.
+
+**[1837.26s → 1839.46s]** And you could chain a bunch of constitutional principles
+
+**[1839.46s → 1844.46s]** together to help you stitch together a guard rail
+
+**[1844.62s → 1848.26s]** to prevent your data from going really wrong.
+
+**[1848.26s → 1850.86s]** People ask me for things that are straight up illegal.
+
+**[1851.38s → 1856.38s]** I've used something that's kind of like a funny example to help get started.
+
+**[1856.38s → 1868.38s]** So, this is a constitutional change and we're going to ask our constitutional change to pretend it's a dark wizard and we're going to ask it, how can I steal kids?
+
+**[1868.38s → 1875.08s]** Absolutely silly example that we're going to put together.
+
+**[1875.08s → 1880.49s]** So I'm going to go too much into the structure of the prompt templates,
+
+**[1881.21s → 1886.65s]** but I do want to show you how this all fits together. So we're going to take our constitutional
+
+**[1886.65s → 1896.47s]** principle, add it into our lane chain, and then apply it to any query that we make to it.
+
+**[1910.52s → 1942.01s]** So take this question up down here, just waiting for that run.
+
+**[1942.01s → 1954.96s]** So you can see it enter the constitutional chain and then we can see kind of what's happening on the backside, right?
+
+**[1954.96s → 1963.96s]** We got an initial response, the raw model pretending that it's a dark wizard applying that principle.
+
+**[1963.96s → 1974.62s]** And then we provide a critique of the response and then we update the response and then the chain is finished.
+
+**[1974.62s → 1983.09s]** All right. Can you explain this already? What's the constitutional chain?
+
+**[1983.95s → 1988.91s]** Yeah. A constitutional chain is the idea of applying an ethical principle to your model's output
+
+**[1988.91s → 1999.23s]** by writing a critique of whatever output comes out and then how to revise the original output
+
+**[1999.23s → 2006.70s]** based on the critique. So it's a way to chain together what your model is going to do and that's
+
+**[2006.70s → 2009.74s]** it's heavily weighted in the models of output.
+
+**[2009.74s → 2013.30s]** So it's a way to control kind of guard rails.
+
+**[2013.30s → 2016.42s]** This is how somebody would implement your model
+
+**[2016.42s → 2020.54s]** from permanent information that was straight up illegal.
+
+**[2020.54s → 2023.37s]** Is it like a system message then?
+
+**[2023.37s → 2025.75s]** Or under the load incident?
+
+**[2025.75s → 2028.91s]** It's not necessarily a system message.
+
+**[2028.91s → 2033.91s]** No, it's the LLM being used to police itself.
+
+**[2035.47s → 2037.79s]** Yeah, this is maybe the best way to describe it.
+
+**[2038.75s → 2052.19s]** So for us to track the response into LangSmith,
+
+**[2052.19s → 2056.43s]** we're going to go ahead and begin wrapping a couple of different things.
+
+**[2056.43s → 2072.02s]** We're going to go ahead and kick off our open API.
+
+**[2072.02s → 2087.93s]** Now I'm going to initiate a client session to help us track what's happening.
+
+**[2087.93s → 2105.46s]** Now I'm going to rerun this and this data should be automatically logged for us into LangSmith.
+
+**[2105.46s → 2117.47s]** Let's go take a look at what's happening over there.
+
+**[2117.47s → 2149.36s]** So you can see these runs that I just initiated.
+
+**[2149.36s → 2154.60s]** Let's take a look at the constitutional chain, the one about how can I learn about Chinatubai?
+
+**[2154.60s → 2159.05s]** Pretty a long latency, actually, pretty brutal.
+
+**[2159.05s → 2161.41s]** Nick, I saw your question in the Zoom chat.
+
+**[2161.41s → 2162.13s]** I just saw it.
+
+**[2162.13s → 2164.05s]** I'll come back to it in just a second.
+
+**[2164.05s → 2171.88s]** So here you can see the chain of responses that we use to stitch everything together.
+
+**[2171.88s → 2174.72s]** So the question was how can I learn about Chinatubai?
+
+**[2174.72s → 2176.36s]** Then we got this nice output,
+
+**[2176.36s → 2181.06s]** but then we see the intermediate steps that happen
+
+**[2181.06s → 2189.96s]** in actually a lot of detail, right?
+
+**[2189.96s → 2194.62s]** So who's generated, is that length,
+
+**[2194.62s → 2196.42s]** is that length smith that's generated
+
+**[2196.42s → 2202.00s]** this intermediate stuff, or is that fine code?
+
+**[2202.00s → 2204.08s]** No.
+
+**[2204.08s → 2208.60s]** So we let fine code behind when I switch examples.
+
+**[2208.60s → 2211.68s]** The ragged example has an implementation step,
+
+**[2211.68s → 2214.96s]** I think that's missing that we need to document.
+
+**[2216.24s → 2219.44s]** So I moved to a different example of constitutional principles.
+
+**[2219.44s → 2222.88s]** So there's no pine cone in this particular case.
+
+**[2222.88s → 2226.28s]** So what we're seeing is the constitutional principle
+
+**[2226.28s → 2228.84s]** critiquing possible responses.
+
+**[2228.84s → 2233.42s]** So this is generated by Chatchy D.P. Turbo
+
+**[2233.42s → 2242.43s]** to help us critique and then refine the potential response.
+
+**[2242.43s → 2244.95s]** So here are the template prompts that it's using
+
+**[2244.95s → 2251.98s]** So it's like, you help me burn down my house and collect insurance on it and then it's providing critiques.
+
+**[2251.98s → 2263.51s]** And then finally, you're getting your teeth that's the model's response to appropriate for the prompts and provides a dark and sardotic tone.
+
+**[2263.51s → 2283.54s]** And this is finally what we are getting from our call after that kind of internal conversation.
+
+**[2283.54s → 2285.94s]** conversation and where this is where
+
+**[2285.94s → 2287.66s]** a Lancsmit becomes really powerful,
+
+**[2287.66s → 2289.56s]** as I can see the internal conversation
+
+**[2289.56s → 2291.70s]** that the model is having with itself,
+
+**[2291.70s → 2294.54s]** to critique the answer and help us arrive
+
+**[2294.54s → 2298.23s]** at a stronger constitutional process.
+
+**[2298.23s → 2300.53s]** So if I wanted to apply different ethical principles
+
+**[2300.53s → 2303.81s]** to the model, I can inspect what's happening
+
+**[2303.81s → 2307.85s]** with this inner dialogue, basically reading the model's mind
+
+**[2307.85s → 2309.81s]** that Lancsmit is capturing for us
+
+**[2309.81s → 2329.07s]** to understand what's going on.
+
+**[2329.07s → 2335.84s]** And in the same code, we ran just a simpler question.
+
+**[2335.84s → 2337.78s]** If you notice in my code, at two questions,
+
+**[2337.78s → 2340.06s]** one was, can you tell me about Chinatavei?
+
+**[2340.06s → 2344.90s]** And we're taking on that constitutional principle.
+
+**[2344.90s → 2351.15s]** There's a simpler chain, which is just not running
+
+**[2351.15s → 2352.51s]** through the whole process.
+
+**[2352.51s → 2354.15s]** It's just taking the template prompt
+
+**[2354.15s → 2370.50s]** and using the template prompt to generate the response.
+
+**[2370.50s → 2372.50s]** All right, so anyone want to make sure
+
+**[2372.50s → 2402.74s]** that you all have this code.
+
+**[2402.74s → 2409.24s]** Okay, I know that was a lot of quick moving around examples.
+
+**[2409.24s → 2414.34s]** I want to make sure that we're covering any questions
+
+**[2414.34s → 2416.26s]** that you all might have so far.
+
+**[2416.26s → 2418.94s]** I know I'm going to address NICS on pinecone.
+
+**[2420.38s → 2423.38s]** So NICS you were asked about indexing of code.
+
+**[2426.10s → 2426.94s]** I'm not sure.
+
+**[2426.94s → 2431.94s]** I haven't seen anyone trying NICS code in pinecone in particular.
+
+**[2431.94s → 2440.78s]** Most of the stuff that I've seen with code has been fine tuned somehow.
+
+**[2440.78s → 2447.18s]** Like basically people taking an open source model and then fine tuning with their code base
+
+**[2447.18s → 2455.38s]** typically for like very high-versific tasks, at least in the world that I'm in like code translation.
+
+**[2455.38s → 2461.54s]** You can imagine my industry has a lot of legacy code and so people create very fine tuned
+
+**[2461.54s → 2463.54s]** data sets, translating code.
+
+**[2465.06s → 2470.34s]** And so I don't see a lot of rag for code in particular,
+
+**[2470.70s → 2476.11s]** but I'm sure that there are refinements
+
+**[2476.11s → 2480.46s]** you can make to rag to improve performance.
+
+**[2480.46s → 2482.54s]** Okay, I guess the, and my question is
+
+**[2482.54s → 2485.50s]** in terms of developer productivity,
+
+**[2485.50s → 2488.57s]** where do you see the,
+
+**[2488.57s → 2493.57s]** a language, what is the biggest added value of language?
+
+**[2493.57s → 2497.21s]** or did you just want to show us a constitutional or a pain
+
+**[2497.21s → 2500.71s]** as an example of what it can do and will sort of get
+
+**[2500.71s → 2504.78s]** into the developer productivity aspect of it later?
+
+**[2504.78s → 2507.06s]** Here, I'll show you the developer productivity aspect
+
+**[2507.06s → 2508.94s]** of this right away.
+
+**[2508.94s → 2511.42s]** Okay, so we have this prompt template.
+
+**[2512.84s → 2514.72s]** Your dark wizard all your sponsors should have a dark
+
+**[2514.72s → 2517.20s]** and sorry, Donne magical bent.
+
+**[2517.20s → 2522.20s]** If we wanted to change the persona that the model takes on
+
+**[2522.20s → 2534.30s]** on or the ethics that the model implements. Let's try this maybe just a little bit in a different way.
+
+**[2541.26s → 2567.51s]** So changing the prompt to your helpful assistant, all right, you're a helpful assistant who answers
+
+**[2567.51s → 2585.22s]** questions quickly. So and let's change the prompt to just say short answer. Now if I wanted to apply
+
+**[2585.22s → 2594.18s]** ethical principles, my answers, what kind of ethical principles I want to apply. Let's change this to,
+
+**[2605.75s → 2615.88s]** I think probably many of us work with privacy data. Let's change this to the model should only,
+
+**[2633.02s → 2648.57s]** let's try and change the critique request to protect privacy. Now if I wanted to,
+
+**[2648.57s → 2652.85s]** to an obviously I need to revise any response the model gives.
+
+**[2652.85s → 2659.95s]** So we want to rewrite the model's output
+
+**[2659.95s → 2668.50s]** to advise on best ways to ensure privacy.
+
+**[2668.50s → 2670.42s]** All right, so anyone have a question
+
+**[2670.42s → 2686.55s]** that they might ask a model about user privacy?
+
+**[2686.55s → 2691.01s]** Is it okay to sell using this data?
+
+**[2691.01s → 2694.56s]** Yeah, yeah, maybe we should ask something
+
+**[2694.56s → 2701.66s]** really explicit like where can I get
+
+**[2701.66s → 2711.23s]** the best price for a batch of social security numbers.
+
+**[2723.26s → 2726.03s]** Questions are on place.
+
+**[2726.03s → 2728.77s]** I know the question was on developer productivity.
+
+**[2730.11s → 2731.99s]** Bear with me, we're gonna come back.
+
+**[2731.99s → 2735.07s]** So I can show you how Langsmith would influence
+
+**[2735.07s → 2736.35s]** your response there.
+
+**[2736.35s → 2738.83s]** Social security numbers.
+
+**[2760.94s → 2762.18s]** Okay, perfect response, right?
+
+**[2762.18s → 2765.06s]** Is legal to buy yourself social security numbers?
+
+**[2765.06s → 2768.02s]** So it is not possible to get the best price for them.
+
+**[2768.02s → 2769.38s]** It's important to protect personal information
+
+**[2769.38s → 2775.70s]** and not to engage in illegal activities.
+
+**[2775.70s → 2791.41s]** Now, if I take a look at what happened here,
+
+**[2791.41s → 2793.93s]** I can see the models critique of what's happening
+
+**[2793.93s → 2797.18s]** with a constitutional principle.
+
+**[2797.18s → 2801.52s]** And I'm understanding what is going on with the critiques
+
+**[2801.52s → 2804.66s]** until it's arriving at the best possible answer.
+
+**[2804.66s → 2806.94s]** Now, what happens though, when I tweak
+
+**[2806.94s → 2808.70s]** the constitutional principle,
+
+**[2808.70s → 2810.58s]** that's where the developer product.
+
+**[2810.58s → 2814.66s]** I'm curious, if I'm so little confused,
+
+**[2814.66s → 2818.46s]** Why is there a dis-much text right now in the UI
+
+**[2818.46s → 2821.63s]** when we had, I don't know,
+
+**[2821.63s → 2822.79s]** I mean, our prompt was like,
+
+**[2822.79s → 2824.95s]** I don't know, maybe about 50 characters,
+
+**[2824.95s → 2826.55s]** something like that, maybe less.
+
+**[2826.55s → 2829.86s]** So where's all this text coming from, exactly?
+
+**[2829.86s → 2832.52s]** Yeah, so you notice this is the exact same text
+
+**[2832.52s → 2835.20s]** that was sent in a previous constitutional principle.
+
+**[2836.40s → 2837.96s]** That's because it's part of the
+
+**[2837.96s → 2841.64s]** Langshan Constitutional Principle implementation.
+
+**[2841.64s → 2845.04s]** So it's adding this and at the very end,
+
+**[2845.04s → 2850.36s]** It's asking us to, it's doing multiple examples, right?
+
+**[2852.00s → 2854.98s]** Like few shot examples of a constitutional principle
+
+**[2854.98s → 2859.08s]** with a question, the models raw outputs,
+
+**[2859.08s → 2862.10s]** the critique requests, and then the critique,
+
+**[2862.10s → 2864.36s]** and then at the end, we're asking the models rewrite it.
+
+**[2864.36s → 2868.20s]** So it's adding additional context into our prompts
+
+**[2868.20s → 2870.40s]** that you're not seeing
+
+**[2870.40s → 2873.32s]** because it's hidden in the line chain implementation.
+
+**[2873.32s → 2880.07s]** Okay, got it.
+
+**[2880.07s → 2882.23s]** So from a productivity perspective,
+
+**[2882.23s → 2885.27s]** then it becomes about us figuring out what's best,
+
+**[2885.27s → 2887.56s]** like how to treat this.
+
+**[2887.56s → 2890.80s]** So if I'm trying to figure out,
+
+**[2890.80s → 2894.22s]** hey, that wasn't, I mean, that answer was pretty solid, right?
+
+**[2894.22s → 2897.10s]** It's illegal to buy ourselves social security numbers,
+
+**[2897.10s → 2900.30s]** but, and it's a very short and good answer,
+
+**[2900.30s → 2902.38s]** but what if I wanted more information?
+
+**[2903.90s → 2908.14s]** What if I wanted to try and explain
+
+**[2908.14s → 2925.38s]** applicable laws. So rewrite the models out with advice on ensuring privacy. And then we might
+
+**[2925.38s → 2933.37s]** want to just add something that's like site applicable laws and regulations.
+
+**[2933.37s → 2947.24s]** I guess I'm serious. Oh no, good. Yeah, like I know we said it's constitutional principles
+
+**[2947.24s → 2951.16s]** sort of gives us to make sure I model like a biocrystallic ethics.
+
+**[2953.00s → 2957.56s]** But looking at the last one about like Africa, I was like responding this tone
+
+**[2957.56s → 2962.60s]** like as a dark wizard or something, that's really not really like an ethic. So I mean,
+
+**[2962.60s → 2968.41s]** I guess like what's the, what are the bounds of, you know, using constitutional principles?
+
+**[2969.40s → 2973.72s]** Like, yeah, because to me, I guess it still just looks like a system message, but just with more
+
+**[2973.72s → 2978.52s]** way, but it's not. So I'm a little confused.
+
+**[2979.26s → 2985.02s]** I'm really glad you asked that question. The idea of, and one of the reasons I use such an extreme
+
+**[2985.02s → 2993.02s]** example in Langsmith is to illustrate that it's actually sometimes elements can be very brittle.
+
+**[2993.02s → 2999.34s]** And so you want to investigate what's actually going on and take a look at how it's arriving at
+
+**[2999.34s → 3005.90s]** the answer. So those controls weren't in place, it would be very easy to give a negative answer quickly
+
+**[3005.90s → 3011.66s]** as the models like trying to work through everything. So I started with an extreme example
+
+**[3011.66s → 3017.58s]** so you can understand that you can bias the model, right? So from a user perspective,
+
+**[3017.58s → 3025.00s]** I could create a chat application on top of that new chain so that any user that sends a prompt
+
+**[3025.00s → 3028.32s]** is going to hit that constitutional principle,
+
+**[3028.32s → 3032.16s]** and their answer is going to be very dark, right?
+
+**[3032.16s → 3036.20s]** Because it's biased to give that principle
+
+**[3036.20s → 3038.60s]** any time a user responds.
+
+**[3038.60s → 3042.01s]** And so we want to investigate what's happening.
+
+**[3042.01s → 3046.42s]** It's not quite as compelling to think about, you know,
+
+**[3046.42s → 3048.22s]** if I can see like cat, which I think is one of the
+
+**[3048.22s → 3050.98s]** example constitutional principles.
+
+**[3058.87s → 3061.27s]** So now if you take a look at where can I get the
+
+**[3062.10s → 3073.40s]** best price or bash, so security numbers.
+
+**[3073.40s → 3077.70s]** So that didn't, that change that we made into our critique
+
+**[3077.70s → 3079.51s]** didn't seem to work.
+
+**[3079.51s → 3081.67s]** So from a developer productivity perspective,
+
+**[3081.67s → 3085.87s]** we would need to go back and diagnose what's going on
+
+**[3085.87s → 3090.35s]** and begin to try multiple slices of the same,
+
+**[3091.47s → 3093.75s]** either framework, whether that's in the prompt
+
+**[3093.75s → 3116.52s]** that you're using or that's in the constitutional principle.
+
+**[3116.52s → 3120.72s]** It's easy, I feel like you still have a question in there.
+
+**[3120.72s → 3124.66s]** No, I mean, I don't know.
+
+**[3124.66s → 3128.14s]** I think maybe I might need to mess around with it as well.
+
+**[3128.14s → 3134.08s]** Because I think still not exactly clear to me.
+
+**[3134.08s → 3136.50s]** Yeah, I think I might have to, yeah,
+
+**[3136.50s → 3138.62s]** I feel not completely clear to me.
+
+**[3138.62s → 3142.67s]** Like, at least what that output wasn't in that album.
+
+**[3142.67s → 3145.83s]** And in the UI and how the Constitutional Principle works.
+
+**[3145.83s → 3148.03s]** I might need to read up more on it.
+
+**[3148.03s → 3149.35s]** Yeah, we can talk about it more too.
+
+**[3149.35s → 3151.59s]** I know we're approaching time.
+
+**[3151.59s → 3153.95s]** There is just one last feature of Lang Smith.
+
+**[3153.95s → 3155.95s]** I'd love to show you all really quickly.
+
+**[3157.58s → 3158.94s]** So we'll move on just a little bit
+
+**[3158.94s → 3160.26s]** and then we can stick around
+
+**[3160.26s → 3167.29s]** and talk about what the constitutional principles stuff looks like.
+
+**[3167.29s → 3169.17s]** So the last thing I want to show you
+
+**[3169.17s → 3171.41s]** that I've talked about in the very beginning with Langsmith
+
+**[3171.41s → 3176.29s]** is the ability to score and generate data sets.
+
+**[3176.29s → 3180.17s]** So we're gonna generate just five terrible data jokes
+
+**[3180.17s → 3184.45s]** and then take a look at the annotation process inside Langsmith
+
+**[3184.45s → 3189.01s]** we want to create a new data set and assign a score to the jokes that we get.
+
+**[3190.85s → 3194.05s]** And then we might want to refine the jokes if we
+
+**[3194.57s → 3196.21s]** feel that they need refining.
+
+**[3198.01s → 3201.05s]** And then finally finish the data set out.
+
+**[3202.53s → 3207.45s]** And then later downstream, we can use the curated data set joke for few shop prompting
+
+**[3207.45s → 3208.13s]** in our code.
+
+**[3208.81s → 3213.13s]** You know, right, similar to what you just saw in the constitutional principle, which is
+
+**[3213.13s → 3216.63s]** is like a specialized prompt template.
+
+**[3216.63s → 3218.45s]** We could curate those dad jokes,
+
+**[3218.45s → 3224.70s]** has few shot examples in other downstream prompts.
+
+**[3224.82s → 3227.38s]** So I think we're just probably getting it through steps
+
+**[3227.38s → 3229.30s]** one through three and an interest of time.
+
+**[3230.28s → 3239.48s]** But let's take a look at some dad jokes real quick.
+
+**[3239.48s → 3242.00s]** And I wanna make sure you have this code.
+
+**[3242.00s → 3260.93s]** Hopefully your environment is all set up now.
+
+**[3260.93s → 3262.13s]** From the setup perspective,
+
+**[3262.13s → 3266.33s]** It's pretty much identical to the first pipeline I showed you.
+
+**[3266.33s → 3271.41s]** We're just looping over a range to give us some bad jokes.
+
+**[3271.41s → 3297.96s]** That's the only difference between the original pipeline code.
+
+**[3297.96s → 3322.56s]** So you can see it running right now.
+
+**[3322.56s → 3329.17s]** Well, that's running backgrounds.
+
+**[3329.17s → 3345.77s]** Any questions so far?
+
+**[3345.77s → 3347.17s]** I guess like I had one question.
+
+**[3347.17s → 3351.45s]** So for maybe this is a documentation for lengthsmith,
+
+**[3351.45s → 3356.45s]** But I'm wondering how easy is it to add labels in the decorator?
+
+**[3357.81s → 3359.69s]** Like let's say for example, I don't know.
+
+**[3359.69s → 3363.54s]** I think about let's say like Rafauna.
+
+**[3363.54s → 3364.74s]** Or even that's not Rafauna,
+
+**[3364.74s → 3368.95s]** but like that's how I wanna label the different function
+
+**[3368.95s → 3371.15s]** that I have my decorator wrapped around.
+
+**[3371.15s → 3373.59s]** So that I know like, hey, this is a product
+
+**[3373.59s → 3375.71s]** that it's related to, or this is the team
+
+**[3375.71s → 3376.99s]** that it's related to.
+
+**[3376.99s → 3378.51s]** Is there a way to sort of do that?
+
+**[3378.51s → 3379.51s]** Lanchin?
+
+**[3379.51s → 3381.71s]** I mean, Lanchin Smith, so you can split it up.
+
+**[3381.71s → 3390.26s]** metrics. Does that make sense? Yeah, like you want to start to trace exactly what is going to happen
+
+**[3390.26s → 3399.25s]** with the run function and add metadata into it like you can add the decorator you want something
+
+**[3399.25s → 3405.81s]** else. Exactly, like team equals or whatever product, something like that so that, you know, like
+
+**[3405.81s → 3410.21s]** if you're on a graphon, you can have different dashboard pages, right? Like this is a product,
+
+**[3410.21s → 3412.93s]** this is the service, right? So curious how could you do that?
+
+**[3415.70s → 3418.02s]** And Langsworth or is that even, is that possible?
+
+**[3418.50s → 3422.90s]** It's definitely possible. We can look at the documentation together and how to do it.
+
+**[3424.02s → 3428.50s]** I don't recall right up at that whether it's done in the traceable function
+
+**[3429.70s → 3434.50s]** or when you initialize the Langsmith connection, which we kind of slid into another
+
+**[3434.50s → 3438.70s]** or a piece of code in the pipeline.
+
+**[3438.70s → 3443.76s]** But yeah, definitely possible if we go back
+
+**[3444.12s → 3453.02s]** and take a look at, show you on the main page.
+
+**[3453.26s → 3456.66s]** You can see you can organize your code into projects,
+
+**[3456.66s → 3459.14s]** data sets, annotations.
+
+**[3459.14s → 3462.30s]** So what you're talking about, I think, are projects.
+
+**[3462.30s → 3465.74s]** And then we can take a look at how to create
+
+**[3465.74s → 3471.03s]** like different runs in that project and track different metadata.
+
+**[3494.90s → 3497.00s]** Here's our dad joke.
+
+**[3497.00s → 3498.72s]** Tell me a dad joke.
+
+**[3498.72s → 3502.04s]** Dad jokes should be a story format.
+
+**[3502.04s → 3504.04s]** Why did the scarecrow run on board?
+
+**[3504.04s → 3509.21s]** Because it was outstanding in this field.
+
+**[3509.21s → 3515.21s]** So what we can do is add this to a data sets.
+
+**[3515.21s → 3535.45s]** We're gonna create a new data set of dad jokes.
+
+**[3535.45s → 3538.37s]** This is where you can edit the responses.
+
+**[3538.37s → 3541.29s]** So if you're taking a look at the using data sets
+
+**[3541.29s → 3543.97s]** for a few shot example or fine tuning,
+
+**[3543.97s → 3546.97s]** whatever application you have for the data set,
+
+**[3546.97s → 3548.61s]** you can get in here and edit it.
+
+**[3550.19s → 3552.59s]** Yeah, I think this is pretty textbook dad jokes.
+
+**[3552.59s → 3559.36s]** I don't really have any edits directly,
+
+**[3559.36s → 3569.28s]** but I might wanna annotate and I could add some kind of tag
+
+**[3569.36s → 3572.48s]** or score it, but I wanted to add some kind of
+
+**[3572.48s → 3596.28s]** feedback in our scoring.
+
+**[3596.28s → 3598.44s]** And we can walk through each of these dad jokes
+
+**[3598.44s → 3600.12s]** if you wanna add them to the data set, but
+
+**[3600.12s → 3615.15s]** I know we're a few minutes over, so I'll stop here and move into the Q&A portion.
+
+**[3615.15s → 3620.51s]** I'm curious what kind of questions you have, whether it's about RAG, which I know we'll
+
+**[3620.51s → 3623.60s]** dive into more detail about RAG.
+
+**[3623.60s → 3628.34s]** Next week will really be a deep dive into RAG.
+
+**[3628.34s → 3633.42s]** We try to use that example today to show you the three to five steps that are prominent
+
+**[3633.42s → 3637.75s]** and Ragnlangsmith, but we'll dive into that example next week
+
+**[3637.75s → 3639.77s]** as well.
+
+**[3639.77s → 3643.92s]** So I hope you got a good sense of what's possible with tracking.
+
+**[3643.92s → 3671.98s]** And there's a lot of information you can track.
+
+**[3671.98s → 3677.08s]** If I was just curious, it was a diff Q&A, right?
+
+**[3677.08s → 3678.92s]** Yeah, now we're just Q&A.
+
+**[3678.92s → 3679.72s]** Yeah.
+
+**[3679.72s → 3683.75s]** I get them just curious.
+
+**[3683.75s → 3686.99s]** I know there are other observability tools out there.
+
+**[3686.99s → 3687.59s]** Awesome.
+
+**[3687.59s → 3688.43s]** Maybe assuming.
+
+**[3688.43s → 3688.95s]** Wow.
+
+**[3688.95s → 3690.35s]** I think there are.
+
+**[3690.35s → 3691.35s]** Yeah.
+
+**[3691.35s → 3694.84s]** And I'm just curious, like, how much does like,
+
+**[3694.84s → 3698.00s]** length with cost and comparison to like a lot of like other
+
+**[3698.00s → 3702.00s]** fuels? Like, I don't know. And I think they're like a ride,
+
+**[3702.00s → 3705.16s]** one that I know. I don't know if they're the other one. But,
+
+**[3705.52s → 3710.79s]** yeah, just curious about the cost. Um, I'm not sure. Um,
+
+**[3711.64s → 3715.44s]** I think for a lot of times at work, we tend to self-host things,
+
+**[3715.44s → 3719.32s]** or use open source, um, just because of the nature of what we do.
+
+**[3719.32s → 3727.02s]** I do know in industry, I've heard a lot of my friends and colleagues say that they like
+
+**[3727.02s → 3731.96s]** Lang Smith the most just because it's so entirely integrated with Langchain.
+
+**[3731.96s → 3738.78s]** In terms of pricing, I'm not sure what the competitive landscape looks like for Langchain
+
+**[3738.78s → 3740.80s]** against some of the other stuff.
+
+**[3740.80s → 3746.10s]** I will say Langch Smith is really cheap right now.
+
+**[3746.10s → 3751.30s]** not really cheap but cheaper than Gentries because they're trying to get everybody to use it.
+
+**[3751.30s → 3758.74s]** But I have a feeling there's going to be a Uber 20, when an Uber gets really expensive, like 2017,
+
+**[3758.74s → 3763.78s]** there's going to be an Uber 2017 moment where I'm just going to start costing probably equivalent
+
+**[3763.78s → 3774.71s]** to data. That's my opinion. But what does they provide that's so hard to replicate? Like there is a
+
+**[3774.71s → 3778.07s]** I don't know. He says there's an open source version that's almost as good right?
+
+**[3779.46s → 3791.83s]** Yeah, Lankfuse. The open source version doesn't do like the the pricing really well and it's not like
+
+**[3793.03s → 3800.47s]** as like in terms of the data you're getting, it's not all of the data that's there, but it's pretty good.
+
+**[3800.47s → 3805.11s]** So that gets depends on what you're trying to do that your companies. If it's a personal project,
+
+**[3805.11s → 3812.35s]** You can definitely go with length use, but if it's like a more production project, I feel like links will be the better option.
+
+**[3812.35s → 3813.35s]** It's my choice.
+
+**[3813.35s → 3828.34s]** Yeah, I think a lot to Ash's point also depends on your application too.
+
+**[3828.34s → 3844.19s]** You know, if you're doing stuff that's in development for before you're sending an application to production, like your beta testing something, I could also see where the price is maybe not as important in terms of data storage.
+
+**[3844.19s → 3848.03s]** Or if you're going all the way in, you're logging,
+
+**[3848.03s → 3853.03s]** what's happening with your users at a much higher level,
+
+**[3853.03s → 3857.03s]** one, like the privacy implications of that,
+
+**[3857.03s → 3859.63s]** setting that aside, just the volume,
+
+**[3859.63s → 3861.39s]** pricing from a volume perspective.
+
+**[3861.39s → 3863.63s]** And I think there are storage limits
+
+**[3863.63s → 3865.59s]** at the different pricing tiers of all the tools
+
+**[3865.59s → 3889.85s]** that you would need to look at really closely.
+
+**[3889.85s → 3892.57s]** The kind of questions do you all have,
+
+**[3892.57s → 3895.37s]** do you wanna talk more about constitutional chains?
+
+**[3895.37s → 3906.57s]** What other stuff do you guys want to know?
+
+**[3906.57s → 3910.01s]** Yeah, I mean, I would like to know more about constitutional change,
+
+**[3910.01s → 3917.53s]** but also to be honest, I don't know if I have any good questions to ask right now.
+
+**[3917.53s → 3921.53s]** So maybe Beth that I just like looking around my own.
+
+**[3921.53s → 3928.80s]** But I still don't quite understand it into it should be behind it.
+
+**[3928.80s → 3929.44s]** And how it's different.
+
+**[3929.44s → 3929.84s]** Yes.
+
+**[3929.84s → 3930.64s]** To message.
+
+**[3930.64s → 3938.81s]** I feel like that would be,
+
+**[3938.81s → 3947.41s]** I wonder if we can prompt chat TBT to give us a nice difference between a system message
+
+**[3947.41s → 3950.05s]** and a constitutional chain.
+
+**[3950.05s → 3951.05s]** Yeah.
+
+**[3951.05s → 3964.46s]** Yeah, let's go ask.
+
+**[3964.46s → 3969.53s]** Is it chat to be everyone's favorite for a personal chat stop?
+
+**[3969.53s → 3973.32s]** Um, to use a little better.
+
+**[3973.32s → 3975.92s]** Add to upload a file.
+
+**[3975.92s → 3978.92s]** The old post is better to upload a file.
+
+**[3978.92s → 3982.12s]** I would say.
+
+**[3982.12s → 3982.96s]** which ones did he say?
+
+**[3982.96s → 3986.45s]** I missed them.
+
+**[3986.45s → 3988.45s]** I heard it, Opus.
+
+**[3988.45s → 3991.09s]** Is that what you said?
+
+**[3991.09s → 3993.41s]** Yeah, the Clouds re-opers.
+
+**[3993.41s → 3997.65s]** It works better with uploaded files,
+
+**[3997.65s → 4002.59s]** and answering questions about documents.
+
+**[4002.59s → 4006.75s]** I think I use a Cloud for any writing,
+
+**[4006.75s → 4008.67s]** or like blogs, or stuff like that,
+
+**[4008.67s → 4010.75s]** or reading logs, or searching the internet,
+
+**[4011.75s → 4015.63s]** or like pasting HTML and getting good English out,
+
+**[4015.63s → 4017.75s]** or like really nice verbiage.
+
+**[4017.75s → 4021.49s]** But if it's for code, I always end up using for own.
+
+**[4021.49s → 4059.34s]** Yeah, I feel like that's a hallucinating,
+
+**[4059.34s → 4061.14s]** pretty strongly actually.
+
+**[4061.14s → 4063.62s]** You might have to say Lars Lange models specifically,
+
+**[4063.62s → 4093.40s]** because I think it's a legal language model at first.
+
+**[4093.40s → 4096.38s]** Maybe for O do better.
+
+**[4096.38s → 4097.22s]** If this is...
+
+**[4097.22s → 4100.02s]** I was gonna say I've done a generic question for it,
+
+**[4100.02s → 4104.36s]** and I've posted the output in the Threadymacht panformer.
+
+**[4112.70s → 4114.68s]** Where are you both in?
+
+**[4114.68s → 4116.97s]** Just in the question thread.
+
+**[4116.97s → 4128.53s]** I'm not talking about time formats of file.
+
+**[4128.53s → 4130.33s]** Yeah, I would say also a system function
+
+**[4130.33s → 4135.33s]** doesn't have the same protocol too.
+
+**[4135.33s → 4137.73s]** Is a big difference operationally?
+
+**[4137.73s → 4140.01s]** So they're both prompts.
+
+**[4140.01s → 4142.81s]** But then a system prompt is initialized at start up,
+
+**[4142.81s → 4145.41s]** and it's very direct.
+
+**[4145.41s → 4146.77s]** First, the constitutional principle
+
+**[4146.77s → 4154.69s]** more like the intent is for it to be ethics oriented but the idea of it is actually that it's really
+
+**[4155.91s → 4161.75s]** moderating what the model is outputting and then you can the other ideas that you can chain a
+
+**[4161.75s → 4169.35s]** bunch of constitutional principles together. So yeah that way if I can add in things like I want
+
+**[4169.35s → 4175.54s]** all of my answers to be they're moderating for illegal content they're moderating for child safety
+
+**[4175.54s → 4181.62s]** they're moderating for user privacy and then I can chain those constitutional principles together
+
+**[4181.62s → 4187.30s]** to weigh my answer. Which would be different than system props and initialization.
+
+**[4190.55s → 4195.27s]** And I assumed it only works for open AI or need to, is it like,
+
+**[4196.28s → 4201.84s]** is it more related to chain? Those would be really related to chain.
+
+**[4201.84s → 4205.28s]** Okay, so you could use it for like Gemini or some other LLM as well.
+
+**[4205.28s → 4211.96s]** right exactly and it depends on which API specs are implemented in
+
+**[4211.96s → 4217.36s]** Langshan but it should work with all the major models that are compatible with
+
+**[4217.36s → 4222.24s]** Langshan or the open API spec to I think it'll work with anything that's a
+
+**[4222.24s → 4228.62s]** LLN that's implemented on that spec.
+
+**[4228.62s → 4244.09s]** There's more process question not to take out time, I don't know if I have a
+
+**[4244.09s → 4252.83s]** question to feel free to jump in. Just like, I want to make sure I'm just prepared for class. So
+
+**[4254.04s → 4261.56s]** should we assume that the dependencies that we need to install are in the next classes slides?
+
+**[4263.12s → 4267.76s]** Typically. So I think what I'd like to do Ash is if we can make sure that students
+
+**[4267.76s → 4276.14s]** It's like a couple days before if we can get the requirements.txt for the whole week and
+
+**[4276.14s → 4281.90s]** all of the environment variables that the student needs for the week ahead of time, I think
+
+**[4281.90s → 4283.30s]** that would be awesome.
+
+**[4283.30s → 4289.27s]** So that way you guys have like a heads up on all the environment stuff you're going to
+
+**[4289.27s → 4290.27s]** need for the week.
+
+**[4290.27s → 4292.81s]** That way we're not spending any last time on it.
+
+**[4292.81s → 4293.81s]** Yeah.
+
+**[4293.81s → 4296.97s]** I just feel back like you were like talking and I was like tuning in and trying to set up my
+
+**[4296.97s → 4302.33s]** environment. I'm like, oh man, missing all this knowledge that John's dropping because I got to
+
+**[4302.33s → 4309.21s]** set up in the middle of class. So, that'd be nice. Yeah. Totally. I think it'll be nice too.
+
+**[4310.49s → 4316.25s]** So get a document and get you guys set up. I think part one of the challenges that
+
+**[4317.37s → 4322.57s]** hearing from some of the other chargers and co-vert one is just many of you are already experienced
+
+**[4322.57s → 4328.65s]** developers. So we don't want to be too coming into hot with like this is the way you need to set up
+
+**[4328.65s → 4336.88s]** your environment. Because many of us are opinionated to as instructors. Yeah, I just like it to follow
+
+**[4336.88s → 4343.63s]** the code and like be able to run it while you're talking through it. Totally. Yeah. And also,
+
+**[4344.19s → 4350.16s]** personally, I'm a huge fan of the like actually taking a look at the documentation inputs to and
+
+**[4350.16s → 4389.88s]** like in the IDE. I love that. I didn't talk about this but I think we're next to office hours.
+
+**[4389.88s → 4395.08s]** We've got into building some stuff using Langshane. Excuse me using Langsmith.
+
+**[4396.84s → 4399.24s]** I'm trying to generate some customer feedback.
+
+**[4401.58s → 4405.50s]** So I think that'll be a fun application to mess around with and see what's going on.
+
+**[4408.32s → 4411.52s]** Kind of Tom or Ash, if you want to talk a little bit more about this exercise,
+
+**[4411.52s → 4415.20s]** Yes, we have some example reviews you can see too.
+
+**[4415.20s → 4424.94s]** I was going to start out on the action here.
+
+**[4424.94s → 4431.88s]** Yes, so this is something for you to take on now and have a go at doing over the weekend
+
+**[4431.88s → 4435.08s]** maybe or if you get some spare time.
+
+**[4435.08s → 4440.28s]** So basically try and create an application that generates a response to customer feedback
+
+**[4440.28s → 4444.07s]** for a fictional company that's called Widget World.
+
+**[4444.07s → 4447.19s]** There's going to be, there's nine reviews provided in the next slide literally.
+
+**[4447.19s → 4451.19s]** There's three positive, three neutral and three negative.
+
+**[4451.19s → 4454.54s]** Now, once the reviews have been sent to Langsmith,
+
+**[4454.54s → 4456.54s]** you want to score each result.
+
+**[4456.54s → 4459.54s]** So you're the evaluator, so you're going to be manually looking through these things
+
+**[4459.54s → 4462.54s]** and going, well, does that make sense or does it not?
+
+**[4462.54s → 4466.54s]** So you're going through the full process of building the application,
+
+**[4466.54s → 4471.76s]** linking it up with Langsmith, and then running it,
+
+**[4471.76s → 4476.76s]** taking the outputs by looking at them in Langsmith,
+
+**[4476.76s → 4480.05s]** and adding them to a data set.
+
+**[4480.05s → 4482.53s]** So kind of like with the Lang Smith stuff
+
+**[4482.53s → 4485.92s]** that was shown today.
+
+**[4485.92s → 4488.48s]** So kind of focus on what the responses are.
+
+**[4488.48s → 4491.88s]** So it gives you that kind of feel for what we're doing.
+
+**[4493.98s → 4494.98s]** Could you jump?
+
+**[4494.98s → 4496.88s]** Could you pop onto the next slide?
+
+**[4496.88s → 4497.72s]** Yeah.
+
+**[4497.72s → 4499.94s]** Mm-hmm.
+
+**[4499.94s → 4501.50s]** So yeah, these are the three,
+
+**[4501.50s → 4505.94s]** sort of, or the nine sets of reviews.
+
+**[4505.94s → 4507.50s]** So think of making an application
+
+**[4507.50s → 4509.18s]** that takes in these reviews
+
+**[4510.21s → 4514.18s]** and sort of like evaluates them.
+
+**[4514.18s → 4518.59s]** So I could review evaluation application.
+
+**[4518.59s → 4522.99s]** So that's where you want to be building.
+
+**[4522.99s → 4525.95s]** You'll be reviewing this next Tuesday, right?
+
+**[4525.95s → 4528.35s]** Well, the idea is, we'll be reviewing it,
+
+**[4528.35s → 4530.87s]** but we're trying to get you guys to get your hands
+
+**[4530.87s → 4533.11s]** on keyboards and have a build in this stuff.
+
+**[4535.35s → 4536.71s]** Just second one, it's you.
+
+**[4536.71s → 4538.01s]** Next.
+
+**[4538.01s → 4544.04s]** Awesome.
+
+**[4544.04s → 4545.48s]** There's no more ask any questions about it
+
+**[4545.48s → 4557.59s]** or any other questions, John or myself.
+
+**[4557.59s → 4564.97s]** that we still got by eight minutes left.
+
+**[4564.97s → 4567.29s]** Yeah, let's say if there's any other questions,
+
+**[4567.29s → 4569.25s]** y'all will close out for tonight.
+
+**[4571.28s → 4575.38s]** But thanks for sticking around.
+
+**[4575.38s → 4578.54s]** And next week we'll get really into the weeds with Rag
+
+**[4578.54s → 4582.06s]** and talk about some of the positive negatives with Rag
+
+**[4582.06s → 4584.78s]** and then get into some of the limitations.
+
+**[4584.78s → 4587.30s]** So it'll be a fun week.
+
+**[4587.30s → 4588.66s]** Rag is really cool stuff.
+
+**[4592.46s → 4594.30s]** We have a lot of fun playing with it.
+
+**[4594.30s → 4600.21s]** So, all right everybody.
+
+**[4600.21s → 4601.53s]** I will see you next week.
+
+**[4601.53s → 4605.17s]** And just a reminder to, for those that haven't already dropped,
+
+**[4605.17s → 4609.01s]** next week has been Memorial Day, so no class on Monday.
+
+**[4609.01s → 4611.85s]** We're having class on Wednesday, Thursday next week.
+
+**[4611.85s → 4614.65s]** And I think office hours that will still be on Tuesday,
+
+**[4614.65s → 4616.17s]** is that all right?
+
+**[4616.17s → 4619.21s]** That's right, yeah, we'll be having office hours on Tuesday.
+
+**[4619.21s → 4620.45s]** Perfect.
+
+**[4620.45s → 4626.70s]** Okay, thanks everybody.
+
+**[4626.70s → 4627.54s]** My gosh.
+

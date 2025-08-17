@@ -1,0 +1,1683 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_07/week_7_class_1_2024-07-08.mp4
+**Duration:** 3855.58 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 832
+**Generated:** 2025-08-13 20:16:15
+**File Hash:** 2884b52691ca2a51334449f19b77e8b6
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_07
+**file_name:** week_7_class_1_2024-07-08.mp4
+
+---
+
+## Transcript
+
+**[13.17s → 15.17s]** All right, welcome everybody.
+
+**[15.17s → 18.17s]** I hope you had a great fourth of July break.
+
+**[18.17s → 21.17s]** If you were off from work last week during the US.
+
+**[21.17s → 25.68s]** And for those of you, I hope you just enjoy it kind of a week break in the class.
+
+**[25.68s → 28.19s]** So we're going to continue this week.
+
+**[28.19s → 32.19s]** We're kind of leading up the ramp into your capstone projects.
+
+**[32.19s → 42.19s]** So today's class is going to be very different in the sense that we're not going to really look a bunch of any code at all unless you're interested in investigating one of these techniques in class.
+
+**[42.19s → 51.19s]** Instead, we're going to talk about some, essentially, much more sophisticated agent workflows.
+
+**[51.19s → 59.19s]** Like, you know, the title side is advanced, crafting needs, but we'll actually also talk about a couple additional rad techniques as well.
+
+**[59.19s → 71.32s]** And we'll talk about building out human and loop systems and really thinking about how to create more sophisticated and deployments of agents and techniques.
+
+**[71.32s → 75.18s]** So tonight's class, especially if we have kind of a smaller group
+
+**[75.18s → 78.08s]** and up joining, you know, definitely feel free to ask questions
+
+**[78.08s → 82.72s]** and kind of get out there and especially ask questions
+
+**[82.72s → 84.56s]** that are relevant about your capstone.
+
+**[84.56s → 89.22s]** And I'll do my best to keep us on track for tonight's class.
+
+**[89.22s → 91.58s]** And then with the variant, Tom and I will talk a little bit
+
+**[91.58s → 93.78s]** about the expectations for your capstone.
+
+**[95.14s → 96.86s]** And then a couple of logistics notes.
+
+**[97.94s → 99.66s]** I am traveling next week.
+
+**[99.66s → 104.66s]** So Aaron is gonna step back in and teach on Monday and Wednesday.
+
+**[104.88s → 106.32s]** So normal class time next week,
+
+**[106.32s → 115.08s]** but just wanted to give you that heads up as well.
+
+**[115.08s → 116.38s]** So tonight we're gonna talk about
+
+**[116.38s → 119.24s]** when you should use graphs within your Asian workflows.
+
+**[119.24s → 122.02s]** So we obviously talked about agents and graphs,
+
+**[122.02s → 125.16s]** now two weeks ago, or a week and a half ago.
+
+**[125.16s → 128.45s]** Let's talk a little bit about when you're supposed to do that.
+
+**[128.45s → 130.09s]** And then we'll talk about understanding human
+
+**[130.09s → 132.09s]** and the loop design patterns,
+
+**[132.09s → 134.43s]** kind of at ultra high level.
+
+**[134.43s → 143.46s]** Then we'll talk about evaluating and ranking agent outputs with a framework called Billin.
+
+**[143.46s → 148.86s]** Then we'll start to move into talking about more sophisticated rack, limitations, adaptive
+
+**[148.86s → 155.52s]** rack and corrective rack to help think about different flavors of what you can do with
+
+**[155.52s → 156.59s]** rack.
+
+**[156.59s → 166.74s]** Then finally, we'll review your final project, the thing we expect you to do for your capstone.
+
+**[166.74s → 170.94s]** So I'm not going to talk through this whole slide, but just maybe just a quick refresher
+
+**[170.94s → 176.17s]** on something we talked about week before last.
+
+**[176.17s → 179.17s]** We talked about multiple agent use cases.
+
+**[179.17s → 184.49s]** You really multi-Asian architectures are going to be best suited from really complex multiple
+
+**[184.49s → 186.81s]** personas, complex task.
+
+**[186.81s → 192.85s]** I like to think about it as a what would take a real-world team to do the same task.
+
+**[192.85s → 199.56s]** The implementation is obviously more complex as you saw in the code base.
+
+**[199.56s → 203.56s]** That can get a little bit harder to actually deploy.
+
+**[203.56s → 209.56s]** But the major advantages to using that multi-agent architecture are lots of.
+
+**[209.56s → 214.56s]** Tasking done in parallel, you have two sets of agents doing two different things.
+
+**[214.56s → 216.56s]** Parallelizing the same task.
+
+**[216.56s → 221.56s]** And then performance is obviously much better and a multi-agent architecture.
+
+**[221.56s → 227.30s]** assuming that you're underlying use cases pretty complex.
+
+**[227.30s → 232.12s]** So really multi-agent architecture is used
+
+**[232.12s → 234.00s]** when the problem is more complex.
+
+**[234.00s → 236.84s]** TLD arc is basically what I would say
+
+**[236.84s → 239.15s]** with multi-agent architectures.
+
+**[239.15s → 240.91s]** Single agent patterns are really good
+
+**[240.91s → 243.55s]** for very narrow problems.
+
+**[244.67s → 246.99s]** So if you have reviewing kind of the whole class
+
+**[246.99s → 249.67s]** that's what we've talked about so far, right?
+
+**[249.67s → 251.67s]** Like chains would be to symbolist,
+
+**[251.67s → 253.99s]** I need a structured output.
+
+**[253.99s → 259.23s]** I need a very defined set of tasks, agents slightly more complex,
+
+**[259.23s → 272.69s]** multi agents, most complex.
+
+**[272.69s → 276.21s]** So let's talk a little bit about in multi-agent architecture systems.
+
+**[276.21s → 279.05s]** It can be done in single agent systems too,
+
+**[279.05s → 286.61s]** but more complex or excuse me, more common in multi-agent systems.
+
+**[286.61s → 291.25s]** You probably saw this in Google's release today, right?
+
+**[291.25s → 293.13s]** I don't know if it was today, but recently with Google,
+
+**[293.13s → 296.45s]** the Google Maps update, like a lot of the stuff
+
+**[296.45s → 298.87s]** that's doing is a human and the loop pattern, right?
+
+**[298.87s → 301.37s]** We're interacting and giving feedback.
+
+**[301.37s → 305.49s]** And it's going out into the Google Maps API ecosystem
+
+**[305.49s → 308.13s]** to help find the best things for you.
+
+**[308.13s → 310.13s]** Really exciting update for those of you
+
+**[310.13s → 312.36s]** who use Google Maps.
+
+**[312.36s → 314.68s]** But humans are training or finding
+
+**[314.68s → 316.80s]** the agent's feedback loop.
+
+**[316.80s → 319.08s]** So you might see that in ShaftyDB is
+
+**[319.08s → 321.16s]** a simple, did you like the response?
+
+**[321.16s → 323.90s]** might see that in Gemini in a similar way,
+
+**[323.90s → 326.50s]** that feedback is actually really important
+
+**[326.50s → 329.02s]** to beginning to increase the agent's performance
+
+**[329.02s → 330.22s]** and what it's giving.
+
+**[330.22s → 334.06s]** That is a type of human and elube design pattern
+
+**[334.06s → 337.18s]** where you're using feedback from the human
+
+**[337.18s → 341.69s]** to help increase the efficiency and efficacy of the solution.
+
+**[341.69s → 346.04s]** So if you think about it in terms
+
+**[346.04s → 348.08s]** of statistics from machine learning,
+
+**[348.08s → 355.08s]** I'll try and maybe talk about just straight confidence levels about devolving too far into stats.
+
+**[355.08s → 363.15s]** But the idea being I have some kind of data that goes in like a user query like that's a rainy day.
+
+**[363.15s → 366.15s]** What are the best things to I'm using the Google example.
+
+**[366.15s → 368.15s]** So it's a rainy day.
+
+**[368.15s → 375.15s]** What are the best things around me to do on a rainy day that goes into my agent workflow.
+
+**[375.15s → 386.07s]** So the model as all models are not really unsure about what the best possible outcomes are.
+
+**[386.07s → 391.22s]** So it writes out something that says, hey, I think these are probably the best things to
+
+**[391.22s → 392.22s]** do.
+
+**[392.22s → 398.15s]** You as a human are going to review the output and provide us some feedback.
+
+**[398.15s → 399.87s]** Your feedback is optional.
+
+**[399.87s → 402.11s]** If your feedback is not full of the model,
+
+**[402.11s → 404.91s]** there's really no net change.
+
+**[404.91s → 407.35s]** But let's assume that you're doing that in your own hometown.
+
+**[407.35s → 408.95s]** We're like, what are the best coffee shops
+
+**[408.95s → 412.43s]** to hang out in on a rainy day or work from home day?
+
+**[414.56s → 416.20s]** You know what coffee shops you like
+
+**[416.20s → 420.08s]** and you're gonna edit and review and correct their response.
+
+**[420.08s → 422.12s]** So once you do that,
+
+**[422.12s → 424.98s]** that information goes back into the model
+
+**[424.98s → 427.04s]** in the human and loop system.
+
+**[427.04s → 429.52s]** And the model becomes more confident over time.
+
+**[429.52s → 431.24s]** So every time you ask a similar question
+
+**[431.24s → 434.44s]** or the next user, most similar to you ask a question,
+
+**[434.44s → 439.42s]** the model becomes more and more confident.
+
+**[439.42s → 443.85s]** The complexity goes up immediately, right?
+
+**[443.85s → 447.73s]** Because you're talking about dynamic behavior.
+
+**[447.73s → 450.63s]** Talk about whether you're updating the model,
+
+**[450.63s → 452.87s]** you're updating the agent's workflow system
+
+**[454.11s → 455.59s]** and that iterative feedback capture
+
+**[455.59s → 459.92s]** is not trivial at a large scale either.
+
+**[459.92s → 463.92s]** So the big impact on this, though,
+
+**[463.92s → 468.40s]** is that it's really good for solving incredibly hard problems.
+
+**[468.40s → 473.24s]** When we think about having AI assistance just writ large,
+
+**[473.24s → 476.78s]** that interaction with feedback loop
+
+**[476.78s → 480.68s]** is what's going to allow us to unlock really traveling,
+
+**[480.68s → 487.04s]** really complex problems, like planning a trip, right?
+
+**[487.04s → 488.76s]** Seeing what's in your neighborhood
+
+**[488.76s → 493.60s]** and picking something out from Google Maps and the ecosystem,
+
+**[493.60s → 496.96s]** doing really complex analytics queries on a database
+
+**[496.96s → 499.08s]** and creating the right tables for you
+
+**[501.12s → 504.42s]** using AI assistant review,
+
+**[504.42s → 516.46s]** reviewing responses and responding to them, posting them.
+
+**[516.46s → 521.46s]** So if we talk about the impact of human oversight in these systems,
+
+**[522.66s → 523.90s]** as you know, the size already,
+
+**[523.90s → 527.06s]** iterative feedback is gonna be critical for solving
+
+**[527.06s → 534.38s]** complex problems, language models are going to make a lot of mistakes early on.
+
+**[534.38s → 539.38s]** And so, you're going to miss the mark. It's not very confident.
+
+**[539.38s → 544.51s]** And it's by learning and committing and getting that information back.
+
+**[544.51s → 547.51s]** It's going to help agents correct their course over time.
+
+**[547.51s → 551.51s]** So the more and more human feedback is in the loop.
+
+**[551.51s → 555.51s]** You're going to see this happen really, really well.
+
+**[555.51s → 559.13s]** This is, if any of you are familiar with the movie,
+
+**[559.13s → 562.57s]** her with Joaquin Phoenix and Scarlett Johansson,
+
+**[562.57s → 564.61s]** there's a scene in that movie,
+
+**[564.61s → 568.09s]** which I think really reinforces this concept for me.
+
+**[568.09s → 570.59s]** If you think back to the film,
+
+**[570.59s → 573.55s]** there's a scene early on where Joaquin Phoenix
+
+**[573.55s → 579.07s]** is just getting introduced to Scarlett Johansson's AI system.
+
+**[579.07s → 583.41s]** One of the first tasks is to clean out
+
+**[583.41s → 586.77s]** Joaquin Phoenix's email inbox.
+
+**[586.77s → 589.61s]** I'm sure all of you are familiar with this kind of problem.
+
+**[589.61s → 592.65s]** You have buckets of buckets of email.
+
+**[592.65s → 594.53s]** They're not all caught by your spam filter.
+
+**[594.53s → 596.09s]** There's some stuff you may be reading,
+
+**[596.09s → 597.65s]** some stuff you don't.
+
+**[597.65s → 601.58s]** Most of it, you definitely don't need any more kinds of junk.
+
+**[601.58s → 605.74s]** So the AI system asks Joaquin Phoenix is like,
+
+**[605.74s → 608.45s]** hey, these emails don't seem like things
+
+**[608.45s → 609.49s]** you're gonna open again.
+
+**[609.49s → 610.85s]** Like is that the case?
+
+**[610.85s → 616.37s]** And they go through, you know, I mean, it's a short scene, right?
+
+**[616.37s → 618.01s]** Just a handful of examples.
+
+**[618.01s → 623.89s]** And you're thinking, man, like, why is the AI system
+
+**[623.89s → 626.05s]** able to do that automatically?
+
+**[626.05s → 627.13s]** Well, yes, right?
+
+**[627.13s → 630.05s]** Scarlett Johansson's AI system did automatically identify
+
+**[630.05s → 632.33s]** a ton of stuff that was potential spam, but that human
+
+**[632.33s → 634.25s]** in the feedback loop.
+
+**[634.25s → 637.05s]** And there are some tiny tweaks that he makes about what
+
+**[637.05s → 638.77s]** to delete and not to delete.
+
+**[638.77s → 647.17s]** that set the boundary and then that feedback loop leads out as inbox, good to go, that begins
+
+**[647.17s → 654.26s]** kind of a long relationship that develops throughout the rest of the film. Now, there are some
+
+**[654.26s → 659.30s]** kind of interesting things though, you're switching out of that film context back into real world.
+
+**[660.80s → 666.88s]** If you're dealing with a multi-Asian architecture, sometimes you can't have feedback that's mismatched,
+
+**[666.88s → 677.80s]** Right. So let's say, yeah, writing a report about a new Python library, and I'm happy to
+
+**[677.80s → 684.32s]** automate for my developers. I might have one agent that's like reviewing the code changes,
+
+**[684.32s → 688.80s]** the unit's house, and writes this great thing. And then I might have another agent that has a
+
+**[688.80s → 694.36s]** different perspective because the prompt, initialize it with. Like what happens when those agents disagree?
+
+**[694.36s → 705.22s]** And then that might create discord and travels down a path that I actually didn't want the agents to go in and all.
+
+**[705.22s → 714.22s]** Versus having a human in the feedback loop, you know, go and review say the report on that new Python library and say, hey, this is what I was looking for.
+
+**[714.22s → 718.22s]** I want this information on with this information. This is extraneous.
+
+**[718.22s → 725.22s]** That human and the feedback loop eliminates or mitigates the problem associated with agents
+
+**[725.22s → 729.22s]** creating faulty plans of action independent of humans.
+
+**[729.22s → 736.92s]** So we pause there and let all that sink in.
+
+**[736.92s → 742.85s]** There are a couple examples of human oversight here, but I'd look to hear what you all think.
+
+**[742.85s → 751.70s]** What are other examples where you think human oversight and multi agent architecture would be beneficial?
+
+**[751.70s → 758.26s]** Well, I think this has been discussed in one of the earlier lectures, the concept of entropy.
+
+**[758.26s → 768.50s]** So you could probably calculate some sort of entropy parameter for each part of the looper
+
+**[768.50s → 771.62s]** and LLM is involved.
+
+**[771.62s → 776.94s]** You lose some entropy and at some point you could just say, okay, even if no condition has
+
+**[776.94s → 780.02s]** been met, let's just double check because we'd run out of entropy.
+
+**[780.02s → 791.34s]** Yeah, that's a pretty meta example, but yeah, totally.
+
+**[791.34s → 797.10s]** And I've also been noticing for code writing.
+
+**[797.10s → 802.98s]** Sometimes it removes a part of functionality.
+
+**[802.98s → 808.02s]** So maybe some sort of a way to check if
+
+**[808.02s → 812.98s]** if a certain method or a lot if loop, some sort of.
+
+**[812.98s → 818.98s]** So way to check of the complexity of the code has been reduced somehow somewhere, then double check. Yeah.
+
+**[820.12s → 825.96s]** Yeah, I mean, right, even just as having that human go back and check the code to see the code base.
+
+**[826.36s → 831.04s]** Yeah, does what you wanted it to or the change that happened is what you wanted.
+
+**[832.40s → 834.40s]** Yeah, giving that feedback is super important.
+
+**[834.92s → 838.85s]** And sometimes it's not clear, right?
+
+**[838.85s → 844.09s]** Like if I'm dealing with the complex code base with a lot of changes, then it might not just be as simple as hey,
+
+**[844.09s → 850.17s]** it's now failing this new unit test or because that could be done automatically. It might be
+
+**[851.05s → 859.53s]** hey, like the new APIs you expose are not exactly what I was expecting and don't mash what I think
+
+**[859.53s → 888.96s]** we want to use. Then you hope that there's a little bit of dialogue. Any other questions on human
+
+**[888.96s → 890.96s]** in the loop design patterns?
+
+**[890.96s → 902.23s]** Yeah, I think at least for, I may have mentioned this two or three weeks ago for me, for the
+
+**[902.23s → 907.75s]** human in the loop, the complexity is often with the UI because once you have the human in the
+
+**[907.75s → 911.43s]** loop, you have to build a custom UI for it.
+
+**[911.43s → 918.11s]** So for me, one of the issues is how to build a nice UI and then the notification mechanism.
+
+**[918.11s → 924.83s]** Yeah, just once you have the human basically, you have this all this extra layer in top for
+
+**[924.83s → 927.36s]** the human as well.
+
+**[927.36s → 931.29s]** So I was brief, you know, if any.
+
+**[931.29s → 938.17s]** So mechanical Turk has an interface for humans to, for the human AI.
+
+**[938.17s → 944.29s]** If some, I have seen people do use telegram bots just to solve this, but if there's any
+
+**[944.29s → 946.29s]** commercial solutions, you're allergic.
+
+**[946.29s → 955.67s]** Yeah, I mean, I actually, I haven't looked at mechanical turban a long time, so I'm not sure what generative AI capabilities that
+
+**[955.67s → 969.67s]** I think, but they sort of, if you have a task, you want to distribute to people, they have an easy way to create that UI for task submission, review approval, etc.
+
+**[969.67s → 975.51s]** tricks, etc. I got you. No, I think maybe a better way to think about human and the
+
+**[975.51s → 983.08s]** loop design patterns is like more than likely it's a problem at a very, very large scale.
+
+**[983.08s → 989.16s]** So like, I think the example I think is that's easiest to wrap your head around on the side
+
+**[989.16s → 999.84s]** is on travel. Like imagine that we'll say Airbnb deploys a travel AI agent to help you review
+
+**[1000.40s → 1008.05s]** bookings before purchase, right? You don't interface with the UI and Airbnb at all.
+
+**[1008.05s → 1014.85s]** Like you go on and you start typing, hey, I'm looking to trap GoOn vacation this week.
+
+**[1016.40s → 1021.76s]** Okay, and then it starts to run through a system of ideas, right? It's checking
+
+**[1022.72s → 1026.88s]** what are good places to travel the time of year that you're looking to go, what are prices,
+
+**[1026.88s → 1028.72s]** And then it's going to ask you some questions.
+
+**[1028.72s → 1031.72s]** What are you looking for in a stay in your experience?
+
+**[1031.72s → 1035.60s]** And then you get all the way to that final step
+
+**[1035.60s → 1036.88s]** where you book something.
+
+**[1036.88s → 1038.92s]** So you might have some other human loop stuff
+
+**[1038.92s → 1040.32s]** that happens before then.
+
+**[1040.32s → 1046.00s]** But the final step is, here's your booking information.
+
+**[1046.00s → 1048.88s]** We're holding a reservation for you.
+
+**[1048.88s → 1052.44s]** Samaritan VMBs stay four nights.
+
+**[1052.44s → 1055.40s]** And the days that you gave us, it's going to cost between our dollars.
+
+**[1056.92s → 1066.92s]** you want us to use your credit card on file and a human needs to right verify that that's what you want to do right before you hit the purchase button.
+
+**[1066.92s → 1079.91s]** So from a user perspective, most people I would imagine not being a UI researcher myself, but I would imagine most people still want to have the agency to hit the button themselves.
+
+**[1079.91s → 1082.99s]** But that feedback, right?
+
+**[1082.99s → 1085.31s]** Just knowing whether or not the AI system
+
+**[1085.31s → 1088.47s]** got that right every time is going to be critical
+
+**[1088.47s → 1090.47s]** in the UI design of the application.
+
+**[1090.47s → 1092.43s]** So this is really long with the question,
+
+**[1092.43s → 1096.80s]** answer your question, Keith, but it's trying to put that
+
+**[1096.80s → 1100.00s]** at the scale of Airbnb with their capturing thousands
+
+**[1100.00s → 1104.16s]** of those transactions a day to get that human and the loop
+
+**[1104.16s → 1105.64s]** feedback.
+
+**[1105.64s → 1107.36s]** And that's a made up example.
+
+**[1107.36s → 1109.88s]** I don't think Airbnb is doing that today.
+
+**[1109.88s → 1118.66s]** But I don't know that something from a UI perspective that you could outsource to a workforce
+
+**[1118.66s → 1121.24s]** like mechanical Turk.
+
+**[1121.24s → 1127.14s]** Unless your problem was like, you know, it's pretty narrowly scoped in that, in a way
+
+**[1127.14s → 1128.58s]** that could work for that.
+
+**[1128.58s → 1136.48s]** It's hard for me to wrap my head around what could be really good for that type of problem,
+
+**[1136.48s → 1139.64s]** where you're outsourcing the labor of doing the human and the loop.
+
+**[1139.64s → 1165.86s]** But I mean, I guess it's possible.
+
+**[1165.86s → 1170.06s]** So one way to create these multi-agent systems
+
+**[1170.06s → 1176.45s]** that are dynamic in some sense is to use a framework.
+
+**[1176.45s → 1179.57s]** And there are a couple of things out there.
+
+**[1179.57s → 1182.69s]** Dylan or the Dynamic LLM agent network
+
+**[1182.69s → 1185.72s]** is a popular framework in the space.
+
+**[1185.72s → 1189.96s]** So Dylan is going to leverage LLM's
+
+**[1189.96s → 1192.24s]** creating a network of different dynamic agents
+
+**[1192.24s → 1194.88s]** that are all capable of solving,
+
+**[1194.88s → 1197.36s]** kind of like what we've seen in other multi-agent systems.
+
+**[1199.05s → 1203.77s]** And all of that type of task is to increase
+
+**[1203.77s → 1206.13s]** operational efficiency and complex environments.
+
+**[1206.13s → 1208.13s]** So, very classic.
+
+**[1211.27s → 1213.47s]** All of this stuff is going to be pretty modular.
+
+**[1213.47s → 1214.95s]** Like the Dylan framework isn't unique
+
+**[1214.95s → 1216.55s]** to one particular problem,
+
+**[1216.55s → 1218.11s]** and you can pick and choose your agents
+
+**[1218.11s → 1220.75s]** based on the problem that you're trying to tackle
+
+**[1220.75s → 1223.28s]** or the domain you're working in.
+
+**[1223.28s → 1225.92s]** All of the agents are going to dynamically adjust
+
+**[1225.92s → 1227.80s]** their strategies in this framework.
+
+**[1227.80s → 1231.00s]** So anything that's happening is based on information
+
+**[1231.00s → 1234.44s]** that you're giving and other agents are providing
+
+**[1234.44s → 1236.40s]** and that all of those scenarios are evolving
+
+**[1236.40s → 1239.44s]** in real time until it's interacting with them,
+
+**[1239.44s → 1242.78s]** deciding between them.
+
+**[1242.78s → 1244.98s]** The kind of good thing about this framework
+
+**[1244.98s → 1248.10s]** and a lot of other multi-agent frameworks
+
+**[1248.10s → 1249.58s]** is that they can scale.
+
+**[1249.58s → 1254.02s]** So I know we talk a lot about that word in this class
+
+**[1254.02s → 1256.70s]** and it's kind of hard to get a sense of,
+
+**[1256.70s → 1258.66s]** early on I was talking about the differences between
+
+**[1260.50s → 1263.70s]** chains, single agent, multi agent.
+
+**[1263.70s → 1265.26s]** Now multi agent, right,
+
+**[1265.26s → 1267.74s]** there's also a sense of scale and multi agent
+
+**[1267.74s → 1272.26s]** to go from very complex problems
+
+**[1272.26s → 1275.26s]** yet the Airbnb Google Maps level
+
+**[1275.26s → 1278.22s]** all the way back down to simple multi agent problems
+
+**[1278.22s → 1280.06s]** like we saw in generating reports
+
+**[1280.06s → 1282.86s]** or writing code bases or writing projects.
+
+**[1284.02s → 1293.77s]** So, these in almost I'm sure there are computational and theoretical limits, but the sense of scale
+
+**[1293.77s → 1306.06s]** that you can have in the number of agents across as many domains as you need is pretty complex.
+
+**[1306.06s → 1309.86s]** So let's just talk about the Dillon steps.
+
+**[1309.86s → 1315.33s]** So the first step in Dillon is to create a group of agents.
+
+**[1315.33s → 1318.88s]** Give it a complex task like cogeneration.
+
+**[1318.88s → 1323.96s]** Those agents are going to collaborate and each contribute their expertise on executing
+
+**[1323.96s → 1326.10s]** a task.
+
+**[1326.10s → 1332.28s]** At the end of each round, Dylan is going to assess how well each agent performs.
+
+**[1332.28s → 1335.16s]** And then here's the kind of fun part.
+
+**[1335.16s → 1337.44s]** It's going to select top performers.
+
+**[1337.44s → 1341.88s]** So it's going to select the best performing agents to continue in the next round.
+
+**[1341.88s → 1346.48s]** Then share information, so agent share knowledge without a designated leader.
+
+**[1346.48s → 1352.00s]** So in before we saw on manager architecture, where the information is all being centralized
+
+**[1352.00s → 1354.10s]** in the manager.
+
+**[1354.10s → 1359.97s]** But here information sharing also helps performance of the agents.
+
+**[1359.97s → 1367.31s]** The process is repeated and refined, continuously selecting the top agents based on the problem.
+
+**[1367.31s → 1371.91s]** And then finally, you're going to achieve better results because the process is iterative,
+
+**[1371.91s → 1372.91s]** right?
+
+**[1372.91s → 1376.87s]** It doesn't stop at a single interaction.
+
+**[1376.87s → 1398.76s]** look at the repo because I think it has some really interesting nuggets in here. So here you can see
+
+**[1400.42s → 1405.22s]** all of the user queries and the interactions that are happening between different agents.
+
+**[1406.50s → 1412.34s]** Right, it's a graph problem so these might look like neural network architectures but the nodes are
+
+**[1412.34s → 1420.34s]** agents. So we're seeing information shared between the agents and then getting past time step 1, 2, 3, 4, so on
+
+**[1420.34s → 1435.39s]** across the promise space.
+
+**[1435.39s → 1438.07s]** In the optimization step,
+
+**[1438.07s → 1440.56s]** information is getting passed
+
+**[1440.56s → 1443.56s]** and creating a peer rating of the responses
+
+**[1443.56s → 1444.68s]** of its predecessors.
+
+**[1444.68s → 1446.84s]** So if I'm at time step four,
+
+**[1446.84s → 1449.04s]** I'm looking back and giving a peer review
+
+**[1449.04s → 1451.97s]** of everything that happened before.
+
+**[1451.97s → 1456.49s]** That information is then aggregated together
+
+**[1456.49s → 1459.21s]** and then used for selection.
+
+**[1459.21s → 1461.21s]** So I'm gonna pick the top two agents
+
+**[1461.21s → 1464.92s]** are selected based on the importance of their scores.
+
+**[1464.92s → 1467.40s]** So if I'm looking back, taking a look,
+
+**[1467.40s → 1468.76s]** it's very, very similar to the way
+
+**[1468.76s → 1472.32s]** we think about neural networks and back propagation,
+
+**[1472.32s → 1475.32s]** taking a look at rating responses,
+
+**[1475.32s → 1488.49s]** hiring the information back, and then selecting the top agents.
+
+**[1488.49s → 1493.16s]** You'd lost this piece of information.
+
+**[1493.16s → 1495.93s]** Here it is.
+
+**[1495.93s → 1500.48s]** This is probably the most interesting line,
+
+**[1500.48s → 1502.72s]** two lines in here.
+
+**[1502.72s → 1506.16s]** So they're talking about how Dillon performs well
+
+**[1506.16s → 1507.60s]** and reasoning and cogeneration.
+
+**[1507.60s → 1509.96s]** And we talked about benchmarks earlier in the class
+
+**[1509.96s → 1512.28s]** and this is why benchmarks become important
+
+**[1512.28s → 1515.56s]** so that you can take a look at and understand
+
+**[1515.56s → 1517.52s]** some of these claims.
+
+**[1517.52s → 1520.60s]** So Dillon is achieving a 13% improvement
+
+**[1520.60s → 1524.20s]** on math and human eVAL data sets
+
+**[1524.20s → 1528.48s]** compared to GDP 3.5 turbo.
+
+**[1528.48s → 1533.84s]** So an agent and on one specific,
+
+**[1535.44s → 1543.40s]** data set, they're increasing agent team optimization up to 25% increase. Those are practically
+
+**[1543.40s → 1550.20s]** significantly large increases. So we like to talk about machine learning statistically
+
+**[1550.20s → 1554.68s]** significant, which could be very tiny and then practically significant as in like that's
+
+**[1554.68s → 1561.93s]** a big real world change. These are big real world changes. Now of course there are newer
+
+**[1561.93s → 1571.18s]** models than GPT-3, 5 turbo, running from other open AI models to Lama 3s,
+
+**[1572.54s → 1578.64s]** menstrual, and all kinds of stuff. So you can take a look at those benchmarks and see
+
+**[1579.28s → 1604.11s]** how you're thinking about it. I think maybe just one thing to
+
+**[1604.11s → 1617.73s]** to on Dylan, I didn't mention, but to put it back in the context of use cases. So maybe
+
+**[1617.73s → 1623.85s]** using a healthcare use case to think about Dylan and think about image diagnostics. So
+
+**[1623.85s → 1630.09s]** if you're talking about healthcare performance and you're looking at images, you're having
+
+**[1630.09s → 1634.37s]** an LLM analyze the images and assuming it's a multimodal model that's capable of doing
+
+**[1634.37s → 1639.77s]** that, right? Maybe you even have a fine tune model that actually helps you analyze the
+
+**[1639.77s → 1646.43s]** different diagnostic images. So an agent just kind of similar the same way you would do
+
+**[1646.43s → 1650.43s]** any diagnostic medicine, you're going to have people that make their diagnosis and it
+
+**[1650.43s → 1655.75s]** could be right or wrong. And you can be a gold standard to know whether or not that was
+
+**[1655.75s → 1662.54s]** right or wrong. So that particular agent you can go back and say look at its periods and
+
+**[1662.54s → 1665.42s]** So hey, actually you got the diagnosis right or wrong,
+
+**[1665.42s → 1667.26s]** or it wasn't quite right.
+
+**[1668.22s → 1670.58s]** This is maybe an extreme example to illustrate
+
+**[1670.58s → 1675.68s]** why this type of agent performance framework is beneficial.
+
+**[1675.68s → 1677.48s]** So that voting selection,
+
+**[1677.48s → 1679.32s]** you're getting your top performers
+
+**[1679.32s → 1681.66s]** and propagating their knowledge back out
+
+**[1681.66s → 1684.92s]** to the network of agents, the graph of agents,
+
+**[1684.92s → 1687.40s]** and that collectively is increasing
+
+**[1687.40s → 1691.29s]** the entire set of performance.
+
+**[1691.29s → 1693.89s]** And then one thing that may not have been clear,
+
+**[1693.89s → 1697.53s]** but I do maybe wanna add in is your agents
+
+**[1697.53s → 1700.17s]** in this kind of systems are not necessarily duplicates
+
+**[1700.17s → 1701.01s]** themselves.
+
+**[1701.01s → 1703.81s]** It's not like I have diagnostic agent one,
+
+**[1703.81s → 1706.45s]** diagnostic agent two, and I have the same prompt.
+
+**[1706.45s → 1707.93s]** They might have very similar prompts.
+
+**[1707.93s → 1710.81s]** They might be like, I'm a specialist in,
+
+**[1710.81s → 1715.81s]** you know, broken bones, medical imaging of broken bones.
+
+**[1716.05s → 1718.97s]** I'm a image specialist in,
+
+**[1718.97s → 1722.70s]** You know, MRI.
+
+**[1722.70s → 1725.38s]** I'm an image specialist in ultrasounds.
+
+**[1726.86s → 1729.54s]** And so, you know, certain tasks right off the bat,
+
+**[1729.54s → 1733.90s]** you might expect, you might create a more complex system
+
+**[1733.90s → 1738.38s]** even that those agents then have further medical expertise
+
+**[1738.38s → 1745.64s]** in the prompts in that space.
+
+**[1745.64s → 1747.92s]** And like I mentioned, Dylan is just one framework
+
+**[1747.92s → 1750.48s]** to implement and the example code is in that repo
+
+**[1750.48s → 1751.84s]** from the researchers that developed it.
+
+**[1751.84s → 1754.80s]** you can take a look and play around with it.
+
+**[1754.80s → 1757.44s]** There are other agent frameworks
+
+**[1757.44s → 1760.12s]** in collaborative agent frameworks out there like that.
+
+**[1760.96s → 1764.24s]** This is a really good performer in this space,
+
+**[1764.24s → 1766.24s]** but definitely feel free to research stuff.
+
+**[1766.24s → 1770.00s]** I encourage you to do that, see what's.
+
+**[1770.00s → 1772.60s]** And just look search for the terms,
+
+**[1772.60s → 1775.96s]** multi-agent architectures or multi-agent systems
+
+**[1775.96s → 1780.59s]** in academic literature.
+
+**[1780.59s → 1787.85s]** just curious. What's the breadth of tasks Dylan can be used for? I know they
+
+**[1787.85s → 1795.31s]** experimented on like thematic equations, but yeah, I'm just curious, what are their types of queries
+
+**[1795.31s → 1803.20s]** and tasks can be used for inter-evaluation? I mean, pretty much anything you want to do,
+
+**[1804.16s → 1811.52s]** I think the things that Dylan is well known for are reasoning. Tasts require reasoning was a
+
+**[1811.52s → 1818.64s]** really good examples. That's why I think of why it sells in mountain cogeneration. Example that
+
+**[1819.92s → 1825.12s]** worth it, I might recommend Dylan for, we haven't tried this but it might be something like an
+
+**[1825.12s → 1834.48s]** engineering application where I need Dylan to reason about the design of the next generation antenna.
+
+**[1834.48s → 1836.51s]** Yeah.
+
+**[1836.51s → 1837.51s]** Yeah.
+
+**[1837.51s → 1863.18s]** And then you have a bunch of agents that are different types of mechanics and optimization experts and all that kind of stuff.
+
+**[1863.18s → 1868.10s]** Let me just a second on these slides, load back. There we go. Cool.
+
+**[1868.10s → 1871.10s]** All right. So kind of.
+
+**[1871.10s → 1876.48s]** I know this is a drastic change, but the re contextualize where we are in class. Right.
+
+**[1876.48s → 1881.68s]** class is really about showing you a couple different really sophisticated techniques to help you prep for your
+
+**[1883.30s → 1887.22s]** your capstone. So we're going to switch into this next idea, which is called Hide.
+
+**[1889.60s → 1895.12s]** I think Hide is really, really cool because interacting with a lot of users
+
+**[1896.88s → 1901.36s]** I'll give you some great examples about questions that I've answered at work in the past six weeks.
+
+**[1901.36s → 1915.36s]** So we have our own version of chatty.p inside Lockheed and with that we use open source models for I can say share that with you all because that will be public information soon.
+
+**[1915.36s → 1925.84s]** soon. But that model and system that we use, right, you can imagine people aren't experts
+
+**[1925.84s → 1932.00s]** in prompt engineering so they ask all kinds of crazy stuff. I had one engineer ask the question,
+
+**[1932.64s → 1937.12s]** hyper specific to the type of engineering that had done 20 or 30 years and then they're coming
+
+**[1937.12s → 1943.04s]** and saying like, hey, this gave me the completely wrong answer. And I mean, maybe three or four
+
+**[1943.04s → 1947.04s]** It's a prompt engineering. We got the model to generate a perfect answer together.
+
+**[1949.49s → 1954.62s]** What was missing from his original prompt was additional context that he didn't write.
+
+**[1955.62s → 1961.62s]** So what Hyde does is it refines your original prompt.
+
+**[1962.62s → 1966.62s]** It creates hypothetical additional document embeddings.
+
+**[1967.62s → 1972.62s]** Now that can be used for search applications or an LLM to generate.
+
+**[1973.62s → 1978.64s]** information for just really big user queries.
+
+**[1978.64s → 1983.04s]** So maybe to go to the Google Maps example,
+
+**[1983.04s → 1985.12s]** if you just type words, coffee shops.
+
+**[1987.82s → 1989.02s]** Right, people do that.
+
+**[1991.08s → 1994.60s]** And the LLM instead of just generating response
+
+**[1994.60s → 1996.12s]** to the two words, coffee shops,
+
+**[1996.12s → 1998.88s]** maybe adds in some additional hypothetical documents
+
+**[1998.88s → 2003.12s]** and say, hey, can you create a list of coffee shops
+
+**[2003.12s → 2007.56s]** than a five mile radius, whatever it is, right?
+
+**[2007.56s → 2011.28s]** The hypothetical additional document embedding
+
+**[2011.28s → 2017.34s]** is used to query for coffee shops that are within five miles.
+
+**[2017.34s → 2022.22s]** So here are a couple of other examples in the image.
+
+**[2022.22s → 2025.85s]** So how long does it take to remove wisdom teeth?
+
+**[2025.85s → 2028.73s]** And then the additional document is
+
+**[2028.73s → 2030.85s]** that the LLM attaches right-of-passage
+
+**[2030.85s → 2033.83s]** to answer the question.
+
+**[2033.83s → 2036.79s]** How is the COVID-19 pandemic impact in mental health?
+
+**[2036.79s → 2040.71s]** The additional prompt is right-of-scientific paper,
+
+**[2040.71s → 2043.63s]** passage to answer the question.
+
+**[2043.63s → 2045.71s]** There's a question in Korean,
+
+**[2045.71s → 2049.81s]** right-of-passage in Korean answer the question in detail.
+
+**[2049.81s → 2054.01s]** So those are just illustrations of what a HIDE model does.
+
+**[2056.64s → 2058.12s]** And I'm not, I'm purposely not getting
+
+**[2058.12s → 2060.16s]** the architecture right now just to talk about
+
+**[2061.72s → 2063.93s]** why this is important.
+
+**[2063.93s → 2067.85s]** So, hide is going to help you enhance reliability
+
+**[2067.85s → 2069.21s]** whatever your system does.
+
+**[2069.21s → 2072.73s]** I hope that immediately this is clicking with you
+
+**[2072.73s → 2075.29s]** that you're gonna need to do some kind of fine tuning
+
+**[2075.29s → 2078.09s]** in order to accomplish a hide style system.
+
+**[2079.80s → 2082.24s]** Write these kind of attachments.
+
+**[2082.24s → 2083.40s]** Don't come out of nowhere.
+
+**[2083.40s → 2086.20s]** You're gonna have to create some labeled data
+
+**[2086.20s → 2091.28s]** in order to help fine tune your model to achieve hide.
+
+**[2091.28s → 2096.28s]** But using those kind of trusted gold standard
+
+**[2096.44s → 2098.64s]** additional context data set
+
+**[2098.64s → 2102.28s]** is going to help you reduce an accuracy.
+
+**[2102.28s → 2104.16s]** So if I'm giving lots of engineering questions
+
+**[2104.16s → 2108.16s]** and I'm constantly adding these additional prompts in,
+
+**[2110.00s → 2111.60s]** those additional pieces of information
+
+**[2111.60s → 2114.28s]** are really beneficial to the engineers in the system.
+
+**[2115.94s → 2120.94s]** That also opens the door to a lot of expanded applications.
+
+**[2120.94s → 2128.58s]** So like, I think about really, really fine, hyper,
+
+**[2128.58s → 2133.22s]** hyper fine tune models, that allows me for a lot more context
+
+**[2133.22s → 2135.42s]** where application domains.
+
+**[2135.42s → 2138.22s]** So that way I'm not constantly fine tuning new models,
+
+**[2138.22s → 2140.86s]** I'm fine tuning one model one time.
+
+**[2140.86s → 2145.49s]** I'm doing a really good job at it.
+
+**[2145.49s → 2149.33s]** So let's take a look at the architecture from the user's
+
+**[2149.33s → 2152.36s]** perspective, what happens when I need to hood.
+
+**[2152.36s → 2157.68s]** So the prompt builder is going to take any question
+
+**[2157.92s → 2158.92s]** anything.
+
+**[2158.92s → 2164.24s]** It's going to pass it over to our OpenAI generator.
+
+**[2164.24s → 2167.11s]** It's going to create, excuse me,
+
+**[2172.32s → 2176.88s]** a list of answers that's going to go into our adapter,
+
+**[2176.88s → 2180.36s]** our adapter is going to create a series of documents
+
+**[2180.36s → 2185.50s]** that will embed those into our nice vector embeddings
+
+**[2185.50s → 2188.88s]** and then our hide system is going to create our hypothetical
+
+**[2188.88s → 2189.98s]** document and better.
+
+**[2189.98s → 2194.22s]** It's all going to be used into the generate response.
+
+**[2207.55s → 2212.55s]** This is just a quick, really good guide on FIDE,
+
+**[2212.95s → 2216.22s]** good media article.
+
+**[2216.22s → 2221.08s]** Really fun just talking about a lot of this information
+
+**[2221.08s → 2227.27s]** we have here, but I definitely recommend all of you
+
+**[2227.27s → 2231.24s]** at least investigate this.
+
+**[2231.24s → 2233.60s]** I think a couple of you have asked me about fine tuning
+
+**[2233.60s → 2234.94s]** for your capstones.
+
+**[2234.94s → 2239.08s]** Hyde might be a good way to create a data set
+
+**[2239.08s → 2241.88s]** for your fine tuning application to, by the way.
+
+**[2241.88s → 2247.42s]** You could theoretically use this kind of framework
+
+**[2248.42s → 2269.07s]** to create a fine tune data set.
+
+**[2269.07s → 2274.07s]** So if Hyde uses additional document information,
+
+**[2274.83s → 2279.59s]** corrective rag is a similar roughly analogous idea.
+
+**[2280.47s → 2288.14s]** where we're incorporating corrective feedback loops into the augmented generation.
+
+**[2288.14s → 2295.27s]** So I'm going to ask my question, I'm going to retrieve some information, I'm going to grade that retrieval,
+
+**[2295.27s → 2300.27s]** and then I'm going to ask, are any of the docs just completely irrelevant?
+
+**[2300.27s → 2308.27s]** Then if yes, rewrite the query over and over again until I get no irrelevant documents,
+
+**[2308.27s → 2313.55s]** documents and then I'm finally going to generate the answer.
+
+**[2313.55s → 2318.51s]** So it's incorporating a corrective mechanism into your retrieval
+
+**[2318.51s → 2322.11s]** augment and generation pipeline.
+
+**[2322.11s → 2328.35s]** So in what's called vanilla rag, I don't have this any irrelevant
+
+**[2328.35s → 2330.43s]** doc kind of loop.
+
+**[2330.43s → 2336.35s]** I'm just going straight from retrieve and then boom, go into the
+
+**[2336.35s → 2338.97s]** answer.
+
+**[2338.97s → 2343.70s]** This feedback loop though creates a really nice additional
+
+**[2343.70s → 2349.82s]** context that's always going to be accurate and pretty consistent.
+
+**[2349.82s → 2353.10s]** So you can think about when you're going to use corrective
+
+**[2353.10s → 2359.02s]** rag is probably in use cases that become increasingly
+
+**[2359.02s → 2363.66s]** important to help get accurate information like legal
+
+**[2363.66s → 2366.38s]** compliance, health care, right?
+
+**[2366.38s → 2371.38s]** where I'm generating medically accurate reports
+
+**[2371.54s → 2374.42s]** or patient summaries or in the legal context,
+
+**[2374.42s → 2377.58s]** retrieving the most relevant case law, right?
+
+**[2377.58s → 2391.27s]** Retrieving a relevant case law could be kind of bad.
+
+**[2391.27s → 2394.97s]** Now, this is fun contrast though,
+
+**[2394.97s → 2398.69s]** if you're thinking about tied and corrective rag
+
+**[2398.69s → 2400.97s]** as two different options, right?
+
+**[2400.97s → 2403.45s]** Corrective rag doesn't involve any fine tuning,
+
+**[2403.45s → 2411.11s]** But at the same time, you're not, it doesn't solve the problem of people writing poor prompts.
+
+**[2411.11s → 2422.07s]** So if I use the example of just copy shops or asking a very narrow specific engineering question
+
+**[2422.07s → 2431.15s]** with how much context, it's not going to really help me filter out a relevant, a relevant
+
+**[2431.15s → 2432.99s]** similar queries.
+
+**[2432.99s → 2437.55s]** So corrective rag has limitations and sodas hide.
+
+**[2437.55s → 2439.35s]** Just to illustrate the difference,
+
+**[2439.35s → 2441.95s]** corrective rag is going to be really, really good
+
+**[2441.95s → 2444.43s]** at evaluating retrieving information
+
+**[2444.43s → 2447.99s]** in a self-reflexive and context aware sense.
+
+**[2447.99s → 2453.82s]** So just a more sophisticated rag.
+
+**[2453.82s → 2456.38s]** And what you determine as irrelevant
+
+**[2458.87s → 2460.15s]** is the interesting to you, right?
+
+**[2460.15s → 2465.15s]** That is if you could design as a human and a feedback loop system
+
+**[2465.15s → 2466.91s]** where it's providing information.
+
+**[2467.91s → 2472.75s]** I think law is a great example of irrelevant docs.
+
+**[2472.75s → 2474.29s]** For those of you that have ever been exposed
+
+**[2474.29s → 2476.67s]** to lawyers or case law before,
+
+**[2476.67s → 2478.79s]** that's actually fascinating subject.
+
+**[2481.15s → 2483.91s]** So if I'm asking a question like,
+
+**[2483.91s → 2486.59s]** what are the relevant laws to purchasing real estate
+
+**[2486.59s → 2491.52s]** in Florida, okay?
+
+**[2491.52s → 2493.20s]** It's going to retrieve a list of laws.
+
+**[2493.20s → 2495.28s]** It's going to create how relevant those laws are
+
+**[2495.28s → 2496.92s]** in my question and it's going to decide
+
+**[2496.92s → 2499.48s]** whether it's relevant or not relevant.
+
+**[2499.48s → 2502.24s]** Well, a lawyer is gonna know,
+
+**[2502.24s → 2503.52s]** hey, actually, par so far,
+
+**[2503.52s → 2507.70s]** to have some really esoteric historical,
+
+**[2507.70s → 2510.22s]** institutional legacy with Spanish law.
+
+**[2511.90s → 2515.18s]** Some parts of it are kind of super modern.
+
+**[2515.18s → 2520.18s]** Some of that stuff might seem irrelevant on a cuff,
+
+**[2520.18s → 2521.70s]** but a lawyer is gonna go through and say,
+
+**[2521.70s → 2522.86s]** hey, actually, this is relevant.
+
+**[2522.86s → 2524.42s]** We should include that information.
+
+**[2524.42s → 2537.92s]** And that human feedback loop is going to help this particular step increase the efficacy of writing a good query.
+
+**[2537.92s → 2543.92s]** As you all attend conferences over the next couple of years and you're working on these types of systems.
+
+**[2543.92s → 2554.92s]** Rage is something that's constantly changing. I think it's actually probably one of the most innovative pieces of generative AI right now like every major SaaS provider cloud provider.
+
+**[2554.92s → 2557.80s]** This is working on some version of this.
+
+**[2557.80s → 2562.46s]** So definitely keep up with different mechanisms to do this.
+
+**[2562.46s → 2566.22s]** Nikita was asking about UI elements to do that.
+
+**[2566.22s → 2571.90s]** There might be Rags of Service UI elements that could be API calls
+
+**[2571.90s → 2574.78s]** directly into this kind of human and a feedback loop in the future.
+
+**[2574.78s → 2576.38s]** Where they may already exist.
+
+**[2576.38s → 2585.54s]** Ooh, John Cody, another Rags framework.
+
+**[2585.54s → 2586.58s]** Killin us, man.
+
+**[2586.58s → 2603.81s]** And then, an adaptive rag is, I think, probably just a little more sophisticated than correct
+
+**[2603.81s → 2611.49s]** a rag. Basically, it's really designed to adapt to completely different contexts to
+
+**[2611.49s → 2617.85s]** generate high quality results. So, let's say I'm dealing with a couple different domains
+
+**[2617.85s → 2623.55s]** going to that law example, switching between the context of like real estate law, tax law,
+
+**[2623.55s → 2625.35s]** healthcare law, right?
+
+**[2625.35s → 2629.87s]** Like, yeah, I'm going to have lots of different documents, lots of different contexts.
+
+**[2629.87s → 2632.67s]** And I'm going to need to adapt to those different domains dynamically.
+
+**[2632.67s → 2638.30s]** It is going to still include a lot of adaptive feedback.
+
+**[2638.30s → 2647.64s]** So whether that's a human and a loop, self-reflexive of the LLM, and it's going to really also have
+
+**[2647.64s → 2650.00s]** that element upgrading.
+
+**[2650.00s → 2652.32s]** So here's how things are gonna go
+
+**[2652.32s → 2653.84s]** and I'm to adaptive Raxism.
+
+**[2653.84s → 2655.40s]** So I'll ask a question.
+
+**[2656.84s → 2662.67s]** Previously, we didn't analyze the query first.
+
+**[2662.71s → 2665.46s]** We actually went to the retrieval node first.
+
+**[2665.46s → 2669.38s]** In adaptive Rax, I'm gonna analyze the query first.
+
+**[2669.38s → 2672.44s]** Okay, and then it decides,
+
+**[2672.44s → 2675.16s]** hey, is your query about anything
+
+**[2675.16s → 2677.92s]** that we currently have information on?
+
+**[2677.92s → 2678.92s]** I love this.
+
+**[2678.92s → 2680.16s]** It's like, I think probably.
+
+**[2680.16s → 2685.48s]** So, so librarian, actually we don't know anything about that.
+
+**[2685.48s → 2690.84s]** Let's go search the lab to rag with a sense of humor.
+
+**[2690.84s → 2692.88s]** So if it's unrelated to anything in the index,
+
+**[2692.88s → 2694.20s]** it's going to go search the web.
+
+**[2694.20s → 2696.68s]** It's going to generate some context
+
+**[2696.68s → 2699.88s]** and it's going to answer your question with whatever
+
+**[2699.88s → 2700.92s]** it got from the web.
+
+**[2700.92s → 2705.16s]** It's going to use something like Traveley or Proplexity,
+
+**[2705.16s → 2710.40s]** one of the AI search engine APIs to help answer your question.
+
+**[2710.40s → 2714.36s]** So if your query is related to the index though,
+
+**[2714.36s → 2716.80s]** then it's going to go and do exactly what we saw in
+
+**[2716.80s → 2717.88s]** Corrective Bragg.
+
+**[2717.88s → 2722.34s]** So it's going to add in basically that Corrective Bragg
+
+**[2722.34s → 2724.60s]** attached to query analysis.
+
+**[2724.60s → 2727.32s]** I'm going to retrieve everything that's in my context.
+
+**[2727.32s → 2728.96s]** I'm going to grade what I retrieve.
+
+**[2728.96s → 2730.80s]** I'm going to decide whether or not it's relevant.
+
+**[2730.80s → 2732.80s]** I'm going to generate a response.
+
+**[2732.80s → 2735.68s]** But then there are a couple of extra steps here.
+
+**[2735.68s → 2737.18s]** Are there any hallucinations?
+
+**[2737.18s → 2739.58s]** Yes, in a region right in the context.
+
+**[2739.58s → 2741.78s]** No, there aren't any hallucinations.
+
+**[2741.78s → 2742.88s]** Doesn't answer the question.
+
+**[2742.88s → 2744.02s]** Yes, no.
+
+**[2744.02s → 2745.22s]** If it does answer.
+
+**[2745.22s → 2749.92s]** Yes, any answer to the user.
+
+**[2749.92s → 2752.20s]** Really great architecture, right?
+
+**[2753.60s → 2757.50s]** And I mean, I think if you wanted to control costs
+
+**[2757.50s → 2760.38s]** even you could have your model
+
+**[2760.38s → 2763.06s]** not even search the web.
+
+**[2763.06s → 2764.62s]** Like you could imagine the context for us
+
+**[2764.62s → 2766.40s]** we don't necessarily want.
+
+**[2766.40s → 2770.72s]** people automatically programatically accessing
+
+**[2771.86s → 2773.88s]** outside search services.
+
+**[2773.88s → 2775.86s]** So we might come back and say,
+
+**[2775.86s → 2778.52s]** hey, that's not anything we have information for,
+
+**[2778.52s → 2781.62s]** we recommend independent research on this problem.
+
+**[2783.39s → 2786.27s]** And the query analysis could also do other things, right?
+
+**[2786.27s → 2787.83s]** You could route it to the index,
+
+**[2787.83s → 2790.51s]** but you could maybe also route it to other things.
+
+**[2790.51s → 2792.87s]** And those routes are completely optional.
+
+**[2792.87s → 2795.47s]** There's not necessarily a hard,
+
+**[2795.47s → 2797.87s]** is related to the index as a not related to the index.
+
+**[2797.87s → 2801.35s]** The point of adaptive rag is just to analyze
+
+**[2801.35s → 2803.67s]** whether the user's question can be answered
+
+**[2803.67s → 2808.67s]** by the knowledge base that the LLM or agent has access to.
+
+**[2822.61s → 2823.73s]** And there's not a slide on this,
+
+**[2823.73s → 2825.83s]** but I did just maybe wanna tie together
+
+**[2825.83s → 2827.41s]** because I know we've talked a lot about
+
+**[2827.41s → 2832.43s]** between high corrective rag, adaptive rag
+
+**[2832.43s → 2834.27s]** and vanilla rag.
+
+**[2834.27s → 2837.83s]** I did just wanna maybe talk about a couple of the differences
+
+**[2837.83s → 2839.88s]** super quickly.
+
+**[2839.88s → 2842.76s]** So vanilla rag simplest implement,
+
+**[2843.88s → 2849.20s]** okay, corrective rag is probably the next most
+
+**[2849.20s → 2854.56s]** complement complex to implement.
+
+**[2856.48s → 2861.42s]** It's going to have more contextual accuracy than vanilla rag.
+
+**[2861.42s → 2863.62s]** Probably a toss up on whether adaptive rag
+
+**[2863.62s → 2866.90s]** or high is more complex to implement,
+
+**[2866.90s → 2872.10s]** just depending on how much fine-tuning you do in hide
+
+**[2874.77s → 2876.87s]** versus the query analysis.
+
+**[2879.15s → 2883.45s]** But both of those models are gonna begin to ground
+
+**[2883.45s → 2885.35s]** the user's prompt and kind of analyze
+
+**[2885.35s → 2889.11s]** what the user's prompt is doing most.
+
+**[2889.11s → 2892.95s]** So the query analysis piece is not identical
+
+**[2892.95s → 2897.15s]** but roughly, very roughly analogous to
+
+**[2898.05s → 2906.10s]** augmenting what the user is sending as a prompt. Both of those are fairly high complex
+
+**[2907.64s → 2912.04s]** complexity implementation requirements but both are going to have really, really high
+
+**[2913.64s → 2918.92s]** accuracy. So when you're getting that response back from the LLM it's going to be the highest quality
+
+**[2918.92s → 2947.72s]** from those systems. Cool. Any questions so far on these architectures? I know we haven't
+
+**[2947.72s → 2957.52s]** and diving in the code. Tonight there are code examples for adaptive rag human and loop
+
+**[2964.63s → 2971.48s]** and our corrective rag. I think Tom pointed out one of these has a missing API key so be warned.
+
+**[2973.08s → 2978.68s]** I think there's a code here is used for the search in some point. So if you're not,
+
+**[2978.68s → 2982.60s]** You don't have to go here, account set up, you'll need that,
+
+**[2982.60s → 2985.24s]** and you'll need an API key to run that particular example.
+
+**[2988.12s → 2990.48s]** But yeah, feel free to take a look through these notebooks.
+
+**[2991.96s → 2994.00s]** So you can see the code of bookitation.
+
+**[2994.00s → 2995.24s]** I was more interested tonight
+
+**[2995.24s → 2997.08s]** in just walking all through the architecture
+
+**[2997.08s → 2999.80s]** so you can understand how to highlight what's going on
+
+**[2999.80s → 3003.05s]** instead of just seeing code that makes it hard
+
+**[3003.05s → 3020.28s]** to wrap your head around.
+
+**[3020.28s → 3022.72s]** Let's talk about your accounts or projects a little bit.
+
+**[3022.72s → 3024.88s]** And as Tom's stepping here a little bit,
+
+**[3024.88s → 3029.97s]** talk a little bit about some of the captions you've seen so far.
+
+**[3030.29s → 3032.29s]** But in the very last few years of the course,
+
+**[3032.29s → 3035.41s]** you still have another week and a half
+
+**[3035.41s → 3036.89s]** of instructional content left
+
+**[3036.89s → 3039.29s]** before you switch into full-cabston mode.
+
+**[3039.29s → 3043.63s]** I think maybe one more class, like traditional class.
+
+**[3043.63s → 3045.83s]** So two full weeks of instructional content,
+
+**[3047.03s → 3048.55s]** although anyway,
+
+**[3052.32s → 3055.48s]** our goal is for you to do a direct implementation
+
+**[3055.48s → 3057.16s]** on actual work projects.
+
+**[3057.16s → 3061.76s]** So we have tried to write as much generalized code
+
+**[3061.76s → 3065.32s]** as possible in the course, and you'll
+
+**[3065.32s → 3068.64s]** feel free to take any code that you've seen in the course
+
+**[3068.64s → 3072.87s]** and turn it into a practical solution,
+
+**[3072.87s → 3077.71s]** whether it's myself or Tom during office hours or Ash
+
+**[3077.71s → 3080.55s]** or any of the Bloom Tech staff, we're
+
+**[3080.55s → 3083.91s]** more than happy to help talk through and help think
+
+**[3083.91s → 3090.44s]** through creating practical solutions for you and your team.
+
+**[3090.44s → 3095.34s]** What we want you to do is identify the problem,
+
+**[3095.34s → 3101.68s]** design the solution or the solution architecture.
+
+**[3101.68s → 3105.36s]** Ideally, we'd like you to use a multi-agent system.
+
+**[3105.36s → 3108.04s]** Talk about the strategy that you want to use.
+
+**[3108.04s → 3110.36s]** We're going to use fine tuning, what your data collection
+
+**[3110.36s → 3113.52s]** strategy is, and then any performance metrics
+
+**[3113.52s → 3116.60s]** that you want in the system.
+
+**[3116.60s → 3119.40s]** One thing that I like to talk about in the context of AI,
+
+**[3119.40s → 3123.52s]** performance measures don't always have to be statistics
+
+**[3123.52s → 3125.08s]** based performance.
+
+**[3125.08s → 3129.44s]** I don't need an increase in accuracy.
+
+**[3129.44s → 3132.72s]** It could be something simpler.
+
+**[3132.72s → 3135.72s]** If you're doing something that's focused on your developer
+
+**[3135.72s → 3141.40s]** base, is it the speed of commits?
+
+**[3141.40s → 3146.40s]** Is it the number of merge requests, reviews?
+
+**[3149.29s → 3150.77s]** What is the performance metrics
+
+**[3150.77s → 3152.29s]** that you want for the overall system?
+
+**[3152.29s → 3156.93s]** What's the before and after look like?
+
+**[3156.93s → 3159.41s]** Then of course, we want you to code a prototype.
+
+**[3159.41s → 3161.25s]** So develop a functional prototype
+
+**[3161.25s → 3164.65s]** integrating with the necessary systems and tools.
+
+**[3164.65s → 3167.29s]** The goal is a minimum viable product.
+
+**[3168.29s → 3170.01s]** I don't want you guys to try and do
+
+**[3170.01s → 3172.01s]** every possible feature that you want.
+
+**[3172.01s → 3177.01s]** try and scope just a handful of things.
+
+**[3177.01s → 3180.01s]** This is one of the reasons that multi-agent systems are great,
+
+**[3180.01s → 3184.01s]** actually to help build out a very functional prototype.
+
+**[3184.01s → 3188.01s]** It's simple because you just add more and more agents with more and more tools and capabilities,
+
+**[3188.01s → 3190.01s]** like rows organically.
+
+**[3190.01s → 3193.43s]** Then finally, test in your ecosystem.
+
+**[3193.43s → 3196.43s]** So deploy and test, gathering feedback,
+
+**[3196.43s → 3199.43s]** develop your beta program or your alpha program,
+
+**[3199.43s → 3203.59s]** programs, depending on how you structure it, and collect those performance metrics.
+
+**[3204.92s → 3210.36s]** We're doing a couple of these tests of different tools in our ecosystem right now at work.
+
+**[3212.12s → 3216.60s]** And it's cool to see. We've got a couple of different tools out there that we're running,
+
+**[3216.60s → 3222.76s]** see how the adoption feedback is going, and a lot of changes happening in real time.
+
+**[3231.24s → 3235.32s]** Maybe Tom, do you want to chime in with some of the lessons learned from captions?
+
+**[3235.32s → 3237.88s]** the first cohort and anything else you want to add in?
+
+**[3243.25s → 3245.17s]** I'm speaking with a minute, like I'm going to work.
+
+**[3245.97s → 3250.37s]** Yeah, I'd like to kind of add to what John said about the whole making sure it's MVP.
+
+**[3250.37s → 3259.48s]** Definitely kind of trying to cut back on your sort of excitement of making too many features
+
+**[3260.04s → 3262.28s]** because you can always add those on your backlog.
+
+**[3264.68s → 3270.28s]** One thing that you'll find is you don't want a sort of project top product that you'd never get finished.
+
+**[3270.28s → 3274.60s]** So, definitely sort of planning out well.
+
+**[3274.60s → 3277.60s]** You, in whatever sort of way, you'd normally plan your projects with that,
+
+**[3277.60s → 3284.88s]** like a trailer or a sign of order or something to give you some focus on what you're doing.
+
+**[3284.88s → 3287.88s]** Keep on pointing definitely over-document.
+
+**[3287.88s → 3295.20s]** Try and keep all of your plans sort of like well-formed.
+
+**[3295.20s → 3300.36s]** but make sure that you keep a very tight sort of grasp on
+
+**[3300.48s → 3303.24s]** minimizing the features down to pure MVP.
+
+**[3303.24s → 3306.04s]** Because we keep saying that whole, yeah, just do MVP,
+
+**[3306.04s → 3310.20s]** but you guarantee that you'll end up with like
+
+**[3310.20s → 3313.12s]** so many different, you kind of grasp all the bits
+
+**[3313.12s → 3316.72s]** that we're pushing across, you'll have so many bits
+
+**[3316.72s → 3320.63s]** that it could be, and so many different features
+
+**[3320.63s → 3322.01s]** that you could add.
+
+**[3322.01s → 3325.41s]** So just be very, very mindful of that going forward.
+
+**[3325.43s → 3333.40s]** Could it be nice to see the MVP of something that really works and does something that you
+
+**[3333.40s → 3336.22s]** want to use in your actual company.
+
+**[3336.22s → 3341.08s]** And it definitely will be interesting to see what sort of things that you guys come
+
+**[3341.08s → 3343.04s]** up with.
+
+**[3343.04s → 3346.44s]** And as John said, if you've got any questions or anything where you want to kind of go
+
+**[3346.44s → 3353.92s]** over bounce ideas off people, we're here to help with, you know, that's never a problem.
+
+**[3353.92s → 3358.93s]** Yeah, and I think we've got an office hours tomorrow as well.
+
+**[3358.93s → 3362.13s]** I'm sorry, if anyone's got any sort of thoughts on their capstone,
+
+**[3362.13s → 3365.16s]** you'll always feel free to bring it up there if you want to as well.
+
+**[3370.24s → 3373.20s]** Is there any questions or anything or any thoughts of what you might
+
+**[3373.20s → 3377.40s]** be doing or anybody's talking?
+
+**[3379.51s → 3387.72s]** Yeah, I just had a question, does it have to be specific for
+
+**[3387.72s → 3393.04s]** our team or can it be, let's say, a person.
+
+**[3394.44s → 3397.11s]** Is there any question or problem?
+
+**[3397.11s → 3398.59s]** Yeah, in theory it could be anything
+
+**[3398.59s → 3400.47s]** because obviously it solves a problem of some sort
+
+**[3400.47s → 3403.23s]** and it's an elaboration on the things that you've learned.
+
+**[3403.23s → 3405.15s]** I mean, it doesn't, next we have to be directly
+
+**[3405.15s → 3406.99s]** for your company that you're working for.
+
+**[3406.99s → 3409.03s]** It's just, you know, it's just obviously,
+
+**[3409.03s → 3410.15s]** if it does help your company,
+
+**[3410.15s → 3413.51s]** it works for it's gonna add value to that company as well.
+
+**[3413.51s → 3415.51s]** But if it's something that you wanna personally
+
+**[3415.51s → 3419.59s]** push forward with and do that. That's probably not my, that's awesome too.
+
+**[3422.02s → 3427.46s]** Yeah, I think I'm interested in like building an agent on top of like just some of our API endpoints.
+
+**[3428.98s → 3434.61s]** There's some of the user use cases, not every endpoint, but just a few of them to see if I can
+
+**[3435.99s → 3440.47s]** get some point. Did you actually get ran to starting looking more into making that thing?
+
+**[3440.47s → 3445.27s]** You're talking about over the holiday time. I think you just kind of like the,
+
+**[3445.27s → 3447.88s]** I forgot what you called it now.
+
+**[3447.88s → 3453.45s]** That way it just does a search and you can kind of ask questions and whatever.
+
+**[3453.45s → 3459.79s]** It's what looks like cold. I ended up building one.
+
+**[3459.79s → 3463.95s]** Anyway, we can talk more about that on the off-size.
+
+**[3463.95s → 3476.70s]** Anybody else got anything they want to kind of go over anything?
+
+**[3476.70s → 3485.18s]** Yeah, I think I'm just going to close on class night because we ended up pretty much spot on.
+
+**[3485.18s → 3492.69s]** So your homework, identify your capstone problem and begin designate solution.
+
+**[3492.69s → 3497.69s]** And then of course, we're here to help you with designing the solution and thinking about problem refinement.
+
+**[3497.69s → 3500.69s]** So we'll transition now.
+
+**[3500.69s → 3503.69s]** Yeah, just question and answer about today's content.
+
+**[3503.69s → 3510.88s]** I think most of hopefully your questions are about your capstone, but I'm also happy to answer questions about tonight's content to.
+
+**[3510.88s → 3511.88s]** So.
+
+**[3511.88s → 3537.04s]** So, lore is yours.
+
+**[3537.04s → 3539.04s]** So maybe I've got a question for everybody.
+
+**[3539.04s → 3544.04s]** Is anyone tried doing lane chain in JavaScript?
+
+**[3544.84s → 3550.72s]** Like doing stuff in browser yet?
+
+**[3550.72s → 3564.18s]** Anyone more comfortable doing that than in Python?
+
+**[3564.18s → 3567.85s]** I don't know, it was available.
+
+**[3567.85s → 3569.25s]** Yeah, yeah sure is.
+
+**[3569.25s → 3570.89s]** It's like almost an exact clone.
+
+**[3570.89s → 3578.72s]** So I think, it's like all the same principles
+
+**[3578.72s → 3580.84s]** and stuff are gonna fly Chris
+
+**[3580.84s → 3585.10s]** and then you'll just use JavaScript API calls instead of Python ones.
+
+**[3590.99s → 3595.74s]** Yeah, I guess the usage just would be slowly different.
+
+**[3595.74s → 3597.58s]** Like if you're running this in browser,
+
+**[3597.90s → 3602.97s]** I think there'd probably be some best practices that you'd maybe want to avoid.
+
+**[3602.97s → 3603.45s]** So it would match.
+
+**[3603.45s → 3605.09s]** And this is more for like node.
+
+**[3607.24s → 3647.78s]** Yes, but yeah, any other questions, captions,
+
+**[3647.78s → 3648.78s]** nice content.
+
+**[3652.76s → 3653.72s]** Well, I hope I didn't.
+
+**[3654.24s → 3654.52s]** Okay.
+
+**[3654.52s → 3656.68s]** Now my screen kind of blacked out there for a second.
+
+**[3656.68s → 3675.92s]** anyone needs suggestions for a good AIP movie to watch this
+
+**[3675.92s → 3679.48s]** feature since I referenced her hopefully that's on if you
+
+**[3679.48s → 3681.92s]** haven't seen it, should add that to your watch list.
+
+**[3681.92s → 3693.96s]** Well, I guess June would be the no AI movie because they banned AI.
+
+**[3693.96s → 3698.95s]** Yeah, yeah, exactly.
+
+**[3698.95s → 3725.88s]** I was going to say another side note of the using JavaScript and stuff.
+
+**[3725.88s → 3733.08s]** If you look through the OpenAI's examples, they've got some good sort of boilerplate stuff
+
+**[3733.08s → 3738.98s]** for doing React stuff or any other stuff you want to play with it and get a feel for it.
+
+**[3739.62s → 3742.66s]** They've got like text-to-speech, visual representation stuff,
+
+**[3743.46s → 3746.74s]** temperature-changing speech-to-text,
+
+**[3749.08s → 3752.04s]** general moderation for checking for different bad words and things,
+
+**[3752.04s → 3758.70s]** function, so description of functions that might be useful for tooling stuff. And they
+
+**[3758.70s → 3765.04s]** got single-shot, few-shot and general sort of like prompting stuff on there as well.
+
+**[3765.04s → 3772.36s]** That's a little bit of a little look out. And in essence, again, I'm Chris, for you
+
+**[3772.36s → 3778.44s]** can use almost any language to integrate with the stuff like lang chain, because it's got
+
+**[3778.44s → 3782.64s]** an API, so you can literally use C++, you can use C, you can do Ruby, you can do whatever,
+
+**[3782.64s → 3787.92s]** Just anything. In fact, it feels things what I used to do is like a lot of C++ stuff in this.
+
+**[3789.02s → 3794.54s]** So you can still utilize just about any sort of thing. So you can make embedded stuff as well for it,
+
+**[3794.54s → 3800.89s]** but that's a bit limited to what really you use case is just to find out what it is you need.
+
+**[3830.48s → 3834.56s]** All right everybody. Well, if there aren't any other additional questions,
+
+**[3834.56s → 3838.16s]** we'll close out tonight and thank you for joining class.
+
+**[3838.16s → 3845.82s]** definitely I guess with questions about your capstone and I will see everybody on Wednesday.
+
+**[3849.16s → 3851.56s]** All right, have a good night everyone.
+

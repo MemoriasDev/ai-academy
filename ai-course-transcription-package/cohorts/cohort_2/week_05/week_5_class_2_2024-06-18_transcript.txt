@@ -1,0 +1,1663 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_05/week_5_class_2_2024-06-18.mp4
+**Duration:** 4049.12 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 822
+**Generated:** 2025-08-13 18:43:37
+**File Hash:** 17f77b5174a21c74d2d3765428d389bf
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_05
+**file_name:** week_5_class_2_2024-06-18.mp4
+
+---
+
+## Transcript
+
+**[6.06s → 16.30s]** Okay, hi. Today we're going to be going over that Flask API thing. All dudes will grab
+
+**[16.30s → 23.78s]** the starter and sort of go over building out the Flask front end sort of side for the
+
+**[23.78s → 30.62s]** codearrage and from the previous set of stuff. Then if we get a bit more time I want to
+
+**[30.62s → 39.14s]** have a quick look at lightning AI as a possible way for you to literally have a
+
+**[39.14s → 45.98s]** little bit messed about with training models with some GPU and stuff like that.
+
+**[45.98s → 67.01s]** So I'll start jumping into a sharing screen to start with. So the thing what we've
+
+**[67.01s → 72.25s]** got here is basically a code region which I've slightly modified just so it can
+
+**[72.25s → 77.93s]** be used for the purpose for what's intended. So initially, it's the code
+
+**[77.93s → 83.27s]** region where we can have a repul and just sort of talk to it in a prompt. We
+
+**[83.27s → 87.47s]** want to refactor this. So instead of using the prompt, we want it to be out to be
+
+**[87.47s → 96.52s]** used via API calls as opposed to that. And then maybe pop a web front end, just
+
+**[96.52s → 102.64s]** something simple on there just to chat with you as such. So this shouldn't be
+
+**[102.64s → 108.54s]** anything major league new this part of it. This is just like I've added a few more valid file
+
+**[108.54s → 112.78s]** types over the time. So we've got like CSV and XML and stuff like that and YAML.
+
+**[114.46s → 121.10s]** But other than a few like tweaks to the file types and a few fixes to a few of the tools,
+
+**[122.32s → 130.56s]** not a lot has changed for this agent. So it's still got the white app, still got create directory,
+
+**[130.56s → 134.80s]** still got fine file, still got create file and so on,
+
+**[134.80s → 139.66s]** update file, still using the shell tool and all the other tools.
+
+**[139.66s → 147.21s]** So at the moment it's on the GPT40 but you can change that to a model of your choice.
+
+**[147.21s → 150.41s]** Like if you decide to train one a bit more on a specific language,
+
+**[150.41s → 151.77s]** you could add it there.
+
+**[152.97s → 154.33s]** And it's still doing the same thing.
+
+**[154.33s → 157.53s]** At the moment I've set it to a Java developer because that was what I was doing last,
+
+**[157.53s → 159.21s]** but you could set that to whatever you want.
+
+**[159.21s → 164.41s]** web developer, C++ developer, whatever you want to, or add a bit more in the system prompt.
+
+**[167.23s → 173.23s]** Then we bind all the tools to it like usual, and then we format the tool, so as all the messages
+
+**[173.23s → 177.79s]** kind of move forward and with the intermediate steps, and we're changing the prompt,
+
+**[177.79s → 183.98s]** the other one with tools and basically the output password. We then build out an agent executor,
+
+**[185.55s → 191.74s]** and then in this situation if we were to just run this file, it imports list, starts a loop,
+
+**[191.74s → 200.15s]** prompts the user to say something can then basically excuse the stream. So same
+
+**[200.15s → 206.75s]** or same or any other agent, same concept. So in this situation though, we've also got
+
+**[206.75s → 213.64s]** some static pages where the bit of CSS, again you can start this however you want,
+
+**[213.64s → 219.12s]** we'll just slap some basic sort of values in there just to give us some color of
+
+**[219.12s → 227.04s]** something sort of to it and just some form. And for the JavaScript, we basically set
+
+**[227.04s → 235.68s]** not the form, add in a submit. And then we're basically just going to, we, so we're going
+
+**[235.68s → 242.92s]** to get the value from the prompt while it's busy, we'll set up the spinner so it's not
+
+**[242.92s → 247.08s]** able to do stuff while we're, so you can't like click it. And then click it again and send
+
+**[247.08s → 253.58s]** several things straight away. That's going to mess things up. Then we've got a response
+
+**[253.58s → 258.92s]** here and the response is hitting the API that we haven't built yet. So it hits API prompt
+
+**[259.80s → 268.72s]** with a post and it basically just sends the prompt along to have it do its job. It then builds out
+
+**[268.72s → 280.14s]** the response, it then populates a response container with the response and then it allows a download
+
+**[280.14s → 289.80s]** button to exist. So it's there ready to download stuff. So initially the download
+
+**[289.80s → 297.32s]** buttons disabled but then once we've finished our prompt the download buttons then reenabled
+
+**[297.32s → 303.24s]** so it can be we can download the application that's been built. And the other part when
+
+**[303.24s → 310.76s]** we hit the download button it then basically goes to the download API with a get request.
+
+**[310.76s → 316.23s]** then disables the submit button so we can't like submit a question while we're in the middle of
+
+**[316.23s → 323.40s]** downloading. Sorry no that that that gets disabled when we've just finished making something so that
+
+**[323.40s → 328.92s]** we can't just overwrite what we just made until we've downloaded it. This then removes it so that
+
+**[328.92s → 335.03s]** we're able to actually submit things after it's finished downloading and then that just
+
+**[335.03s → 340.55s]** disables the download button again so it can't like so that you can't just randomly click download
+
+**[340.55s → 346.71s]** when there's nothing to download and it just stops a bit of rebound on the or
+
+**[346.71s → 352.45s]** debances a little bit. So it's fairly rudimentary. I mean, if you used to make it like
+
+**[353.09s → 358.37s]** anything in JavaScript, that should have been really straightforward. And then template-wise,
+
+**[358.37s → 364.69s]** it's just a simple HTML file that utilizes those HTML CSS and JavaScript for that. And all
+
+**[364.69s → 371.52s]** All it's going here is a simple form with a prompt say enter your prompt and then basically
+
+**[371.52s → 373.60s]** an input to empty prompt.
+
+**[373.60s → 375.12s]** We could have had a text area there as well.
+
+**[375.12s → 377.44s]** That would have worked perfectly fine.
+
+**[377.44s → 379.20s]** And then a button to submit.
+
+**[379.20s → 388.40s]** And then underneath we've got the download button and a response container just to basically
+
+**[388.40s → 393.76s]** have a response saying that yes, you're absolutely created or whatever.
+
+**[393.76s → 398.90s]** That's basically the size of it.
+
+**[398.90s → 401.62s]** And we've got requirements text for the Python side things,
+
+**[401.62s → 404.34s]** which has all the bits and pieces to get
+
+**[404.34s → 405.42s]** most of it working.
+
+**[406.38s → 408.06s]** And then we've got the part that we'd want to really be
+
+**[408.06s → 410.26s]** working on, all on the agent.code.
+
+**[410.26s → 412.34s]** We need to kind of build out these routes.
+
+**[412.34s → 415.50s]** We've got like a basic sanity check there.
+
+**[415.50s → 419.69s]** And then here is where we deal with doing the prompt
+
+**[419.69s → 423.42s]** and talking to the agent.
+
+**[423.42s → 425.30s]** And this is where we deal with downloading those.
+
+**[425.30s → 431.03s]** it's basically zipping up the folder and downloading that zip.
+
+**[431.03s → 437.25s]** So just in debug mode to start with.
+
+**[437.25s → 444.96s]** So ideally the first thing you want to do to this is go and fork it and then clone it
+
+**[444.96s → 445.96s]** down.
+
+**[445.96s → 454.40s]** It's going to fork it, create fork, then clone it down locally.
+
+**[454.40s → 457.68s]** Ideally you should have done this beforehand but I wanted to make sure that we're on the
+
+**[457.68s → 477.79s]** same page so I just get it done. Then we can clone it locally. Well, caps like. And then I'm just going
+
+**[477.79s → 490.35s]** to IPN VS codes and that's changed directly into AI code. And it's like the normal way I've
+
+**[490.35s → 497.08s]** read across the authors and we'll go through pretty much should be the same sort of workflows you've
+
+**[497.08s → 505.21s]** had previously where we just go into our terminal, we create a new environment so by
+
+**[505.21s → 515.94s]** thumb, attack, VM, VM or whatever you want to call the virtual environment, I'm just going
+
+**[515.94s → 531.66s]** to say yes to this one. Then we can activate the virtual environment by sourcing it if you're
+
+**[531.66s → 535.98s]** in Linux or Mac and if you're on Windows, you're probably enough to actually run it differently
+
+**[535.98s → 539.61s]** by putting the read me all the steps for them.
+
+**[539.61s → 541.37s]** So now that we've actually got our virtual environment,
+
+**[541.37s → 545.30s]** we can actually run our pip install with the requirements.
+
+**[545.30s → 550.15s]** So pip install, tack our requirements.
+
+**[550.15s → 552.90s]** That text.
+
+**[552.90s → 569.76s]** That's a welcome for me.
+
+**[569.76s → 571.64s]** But leave all we really, really need for this
+
+**[571.64s → 574.72s]** is the open AI API key, but you're welcome
+
+**[574.72s → 581.15s]** to put your other ease in if you want to keep track
+
+**[581.15s → 582.51s]** of things.
+
+**[582.51s → 591.64s]** So for now I'm just gonna export it.
+
+**[591.64s → 593.24s]** And that's just, I've just copied that straight
+
+**[593.24s → 596.74s]** from the one I've placed it into the Slack channel.
+
+**[608.50s → 612.24s]** Absolutely, the kids are probably missed that.
+
+**[612.24s → 616.19s]** Do we use it in the actual thing itself?
+
+**[616.19s → 627.22s]** It was like, where are we actually using that?
+
+**[627.22s → 630.02s]** Well it's in the list of tools.
+
+**[630.02s → 632.14s]** I'll probably go and put it right at the bottom instead
+
+**[632.14s → 636.24s]** of this type, but in reality, I don't know whether we do.
+
+**[636.24s → 639.45s]** We could do it that, yeah, probably.
+
+**[639.45s → 640.65s]** Yeah, we can do it that way.
+
+**[640.65s → 642.61s]** I'm not too sure where we absolutely need it
+
+**[642.61s → 644.41s]** for this particular thing what we'll be doing,
+
+**[644.41s → 646.25s]** but we can do.
+
+**[646.25s → 648.28s]** I think that's awesome.
+
+**[648.28s → 651.44s]** Are we going to try and have,
+
+**[652.56s → 655.92s]** like, is the eventual goal to also have it
+
+**[655.92s → 659.96s]** start the app and try to browse it?
+
+**[659.96s → 661.30s]** Is it not?
+
+**[661.30s → 663.32s]** No, this all at the moment we're doing is
+
+**[663.32s → 666.64s]** we're making it so that the Flask API
+
+**[666.64s → 671.13s]** can use this agent basically.
+
+**[671.13s → 672.65s]** So it's just an interface for the agent
+
+**[672.65s → 676.33s]** in this particular way, what we're doing right now.
+
+**[676.33s → 678.81s]** Mainly because if you wanted to make it,
+
+**[678.81s → 680.45s]** if you wanted to make like a front end
+
+**[680.45s → 683.33s]** where you made, let's say a VS Code extension
+
+**[683.33s → 687.23s]** or an IntelliJ extension, you need it in a situation
+
+**[687.23s → 690.21s]** where you've kind of got an API to hit.
+
+**[690.21s → 692.65s]** So ideally, if you've made an agent,
+
+**[692.65s → 695.61s]** you're probably going to want to kind of turn it into an API
+
+**[695.61s → 698.13s]** rather than just have the agent.
+
+**[698.13s → 700.49s]** There are different situations where you may not.
+
+**[700.49s → 703.05s]** So there's so many different ways of doing this.
+
+**[703.05s → 705.29s]** This is just a way of setting up
+
+**[705.29s → 707.13s]** and this is just to demonstrate.
+
+**[707.13s → 709.17s]** So we've got something where we can link up
+
+**[709.17s → 713.00s]** an actual API to some agent code
+
+**[713.00s → 717.28s]** and then utilize that in some way to get it doing stuff.
+
+**[717.28s → 719.20s]** So it's just a way of actually interacting
+
+**[719.20s → 722.04s]** and the same sort of process can be done.
+
+**[722.04s → 724.44s]** Whether you wanted to make instead of a flask one,
+
+**[724.44s → 729.08s]** if you wanted to make it in Express or Nest or Java, maybe.
+
+**[729.08s → 730.08s]** Oh, I got it.
+
+**[731.88s → 733.60s]** When you see in a Vogue class KPI,
+
+**[733.60s → 737.48s]** Fsod we're actually going to try the AI,
+
+**[737.48s → 741.48s]** wait, will the AI invoke those flash crestful?
+
+**[741.48s → 743.32s]** No, we're doing opposite way.
+
+**[743.32s → 744.92s]** The flash, the meridian.
+
+**[744.92s → 746.40s]** And sending them to you.
+
+**[746.40s → 747.88s]** Yeah.
+
+**[747.88s → 750.44s]** And then you can add stuff to this to do different things.
+
+**[750.44s → 753.28s]** So then you could have things that kind of,
+
+**[753.28s → 758.68s]** If you added more tooling, let's imagine we integrated the tooling from the part that
+
+**[758.68s → 761.91s]** writes the tests.
+
+**[761.91s → 766.27s]** You could add that there and have another bit with some features on your front end with
+
+**[766.27s → 771.04s]** testing for the code that you've just read or whatever.
+
+**[771.04s → 779.62s]** I've had varying success with having this like, say, if I wanted to do a C++1, sometimes
+
+**[779.62s → 782.30s]** you can tell it to compile it.
+
+**[782.30s → 789.50s]** And that gets a bit weird because if you're using a Flask API to do that, you then have
+
+**[789.50s → 796.08s]** to add endpoints for callbacks where when it's asking you a question that you get that,
+
+**[796.08s → 799.40s]** that's a bit more of an outside of scope of today's thing.
+
+**[799.40s → 802.88s]** But we can go into that at some point.
+
+**[802.88s → 806.33s]** Another day if you wanted to get a bit deeper into it.
+
+**[806.33s → 811.21s]** But for our purposes, we need to make sure we've got an API key exported so that we've got
+
+**[811.21s → 817.09s]** access to that for now. Then just for a sound to check we can run the agent
+
+**[817.09s → 827.41s]** sort of just directly and see what it does. Agent code.py and I've already got a problem.
+
+**[827.41s → 839.86s]** From my chain community tools import, oh did I not, oh it's updated to community one.
+
+**[839.86s → 845.04s]** Sorry, okay I'll add this to the requirements for the next step. Looks like we've already
+
+**[845.04s → 857.40s]** got a problem. So pip install you Langchang community and then we'll import the correct one.
+
+**[857.40s → 864.56s]** That's a little couldn't see if it's actually important the correct list. So this one they want
+
+**[864.56s → 873.30s]** it to be Langchang community which upings and on the store we see it. It's a little quite
+
+**[873.30s → 888.07s]** size. Where's that import gone? Langchang community from Langchang community tools import list.
+
+**[888.07s → 890.20s]** So, it wants that instead.
+
+**[890.20s → 895.44s]** It's going to be a nice, thick, more of a deprecation, I think.
+
+**[895.44s → 898.88s]** Let's see how that works.
+
+**[898.88s → 901.17s]** This from my chain tools.
+
+**[901.17s → 903.72s]** Now, it can't even import it anyway.
+
+**[903.72s → 907.80s]** That's amazing.
+
+**[907.80s → 909.53s]** Okay.
+
+**[909.53s → 914.54s]** New problems.
+
+**[914.54s → 919.02s]** I literally tested this about 10 minutes before we started, and it was fine.
+
+**[919.02s → 923.02s]** And there's something weird's changed in between times.
+
+**[923.02s → 929.16s]** You know what?
+
+**[929.16s → 932.58s]** You know what I'm going to do? Let's see if we can just do it this way.
+
+**[939.51s → 942.31s]** I don't think the result thing would work but let's see what happens.
+
+**[943.30s → 946.66s]** I don't know more. One ton that. We might just have to have a Python list at this point.
+
+**[951.25s → 956.44s]** So that's fine. Let's see if it kills it by doing this because we're already chaining.
+
+**[956.44s → 964.98s]** So we might get away with that using the... Let's say build a vanilla,
+
+**[964.98s → 980.27s]** Java script. Actually, I did not tell it to be a Java developer. Let's say build a Java
+
+**[980.27s → 1003.77s]** frame form with a text input and a button that when the button is pressed creates a
+
+**[1003.77s → 1012.14s]** hello world message box or something something super simple for it to do first and see what we get
+
+**[1012.14s → 1017.40s]** And that is back to the frame.
+
+**[1017.40s → 1020.42s]** So yeah, looks like we do need a list
+
+**[1020.42s → 1024.07s]** and it stopped working just to be awkward.
+
+**[1024.07s → 1027.29s]** That's brilliant.
+
+**[1027.29s → 1033.07s]** Exude to stream.
+
+**[1033.07s → 1036.09s]** Okay.
+
+**[1036.09s → 1038.37s]** Let's just do normal listen, see if it's happy with that one,
+
+**[1038.37s → 1043.20s]** not whether we have other problems.
+
+**[1043.20s → 1045.08s]** This was working absolutely perfectly.
+
+**[1045.08s → 1047.08s]** Hold your hand.
+
+**[1047.08s → 1049.89s]** It's decided just because we're doing live.
+
+**[1049.89s → 1055.61s]** Doesn't work.
+
+**[1055.61s → 1067.52s]** Yeah, it shouldn't be coming back to the prompt.
+
+**[1067.52s → 1073.36s]** it might be because I changed it so it'd work on the flask thing. So I think this one, we're
+
+**[1073.36s → 1081.45s]** gonna have to ponton the basic use case of just doing a rep or move that out for the moment.
+
+**[1083.31s → 1089.55s]** And basically go through the process of we have this now as some code to use by locking
+
+**[1089.55s → 1094.97s]** well, did want to kind of show it doing this but just to be awkward it decided to want to this time
+
+**[1094.97s → 1100.41s]** man rather than just sit there for hours trying to get it doing its thing. Well jump onto what we're
+
+**[1100.41s → 1105.77s]** actually, especially doldy. So basically, the general thing
+
+**[1105.77s → 1108.57s]** should have done was made a folder called app, it should have
+
+**[1108.57s → 1114.81s]** then gave us all the code what we needed to, you know, run a
+
+**[1114.81s → 1119.01s]** job, I think. What I'm going to do is we'll jump straight into
+
+**[1119.01s → 1121.25s]** making this portion of it so we can actually just get it
+
+**[1121.25s → 1126.64s]** working and get it doing stuff. So I could have wrote the
+
+**[1126.64s → 1138.33s]** rep or part just it's not one into work today. So from that, what we can do in the app, the
+
+**[1138.33s → 1145.72s]** first couple of things I'd like to do here is make it so that we can use a prompt. So we
+
+**[1145.72s → 1154.79s]** need to be able to take data in. So we're taking a post method, we're having that as the
+
+**[1154.79s → 1162.58s]** end point and then that will then run this program. So if we take data from that, we can
+
+**[1162.58s → 1171.24s]** just say request.json and that's going to basically take in the JSON data that's sent
+
+**[1171.24s → 1177.73s]** to it and then we'll have access to that data. Now the data what's sent, if we look at
+
+**[1177.73s → 1187.06s]** the static JavaScript, the data that's actually being posted and sent is literally where's
+
+**[1187.06s → 1200.84s]** prompt post content type and it's just sending an object with prompt. So we're going to
+
+**[1200.84s → 1205.56s]** have to extract prompt from it basically. So which is just the text which will be on
+
+**[1205.56s → 1214.85s]** the actual web page. So all we need to do for that is we can say user prompt is equal
+
+**[1214.85s → 1226.07s]** to data.get and basically just give it the actual key which is going to be prompt. Now we
+
+**[1226.07s → 1231.86s]** can do a little bit of engineering here in the sense of that's just going to be something
+
+**[1233.89s → 1239.49s]** that is freeform. So the person who actually calls and asks the question could be asking anything.
+
+**[1240.56s → 1246.32s]** We're expecting them to be asking some sort of thing like build me a XYZ, but they could be
+
+**[1246.32s → 1252.08s]** pointing anything. So one way you can improve this later on is adding some bounds to it or some
+
+**[1252.08s → 1256.32s]** some sort of conditional to make sure it seems like it's a correct sort of prompt.
+
+**[1258.15s → 1263.39s]** But one thing we can do just to kind of give it a little bit of context,
+
+**[1263.39s → 1268.03s]** addition, additionally to what they're doing, like we could tell it that we want it to make
+
+**[1268.03s → 1270.91s]** it our actually called app and put the files inside there.
+
+**[1270.91s → 1274.19s]** So we've got a known location where we where it puts all the application files,
+
+**[1274.19s → 1275.87s]** we built.
+
+**[1275.87s → 1279.63s]** Not only because we need it in a known location, otherwise when we go to zip it,
+
+**[1280.75s → 1282.39s]** we've got to somehow find out where it is.
+
+**[1282.39s → 1292.16s]** So if we just say like let's say app for the folder for it, then it knows to look in app for the next download step. So it's easier to deal with.
+
+**[1292.16s → 1298.32s]** All we need to do for that is we can add to this maybe a back session for new line.
+
+**[1298.32s → 1309.15s]** And then let's say after a new line, make sure to create a directory.
+
+**[1309.15s → 1312.65s]** Let's say called app.
+
+**[1312.65s → 1316.22s]** Let's do what?
+
+**[1316.22s → 1318.22s]** The files.
+
+**[1318.22s → 1320.99s]** Let's think file inside or.
+
+**[1320.99s → 1323.28s]** How can we do this?
+
+**[1323.28s → 1326.46s]** We'll just say files into.
+
+**[1326.46s → 1328.88s]** I mean, you can be more elaborate if you want to.
+
+**[1328.88s → 1330.88s]** So always say this.
+
+**[1330.88s → 1333.96s]** Make sure that you go to an app direction.
+
+**[1333.96s → 1337.96s]** Hopefully it understands that context of make a app directory.
+
+**[1337.96s → 1340.54s]** And then shove all the files in there.
+
+**[1340.54s → 1342.54s]** Because what it would normally do.
+
+**[1342.54s → 1344.54s]** Imagine you give it a problem.
+
+**[1344.54s → 1348.74s]** imagine you're you give it a prompt saying make me a tick-tax toe game it would
+
+**[1348.74s → 1354.29s]** make a tick-tax toe folder and put all the stuff in the problem then is we don't
+
+**[1354.29s → 1358.65s]** know when we're downloading exactly what it made we could store that somewhere
+
+**[1358.65s → 1362.90s]** for a future rendition but in general I want to keep it as sort of
+
+**[1362.90s → 1367.02s]** deterministic as possible so it's a bit of a fight thing so all we're doing is
+
+**[1367.02s → 1369.62s]** we're doing that a little bit more context just to let it know if you want
+
+**[1369.62s → 1375.83s]** in more context obviously you could add it to it to be more specific again you
+
+**[1375.83s → 1380.39s]** You can also add to the actual agent code if you wanted to, for our purpose, we're just
+
+**[1380.39s → 1383.55s]** going to link it up this way.
+
+**[1383.55s → 1388.39s]** And this is where I would do a normal list and put the agent execute a stream in there as
+
+**[1388.39s → 1390.44s]** a response.
+
+**[1390.44s → 1409.58s]** So what I do here is I'd say, response is equal to a list of the agent, execute a stream.
+
+**[1409.58s → 1416.11s]** And then we pass it the input we'd use.
+
+**[1416.11s → 1419.55s]** So at this point, it's not defined, so we need to import it.
+
+**[1419.55s → 1424.06s]** So here's where we need to actually take the agent code and import it in here.
+
+**[1424.06s → 1425.70s]** So we can do that with a simple import.
+
+**[1425.70s → 1435.30s]** We can say from agent code, import agent executor.
+
+**[1435.30s → 1441.17s]** So that now gives us this as if it's like a modular tool to use overall.
+
+**[1441.17s → 1442.17s]** So we've got this agent.
+
+**[1442.17s → 1445.57s]** We could have like 50 different agents and have different endpoints for each agent if you
+
+**[1445.57s → 1451.92s]** wanted to as well. So at this point we now have this, which means that we can call this.
+
+**[1453.30s → 1460.02s]** And now a response, we can just for now say, okay, we could send back the response now to the
+
+**[1461.30s → 1466.85s]** front end, the only problem with that is we'd have to then pass it and it would be a lot of response.
+
+**[1468.08s → 1472.96s]** So for the UI to have just the text box and a button and a little response here,
+
+**[1472.96s → 1477.68s]** that's just going to push it into this, something to create a load of mess. So what we can do instead of
+
+**[1477.68s → 1491.36s]** returning the response directly, if it worked, we can do add, created, successful way. So then basically
+
+**[1491.36s → 1496.88s]** the user on the front end will get that little message just letting them know that it's done. So now
+
+**[1496.88s → 1506.47s]** they're ready to sort of download the application. We do it that way. That should be theoretically enough
+
+**[1506.47s → 1512.23s]** to get the prompt working. Let's run it and see what's working or what's not. We'll do Python,
+
+**[1514.76s → 1521.62s]** app.py and see what we get going. Oh, I'm already using port 5000 on something.
+
+**[1523.06s → 1525.70s]** Now I've got about 50 different applications running in the moment.
+
+**[1525.70s → 1533.11s]** I'm not selling off what I'm using for 5000. I have no idea. It might even be a Docker instance.
+
+**[1533.67s → 1537.89s]** What I'm going to do for now is I'll just change the port. But yours should just work.
+
+**[1545.43s → 1551.16s]** port 5015 which case I've got to change my script just to be awkward. I think I should
+
+**[1551.16s → 1558.60s]** shouldn't matter because it's going directly to there. That's okay. Make sure that's saved
+
+**[1558.60s → 1562.98s]** as well. What's it meant by it? Does it not like do I need a comma there?
+
+**[1565.49s → 1573.83s]** There we go. I've just changed it. You don't need to do that. Where are we? You are also wrong.
+
+**[1576.36s → 1585.94s]** Oh what's intended? Is that literally meant by that? Let's just get rid of that anyway.
+
+**[1592.29s → 1594.45s]** That's what should have happened in the first place.
+
+**[1594.45s → 1595.61s]** Wanted to be awkward.
+
+**[1595.61s → 1597.57s]** Right, so now we've got this thing running.
+
+**[1597.57s → 1601.60s]** So I'm going to literally just control, click it,
+
+**[1601.60s → 1603.00s]** open it up.
+
+**[1603.00s → 1605.82s]** We've got our time to code which is the homepage.
+
+**[1605.82s → 1611.98s]** But then if we literally, that means it's running and working.
+
+**[1611.98s → 1617.13s]** So now we need the interface to actually render something.
+
+**[1617.13s → 1624.49s]** So instead of time to code, we want access to the homepage.
+
+**[1624.49s → 1629.29s]** So all we need to do is because it's a template in this folder, we can just render that template
+
+**[1630.54s → 1636.12s]** because we've got render template here. So here instead of just return that,
+
+**[1637.23s → 1651.98s]** we can return render template and pass it the indexed ihtm. And we save that
+
+**[1653.40s → 1659.12s]** and refresh the page we get how you are. So we can't click the download folder thing
+
+**[1659.12s → 1666.08s]** because we haven't created the app. So now let's just try and see what other errors we get. Let's
+
+**[1666.08s → 1687.32s]** do something like build a simple swing jf-frame Java app with a form that takes a name and on
+
+**[1687.32s → 1703.12s]** on pressing the button, box, box, a message box with a greeting.
+
+**[1703.12s → 1705.80s]** So, little bit ambiguous, but let's give it a go.
+
+**[1705.80s → 1709.09s]** Let's say submit and now we've got a problem already.
+
+**[1709.09s → 1710.68s]** Brilliant.
+
+**[1710.68s → 1713.59s]** Just what we always wanted.
+
+**[1713.59s → 1716.27s]** Ah, I know, full dispatch request.
+
+**[1716.27s → 1720.55s]** We've got an error already.
+
+**[1720.55s → 1725.39s]** So what's the problem?
+
+**[1725.39s → 1732.06s]** changing our plan is fine.
+
+**[1732.06s → 1734.86s]** I was not a true, oh that's me typing in
+
+**[1734.86s → 1739.68s]** Strem instead of Strem somewhere.
+
+**[1739.68s → 1740.88s]** Where's that going?
+
+**[1740.88s → 1741.68s]** Yeah.
+
+**[1741.68s → 1746.28s]** So none of these issues that you should have
+
+**[1746.28s → 1748.28s]** is kind of far along.
+
+**[1748.28s → 1751.08s]** So I hope you didn't do the same type of idea.
+
+**[1751.08s → 1753.08s]** Now let's go with something.
+
+**[1753.08s → 1754.28s]** Let's do this.
+
+**[1754.28s → 1755.48s]** Let's do it to do this.
+
+**[1755.48s → 1757.48s]** I've done my eyes a few times.
+
+**[1757.48s → 1758.48s]** Now we're submitting.
+
+**[1758.48s → 1759.48s]** It's finally.
+
+**[1759.48s → 1760.48s]** That's what it should have been doing.
+
+**[1760.48s → 1763.88s]** So we've got a little spinner to let us know to wait.
+
+**[1763.88s → 1769.12s]** But if we have a look on the back end, it's doing the same sort of thing as we would have
+
+**[1769.12s → 1773.56s]** got if we had any other way of doing it.
+
+**[1773.56s → 1779.34s]** It's successfully done the CSS, done the JavaScript, and now you can look at the HTML.
+
+**[1779.34s → 1784.41s]** So if you have a look, it says, Upcreate Successfully, and the Download buttons available.
+
+**[1784.41s → 1787.69s]** If we click this, it doesn't really do anything because there's nothing there.
+
+**[1787.69s → 1791.28s]** It doesn't, can't do anything.
+
+**[1791.28s → 1798.96s]** But we've now got it where if we take a look in the app folder, it's built a super simple
+
+**[1798.96s → 1802.85s]** to do this app.
+
+**[1802.85s → 1804.41s]** So it's on that part.
+
+**[1804.41s → 1807.65s]** The downside of the moment is obviously we can't download it.
+
+**[1807.65s → 1811.65s]** So the next feature we want to add is the ability to just download, you know, zip that
+
+**[1811.65s → 1816.81s]** up into a zip file and have it so the front end downloads the application.
+
+**[1816.81s → 1821.32s]** Just to test and use what we want with.
+
+**[1821.32s → 1823.32s]** So to do that, actually before we do that,
+
+**[1823.32s → 1824.48s]** is there any questions about this?
+
+**[1824.48s → 1826.20s]** It should be fairly ready to my entry of you.
+
+**[1826.20s → 1830.16s]** Come from any engine, any background at all.
+
+**[1830.16s → 1846.66s]** Is there any questions or anything?
+
+**[1846.66s → 1849.42s]** That's basically the entirety of making it work
+
+**[1849.42s → 1851.67s]** to do the prompt.
+
+**[1851.67s → 1852.67s]** That's not a lot to do.
+
+**[1857.44s → 1860.64s]** Any thoughts, any questions?
+
+**[1860.64s → 1864.48s]** Yeah, I had one in the chat room.
+
+**[1864.48s → 1865.56s]** Oh, sorry.
+
+**[1865.56s → 1868.00s]** I don't know if I should repeat it.
+
+**[1868.00s → 1869.36s]** Sorry, yeah, let's work.
+
+**[1869.36s → 1872.28s]** There's only just an LM wrapper I can use from my team
+
+**[1872.28s → 1874.60s]** is a self host installation instead of RodiMur.
+
+**[1878.87s → 1881.11s]** There's been a few interesting ones
+
+**[1881.11s → 1883.91s]** but it's an awkward to get one
+
+**[1883.91s → 1888.66s]** that's wrapping a specific use case, generally.
+
+**[1888.66s → 1891.58s]** So if it's a wrap a specific agent,
+
+**[1891.58s → 1893.26s]** then you have to kind of make that
+
+**[1893.26s → 1894.34s]** to make the agent wrapper.
+
+**[1894.34s → 1897.10s]** But it likes it's fairly rudimentary thing to do.
+
+**[1897.10s → 1905.98s]** There are other things and tooling's where you can have more like not necessarily a wrapper
+
+**[1905.98s → 1909.22s]** for specific things but more of a playground.
+
+**[1909.22s → 1914.60s]** There's certain playground type of things that you can do but it's more useful to actually
+
+**[1914.60s → 1919.44s]** just roll your own to be honest because then you get exactly what you need for your team
+
+**[1919.44s → 1924.87s]** versus some pre-bate thing where you try and learn it and then it kind of doesn't do what
+
+**[1924.87s → 1929.25s]** you want it to do and you end up having to write it yourself in the end anyway.
+
+**[1929.25s → 1938.05s]** But one thing that may be a nice one, if you can't find one that does exactly your thing,
+
+**[1938.05s → 1944.05s]** or you build one that does your thing, maybe then make it an Eric one and then release it out in the world
+
+**[1944.05s → 1950.14s]** and see how many people actually use it. So it might be another sort of project to do of some sort.
+
+**[1950.14s → 1959.45s]** But usually when you make an API, it's more specific to your needs of your completely like or your project.
+
+**[1959.45s → 1963.44s]** So for this one, I'm just making it specifically for this agent.
+
+**[1963.44s → 1971.73s]** But the same concept, you just have it, so it pulls in your actual whatever agent you've built.
+
+**[1971.73s → 1981.12s]** Have it so you can either have an interactive prompt in this way or an endpoint that then pushes across things or adds a little bit of things to it,
+
+**[1981.12s → 1988.72s]** it like some prompt engineering or something and then make a frontend, whether it's a web
+
+**[1988.72s → 1994.32s]** frontend or whether it's some sort of a plug-in frontend or something else, they interact
+
+**[1994.32s → 2002.17s]** in some way with the API to then send stuff through to the agent and then the agent creates
+
+**[2002.17s → 2008.28s]** some sort of response that you can consume. If it were an API response, you'd probably want
+
+**[2008.28s → 2015.72s]** the whole response and then pass that from your plugin if you know me, or pass the response
+
+**[2016.52s → 2023.00s]** between these lines, figure out the bits that you want to extract and then return that in some
+
+**[2023.00s → 2028.19s]** many different ways as well. Yeah, thanks. I guess I'm just a little overwhelmed because there's
+
+**[2028.91s → 2034.75s]** so many from this quarter, so much stuff I need to do to invent all of this. Yeah. I say there's a lot.
+
+**[2034.75s → 2045.75s]** A lot of the office hours more is more just a side if you like, so if there's a thing where you just don't want to have to deal with, don't worry about the office hours side of things.
+
+**[2045.75s → 2053.94s]** This is more just things that you can do with it because a lot of the time the hardest part to using AI is thinking, well what do I want to do with it?
+
+**[2053.94s → 2057.07s]** That's like the biggest hardest portion of this really.
+
+**[2057.07s → 2061.93s]** the technology is almost, you know, nothing in comparison to thinking,
+
+**[2061.93s → 2067.13s]** what do I want it for? What can I do with it? You know, that's
+
+**[2067.13s → 2072.01s]** the bigger question really. And again, it depends what sort of background
+
+**[2072.01s → 2074.61s]** you come from. And again, we could have made this in express.
+
+**[2074.61s → 2078.65s]** JS or something else. It really, it can, it anything don't
+
+**[2078.65s → 2082.88s]** move. So imagine like Python, I've been your first language or something
+
+**[2082.88s → 2086.48s]** and you used to use in JavaScript or you used to use in Java or
+
+**[2086.48s → 2098.28s]** or whatever other languages. Just think about it. If you're in Java, it'll be a Spring Boot application with a simple row that basically just calls some stuff.
+
+**[2098.28s → 2104.07s]** So there are ways around it.
+
+**[2104.07s → 2105.07s]** Yeah, does that mean?
+
+**[2105.07s → 2110.07s]** Yeah, yes. My next step is to convince other people to contribute a bit as well.
+
+**[2110.07s → 2114.58s]** Absolutely. That's always a bit.
+
+**[2114.58s → 2121.80s]** So what we'll do is we'll move forward with the data and then we'll see if there's any more questions or anything else we can cover.
+
+**[2121.80s → 2136.25s]** Right, so our next thing is we've now got it, so we've got an application, we've got a folder, we've got a folder in a known space, so we know what folder is that we're going to be trying to give to the front end.
+
+**[2136.25s → 2141.25s]** So let's just say, okay, well we know it's going to be the app folder.
+
+**[2141.25s → 2149.13s]** So let's just say, okay, my path to where I want to go is going to be something.
+
+**[2149.13s → 2154.79s]** So let's say, well for a start off, we got to think about what do we want to call the application.
+
+**[2154.79s → 2166.69s]** So for now, just say zip is equal to something like that zip for now.
+
+**[2166.69s → 2168.79s]** Okay, be simple.
+
+**[2168.79s → 2170.03s]** You can name it whatever you like.
+
+**[2170.03s → 2174.83s]** So just what I'm going to be calling you now, what we need to do is want to kind of check.
+
+**[2175.55s → 2182.33s]** Does that zip file exist because if you've got a lot of people doing stuff, you don't want to mess about with the stuff.
+
+**[2182.33s → 2187.21s]** So you're going to say like, let's say if let's say the OS dot
+
+**[2187.21s → 2193.55s]** half exists, we'll check whether the path already exists.
+
+**[2194.75s → 2196.95s]** So let's give it the path and that's the zip.
+
+**[2196.95s → 2202.60s]** So we're checking, does it already exist?
+
+**[2202.60s → 2206.76s]** If it does already exist, then we need to remove it.
+
+**[2206.76s → 2209.72s]** Because we don't want to try to overwrite the zip file
+
+**[2209.72s → 2212.56s]** and have it mess up somewhere in the background.
+
+**[2212.56s → 2217.39s]** So we can say, oh, let's start remove,
+
+**[2217.39s → 2220.60s]** and remove that file.
+
+**[2220.60s → 2221.84s]** So it's just doing a bit of a cleanup
+
+**[2221.84s → 2223.92s]** before it tries to make a zip file.
+
+**[2223.92s → 2226.00s]** Again, you'd probably add more,
+
+**[2226.00s → 2228.16s]** probably a try catch block with a bunch of other stuff here
+
+**[2228.16s → 2230.56s]** if you wanted to kind of make it more robust,
+
+**[2230.56s → 2234.65s]** I'm going with first pass solution at this point.
+
+**[2234.65s → 2239.10s]** So now what happens is that's removed it.
+
+**[2239.10s → 2242.42s]** Then it see the removed it or it didn't exist.
+
+**[2242.42s → 2244.42s]** So if it didn't exist or it's which removed,
+
+**[2244.42s → 2245.74s]** now we can move on to thinking, well,
+
+**[2245.74s → 2248.78s]** now we want to kind of zip the thing.
+
+**[2248.78s → 2251.42s]** So what we've done is we've got this zip file
+
+**[2251.42s → 2255.42s]** which actually allows us to programmatically zip things.
+
+**[2255.42s → 2257.34s]** So we can actually do make an archive.
+
+**[2257.34s → 2269.60s]** So in a similar way how we would do like with open we can do with zip file and then takes
+
+**[2269.60s → 2281.37s]** in a file so we'll say zip path so the file to write to w for writing and then we'll say
+
+**[2281.37s → 2291.36s]** as let's say zip we've already got zip path so zip file okay so then we're going to
+
+**[2291.36s → 2306.31s]** say for the root and all of the directories and all of the files in OS.war. And now what
+
+**[2306.31s → 2312.55s]** this does is it will go through recursively all of the directories and look at every file
+
+**[2312.55s → 2320.22s]** to zip it. Okay. We need to give it a directory. So ideally we need some sort of like a zip file
+
+**[2320.22s → 2328.98s]** directory so maybe we could put that somewhere else, let's think we could put that up here somewhere
+
+**[2329.62s → 2340.58s]** so we've got to let's say zip it up or something so we can do it OS start path dot join and wherever
+
+**[2340.58s → 2347.51s]** you want to start from I'm just going to start from like dot slash and then I want to add whatever
+
+**[2347.51s → 2353.27s]** the directory that I want to see, which happens to be up. So now I can just
+
+**[2353.27s → 2362.95s]** paste this inside the walk and have that as it's root to start with. So now I'll go
+
+**[2362.95s → 2367.94s]** through there and literally iterate over every single file and every single
+
+**[2367.94s → 2375.78s]** folder and that will give us like a list of all these files. So what we can say
+
+**[2375.78s → 2385.48s]** for each file inside files, we're going to literally write a zip file. So we want
+
+**[2385.48s → 2399.59s]** zip file dot write and now we need to write all of the files together. So we need the root
+
+**[2399.59s → 2409.70s]** directory. So we'll say we'll use an OS path join for that. So OS dot path dot join and
+
+**[2409.70s → 2414.90s]** will join the root direct correct with whatever file it is that it's looking at the current file.
+
+**[2416.74s → 2425.06s]** Then we need to give it a relative path as well. So it takes in like the path, the relative path
+
+**[2426.10s → 2438.36s]** and then another final path to move through. So first we have the root path, then we give a relative
+
+**[2438.36s → 2445.98s]** path to it, then we have to go how do we recurse backwards. So those are the three different
+
+**[2445.98s → 2453.68s]** things that it needs. We're going to do OS dot path dot relative path and then find
+
+**[2453.68s → 2458.72s]** the relative path of the root and the file that we move to next. So slight the next place
+
+**[2458.72s → 2466.77s]** to go to. So yeah, we need to do another join on that as well. So I'll do an OS path join
+
+**[2466.77s → 2478.81s]** again. It's already kind of trying to be helpful. We don't think that we can do that. So that
+
+**[2478.81s → 2485.27s]** will give us the relative path for the next traversal. But now we need to say, okay, how
+
+**[2485.27s → 2491.35s]** do we get backwards to where we are? And now we know dot dot will give us upper directory.
+
+**[2491.35s → 2497.89s]** So we want to kind of tell it that. So we'll say, oh, I start fast. Join. We'll take
+
+**[2497.89s → 2508.51s]** at zip, well, this is not being very helpful with the indentation at all. That really doesn't
+
+**[2508.51s → 2515.58s]** seem to like the indentation. I'm going to try and get it on one outlet. So the next thing is the
+
+**[2515.58s → 2525.10s]** OSPASS join. And we're going to join the zip directory and then go, I want to go kind of
+
+**[2526.80s → 2532.00s]** and join the previous directory to get together to move through. So I want to dot dot which is
+
+**[2532.00s → 2534.46s]** is the actual previous directory.
+
+**[2536.39s → 2537.69s]** Then we need to close it off.
+
+**[2537.69s → 2538.69s]** I think I'm gonna put it,
+
+**[2538.69s → 2540.79s]** I think it should fit on one mind for this.
+
+**[2540.79s → 2542.49s]** It's not a good idea to always have it,
+
+**[2542.49s → 2547.09s]** it's very long, but just to save loads of issues.
+
+**[2547.09s → 2548.85s]** Now let's see, is that all closed off enough?
+
+**[2548.85s → 2554.71s]** We need starting, open close, open open close close.
+
+**[2556.68s → 2560.39s]** I think I'm gonna put too many closets there.
+
+**[2560.39s → 2564.14s]** I think I've got one too many closets
+
+**[2564.14s → 2572.81s]** in the right path, we've got the join, then we've got the OS path with the root file with two
+
+**[2572.81s → 2577.37s]** closes which is correct, then for some reason I've got an extra close there that shouldn't be there.
+
+**[2579.98s → 2586.10s]** I think that should close up, so we've got three different inputs for the right, we have a look
+
+**[2586.10s → 2592.54s]** at the right, it takes the source path, some sort of file name, the archive source path which
+
+**[2592.54s → 2594.70s]** which gives us the actual file.
+
+**[2594.70s → 2598.61s]** And then we optionally the compression type
+
+**[2598.61s → 2601.26s]** at this point, we just set it to none
+
+**[2601.26s → 2602.70s]** and same with the compression level.
+
+**[2602.70s → 2605.86s]** So we're kinda just building out where we wanna go
+
+**[2605.86s → 2607.24s]** from and to basically.
+
+**[2609.11s → 2611.35s]** So now that that's done that,
+
+**[2611.35s → 2615.15s]** that is the whole process of it zipping the file.
+
+**[2615.15s → 2618.94s]** So now we got a zipped file.
+
+**[2618.94s → 2622.74s]** So once we've zipped it,
+
+**[2622.74s → 2625.22s]** we wanna remove that directory
+
+**[2625.22s → 2629.06s]** because we don't want to start the process again
+
+**[2629.06s → 2632.42s]** with another prompt and have that directory already there.
+
+**[2632.42s → 2634.00s]** Because that's gonna confuse things.
+
+**[2636.30s → 2638.74s]** Especially if we've just made say a Java project
+
+**[2638.74s → 2640.58s]** and then we try and tell it to make a JavaScript one
+
+**[2640.58s → 2642.98s]** and it tries to figure out why it's got these
+
+**[2642.98s → 2643.82s]** or the following.
+
+**[2644.78s → 2648.02s]** So the next step of it, once we've actually zipped the file up,
+
+**[2648.02s → 2649.74s]** we wanna remove the directory afterwards
+
+**[2649.74s → 2652.58s]** but we'll do a tribe catch just in case
+
+**[2652.58s → 2655.50s]** something's gone weird and it's kind of already removed it.
+
+**[2659.73s → 2663.89s]** S H U T L will run a shell command pretty much.
+
+**[2663.89s → 2667.73s]** And we can tell it to RM3,
+
+**[2667.73s → 2670.61s]** which is basically removed recursively
+
+**[2671.90s → 2677.52s]** and pass it the Zip-Dur.
+
+**[2677.52s → 2682.74s]** The net looks, it's a cat's eye can't get.
+
+**[2682.74s → 2685.00s]** That's where it is.
+
+**[2685.00s → 2685.84s]** It's it.
+
+**[2688.11s → 2692.23s]** So that's telling it, okay, I wanna remove all this folder
+
+**[2692.23s → 2697.91s]** all the folders and files under it. What we'll do is we'll just do an exception as well.
+
+**[2699.75s → 2718.70s]** We'll accept exception. Let's say we jsonify the error. So say error is equal to, let's say an f
+
+**[2718.70s → 2730.15s]** string, just for now, felt to delete the direct rate. Maybe put something like
+
+**[2730.15s → 2733.11s]** Zip, Dirt, awesome.
+
+**[2733.11s → 2737.30s]** So it's got a reference to what Direct Rim is talking about.
+
+**[2737.30s → 2742.12s]** Let's think.
+
+**[2742.12s → 2744.12s]** Then I'd want to kind of say what the error is.
+
+**[2744.12s → 2752.36s]** So I will literally just do E for the E.
+
+**[2752.36s → 2753.36s]** Close the left.
+
+**[2753.36s → 2756.76s]** Okay, so that's that.
+
+**[2756.76s → 2758.76s]** Why is he not liking the E?
+
+**[2758.76s → 2759.76s]** He's not default.
+
+**[2759.76s → 2761.89s]** Oh, sorry.
+
+**[2761.89s → 2764.40s]** As a.
+
+**[2764.40s → 2766.78s]** And still saying he's not defined, though.
+
+**[2766.78s → 2771.14s]** Interesting.
+
+**[2771.14s → 2777.21s]** interesting. Oh, I can see why. I've got to love it when it doesn't want to do the indentation for
+
+**[2777.21s → 2782.28s]** you. Right, okay, so now we've got it. So it just kind of gives you an exception if that's the problem.
+
+**[2782.92s → 2788.38s]** Now, if it didn't give an exception, then it just worked and everything's good. We can now return
+
+**[2790.39s → 2800.01s]** send file and we need to give it the zip path and we need to tell it it's an attachment. So as
+
+**[2802.15s → 2810.68s]** attachment, it costs true. So that's what's going to do the sending of the file as such.
+
+**[2810.84s → 2816.18s]** So the process what we've got is we know that we want to call it app.zip.
+
+**[2816.18s → 2820.54s]** We're removing the possibility of if there's another app.zip that we don't want.
+
+**[2820.54s → 2826.96s]** We're then zipping all the folders, the files and folders in the app directory.
+
+**[2826.96s → 2833.16s]** Storing it as a file called app.zip, removing the app directory,
+
+**[2833.16s → 2835.56s]** and then sending the file to the front end.
+
+**[2835.56s → 2838.26s]** That's the process of what we're going to do.
+
+**[2838.26s → 2840.82s]** So let's save that and see how well it's working.
+
+**[2840.82s → 2845.47s]** So we know that we've already kind of made the app directory.
+
+**[2845.47s → 2847.11s]** So in theory, we should be able to download,
+
+**[2847.11s → 2849.95s]** but the problem here is it's broke the train
+
+**[2849.95s → 2851.23s]** because it's reset.
+
+**[2851.23s → 2852.95s]** So we can't click down like,
+
+**[2852.95s → 2856.70s]** so what I'm gonna do for now is just bypass that a little bit
+
+**[2856.70s → 2860.50s]** by just deleting that folder from now
+
+**[2860.50s → 2862.40s]** and doing the process one more time
+
+**[2862.40s → 2864.62s]** from start some refresh.
+
+**[2864.62s → 2869.85s]** Starting from fresh, we'll give it a to do list submit.
+
+**[2869.85s → 2875.20s]** And again, as you can see, it's doing its normal thing, creating a directory, it's going
+
+**[2875.20s → 2881.62s]** to go through and do all the other bits to build.
+
+**[2881.62s → 2887.38s]** And again, this will really be the same whatever agent you're using as to how you pass and
+
+**[2887.38s → 2891.69s]** just pass the data backwards and forwards using an API.
+
+**[2891.69s → 2899.10s]** And then you could have a bunch of microservices where your actual API decided which tool to
+
+**[2899.10s → 2900.10s]** use.
+
+**[2900.10s → 2902.14s]** So that could be its own agent as well.
+
+**[2902.14s → 2905.82s]** So you could have like an agent that scrapes the web
+
+**[2905.82s → 2907.34s]** and agent that does something else and agent
+
+**[2907.34s → 2909.24s]** that does something else.
+
+**[2909.24s → 2911.88s]** So you can kind of utilize a lot of different multi-agent
+
+**[2911.88s → 2915.88s]** systems using an API to sort of orchestrate what you're doing.
+
+**[2917.28s → 2918.64s]** It looks like that's finished anyway.
+
+**[2918.64s → 2920.60s]** And if we have a look it says app created successfully.
+
+**[2920.60s → 2924.13s]** So now we click on the download, we've got another problem.
+
+**[2924.13s → 2927.46s]** Compression method not supported.
+
+**[2927.46s → 2930.61s]** Interesting.
+
+**[2930.61s → 2937.81s]** Why is that?
+
+**[2937.81s → 2941.89s]** That shouldn't be a problem.
+
+**[2941.89s → 2945.45s]** It's a lot of response.
+
+**[2945.45s → 2949.69s]** We're having a lot of errors in this one today.
+
+**[2949.69s → 2950.69s]** Maybe an import.
+
+**[2950.69s → 2952.53s]** We forgot an import somewhere.
+
+**[2952.53s → 2954.89s]** No, I've got a feeling I've done a comma somewhere
+
+**[2954.89s → 2957.66s]** where I shouldn't have.
+
+**[2957.66s → 2959.78s]** I've got a feeling one of these is now being taken
+
+**[2959.78s → 2964.88s]** as the compressor method as opposed to zip.
+
+**[2964.88s → 2966.84s]** What I'm going to do is I'm going to copy and paste
+
+**[2966.84s → 2969.44s]** one that I've already done just to make sure I haven't
+
+**[2969.44s → 2971.14s]** gone off on one.
+
+**[2971.14s → 2973.98s]** Guaranteed's going to be somewhere here where I've done a comma
+
+**[2973.98s → 2975.92s]** somewhere where I shouldn't have.
+
+**[2975.92s → 2979.73s]** I'm just gonna literally take that right.
+
+**[2979.73s → 2984.49s]** I'm gonna paste it from the previous one.
+
+**[2984.49s → 2987.33s]** Oh, not two dots, so.
+
+**[2987.33s → 2988.17s]** It's a look.
+
+**[2988.17s → 2992.38s]** So, iOS join, comma, relpath, comma.
+
+**[2992.38s → 2995.68s]** I'm pretty sure that's what I had.
+
+**[2995.68s → 3001.69s]** Hmm, you're gonna save that.
+
+**[3001.69s → 3004.14s]** Let's give it one more try.
+
+**[3004.14s → 3006.60s]** Yeah, here in the end.
+
+**[3006.60s → 3009.52s]** You should have used an AI agent to help me.
+
+**[3009.52s → 3012.38s]** Yeah.
+
+**[3012.38s → 3013.38s]** Oh, there.
+
+**[3013.38s → 3015.58s]** That would have caused all sorts of Chinese whispers
+
+**[3015.58s → 3016.42s]** to happen, I think.
+
+**[3016.42s → 3021.56s]** but let's just quickly go through this.
+
+**[3021.56s → 3023.94s]** It's not even doing that part now.
+
+**[3023.94s → 3027.31s]** Refresh that a bit.
+
+**[3030.19s → 3032.15s]** Okay, so now it's making the direct three doing it,
+
+**[3032.15s → 3039.42s]** it's not a thing.
+
+**[3039.42s → 3042.50s]** What gets me is I tried exactly this stuff
+
+**[3042.50s → 3043.90s]** like I said 10 minutes before we started,
+
+**[3043.90s → 3046.02s]** and everything was fine.
+
+**[3046.02s → 3048.22s]** It's sort of got a little bit of time for me.
+
+**[3048.22s → 3049.74s]** Right, it's finished the chain.
+
+**[3049.74s → 3050.58s]** Click on download.
+
+**[3050.58s → 3051.98s]** That's what was supposed to happen.
+
+**[3051.98s → 3053.58s]** As you can see, it happened 25 times
+
+**[3053.58s → 3054.74s]** before hand we'd go.
+
+**[3054.74s → 3062.86s]** I've been doing this all day to make sure none of these issues that we've just seen happen.
+
+**[3062.86s → 3067.20s]** So it doesn't matter what happened, it's just, it's just to be awkward.
+
+**[3067.20s → 3072.16s]** So basically now we've got this app zip, as you can see, don't it quite a few times with
+
+**[3072.16s → 3074.16s]** a lot of different applications to test it?
+
+**[3075.44s → 3078.79s]** If you've got our app, we've got app.js index.
+
+**[3078.79s → 3082.51s]** I don't know where, how good or bad this is going to be, but just for a laugh, let's open
+
+**[3082.51s → 3083.51s]** it with Firefox.
+
+**[3083.51s → 3089.18s]** We've got to do this and we can add to do so and delete them.
+
+**[3089.18s → 3093.42s]** I don't know what we can do much else with it.
+
+**[3093.42s → 3096.26s]** But yeah, so it did what I asked it to do.
+
+**[3096.26s → 3102.06s]** One thing I've been able to break the AI with has been asking, have you guys heard of
+
+**[3102.06s → 3105.50s]** an old card game called Old Made?
+
+**[3105.50s → 3106.50s]** No.
+
+**[3106.50s → 3112.54s]** Okay, I'd never heard of it either but somebody asked me to see if the AI would run it.
+
+**[3112.54s → 3115.82s]** It makes some strange stuff and it doesn't make old made.
+
+**[3115.82s → 3120.90s]** If you ask it to make old made, you end up with a lot of random cards on the screen and
+
+**[3120.90s → 3123.43s]** it doesn't seem to do much.
+
+**[3123.43s → 3126.39s]** So that's one game it can't make.
+
+**[3126.39s → 3130.35s]** It can make quite a few different things but I think that's where you would have to lit
+
+**[3130.35s → 3134.79s]** for the, if you wanted it to make old made, you would literally have to do fine tuning
+
+**[3134.79s → 3137.19s]** just to get it to do that.
+
+**[3137.19s → 3141.51s]** So it's not really replacing any of us as developers at this point.
+
+**[3141.51s → 3158.27s]** Yeah, I was thinking of trying to experiment with it in right cone executes get a screenshot and run it in parallel loops and see if that might work, which I think is what Devon is kind of trying to do.
+
+**[3158.99s → 3165.15s]** Yeah, I've had very in success. We're looking at Devon. It's it's not quite there yet.
+
+**[3166.75s → 3167.75s]** Oh yeah, Vax's.
+
+**[3167.75s → 3174.83s]** I've had access earlier on, I don't have direct access anymore, I was just for trialling
+
+**[3174.83s → 3180.43s]** things but I don't think it's anywhere near ready for fully-fledged working properly at
+
+**[3180.43s → 3189.41s]** this point. But yeah, if you used to make something that works in that way, that's a bit
+
+**[3189.41s → 3194.37s]** nice little thing. I find with this, I've been tweaking it for some time over and over
+
+**[3194.37s → 3199.06s]** because you find, if you just keep building stuff with it, you find all the issues and
+
+**[3199.06s → 3200.66s]** and you're like, okay, well if I add this,
+
+**[3200.66s → 3202.86s]** and then you want it tweaking a bit more.
+
+**[3202.86s → 3206.10s]** What a, especially when I'm making different stuff
+
+**[3206.10s → 3208.06s]** I've had to add more and more on my cartline here.
+
+**[3208.06s → 3210.86s]** I've made a couple of cartline things with it,
+
+**[3210.86s → 3212.90s]** few assembly things, made a couple of boot sectors
+
+**[3212.90s → 3216.86s]** and tested it for writing like XA6 boot sectors
+
+**[3216.86s → 3221.82s]** and arm boot sectors and stuff like that.
+
+**[3221.82s → 3226.21s]** It seems to have okay results with those, not brilliant.
+
+**[3226.21s → 3228.81s]** But I think that's got a CNC plus plus stuff
+
+**[3228.81s → 3231.65s]** seems to work okay with it.
+
+**[3231.65s → 3233.33s]** Java, again, I've had very
+
+**[3233.33s → 3236.01s]** in results as to how complex I want to go.
+
+**[3236.01s → 3239.57s]** But most of it is just having good prompts.
+
+**[3239.57s → 3241.41s]** So it's more down to the prompt engineering
+
+**[3241.41s → 3243.41s]** than it is to the tooling.
+
+**[3245.56s → 3246.84s]** If you ask the right question,
+
+**[3246.84s → 3251.90s]** you get pretty much most of the time the right thing.
+
+**[3251.90s → 3253.54s]** I think part of the old made issue
+
+**[3253.54s → 3255.90s]** was probably because I don't know how the game works.
+
+**[3255.90s → 3259.58s]** So I maybe didn't describe it well enough for the AI.
+
+**[3259.58s → 3265.95s]** And the AI didn't seem to know what it was.
+
+**[3265.95s → 3269.67s]** So it had no real stuff.
+
+**[3269.67s → 3275.74s]** So I think with a addition of a bit of decent prompt engineering,
+
+**[3275.74s → 3283.32s]** a bit of rag and quite a bit of sort of training it and sort
+
+**[3283.32s → 3287.56s]** of remodeling and getting it sort of fine tuned,
+
+**[3287.56s → 3290.20s]** you could probably get it to make almost anything.
+
+**[3290.20s → 3293.68s]** but again, it depends on how much work it is involving
+
+**[3293.68s → 3297.06s]** doing that versus you just writing the application yourself.
+
+**[3297.06s → 3298.78s]** So there are kind of areas there.
+
+**[3304.78s → 3309.28s]** But yeah, I would say definitely getting a callback setup
+
+**[3309.28s → 3313.30s]** like if you add some worker threads
+
+**[3313.30s → 3318.30s]** so that then you kind of have your agent do its thing
+
+**[3318.70s → 3320.82s]** and have it remediate over something,
+
+**[3320.82s → 3323.26s]** send some data back to the front end
+
+**[3323.26s → 3327.06s]** Like I said, run something and do stuff.
+
+**[3327.06s → 3329.34s]** I think at some point I tried,
+
+**[3329.34s → 3331.06s]** let's see if I can get it to do this.
+
+**[3332.20s → 3334.24s]** The first page from it, just to get fresh.
+
+**[3335.24s → 3338.40s]** Let's do write a simple
+
+**[3342.38s → 3345.70s]** C++ hello world.
+
+**[3345.70s → 3347.26s]** Let's go super simple.
+
+**[3351.23s → 3352.83s]** Then compile it.
+
+**[3352.83s → 3354.35s]** Now this is gonna have issues anyway,
+
+**[3354.35s → 3358.28s]** but just for the hell of it.
+
+**[3358.28s → 3359.80s]** And run it.
+
+**[3359.80s → 3362.92s]** This won't be very useful for the front end part because it's not going to give us any
+
+**[3362.92s → 3367.56s]** real feedback from that, but it's be interesting to see what the backend does.
+
+**[3367.56s → 3370.92s]** So let's do a run and see what it actually gives us.
+
+**[3370.92s → 3373.60s]** It's created the directory.
+
+**[3373.60s → 3376.80s]** It's now asking us, would you like us to compile it?
+
+**[3376.80s → 3382.05s]** So here's where it kind of fails because you'd have to have it pass back information.
+
+**[3382.05s → 3385.95s]** Let's let it compile it, it's compiled it and run it.
+
+**[3385.95s → 3388.77s]** So it's managed to compile and run it.
+
+**[3388.77s → 3396.45s]** So you could capture all this information, send it somewhere to the actual Flask API portion,
+
+**[3396.45s → 3402.81s]** have the Flask API then do something based upon that and maybe I put somewhere else.
+
+**[3402.81s → 3408.71s]** So it may not refactor the front end completely, to give you maybe a CLI of some sort somewhere,
+
+**[3408.71s → 3413.18s]** a bit more CSS to kind of make it show in some way.
+
+**[3413.18s → 3415.04s]** But it technically should be doable.
+
+**[3415.04s → 3418.78s]** You can have it run things as well as do other things.
+
+**[3418.78s → 3424.92s]** ideally you'd want to make a little wrapper around this execute command part because basically
+
+**[3424.92s → 3430.68s]** it's literally using the shelter and there's literally no safe guards. It could just hallucinate
+
+**[3430.68s → 3436.76s]** and decide that you should be deleting every file on your computer. So this is the reason why we
+
+**[3436.76s → 3443.46s]** always have the, where's it gone somewhere in there, ask human input truth. You do not have that,
+
+**[3443.46s → 3447.13s]** I'll just go ahead and do what, you know, do the thing.
+
+**[3447.13s → 3449.33s]** Yeah, let's thinking putting inside Docker
+
+**[3449.33s → 3451.29s]** would be the seekest option.
+
+**[3451.29s → 3454.33s]** Absolutely, I did actually funny enough start writing
+
+**[3454.33s → 3458.25s]** a Docker wrapper, where did I put it
+
+**[3458.25s → 3461.77s]** for this very, you know, for this very issue.
+
+**[3461.77s → 3463.29s]** Let's see if I can find my,
+
+**[3464.45s → 3465.61s]** let's go on to here.
+
+**[3465.61s → 3473.54s]** I'm pretty sure I started doing a Docker thing.
+
+**[3473.54s → 3485.06s]** I started writing a Docker manager for this, not particularly just for AI but in general.
+
+**[3485.06s → 3489.44s]** Basically it's class, wrapping Docker stuff so we can have it.
+
+**[3489.44s → 3495.74s]** There's actually a Docker Python library so you can programmatically have it spin up.
+
+**[3495.74s → 3498.70s]** The Docker has run the images and do stuff.
+
+**[3498.70s → 3501.72s]** So we can have it run Python files.
+
+**[3501.72s → 3506.10s]** Then I was planning on then turning this into a module
+
+**[3506.10s → 3511.74s]** that we can import into a sort of a project
+
+**[3512.84s → 3517.29s]** have the agent have access to parts of it as a tool
+
+**[3517.29s → 3520.45s]** and have it just go, okay, now I need to run it.
+
+**[3520.45s → 3522.49s]** So when it's gonna run something,
+
+**[3522.49s → 3524.69s]** have it actually spin up a new Docker instance
+
+**[3524.69s → 3527.13s]** and only do stuff in there, too, right?
+
+**[3527.13s → 3537.28s]** The other option was have the overall application automatically make a Docker manager every time you ask it,
+
+**[3537.28s → 3540.28s]** that's another but that's a little bit more resource heavy.
+
+**[3540.28s → 3549.08s]** There's a few ways around that, but yeah, because like I said,
+
+**[3549.08s → 3554.08s]** you don't want it doing shell tool stuff without any sort of, you know,
+
+**[3554.08s → 3562.37s]** guard rails if you like, but it's inconvenient to have to then go from front end to back end every time you want it to do something.
+
+**[3562.37s → 3564.37s]** So you don't, that'll just mess up flow.
+
+**[3567.63s → 3572.03s]** But in general, the other thing is if it doesn't have the compiler installed,
+
+**[3572.75s → 3574.35s]** it will literally install the compiler.
+
+**[3575.68s → 3579.68s]** So I did that. I'm the first time I tried this on an assembly one.
+
+**[3579.68s → 3582.96s]** I forgot I'd done a fresh install and didn't install an assembly toolchain.
+
+**[3583.81s → 3588.82s]** So literally I asked it to make a thing, um,
+
+**[3589.14s → 3590.98s]** basically some assembly stuff.
+
+**[3590.98s → 3593.82s]** And it got to a point where it said,
+
+**[3593.82s → 3595.88s]** oh, and would like me to now install this
+
+**[3595.88s → 3599.88s]** and it had the correct installation stuff
+
+**[3599.88s → 3601.54s]** for the actual operating system I was on
+
+**[3601.54s → 3605.00s]** and it installed the assembler and everything for me.
+
+**[3605.00s → 3607.12s]** Which was quite a nice sort of a trip.
+
+**[3609.35s → 3611.96s]** If that's what you wanted.
+
+**[3611.96s → 3615.08s]** So in that situation, if you had scripted really nicely
+
+**[3615.08s → 3618.62s]** and had it with guardrails of say being in a docker,
+
+**[3618.62s → 3620.78s]** you could possibly have it just install
+
+**[3620.78s → 3627.69s]** tooling that when needed. But you'd still want to have some sort of fail safe somewhere
+
+**[3628.63s → 3633.43s]** because you really don't want to have it. Imagine it goes, oh, now what I'm going to do is
+
+**[3635.13s → 3641.40s]** compromise another computer somewhere out there. So you don't want to give it like
+
+**[3642.28s → 3648.28s]** read right access to anything to the outside, that duck at that. You want some sort of way of
+
+**[3648.28s → 3657.94s]** making sure it's very much like an API like this where you only have access to certain endpoints
+
+**[3657.94s → 3662.26s]** and it doesn't really have access to the outside world, other than you're hitting those endpoints
+
+**[3662.26s → 3668.20s]** and it responding to those things. And it's fully contained because one thing you wouldn't
+
+**[3668.20s → 3672.04s]** want it to do in this going, oh it's the right, I'll just install NetCat and do reverse shelter,
+
+**[3672.04s → 3675.56s]** you compute to so I can have a look at that file that you're just talking about on your computer.
+
+**[3675.56s → 3685.43s]** So there's plenty of these are the types of dangers that people talk about when they're
+
+**[3685.43s → 3690.78s]** like thinking the AI could take over the world, it's not really taking over the world,
+
+**[3690.78s → 3695.02s]** it's having it do something silly and having unpredictable behaviour happen.
+
+**[3695.02s → 3699.77s]** That's what I think the real dangerous stuff like that is more about file corruption
+
+**[3699.77s → 3702.87s]** or issues to things than anything else.
+
+**[3702.87s → 3706.95s]** But does that make sense or does it really follow quite a lot?
+
+**[3706.95s → 3711.95s]** Yeah, yeah, I think this is great. Yeah, thank you.
+
+**[3712.95s → 3717.95s]** Awesome. Now, I believe not, you've got the day off tomorrow.
+
+**[3717.95s → 3724.34s]** And then it's, you're going to be doing some more sort of fine tuning stuff,
+
+**[3724.34s → 3726.34s]** and a bit more in depth stuff.
+
+**[3727.34s → 3732.91s]** One nice little cloud tool to play with is if you haven't already,
+
+**[3732.91s → 3752.58s]** I can find it is lightning AI. I don't know if you guys have played with it at all. Yeah. It's kind of like using Google Colab, but it's got a lot more little bits of features on and it also gives you
+
+**[3752.58s → 3757.32s]** you four CPUs on their free tier.
+
+**[3757.32s → 3762.45s]** And I think 20 GPU runs or something per month.
+
+**[3762.45s → 3767.43s]** So you can actually kind of build out pipelines and actually
+
+**[3767.43s → 3769.51s]** just run it in here.
+
+**[3769.51s → 3773.88s]** So you could have like you have it literally
+
+**[3773.88s → 3778.10s]** doing a bit of your AI stuff on this.
+
+**[3778.10s → 3780.02s]** If you want to play a grand to mess about it with stuff,
+
+**[3780.02s → 3784.26s]** it can use it like an interface if it's got VS Code.
+
+**[3784.26s → 3789.54s]** You can also use it with Python notebooks and things.
+
+**[3790.50s → 3791.90s]** And it doesn't have to be Python.
+
+**[3791.90s → 3795.62s]** You can run anything you want pretty much in there anyway
+
+**[3796.70s → 3799.14s]** and have it interact with the stuff.
+
+**[3799.14s → 3802.68s]** I mean, you've got like CPU RAM and disk.
+
+**[3802.68s → 3804.40s]** Now I think last time I looked,
+
+**[3804.40s → 3808.17s]** I think he was running it was using 90 gig of RAM,
+
+**[3808.17s → 3812.59s]** Jeremy, doing stuff for free.
+
+**[3812.59s → 3814.45s]** So that's a nice little thing to have
+
+**[3814.45s → 3818.92s]** just as a spare cloud thing to play with.
+
+**[3818.92s → 3822.16s]** This one, I was just training it on some images
+
+**[3824.39s → 3827.19s]** and basically some annotation of the load images,
+
+**[3827.19s → 3829.03s]** like a white character in the blah, blah,
+
+**[3829.03s → 3831.63s]** and training it to recognize the different images
+
+**[3831.63s → 3833.59s]** so we can kind of train it for that.
+
+**[3833.59s → 3835.99s]** But you can literally have it do pretty much whatever you want.
+
+**[3835.99s → 3839.59s]** This is just using the clip model.
+
+**[3839.59s → 3844.59s]** But if you go on here, they've got loads of like templates as well
+
+**[3844.59s → 3845.47s]** and loads of other stuff
+
+**[3845.47s → 3850.13s]** there's so many different workflows you can play with on here. That's a lightning AI,
+
+**[3853.15s → 3859.28s]** quite nice sort of playground for doing stuff in. I've got that silver can just paste it into the
+
+**[3861.70s → 3867.44s]** my pocket and the QA thread just and got it. I definitely say I have a little play with that if you
+
+**[3867.44s → 3876.67s]** haven't already. It's nice to all think. Like I said you can spin up CPU instances, you can spin up
+
+**[3876.67s → 3889.95s]** I've had it up to 90 gig on it. It's got a little bit of space. It's not too bad, like 400
+
+**[3889.95s → 3896.16s]** gig of space, that's not too bad. And like so, that's on the free tier, obviously, you
+
+**[3896.16s → 3900.32s]** can get paid ones, but to be fair, you'd probably be better off building out servers or something
+
+**[3900.32s → 3906.40s]** you likely can do. It's also got like tents aboard to have a look at your experiments as they
+
+**[3906.40s → 3911.52s]** going so you can kind of graph how much power they're using. So you know you wanted to think about
+
+**[3911.52s → 3916.99s]** okay well how much memory would it take if I had to do training a model on a certain thing.
+
+**[3917.71s → 3924.46s]** You could run it in isolation like that just with some dummy data of a certain size and go okay well
+
+**[3924.46s → 3929.74s]** that's how much CPU usage it's going to use, that's how much memory it's going to use, this is how
+
+**[3929.74s → 3934.38s]** much display so you know if you do need to buy hardware you know kind of a general ballpark figure
+
+**[3934.38s → 3938.94s]** of what sort of hardware and the costing for the hardware used to do it locally. So it's quite
+
+**[3938.94s → 3943.34s]** nice for doing experiments and planning about it with an actually built-in-house stuff. It's a set up
+
+**[3943.34s → 3949.73s]** as a 4CPU model at the moment, but you can have a GPU model as well, you set up environments for
+
+**[3949.73s → 3959.54s]** different stuff. I think this one I had go through like I think about 700 epochs doing it,
+
+**[3959.54s → 3967.52s]** so it kind of went through a good load of training. Using the 4CPU model, I think it took a
+
+**[3967.68s → 3978.62s]** bow an hour and a half to do the full train using GPU model it took about I'm gonna say it was
+
+**[3978.62s → 3985.86s]** like 10 or 15 times faster in this instance so if you want to go for like more intense stuff I'd
+
+**[3985.86s → 3993.15s]** switch over to GPU but bearing in mind I think you only get like 20 uses of those per month but
+
+**[3993.15s → 3998.56s]** for experimentation and just playing the ball with it's amazing just another sort of resource to play with
+
+**[3998.80s → 4006.72s]** That being said, is there any questions, any observations, anything at all before we finish up?
+
+**[4006.72s → 4010.46s]** That was a very good thing to tell.
+
+**[4010.46s → 4011.46s]** Very good.
+
+**[4011.46s → 4012.46s]** Last week.
+
+**[4012.46s → 4017.46s]** Always feel free to drop any questions or anything in the thread later as well if you think of anything.
+
+**[4017.46s → 4021.46s]** And the fun, get them sort of async.
+
+**[4021.46s → 4029.46s]** And if you do end up turning up on over the time I'll form, I'm going to be around anyway because I'm doing other things.
+
+**[4029.46s → 4032.98s]** So it was anything mad, just always feel free to do at me anytime.
+
+**[4035.62s → 4037.86s]** All right guys, it's been awesome. Thank you.
+
+**[4038.88s → 4039.52s]** Have a good one.
+
+**[4040.00s → 4042.00s]** Thank you. Bye.
+

@@ -1,0 +1,1667 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_04/week_4_class_2_2024-06-11.mp4
+**Duration:** 3863.23 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 824
+**Generated:** 2025-08-13 18:38:40
+**File Hash:** e4f0bcf41369c29306ea2ea9ef66229f
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_04
+**file_name:** week_4_class_2_2024-06-11.mp4
+
+---
+
+## Transcript
+
+**[12.50s → 19.50s]** Hello everyone and welcome to today's office hours for the AI track.
+
+**[19.50s → 33.61s]** I'm going to be sharing screen with a data analyst agent and talking about that first and then we'll talk a little bit about the semi structured multi modal rag.
+
+**[33.61s → 42.62s]** So I'll share my screen.
+
+**[42.62s → 51.85s]** So data time list.
+
+**[51.85s → 59.02s]** So this one is a little bit of setup stuff to do for this.
+
+**[59.02s → 64.28s]** Actually, I'm going to have to share the database stuff as well.
+
+**[64.28s → 66.44s]** So I don't know if that'll go on that.
+
+**[66.44s → 68.44s]** Yeah, you have to do that locally.
+
+**[68.44s → 73.66s]** So I'm going to find the actual, there's a CSV file.
+
+**[73.66s → 76.78s]** I'm going to share with everyone as well.
+
+**[76.78s → 79.81s]** That's not called load.
+
+**[79.81s → 87.79s]** CSV CSV.
+
+**[87.79s → 88.79s]** Not SQL.
+
+**[88.79s → 89.79s]** Not SQL.
+
+**[89.79s → 96.36s]** call to much statually this folder.
+
+**[96.36s → 104.46s]** Find it again and not that much was it.
+
+**[104.46s → 121.26s]** We structure it, say call it.
+
+**[121.26s → 125.64s]** Then we start, I'm going to re-down my day.
+
+**[125.64s → 139.63s]** Play it to get to the table.
+
+**[139.63s → 143.69s]** Play it to get to the table.
+
+**[143.69s → 146.71s]** I add employee.
+
+**[146.71s → 151.24s]** Let's turn on that again.
+
+**[151.24s → 157.76s]** Okay, does a CSV file, I'm gonna be dropping the slack as soon as it finishes uploading slack.
+
+**[157.76s → 161.32s]** What are you gonna need for this one?
+
+**[161.32s → 177.21s]** I read CSV, that is a drop-down.
+
+**[177.21s → 208.63s]** What may be just like a couple of minutes to make figure out how to load from computer
+
+**[208.63s → 210.43s]** just uploading it.
+
+**[210.43s → 213.04s]** So, well, that's uploading all.
+
+**[213.04s → 216.35s]** So, I talked about all of it, going to be.
+
+**[216.35s → 222.23s]** So, first thing I'm gonna talk about is a data-trained list agent or analysis agent,
+
+**[222.23s → 228.74s]** other. So in this situation, imagine you got a CSV with a bunch of data that you
+
+**[228.74s → 235.38s]** want to kind of look at, rather than you having to physically do everything
+
+**[235.38s → 243.50s]** yourself, what you can do is you can load a SQL extension and take and make a new
+
+**[243.50s → 251.57s]** data, SQL database locally, take an actual CSV file and upload it, and then turn it
+
+**[251.57s → 254.91s]** into a data frame ready for the data frame so that we've got it.
+
+**[254.91s → 256.93s]** Then we can create the table.
+
+**[256.93s → 263.13s]** We can check it for accuracy and make sure it's got the salaries in there.
+
+**[263.13s → 266.72s]** And then once we checked that accuracy,
+
+**[266.72s → 270.98s]** we can insert all the data frame into the table.
+
+**[270.98s → 274.65s]** Then check for insert accuracy.
+
+**[274.65s → 276.41s]** Then we can implement the agent.
+
+**[276.41s → 279.13s]** So this is where we can start by sort of like
+
+**[279.13s → 283.49s]** important little tool kits and we can use that SQL database toolkit.
+
+**[283.49s → 288.49s]** to pre-made bunch of tools ready to work with SQL databases.
+
+**[289.21s → 292.68s]** So we have a tool to create a line graph.
+
+**[292.68s → 295.58s]** So we can actually sort of like fit and make figures
+
+**[295.58s → 298.54s]** out of the actual data that we can code out.
+
+**[298.54s → 300.34s]** We can create bar graphs as well.
+
+**[300.34s → 302.70s]** So we've got two types of tool to use
+
+**[302.70s → 305.97s]** based upon the data that the LLM can see.
+
+**[305.97s → 310.59s]** So then we can define some LLM in tools.
+
+**[310.59s → 313.43s]** So it's gonna use Jupyter 40
+
+**[313.43s → 315.07s]** and keeping it a temperature of zero,
+
+**[315.07s → 316.91s]** to try and get it as clean as possible.
+
+**[316.91s → 318.99s]** I'm going to paste the OpenAI kick
+
+**[318.99s → 321.71s]** something that's really learning about it for me at the time.
+
+**[321.71s → 325.08s]** Then we're going to use that dates base that we made,
+
+**[325.08s → 329.45s]** utilizing the two types of tools on there
+
+**[329.45s → 333.45s]** and inserting the sort of correct database in LLM
+
+**[333.45s → 337.02s]** into the database toolkit as well.
+
+**[337.02s → 339.50s]** And then create our executor agent,
+
+**[339.50s → 341.90s]** which is going to be a SQL agent,
+
+**[341.90s → 345.90s]** passing it the toolkit and the extra tools that we've got.
+
+**[345.90s → 348.50s]** So we've got our main toolkit, which was a sequel one.
+
+**[348.50s → 349.70s]** Then we got a couple of extra tools
+
+**[349.70s → 350.70s]** that we've augmented to it.
+
+**[350.70s → 354.42s]** So we've got multi tool system there.
+
+**[354.42s → 359.57s]** And then we kind of decide on the type of agent we've got
+
+**[359.57s → 364.06s]** and for both side, it kind of gives us some information.
+
+**[364.06s → 365.30s]** Then we're going to invoke it, say,
+
+**[365.30s → 368.14s]** get the average salary by school and plot the data.
+
+**[368.14s → 370.62s]** So being slightly ambiguous, but it should understand
+
+**[370.62s → 381.22s]** because of that SQL tool, that it can sort of turn that into a bunch of SQL commands to pull the data out there.
+
+**[381.22s → 387.24s]** So it's invoking the SQL database list tables with that, which means all.
+
+**[388.34s → 390.46s]** And then it's looking for salary.
+
+**[390.46s → 391.78s]** It gives us salaries.
+
+**[392.34s → 398.32s]** And then it's invoking the schema with the table name of salaries after it found out the table.
+
+**[398.56s → 400.24s]** So it looked for all the tables available.
+
+**[400.24s → 409.19s]** Now it's found that it had a table, then it got grabbed all the schema, so it gathered
+
+**[409.19s → 416.94s]** that schema, and then it invoked Duo database query, so it then went and done the query
+
+**[416.94s → 423.58s]** of select school, while average earnings as average salary from the salaries grouped
+
+**[423.58s → 428.30s]** by the school limit by 10.
+
+**[428.30s → 435.49s]** And then it ran that C4, it then invoked the query, and then we got the information.
+
+**[435.49s → 439.09s]** So this was the data that we got back, bowling, green, state, university, some numbers, some
+
+**[439.09s → 441.45s]** central state, university, and so on.
+
+**[441.45s → 446.69s]** Then it invoked the other tool, create bar graph with the data that was given, and we get
+
+**[446.69s → 448.65s]** our average salary by school.
+
+**[448.65s → 453.10s]** And there's the average salaries and there's the schools.
+
+**[453.10s → 460.30s]** So that kind of utilised the LLM to collate the data and just find information about it.
+
+**[460.30s → 462.38s]** So it's a super simple one, this one.
+
+**[462.38s → 464.26s]** And I'm hoping it doesn't take too long
+
+**[464.26s → 466.78s]** to get the, for everyone to get the higher ed employees
+
+**[466.78s → 468.54s]** on the CSV.
+
+**[468.54s → 473.46s]** So if we go to this portion,
+
+**[473.46s → 476.50s]** you'll load the extension of the SQL,
+
+**[476.50s → 479.34s]** that's just so we can actually deal with it.
+
+**[479.34s → 482.22s]** You make a new empty database.
+
+**[482.22s → 483.42s]** We upload the data.
+
+**[483.42s → 484.42s]** So when you press play on this,
+
+**[484.42s → 487.06s]** it's got a little button to upload.
+
+**[487.06s → 489.42s]** And you can browse for a file on your system,
+
+**[489.42s → 493.36s]** which hopefully is that higher ed employee salaries.
+
+**[493.36s → 497.14s]** So if I give you a H, higher ed employee salaries,
+
+**[497.14s → 499.46s]** open that up and upload it.
+
+**[499.46s → 502.42s]** It's gonna take a little while on my system.
+
+**[502.42s → 505.70s]** Once it's uploaded, you can then load the CSV
+
+**[505.70s → 507.14s]** into a Panda State Frame.
+
+**[507.14s → 510.86s]** So you do that and you end up with a list of all the bits.
+
+**[510.86s → 513.37s]** Then you can check it for accuracy.
+
+**[513.37s → 517.85s]** Once you've done that, you can then create the table
+
+**[517.85s → 519.01s]** for this specific thing.
+
+**[519.01s → 522.74s]** So with all the different sections really needs,
+
+**[522.74s → 527.06s]** then you can select all the items to have a look at it.
+
+**[527.06s → 529.58s]** Then you can update the data frame with all the heading.
+
+**[529.58s → 533.68s]** So it matches the data front of the data that's there.
+
+**[533.68s → 536.90s]** And then we print it to see that it's done it's thing.
+
+**[536.90s → 538.72s]** Then we can import SQLite3,
+
+**[538.72s → 541.96s]** make a connection to the database,
+
+**[541.96s → 543.92s]** pull it into the data frame.
+
+**[543.92s → 546.88s]** So basically we pull the data frame out there
+
+**[546.88s → 549.80s]** and done it's thing, close the connection.
+
+**[549.80s → 554.92s]** then we insert the actor to receive so we kind of select all the salaries limited by 10.
+
+**[556.15s → 561.35s]** So we're checking about the the was accurate to what it was doing and the rate looks right and
+
+**[561.35s → 567.16s]** I bought it so there's still person involved in some of the sanity to check it and then we
+
+**[567.16s → 573.80s]** implement the agent so at this point we've downloaded and installed all the bits now we create
+
+**[573.80s → 578.84s]** a graphing tool with my plotlib so we can do that again just there I think we should be able to do
+
+**[578.84s → 586.92s]** this, if you haven't reset what's been talked, that should create the tooling. It may have a little bit
+
+**[586.92s → 592.52s]** of a wobble because it's dangling in the environment or uploading it to another, it's only 12% done.
+
+**[594.89s → 603.91s]** And then once you have that sort of important tools working, then we need the OpenAiIK,
+
+**[603.91s → 610.58s]** I'm just going to literally paste in because it's just for speed. So I'm doing an EMF.
+
+**[610.58s → 616.17s]** ideally you'd have this in your environment and do that way. So now I'm just going to literally just
+
+**[616.17s → 626.47s]** paste it in there. So now it's going to make the LLM. So child and AI using Gpt4, temperature 0,
+
+**[626.47s → 633.05s]** and then we're going to get the user data and then send the actual API key, so I think as well.
+
+**[634.89s → 641.43s]** And then we're going to utilize the SQL database based upon what we want. So we've got access to
+
+**[641.43s → 646.47s]** the diet by setting up the tools, setting up the toolkit and then get the
+
+**[646.47s → 648.87s]** execute to set the top. So we'll look at how this is doing.
+
+**[650.38s → 655.16s]** Taking some time. Well, right in fact, is there any questions or observations or anything
+
+**[655.16s → 662.60s]** at all? Because it's quite simple sort of. Yeah, how, like, where is the breaking point for this,
+
+**[662.60s → 668.28s]** like, how many tables has, uh, support before it starts to break?
+
+**[668.28s → 676.91s]** That's really down to how much memory you've got and what models you're using to be honest.
+
+**[676.91s → 681.19s]** So it's really a down, so it's more down to spec of system at this point.
+
+**[681.19s → 685.69s]** I'm really not going to call up, so there's not lots of ram, it's got what?
+
+**[685.69s → 690.29s]** Start 12 gig of RAM and not much space on the hard drive.
+
+**[690.29s → 693.58s]** So for this one, it wouldn't take much to break it.
+
+**[693.58s → 698.58s]** But then if you rolled out a larger memory size, I'm stuck like that.
+
+**[698.58s → 702.58s]** And obviously it's all memory dependent and stuff like that.
+
+**[702.58s → 703.58s]** Really?
+
+**[703.58s → 706.58s]** Wait, is this running like a local model?
+
+**[706.58s → 709.58s]** Or this is actually using GPT.
+
+**[709.58s → 718.14s]** So you open a GPT 4.0 at the moment, but you choose your model down here.
+
+**[718.14s → 722.62s]** I'm just confused why local memory matters then.
+
+**[722.62s → 727.78s]** Well, I'm not on about for that part for the loading of the we're using a SQL database locally
+
+**[728.38s → 730.78s]** Mm-hmm. So that would matter and
+
+**[731.66s → 736.98s]** story in the bits and pieces when we're doing the pandas stuff because we're still making pandas data frames and everything
+
+**[737.42s → 741.14s]** So that's where the memory comes into it. So if you add like a million tables
+
+**[741.70s → 744.69s]** Then that's gonna take a pexma out of your RAM locally
+
+**[745.01s → 747.73s]** But in this case, I'm not really locally. I'm really cool
+
+**[747.73s → 750.49s]** But in this case size of the code I've memory
+
+**[750.49s → 759.87s]** And then it's that what model you use as to how many sort of like how big their context window is.
+
+**[759.87s → 769.34s]** So obviously if you went if we use something with a smaller context window, then obviously let's say we used what was it,
+
+**[769.34s → 773.50s]** GPT 3 turbo or something like that or 35 turbo.
+
+**[773.50s → 777.50s]** That would have a smaller context window than GPT 4O for instance.
+
+**[777.50s → 783.98s]** distance. So that would mean you'd have less tables that you could work on versus that model.
+
+**[783.98s → 789.42s]** So it all is very, very dependent upon sort of what model you're using, what sort of situation
+
+**[789.42s → 793.30s]** you do in the database. I mean the database may be highly doubt somewhere as well. So then
+
+**[793.30s → 798.78s]** it won't matter about your local memory at that point, but it will matter about the memory
+
+**[798.78s → 804.80s]** or the space for the database and to work with the engine. So there's a few different pain
+
+**[804.80s → 809.76s]** points for it in that sense. I mean at the moment we're using quite a small amount of data we've
+
+**[809.76s → 816.56s]** just got like about less than 100 mega data so that's not really a massive amount of data for
+
+**[816.56s → 824.70s]** it to deal with. Even though it's taking like eight just a plus you know I mean it's like 97
+
+**[824.70s → 833.18s]** mega bytes of data so it's just you've got this data locally and you was running all this locally
+
+**[834.08s → 838.24s]** it would probably be a bit faster because I've actually had this and you've hopefully have more
+
+**[838.24s → 840.00s]** or RAM and this system does.
+
+**[840.00s → 846.14s]** Probably shouldn't have applied a day game
+
+**[846.14s → 848.14s]** because I already applied it if you know what I mean.
+
+**[848.14s → 849.78s]** This was more for demonstration on,
+
+**[849.78s → 853.82s]** applied it.
+
+**[853.82s → 857.18s]** And I guess in production for a create bar graph
+
+**[857.18s → 859.74s]** instead of passing data to it,
+
+**[859.74s → 864.91s]** it would accept the SQL statement or something
+
+**[864.91s → 866.47s]** to be fast so that it doesn't have
+
+**[866.47s → 868.71s]** to actually send the data to chat.
+
+**[868.71s → 870.25s]** Yeah, I think just,
+
+**[870.25s → 876.21s]** But, you could have this hit an API that does the generation of the biograph really.
+
+**[876.21s → 880.61s]** It doesn't have to be, we're demonstrating it as a tool just sitting here.
+
+**[880.61s → 885.93s]** These tools could be a tool that hits an API, and the API affects is what DayTrip needs
+
+**[885.93s → 894.25s]** to, even the SQL one, because it made the whole database query there.
+
+**[894.25s → 897.05s]** Does the database query itself?
+
+**[897.05s → 898.65s]** Do you remember me?
+
+**[898.65s → 899.65s]** Yeah.
+
+**[899.65s → 907.25s]** So in theory, we could have done that database query to a database somewhere else or even used it to
+
+**[907.25s → 913.33s]** kind of access multiple SQL databases, multiple tables and multiple collations of data.
+
+**[916.00s → 920.40s]** So, and however you'd want to scale it, obviously, this is a very small-sized
+
+**[921.04s → 925.92s]** scaled thing because first off time constraints, we actually, we had to upload a few gig
+
+**[925.92s → 929.20s]** to somewhere or if we had settled once a day
+
+**[929.20s → 931.00s]** basically it would take a lot more time
+
+**[931.00s → 932.90s]** than this and it's already taking quite a lot
+
+**[932.90s → 934.12s]** to just allow a plug.
+
+**[940.26s → 942.12s]** Actually, there's not much code to it either.
+
+**[942.12s → 944.00s]** There's not a lot there.
+
+**[944.00s → 945.84s]** But if we look, this is just using,
+
+**[945.84s → 947.00s]** you're sliding basically,
+
+**[948.48s → 951.04s]** Matt Plotlib to do the Plotting.
+
+**[951.04s → 954.16s]** So it's not really a soup top crazy thing.
+
+**[954.16s → 956.28s]** But again, you could turn that into a Flask API
+
+**[956.28s → 960.12s]** and just have like an API somewhere doing the plotting
+
+**[960.12s → 964.68s]** and turn all this pretty much gooey, so you'd have all this and then you'd have like maybe a frontend
+
+**[964.68s → 972.34s]** that hits it and you could maybe even set up an application where you upload a CSV file to an
+
+**[972.34s → 977.46s]** application, so you've got an upload button, you click upload, you send the CSV, click another button
+
+**[977.46s → 984.26s]** and say and then ask it a question and then have the application generate that and maybe export
+
+**[984.26s → 989.14s]** some of a PDF or export it to an image that you can then click on download and now you've got the
+
+**[989.14s → 996.24s]** image as an application sort of to utilize. So so many different aspects you could do or you could
+
+**[996.24s → 1003.89s]** bring it into a workflow of data collation. But this this lends itself quite nicely because
+
+**[1005.24s → 1010.76s]** one of the things about the multi-modal rag is that you could generate the a bunch of these
+
+**[1010.76s → 1021.52s]** graphs and then feed those images to one of the other things like clip, which could consume
+
+**[1021.52s → 1028.16s]** those images. You could ask questions about those graphs and it could formulate information
+
+**[1028.16s → 1034.60s]** back to you as if you're chatting to somebody who's looking at those graphs without you
+
+**[1034.60s → 1040.29s]** even ever need to see those images. So you can kind of do a lot of different things and
+
+**[1040.29s → 1045.49s]** build on it. These are all little building blocks to use to do different things. So in their own
+
+**[1046.21s → 1052.69s]** un-rowning isolation, they don't look very useful at times. But it's down to what you can actually
+
+**[1052.69s → 1057.49s]** utilize them for when you use an incandorant junction. And this doesn't have to be just AI
+
+**[1057.49s → 1065.40s]** stuff. This could be anything. But we're kind of utilizing the LLMs to do certain tasks for us
+
+**[1065.40s → 1071.84s]** that maybe one day that we don't want to do ourselves. That's the idea of the
+
+**[1071.84s → 1074.24s]** optimations. I mean you could arguably do the same
+
+**[1074.24s → 1081.14s]** optimations if you were to write all the SQL commands yourself manually but
+
+**[1081.14s → 1087.84s]** that could get a bit tedious and it means now you could pass on the task of
+
+**[1087.84s → 1091.38s]** collating the data and building out these
+
+**[1091.38s → 1096.45s]** actual graphs. To somebody who has no knowledge whatsoever about
+
+**[1096.45s → 1100.69s]** Seek will know knowledge whatsoever about any of the other based stuff. All they know is they need
+
+**[1100.69s → 1108.12s]** some graphs to explain this thing to them so it can be used in a way to push the data across
+
+**[1108.12s → 1113.52s]** to somebody who has no technical knowledge and all they're interested in is some business
+
+**[1114.40s → 1118.72s]** value from something. Maybe they want to know what the return on investment for something
+
+**[1118.72s → 1124.00s]** cares or they might want to know some information about a structure or business plan they've got.
+
+**[1124.00s → 1129.00s]** So this can be utilized in a lot of different sort of industries for a lot of different things.
+
+**[1129.00s → 1136.45s]** And again, it doesn't look very impressive as being like a few lines of this, but it's potentially very, very big.
+
+**[1136.45s → 1140.67s]** Let's see, idea behind these things.
+
+**[1140.67s → 1146.33s]** Apart from it's a little bit underwhelming for the amount of money that it's just taking.
+
+**[1146.33s → 1151.84s]** Any more questions or observations? Well, we'll wait for this.
+
+**[1151.84s → 1162.63s]** So if for you to send a day-to-day development versus this cool environment,
+
+**[1162.63s → 1170.63s]** what would you recommend as a way of continuously benchmarking and sort of a CI,
+
+**[1170.63s → 1179.72s]** like, sort of a CI, CD environment for these AI wrappers to make sure you don't drift too much and it still works?
+
+**[1179.72s → 1182.40s]** Yeah, I mean, there's a few options there.
+
+**[1182.40s → 1184.44s]** I mean, if you wanted to do it locally,
+
+**[1184.44s → 1186.04s]** you could actually still do it locally
+
+**[1186.04s → 1188.56s]** with a few different options.
+
+**[1188.56s → 1191.40s]** I was just installing another CICD
+
+**[1191.40s → 1193.04s]** that you can locally host.
+
+**[1195.60s → 1197.92s]** Can't find it now just to be awkward.
+
+**[1197.92s → 1201.36s]** But basically you could either make some GitHub actions
+
+**[1201.36s → 1204.60s]** to do stuff if you wanted to have it sort of non-local
+
+**[1204.60s → 1207.04s]** or you could use KitLab or roll out a Docker
+
+**[1207.04s → 1208.52s]** or you'd get lab on a few systems
+
+**[1208.52s → 1211.68s]** or it really depends upon what you've got available
+
+**[1211.68s → 1214.59s]** in your infrastructure really.
+
+**[1214.59s → 1216.29s]** So for me, I tend to just shove it on it,
+
+**[1216.29s → 1218.61s]** serve an X to me.
+
+**[1218.61s → 1220.45s]** So it's nice and local.
+
+**[1222.86s → 1228.27s]** But it really depends upon your use case, to be honest.
+
+**[1228.27s → 1230.55s]** We wanna do random benchmark and then it's the case
+
+**[1230.55s → 1234.25s]** of finding what hardware you're gonna be using at work
+
+**[1234.25s → 1237.33s]** and rolling out on similar hardware
+
+**[1237.33s → 1239.97s]** to find out what works best and where it works best
+
+**[1239.97s → 1242.74s]** for your use case.
+
+**[1242.74s → 1244.54s]** does that make sense? Was really follow up to that.
+
+**[1246.05s → 1250.77s]** I guess the follow up is, is there any specific best framework
+
+**[1250.77s → 1257.65s]** to recommend that would help? So let's say I build a workflow, but
+
+**[1258.29s → 1261.49s]** like, all these models are constantly getting deprecated and
+
+**[1261.49s → 1266.37s]** updated. So yeah, it's a bit awkward. The awkward one is the
+
+**[1266.37s → 1271.57s]** fact that the actual chain stuff seems to be the most stable one,
+
+**[1271.57s → 1277.65s]** even though it's constantly changing because they keep getting deported so it's like it needs to
+
+**[1277.65s → 1283.40s]** keep up. So at the moment it's quite, it's like we have a very unsteady flooring for the tooling but
+
+**[1283.40s → 1290.69s]** the moment lang chain seems to be the one that's keeping up with everything as best it can.
+
+**[1291.33s → 1295.81s]** So I don't think there's any other ones. There's a few open source ones out there but none of them
+
+**[1295.81s → 1301.25s]** are actually as matured as the lang chain models and stuff and the way how it works for rappers and
+
+**[1301.25s → 1307.36s]** tool training and testing and stuff. So for that sort of thing, I'd say it's going to be sticking
+
+**[1307.36s → 1314.55s]** to that most of the time. I can probably have a look and find you a few links to a few different stuff
+
+**[1314.55s → 1321.91s]** and we'll drop them in Slack after the actual office hours you'd like. We can go over a few things.
+
+**[1323.59s → 1329.19s]** But it really depends upon the use case and there's so many different options for use case itself.
+
+**[1329.19s → 1336.90s]** but there's no one size fits all tool. The closest, like I said, is the laying chain and
+
+**[1336.90s → 1349.27s]** the wingsmiths set of tools. These are issues which you find across the board can be problematic
+
+**[1349.27s → 1354.07s]** in its stuff that we're actually trying to solve now. So you're kind of on the forefront
+
+**[1354.07s → 1362.13s]** of needing to solve these problems. Ideally, it would be useful if every company tries to solve
+
+**[1362.13s → 1367.57s]** them and the first one that gets an idea can kind of monopolize on that a little bit and then
+
+**[1367.57s → 1371.65s]** if they once they've done that they can kind of build it out and mature it a little bit more and
+
+**[1372.29s → 1376.13s]** turn it into actually a product to use. At the moment I believe that's what kind of
+
+**[1376.13s → 1381.51s]** chain stuff and the Lange Smith stuff was aiming to do in the first place but I don't think they
+
+**[1381.51s → 1386.39s]** realized how mammoths of the task it was, but I think they're doing quite well with the
+
+**[1387.11s → 1392.44s]** things that are happening and stuff. And it looks like earth's down loaded so let's see how well we
+
+**[1392.44s → 1397.34s]** we get on with this. So I believe we should be at a point where we just need to do the
+
+**[1397.34s → 1401.10s]** identity implementation or this will double check that I just encase it's yes, so that's
+
+**[1401.10s → 1407.05s]** what I'm going to do. Let's see if this works all right. No, still going to problem.
+
+**[1407.05s → 1426.07s]** What's it saying? Seeker, not found. I can't know exists. I literally just made them.
+
+**[1426.07s → 1433.13s]** Is that maybe not, did you need to specify that's the book an AI API key?
+
+**[1433.13s → 1439.44s]** It didn't have anything in it, so just see that's all it said there.
+
+**[1439.44s → 1443.76s]** Maybe, let's see if we do this.
+
+**[1443.76s → 1447.33s]** Well, I don't have to start looking at docs.
+
+**[1447.33s → 1457.51s]** This will need to be a string of some sort of initialize other things.
+
+**[1457.51s → 1461.51s]** So open AI, blah, blah, blah, open AI key, of course use a day to get.
+
+**[1461.51s → 1464.51s]** Oh, that's why it's trying to pull it from somewhere.
+
+**[1464.51s → 1469.56s]** So it's expecting to be somewhere.
+
+**[1469.56s → 1472.16s]** So there we go.
+
+**[1472.16s → 1475.76s]** I'll just, because you said that was like, huh?
+
+**[1475.76s → 1477.16s]** But yeah, I want to notice that.
+
+**[1477.16s → 1479.40s]** I would have been really annoyed.
+
+**[1479.40s → 1480.24s]** So yeah, that's working.
+
+**[1480.24s → 1484.12s]** So all we have to do is say open API key is that,
+
+**[1484.12s → 1486.93s]** because that was trying to get it from somewhere here.
+
+**[1486.93s → 1488.81s]** So I presume when Ash was having to go,
+
+**[1488.81s → 1493.24s]** he's probably stored like keys in a key store.
+
+**[1493.24s → 1494.72s]** There's this one didn't have it on.
+
+**[1494.72s → 1496.32s]** So now we can invoke the agent to say,
+
+**[1496.32s → 1497.64s]** get the average salary.
+
+**[1497.64s → 1500.83s]** So we do that, we can get some information from it.
+
+**[1500.83s → 1503.51s]** And it's going and getting a list of the tables,
+
+**[1503.51s → 1505.63s]** it's finding the salaries table.
+
+**[1505.63s → 1509.27s]** It's then based on that looking at the schema
+
+**[1509.27s → 1511.51s]** and finding out what it looks like.
+
+**[1511.51s → 1513.67s]** Oh, well, that went quite quick.
+
+**[1515.64s → 1517.80s]** What's trying to explain it?
+
+**[1517.80s → 1521.90s]** It's then check the query to make sure it looks about right
+
+**[1521.90s → 1525.82s]** to it, and it checked the query based upon the tooling
+
+**[1525.82s → 1532.88s]** that pre-built tool and then it done the query and invoked the creation alone graph.
+
+**[1532.88s → 1537.07s]** That's a bar graph. What was the other graph that we could build?
+
+**[1537.07s → 1542.04s]** Line graph. So which one did we ask it for?
+
+**[1542.04s → 1546.68s]** And plot the data. That was much of a...
+
+**[1546.68s → 1550.64s]** What did we do? That was a bar graph.
+
+**[1550.64s → 1551.64s]** Yeah.
+
+**[1551.64s → 1554.66s]** Yeah.
+
+**[1554.66s → 1556.66s]** Just plot the data as a line.
+
+**[1556.66s → 1557.85s]** Yeah.
+
+**[1557.85s → 1561.29s]** By chart.
+
+**[1561.29s → 1566.05s]** And we have to build a tool to do by chart.
+
+**[1566.05s → 1569.59s]** I'd really confuse it.
+
+**[1569.59s → 1572.48s]** The interesting to see what it tried to do.
+
+**[1572.48s → 1576.21s]** Yeah, we've got a line graph.
+
+**[1576.21s → 1579.21s]** Wow, I don't like the sizing of that.
+
+**[1579.21s → 1581.21s]** That's actually just.
+
+**[1581.21s → 1585.21s]** Colab though trying to resize things, wish everything can.
+
+**[1585.21s → 1587.69s]** But yeah, it's done.
+
+**[1587.69s → 1591.44s]** And what we asked it to, it's done it as a live.
+
+**[1591.44s → 1594.44s]** So the average salaries are going pretty badly there.
+
+**[1594.44s → 1598.10s]** But yeah.
+
+**[1598.10s → 1601.18s]** But yeah, if you wanted to, you could make like bar graphs,
+
+**[1601.18s → 1605.46s]** line graphs or pie charts or any sort of demonstration
+
+**[1605.46s → 1609.12s]** of what the data is actually doing
+
+**[1609.12s → 1611.36s]** and then find information about the data.
+
+**[1617.19s → 1623.55s]** What is the highest paid,
+
+**[1623.55s → 1625.55s]** What are they? Are there areas? What would we call them?
+
+**[1626.03s → 1626.99s]** Department
+
+**[1630.38s → 1638.32s]** School. Welcome.
+
+**[1642.03s → 1649.71s]** Let's see what that does to even. I mean, that will be a text thing. That's not interesting to say.
+
+**[1653.48s → 1660.60s]** The high school and batteries that OIO University with earnings are so it can it can answer general arbitrary questions as well.
+
+**[1660.60s → 1679.36s]** But the main line graph showing the average
+
+**[1679.36s → 1692.07s]** scoring salaries sorted from lowest to highest,
+
+**[1692.07s → 1693.11s]** the Civic did up.
+
+**[1693.11s → 1705.08s]** Kind of ask it to do different things.
+
+**[1705.08s → 1710.41s]** That's like, it's done the queries,
+
+**[1710.41s → 1712.21s]** it's done the average by ascension,
+
+**[1712.21s → 1714.69s]** so that should theoretically work.
+
+**[1714.69s → 1716.41s]** Yeah, so now we've done it the opposite way
+
+**[1716.41s → 1719.26s]** where it's doing the lowest to highest,
+
+**[1719.26s → 1720.26s]** that is fine.
+
+**[1720.26s → 1723.22s]** It's not very, very clean with the things,
+
+**[1723.22s → 1726.78s]** but that's just however the tools build.
+
+**[1726.78s → 1729.10s]** So this would be a case of building tool a bit better
+
+**[1729.10s → 1731.94s]** to make it a bit nicer.
+
+**[1731.94s → 1734.96s]** But we end up with that and we've got this pin and G of that.
+
+**[1734.96s → 1737.04s]** And like I said, if you add a bunch of these different
+
+**[1738.12s → 1745.21s]** actual plots and different stuff. I wouldn't really make multiple graphs, so that's another interesting one.
+
+**[1745.21s → 1759.83s]** And a bar chart with the same bar will say, twice to lowest.
+
+**[1759.83s → 1770.94s]** That might... I'm trying to make it a bit ambiguous, try and break it a bit, but see how Wally deals with it.
+
+**[1770.94s → 1781.35s]** Because I want to think of it as somebody who's just like randomly asking it something and see if it gets confused or what we end up with.
+
+**[1781.35s → 1786.32s]** Yeah.
+
+**[1786.32s → 1795.68s]** Okay. Well, we've got the heart and nervous to highest and then we've got highest to lowest in the thing. So it understood what I asked it for.
+
+**[1795.68s → 1803.35s]** So we can code out different parts of the day from asking different questions and game, other stuff.
+
+**[1803.35s → 1810.81s]** If we were to then combine this with say something that wrote images to disk and save them for instance
+
+**[1811.61s → 1817.05s]** we could then have another tool that pulled those images in stored them on the computer.
+
+**[1818.10s → 1822.02s]** Then you'll have like say a folder of those things. Then you can have something else that does some
+
+**[1822.02s → 1827.90s]** rag on those and then you can have to get questions based upon that. If you want to move. So you can
+
+**[1827.90s → 1835.43s]** infer different things but I think that kind of leads us on to that other one. I'll probably just be
+
+**[1835.43s → 1840.23s]** be able to do a quick overview of that other one and maybe show you some of the results
+
+**[1840.23s → 1845.51s]** why I ended up getting because the actual getting to those results took quite some time.
+
+**[1845.51s → 1849.75s]** It wasn't like a quick thing to get to those results and it's compilation stuff and
+
+**[1849.75s → 1857.02s]** anything else. But yeah, you've got access to this same thing so you can apply with this
+
+**[1857.02s → 1861.62s]** anytime you like. I'm going to move on to the other one now just for time constraints.
+
+**[1861.62s → 1873.58s]** So if I do a new share, I'll put it in the right one, multi-rag.
+
+**[1873.58s → 1878.37s]** Same instruction, multi-rag.
+
+**[1878.37s → 1884.05s]** I'll put it in everything.
+
+**[1884.05s → 1886.30s]** There we go.
+
+**[1886.30s → 1893.58s]** So this one was a head-8 set-off in the actual thing.
+
+**[1893.58s → 1898.58s]** But it's useful as a documentation type thing and look through for different things.
+
+**[1898.58s → 1901.96s]** So for this one you can do a lot of different ways of
+
+**[1902.58s → 1907.54s]** Grabbing documents that got like a mixture of content types and maybe you got like a bunch of PDFs and
+
+**[1907.98s → 1909.54s]** they've all got
+
+**[1909.54s → 1915.34s]** text they've got images of different sorts and again kind of like how we made those figures
+
+**[1915.50s → 1917.88s]** Made me got a bunch of figures in there a bunch of different
+
+**[1918.26s → 1920.26s]** line grass bar charts or the stuff
+
+**[1921.17s → 1922.55s]** so
+
+**[1922.55s → 1926.47s]** That would be a bit more useful and just pulling the text out of a PDF file
+
+**[1926.47s → 1934.42s]** So if we can make like a multi structured one where it kind of takes the images, does stuff
+
+**[1934.42s → 1940.06s]** with them, takes the text, does stuff with that and just make it do different things, and
+
+**[1940.06s → 1945.78s]** then have it come to conclusions based upon that data.
+
+**[1945.78s → 1950.70s]** So then it's got that and you can have to get questions based upon that data.
+
+**[1950.70s → 1955.86s]** And in this one, you can have it describe all the pictures to you and explain what's
+
+**[1955.86s → 1956.86s]** happening in them.
+
+**[1956.86s → 1965.33s]** things like that as an example. So with this one we can also then make embeddings in a graph
+
+**[1965.33s → 1974.75s]** based database game, I make a like a lang graph or whatever. And then literally have different
+
+**[1974.75s → 1979.07s]** weights of things and ask it more prominent questions on it but that's that's that's a bit more
+
+**[1979.07s → 1985.31s]** long term than we've got time for though. But for this in in general we would install a lang chain
+
+**[1985.31s → 1989.15s]** unstructured and we use all of the documentation from the unstructured stuff so we get in all the
+
+**[1989.15s → 1996.62s]** different types of bits of stuff, a pedantic and the Alex amount. So this is to kind of sift
+
+**[1996.62s → 2001.74s]** through all the bits and pieces of data that could be given to us. So it's a lot of imports.
+
+**[2001.74s → 2008.54s]** And then for loading the data, we can basically have a bunch of PDF file so whatever it is,
+
+**[2008.54s → 2017.33s]** like in this case as a single paper, a PDF, as a demo sort of one, and it's
+
+**[2018.61s → 2024.69s]** took from this lava paper and we use it on structured to partition all the elements out.
+
+**[2025.49s → 2029.89s]** So what I did in this one to test it was I pulled down the thing local,
+
+**[2030.99s → 2037.86s]** set the path, and then I ran this, but it had some trouble because it needed a PDF reader
+
+**[2037.86s → 2040.26s]** or popular, we just didn't want to install it.
+
+**[2040.26s → 2042.34s]** It was, if we don't have it.
+
+**[2042.34s → 2050.90s]** But the idea is, we can pull all of it in, we can partition that PDF, so you pass it
+
+**[2050.90s → 2055.16s]** the file name, and then extract the images inside the PDF.
+
+**[2055.16s → 2059.86s]** We can pull all the images out as a matter of course.
+
+**[2059.86s → 2062.30s]** Then we can infer table structure based upon it.
+
+**[2062.30s → 2067.14s]** So if it's cut like tables, we can pull out the tables as well and get the table structure
+
+**[2067.14s → 2068.86s]** for each of the tables in there as well.
+
+**[2068.86s → 2074.41s]** And then basically it's doing a chunking strategy just basically by the titles of the different
+
+**[2074.41s → 2077.33s]** figures and stuff in them.
+
+**[2077.33s → 2083.45s]** We've given it constraints of maximum amount of characters, maximum amount of character
+
+**[2083.45s → 2087.01s]** we have afterwards and all number of characters possible and then combining the text under
+
+**[2087.01s → 2088.29s]** the certainly characters.
+
+**[2088.29s → 2092.81s]** So it's kind of like, so we're chunking different things together and making the chunks.
+
+**[2092.81s → 2095.33s]** And then we're giving it the output directory.
+
+**[2095.33s → 2100.78s]** So we're just outputting it to the same directory at this point.
+
+**[2100.78s → 2105.03s]** then it's create an dictionary to store each of the types of things.
+
+**[2105.03s → 2108.63s]** So it pulls out all the elements and then figures out what they are.
+
+**[2109.89s → 2112.33s]** Finds out all the unique possible categories of it.
+
+**[2113.93s → 2119.69s]** And then we make an element sort of model to pull out all the elements.
+
+**[2119.69s → 2121.41s]** So we have cut-grised elements.
+
+**[2121.41s → 2122.41s]** We have a list of those.
+
+**[2122.97s → 2125.69s]** So for every element in a raw PDF element,
+
+**[2125.69s → 2128.65s]** so this is like one element might be a text block.
+
+**[2128.65s → 2129.97s]** Another element might be a figure.
+
+**[2129.97s → 2130.81s]** It might be an image.
+
+**[2130.81s → 2135.13s]** might be there's all the different bits, rather than...
+
+**[2135.13s → 2138.49s]** So then we use unstructured documents element table
+
+**[2138.49s → 2139.33s]** for any tables.
+
+**[2139.33s → 2145.06s]** So if it happens to be an element of table inside that,
+
+**[2146.50s → 2148.50s]** if it's a type of table,
+
+**[2148.50s → 2152.78s]** then we can append it to the table type elements,
+
+**[2152.78s → 2156.38s]** just build it out and just give it classification basically.
+
+**[2156.38s → 2158.38s]** So we know what type of element teaches
+
+**[2158.38s → 2161.26s]** and whether it's some data or whatever else,
+
+**[2161.26s → 2165.82s]** table based is usually like images and stuff most of the time, but it could be a text table
+
+**[2165.82s → 2174.76s]** or whatever it decides. Then it goes over all the categories and if they're tables, it prints
+
+**[2174.76s → 2180.28s]** out the table like how many tables are up, then it prints out how many text elements are up.
+
+**[2183.91s → 2189.91s]** Then we finally get the multivector retrieval. This one's to sort of like get the output
+
+**[2189.91s → 2196.07s]** passing. So this is using the stringable parcel, like we have done in the past, and also the chat
+
+**[2196.07s → 2203.19s]** prompt template and the chat open UI. We give it a prompt of you are insistent tasked with summarising
+
+**[2203.19s → 2211.26s]** tables and text, give a concise summary of the table or text, table or text chunk element. So it
+
+**[2211.26s → 2217.77s]** tells you that each element is a text chunk or table. Then we're adding the prompt to the template,
+
+**[2217.77s → 2221.10s]** with then making a summary chain.
+
+**[2221.10s → 2224.40s]** So we're just adding temperature of zero in the model,
+
+**[2224.40s → 2226.20s]** is the GPD for this point,
+
+**[2226.20s → 2229.55s]** we could have added four of everyone's two.
+
+**[2229.55s → 2233.25s]** And then we can build out the chain with the element being
+
+**[2233.25s → 2235.65s]** basically these chain together.
+
+**[2235.65s → 2239.55s]** So it's using the prompt, using the models and giving a string
+
+**[2239.55s → 2242.75s]** app a process so we can output the strings or deal with the
+
+**[2242.75s → 2245.02s]** strings that are right.
+
+**[2245.02s → 2247.12s]** Then we can apply it to the text.
+
+**[2247.12s → 2251.12s]** So for every single text elements, we build out summary.
+
+**[2251.12s → 2253.60s]** We're the maximum of like five of them.
+
+**[2253.60s → 2256.36s]** So we don't want loads of summary is at this point,
+
+**[2256.36s → 2259.84s]** because you could have ridiculous amounts.
+
+**[2259.84s → 2261.28s]** In this case, it just said text zone,
+
+**[2261.28s → 2265.45s]** it's not defined as because it crashed on the other bit.
+
+**[2265.45s → 2268.61s]** And then we apply the same thing to the table.
+
+**[2268.61s → 2271.86s]** So we're trying to get all the tables.
+
+**[2271.86s → 2275.04s]** And then once we've done, we've now got
+
+**[2275.04s → 2275.96s]** a bunch of information.
+
+**[2275.96s → 2277.20s]** You can print out the information
+
+**[2277.20s → 2279.04s]** and you can just go and print it.
+
+**[2279.04s → 2282.48s]** So you'd have like descriptions of those bits.
+
+**[2282.48s → 2287.62s]** But then images is where we can implement another one.
+
+**[2287.62s → 2292.62s]** So we can use multimodal LLM to produce text summaries
+
+**[2292.62s → 2294.02s]** from images.
+
+**[2294.02s → 2298.46s]** So what we can do here is we can use llama.cpp
+
+**[2298.46s → 2301.22s]** and download some local models.
+
+**[2301.22s → 2304.10s]** So we're not actually technically using the GPT
+
+**[2304.10s → 2305.86s]** to do the image conversions,
+
+**[2305.86s → 2307.38s]** because that'll be a big headache as well.
+
+**[2307.38s → 2312.26s]** means that that would be quite costly. Whereas if we're doing the conversions locally, it's going to cost
+
+**[2312.26s → 2324.07s]** a lot less. So here we download the model and we download one of the actual sort of like what's
+
+**[2324.07s → 2333.98s]** called it the projects from the live assembly repo. And we also have to build that Lama CPP because
+
+**[2333.98s → 2338.86s]** that's source code. So you have to build all your tooling. So you make it our directory called build,
+
+**[2338.86s → 2343.10s]** you go into it and we're just using a CMake and then doing a CMake building that gives you
+
+**[2343.10s → 2348.60s]** access and that just builds out the stuff. If you're on Mac you should already have CMake.
+
+**[2349.67s → 2355.13s]** If you're on Linux or Windows you have to kind of download it and install it but you do all that
+
+**[2355.13s → 2360.25s]** and then you get access to the actual tooling and this is an example of running it as a test.
+
+**[2360.97s → 2367.82s]** So whoever you are, so whatever direct fear in you'd run the lava but in this case it's actually
+
+**[2367.82s → 2372.58s]** the level dash CLI so it's a little bit dated. The current one is the level dash CLI still
+
+**[2372.58s → 2376.78s]** with the same bit. So the model that you want to use point it to wherever you've got
+
+**[2376.78s → 2383.82s]** the model. The project file that you want to use to go with that, your points to whichever
+
+**[2383.82s → 2387.94s]** one you've done. I do in this case that's that one. Give it a temperature of 0.1 so it's
+
+**[2387.94s → 2396.62s]** got a little bit of variance just not not much. And then give it a prompt. So dash P for
+
+**[2396.62s → 2401.82s]** prompt so it's like describe the image in detail be specific about graphs such as bar plots
+
+**[2403.10s → 2409.42s]** and then we give it an image of some sort and then we output the information to an output file
+
+**[2409.42s → 2415.25s]** of some sort so that could be a word of text. If we want to chain this together in and do it with
+
+**[2415.25s → 2420.69s]** a bunch of folders we can have a bash script here where you pass it the image directory where all
+
+**[2420.69s → 2428.05s]** the images are we then loop over every item in there and look for all the JPEGs and every time
+
+**[2428.05s → 2433.28s]** When we come with a JPEG, we make a base name of the image.jpeg.
+
+**[2433.28s → 2437.82s]** We set up the output file to be the same as the image.basename.text
+
+**[2437.82s → 2442.00s]** and then we execute that same command for every single image and every single
+
+**[2442.00s → 2445.59s]** possibility of output with the same question.
+
+**[2445.59s → 2451.07s]** So you could extract all the stuff using OpenAI or whatever.
+
+**[2451.07s → 2454.82s]** Then use this to do your image processing part.
+
+**[2454.82s → 2464.05s]** So you're using local instead of going off and having to pay for a load of image manipulation on a non open source model.
+
+**[2464.05s → 2473.21s]** You can do it and then with the Python, you can play about it with them and literally have a look at what's happening in there and stuff.
+
+**[2473.21s → 2475.21s]** So you can add it to a vector store.
+
+**[2475.21s → 2480.78s]** So then all the information and the picture you've got, you can add to the vector store.
+
+**[2480.78s → 2483.78s]** You can also then take you know the descriptions that we had.
+
+**[2483.78s → 2492.51s]** You could then add the descriptions, the image, and some more inferred data into a vector
+
+**[2492.51s → 2493.75s]** store that are together.
+
+**[2493.75s → 2502.78s]** So then whenever you're referencing things, you can use the image as a general document.
+
+**[2502.78s → 2506.44s]** So these are a few different options of what you can actually do with it.
+
+**[2506.44s → 2510.28s]** But once you actually get it, you can have tables and see it's got like, for instance, subject
+
+**[2510.28s → 2512.27s]** constants.
+
+**[2512.27s → 2515.67s]** This is showing you all a bit some pieces and this is what's in the table itself.
+
+**[2515.67s → 2522.38s]** So it's just different weighted values, so it's like a pandas data frame when it finishes.
+
+**[2522.38s → 2524.42s]** So you can then look at all the summaries.
+
+**[2524.42s → 2526.22s]** So you can look at whatever summaries go with it.
+
+**[2526.22s → 2532.72s]** So that's kind of the complex tabling for my show.
+
+**[2532.72s → 2537.16s]** This is the summary of that table.
+
+**[2537.16s → 2540.44s]** And here's a retrieval of the table from the natural language query.
+
+**[2540.44s → 2545.12s]** So if you retrieve what are the results from the norm across domain subjects.
+
+**[2545.12s → 2548.66s]** So then it tells you all the embeds.
+
+**[2548.66s → 2550.50s]** And then we can look at the image, what it was.
+
+**[2550.50s → 2553.62s]** So we can say images are figures with playful creative examples.
+
+**[2553.62s → 2560.97s]** So it shows you explains the images and talks about them as to what ones they are.
+
+**[2560.97s → 2566.52s]** And then you can run rag pipelines with it and utilize that information and data to use
+
+**[2566.52s → 2573.04s]** to sort of infer different things and just use that as a corpus of information.
+
+**[2573.04s → 2577.44s]** And then just ask about things like what's the performance of Lara cross multiple image
+
+**[2577.44s → 2585.87s]** domains or subjects, don't buy the waves to put across across to us. So then it can infer
+
+**[2585.87s → 2591.15s]** that information based upon the image stuff and actually reference images and give examples.
+
+**[2592.90s → 2597.46s]** And in which case you can actually have it if you wanted to, have it reference images and show
+
+**[2597.46s → 2604.70s]** you the image. So it is like you've got that document for reference. That could have been a bunch
+
+**[2604.70s → 2609.34s]** of data about something like this, it could have been the entire documents of, I don't know,
+
+**[2610.61s → 2619.97s]** let's say you had a mechanic setup and you shoved like books and books full of PDFs of
+
+**[2621.01s → 2626.35s]** information about specific cars and you needed to look up something specific about
+
+**[2627.23s → 2632.03s]** an engine that you're working on. You could literally have all that information and ask
+
+**[2632.03s → 2636.99s]** a question, let's say the car bretters doing this and it's making this noise, it's doing this
+
+**[2636.99s → 2642.03s]** and the information's all there so it's got access to it to rag. It can then be specific and show
+
+**[2642.03s → 2647.07s]** you pictures based on the pictures from the manual and stuff like that and go, oh well you might
+
+**[2647.07s → 2654.02s]** want to do try this, this, this and this and then have diagrams and figures showing it as well as
+
+**[2654.02s → 2660.11s]** explaining it so you can utilize it as a tool in that way as well. Just about any industry you could
+
+**[2660.11s → 2665.87s]** think of any sort of technical use. So it doesn't have to be software development, it could be anything you like.
+
+**[2667.79s → 2674.53s]** Looks like we've got questions. Are the numbers right? That's a good question.
+
+**[2676.78s → 2680.38s]** The only way you'd be able to tell that is read the document, to be honest.
+
+**[2681.84s → 2686.72s]** Let's have a look. What are they actually saying here? Across multiple image-to-maintain subject to
+
+**[2686.72s → 2693.32s]** those natural science subjects is scored at age 7, social science scores
+
+**[2693.32s → 2699.86s]** subjects scored this language science subject. This will be specific, when you say
+
+**[2699.86s → 2704.42s]** accurate this will be specific to that paper. So if that paper is inaccurate then
+
+**[2704.42s → 2710.21s]** this will be inaccurate as well. So the accuracy is going to be based upon whatever
+
+**[2710.21s → 2719.26s]** the PDF had its data. But awesome question. But yeah, definitely. Like I said
+
+**[2719.26s → 2721.22s]** There's so many different, I'm looking at this one,
+
+**[2721.22s → 2724.46s]** because there's so many different uses for me.
+
+**[2724.46s → 2726.98s]** Because I've already built a few things
+
+**[2726.98s → 2729.22s]** for the network security frameworks and stuff
+
+**[2729.22s → 2731.77s]** where we're doing penetration testing.
+
+**[2731.77s → 2733.57s]** And this would be a nice little organization
+
+**[2733.57s → 2736.33s]** to add a bunch more white papers
+
+**[2736.33s → 2737.93s]** of lots of different hardware.
+
+**[2737.93s → 2740.13s]** So when I'm automating my testing,
+
+**[2740.13s → 2743.57s]** it knows what like default passwords are,
+
+**[2743.57s → 2745.77s]** general schematics of what it's working against
+
+**[2745.77s → 2746.61s]** and stuff like that.
+
+**[2746.61s → 2749.93s]** So this would be a nice automation tool as well.
+
+**[2749.93s → 2753.55s]** to augment the actual automation of what I do.
+
+**[2753.55s → 2755.35s]** Because as it stands,
+
+**[2755.35s → 2757.43s]** I mean, you can do a no penetration test
+
+**[2757.43s → 2760.29s]** in a decent company might take you about two or three days,
+
+**[2760.29s → 2764.03s]** but you're looking about 34K for that penetration test.
+
+**[2764.03s → 2769.29s]** If you can utilize tooling and make it less work,
+
+**[2769.29s → 2773.86s]** you could do two or three of those in the same time
+
+**[2773.86s → 2777.13s]** by utilizing like rag and automation.
+
+**[2777.13s → 2779.65s]** So it means that you're making like triple your money
+
+**[2779.65s → 2780.65s]** in one day.
+
+**[2780.65s → 2783.40s]** you know, in the time front.
+
+**[2783.40s → 2785.36s]** So it's really good for kind of taking
+
+**[2785.36s → 2789.00s]** large scale problems and distributing over a bunch
+
+**[2789.00s → 2794.05s]** of hardware and software as opposed to people.
+
+**[2794.05s → 2796.33s]** It's an easy way to have the human review
+
+**[2796.33s → 2797.53s]** or the embeddings.
+
+**[2800.01s → 2801.45s]** Before they've added the rag,
+
+**[2801.45s → 2803.89s]** well, main use case is ingesting hundreds
+
+**[2803.89s → 2805.73s]** of documents with tables and schematics,
+
+**[2805.73s → 2809.25s]** the issues that as many ways to embed each image.
+
+**[2809.25s → 2812.13s]** I really want to review the embeddings to prevent noise.
+
+**[2812.13s → 2816.65s]** That is a problem that we see across the board,
+
+**[2816.65s → 2817.85s]** or the printer,
+
+**[2820.10s → 2821.10s]** just for clarity,
+
+**[2821.10s → 2824.22s]** the question was for ingesting table
+
+**[2824.22s → 2826.62s]** and image data is the easy way
+
+**[2826.62s → 2829.50s]** to have a human review all the embeddings
+
+**[2829.50s → 2833.58s]** in a knowledge base before they're added to the rug.
+
+**[2833.58s → 2836.54s]** The main use case is ingesting hundreds of documents
+
+**[2836.54s → 2838.66s]** with tables and schematics.
+
+**[2838.66s → 2841.94s]** The issue is that there are many ways to embed each table
+
+**[2841.94s → 2847.34s]** image and ideally you'd want to review each embedding to prevent noise and
+
+**[2847.34s → 2850.58s]** embedding embeddings to get into the knowledge base. I can understand that
+
+**[2850.58s → 2856.10s]** being an issue. In the past we've had it's like when you're doing again,
+
+**[2856.10s → 2861.14s]** mostly I'll go with like penetration testing in analogy or when you get
+
+**[2861.14s → 2866.34s]** large amounts of data of collating stuff from systems that's sometimes in
+
+**[2866.34s → 2869.62s]** really weird situations where you've got binary dates you've got all this
+
+**[2869.62s → 2875.25s]** all the stuff. And there are toolings where like note taking toolings what can take
+
+**[2876.30s → 2884.45s]** bunches of data and classify them. Or you can have a minor model to do a similar thing to what
+
+**[2884.45s → 2893.58s]** you've done in this portion here. We go back. If you know a general shape of what you're doing
+
+**[2893.58s → 2900.77s]** because this is actually using something that's working with data that could be almost any shape,
+
+**[2900.77s → 2906.18s]** talling here is kind of like it doesn't know what it's going to be. So
+
+**[2909.31s → 2914.46s]** absolutely Isaac that's awesome. So that's a good way of looking at
+
+**[2916.13s → 2922.05s]** the embedding stuff. Isaac's actually shared a leader board with all the Hogan face stuff
+
+**[2923.57s → 2928.13s]** and that's definitely a good place to kind of look at reviews and see what other people have
+
+**[2928.13s → 2935.74s]** already sort of done as well but definitely it's again situational as to how
+
+**[2935.74s → 2941.77s]** you deal with that but there are also applications and things that are there
+
+**[2941.77s → 2949.11s]** where you can review different models and test them out. You can even, I
+
+**[2949.11s → 2952.35s]** say I believe I'm honking face, you can actually not download the models and
+
+**[2952.35s → 2956.71s]** have there them run the models as well but it's a bit more hit on this on
+
+**[2956.71s → 2964.86s]** network latency then. So it's a bit of more choice because you can normally manipulate almost any embedding data.
+
+**[2964.86s → 2970.73s]** You do. I know there's lots of different types but you'll find that there's not, there's a lot of
+
+**[2970.73s → 2977.58s]** models out there to deal with almost every type you could imagine. So there is a large bunch of stuff
+
+**[2977.58s → 2985.13s]** on that hogging face, post-tories and stuff. Actually I'll quickly show you how we did on time when I've
+
+**[2985.13s → 2990.41s]** got a bit close on the end but I'll quickly stop showing that and we'll show you
+
+**[2991.29s → 2996.58s]** where I got to with the conversion stuff on the figures as well so you can see what's happening
+
+**[2996.58s → 3008.79s]** in more of a local situation. You need to find where is it? Multi-rat is it that one? We've got
+
+**[3008.79s → 3017.42s]** that many open things. Think it's that one. Yeah, so for this one, I kind of followed what, you know
+
+**[3017.42s → 3022.50s]** what I've just described on the multi-bag thing, but what I did was I separated the into
+
+**[3022.50s → 3023.50s]** its own thing.
+
+**[3023.50s → 3027.54s]** So stage one is the first part before we have to do installation.
+
+**[3027.54s → 3029.02s]** So this is working locally.
+
+**[3029.02s → 3032.02s]** I'll share this with you guys as well.
+
+**[3032.02s → 3038.38s]** So all I've done is I've kind of took the bits of what was in that colab and set it up
+
+**[3038.38s → 3040.86s]** on stage one to extract the images.
+
+**[3040.86s → 3044.94s]** So in this one, I've got, I've just literally copied and pasted the stuff and tweaked it to
+
+**[3044.94s → 3047.13s]** make it work locally.
+
+**[3047.13s → 3051.93s]** I've downloaded that lava PDF from the website,
+
+**[3051.93s → 3055.35s]** point you to and just literally put it
+
+**[3055.35s → 3057.30s]** into the same directory.
+
+**[3057.30s → 3059.02s]** So now when it's partitioned in the PDF,
+
+**[3059.02s → 3061.31s]** it's partitioned in the local one,
+
+**[3061.31s → 3064.43s]** extracting all the bits like we've just said,
+
+**[3064.43s → 3066.83s]** and then doing all the same things,
+
+**[3066.83s → 3068.91s]** and doing the category count
+
+**[3071.01s → 3073.09s]** and categorizing it basically by type.
+
+**[3073.09s → 3075.85s]** So this is an example of just two different types
+
+**[3075.85s → 3077.25s]** of embeddings, but you could have
+
+**[3077.25s → 3082.21s]** like a lot of different ones in there and just having a bunch of L7 statements with all different types.
+
+**[3082.69s → 3091.58s]** So you can kind of just within that same thing, you could have a bunch of different types of embeddings in the same file anyway.
+
+**[3093.90s → 3098.90s]** And then we did that. So and then I just had it print the text on me just to have a look at it. Yeah.
+
+**[3098.90s → 3104.38s]** So the funny thing is that does all that and then you end up with this folder full of figures.
+
+**[3104.38s → 3110.22s]** These are like what it's cut out of there and it's kind of put squares around different
+
+**[3110.22s → 3113.62s]** things and showing all the different possible bits of it.
+
+**[3113.62s → 3119.14s]** These are all parts of it.
+
+**[3119.14s → 3125.04s]** I'm okay, well this looked at that and decided that looks like a table and then it kind
+
+**[3125.04s → 3130.29s]** of did a bit of recognition on all these bits and but you don't just looked at it's thing.
+
+**[3130.29s → 3131.29s]** So that was that.
+
+**[3131.29s → 3136.64s]** Now the next step was extracting information directly from these.
+
+**[3136.64s → 3138.44s]** And this is where I used the local models.
+
+**[3138.44s → 3143.32s]** I think if I go up here, quite a lot of things happened.
+
+**[3143.32s → 3144.89s]** It's the cool one.
+
+**[3144.89s → 3150.53s]** So first what I had to do was pull down a LAMOS DPP,
+
+**[3150.53s → 3152.21s]** the repository.
+
+**[3152.21s → 3157.21s]** So if I go through there, this is like the source code to it.
+
+**[3157.21s → 3160.13s]** Literally it's just done in C++.
+
+**[3160.13s → 3162.57s]** See, look and find the readmate.
+
+**[3162.57s → 3164.38s]** Readmate.
+
+**[3164.38s → 3169.94s]** Let's do a quick readmate.
+
+**[3169.94s → 3173.30s]** So this is the Larm CPP sort of read me.
+
+**[3173.30s → 3176.62s]** But the general idea is you pull the repo down
+
+**[3176.62s → 3177.78s]** and you build it.
+
+**[3177.78s → 3180.78s]** So you've got the tools to work with.
+
+**[3180.78s → 3183.66s]** So once you've built all this source code,
+
+**[3183.66s → 3186.70s]** it'll be in the build directory.
+
+**[3186.70s → 3192.07s]** And I'll switch to the build directory in the binary directory.
+
+**[3192.07s → 3194.43s]** So here's all the tools that it builds.
+
+**[3194.43s → 3195.43s]** The one that we're by,
+
+**[3195.43s → 3196.71s]** I mean you could do a lot of different things
+
+**[3196.71s → 3197.87s]** with this, you can benchmark stuff,
+
+**[3197.87s → 3200.31s]** you can do embedding, you can do so many different things.
+
+**[3200.31s → 3201.91s]** But the only way I use that this point
+
+**[3201.91s → 3206.61s]** while as it gone, especially live a CLI.
+
+**[3207.70s → 3208.90s]** Yeah?
+
+**[3208.90s → 3213.00s]** So this, I use this to provide,
+
+**[3213.00s → 3216.30s]** yeah, this is pretty,
+
+**[3218.38s → 3221.46s]** wow, how long is it going to take?
+
+**[3221.46s → 3224.98s]** So what I did first was I literally after building it,
+
+**[3224.98s → 3233.77s]** the Live CLI. I downloaded the model and the project from HuggingFace using the Q5 model
+
+**[3234.73s → 3244.20s]** and I'm using the F16 project. Same sort of temperature. Put the same thing, describe image in
+
+**[3244.20s → 3249.32s]** these specific about Graphs and Plats. Choose the single image just to test it out and put it to
+
+**[3249.32s → 3259.89s]** out.txt. Yeah, so if I move that out the way and close that off a bit, I have out.txt.
+
+**[3259.89s → 3265.62s]** Now, I've pasted my inthing. This is what it gave me as output. The image features a garage
+
+**[3265.62s → 3273.24s]** with a white SUV parked inside. The SUV is surrounded by various objects, including a backpack,
+
+**[3273.24s → 3278.84s]** a suitcase, a handbag. The backpack is located left of the SUV while the suitcase is placed
+
+**[3278.84s → 3283.08s]** on the right, the hamburger is situated in the middle of the scene, close to the center
+
+**[3283.08s → 3287.72s]** of the SUV. In addition to the objects there are several people in the scene. One person
+
+**[3287.72s → 3292.76s]** is standing near the left side of the SUV and another is located near the centre and a third
+
+**[3292.76s → 3297.64s]** person is standing on the right side of the vehicle. The presence of these individuals suggests
+
+**[3297.64s → 3302.47s]** that they might be preparing for a trip or just returning from one. So that's why it gathered
+
+**[3302.47s → 3308.55s]** from that one image. That's one image. So you can gather a lot of different bits of data,
+
+**[3308.55s → 3312.55s]** based on just looking at something, basically like.
+
+**[3312.55s → 3316.06s]** So we've got a bit of computer vision almost happening here.
+
+**[3316.06s → 3320.42s]** You could have literally a camera pulling in the data
+
+**[3320.42s → 3325.42s]** and have this local model iterating over each grab
+
+**[3325.42s → 3329.64s]** and taking notes of what's happening in a surrounding situation as well.
+
+**[3329.64s → 3336.38s]** So I feel a bit of a big brother coming up.
+
+**[3336.38s → 3342.67s]** But then what I did was I wrote out that shell script into a file.
+
+**[3342.67s → 3352.93s]** So we've got it here. I put my figures directory in. I left the rest pretty much as is. I changed it to suit my needs for what I wanted it to run.
+
+**[3352.93s → 3360.93s]** I've actually pasted the thing that I ran but swapped out the image for dollar image and swapped out the output file out.
+
+**[3360.93s → 3368.15s]** Text for output file and literally run that that took a while, but it looked to every single one of these and it gave me the.
+
+**[3368.15s → 3376.07s]** me the see there's the figure there's the information there's the figure there's the information
+
+**[3376.07s → 3385.76s]** so we've got kind of all these different bits here that's the one with the people in the
+
+**[3385.76s → 3392.83s]** SUV one and then we've got this one and the information so we've extracted all those pieces
+
+**[3392.83s → 3398.83s]** of information just from them and that's all using a local model and not touching any of
+
+**[3398.83s → 3404.71s]** the open AI, once we've initially extracted the images, that's what we use the open AI.
+
+**[3404.71s → 3410.23s]** And I think based upon that, we should be able to use a local model to extract the images
+
+**[3410.23s → 3415.51s]** as well. So in that situation, it means that you could literally do all of this locally
+
+**[3415.51s → 3423.35s]** without having to touch any of the open AI's set of things.
+
+**[3423.35s → 3428.67s]** You'll probably have to have slightly medium to large size models hopefully to do it in
+
+**[3428.67s → 3434.99s]** accurate and good way but what I might do is other next couple of days I'll set up
+
+**[3434.99s → 3441.55s]** like a llama 3 and a few other things like a llama and a few other models and see what happens
+
+**[3441.55s → 3447.39s]** when I do the same thing but using that and see what sort of accuracy we get and I'll paste out
+
+**[3447.39s → 3452.43s]** what I've done and I'll shove a few thing there. Oh so it's been quite a few things come for this.
+
+**[3452.43s → 3459.56s]** Let's look. What GPU do you have in your computer? I assume it's using the GPU for that.
+
+**[3459.56s → 3465.91s]** I presume so, it's not as soup top GPU on this particular system, I'm not going to be
+
+**[3465.91s → 3471.15s]** too amazing. I think it's only got like 8GB GPU in it, so it's probably won't work for
+
+**[3471.15s → 3480.25s]** very good models. Now the server I've got over here, that's a 3U server with 8 graphics
+
+**[3480.25s → 3487.45s]** card so that would make it a lot nicer sort of turnaround. What I really want to get
+
+**[3487.45s → 3495.94s]** is a bunch of like H100s and shove them in there. I did find a nice H100 server with ATG
+
+**[3495.94s → 3505.29s]** graphics and a few other things in it and using that and it was about 39,000 so that's
+
+**[3505.29s → 3508.33s]** not too bad really, vice-wise.
+
+**[3508.33s → 3511.02s]** So I'm thinking of getting one of those to play with,
+
+**[3511.02s → 3513.57s]** just a nice little touch of that.
+
+**[3513.57s → 3517.20s]** But definitely, I'd say on a normal,
+
+**[3517.20s → 3521.12s]** on your average PC that's got maybe a minor graphics,
+
+**[3521.12s → 3522.16s]** like gaming graphics card,
+
+**[3522.16s → 3523.60s]** this should work perfectly fine.
+
+**[3526.37s → 3527.53s]** Again, this you just got,
+
+**[3527.53s → 3530.01s]** I think he's got an eight gig graphics card, isn't it?
+
+**[3530.01s → 3532.29s]** I'm just going to do a LSPC like.
+
+**[3534.58s → 3537.63s]** What is it?
+
+**[3537.63s → 3541.43s]** It's a radion RX 5600 X2.
+
+**[3541.43s → 3544.83s]** So not really that good, no matter what.
+
+**[3544.83s → 3547.95s]** Okay, it's not even an Nvidia.
+
+**[3547.95s → 3550.35s]** They recommend using Nvidia chips most of the time.
+
+**[3550.35s → 3553.07s]** This is completely opposite to what you should be
+
+**[3553.07s → 3555.86s]** probably using and it worked okay.
+
+**[3557.44s → 3558.64s]** The graph is kinda got in there.
+
+**[3558.64s → 3560.52s]** I've got a bareboard, I think I've done a picture
+
+**[3560.52s → 3562.42s]** of the bareboard at some point.
+
+**[3562.42s → 3564.30s]** That's got Nvidia Graphics card
+
+**[3564.30s → 3566.18s]** that's actually lullerated than this.
+
+**[3566.18s → 3570.76s]** It works faster because it's more geared towards using NVIDIA.
+
+**[3570.76s → 3574.20s]** So it more would probably matter about your graphics memory
+
+**[3575.29s → 3577.57s]** and the fact you have an NVIDIA GPU,
+
+**[3577.57s → 3579.89s]** probably be the faster option.
+
+**[3579.89s → 3582.89s]** I've not tested it on Apple Silicon myself.
+
+**[3582.89s → 3587.09s]** So I've been a test to like definite speeds on that in person.
+
+**[3587.09s → 3596.54s]** So that might be another option as well.
+
+**[3596.54s → 3599.01s]** Wait, yeah.
+
+**[3599.01s → 3601.05s]** Is there any questions or any follow ups about any of this
+
+**[3601.05s → 3602.05s]** by the way?
+
+**[3602.05s → 3604.31s]** But I'm playing video stuck.
+
+**[3604.31s → 3605.31s]** Yeah, definitely.
+
+**[3605.31s → 3607.99s]** And viewing possibly more Tesla,
+
+**[3607.99s → 3610.07s]** depends on how these votes go.
+
+**[3610.07s → 3611.71s]** I'll put my vote in, not longer goes,
+
+**[3611.71s → 3618.62s]** while I'm in a few interesting things going on in Tesla.
+
+**[3618.62s → 3621.28s]** But yeah, definitely.
+
+**[3621.28s → 3624.00s]** The H100, I've had to go of one H100,
+
+**[3624.00s → 3625.64s]** I didn't get a load of them.
+
+**[3625.64s → 3628.36s]** And it works quite nicely just on its own.
+
+**[3628.36s → 3631.64s]** So I'm imagining having like eight or 16 of them
+
+**[3631.64s → 3634.38s]** in a system because I've got like,
+
+**[3634.38s → 3638.70s]** I think there's eight graphics cards in that three you want
+
+**[3638.70s → 3639.66s]** and that works fine.
+
+**[3639.66s → 3642.78s]** And they're not souped up amazing graphics cards.
+
+**[3642.78s → 3647.08s]** So I'm just imagining replace all those with H100s
+
+**[3647.08s → 3649.52s]** and see how fast that makes things.
+
+**[3649.52s → 3651.93s]** That'd be quite nice.
+
+**[3651.93s → 3654.81s]** So I think that one's, it's got a 256 gig of RAM
+
+**[3654.81s → 3658.05s]** and about 64 gig of graphics memory.
+
+**[3658.05s → 3663.44s]** So it's not like loads, but it does okay for what I use it for.
+
+**[3663.44s → 3665.50s]** and that's just used there to play with them,
+
+**[3665.50s → 3668.67s]** do testing and stuff.
+
+**[3668.67s → 3673.02s]** Could you share GPU, should you do any new inference?
+
+**[3673.02s → 3675.32s]** I had a, yeah, well, I couldn't share it right now,
+
+**[3675.32s → 3677.84s]** but what I'll do is I'll run another test,
+
+**[3677.84s → 3681.56s]** a bit later, I'll do a few checks on what it's using,
+
+**[3683.36s → 3685.84s]** but yeah, it probably is gonna be close
+
+**[3685.84s → 3691.43s]** to 100% if it's doing the actual inference stuff.
+
+**[3691.43s → 3693.29s]** But like I said, I've got quite a few of these actual,
+
+**[3693.29s → 3695.81s]** but I could actually probably just about fit
+
+**[3695.81s → 3700.45s]** or three more of this graphics card in this system. So I probably could do cross-fire and see that
+
+**[3700.45s → 3706.77s]** helps as well. But this is just my diet, the system I use for teaching. So it's only really used to
+
+**[3706.77s → 3722.62s]** that. So that was basically as far as I've got to. And I was just in the middle of writing the next step
+
+**[3724.62s → 3732.38s]** of vectorizing to the database by the time we had to start the thing. So I will also be doing the other
+
+**[3732.38s → 3736.42s]** steps and I'll build this into something so that we've got something we can go through
+
+**[3736.42s → 3741.54s]** those steps with that actually works rather than just trying to do on the Google code
+
+**[3741.54s → 3747.65s]** app stuff. I believe if you're on Google code app Pro as well you can do a few different
+
+**[3747.65s → 3754.20s]** GPUs on there and play about with stuff on there. That's another option if you want to
+
+**[3754.20s → 3757.96s]** sort of semi-cloudy add just for playing with stuff and you didn't want to go out buying
+
+**[3757.96s → 3762.41s]** expensive graphics cards and want to start with.
+
+**[3762.41s → 3767.61s]** Yeah, I think we'll close off here because we've kind of got a little bit over and I apologize to the overtime but
+
+**[3769.59s → 3773.03s]** You're welcome to head off if you want any time. It's a bit
+
+**[3773.99s → 3775.45s]** um
+
+**[3775.45s → 3780.17s]** Is there any following questions or any observations or anything else that you've been willing to describe just before we finish up
+
+**[3788.66s → 3792.90s]** Well, I'm looking forward to you uh the the further ones because I've got set up where
+
+**[3793.70s → 3797.45s]** for later on when we're doing the um
+
+**[3797.45s → 3800.01s]** The software development agent. I've made die-key um
+
+**[3800.01s → 3820.10s]** a flash API to use to talk to the agent with and then it makes your software zips it up and then you've got a download button and you don't know the zip of the software so we'll go over that once we start on the actual software dev agent office hours of us on the conforder that one
+
+**[3820.10s → 3826.24s]** off, playing with it quite a lot. But yeah, Jonathan, you got anything to say close
+
+**[3826.24s → 3836.16s]** in on? No, I appreciate you having me in again, having to be going to my coach next week.
+
+**[3836.16s → 3842.48s]** So it's been good dropping in. Alright guys, so I think we'll cut off here
+
+**[3842.48s → 3847.96s]** and have a good one and it was a lot of fun doing this. I always feel free to reach out
+
+**[3847.96s → 3851.54s]** in the chat as well anytime. I'll see you guys later.
+

@@ -1,0 +1,1340 @@
+# Video Transcription
+Source: hello_interview_system_design.mp4
+Generated using faster-whisper
+Language: en (probability: 1.00)
+Duration: 3569.70 seconds
+Generated at: 2025-08-13 17:00:17
+
+---
+
+[0.05s -> 2.57s] Hello everyone, welcome back to the channel.
+[2.57s -> 7.65s] I'm Evan, co-founder of Hello Interview and a former meta staff engineer.
+[7.65s -> 12.05s] And today I actually wanted to take a step back and make a more beginner-friendly video
+[12.05s -> 13.05s] for you all today.
+[13.05s -> 15.53s] So many of you have seen our system design video breakdowns.
+[15.53s -> 19.59s] We're going to do a new one of those today and it's going to be for the classic question
+[19.59s -> 23.85s] design a URL shortener, which is everybody's first system design question.
+[23.85s -> 26.53s] And in this video, as I mentioned, I'm going to slow things down a bit.
+[26.53s -> 30.01s] I'm going to teach concepts that we otherwise take for granted and some of our other videos
+[30.01s -> 34.25s] videos. So if you're new to system design or you're dusting off the cot webs, this is
+[34.25s -> 38.77s] the place to start. If you like our content, you want more of it, please make sure that
+[38.77s -> 43.65s] you like and subscribe. The increasing number of subscribers is really motivating to us.
+[43.65s -> 47.13s] It makes us want to create more content for you. So make sure you smash those buttons
+[47.13s -> 52.65s] if you haven't already. Lastly, if videos aren't your thing, I've linked the written resources
+[52.65s -> 55.85s] in the description as well. So if you don't want to watch this whole video, you can just
+[55.85s -> 59.93s] come here and read the written form. There's also tons of other common problem-break
+[59.93s -> 66.01s] over a dozen now on the left-hand side. You can also try all of these yourself with guided
+[66.01s -> 70.73s] practice. And so guided practice is a tool that quickly just lets you walk through designing
+[70.73s -> 76.17s] systems on your own. And then you get this personalized feedback for each step along the process.
+[76.17s -> 82.89s] This feedback was tuned by myself and my co-founder, Stefan. So give that a go. And the last thing here
+[82.89s -> 87.69s] is that if you're looking or if you're preparing for interviews, the best thing that you can do is
+[87.69s -> 92.41s] mock interviews and that's our specialty here at Hello Interview. So come on over, do a mock
+[92.41s -> 96.81s] interview with a senior plus engineer manager from your target company and they'll tell you exactly
+[96.81s -> 105.86s] where your gaps are and how you can improve. Alright, let's get into it. Before we start designing
+[105.86s -> 110.98s] our URL shortener, let me take a brief moment to just explain the framework or the steps that we're
+[110.98s -> 115.30s] going to follow both in this interview. And this is also the framework or steps that I suggest you
+[115.30s -> 119.38s] follow for any of your system design interviews. So the first thing that we're going to do is we're
+[119.38s -> 121.86s] we're going to define the requirements of our system.
+[121.86s -> 123.78s] This is both the functional requirements
+[123.78s -> 127.14s] or the core features, as well as the non-functional requirements
+[127.14s -> 129.90s] or the qualities of the system, things like scale,
+[129.90s -> 132.27s] the ability, fault tolerance.
+[132.27s -> 135.71s] After we do that, we'll define or outline the core entities.
+[135.71s -> 137.95s] This is really simple, high-level list
+[137.95s -> 140.85s] of the core entities that are going
+[140.85s -> 143.31s] to be persisted and exchanged in our system.
+[143.31s -> 145.59s] Another way to think of this is the names of the tables
+[145.59s -> 148.67s] or collections that you would have in your data model.
+[148.67s -> 150.83s] Once we do that, we're going to move on to the API.
+[150.83s -> 152.59s] This is the user-facing API.
+[152.59s -> 155.71s] It's the contract between your client and your users
+[155.71s -> 157.81s] and your back-end service.
+[157.81s -> 159.41s] From here, we're going to skip data flow.
+[159.41s -> 161.85s] This is only applicable to in-for-heavy system design
+[161.85s -> 163.81s] questions, so like designer rate, limiter, design
+[163.81s -> 165.41s] and message queue, stuff like that.
+[165.41s -> 167.57s] So not applicable to a user-facing product
+[167.57s -> 169.17s] like a URL shortener.
+[169.17s -> 171.45s] So instead, we're going to go right to high-level design.
+[171.45s -> 172.81s] This is where we're going to head to the wipeware.
+[172.81s -> 174.53s] We're going to start drawing boxes and arrows
+[174.53s -> 177.65s] in order to outline a system where the primary goal
+[177.65s -> 180.13s] is to satisfy the functional requirements
+[180.13s -> 181.89s] that we outlined in one.
+[181.89s -> 184.05s] And so at this point, our system is going to be really simple.
+[184.05s -> 185.21s] It's not going to be able to scale.
+[185.21s -> 187.45s] It's not going to be able to do anything too fancy.
+[187.45s -> 190.57s] It's just going to be able to satisfy those core features
+[190.57s -> 192.00s] that we outlined.
+[192.00s -> 194.52s] But from there, we're going to move on to our deep dives.
+[194.52s -> 195.96s] Where things are going to get fun.
+[195.96s -> 197.04s] And we're going to go one by one
+[197.04s -> 199.24s] through those non-functional requirements
+[199.24s -> 202.56s] in order to evolve our high-level design in a way
+[202.56s -> 204.00s] such that it ends up satisfying
+[204.00s -> 206.20s] each of those non-functional requirements.
+[206.20s -> 209.48s] And at the end, we're going to have a system that satisfies all of our functional requirements
+[209.48s -> 211.48s] and all of our non-functional requirements.
+[211.48s -> 217.98s] And we're going to feel really good like we passed the interview.
+[217.98s -> 222.54s] As promised, we're going to start our design with the requirements of the system.
+[222.54s -> 227.34s] And so the first thing that we do is we start with the functional requirements.
+[227.34s -> 230.14s] The functional requirements are the core features of the system.
+[230.14s -> 234.50s] This is where you're going to try to identify the top two to three features that are necessary
+[234.50s -> 238.70s] and that you will have time to design in your 35 to 45 minute interview.
+[238.70s -> 244.22s] Now, if you were told to design a system that you already know well, then this should be pretty easy.
+[244.22s -> 247.54s] But you might also be asked to design a system that you've maybe never heard of.
+[247.54s -> 250.10s] In this case, you're gonna want to ask a lot of questions.
+[250.10s -> 255.66s] This is the time where you would pepper your interviewer with questions in order to better understand the system that you required to build.
+[255.66s -> 258.14s] In our case, what is a URL shortener?
+[258.14s -> 262.30s] Well, a URL shortener is a service that converts long URLs into short ones,
+[262.30s -> 265.66s] and then those short URLs will redirect you to the original URL.
+[265.66s -> 268.90s] So you can take this long URL, give it to the URL shortener.
+[268.90s -> 270.94s] It returns the short thing.
+[270.94s -> 272.70s] You can put the short thing in your browser
+[272.70s -> 274.30s] and it's going to redirect you here.
+[274.30s -> 275.74s] Pretty simple.
+[275.74s -> 279.94s] So in our case, functional requirements can always be thought of
+[279.94s -> 282.90s] as like these users should be able to, users can,
+[282.90s -> 285.70s] you know, users will statements.
+[285.70s -> 286.90s] And so where are?
+[286.90s -> 291.90s] Well, that first one is that users can create a short URL.
+[291.90s -> 294.93s] From a long URL or an original URL.
+[294.93s -> 296.93s] Perfect, that's our first thing.
+[296.93s -> 297.93s] What's the second thing?
+[297.93s -> 301.93s] Well, users can be redirected to the original URL
+[301.93s -> 303.93s] from the short URL.
+[303.93s -> 305.25s] Easy, right?
+[305.25s -> 308.25s] Those are the two core features of a URL shortener.
+[308.25s -> 310.25s] Now, I'm going to add a little bit of flavor
+[310.25s -> 312.25s] that's often added in these questions,
+[312.25s -> 314.25s] and then I'll have candidates address
+[314.25s -> 316.25s] if I'm conducting this interview.
+[316.25s -> 320.25s] And that's that I want to optionally support a custom alias.
+[320.25s -> 326.57s] And so this is that users could come to us with their own short alias, maybe instead of us generating this random thing,
+[326.57s -> 332.65s] they give us, for example, Evan, and then their short URL becomes slash Evan, assuming it doesn't already exist.
+[332.65s -> 335.85s] So we'll support that, optionally if they want to provide it.
+[335.85s -> 339.45s] We'll also optionally support an expiration time.
+[339.45s -> 345.10s] And so maybe somebody's creating a short URL for a conference or something and they only want it to be valid for the week,
+[345.10s -> 348.70s] then we'll expire it after that week, if they give us that expiration time.
+[348.70s -> 352.50s] This means that if somebody tries to navigate to that short URL after the expiration,
+[352.50s -> 356.62s] they'll just get an error or something telling them that it's already expired.
+[356.62s -> 360.44s] So these are the core functional requirements of the system.
+[360.44s -> 364.74s] The next thing that you would do is that you would go into the non-functional,
+[364.74s -> 368.94s] what we refer to as the non-functional requirements of the system.
+[368.94s -> 376.84s] Now the non-functional requirements are instead of being features and they are the qualities of the system.
+[376.84s -> 379.60s] And so the quality of the system are all of those words you've heard.
+[379.60s -> 383.50s] These are like these illies, these illities words, these things like the scalability, the
+[383.50s -> 388.28s] latency, the durability, security, fault tolerance is your system compliant.
+[388.28s -> 391.28s] This is where you talk about cap theorem, all of those things.
+[391.28s -> 396.48s] What qualities does the system need to uphold in order to ensure a good user experience
+[396.48s -> 399.00s] and that we're meeting user expectations?
+[399.00s -> 402.08s] And so what you typically want to do when you get to non-functional requirements, and these
+[402.08s -> 406.96s] are hard oftentimes especially for more junior candidates to think of, is that you should
+[406.96s -> 413.60s] go one by one through those daily statements. Maybe you have a list of them kind of readily on your
+[413.60s -> 417.92s] on your table as you're going into the interview. And you think about which one of them are uniquely
+[417.92s -> 423.49s] interesting and relevant to this system. And so for example, the first one that we could look at is
+[423.49s -> 429.57s] latency. How is latency important in our system? Well, it's really important that that redirection
+[429.57s -> 434.77s] is low latency. And so one system requirement and these are instead of users should be able to,
+[434.77s -> 441.41s] this is the system should be statements. So the system should be low latency on
+[441.41s -> 447.50s] redirects. So if we give it a short URL we should automatically go to that
+[447.50s -> 451.82s] original URL. So not only did we choose the non-functional requirement but we
+[451.82s -> 455.74s] put it in the context of our system it's not just low latency it's specifically
+[455.74s -> 460.46s] low latency on redirects and we want to quantify it too. We're going to say
+[460.46s -> 466.50s] 200 milliseconds. 200 milliseconds is a good number here because it's what is the
+[466.50s -> 470.78s] humans perceive as real time. So anything under 200 milliseconds you wouldn't
+[470.78s -> 474.34s] even notice the difference. 200 milliseconds is like the snap of a finger, it's
+[474.34s -> 478.18s] real time, so it's a good lower bound for us here. So we have one non-functional
+[478.18s -> 482.90s] requirement, lower latency, low latency on redirects. Another thing that we can
+[482.90s -> 486.98s] think about is the scale of the system. And this is a time when I would ask my
+[486.98s -> 490.62s] interviewer, I would say how large of a system are we designing? How many
+[490.62s -> 496.11s] users. What's the scale of this system? And they might tell you to estimate it, or they
+[496.11s -> 500.83s] might just give you a sense of what the scale is. I typically would do the latter. And I
+[500.83s -> 505.03s] would tell the candidate that they should expect 100 million daily active users, and around
+[505.03s -> 511.27s] 1 billion URLs that get shortened in totality over, over, over all time. And so that would
+[511.27s -> 518.23s] turn into a functional requirement of the system should be able to scale, to support 100 million
+[518.23s -> 522.83s] daily active users, and 1 billion URLs.
+[522.83s -> 526.51s] Fantastic, making good progress in the non-functional requirements.
+[526.51s -> 530.19s] Another one that's interesting here, which is a little bit hand-wavy whether it fits
+[530.19s -> 533.95s] a non-functional requirements, but I want to call it out because of how important it is.
+[533.95s -> 538.35s] It's that each of these short URLs or each of these short codes, they need to be unique.
+[538.35s -> 543.10s] So the system needs to ensure uniqueness of short codes.
+[543.10s -> 547.34s] These short codes are these kind of things that we're appending to the end of the URL, right?
+[547.34s -> 549.06s] We need to ensure uniqueness of short code
+[549.06s -> 550.10s] so that there's no collision,
+[550.10s -> 552.26s] so that people don't end up getting redirected to a site
+[552.26s -> 554.06s] they weren't expecting to go to.
+[554.06s -> 555.74s] So those always need to be unique.
+[555.74s -> 558.94s] That's definitely gonna be a core system requirement.
+[558.94s -> 560.94s] And then the last one here that I'm gonna do,
+[560.94s -> 562.54s] which typically you might do first,
+[562.54s -> 564.74s] but it's always gonna be considered.
+[564.74s -> 566.38s] And that's cap theorem.
+[566.38s -> 567.78s] So really quickly what is cap theorem?
+[567.78s -> 571.14s] Well, cap theorem is a theorem that states that,
+[571.14s -> 574.18s] when considering consistency, availability,
+[574.18s -> 575.98s] and partition tolerance,
+[575.98s -> 579.50s] You can only ever have two of those three things.
+[579.50s -> 581.80s] Now, partition tolerance indistributed systems,
+[581.80s -> 583.10s] like we're almost always designing
+[583.10s -> 585.74s] and system design interviews, this is a guarantee.
+[585.74s -> 587.38s] You have to have partition tolerance
+[587.38s -> 588.88s] because you're gonna have partitions.
+[588.88s -> 590.06s] You're gonna have different instances,
+[590.06s -> 591.10s] for example, of your database.
+[591.10s -> 594.06s] You're gonna horizontally scale your servers.
+[594.06s -> 596.34s] And so the decision really becomes,
+[596.34s -> 599.22s] is it consistency or availability?
+[599.22s -> 601.94s] Does my system need strong consistency,
+[601.94s -> 605.10s] or does my system need high availability?
+[605.10s -> 608.38s] And what I want you to think about as you're in an interview
+[608.38s -> 613.30s] is do I need strong read after write consistency?
+[613.30s -> 617.22s] The way to think about this is does every single read of my system
+[617.22s -> 623.17s] have to read the latest write or else the system breaks or fails in some way?
+[623.17s -> 627.17s] So common examples of systems that need this read after write, strong consistency,
+[627.17s -> 631.01s] are like a banking application or a ticket booking system.
+[631.01s -> 634.69s] The example being in the ticket booking system case, if somebody went and booked
+[634.69s -> 639.05s] the last ticket to the Taylor Swift concert in Germany, and then I in America went to book
+[639.05s -> 642.69s] that same ticket, and I went and read the database, and it told me it was still available
+[642.69s -> 645.29s] because I didn't have strong read-after-write consistency.
+[645.29s -> 648.25s] I would book that ticket, and now we would both show up, and we would be fighting for
+[648.25s -> 649.65s] the same seat.
+[649.65s -> 650.65s] That would be bad.
+[650.65s -> 652.49s] This would be like a fatal error to our system.
+[652.49s -> 654.22s] We can't have that.
+[654.22s -> 655.54s] Same tune of banking at.
+[655.54s -> 657.66s] Somebody else trades a stock, especially if it's a low float.
+[657.66s -> 660.74s] I, no matter where I am in the world, need to know that that stock was traded because it might
+[660.74s -> 664.38s] impact the price before I buy, or sell respectively.
+[664.38s -> 669.73s] In the case of a URL shortener, do we need that strong read after write consistency?
+[669.73s -> 672.73s] Well, you can imagine that somebody gives us a long URL.
+[672.73s -> 674.73s] We shorten it, we give them the short URL back.
+[674.73s -> 680.82s] Does anybody who then hits that short URL immediately need to be able to be redirected?
+[680.82s -> 682.82s] We could say no.
+[682.82s -> 688.82s] And the reason we could say no is because, first of all, there's some time that it takes for a user to share a short URL with other users
+[688.82s -> 692.82s] and for it to start being used, and that gives us time to be eventually consistent.
+[692.82s -> 695.40s] If for some reason somebody was wicked quick,
+[695.40s -> 697.02s] A, there are ways that we can handle that
+[697.02s -> 699.50s] by making sure they're redirected to that same original node.
+[699.50s -> 701.90s] But B, if they didn't get redirected
+[701.90s -> 704.50s] in that first couple seconds up to even a minute,
+[704.50s -> 705.50s] who cares, right?
+[705.50s -> 706.50s] Like we can show them a little error
+[706.50s -> 709.78s] that just says like, we're still saving this in the system.
+[709.78s -> 711.26s] To try again in a minute.
+[711.26s -> 712.14s] And no big deal.
+[712.14s -> 713.62s] The world wouldn't end.
+[713.62s -> 715.54s] Two people wouldn't show up to the Taylor Swift show
+[715.54s -> 717.46s] fighting for the same C, right?
+[717.46s -> 719.02s] So because that's the case,
+[719.02s -> 720.90s] because we don't need strong consistency,
+[720.90s -> 723.26s] We're instead gonna go for availability.
+[723.26s -> 725.22s] And so we're gonna say high availability.
+[726.60s -> 727.84s] We don't need strong consistency.
+[727.84s -> 729.08s] Wow, I don't know how to spell that.
+[729.08s -> 730.88s] We don't need strong consistency.
+[730.88s -> 734.08s] Instead, we can handle eventual consistency.
+[734.08s -> 739.37s] So, eventual consistency for URL short-tending.
+[744.09s -> 746.61s] Right, cool.
+[746.61s -> 748.13s] Okay.
+[748.13s -> 749.49s] So that's our non-functional requirements.
+[749.49s -> 751.05s] The last thing that I'm gonna say here
+[751.05s -> 753.29s] is that many guides will instruct you at this point
+[753.29s -> 755.57s] and to go into back of the envelope estimations.
+[755.57s -> 758.45s] So you'd come in here, you do back of the envelope estimations.
+[758.45s -> 761.25s] You would end up talking about things like scale estimations,
+[761.25s -> 764.09s] latency estimations, like total storage estimations,
+[764.09s -> 765.09s] whatever.
+[765.09s -> 765.93s] This is fine.
+[765.93s -> 766.45s] You can do it.
+[766.45s -> 770.02s] But I'm going to suggest that it's useless.
+[770.02s -> 773.14s] Estimations and calculations while doing system design
+[773.14s -> 774.78s] is very important.
+[774.78s -> 778.70s] But doing it up front like this, I find, as an interviewer,
+[778.70s -> 780.46s] is almost always useless.
+[780.46s -> 783.58s] candidates will do some basic math about storage, latency, et cetera, and then they'll
+[783.58s -> 786.82s] look at me and they'll go, OK, yeah, so it's going to be a big distributed system.
+[786.82s -> 789.20s] And it's like, we kind of knew that already.
+[789.20s -> 790.20s] Didn't we?
+[790.20s -> 792.00s] There was 100 million daily active users in a billion URLs.
+[792.00s -> 794.36s] You're not telling me anything new.
+[794.36s -> 796.52s] And you're not going to change your design based on that information.
+[796.52s -> 799.64s] You are always going to do a distributed system.
+[799.64s -> 805.00s] And so what I argue is that doing math for the sake of doing math is not useful.
+[805.00s -> 808.12s] Instead, you should tell your interviewer, I'd rather not do math upfront, and I'm going
+[808.12s -> 813.46s] to do it during my high-level design or my deep dives, if I need it to make a decision.
+[813.46s -> 816.62s] And so the key here is that you're going to do calculations when the results of those
+[816.62s -> 821.18s] calculations will directly inform a direction or a decision that you're going to take in your
+[821.18s -> 830.56s] design. And doing it up front like this, in my experience does not satisfy that.
+[830.56s -> 835.94s] Next up we go into the core entities of the system. Now the core entities as I mentioned,
+[835.94s -> 840.42s] these can be thought of as basically the tables that you're going to have in your database.
+[840.42s -> 846.10s] This is the entities that your system is persisting, storing in the database, and exchanging by
+[846.10s -> 848.34s] the APIs.
+[848.34s -> 853.80s] So core entities, as I suggest, as we suggested, hello interview, you start by just listing
+[853.80s -> 854.80s] off these entities.
+[854.80s -> 857.06s] Don't worry about the full data model yet.
+[857.06s -> 858.50s] You're going to get into that later.
+[858.50s -> 860.78s] I would communicate this proactively with your interviewer.
+[860.78s -> 863.06s] I would say, I'm not going to do the full data model just yet.
+[863.06s -> 866.38s] Instead, I'm going to list off these core entities and then get into my high level design.
+[866.38s -> 870.16s] I'll be more explicit about the fields or columns for each of them.
+[870.16s -> 871.88s] In our case, what do we know that we have?
+[871.88s -> 875.12s] We have an original URL, we have a short URL,
+[875.12s -> 877.28s] and then we have a user who creates them.
+[877.28s -> 878.84s] These are the entities in our system.
+[878.84s -> 880.36s] Pretty straightforward.
+[880.36s -> 882.84s] And the reality is that this system is so simple
+[882.84s -> 884.80s] that you could outline the data model here
+[884.80s -> 885.64s] if you wanted to.
+[885.64s -> 886.96s] You probably know it at this point.
+[886.96s -> 888.56s] The reason that we don't yet is because
+[888.56s -> 891.76s] from more complicated systems, it's oftentimes too early.
+[891.76s -> 894.64s] And we haven't had a chance to think through our API
+[894.64s -> 897.28s] and all of the requirements that would have us understand
+[897.28s -> 898.80s] what the full data model would be.
+[898.80s -> 900.46s] but in this case it might be fine.
+[900.46s -> 903.92s] I'm gonna go with this and this is a good enough core entities
+[903.92s -> 907.84s] for now, which takes us then to our API.
+[907.84s -> 912.37s] The API is where again we define that contract
+[912.37s -> 916.15s] between our client or our users and our system.
+[916.15s -> 918.17s] And the way that I suggest you go after the API
+[918.17s -> 919.93s] is very methodically.
+[919.93s -> 920.93s] You're just gonna come up here
+[920.93s -> 922.57s] to your functional requirements.
+[922.57s -> 925.77s] And in most cases, it's a one-to-one mapping
+[925.77s -> 927.69s] between a functional requirement and an API.
+[927.69s -> 929.93s] Not always, sometimes you have like two or three API
+[929.93s -> 932.65s] endpoints for each requirements, or maybe you don't even
+[932.65s -> 934.57s] have an API end point for a requirement.
+[934.57s -> 936.89s] But you should come up to this list, and you should say,
+[936.89s -> 939.05s] the first thing I need to do is users should be able to create
+[939.05s -> 940.89s] a short URL from a long URL.
+[940.89s -> 944.73s] OK, let me make sure that I have an API that supports that.
+[944.73s -> 947.81s] So in doing so, the first API that we need
+[947.81s -> 950.41s] is to be able to shorten a URL.
+[950.41s -> 954.13s] And so this can be a post endpoint to some URLs resource.
+[954.13s -> 956.77s] And it's going to return a short URL.
+[956.77s -> 959.49s] We're just going to reference here our core entity.
+[959.49s -> 961.93s] It's going to return a short URL.
+[961.93s -> 964.89s] And the body here is going to be what?
+[964.89s -> 967.05s] Namely, it'll have that original URL, again,
+[967.05s -> 969.25s] referencing that core entity.
+[969.25s -> 971.85s] It could have that optional custom alias.
+[971.85s -> 973.49s] I'm going to use question mark in order
+[973.49s -> 976.81s] to indicate the optionality there.
+[976.81s -> 979.89s] And then we can also have optionally that expiration time.
+[979.89s -> 982.45s] So that expiration time, right?
+[982.45s -> 985.69s] And so there's our first URL, our first API endpoint,
+[985.69s -> 988.57s] which is going to allow us to take an original URL
+[988.57s -> 990.33s] and return a short URL.
+[991.53s -> 993.09s] When you're doing these system design interviews,
+[993.09s -> 995.93s] you oftentimes will use REST APIs,
+[995.93s -> 997.77s] though not always.
+[997.77s -> 999.13s] When you are using REST APIs,
+[999.13s -> 1000.41s] a couple things to think about.
+[1000.41s -> 1003.25s] You wanna make sure that you get your verb correct here,
+[1003.25s -> 1007.19s] your post, put, patch, get, delete, et cetera.
+[1007.19s -> 1009.09s] Most often, you're just gonna use post
+[1009.09s -> 1010.97s] when you're creating a new resource,
+[1010.97s -> 1013.37s] put or patch, when you're updating a resource,
+[1013.37s -> 1015.37s] delete, of course, if you're deleting a resource,
+[1015.37s -> 1017.97s] and then get if you are quite obviously
+[1017.97s -> 1019.77s] getting or fetching a resource.
+[1019.77s -> 1021.25s] So make sure you have those down.
+[1021.25s -> 1023.53s] And then when it comes to these paths,
+[1023.53s -> 1027.53s] you typically are going for a plural noun.
+[1027.53s -> 1029.33s] And so to be honest with you as an interviewer,
+[1029.33s -> 1030.61s] I don't care about all of this.
+[1030.61s -> 1032.77s] I think this is like kind of silly semantics
+[1032.77s -> 1035.81s] that are easy to change, figure out.
+[1035.81s -> 1038.01s] They're not the most interesting part of any design,
+[1038.01s -> 1039.29s] but especially at the lower levels,
+[1039.29s -> 1041.17s] you'll have like what I'll call
+[1041.17s -> 1043.05s] restful API zealots.
+[1043.05s -> 1044.61s] Interviewers who really care about this.
+[1044.61s -> 1045.85s] and so I just want you to be aware
+[1045.85s -> 1048.29s] and considering things appropriately.
+[1048.29s -> 1050.29s] Okay, so that's that first API endpoint, right?
+[1050.29s -> 1052.85s] We just satisfied that first functional requirement.
+[1052.85s -> 1055.41s] The second one is user should be able to be redirected
+[1055.41s -> 1057.65s] to the original URL from the short code.
+[1057.65s -> 1061.69s] Okay, so we need to handle an API endpoint for redirection.
+[1061.69s -> 1062.85s] And so how is this gonna work?
+[1062.85s -> 1065.09s] Well, we're gonna have some get endpoint
+[1065.09s -> 1068.57s] and it's going to go to slash like our short code
+[1068.57s -> 1071.13s] or to use our core entities,
+[1071.13s -> 1073.37s] it's just gonna go to our short URL
+[1073.37s -> 1078.88s] And then it's going to return a redirect to our original URL.
+[1079.90s -> 1081.42s] Right?
+[1081.42s -> 1082.72s] So it's pretty straightforward.
+[1082.72s -> 1084.84s] Now, in case this is an obvious,
+[1084.84s -> 1086.28s] the way that these systems work, of course,
+[1086.28s -> 1087.60s] is that when you run this git
+[1087.60s -> 1089.56s] and we'll get into this in a moment,
+[1089.56s -> 1090.60s] when you run this git,
+[1090.60s -> 1093.00s] you're hitting our server, the server that we own,
+[1093.00s -> 1097.84s] our URL shortener with that short URL and that short code.
+[1097.88s -> 1099.04s] And then we can take that code,
+[1099.04s -> 1100.28s] figure out what we need to do with it,
+[1100.28s -> 1103.36s] we'll get into that later and then issue the redirection.
+[1103.36s -> 1104.88s] but that's how this ends up working.
+[1104.88s -> 1107.88s] So here are API endpoints super simple.
+[1107.88s -> 1109.92s] We double check, we have an API endpoint
+[1109.92s -> 1111.36s] for each of our functional requirements.
+[1111.36s -> 1113.12s] These fully satisfy those requirements.
+[1113.12s -> 1114.64s] We feel like we're in a good spot
+[1114.64s -> 1120.27s] and we're ready to move on to the next section.
+[1120.27s -> 1122.31s] So at this point, we've done all the setup work.
+[1122.31s -> 1123.59s] We have a really clear understanding
+[1123.59s -> 1125.59s] of the system that we need to design.
+[1125.59s -> 1127.47s] We know the core entities that are persisted
+[1127.47s -> 1130.35s] in exchange and we've defined our contract
+[1130.35s -> 1133.55s] with our backend between our client and our server.
+[1133.55s -> 1135.55s] And so the next step is to come over here
+[1135.55s -> 1137.21s] and do our high level design.
+[1137.21s -> 1138.21s] This is where things are more fun.
+[1138.21s -> 1140.41s] We get to go to the whiteboard, we get to draw.
+[1140.41s -> 1141.53s] And our primary goal again
+[1141.53s -> 1144.21s] is to just satisfy these core functional requirements.
+[1144.21s -> 1146.61s] So we're not gonna worry about scale or meeting latency,
+[1146.61s -> 1148.25s] or ensuring uniqueness or availability
+[1148.25s -> 1149.17s] or any of these things yet.
+[1149.17s -> 1150.29s] We're gonna do that later.
+[1150.29s -> 1152.89s] We're just gonna get a simple design down that works.
+[1152.89s -> 1154.01s] And by following this framework,
+[1154.01s -> 1155.57s] our mind is just working linearly
+[1155.57s -> 1159.21s] so that even if we've got, if we're given a problem
+[1159.21s -> 1160.69s] that we haven't seen before,
+[1160.69s -> 1164.29s] we can just build the design step by step.
+[1164.29s -> 1166.25s] Okay, so when it comes to the high level design,
+[1166.25s -> 1168.09s] here's how I recommend you do it.
+[1168.09s -> 1170.49s] You come over to each of the APIs
+[1170.49s -> 1172.33s] and you start with the API
+[1172.33s -> 1174.13s] and you draw out the system that's necessary
+[1174.13s -> 1176.25s] in order to satisfy that API.
+[1176.25s -> 1178.41s] This is equivalent to going step-by-step
+[1178.41s -> 1181.13s] through each of the functional requirements, as you are note.
+[1181.13s -> 1183.65s] But by doing it for the APIs,
+[1183.65s -> 1185.53s] you can be really clear about the data flow
+[1185.53s -> 1188.09s] and about what needs to be the input
+[1188.09s -> 1190.25s] and the output of each request
+[1190.25s -> 1194.21s] and how the system transforms those appropriately, if you will.
+[1194.21s -> 1196.97s] So let's come over here and let's draw this out.
+[1196.97s -> 1200.05s] I'm gonna start simple and I have a given client.
+[1200.05s -> 1203.29s] This client here is just maybe like the website, right?
+[1203.29s -> 1204.13s] Pretty simple.
+[1205.25s -> 1207.85s] And then I also have a primary server.
+[1207.85s -> 1210.69s] So this is gonna be the primary compute resource
+[1210.69s -> 1213.19s] in my backend.
+[1213.19s -> 1216.03s] And then I'm also going to add a database.
+[1216.03s -> 1218.55s] Do, do, do, I'm gonna add a database.
+[1218.55s -> 1221.83s] And so this is a very classic design pattern,
+[1221.83s -> 1225.91s] just a client server database relationship.
+[1225.91s -> 1228.47s] The client is going to make a request to your backend server,
+[1228.47s -> 1231.07s] your backend server, or your server is going to do something,
+[1231.07s -> 1232.39s] persist it in your database,
+[1232.39s -> 1234.43s] and then return it back to a client.
+[1234.43s -> 1236.35s] And so in our case, what we're considering right now
+[1236.35s -> 1239.63s] is what happens when a user tries to shorten a URL.
+[1239.63s -> 1242.47s] They're going to make a post request to slash URLs,
+[1242.47s -> 1245.27s] and then we're going to return to them a short URL.
+[1245.27s -> 1247.07s] Well, how are we going to do that?
+[1247.07s -> 1248.11s] We're going to do that because they're
+[1248.11s -> 1250.35s] going to make that API request here.
+[1250.35s -> 1255.35s] The API request is going to be, you know, get short URL.
+[1256.48s -> 1258.36s] It's gonna hit our primary server.
+[1258.36s -> 1261.44s] Our primary server is gonna have some magic black box
+[1261.44s -> 1263.68s] that creates short URL.
+[1263.68s -> 1264.96s] We'll talk about how it does that later.
+[1264.96s -> 1266.96s] We'll stay abstract for now.
+[1266.96s -> 1268.96s] So it's gonna generate that short code
+[1268.96s -> 1270.08s] and then it's gonna come over here
+[1270.08s -> 1271.80s] and it's gonna save it to the database.
+[1271.80s -> 1273.64s] I'll make that a two-way arrow.
+[1273.64s -> 1275.87s] This one should be two.
+[1275.87s -> 1276.71s] Cool.
+[1276.71s -> 1277.69s] So it's gonna come over here.
+[1277.69s -> 1279.25s] It's gonna save it to our database
+[1279.25s -> 1281.09s] and then return it back to the client.
+[1281.09s -> 1282.57s] Well, what is it saving to our database?
+[1282.57s -> 1285.81s] Well, we probably now define some data models.
+[1285.81s -> 1287.57s] Instead of having separate entities
+[1287.57s -> 1290.13s] or separate tables for the short URL in the long URL,
+[1290.13s -> 1291.45s] which we could do,
+[1291.45s -> 1293.85s] I'm instead gonna combine them in this case into one
+[1293.85s -> 1294.85s] because of how simple it is
+[1294.85s -> 1296.57s] and this is gonna make more sense.
+[1296.57s -> 1298.53s] So I'm gonna have a URL table.
+[1298.53s -> 1301.97s] And this URL table is going to have the short URL
+[1301.97s -> 1305.21s] and it's going to have the long or original URL.
+[1305.21s -> 1307.61s] It's probably gonna have the creation time
+[1307.61s -> 1309.97s] and the user ID, a foreign key to the user
+[1309.97s -> 1311.65s] that ended up creating this.
+[1311.65s -> 1313.21s] And then subsequently, I'm going to have a user
+[1313.21s -> 1314.90s] with the user ID.
+[1314.90s -> 1316.22s] I'm not going to outline anything more.
+[1316.22s -> 1320.02s] Of course, the user table will have an email, a password
+[1320.02s -> 1322.54s] hash, a salt, all of these different things.
+[1322.54s -> 1323.58s] Who cares?
+[1323.58s -> 1325.70s] I see so many candidates get distracted by those things
+[1325.70s -> 1326.50s] in an interview.
+[1326.50s -> 1328.66s] We're focused on the core functionality here.
+[1328.66s -> 1330.02s] All of that is auxiliary.
+[1330.02s -> 1331.54s] And so maybe I just do this.
+[1331.54s -> 1333.78s] Of course, all the additional metadata.
+[1333.78s -> 1334.74s] Cool.
+[1334.74s -> 1337.54s] And so we take a look at that first API endpoint that we had,
+[1337.54s -> 1340.14s] post to URL's return to short URL.
+[1340.14s -> 1341.18s] Here's how it's going to work.
+[1341.18s -> 1343.58s] The client is going to post to our primary server.
+[1343.58s -> 1345.22s] It'll create a short URL.
+[1345.22s -> 1347.02s] It'll store that in the database as a mapping
+[1347.02s -> 1349.62s] between the short, the long URL, the creation time.
+[1349.62s -> 1352.62s] And with the user ID, it'll return that short URL back
+[1352.62s -> 1353.95s] to the client.
+[1353.95s -> 1354.59s] Easy.
+[1354.59s -> 1355.43s] We got it.
+[1355.43s -> 1357.22s] First one down.
+[1357.22s -> 1358.66s] Now, the second one is that the user
+[1358.66s -> 1361.82s] needs to get that short URL and be redirected
+[1361.82s -> 1363.70s] to the original URL.
+[1363.70s -> 1365.26s] And so how are we going to do that?
+[1365.26s -> 1367.22s] Well, now we have an additional thing here.
+[1367.22s -> 1372.34s] We have this redirect, which takes in the short.
+[1373.56s -> 1376.48s] This one took in the long.
+[1376.48s -> 1377.84s] And so that's gonna come from our client.
+[1377.84s -> 1379.84s] It's gonna hit our primary server.
+[1379.84s -> 1384.08s] Our primary server is going to look up long from short.
+[1384.08s -> 1384.82s] All right?
+[1384.82s -> 1386.68s] So it's gonna go over to our database.
+[1386.68s -> 1389.56s] It's gonna query it based on that short URL.
+[1389.56s -> 1392.16s] And probably gonna wanna make that our primary key.
+[1392.16s -> 1394.04s] It's gonna query based on the short URL.
+[1394.04s -> 1397.52s] And then it's gonna return the long URL back to the user.
+[1397.52s -> 1405.48s] And it's going to return this back to the user with, importantly, a 302 redirect.
+[1405.48s -> 1412.20s] And so a 302 redirect is just the HTTP status code, which tells the browser, I want you to
+[1412.20s -> 1415.80s] take this URL and automatically navigate to it.
+[1415.80s -> 1419.68s] I want you to automatically navigate to this URL.
+[1419.68s -> 1422.96s] And when it comes to redirects, we have two options.
+[1422.96s -> 1426.64s] We have a 302 redirect and we have a 301 redirect.
+[1426.64s -> 1430.36s] These are both different HTTPS status codes.
+[1430.36s -> 1436.20s] And so in the case of a 301 redirect, this is a permanent redirect.
+[1436.20s -> 1442.00s] And what it basically means is that the, your clients, your browser, DNS servers potentially,
+[1442.00s -> 1444.08s] they can cache this redirect.
+[1444.08s -> 1446.88s] And in the future, they might not even need to go to your service.
+[1446.88s -> 1451.16s] They're just going to redirect it immediately based on the cache.
+[1451.16s -> 1454.30s] In the 302 case, this is temporary.
+[1454.30s -> 1456.22s] And so it's never going to be cached.
+[1456.22s -> 1459.82s] always going to come to us first, we're going to look it up and then we're going to send it back.
+[1460.62s -> 1463.34s] And so there's a conversation that you would have with your interviewer at this point,
+[1463.34s -> 1469.64s] potentially about whether 302 or 301 makes more sense. Now, it depends on your requirements.
+[1469.64s -> 1475.00s] I suppose in our case, we don't care about analytics, which is what would make the 302 the right answer
+[1475.00s -> 1480.36s] here. Because in the case where you have analytics, you can show users how often their short URL is
+[1480.36s -> 1485.48s] being queried. You would want to make sure that it always comes to your server because then you can
+[1485.48s -> 1491.32s] log and you have an understanding that this redirect was was requested. In the 301 case,
+[1491.32s -> 1494.28s] you're not going to get that you're not going to be afforded that ability. It's not going
+[1494.28s -> 1497.56s] to hit your server so you're not going to be able to log anything for future analytics.
+[1497.56s -> 1502.08s] Now this permanent redirect would be better if we were worried about compute cost. If we're
+[1502.08s -> 1507.56s] worried potentially about not having to scale this server in the future, then by having
+[1507.56s -> 1511.84s] it be permanent, it's handled by caches elsewhere and may never even hit our backend service
+[1511.84s -> 1513.80s] in the first place, that's pretty nice.
+[1513.80s -> 1515.92s] And so there's pros and cons here.
+[1515.92s -> 1518.32s] Typically speaking, you wanna go with the 302,
+[1518.32s -> 1523.32s] even the cost to, you know, how many servers you may need
+[1524.04s -> 1525.86s] because it allows you to understand
+[1525.86s -> 1527.34s] if things are working.
+[1527.34s -> 1529.64s] Even if you're not showing users analytics,
+[1529.64s -> 1531.56s] even if that's not a core requirement,
+[1531.56s -> 1533.68s] you would be tracking that internally
+[1533.68s -> 1536.36s] as a platform, as a product.
+[1536.36s -> 1538.04s] And if you saw things drop off a cliff there,
+[1538.04s -> 1539.68s] well, you would know something broke,
+[1539.68s -> 1540.80s] probably broke on the client
+[1540.80s -> 1542.80s] And we're not getting these requests anymore.
+[1542.80s -> 1545.64s] And so by making it a 301, you lose that visibility.
+[1545.64s -> 1548.48s] And this is the argument that I would make in an interview.
+[1548.48s -> 1552.35s] And why I would decide on a 302 redirect here.
+[1552.35s -> 1554.75s] And so the server will respond with a 302 redirect
+[1554.75s -> 1557.19s] with the original URL.
+[1557.19s -> 1559.39s] And the client will then navigate to that original URL.
+[1559.39s -> 1562.35s] And they'll be viewing that original website.
+[1562.35s -> 1563.11s] Awesome.
+[1563.11s -> 1564.55s] So super simple.
+[1564.55s -> 1566.55s] We went through each of our APIs.
+[1566.55s -> 1569.75s] We now have a really high level design that satisfies both
+[1569.75s -> 1572.39s] of our core functional requirements.
+[1572.39s -> 1574.75s] I suppose with that being said, as I just went back here
+[1574.75s -> 1576.95s] and checked as you should do, too,
+[1576.95s -> 1578.79s] I noted that we actually didn't discuss two parts
+[1578.79s -> 1580.35s] of that functional requirement.
+[1580.35s -> 1582.03s] That's the custom alias in the expiration.
+[1582.03s -> 1585.31s] So let me come back and amend appropriately.
+[1585.31s -> 1588.43s] We're gonna add here that short URL,
+[1588.43s -> 1590.19s] slash custom alias.
+[1590.19s -> 1591.59s] This could be either of those things
+[1591.59s -> 1593.91s] if they provided a custom alias.
+[1593.91s -> 1597.15s] And then we're also gonna add that optional expiration time.
+[1597.15s -> 1600.08s] So an expiration time here.
+[1600.08s -> 1604.32s] And so now what a user would do if they wanted to get a short URL
+[1604.32s -> 1606.36s] and they gave us a long URL and then they also gave us
+[1606.36s -> 1609.52s] a custom alias, we would need to first look up in the database.
+[1609.52s -> 1611.60s] Does that custom alias already exist?
+[1611.60s -> 1615.80s] If no, add a new row where the short URL is the custom alias,
+[1615.80s -> 1617.48s] and return that back to the user.
+[1617.48s -> 1618.64s] Easy.
+[1618.64s -> 1621.08s] And then in the case of expiration time being provided,
+[1621.08s -> 1622.96s] we'll make sure that we add it here.
+[1622.96s -> 1625.04s] And then on the redirect call, when
+[1625.04s -> 1627.40s] we come to look up our long URL based on the short URL
+[1627.40s -> 1629.80s] will also check the expiration time.
+[1629.80s -> 1632.40s] Is the current time greater than the expiration time?
+[1632.40s -> 1636.86s] If so, return an error instead of a 302, redirect.
+[1636.86s -> 1638.86s] Okay, with that being said,
+[1638.86s -> 1640.06s] now we have a high-level design
+[1640.06s -> 1642.56s] that satisfies each of our functional requirements.
+[1642.56s -> 1645.96s] And it's time to go deep in order to expand this design
+[1645.96s -> 1651.26s] to support each of our non-functional requirements.
+[1651.26s -> 1652.76s] So as we move on to the deep devs,
+[1652.76s -> 1654.76s] we're going to come over to our non-functional requirements
+[1654.76s -> 1656.76s] and we're just going to go one by one through them
+[1656.76s -> 1658.86s] evolving this simple high-level design
+[1658.86s -> 1663.90s] such that it meets each of these non-functional requirements as well as the functional requirements
+[1663.90s -> 1666.42s] that are already satisfied.
+[1666.42s -> 1669.34s] And now if you all will allow me, I'm actually going to take some liberties here and I'm going
+[1669.34s -> 1673.10s] to start off with the third one and show uniqueness of short codes.
+[1673.10s -> 1676.30s] And the reason I'm going to start off with that one is because you'll realize that in
+[1676.30s -> 1681.42s] our high-level design we intentionally overlooked kind of the core of this problem.
+[1681.42s -> 1684.90s] We black boxed this, create a short URL.
+[1684.90s -> 1685.90s] That's the hard part.
+[1685.90s -> 1690.46s] part of a URL shortener and we just hand-waved it. Now we did that intentionally.
+[1690.46s -> 1695.26s] The reason we did it intentionally is that a common mistake I see candidates make is that
+[1695.26s -> 1699.26s] they go too deep on any given part of the design too early. And then all of a sudden
+[1699.26s -> 1703.94s] time runs out and they didn't even get a chance to satisfy all of the functional requirements
+[1703.94s -> 1708.42s] that features their system. This is a mistake. And so you want to remain pretty high level,
+[1708.42s -> 1711.38s] make sure that you have the base down, make sure you satisfy those functional requirements
+[1711.38s -> 1715.46s] and then come back and do deeper. And that's exactly what we're doing here. So I would have
+[1715.46s -> 1717.62s] I told my interviewer, I would have said to my interviewer,
+[1717.62s -> 1720.34s] I'm black boxing this for now, but I'm gonna come back to it.
+[1720.34s -> 1722.69s] And now let's do exactly that.
+[1722.69s -> 1724.09s] So what do we need?
+[1724.09s -> 1726.93s] We need two things when it comes to creating a short URL.
+[1726.93s -> 1729.13s] Well, maybe we need a couple of things.
+[1729.13s -> 1731.93s] We need the creation to be fast, that's reasonable.
+[1731.93s -> 1735.13s] We need it to be unique, and we need it to be short.
+[1735.13s -> 1736.97s] Those are the three things that we care about.
+[1736.97s -> 1738.01s] How short?
+[1738.01s -> 1740.17s] Well, we could ask our interviewer or we could guess,
+[1740.17s -> 1742.77s] but typically we're talking in like this
+[1742.77s -> 1746.01s] 5 to 7 ish character range.
+[1746.01s -> 1747.01s] Right?
+[1747.01s -> 1749.73s] So 5 to 7 characters, maybe.
+[1749.73s -> 1751.09s] Is short enough.
+[1751.09s -> 1753.81s] And so let's talk about some options that we have here.
+[1753.81s -> 1755.77s] In an interview, you do exactly this.
+[1755.77s -> 1757.27s] You kind of work your way up building
+[1757.27s -> 1759.89s] from the most simple solution to something more complex.
+[1759.89s -> 1761.77s] Certainly, of time allows.
+[1761.77s -> 1762.81s] So the first thing that we could do
+[1762.81s -> 1764.45s] is that we could just take a prefix
+[1764.45s -> 1766.89s] of the long URL or the input URL.
+[1766.89s -> 1769.01s] So when you give a long URL that comes in,
+[1769.01s -> 1771.77s] let's just chop off the first 5 to 7 characters,
+[1771.77s -> 1774.73s] Stick that then as our short URL or short alias
+[1774.73s -> 1776.93s] or excuse me, our short code,
+[1776.93s -> 1780.81s] and then append that to the end of our www.bittly.com slash
+[1780.81s -> 1782.57s] that prefix, right?
+[1782.57s -> 1784.13s] Now this is obviously bad.
+[1784.13s -> 1785.45s] Why is it obviously bad?
+[1785.45s -> 1787.09s] Well, because there are tons of URLs
+[1787.09s -> 1788.85s] that share the same prefix.
+[1788.85s -> 1792.21s] What about every single URL at www.twitter.com
+[1792.21s -> 1794.49s] or www.facebook.com
+[1794.49s -> 1796.45s] or any of these different common URLs
+[1796.45s -> 1798.45s] that are all gonna share the same prefix.
+[1798.45s -> 1800.05s] And now we don't have a one-to-one mapping
+[1800.05s -> 1801.37s] between short and long URL.
+[1801.37s -> 1803.41s] we have a one to many mapping.
+[1803.41s -> 1805.77s] And this means that if you give us one of those prefixed
+[1805.77s -> 1808.89s] short URLs, we have no idea which one of the thousands,
+[1808.89s -> 1811.97s] hundreds of thousands of long URLs it actually maps to.
+[1811.97s -> 1813.13s] So it's a terrible idea.
+[1813.13s -> 1814.75s] Don't do it.
+[1814.75s -> 1816.71s] The second thing that we could do is we could use
+[1816.71s -> 1818.71s] a random number generator.
+[1818.71s -> 1820.23s] This is a much better idea.
+[1820.23s -> 1825.40s] So a random, so this is a random number generator.
+[1825.40s -> 1829.28s] And so we ask ourselves, how large can this number be?
+[1829.28s -> 1830.52s] How large should this number be?
+[1830.52s -> 1834.74s] would this number need to be? Well, if we come back over here, we're reminded of our scale
+[1834.74s -> 1839.46s] that we're going to have a billion URLs. And so this means that this random number needs to be
+[1839.46s -> 1844.98s] at least between one and a billion. Of course, if it's just between one and a billion, our collision
+[1844.98s -> 1848.58s] rate is going to be really high, so we might want it to be higher than that, but it needs to be at
+[1848.58s -> 1858.34s] least that. One billion is 10 to the nine, or 10 characters. 10 characters. That's more than our
+[1858.34s -> 1863.22s] 5 to 7, that's too many characters. And so we'll need to do something a little bit more
+[1863.22s -> 1868.42s] sophisticated in order to compact that. We can't just append 10 characters to the end
+[1868.42s -> 1873.58s] of this thing. And we need at least 10, remember? We probably need 11, 12, 13 in order to make
+[1873.58s -> 1878.06s] sure our collision rate is lower. But here's what we can do. We can do something called
+[1878.06s -> 1883.82s] base 62 encoding. And so base 62 encoding is basically can be thought of like a numbering
+[1883.82s -> 1888.34s] system like zero all the way to you know one two three four five six seven eight and all
+[1888.34s -> 1892.78s] the way up but instead we're going to incorporate the alphabet and so the way that the number
+[1892.78s -> 1897.98s] and works is that we go from zero to nine and then we go from eight to z and then we
+[1897.98s -> 1904.77s] go from eight to z lower case and so what this means is that ten is actually a eleven
+[1904.77s -> 1911.77s] is actually upper case b and it means that any given character can now encode sixty two
+[1911.77s -> 1918.77s] options as opposed to just nine or 10 like in the traditional base 10 encoding, right?
+[1919.37s -> 1925.11s] So we can take a large number and then base 62 and code it. And so now how large would
+[1925.11s -> 1931.21s] we want this to be? Well, if we had, for example, a code that was like six, let's go right
+[1931.21s -> 1938.21s] between our five and our seven, then it would be 62 to the six possible combinations. 62
+[1938.21s -> 1943.07s] to the 6 is 56 billion about.
+[1943.07s -> 1944.15s] And so that's pretty good.
+[1944.15s -> 1945.91s] We have like a decent amount of space there.
+[1945.91s -> 1949.61s] We can randomly choose a number between 0 and 56 billion.
+[1949.61s -> 1951.39s] We can base 62 and code it.
+[1951.39s -> 1952.79s] And it's going to be a short code.
+[1952.79s -> 1956.03s] It'll be of length 6 and base 62 and coding.
+[1956.03s -> 1957.43s] But what about our chance of collision?
+[1957.43s -> 1960.31s] What is the chance that a random number between 0
+[1960.31s -> 1964.33s] and 56 billion, when calculated a billion times,
+[1964.33s -> 1966.07s] ends up colliding?
+[1966.07s -> 1968.23s] Well, you might be surprised by this,
+[1968.23s -> 1971.71s] but the collision probability is actually really high.
+[1971.71s -> 1973.31s] This is oftentimes referred to as something
+[1973.31s -> 1974.67s] called the birthday paradox.
+[1974.67s -> 1976.91s] I'll write that down in case anybody's interested
+[1976.91s -> 1978.31s] in reading about it.
+[1978.31s -> 1979.87s] So this is the birthday paradox.
+[1979.87s -> 1982.27s] And it's this counterintuitive probability problem
+[1982.27s -> 1985.35s] that states that there's actually a 50% chance
+[1985.35s -> 1989.15s] that two people in a group of only 23 people
+[1989.15s -> 1990.98s] have the same birthday.
+[1990.98s -> 1992.14s] I'll say that again, you can see by that
+[1992.14s -> 1993.14s] it's so counterintuitive.
+[1993.14s -> 1994.50s] If you have 23 people in a room,
+[1994.50s -> 1996.18s] there's a greater than 50% chance
+[1996.18s -> 1998.10s] that at least two of them share a birthday,
+[1998.10s -> 2001.06s] despite there being 365 days in a year.
+[2001.06s -> 2003.82s] Now, the formula that is used to calculate that
+[2003.82s -> 2008.46s] can be used to calculate the probability of a collision
+[2008.46s -> 2012.34s] on 56 billion randomly generated things as well.
+[2012.34s -> 2014.94s] And you wouldn't need to know this in a system design interview,
+[2014.94s -> 2016.38s] but just because I thought it was interesting,
+[2016.38s -> 2018.14s] I went about and I did this.
+[2018.14s -> 2020.78s] And it turns out that out of eight billion,
+[2020.78s -> 2023.74s] or excuse me, one billion random generations,
+[2023.74s -> 2028.72s] There's an estimated 880k collisions that would happen here.
+[2028.72s -> 2029.96s] So that's a lot.
+[2029.96s -> 2033.00s] That's a decent number of collisions.
+[2033.00s -> 2036.57s] It's depending on how you define a lot.
+[2036.57s -> 2039.09s] 880k over 1 billion might not be that many,
+[2039.09s -> 2041.29s] but it's certainly a large enough number
+[2041.29s -> 2044.15s] that we would end up with more than a 1 to 1 mapping.
+[2044.15s -> 2046.15s] And so how do we address this?
+[2046.15s -> 2047.79s] Well, one thing that we can certainly do
+[2047.79s -> 2049.67s] is that we can take this approach.
+[2049.67s -> 2054.47s] We can random number generator, base 62 in code.
+[2054.47s -> 2055.99s] Yes, there might be a collision.
+[2055.99s -> 2058.33s] But what we'll do is before saving it to the database,
+[2058.33s -> 2059.43s] we'll come over to our database
+[2059.43s -> 2063.55s] and we'll read the short URL, see if any exists like this already,
+[2063.55s -> 2067.15s] and only if they don't exist right to it, update it.
+[2067.15s -> 2068.79s] So we just introduced another read.
+[2068.79s -> 2071.39s] Instead of calculate the short URL and save it to the database,
+[2071.39s -> 2073.83s] it's calculate the short URL, check,
+[2073.83s -> 2076.03s] and then save it to the database.
+[2076.03s -> 2077.51s] So that's totally possible.
+[2077.51s -> 2083.60s] So basically we just need to check for collision first.
+[2084.68s -> 2086.12s] Is that a big deal?
+[2086.12s -> 2086.96s] Not really.
+[2086.96s -> 2088.16s] It's an extra read.
+[2088.16s -> 2089.76s] There's some consequences to that,
+[2089.76s -> 2091.48s] but no, it's not a big deal.
+[2091.48s -> 2093.04s] That's one option.
+[2093.04s -> 2096.02s] Another option is that we could hash the long URL.
+[2096.02s -> 2098.58s] This is a common one that I see a lot online
+[2098.58s -> 2100.86s] and they can't it it's often raised.
+[2100.86s -> 2102.54s] So they can take that long URL
+[2102.54s -> 2104.42s] and they can call some hash function.
+[2104.42s -> 2107.02s] And so maybe that hash function is like MD5,
+[2107.02s -> 2110.14s] something cheaper like murmur hash, something like shot 256,
+[2110.14s -> 2112.18s] cryptographically secure, whatever,
+[2112.18s -> 2114.66s] but you get along URL and then you would end up getting
+[2114.66s -> 2117.74s] some thing, some output, right?
+[2117.74s -> 2121.14s] Some hash, some hash and you would take that hash
+[2121.14s -> 2124.82s] and you would base 62 and code that hash again, right?
+[2124.82s -> 2127.82s] And then you would slice it to take just those first six
+[2127.82s -> 2128.94s] characters.
+[2128.94s -> 2132.02s] So that would be the operation that you would do there.
+[2132.02s -> 2135.74s] Now what you end up with is six characters of base 62
+[2135.74s -> 2139.66s] encoded. So you end up with the same thing that we ended up with the random number generator.
+[2139.66s -> 2146.18s] And because of how hash functions work, the hash function, despite it being deterministic,
+[2146.18s -> 2150.58s] has that waterfall effect, such that if you change just one bit on the input, the whole
+[2150.58s -> 2155.42s] hash should change significantly, basically increasing the randomness of the hash that's
+[2155.42s -> 2159.50s] generated. And that property means that the output is actually just exactly the same as
+[2159.50s -> 2163.70s] the random number generator. It is literally the same thing. It's sure there's 56 billion
+[2163.70s -> 2169.38s] chance 56 billion possible combinations, the chance of collision is exactly the same.
+[2169.38s -> 2174.88s] So same is above. Again, this would totally work. It would work exactly the same. We just
+[2174.88s -> 2177.97s] need to make sure that we check the database first.
+[2177.97s -> 2184.19s] Can we avoid checking the database? Is the question. The answer is yes. Is it a better approach?
+[2184.19s -> 2189.47s] The answer is maybe yes. But what we could do is we could use a counter. Like, why introduce
+[2189.47s -> 2193.57s] this randomness in the first place? Why doesn't the first person who comes to us just have
+[2193.57s -> 2197.81s] short code one, the second person have short code two, the third person have short code
+[2197.81s -> 2199.49s] three and so on.
+[2199.49s -> 2202.77s] And so we can just have incrementing a counter.
+[2202.77s -> 2206.49s] We can just increment a counter for each new short URL or each new long URL that needs
+[2206.49s -> 2208.17s] to be turned into a short code.
+[2208.17s -> 2209.77s] And then again, we'll base 62 in code.
+[2209.77s -> 2214.65s] We'll always do that so we can kind of make this space more compact.
+[2214.65s -> 2219.77s] And so this allows us to get up to that 56 billion with six things.
+[2219.77s -> 2224.73s] But we're guaranteed to never have a collision because we're always just linearly increasing.
+[2224.73s -> 2226.37s] There's a sequential nature to it.
+[2226.37s -> 2231.05s] We're going to go zero all the way to nine and then the capital A and then the capital B
+[2231.05s -> 2236.41s] all the way through until eventually we have six characters of that basic 62 encoding.
+[2236.41s -> 2238.53s] And so this is great.
+[2238.53s -> 2244.61s] And maybe what we can do here just to visualize this, as I'm going to expand this guy up like
+[2244.61s -> 2246.85s] this.
+[2246.85s -> 2251.11s] we can add in here like some counter.
+[2251.11s -> 2254.87s] So there's some counter in here which we're just always going to go grab the next count.
+[2254.87s -> 2255.87s] What's next?
+[2255.87s -> 2257.59s] Grabbing a count is fast.
+[2257.59s -> 2261.91s] It guarantees that it's unique and by base 62 encoding we guarantee that it's short.
+[2261.91s -> 2263.75s] It's not without its flaws though.
+[2263.75s -> 2269.04s] So there's a predictability which is bad for security.
+[2269.04s -> 2275.16s] And so what this basically means is that anyone who wants to know our short URLs can.
+[2275.16s -> 2277.72s] they can easily know how to count,
+[2277.72s -> 2280.40s] and they can easily know how to base 62 in code.
+[2280.40s -> 2282.32s] And so not only could our competitors
+[2282.32s -> 2284.40s] know how many URLs we've shortened
+[2284.40s -> 2286.36s] by just continuing to call our service
+[2286.36s -> 2288.32s] until they end up not getting a short URL
+[2288.32s -> 2291.08s] that converts to a long URL anymore.
+[2291.08s -> 2294.04s] But they also can just scrape all of the long URLs
+[2294.04s -> 2295.80s] that we have, right?
+[2295.80s -> 2298.52s] By just calling the short URL with that new incremented code
+[2298.52s -> 2299.64s] each time.
+[2299.64s -> 2302.12s] And so maybe this is a problem, maybe it's not.
+[2302.12s -> 2303.60s] This is a product decision.
+[2303.60s -> 2306.24s] We could say when users go to create a short URL,
+[2306.24s -> 2308.04s] like a warning, warning,
+[2308.04s -> 2309.92s] like these are not,
+[2309.92s -> 2314.36s] don't shorten private URLs, right?
+[2314.36s -> 2315.64s] Like we're not responsible for this.
+[2315.64s -> 2317.12s] That's one option there.
+[2317.12s -> 2318.52s] We can of course have rate limiting
+[2318.52s -> 2320.64s] so that our competitors can't just come and like scrape
+[2320.64s -> 2323.20s] and grab all of these URLs if they want to.
+[2323.20s -> 2326.04s] But we also could do something more sophisticated.
+[2326.04s -> 2327.88s] And that's just not let this become a problem
+[2327.88s -> 2328.98s] in the first place.
+[2328.98s -> 2330.88s] By introducing something that's oftentimes called
+[2330.88s -> 2333.28s] a by-junctive function.
+[2333.28s -> 2335.08s] And so you don't need to know this again
+[2335.08s -> 2336.08s] in a system design interview.
+[2336.08s -> 2337.24s] I think this is just interesting.
+[2337.24s -> 2339.40s] If you brought out these facts, they'd probably be impressed,
+[2339.40s -> 2341.04s] but you don't need to know this.
+[2341.04s -> 2343.16s] Bjective functions are functions that just issue
+[2343.16s -> 2344.80s] a one-to-one mapping.
+[2344.80s -> 2346.12s] And so there are libraries.
+[2346.12s -> 2349.72s] One of the most popular ones is squids.org.
+[2349.72s -> 2351.52s] You can look that up if you're interested.
+[2351.52s -> 2354.48s] And it takes a number, and then it returns to you a hash
+[2354.48s -> 2357.00s] that looks exactly or a base 62 encoded string
+[2357.00s -> 2359.84s] that looks exactly like the short URLs you see on Bitly.
+[2359.84s -> 2363.52s] And it can take that number that you provided it
+[2363.52s -> 2368.20s] and then one to one map it by some obvious scation
+[2368.20s -> 2370.16s] so that you can no longer incrementally
+[2371.80s -> 2373.80s] know how to get the next URL
+[2373.80s -> 2376.32s] if you're a competitor or hacker or anything like this.
+[2376.32s -> 2378.96s] So these bijective functions exist.
+[2378.96s -> 2380.20s] It's worth you looking up on your own.
+[2380.20s -> 2381.28s] I'm not gonna go into more detail,
+[2381.28s -> 2383.00s] but that's one option there.
+[2383.00s -> 2384.92s] Now the nice thing about this counter approach, of course,
+[2384.92s -> 2386.88s] is that we don't need to do the read, right?
+[2386.88s -> 2388.68s] We know that every single one of these is unique.
+[2388.68s -> 2391.20s] So now we get the counter, we run our bijective function
+[2391.20s -> 2393.40s] if we want to, and then we go store that short code
+[2393.40s -> 2400.15s] in the URL table, and we're good to go.
+[2400.15s -> 2402.59s] The last thing that I'll say here is that you're probably
+[2402.59s -> 2404.63s] thinking to yourself, oh no, this isn't great.
+[2404.63s -> 2406.47s] Why do you have a counter on a single server?
+[2406.47s -> 2406.99s] You're right.
+[2406.99s -> 2408.75s] We'll talk about it when we get to scale.
+[2408.75s -> 2410.51s] But for now, here are your options in order
+[2410.51s -> 2411.71s] to create a short code.
+[2411.71s -> 2413.67s] Both two and three are totally realistic,
+[2413.67s -> 2415.15s] and you could provide these in an interview,
+[2415.15s -> 2416.87s] and it should totally be passing.
+[2416.87s -> 2418.79s] You'll just need to call out the need for that collision
+[2418.79s -> 2422.87s] check. Four is an option, I think that I like in this case because it doesn't
+[2422.87s -> 2426.51s] require that additional check, but ultimately there's very small differences
+[2426.51s -> 2431.11s] between them. Let's come back over and look at what non-functional requirement we
+[2431.11s -> 2434.67s] should go into next. So I'm going to go back in order now and I'm going to jump
+[2434.67s -> 2439.55s] into low latency on redirects. And so how can we make this redirect as low
+[2439.55s -> 2444.03s] latency as possible? Right now, what is it that we have to do? Well the client has
+[2444.03s -> 2447.87s] to make a request to the primary server. The primary server needs to look up that
+[2447.87s -> 2449.61s] short URL on our URL table.
+[2449.61s -> 2451.69s] Return the long URL and then that long URL
+[2451.69s -> 2453.58s] needs to be returned to the client.
+[2453.58s -> 2455.46s] Now, the expensive part of all of this
+[2455.46s -> 2456.82s] is this database lookup.
+[2456.82s -> 2458.90s] That's what's gonna take the most time.
+[2458.90s -> 2460.34s] And now without any indexing,
+[2460.34s -> 2462.58s] and I'll explain indexing here in a moment,
+[2462.58s -> 2465.62s] but we would have one billion rows here.
+[2465.62s -> 2467.74s] And you would need to look at every single one
+[2467.74s -> 2470.94s] of these rows and try to find the short URL
+[2470.94s -> 2472.66s] that you're interested in so that you could return
+[2472.66s -> 2474.74s] the long URL that it maps to.
+[2474.74s -> 2476.90s] That would obviously be prohibitively expensive.
+[2476.90s -> 2479.38s] It would take a really long time to do.
+[2479.38s -> 2481.88s] And so the common thing that we do in databases
+[2481.88s -> 2483.62s] in order to make these queries
+[2483.62s -> 2485.54s] and these lookups more efficient
+[2485.54s -> 2488.67s] is that we use something called indexing.
+[2488.67s -> 2491.47s] And so each URL table, you can define a primary key.
+[2491.47s -> 2493.79s] This is true of most database systems.
+[2493.79s -> 2495.31s] Now this primary key does a couple of things,
+[2495.31s -> 2497.79s] wanted and forces uniqueness, which is good in our case,
+[2497.79s -> 2498.71s] certainly.
+[2498.71s -> 2501.11s] But it also ensures that an index is automatically
+[2501.11s -> 2507.11s] built on that column, on that primary key in the table.
+[2507.63s -> 2511.03s] And this index is typically kept in memory, not always,
+[2511.03s -> 2513.67s] but you can think of it as this thing that's kept in memory
+[2513.67s -> 2517.03s] that is a pointer to a location in disk.
+[2517.03s -> 2519.27s] And so instead of us having to go to disk and seek
+[2519.27s -> 2520.75s] and look for it through all of the records
+[2520.75s -> 2523.15s] in order to find the short URL, we go to memory,
+[2523.15s -> 2524.87s] we look at this index and we ask it,
+[2524.87s -> 2527.11s] hey, where is short URL 123?
+[2527.11s -> 2528.75s] And it's gonna tell us where in disk it is
+[2528.75s -> 2530.35s] and we can just seek to disk
+[2530.35s -> 2532.51s] or we can just go exactly to that place in disk,
+[2532.51s -> 2536.57s] find the long URL and return it, makes it much, much faster.
+[2536.57s -> 2539.19s] Now when you add a primary key to something like Postgres,
+[2539.19s -> 2541.79s] let's say that our database here was Postgres,
+[2541.79s -> 2543.83s] then it uses a B tree as the index.
+[2543.83s -> 2546.87s] A B tree is like a self-balancing tree, not like it.
+[2546.87s -> 2548.59s] It is a self-balancing tree.
+[2548.59s -> 2550.23s] And if you've been studying for your coding interviews,
+[2550.23s -> 2552.99s] you know, plenty about trees.
+[2552.99s -> 2555.75s] And so it's going to make this log in.
+[2555.75s -> 2557.91s] Oftentimes, actually much quicker than that.
+[2557.91s -> 2559.15s] There are quite a few optimizations
+[2559.15s -> 2561.47s] that exist in modern databases nowadays.
+[2561.47s -> 2563.23s] But that's what's gonna happen.
+[2563.23s -> 2565.55s] And it's gonna make this look up a lot faster.
+[2565.55s -> 2569.87s] Now you do have an option of additionally creating a further index,
+[2569.87s -> 2573.95s] basically a second index on the short URL, which can be a hash index.
+[2573.95s -> 2575.71s] And this would be all of one.
+[2575.71s -> 2581.47s] It would hash the short URL and then point directly to where the row is for us to get the long URL.
+[2581.47s -> 2584.27s] You could totally do this realistically, you don't need to.
+[2584.27s -> 2590.03s] These B trees in Postgres, for example, and all of these modern databases are so well optimized
+[2590.03s -> 2594.51s] for these like equivalency lookups, that it would effectively be the same.
+[2594.51s -> 2597.24s] So, not something to actually worry about.
+[2597.24s -> 2600.54s] Now, we're still going to disk.
+[2600.54s -> 2601.54s] We solved one part.
+[2601.54s -> 2603.64s] We don't have to go to disk and then read all the records
+[2603.64s -> 2604.30s] and disk.
+[2604.30s -> 2606.30s] We're going to go to memory.
+[2606.30s -> 2608.46s] We're going to use that index to find where we need to go in disk.
+[2608.46s -> 2610.66s] But we still need to go to disk and then back.
+[2610.66s -> 2614.02s] Realistically, SSDs are really fast nowadays.
+[2614.02s -> 2617.26s] So this wouldn't probably be a problem.
+[2617.26s -> 2619.46s] But we could certainly make it faster
+[2619.46s -> 2621.34s] by never having to go to disk in the first place
+[2621.34s -> 2623.81s] and only ever going to memory.
+[2623.81s -> 2625.65s] And so while we're going to index first,
+[2625.65s -> 2626.53s] that was our first option.
+[2626.53s -> 2628.13s] We added that here index.
+[2628.13s -> 2630.85s] Our second option is that we're going to add a cache.
+[2630.85s -> 2632.57s] And so we can use something like redis.
+[2632.57s -> 2633.73s] We could use memcache.de.
+[2633.73s -> 2636.33s] We can use any in-memory cache here.
+[2636.33s -> 2638.85s] And what this cache is, is it's just another server.
+[2638.85s -> 2640.41s] It's just another computer somewhere.
+[2640.41s -> 2642.77s] A separate instance, a separate computer running.
+[2642.77s -> 2644.49s] And we're just going to utilize its memory.
+[2644.49s -> 2648.17s] We're going to utilize its RAM in order to be really quick here.
+[2648.17s -> 2652.13s] And so we're going to make this be a read-through least
+[2652.13s -> 2656.57s] recently used, so read through, least recently used cash.
+[2656.57s -> 2657.65s] What the heck does that mean?
+[2657.65s -> 2661.65s] It means that any time that we want a short URL,
+[2661.65s -> 2664.09s] or we want a long URL for a short URL,
+[2664.09s -> 2665.89s] we're going to look in the cash.
+[2665.89s -> 2667.85s] And if there's a cash miss, then we're
+[2667.85s -> 2669.81s] going to get it from the database, update our cash,
+[2669.81s -> 2670.77s] and then return it.
+[2670.77s -> 2672.49s] That's the read through nature.
+[2672.49s -> 2675.53s] The least recently used is just saying, if this cash gets full,
+[2675.53s -> 2677.45s] then our eviction policy is that anything that hasn't been
+[2677.45s -> 2679.13s] touched lately, kick it.
+[2679.13s -> 2681.69s] Because the reality of a system like a URL shortener
+[2681.69s -> 2683.55s] is that there are going to be some URLs that are really hot
+[2683.55s -> 2685.19s] that are getting called all the time.
+[2685.19s -> 2687.55s] But after a couple of weeks, months,
+[2687.55s -> 2689.95s] no one's going to use the old URLs anymore.
+[2689.95s -> 2691.55s] And so there's no reason for us to have them cache.
+[2691.55s -> 2692.99s] Their lookup might take a little bit longer
+[2692.99s -> 2695.11s] the first time, who cares?
+[2695.11s -> 2699.27s] And so caches like this are oftentimes just key value pairs.
+[2699.27s -> 2702.07s] It's at least most common, that's why I say oftentimes.
+[2702.07s -> 2703.87s] And so in our case, the key is just going
+[2703.87s -> 2706.79s] to be that short code, or that short URL.
+[2706.79s -> 2710.31s] And then the value is just going to be the long URL.
+[2710.31s -> 2713.87s] And so it's going to be really quick in memory of one look up if we have a hit, if we have
+[2713.87s -> 2718.07s] a miss, then we have to come to our database, look it up by the index, replace it in the
+[2718.07s -> 2719.79s] cache, and then return it.
+[2719.79s -> 2722.87s] But the subsequent call will be of one again.
+[2722.87s -> 2724.19s] So that's what we can do there.
+[2724.19s -> 2725.61s] Great option.
+[2725.61s -> 2727.33s] Now, there is one thing that we could do further.
+[2727.33s -> 2731.33s] I would actually stop here and argue that this is best for some of the reasons, the arguments
+[2731.33s -> 2734.61s] that I made when it pertained to the 302 versus 301.
+[2734.61s -> 2739.29s] But we could also cache in a CDN, a content delivery network.
+[2739.29s -> 2742.89s] But these are, like, their little edge servers that are geographically located all over the
+[2742.89s -> 2743.89s] world.
+[2743.89s -> 2747.47s] So you can imagine that our primary service may be sitting there in California, and you're
+[2747.47s -> 2750.37s] trying to request a short URL from China.
+[2750.37s -> 2754.73s] Well, there's a lot of latency required in making that request all the way from China over
+[2754.73s -> 2756.21s] to California.
+[2756.21s -> 2759.85s] And so CDNs are the servers that are all over the world.
+[2759.85s -> 2765.53s] And the user then would hit that server in China, and we would have cached on that CDN
+[2765.53s -> 2775.31s] responses to any of our, for example, API requests to redirect to a longer URL from a short
+[2775.31s -> 2781.65s] URL. There it is. So we can do that. But the problem is it's going to hit that CDN and
+[2781.65s -> 2785.17s] then just redirect the user and it's never going to come to our primary server. So there's
+[2785.17s -> 2789.81s] the same issues we mentioned with the 302301 redirect, which is that in the case of a 301
+[2789.81s -> 2793.29s] redirect, it's a permanent redirect, so it never hits our primary server. And we don't
+[2793.29s -> 2796.09s] know if our service is working.
+[2796.09s -> 2798.57s] And so if we care about knowing if our service is working
+[2798.57s -> 2801.57s] and logging in analytics, then we wouldn't use the CDN.
+[2801.57s -> 2804.85s] If we don't care about that, then we could use the CDN.
+[2804.85s -> 2807.13s] But we could also use a 301 redirect.
+[2807.13s -> 2808.89s] And then we'll just have less things come to our primary
+[2808.89s -> 2811.33s] server, and we have more caching at the edge, both the users
+[2811.33s -> 2814.21s] browsers, DNSs, and CDN respectively.
+[2814.21s -> 2816.25s] So good discussion to have with your interview.
+[2816.25s -> 2818.09s] This is kind of the essence of these system design
+[2818.09s -> 2818.81s] interviews.
+[2818.81s -> 2820.05s] There's no right or wrong answer.
+[2820.05s -> 2820.77s] It's trade-offs.
+[2820.77s -> 2821.69s] It's discussions.
+[2821.69s -> 2824.29s] It's weighing different priorities.
+[2824.29s -> 2826.81s] And so something important to note.
+[2826.81s -> 2828.97s] Heading back over to our non-functional requirements.
+[2828.97s -> 2830.65s] We can head to our next one, which is scale
+[2830.65s -> 2832.53s] to support 100 million daily active users
+[2832.53s -> 2834.41s] and 1 billion URLs.
+[2834.41s -> 2835.65s] And so when we talk about scale,
+[2835.65s -> 2838.01s] we want to work our way typically left to right
+[2838.01s -> 2841.33s] of our system and see where all the bottlenecks would be.
+[2841.33s -> 2843.77s] All of our services here, all of our components,
+[2843.77s -> 2845.73s] how do they need to scale?
+[2845.73s -> 2847.25s] So I'm going to move some things around a little bit
+[2847.25s -> 2849.09s] just so that we have a room.
+[2849.09s -> 2850.41s] But the first thing that we're going to look at here
+[2850.41s -> 2856.17s] our primary server. And so does our primary server even need to scale? Well we said that we had
+[2856.17s -> 2860.81s] 100 million daily active users. Now let's just say that each one of those daily active users does
+[2860.81s -> 2865.37s] one redirect. This seems normal. Maybe it could be two, maybe it could be three, change your estimate,
+[2865.37s -> 2871.61s] but I'm going to say that the average is about one redirect. And so 100 million is the same as 10
+[2871.61s -> 2876.73s] to the eighth. When you're doing math in a system design interview, I suggest you use exponents like
+[2876.73s -> 2878.79s] like this, because it makes the math easier.
+[2878.79s -> 2879.79s] Watch this.
+[2879.79s -> 2881.35s] So we have 10 to the eighth.
+[2881.35s -> 2884.51s] And then there's 100,000 on average, not on average,
+[2884.51s -> 2887.41s] but rounded up, excuse me, seconds in a day.
+[2887.41s -> 2889.09s] So that's 10 to the five.
+[2889.09s -> 2890.73s] And so 10 to the eighth, about about 10 to the five,
+[2890.73s -> 2893.77s] is just subtraction on the exponents.
+[2893.77s -> 2895.49s] So 10 to the three.
+[2895.49s -> 2897.27s] In other words, 1,000.
+[2897.27s -> 2900.41s] So we have 1,000 requests per second.
+[2900.41s -> 2901.53s] OK?
+[2901.53s -> 2903.73s] That's if it's evenly distributed.
+[2903.73s -> 2905.05s] But we want to handle some peaks.
+[2905.05s -> 2908.97s] So maybe we multiply by 10, or maybe we multiply by 100.
+[2908.97s -> 2915.09s] In either case, we're somewhere between 10 to 100k requests per second being our peak here.
+[2915.09s -> 2916.65s] So we did that math pretty quickly.
+[2916.65s -> 2920.41s] It's kind of a handy tool using the exponents in that way.
+[2920.41s -> 2924.23s] And so then you start to build up some intuition about what is a lot?
+[2924.23s -> 2931.63s] And so an EC2 average instance, like a T3 medium, can handle around a thousand requests
+[2931.63s -> 2933.03s] at a time.
+[2933.03s -> 2935.51s] I say around, this is intentionally hand-wavy.
+[2935.51s -> 2939.43s] Like this depends on A, how computationally expensive
+[2939.43s -> 2941.59s] these requests are, how much memory is being used,
+[2941.59s -> 2944.31s] how much CPU is being used, how large the payloads are,
+[2944.31s -> 2945.43s] how much bandwidth is being used.
+[2945.43s -> 2947.07s] Like these numbers are very rough,
+[2947.07s -> 2948.87s] but in an interview, you can use that roughly.
+[2948.87s -> 2951.39s] Like a thousand requests concurrently
+[2951.39s -> 2953.07s] is reasonable enough.
+[2953.07s -> 2956.71s] And so we would, we can't handle this in one instance here.
+[2956.71s -> 2958.95s] If this was just one server, and it could handle
+[2958.95s -> 2962.99s] a thousand requests per second, and we have 10K or 100K,
+[2962.99s -> 2966.27s] We obviously need to do something different here.
+[2966.27s -> 2967.79s] And so we have two options to us.
+[2967.79s -> 2969.23s] You probably read about these.
+[2969.23s -> 2971.59s] The first is what we call vertically scaling.
+[2971.59s -> 2973.75s] And this is just making this box bigger.
+[2973.75s -> 2976.51s] So like box plus plus basically.
+[2976.51s -> 2978.55s] And when I say box, of course, is the server,
+[2978.55s -> 2980.11s] it's just in terminology there.
+[2980.11s -> 2982.43s] And so we can go to a bigger instance.
+[2982.43s -> 2984.43s] Instead of a T3 medium, we can pump it up
+[2984.43s -> 2986.35s] to something that has more CPU, more memory,
+[2986.35s -> 2988.99s] can handle more bandwidth, like a bigger box.
+[2988.99s -> 2989.83s] That's one option.
+[2989.83s -> 2991.34s] It's more expensive.
+[2991.34s -> 2993.30s] Another option, and this one's the most common one,
+[2993.30s -> 2994.70s] certainly in system design interviews,
+[2994.70s -> 2996.78s] is that we scale horizontally.
+[2996.78s -> 2999.62s] And that means that we just have more of these.
+[2999.62s -> 3002.86s] And that each request that comes in goes to one of them.
+[3002.86s -> 3003.70s] Right?
+[3003.70s -> 3005.50s] And so that's a really good option,
+[3005.50s -> 3006.82s] and the option that we're gonna take here,
+[3006.82s -> 3009.18s] we're gonna scale this horizontally.
+[3009.18s -> 3010.90s] But one thing that's interesting to note
+[3010.90s -> 3013.18s] is that there are a lot of reads in our system,
+[3013.18s -> 3015.74s] 100K writes per second for that redirect.
+[3015.74s -> 3017.74s] But this get short URL, we could imagine
+[3017.74s -> 3019.10s] that there's far fewer of those.
+[3019.10s -> 3020.46s] There are very few people who are trying
+[3020.46s -> 3022.74s] to actually create a short URL every day.
+[3022.74s -> 3025.94s] Maybe it's 1,000th of the amount of people here.
+[3025.94s -> 3029.22s] So just like one request per second, it's not a lot.
+[3029.22s -> 3031.30s] And so that doesn't need to scale a lot.
+[3031.30s -> 3033.58s] The reads need to scale a lot.
+[3033.58s -> 3035.34s] And so as a result, what we can do here
+[3035.34s -> 3038.54s] is something kind of interesting,
+[3038.54s -> 3041.26s] which is that we can evolve our design
+[3041.26s -> 3044.86s] to be a microservice architecture.
+[3044.86s -> 3048.14s] And in doing so, we're going to have two separate services,
+[3048.14s -> 3050.86s] both of which are scaling horizontally.
+[3050.86s -> 3053.22s] We're gonna have one here which is our read service.
+[3053.22s -> 3055.78s] This one's gonna be responsible for the read direction.
+[3055.78s -> 3058.00s] And one which is our write service.
+[3058.00s -> 3059.26s] This one's gonna be responsible
+[3059.26s -> 3062.22s] for creating the short URLs.
+[3062.22s -> 3064.16s] And then in doing so, we're gonna introduce
+[3064.16s -> 3067.42s] a new component here that we call an API gateway
+[3067.42s -> 3070.48s] and it's responsible for being the entry point.
+[3070.48s -> 3072.12s] So the API gateway gets a request
+[3072.12s -> 3074.48s] for one of those API endpoints that we define.
+[3074.48s -> 3077.12s] And then it's gonna determine based on that API endpoint,
+[3077.12s -> 3078.84s] Which one of these services do I go to?
+[3078.84s -> 3080.76s] Which one should I route this request to?
+[3080.76s -> 3084.54s] The read service or the write service, respectively.
+[3084.54s -> 3086.42s] And then the write service, of course,
+[3086.42s -> 3089.04s] we're gonna do this.
+[3089.04s -> 3091.52s] Let's just tie everything together here.
+[3091.52s -> 3095.45s] We have this is only on the read service,
+[3095.45s -> 3097.33s] and then this still goes through here.
+[3099.17s -> 3101.33s] Maybe you can make this abstraction like this
+[3101.33s -> 3102.77s] if you want to since it's a read through,
+[3102.77s -> 3104.61s] but in any case, kind of the same thing,
+[3104.61s -> 3107.40s] just a little bit of a layer of an abstraction there.
+[3107.40s -> 3108.24s] Okay.
+[3108.24s -> 3109.44s] And so now we split this up.
+[3109.44s -> 3111.28s] And what this means is that this read service,
+[3111.28s -> 3112.56s] we're going to scale this one horizontally.
+[3112.56s -> 3114.80s] We're going to have a lot of them, bang, bang, bang.
+[3114.80s -> 3117.20s] And we might have far fewer of these right services.
+[3117.20s -> 3119.36s] And it affords us the ability to do so.
+[3119.36s -> 3123.75s] Now, let me just note that this is true.
+[3123.75s -> 3125.47s] And it would be a good thing to say in your system design
+[3125.47s -> 3126.15s] interview.
+[3126.15s -> 3127.95s] But there's a very little bit of code
+[3127.95s -> 3129.39s] happening on both of these boxes.
+[3129.39s -> 3131.71s] And the reality is splitting this up into two
+[3131.71s -> 3133.83s] means that you have two different services to maintain.
+[3133.83s -> 3135.79s] And it's probably overkill.
+[3135.79s -> 3138.51s] There's no right or wrong answer, but I just want to call that out.
+[3138.51s -> 3140.63s] You very well could just keep these in the same box
+[3140.63s -> 3142.35s] and scale them the same.
+[3142.35s -> 3145.11s] But it's a trade-off to way.
+[3145.11s -> 3147.11s] This is totally a valid option, too.
+[3147.11s -> 3149.99s] So feel free to discuss it in your interview.
+[3149.99s -> 3151.71s] Now, which each of these services,
+[3151.71s -> 3154.27s] when it comes to their scaling, now a days,
+[3154.27s -> 3157.03s] this is all handled for you on the modern cloud
+[3157.03s -> 3160.79s] infrastructure, whether it's Google Cloud or AWS,
+[3160.79s -> 3162.27s] or Azure, or otherwise.
+[3162.27s -> 3163.99s] And there's just auto-scaling.
+[3163.99s -> 3165.91s] And so you can have these EC2 instances,
+[3165.91s -> 3168.45s] or in the AWS world.
+[3168.45s -> 3171.69s] and you configure memory in CPU limits.
+[3171.69s -> 3174.61s] So you basically say if 75% of my clusters memory
+[3174.61s -> 3177.11s] is used or if 75% of my CPUs are used,
+[3177.11s -> 3178.77s] throw up a new box.
+[3178.77s -> 3181.77s] And then if less than 20% is being used, take a box down.
+[3181.77s -> 3184.25s] And these things will just scale automatically.
+[3184.25s -> 3185.69s] And yes, technically of course,
+[3185.69s -> 3187.73s] there's a load balancer here in front of them
+[3187.73s -> 3190.21s] that is taking these requests and then just routing them
+[3190.21s -> 3192.65s] either with round robin or however else you configure it
+[3192.65s -> 3197.05s] within your cloud dashboard.
+[3197.05s -> 3198.79s] and it's routing it to each of the boxes.
+[3198.79s -> 3201.31s] But that's how it works in practice nowadays.
+[3201.31s -> 3204.93s] Like, you don't actually control the up and down.
+[3204.93s -> 3206.39s] It's just all auto scaling.
+[3206.39s -> 3209.23s] So that's something that's worthwhile to know.
+[3209.23s -> 3211.47s] Okay, so that's how we scaled our services.
+[3211.47s -> 3214.17s] Now with that right service though, we have an issue.
+[3214.17s -> 3216.11s] Remember, we had that global counter here.
+[3216.11s -> 3217.77s] Or we had that counter here.
+[3217.77s -> 3222.23s] Now, this counter, if we have multiple of these right services,
+[3222.23s -> 3224.57s] we can't have two different counters.
+[3224.57s -> 3225.51s] They're not in sync.
+[3225.51s -> 3226.99s] Like they both start at zero.
+[3226.99s -> 3229.03s] And then if they go to one and now there's two ones,
+[3229.03s -> 3230.47s] there's two twos, you get to picture, right?
+[3230.47s -> 3231.97s] So this isn't gonna work.
+[3231.97s -> 3233.91s] And instead we need all of these right services
+[3233.91s -> 3237.56s] to agree on the same current count.
+[3237.56s -> 3239.76s] And so what we need to do is we need to pull this counter
+[3239.76s -> 3240.96s] off of the instances.
+[3240.96s -> 3243.76s] Basically that counter can't be in memory anymore
+[3243.76s -> 3245.48s] on these particular servers.
+[3245.48s -> 3248.36s] We need what we can call like a global counter.
+[3248.36s -> 3251.00s] And so we can have a global counter here.
+[3252.16s -> 3254.44s] And this global counter again could be redis
+[3254.44s -> 3256.56s] for what it's worth, it could be the same instance too.
+[3256.56s -> 3260.52s] I'm just drawing this separately to make it easy to see.
+[3260.52s -> 3263.92s] And now they're both going to ask this global counter
+[3263.92s -> 3265.52s] for what's the next count.
+[3265.52s -> 3267.00s] And it just keeps a single count here
+[3267.00s -> 3268.60s] that it goes from one to two to three.
+[3268.60s -> 3271.04s] You get the picture all the way up, right?
+[3271.04s -> 3275.12s] And so in Redis's world, Redis has an Inker,
+[3275.12s -> 3277.24s] which is a command that's just going to increment a counter.
+[3277.24s -> 3279.40s] You can have that counter here in memory.
+[3279.40s -> 3281.12s] And because Redis is single threaded,
+[3281.12s -> 3283.04s] you don't have to worry about any concurrency.
+[3283.04s -> 3283.88s] It's single threaded.
+[3283.88s -> 3285.32s] So we're going to do one Inker at a time,
+[3285.32s -> 3286.96s] And it's wicked fast because it's in memory.
+[3286.96s -> 3288.68s] And then we're just going to do the next one.
+[3288.68s -> 3290.75s] So the count is always increasing.
+[3290.75s -> 3292.07s] Now one thing I'll mention just quickly
+[3292.07s -> 3295.75s] is that this means now that in order to get the count,
+[3295.75s -> 3297.71s] you've got to go somewhere else, make a network call,
+[3297.71s -> 3300.43s] get the count, come back, do your calculation,
+[3300.43s -> 3301.27s] send it to the database.
+[3301.27s -> 3302.87s] You added a step here.
+[3302.87s -> 3304.87s] And so one thing that we could do, which is kind of cute,
+[3304.87s -> 3306.19s] is that when a server comes online,
+[3306.19s -> 3310.75s] we can request like the next 1,000 counts, for example.
+[3310.75s -> 3313.07s] And then keep all of those in our internal memory.
+[3313.07s -> 3314.59s] And then just be using those until we need
+[3314.59s -> 3319.95s] request the next 1000 counts. And if this server goes down before we use all 1000 no big deal.
+[3319.95s -> 3326.59s] Those are lost forever, those counts. But it's fine. We had up until what it was like 3.5 trillion
+[3326.59s -> 3331.71s] until we needed to add the seventh character there. So we're going to afford to lose some.
+[3331.71s -> 3336.39s] There's no big deal. But this is how this would work. I'm going to remove that. You guys can
+[3336.39s -> 3339.43s] just remember that these are both horizontally scaled respectively.
+[3339.43s -> 3343.52s] Okay. And then what about the database? So let's head over this way now. How does this
+[3343.52s -> 3344.92s] this guy need to scale.
+[3344.92s -> 3346.88s] Well, again, let's do a little bit of math here.
+[3346.88s -> 3349.44s] Maybe I'll do it right here.
+[3349.44s -> 3351.00s] So we have a short code.
+[3351.00s -> 3352.00s] That's like eight bytes.
+[3352.00s -> 3353.04s] We have a long URL.
+[3353.04s -> 3354.32s] Maybe that's like 100 bytes.
+[3354.32s -> 3355.44s] We have a creation time.
+[3355.44s -> 3357.32s] Those are always eight bytes.
+[3357.32s -> 3359.08s] We have an optional custom alias.
+[3359.08s -> 3360.12s] Maybe that's up to 100 bytes.
+[3360.12s -> 3361.68s] That'd be crazy though, because it should be small.
+[3361.68s -> 3362.80s] So that's on the high end.
+[3362.80s -> 3365.68s] An expiration time, eight bytes.
+[3365.68s -> 3369.48s] This is 216 bytes, 232 bytes.
+[3369.48s -> 3371.44s] Let's just round up, because maybe we want
+[3371.44s -> 3373.92s] throw more stuff in there, let's say 500 bytes.
+[3373.92s -> 3377.08s] And so we have 500 bytes times 1 billion rows.
+[3377.08s -> 3380.76s] And so that ends up just being 500 gigabytes.
+[3380.76s -> 3382.96s] 500 gigabytes isn't a lot.
+[3382.96s -> 3386.08s] Modern SSDs are in the hundreds of gigabytes.
+[3386.08s -> 3387.64s] 500 gigabytes is nothing.
+[3387.64s -> 3391.04s] So we can just have a single instance of our database.
+[3391.04s -> 3392.28s] It's no big deal.
+[3392.28s -> 3393.72s] The only other thing we'd be concerned about
+[3393.72s -> 3394.72s] is the read throughput, like,
+[3394.72s -> 3396.40s] can our database handle the read throughput?
+[3396.40s -> 3398.88s] And we put most of the reads on Redis anyway
+[3398.88s -> 3399.82s] in our cache.
+[3399.82s -> 3400.96s] So our database is chilling.
+[3400.96s -> 3402.24s] It's good to go.
+[3402.24s -> 3403.76s] Now if we did need to scale the database,
+[3403.76s -> 3407.44s] then we would shard probably by our short URL.
+[3407.44s -> 3409.44s] And that would mean that we would just have multiple instances
+[3409.44s -> 3412.52s] of our database and where the data was stored
+[3412.52s -> 3414.42s] would be based on like take your short URL,
+[3414.42s -> 3417.16s] modulo3, and then stored on one of those databases.
+[3417.16s -> 3418.12s] It's kind of how that works.
+[3418.12s -> 3420.04s] But in this case, we didn't need to.
+[3420.04s -> 3422.56s] We did the math and we proved that it doesn't matter.
+[3422.56s -> 3426.72s] And so at this point, our system is fully scaled.
+[3426.72s -> 3428.16s] Coming back over the last thing that we had
+[3428.16s -> 3429.72s] was high availability.
+[3429.72s -> 3432.68s] Now most of what we've done by having the auto scaling,
+[3432.68s -> 3434.80s] by separating these and scaling them independently,
+[3434.80s -> 3439.92s] horizontal scaling, we're at this point largely available.
+[3439.92s -> 3441.60s] There are some things that we wanna consider.
+[3441.60s -> 3444.72s] Like, redis here, we would wanna make sure
+[3444.72s -> 3447.32s] that we probably have, honestly, I don't care.
+[3447.32s -> 3448.84s] Actually, if redis goes down, it's fine
+[3448.84s -> 3450.52s] because it's read through, so we'll load it back up
+[3450.52s -> 3451.40s] by just hitting the database.
+[3451.40s -> 3453.68s] We'll be slow for a little bit, no big deal.
+[3453.68s -> 3455.92s] If the global counter goes down, that would be a problem.
+[3455.92s -> 3458.32s] So we'd wanna have some high availability modes here,
+[3458.32s -> 3460.88s] which basically means that we would have some redundancy.
+[3460.88s -> 3462.96s] We can also periodically snapshot the count
+[3462.96s -> 3464.96s] and save it to disk.
+[3464.96s -> 3467.56s] If you want to look up reddisk, high availability mode,
+[3467.56s -> 3470.52s] it'll explain to you more about how all of that works.
+[3470.52s -> 3472.44s] But that's a configuration here.
+[3472.44s -> 3476.96s] In the database two, we can have some replicas.
+[3476.96s -> 3479.72s] So maybe we have a single replica.
+[3479.72s -> 3482.72s] We frankly probably don't even, I don't know,
+[3482.72s -> 3484.20s] having a single replica would be good
+[3484.20s -> 3486.36s] in case the database went down.
+[3486.36s -> 3490.04s] but we're also just going to take snapshots every hour or so.
+[3490.04s -> 3491.80s] So a snapshot of the current state of the database
+[3491.80s -> 3493.52s] stored in something like S3, a big,
+[3493.52s -> 3494.80s] cheap, blob storage.
+[3494.80s -> 3496.56s] And now if the database ever goes down,
+[3496.56s -> 3498.00s] we just pull it back up.
+[3498.00s -> 3500.56s] Having that replica there means that if one database goes down,
+[3500.56s -> 3502.64s] we can just point to the replica and it can be in charge
+[3502.64s -> 3505.08s] for a while until we get our snapshot backup,
+[3505.08s -> 3507.12s] snapshot backup.
+[3507.12s -> 3510.00s] But that should satisfy our high availability in this case.
+[3510.00s -> 3512.08s] No problem.
+[3512.08s -> 3516.04s] So at this point, we take a look back at our requirements
+[3516.04s -> 3517.90s] and we've satisfied all of our functional requirements
+[3517.90s -> 3519.52s] when we did the high-level design.
+[3519.52s -> 3522.64s] We've now satisfied all of our non-functional requirements.
+[3522.64s -> 3525.00s] And we look at ourselves and we say, I nailed it.
+[3525.00s -> 3526.18s] I've passed this interview.
+[3526.18s -> 3527.80s] I've crushed it and I know I've crushed it
+[3527.80s -> 3530.56s] because me and my interviewer agreed on the requirements
+[3530.56s -> 3532.44s] and I have now completed my design
+[3532.44s -> 3534.32s] satisfying all of those requirements.
+[3534.32s -> 3535.72s] And so I'm feeling really good.
+[3535.72s -> 3537.32s] You should be feeling really good.
+[3537.32s -> 3540.74s] Hopefully you learned a lot as well.
+[3540.74s -> 3541.66s] So there you have it.
+[3541.66s -> 3542.94s] I hope you all learned something today,
+[3542.94s -> 3545.18s] especially if you're new to system design.
+[3545.18s -> 3547.30s] I really hope you found this useful.
+[3547.30s -> 3549.14s] We're going to get back to our regular scheduled programming.
+[3549.14s -> 3551.26s] Don't worry, with some of those more complex problems
+[3551.26s -> 3554.10s] and breakdowns coming out in the near future.
+[3554.10s -> 3556.42s] As always, if you have questions, feedbacks, things
+[3556.42s -> 3559.18s] that you think I did wrong, please go ahead and leave a comment.
+[3559.18s -> 3561.06s] I'd love to hear from you.
+[3561.06s -> 3562.78s] And I get to as many of those as I can.
+[3562.78s -> 3564.26s] So don't hesitate there.
+[3564.26s -> 3566.38s] And of course, don't forget to like and subscribe.
+[3566.38s -> 3567.38s] All right.
+[3567.38s -> 3569.06s] Good luck in your upcoming interviews.
+[3569.06s -> 3570.54s] I'll see you all soon.

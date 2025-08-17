@@ -1,0 +1,2179 @@
+{
+  "session_info": {
+    "cohort": "cohorts",
+    "week": "week_02",
+    "title": "Cohorts - Week 02",
+    "duration": 5817.7,
+    "summary": "Session covered 8 key principles across 4 categories. Main focus areas: control_flow (3 concepts), tools (2 concepts), concepts (2 concepts). Included 201 instructional segments."
+  },
+  "learning_principles": [
+    {
+      "title": "Set Concept",
+      "description": "get you into that mindset of how do I improve my own developer productivity. So we're going to",
+      "category": "data_structures",
+      "keywords": [
+        "set"
+      ],
+      "timestamp_start": 226.6,
+      "timestamp_end": 232.68,
+      "context": "kind of start this now or start this this week, then you can continue to work on it through the end of the course. This passable lessons on Ragn and the very intro prompt engineering is really to help get you into that mindset of how do I improve my own developer productivity. So we're going to impl...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Git Concept",
+      "description": "I personally like to create, because I don't use GitHub at work. I generally like to create",
+      "category": "tools",
+      "keywords": [
+        "git"
+      ],
+      "timestamp_start": 441.94,
+      "timestamp_end": 451.22,
+      "context": "to the top. The very first thing we need to do is create a GitHub access token. It's called a personal access token. I call them Pats. There are a couple of different ways to do this. I personally like to create, because I don't use GitHub at work. I generally like to create my GitHub hats at the pe...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "If Concept",
+      "description": "I'm going to try plenty of different places because I'm getting an empty repo when I'm",
+      "category": "control_flow",
+      "keywords": [
+        "if"
+      ],
+      "timestamp_start": 1072.24,
+      "timestamp_end": 1075.6,
+      "context": "just clone that repo. I don't think it is a struggle with me. I'm going to try plenty of different places because I'm getting an empty repo when I'm planning it. Perfect. That works. Sorry about that, y'all. My fancy off of one password and get a CLI stop working for some reason.",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Try Concept",
+      "description": "I'm going to try plenty of different places because I'm getting an empty repo when I'm",
+      "category": "control_flow",
+      "keywords": [
+        "try"
+      ],
+      "timestamp_start": 1072.24,
+      "timestamp_end": 1075.6,
+      "context": "just clone that repo. I don't think it is a struggle with me. I'm going to try plenty of different places because I'm getting an empty repo when I'm planning it. Perfect. That works. Sorry about that, y'all. My fancy off of one password and get a CLI stop working for some reason.",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "For Concept",
+      "description": "off of one password and get a CLI stop working for some reason.",
+      "category": "control_flow",
+      "keywords": [
+        "for"
+      ],
+      "timestamp_start": 1100.51,
+      "timestamp_end": 1106.83,
+      "context": "I'm going to try plenty of different places because I'm getting an empty repo when I'm planning it. Perfect. That works. Sorry about that, y'all. My fancy off of one password and get a CLI stop working for some reason. Hey, so we're still in step one of the class workflow setting up our local enviro...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Import Concept",
+      "description": "So that's why it's an important step that we want it to call out.",
+      "category": "concepts",
+      "keywords": [
+        "import"
+      ],
+      "timestamp_start": 1825.58,
+      "timestamp_end": 1829.58,
+      "context": "This has nothing to do with our Python code. This is literally just straight GitHub actions kind of information. But it's input data that we're going to need to extract from GitHub to put into our Python script as inputs. So that's why it's an important step that we want it to call out. So you'll no...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Variable Concept",
+      "description": "I'm going to delete this prompt because that's the output variable, so just a reminder.",
+      "category": "concepts",
+      "keywords": [
+        "variable"
+      ],
+      "timestamp_start": 2684.04,
+      "timestamp_end": 2688.88,
+      "context": "of time, I don't want to run this to print it out mainly because nothing's going to be too spicy. I'm going to delete this prompt because that's the output variable, so just a reminder. Okay, so if that's all the changes, we also want to combine all the commit messages. So the commit messages can be...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    },
+    {
+      "title": "Ide Concept",
+      "description": "requirements, stretch goals, privacy and submission guidelines. Why don't we add in something",
+      "category": "tools",
+      "keywords": [
+        "ide"
+      ],
+      "timestamp_start": 4022.39,
+      "timestamp_end": 4032.63,
+      "context": "and we're going to create some really dumb commit messages that can maybe help us with the read me. So let's go back to show you what's in the read me. So now it's your turn, minimum requirements, stretch goals, privacy and submission guidelines. Why don't we add in something about minimum requireme...",
+      "difficulty_level": "intermediate",
+      "code_examples": []
+    }
+  ],
+  "instruction_segments": [
+    {
+      "step_number": 1,
+      "instruction": "So tonight is your first guided project.",
+      "timestamp_start": 166.22,
+      "timestamp_end": 176.45,
+      "action_type": "instruction",
+      "related_concepts": [
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 2,
+      "instruction": "So what we're going to be doing today is really hands-on keyboard.",
+      "timestamp_start": 176.45,
+      "timestamp_end": 180.45,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 3,
+      "instruction": "Today's the first time that we really want you to begin to fork this repository and implement your own changes.",
+      "timestamp_start": 189.48,
+      "timestamp_end": 199.48,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 4,
+      "instruction": "kind of start this now or start this this week, then you can continue to work on it through the end of the",
+      "timestamp_start": 211.24,
+      "timestamp_end": 217.24,
+      "action_type": "instruction",
+      "related_concepts": [
+        "continue"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 5,
+      "instruction": "get you into that mindset of how do I improve my own developer productivity. So we're going to",
+      "timestamp_start": 226.6,
+      "timestamp_end": 232.68,
+      "action_type": "instruction",
+      "related_concepts": [
+        "set"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 6,
+      "instruction": "Now the challenge for you as a project outside of the warm start of today",
+      "timestamp_start": 247.99,
+      "timestamp_end": 255.66,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 7,
+      "instruction": "and then you also need a vector database implementation.",
+      "timestamp_start": 333.5,
+      "timestamp_end": 337.62,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 8,
+      "instruction": "to the top. The very first thing we need to do is create a GitHub access token. It's called",
+      "timestamp_start": 424.89,
+      "timestamp_end": 433.13,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 9,
+      "instruction": "Like for instance, I don't need access",
+      "timestamp_start": 559.67,
+      "timestamp_end": 562.07,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 10,
+      "instruction": "credentials. So you're going to notice that pop up and I'm going to save it. But I'm also going",
+      "timestamp_start": 585.72,
+      "timestamp_end": 591.86,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 11,
+      "instruction": "you copy down this token now or you navigate away from the page. All right, I've got my token saved",
+      "timestamp_start": 598.82,
+      "timestamp_end": 620.82,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 12,
+      "instruction": "in one password. By the way, you can do nifty things with these tokens. As a great way to authenticate",
+      "timestamp_start": 620.82,
+      "timestamp_end": 638.47,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 13,
+      "instruction": "Let's go back to our repository.",
+      "timestamp_start": 652.5,
+      "timestamp_end": 666.03,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 14,
+      "instruction": "And let's just poke around for a second",
+      "timestamp_start": 666.03,
+      "timestamp_end": 670.34,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 15,
+      "instruction": "modify the readme file. So every time the pull request is closed, we're going to update the readme",
+      "timestamp_start": 702.95,
+      "timestamp_end": 709.77,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 16,
+      "instruction": "and we'll add some information in about what's happened.",
+      "timestamp_start": 719.85,
+      "timestamp_end": 723.57,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 17,
+      "instruction": "let me show you what the solution looks like.",
+      "timestamp_start": 724.65,
+      "timestamp_end": 753.19,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 18,
+      "instruction": "everybody knows what we need to do for today's class.",
+      "timestamp_start": 783.16,
+      "timestamp_end": 786.48,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "class"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 19,
+      "instruction": "So the very first thing we need to do",
+      "timestamp_start": 787.44,
+      "timestamp_end": 788.84,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 20,
+      "instruction": "we're going to first modify the GitLab actions code",
+      "timestamp_start": 799.91,
+      "timestamp_end": 804.91,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if",
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 21,
+      "instruction": "fill out and that actions work flow and we'll talk through it a little bit more. Then the last thing",
+      "timestamp_start": 808.23,
+      "timestamp_end": 813.83,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 22,
+      "instruction": "we're going to be doing is we're going to be mostly working in this utility.py file. There's",
+      "timestamp_start": 813.83,
+      "timestamp_end": 819.43,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": [
+        "utility.py"
+      ]
+    },
+    {
+      "step_number": 23,
+      "instruction": "already some template code in there for us. So we're going to be modifying the utility.py with the",
+      "timestamp_start": 819.43,
+      "timestamp_end": 824.55,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if"
+      ],
+      "code_snippets": [
+        "utility.py"
+      ]
+    },
+    {
+      "step_number": 24,
+      "instruction": "information that we need to actually or the code that we need to rewrite the readme or update the",
+      "timestamp_start": 824.55,
+      "timestamp_end": 831.11,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 25,
+      "instruction": "readme. And then finally the last thing we're going to be doing is actually going back into",
+      "timestamp_start": 831.11,
+      "timestamp_end": 835.83,
+      "action_type": "instruction",
+      "related_concepts": [
+        "finally"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 26,
+      "instruction": "I'm not sure why that broke between then and now.",
+      "timestamp_start": 972.36,
+      "timestamp_end": 975.12,
+      "action_type": "explanation",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 27,
+      "instruction": "So the next thing we need to do is make sure we install variables,",
+      "timestamp_start": 1119.84,
+      "timestamp_end": 1125.9,
+      "action_type": "instruction",
+      "related_concepts": [
+        "variable"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 28,
+      "instruction": "Can anyone guess what the environment variables are that we're going to need today?",
+      "timestamp_start": 1189.9,
+      "timestamp_end": 1218.09,
+      "action_type": "instruction",
+      "related_concepts": [
+        "variable"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 29,
+      "instruction": "So let's add in our environment variables, the GitHub token, and then we're also going",
+      "timestamp_start": 1257.03,
+      "timestamp_end": 1279.66,
+      "action_type": "instruction",
+      "related_concepts": [
+        "variable",
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 30,
+      "instruction": "let's create one other secret real quick.",
+      "timestamp_start": 1311.84,
+      "timestamp_end": 1314.99,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 31,
+      "instruction": "Let's go back into our repository on the GitHub UI",
+      "timestamp_start": 1314.99,
+      "timestamp_end": 1334.39,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 32,
+      "instruction": "and let's also add in that secret",
+      "timestamp_start": 1334.39,
+      "timestamp_end": 1336.11,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 33,
+      "instruction": "And then we can add in our environment secret.",
+      "timestamp_start": 1378.38,
+      "timestamp_end": 1381.34,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 34,
+      "instruction": "Now I think if you watched the previous recording",
+      "timestamp_start": 1396.42,
+      "timestamp_end": 1398.94,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 35,
+      "instruction": "But let me show you what would happen if I tried to just use GitHub. This is the open AI,",
+      "timestamp_start": 1413.74,
+      "timestamp_end": 1427.1,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "if",
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 36,
+      "instruction": "is automatically created, but good for everybody to know.",
+      "timestamp_start": 1463.86,
+      "timestamp_end": 1468.44,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 37,
+      "instruction": "we're all set, let's go back to the code.",
+      "timestamp_start": 1471.28,
+      "timestamp_end": 1489.46,
+      "action_type": "instruction",
+      "related_concepts": [
+        "set"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 38,
+      "instruction": "And we're gonna take a look at our ReadMe update,",
+      "timestamp_start": 1491.82,
+      "timestamp_end": 1495.98,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 39,
+      "instruction": "And then we're going to add in what's going to happen.",
+      "timestamp_start": 1538.94,
+      "timestamp_end": 1545.22,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 40,
+      "instruction": "So the steps for us are going to be check out their repository, because we need to analyze",
+      "timestamp_start": 1545.22,
+      "timestamp_end": 1549.4,
+      "action_type": "explanation",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 41,
+      "instruction": "Then we're going to set up a Python environment.",
+      "timestamp_start": 1552.68,
+      "timestamp_end": 1555.92,
+      "action_type": "instruction",
+      "related_concepts": [
+        "set"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 42,
+      "instruction": "Then we're going to need to install the same dependencies that we just installed in our",
+      "timestamp_start": 1559.13,
+      "timestamp_end": 1563.37,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 43,
+      "instruction": "And then there are some additional steps that we're going to add in to help us modify the",
+      "timestamp_start": 1565.88,
+      "timestamp_end": 1573.38,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 44,
+      "instruction": "It's just dealing with the overhead and then in the script itself, we're going to actually",
+      "timestamp_start": 1606.55,
+      "timestamp_end": 1615.62,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 45,
+      "instruction": "What's the example of what's gonna be in that updated reme?",
+      "timestamp_start": 1654.57,
+      "timestamp_end": 1658.85,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 46,
+      "instruction": "and then that needs to update what's in the readme,",
+      "timestamp_start": 1685.28,
+      "timestamp_end": 1689.08,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 47,
+      "instruction": "There was a couple of examples here.",
+      "timestamp_start": 1752.44,
+      "timestamp_end": 1756.28,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 48,
+      "instruction": "Would it make sense to have a, okay, you know what,",
+      "timestamp_start": 1781.5,
+      "timestamp_end": 1789.61,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 49,
+      "instruction": "So the next little chunker code is really just this particular section extract the PR number and commit hash from the GitHub event context.",
+      "timestamp_start": 1801.58,
+      "timestamp_end": 1810.58,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 50,
+      "instruction": "But it's input data that we're going to need to extract from GitHub to put into our Python script as inputs.",
+      "timestamp_start": 1817.58,
+      "timestamp_end": 1825.58,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 51,
+      "instruction": "So that's why it's an important step that we want it to call out.",
+      "timestamp_start": 1825.58,
+      "timestamp_end": 1829.58,
+      "action_type": "explanation",
+      "related_concepts": [
+        "import"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 52,
+      "instruction": "So you'll notice the first thing we need to specify in an action step is a name for the step.",
+      "timestamp_start": 1829.58,
+      "timestamp_end": 1835.48,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 53,
+      "instruction": "Now we're going to call this one get pr info. And Tom, if you can as I complete each step,",
+      "timestamp_start": 1838.06,
+      "timestamp_end": 1848.04,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 54,
+      "instruction": "Cool. Thank you. All right. The next thing we need to do is add a ID. This one is going to be",
+      "timestamp_start": 1854.72,
+      "timestamp_end": 1867.28,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 55,
+      "instruction": "PR info. The reason that we're saving this one as a ID is because we're going to call on it later.",
+      "timestamp_start": 1867.52,
+      "timestamp_end": 1877.69,
+      "action_type": "explanation",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 56,
+      "instruction": "and grab that. All right. Then here are the actual commands we're going to run. We're going to run",
+      "timestamp_start": 1884.81,
+      "timestamp_end": 1893.0,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 57,
+      "instruction": "four different commands. We're going to get the PR number. We're going to get the commits",
+      "timestamp_start": 1893.0,
+      "timestamp_end": 1903.53,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 58,
+      "instruction": "hash. All right. And then I am going to print all those out and store them into my GitHub",
+      "timestamp_start": 1906.14,
+      "timestamp_end": 1921.85,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 59,
+      "instruction": "We're going to get the pull request number from the GitHub and path.",
+      "timestamp_start": 1945.91,
+      "timestamp_end": 1958.3,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 60,
+      "instruction": "So that's what we're going to pull out in this step.",
+      "timestamp_start": 1958.3,
+      "timestamp_end": 1960.3,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 61,
+      "instruction": "And then finally we're going to put these things into our environment.",
+      "timestamp_start": 1980.57,
+      "timestamp_end": 2000.5,
+      "action_type": "instruction",
+      "related_concepts": [
+        "finally"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 62,
+      "instruction": "And then same type of construct for the commit hash.",
+      "timestamp_start": 2000.5,
+      "timestamp_end": 2025.63,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 63,
+      "instruction": "real quick. I think we're okay and we'll find out we try and run the action later.",
+      "timestamp_start": 2061.99,
+      "timestamp_end": 2082.95,
+      "action_type": "exercise",
+      "related_concepts": [
+        "try"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 64,
+      "instruction": "So now we're going to, so Tom will drop that step for you if you weren't typing out while I was",
+      "timestamp_start": 2086.53,
+      "timestamp_end": 2091.73,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if",
+        "while"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 65,
+      "instruction": "going. We're going to move on to the next step in our actions workflow which is going to be a",
+      "timestamp_start": 2091.73,
+      "timestamp_end": 2097.88,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 66,
+      "instruction": "trigger the Python script. If you don't remember this from before the primary Python script we're",
+      "timestamp_start": 2097.88,
+      "timestamp_end": 2103.0,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 67,
+      "instruction": "Here we're going to need some of the environment variables, though, that we talked about.",
+      "timestamp_start": 2127.49,
+      "timestamp_end": 2132.93,
+      "action_type": "instruction",
+      "related_concepts": [
+        "variable"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 68,
+      "instruction": "So the first one that we're going to need is the one that we created and GitHub,",
+      "timestamp_start": 2132.93,
+      "timestamp_end": 2137.76,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 69,
+      "instruction": "Obviously, you need to know how to access secrets,",
+      "timestamp_start": 2178.73,
+      "timestamp_end": 2181.17,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 70,
+      "instruction": "Okay, the next thing we need is our GitHub token.",
+      "timestamp_start": 2192.33,
+      "timestamp_end": 2204.98,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 71,
+      "instruction": "Now, you'll notice when we created our secrets,",
+      "timestamp_start": 2204.98,
+      "timestamp_end": 2208.46,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 72,
+      "instruction": "So now this is why I don't have to create it",
+      "timestamp_start": 2213.22,
+      "timestamp_end": 2216.26,
+      "action_type": "explanation",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 73,
+      "instruction": "that we need. We're going to need our repo path and then the two variables that we just created in",
+      "timestamp_start": 2231.17,
+      "timestamp_end": 2237.17,
+      "action_type": "instruction",
+      "related_concepts": [
+        "variable"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 74,
+      "instruction": "slightly different for all three of those. So our next one for the repo path, instead of secrets,",
+      "timestamp_start": 2243.09,
+      "timestamp_end": 2252.55,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 75,
+      "instruction": "we use GitHub.repository. And then for the PR number, here where we stored commit hash",
+      "timestamp_start": 2252.55,
+      "timestamp_end": 2279.06,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "git"
+      ],
+      "code_snippets": [
+        "GitHub.repository"
+      ]
+    },
+    {
+      "step_number": 76,
+      "instruction": "into GitHub environments, this now allows us to access the environment variables as InVeb.full",
+      "timestamp_start": 2279.06,
+      "timestamp_end": 2292.23,
+      "action_type": "instruction",
+      "related_concepts": [
+        "variable",
+        "git"
+      ],
+      "code_snippets": [
+        "InVeb.full"
+      ]
+    },
+    {
+      "step_number": 77,
+      "instruction": "update.py we are you know I'm going to still follow some good Python practices and use",
+      "timestamp_start": 2320.86,
+      "timestamp_end": 2326.65,
+      "action_type": "exercise",
+      "related_concepts": [],
+      "code_snippets": [
+        "update.py"
+      ]
+    },
+    {
+      "step_number": 78,
+      "instruction": "main.py to actually run the project so that is the file that we're going to run. We'll",
+      "timestamp_start": 2326.65,
+      "timestamp_end": 2333.37,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": [
+        "main.py"
+      ]
+    },
+    {
+      "step_number": 79,
+      "instruction": "it and then was just to add a helpful commit message. I try to make mine as helpful as possible.",
+      "timestamp_start": 2382.23,
+      "timestamp_end": 2406.16,
+      "action_type": "exercise",
+      "related_concepts": [
+        "try"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 80,
+      "instruction": "set up. Let's take a look at the actual Python code and dive into updating utility.py.",
+      "timestamp_start": 2443.68,
+      "timestamp_end": 2451.68,
+      "action_type": "instruction",
+      "related_concepts": [
+        "set"
+      ],
+      "code_snippets": [
+        "utility.py"
+      ]
+    },
+    {
+      "step_number": 81,
+      "instruction": "So remember, main.py is what we're going to run from the action script.",
+      "timestamp_start": 2456.29,
+      "timestamp_end": 2461.25,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": [
+        "main.py"
+      ]
+    },
+    {
+      "step_number": 82,
+      "instruction": "And then we're going to import some other utility functions.",
+      "timestamp_start": 2469.73,
+      "timestamp_end": 2473.49,
+      "action_type": "instruction",
+      "related_concepts": [
+        "function",
+        "import"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 83,
+      "instruction": "So we're going to initialize the GitHub API instance.",
+      "timestamp_start": 2473.49,
+      "timestamp_end": 2477.81,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 84,
+      "instruction": "So we're going to be communicating from the GitHub action step",
+      "timestamp_start": 2477.81,
+      "timestamp_end": 2481.81,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 85,
+      "instruction": "And then I'm going to get the contents of the readme file.",
+      "timestamp_start": 2496.8,
+      "timestamp_end": 2501.0,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 86,
+      "instruction": "right. If I want to, I can print it out and then I can go ahead and fetch any information",
+      "timestamp_start": 2501.0,
+      "timestamp_end": 2511.92,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 87,
+      "instruction": "the commit messages associated with each of the pull request, and then finally, we're",
+      "timestamp_start": 2532.3,
+      "timestamp_end": 2538.59,
+      "action_type": "instruction",
+      "related_concepts": [
+        "finally"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 88,
+      "instruction": "We're going to format the data for the open AI prompt.",
+      "timestamp_start": 2538.59,
+      "timestamp_end": 2543.51,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 89,
+      "instruction": "And then finally, we're going to call open AI to generate",
+      "timestamp_start": 2548.53,
+      "timestamp_end": 2551.21,
+      "action_type": "instruction",
+      "related_concepts": [
+        "finally"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 90,
+      "instruction": "Let's pop over and start playing.",
+      "timestamp_start": 2571.77,
+      "timestamp_end": 2578.6,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 91,
+      "instruction": "So utility.py, our format data for OpenAI is going to be probably the most important function",
+      "timestamp_start": 2590.71,
+      "timestamp_end": 2599.52,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "function",
+        "import"
+      ],
+      "code_snippets": [
+        "utility.py"
+      ]
+    },
+    {
+      "step_number": 92,
+      "instruction": "Combining all the changes, decoding the readmeat content, and then constructing the prompt.",
+      "timestamp_start": 2600.84,
+      "timestamp_end": 2627.89,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 93,
+      "instruction": "So let's go ahead and create our changes.",
+      "timestamp_start": 2627.89,
+      "timestamp_end": 2641.0,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 94,
+      "instruction": "So we're going to join all of the changes and create a really nice little list dictionary",
+      "timestamp_start": 2641.0,
+      "timestamp_end": 2648.9,
+      "action_type": "instruction",
+      "related_concepts": [
+        "dictionary",
+        "list"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 95,
+      "instruction": "thing to file the difference and then the patch. So list comprehension that's going to",
+      "timestamp_start": 2648.9,
+      "timestamp_end": 2657.42,
+      "action_type": "instruction",
+      "related_concepts": [
+        "list",
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 96,
+      "instruction": "Remember commit messages is an input into the function and I'm going to add a couple new",
+      "timestamp_start": 2718.04,
+      "timestamp_end": 2727.96,
+      "action_type": "instruction",
+      "related_concepts": [
+        "function"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 97,
+      "instruction": "lines at the end. Now, if you're wondering what the base 64 stuff is for, that's because",
+      "timestamp_start": 2727.96,
+      "timestamp_end": 2742.16,
+      "action_type": "explanation",
+      "related_concepts": [
+        "for",
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 98,
+      "instruction": "So, if you read me content, we're going to decode it. And now, here is the fun part, our prompt.",
+      "timestamp_start": 2753.72,
+      "timestamp_end": 2776.19,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 99,
+      "instruction": "In one example, I have from work and it looks like this was done by one of the other students in generating release notes.",
+      "timestamp_start": 2818.06,
+      "timestamp_end": 2826.28,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 100,
+      "instruction": "Now, one challenge there is a lot of the changes",
+      "timestamp_start": 2838.6,
+      "timestamp_end": 2843.6,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 101,
+      "instruction": "and then I can figure out what to do with it later.",
+      "timestamp_start": 2869.55,
+      "timestamp_end": 2871.51,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 102,
+      "instruction": "like saying New York examples of when we think",
+      "timestamp_start": 2877.7,
+      "timestamp_end": 2882.82,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 103,
+      "instruction": "and then the generated output with like laying views",
+      "timestamp_start": 2912.1,
+      "timestamp_end": 2916.7,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 104,
+      "instruction": "And then you create your data set",
+      "timestamp_start": 2918.7,
+      "timestamp_end": 2921.34,
+      "action_type": "instruction",
+      "related_concepts": [
+        "set"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 105,
+      "instruction": "and then you decide what you wanna use",
+      "timestamp_start": 2923.62,
+      "timestamp_end": 2925.5,
+      "action_type": "instruction",
+      "related_concepts": [
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 106,
+      "instruction": "as your few shy example from that.",
+      "timestamp_start": 2925.5,
+      "timestamp_end": 2927.62,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 107,
+      "instruction": "and then we're going to estring in our changes.",
+      "timestamp_start": 2994.58,
+      "timestamp_end": 3012.51,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 108,
+      "instruction": "So that way, you know, it's not running together",
+      "timestamp_start": 3020.51,
+      "timestamp_end": 3023.39,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 109,
+      "instruction": "What happened with the very first couple of passes is that I just completely rewrote the readme",
+      "timestamp_start": 3106.52,
+      "timestamp_end": 3112.36,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 110,
+      "instruction": "determine if the readme needs to be updated at all. Then if so, edit the readme,",
+      "timestamp_start": 3124.6,
+      "timestamp_end": 3131.29,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 111,
+      "instruction": "determine if it needs to be updated and then maintain exactly what it's doing. And you could probably",
+      "timestamp_start": 3139.82,
+      "timestamp_end": 3145.34,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 112,
+      "instruction": "add more specificity. There's just not enough in our repository right now to make that hyper-efficient.",
+      "timestamp_start": 3145.34,
+      "timestamp_end": 3153.02,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 113,
+      "instruction": "But then the little prompt style that I really like is,",
+      "timestamp_start": 3153.02,
+      "timestamp_end": 3158.63,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 114,
+      "instruction": "So you're just saying, the next thing I want you to print out,",
+      "timestamp_start": 3171.67,
+      "timestamp_end": 3174.95,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 115,
+      "instruction": "The next thing I want you to print out",
+      "timestamp_start": 3177.71,
+      "timestamp_end": 3179.15,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 116,
+      "instruction": "So I love the, this little style choice then.",
+      "timestamp_start": 3180.95,
+      "timestamp_end": 3193.71,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 117,
+      "instruction": "And then we also need to do some other stuff, call,",
+      "timestamp_start": 3201.33,
+      "timestamp_end": 3206.21,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 118,
+      "instruction": "And then I'll actually update the readme and the stuff.",
+      "timestamp_start": 3208.29,
+      "timestamp_end": 3213.6,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 119,
+      "instruction": "Then we're going to construct a chat, the conversation.",
+      "timestamp_start": 3242.06,
+      "timestamp_end": 3245.22,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 120,
+      "instruction": "we're going to initialize the connection with.",
+      "timestamp_start": 3248.1,
+      "timestamp_end": 3250.02,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 121,
+      "instruction": "We're going to have you function as user",
+      "timestamp_start": 3255.46,
+      "timestamp_end": 3258.26,
+      "action_type": "instruction",
+      "related_concepts": [
+        "function"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 122,
+      "instruction": "Then make the call to open AI chat interface",
+      "timestamp_start": 3261.4,
+      "timestamp_end": 3266.4,
+      "action_type": "instruction",
+      "related_concepts": [
+        "interface"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 123,
+      "instruction": "Then of course, if there's an error make the connection,",
+      "timestamp_start": 3275.42,
+      "timestamp_end": 3277.66,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 124,
+      "instruction": "So that's what we're gonna be using in the next step.",
+      "timestamp_start": 3311.51,
+      "timestamp_end": 3330.08,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 125,
+      "instruction": "Then we're gonna get the main branch,",
+      "timestamp_start": 3340.74,
+      "timestamp_end": 3342.26,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 126,
+      "instruction": "and then updating the file with the information",
+      "timestamp_start": 3378.65,
+      "timestamp_end": 3381.41,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 127,
+      "instruction": "updated readme ssa. Then finally we create a pull request based on the new readme. So this",
+      "timestamp_start": 3386.99,
+      "timestamp_end": 3400.92,
+      "action_type": "instruction",
+      "related_concepts": [
+        "finally"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 128,
+      "instruction": "happens on the close of pull request of a code change and then creates a new pull request if",
+      "timestamp_start": 3400.92,
+      "timestamp_end": 3407.64,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 129,
+      "instruction": "If you remember really early on in class,",
+      "timestamp_start": 3459.63,
+      "timestamp_end": 3461.95,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if",
+        "class"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 130,
+      "instruction": "Think, let's just make sure I'm working on main right now.",
+      "timestamp_start": 3536.6,
+      "timestamp_end": 3539.52,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 131,
+      "instruction": "So let's check out a different branch.",
+      "timestamp_start": 3539.52,
+      "timestamp_end": 3546.63,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 132,
+      "instruction": "I don't remember if we already committed that.",
+      "timestamp_start": 3563.39,
+      "timestamp_end": 3571.29,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 133,
+      "instruction": "So I think we'll just be a couple changes ahead",
+      "timestamp_start": 3573.69,
+      "timestamp_end": 3575.93,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 134,
+      "instruction": "Let's commit that change, add a helpful message",
+      "timestamp_start": 3595.54,
+      "timestamp_end": 3612.87,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 135,
+      "instruction": "and let's go ahead and get push that",
+      "timestamp_start": 3612.87,
+      "timestamp_end": 3614.47,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 136,
+      "instruction": "Let's pop over into GitHub and make sure everything looks good.",
+      "timestamp_start": 3709.02,
+      "timestamp_end": 3714.62,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 137,
+      "instruction": "Let's go in here and make sure, right.",
+      "timestamp_start": 3734.28,
+      "timestamp_end": 3743.09,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 138,
+      "instruction": "Right, so what we're gonna do now",
+      "timestamp_start": 3804.48,
+      "timestamp_end": 3806.96,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 139,
+      "instruction": "and we're going to enable actions.",
+      "timestamp_start": 3809.56,
+      "timestamp_end": 3812.48,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 140,
+      "instruction": "The first time that we create the full request,",
+      "timestamp_start": 3812.48,
+      "timestamp_end": 3815.48,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 141,
+      "instruction": "because the code that's in right now,",
+      "timestamp_start": 3817.08,
+      "timestamp_end": 3820.96,
+      "action_type": "explanation",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 142,
+      "instruction": "which is okay, but I just want everybody to know",
+      "timestamp_start": 3824.36,
+      "timestamp_end": 3828.32,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 143,
+      "instruction": "So let's create a new pull request.",
+      "timestamp_start": 3846.95,
+      "timestamp_end": 3856.71,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 144,
+      "instruction": "it's a fork and then pull back into",
+      "timestamp_start": 3868.01,
+      "timestamp_end": 3870.91,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 145,
+      "instruction": "create the pull request, everything's good to go, let's merge it all together. All right,",
+      "timestamp_start": 3893.15,
+      "timestamp_end": 3930.52,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 146,
+      "instruction": "Let's go ahead and trigger another change though.",
+      "timestamp_start": 3949.64,
+      "timestamp_end": 3953.9,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 147,
+      "instruction": "So if you remember the code also uses commit messages",
+      "timestamp_start": 3953.9,
+      "timestamp_end": 3958.9,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 148,
+      "instruction": "So what we're gonna do now to trigger a new change",
+      "timestamp_start": 3960.34,
+      "timestamp_end": 3963.78,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 149,
+      "instruction": "we're going to make just a commit message with a empty commit.",
+      "timestamp_start": 3963.78,
+      "timestamp_end": 3968.26,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 150,
+      "instruction": "and then we're going to check out a new branch. I'm going to call this branch demo,",
+      "timestamp_start": 3992.07,
+      "timestamp_end": 4003.6,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 151,
+      "instruction": "and we're going to create some really dumb commit messages that can maybe help us with the",
+      "timestamp_start": 4003.6,
+      "timestamp_end": 4013.59,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 152,
+      "instruction": "read me. So let's go back to show you what's in the read me. So now it's your turn, minimum",
+      "timestamp_start": 4013.59,
+      "timestamp_end": 4022.39,
+      "action_type": "demonstration",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 153,
+      "instruction": "that up. All right, so we're going to do Git, commit, dash dash, allow, empty. Okay. So that's",
+      "timestamp_start": 4038.55,
+      "timestamp_end": 4068.42,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 154,
+      "instruction": "And we're going to say adding in and adding a minimum requirement to use a, use,",
+      "timestamp_start": 4070.34,
+      "timestamp_end": 4093.03,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 155,
+      "instruction": "Okay, so now we have our two empty commit messages.",
+      "timestamp_start": 4155.58,
+      "timestamp_end": 4161.36,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 156,
+      "instruction": "We're going to push these commit messages back out to origin.",
+      "timestamp_start": 4161.36,
+      "timestamp_end": 4170.79,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 157,
+      "instruction": "And remember my branch is called demo.",
+      "timestamp_start": 4170.79,
+      "timestamp_end": 4172.79,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 158,
+      "instruction": "Let's create our pull request and trigger the job.",
+      "timestamp_start": 4188.36,
+      "timestamp_end": 4193.25,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 159,
+      "instruction": "Oh, man. Yeah, let's, let's add in a comment here.",
+      "timestamp_start": 4238.08,
+      "timestamp_end": 4241.24,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 160,
+      "instruction": "Right. Now I'm going to hit merge.",
+      "timestamp_start": 4262.11,
+      "timestamp_end": 4263.63,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 161,
+      "instruction": "Let's go double check the configuration file real quick.",
+      "timestamp_start": 4318.13,
+      "timestamp_end": 4331.96,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 162,
+      "instruction": "I'm glad that some of you have already gotten that around now.",
+      "timestamp_start": 4331.96,
+      "timestamp_end": 4333.96,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 163,
+      "instruction": "Remember that we can't use the word get hub at the start of a secret so it must have been either my",
+      "timestamp_start": 4405.39,
+      "timestamp_end": 4409.31,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 164,
+      "instruction": "That's the change that we need to have.",
+      "timestamp_start": 4447.36,
+      "timestamp_end": 4459.0,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 165,
+      "instruction": "Could be we could add to it where you know where it's changed reading the code",
+      "timestamp_start": 4608.1,
+      "timestamp_end": 4612.42,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 166,
+      "instruction": "Because remember, Yamel's based upon indent.",
+      "timestamp_start": 4706.03,
+      "timestamp_end": 4709.2,
+      "action_type": "explanation",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 167,
+      "instruction": "I've got them in a CSV right now and then we massage them into a markdown format for the public facing docs.",
+      "timestamp_start": 4806.53,
+      "timestamp_end": 4815.53,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 168,
+      "instruction": "I don't know if there's an API or there's an endpoint for the GitHub suggestion.",
+      "timestamp_start": 4825.62,
+      "timestamp_end": 4836.38,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for",
+        "if",
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 169,
+      "instruction": "You know, when you're reviewing code, you can make it code suggestion.",
+      "timestamp_start": 4836.38,
+      "timestamp_end": 4839.38,
+      "action_type": "review",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 170,
+      "instruction": "And then the author can accept the code changed directly.",
+      "timestamp_start": 4839.38,
+      "timestamp_end": 4843.38,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 171,
+      "instruction": "how to improve the code, and then the author can just accept their genie.",
+      "timestamp_start": 4859.13,
+      "timestamp_end": 4863.21,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 172,
+      "instruction": "Yeah, I don't, I would have to look at API endpoints, but you could definitely do it with this",
+      "timestamp_start": 4866.62,
+      "timestamp_end": 4873.78,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 173,
+      "instruction": "You know, we don't know where it's actually running it.",
+      "timestamp_start": 4960.98,
+      "timestamp_end": 4963.98,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 174,
+      "instruction": "I don't know, taking let's say the ticket if possible.",
+      "timestamp_start": 5012.19,
+      "timestamp_end": 5015.71,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 175,
+      "instruction": "Let's say that again, like taking the ticket like the issue.",
+      "timestamp_start": 5019.74,
+      "timestamp_end": 5023.74,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 176,
+      "instruction": "Yeah, so for example, I guess I can might or whenever we make branches for tickets,",
+      "timestamp_start": 5025.04,
+      "timestamp_end": 5032.08,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 177,
+      "instruction": "GitHub. Yeah, I think yeah, these are just a matter of reading through the issue API documentation in the GitHub actions to see how you would call on the text of the action.",
+      "timestamp_start": 5059.95,
+      "timestamp_end": 5072.56,
+      "action_type": "instruction",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 178,
+      "instruction": "I think we'll have to figure out if we can hit the jury if I don't know who can do that",
+      "timestamp_start": 5086.13,
+      "timestamp_end": 5096.58,
+      "action_type": "instruction",
+      "related_concepts": [
+        "if"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 179,
+      "instruction": "I know there's some slack plots that deal with jury stuff so maybe we can...",
+      "timestamp_start": 5109.95,
+      "timestamp_end": 5115.66,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 180,
+      "instruction": "We're going to have to get help somewhere but I like the idea.",
+      "timestamp_start": 5115.66,
+      "timestamp_end": 5119.89,
+      "action_type": "instruction",
+      "related_concepts": [
+        "ide"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 181,
+      "instruction": "versus having to create one and then store it",
+      "timestamp_start": 5263.06,
+      "timestamp_end": 5265.38,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 182,
+      "instruction": "And then there are other environment variables",
+      "timestamp_start": 5270.98,
+      "timestamp_end": 5274.42,
+      "action_type": "instruction",
+      "related_concepts": [
+        "variable"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 183,
+      "instruction": "we call it something else, I think it was the name of their repository, for example.",
+      "timestamp_start": 5280.4,
+      "timestamp_end": 5283.36,
+      "action_type": "demonstration",
+      "related_concepts": [
+        "for",
+        "else"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 184,
+      "instruction": "Right. Yeah, I give you the action ID as the author. I think I don't remember.",
+      "timestamp_start": 5314.49,
+      "timestamp_end": 5322.54,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 185,
+      "instruction": "So that's why I don't remember exactly what it looks like in GitHub.",
+      "timestamp_start": 5333.03,
+      "timestamp_end": 5336.15,
+      "action_type": "explanation",
+      "related_concepts": [
+        "git"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 186,
+      "instruction": "Do you remember what the environment was configured with the secret?",
+      "timestamp_start": 5381.81,
+      "timestamp_end": 5395.74,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 187,
+      "instruction": "What I was going to say, the actual thing for the secrets, I can't remember where the",
+      "timestamp_start": 5395.74,
+      "timestamp_end": 5408.05,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 188,
+      "instruction": "Actions and then that green button, that works it.",
+      "timestamp_start": 5427.06,
+      "timestamp_end": 5446.24,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 189,
+      "instruction": "So you've got the info where actually in the Python code now,",
+      "timestamp_start": 5604.37,
+      "timestamp_end": 5617.88,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 190,
+      "instruction": "we should now have a new full request.",
+      "timestamp_start": 5629.32,
+      "timestamp_end": 5640.35,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 191,
+      "instruction": "And let's take a look at the proposed changes.",
+      "timestamp_start": 5640.35,
+      "timestamp_end": 5665.48,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 192,
+      "instruction": "And then also added in a change log at the end.",
+      "timestamp_start": 5674.22,
+      "timestamp_end": 5682.02,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 193,
+      "instruction": "Shops some docs strings on it and then done the same in the JavaScript.",
+      "timestamp_start": 5704.22,
+      "timestamp_end": 5709.58,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 194,
+      "instruction": "And then it's gave kind of like recent updates,",
+      "timestamp_start": 5709.62,
+      "timestamp_end": 5711.62,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 195,
+      "instruction": "Then it does the same for the express and kind of breaks and down to bullet points.",
+      "timestamp_start": 5719.22,
+      "timestamp_end": 5722.5,
+      "action_type": "instruction",
+      "related_concepts": [
+        "break",
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 196,
+      "instruction": "And remember that this is part of your assignment.",
+      "timestamp_start": 5747.21,
+      "timestamp_end": 5750.25,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 197,
+      "instruction": "kind of story, going into the next couple of weeks.",
+      "timestamp_start": 5752.73,
+      "timestamp_end": 5757.65,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 198,
+      "instruction": "So definitely think about the project now",
+      "timestamp_start": 5757.65,
+      "timestamp_end": 5759.77,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    },
+    {
+      "step_number": 199,
+      "instruction": "And then we'll pick up class on Monday.",
+      "timestamp_start": 5765.13,
+      "timestamp_end": 5769.37,
+      "action_type": "instruction",
+      "related_concepts": [
+        "class"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 200,
+      "instruction": "Wednesday next week for live instruction.",
+      "timestamp_start": 5772.05,
+      "timestamp_end": 5774.81,
+      "action_type": "instruction",
+      "related_concepts": [
+        "for"
+      ],
+      "code_snippets": []
+    },
+    {
+      "step_number": 201,
+      "instruction": "And then you'll have office hours on Tuesday.",
+      "timestamp_start": 5774.81,
+      "timestamp_end": 5779.57,
+      "action_type": "instruction",
+      "related_concepts": [],
+      "code_snippets": []
+    }
+  ],
+  "key_topics": [
+    "data_structures",
+    "concepts",
+    "control_flow",
+    "tools"
+  ],
+  "difficulty_progression": [
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate",
+    "intermediate"
+  ],
+  "statistics": {
+    "total_principles": 8,
+    "total_instructions": 201,
+    "unique_categories": 4,
+    "avg_segment_duration": 7.82009950248757
+  }
+}

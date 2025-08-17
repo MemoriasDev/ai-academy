@@ -1,0 +1,937 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_09/week_9_class_1_2024-07-22.mp4
+**Duration:** 2159.87 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 459
+**Generated:** 2025-08-13 20:35:01
+**File Hash:** fc006f1283d26ebdb60031e73e8cd3f6
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_09
+**file_name:** week_9_class_1_2024-07-22.mp4
+
+---
+
+## Transcript
+
+**[8.66s → 12.86s]** All right, welcome to ArcCity AI apps.
+
+**[12.86s → 15.98s]** So today's class is just a little different.
+
+**[15.98s → 19.62s]** Instead of code, we're going to talk through designing
+
+**[19.62s → 24.06s]** and architecting applications from like a pro-tip perspective.
+
+**[24.06s → 26.74s]** So give me some of my background and history
+
+**[26.74s → 27.82s]** to different applications.
+
+**[27.82s → 28.66s]** We'll talk about it.
+
+**[28.66s → 31.13s]** And I've got some stuff from a really old class
+
+**[31.13s → 40.28s]** that I can show you too if it fits into where we go tonight.
+
+**[40.28s → 42.36s]** So we're going to cover a bunch of different stuff
+
+**[42.36s → 44.44s]** been pretty short first.
+
+**[44.44s → 48.24s]** So we're going to talk about what the acceptable output
+
+**[48.24s → 51.96s]** of an application looks like, talk about business metrics,
+
+**[52.96s → 55.74s]** talk about identifying experts in your application,
+
+**[57.11s → 61.59s]** gather reliable test data, evaluations of your projects,
+
+**[61.59s → 63.87s]** and we really like to drill us into your head,
+
+**[63.87s → 65.63s]** chains versus agents versus graphs,
+
+**[65.63s → 68.79s]** single calls, not using an algorithm at all.
+
+**[70.72s → 72.28s]** That's learning objective.
+
+**[72.28s → 74.77s]** We'll talk about choosing the right LLM,
+
+**[74.77s → 78.61s]** developing prompt data using DSP,
+
+**[78.61s → 80.35s]** which is very, very powerful
+
+**[80.35s → 83.41s]** if you don't have enough data to do your own instruction,
+
+**[83.41s → 85.21s]** fine tuning data set,
+
+**[85.21s → 87.41s]** and then finally, strong prompts outside your project
+
+**[87.41s → 107.52s]** so you can iterate on how things are going.
+
+**[107.52s → 110.54s]** It's probably the very first thing before you start
+
+**[110.54s → 113.26s]** any project in a coding space,
+
+**[113.26s → 115.78s]** anytime your architecting application is,
+
+**[115.78s → 118.50s]** you wanna have your experts in place.
+
+**[118.50s → 121.62s]** Those are going to be an subject matter expert
+
+**[121.62s → 123.30s]** in the workflow.
+
+**[123.30s → 126.18s]** So let's say, for example, you're building an application
+
+**[126.18s → 128.06s]** in the food services industry
+
+**[128.06s → 130.58s]** and not in the Univolene AI application at all.
+
+**[130.58s → 133.34s]** Like you're building the next McDonald's
+
+**[133.34s → 136.73s]** or Chick-fil-A operating system, right?
+
+**[136.73s → 141.73s]** You are going to consult the person at the point of sale.
+
+**[142.69s → 145.49s]** You're going to consult the cook in the back.
+
+**[145.49s → 149.65s]** you're going to consult the person managing the process
+
+**[149.65s → 151.81s]** and you're going to consult people taking orders
+
+**[151.81s → 154.12s]** and then drive through.
+
+**[154.12s → 155.76s]** Those are going to be your experts, right?
+
+**[155.76s → 157.52s]** The people that you're going to understand
+
+**[157.52s → 159.68s]** and build that understanding of a workflow.
+
+**[159.68s → 161.32s]** It's no different whether you're
+
+**[161.32s → 163.12s]** building an AI application where you're
+
+**[163.12s → 165.64s]** building a regular piece of software.
+
+**[165.64s → 167.56s]** You need to have that subject matter expert
+
+**[167.56s → 171.96s]** to help you understand and engage in developer product
+
+**[171.96s → 173.52s]** or system or application that's
+
+**[173.52s → 176.88s]** going to work well in the real world.
+
+**[176.88s → 178.72s]** And that's great way to do it, right?
+
+**[178.72s → 182.20s]** You don't want to rely entirely on your intuition
+
+**[182.20s → 183.20s]** to build an application.
+
+**[183.20s → 185.16s]** You're gonna build something that you didn't think of,
+
+**[185.16s → 186.64s]** or it doesn't work.
+
+**[186.64s → 189.60s]** So in that fast food example,
+
+**[190.56s → 192.20s]** you might develop an application that's missing
+
+**[192.20s → 195.00s]** a key step or it doesn't display the right information.
+
+**[196.24s → 199.20s]** And you're gonna need that review to understand
+
+**[199.20s → 203.06s]** where things have gone right or wrong.
+
+**[203.06s → 205.58s]** So I'll give you an example.
+
+**[205.58s → 217.58s]** We have a team at work right now that's working on developing a rag over multiple terabytes of engineering documents.
+
+**[217.58s → 226.68s]** They're super, super heavy electrical and mechanical systems engineers. They know nothing about AI.
+
+**[226.68s → 229.68s]** So there are subject matter experts.
+
+**[229.68s → 244.35s]** And I started out by asking them and they want to build this rag because they had all these documents and I said, okay guys, this is awesome, but do we do need to rag at all like a lot of the stuff you're asking about is.
+
+**[244.35s → 258.86s]** Could actually already be an LLM let's go give it a shot and so we tried prompting just a few things and I was able to just by helping them write some good prompts using the wiser framework.
+
+**[258.86s → 260.90s]** which you guys Google that later,
+
+**[260.90s → 262.50s]** I won't dive into that too much.
+
+**[262.50s → 264.44s]** The Wizer prompt engineering framework.
+
+**[267.01s → 269.51s]** We created some really good question answer
+
+**[269.51s → 272.05s]** about specific engineering problems.
+
+**[272.05s → 273.87s]** I'll pick antenna design as one.
+
+**[275.21s → 278.73s]** Yeah, what are the best ways to design a radio antenna
+
+**[278.73s → 280.45s]** for XYZ application?
+
+**[281.45s → 283.25s]** Got a good response.
+
+**[283.25s → 286.42s]** And subject to matter experts,
+
+**[286.42s → 288.38s]** you were able to come back to me and say,
+
+**[288.38s → 293.98s]** actually that's not quite right and it's not specific enough. We want something that's even more detailed
+
+**[294.94s → 302.14s]** to help us really think about the system and the antenna design and like getting down a couple
+
+**[302.14s → 307.26s]** levels of detail. And then the other thing that they were saying, which is great feedback is
+
+**[307.90s → 314.06s]** you know our company's been doing this type of engineering problem for 70 or 80 years. We have
+
+**[314.06s → 317.98s]** of mountains and mountains of proprietary engineering knowledge
+
+**[317.98s → 319.62s]** that we should incorporate.
+
+**[319.62s → 321.54s]** It's like, oh man, that's a great point.
+
+**[321.54s → 325.82s]** So that kind of expert feedback
+
+**[325.82s → 329.50s]** is gonna allow us to ultimately build a solution
+
+**[329.50s → 331.50s]** for them that's gonna work really, really well.
+
+**[331.50s → 333.26s]** So probably, and we'll start out
+
+**[333.26s → 335.58s]** by just dragging the documents they have,
+
+**[335.58s → 337.94s]** seeing if they like the results,
+
+**[337.94s → 340.98s]** and then eventually, maybe building on an instruction,
+
+**[340.98s → 342.50s]** fine, and tune data set,
+
+**[342.50s → 344.78s]** where they're looking for something specific
+
+**[344.78s → 348.42s]** and we can really give good examples of the type
+
+**[348.42s → 354.41s]** of output they're looking for.
+
+**[354.41s → 357.35s]** Well, you do this by consistently building
+
+**[357.35s → 359.83s]** an evaluation into your pipeline.
+
+**[361.15s → 364.79s]** So you want to evaluate how good things are going,
+
+**[364.79s → 367.15s]** whether engineers like the responses
+
+**[367.15s → 369.99s]** or not in that example I'm talking about.
+
+**[369.99s → 372.71s]** So you want to, like a simple like the response,
+
+**[372.71s → 374.87s]** doesn't it like the response?
+
+**[374.87s → 382.56s]** My memory might be mixed in a couple different classes across my day job in here, but I don't
+
+**[382.56s → 387.73s]** know if we've talked about reinforcement learning human feedback loops.
+
+**[389.68s → 393.28s]** But you'll see that on ChatGDP and some of the other major providers
+
+**[394.64s → 399.28s]** to help figure out if the response is good and that human and the loop feedback
+
+**[399.28s → 407.30s]** improves the model over time. Those metrics are good for evaluation. So you want to set up a
+
+**[407.30s → 412.66s]** system that captures that evaluation data really, really well. Now whether that's kind of mass
+
+**[412.66s → 418.90s]** user data collection or whether that's hyper specific on, you know, engineering example,
+
+**[418.90s → 427.49s]** whether I'm having engineers review a test data set instead of having mass human and the
+
+**[427.49s → 429.03s]** to loop feedback.
+
+**[430.83s → 433.11s]** I'm going back and checking how that data is performing
+
+**[433.11s → 436.71s]** at regular intervals.
+
+**[436.71s → 439.07s]** So you're going to want to identify
+
+**[439.07s → 442.91s]** some kind of adoption metric and then figure out
+
+**[442.91s → 444.79s]** if those insights are good or bad.
+
+**[444.79s → 447.31s]** So for us in that engineering simple,
+
+**[447.31s → 449.11s]** we might have two pieces of evaluation,
+
+**[449.11s → 453.19s]** like factually correct, level of detail I want.
+
+**[453.19s → 455.71s]** Yes, yes, yes, those are the two things
+
+**[455.71s → 457.03s]** that we probably care about.
+
+**[457.03s → 462.00s]** I'm trying to utilize as much existing data as possible.
+
+**[462.00s → 466.08s]** So if I'm using a data set that I've created for instruction
+
+**[466.08s → 472.43s]** tuning, trying to figure out how will my models generated output
+
+**[472.43s → 476.39s]** matches the kind of gold standard or good outputs that I have.
+
+**[476.39s → 480.95s]** You've seen those with large language model benchmark
+
+**[480.95s → 482.63s]** data sets we talked about.
+
+**[482.63s → 483.99s]** You could use part of your data set up
+
+**[483.99s → 487.35s]** it's large enough to benchmark the model's performance.
+
+**[487.35s → 493.27s]** And then finally, you're going to want to create a process for facilitating continuous improvement.
+
+**[493.27s → 501.27s]** This is getting into the concept of LLM ops or generative AI ops.
+
+**[501.27s → 509.95s]** Or if you're, how I can meet, and you come up in the world of classical statistical learning machine learning, we just call it ML ops.
+
+**[509.95s → 515.13s]** But these are the concepts coming from DevSecOps, which are,
+
+**[515.13s → 518.17s]** I need to build an operational process that's repeatable
+
+**[518.17s → 522.33s]** and reproducible to streamline continuous improvement.
+
+**[522.33s → 525.33s]** So if I'm trying to change the prompt data set
+
+**[525.33s → 526.97s]** my model is using what's my process
+
+**[526.97s → 529.29s]** to update the model that's in production,
+
+**[529.29s → 531.69s]** and how does all of that stuff flow together?
+
+**[531.69s → 534.17s]** So you want to facilitate that continuous improvement
+
+**[534.17s → 539.65s]** process by having a very well-established plan in place.
+
+**[539.65s → 549.64s]** And just to show you that kind of same concept graphically,
+
+**[549.64s → 566.36s]** Oops, hopefully you all can see my screen.
+
+**[566.36s → 569.32s]** Just to show this, this is really, really old hand drawn thing
+
+**[569.32s → 570.88s]** I made like a decade ago.
+
+**[570.88s → 576.98s]** So excuse the rough nature of it.
+
+**[576.98s → 579.26s]** But the process looks like, yeah,
+
+**[579.26s → 580.86s]** I understand the business problem.
+
+**[580.86s → 583.82s]** I understand the data that the customer wants,
+
+**[583.82s → 586.14s]** like going back to that engineering problem.
+
+**[586.14s → 588.18s]** I understand the output they want.
+
+**[588.18s → 590.06s]** I have questions I go back to the business,
+
+**[590.06s → 591.42s]** to the engineers' questions.
+
+**[591.42s → 594.70s]** when I understand it, I prepare the data.
+
+**[594.70s → 596.96s]** That data goes to my LLM.
+
+**[596.96s → 599.06s]** I create an evaluation cycle,
+
+**[599.06s → 602.18s]** and my evaluation includes going back to the business
+
+**[602.18s → 604.14s]** to make sure it meets their needs.
+
+**[604.14s → 606.34s]** And then finally, I deploy this solution together
+
+**[606.34s → 609.86s]** and then I repeat the process iteratively
+
+**[609.86s → 617.83s]** over and over again, evaluating my models performance.
+
+**[617.83s → 618.83s]** Hang on just a second, you know,
+
+**[618.83s → 620.19s]** I accidentally closed this slide.
+
+**[620.19s → 666.04s]** So, gonna, so kind of switching gears a little bit
+
+**[666.04s → 669.64s]** we can talk more about the overall process if you want.
+
+**[669.64s → 673.12s]** But switching gears a little bit, let's
+
+**[673.12s → 677.06s]** preview the different AI architectures
+
+**[677.06s → 680.32s]** for various problems.
+
+**[680.32s → 683.48s]** So thinking about that overall business understanding
+
+**[683.48s → 686.92s]** problem, we've talked about a variety of different techniques
+
+**[686.92s → 690.27s]** that can be applied to solve a business problem.
+
+**[690.27s → 693.67s]** Things like graphs, chains, multi-agent systems,
+
+**[693.67s → 698.43s]** single tool calls, just general chat interface,
+
+**[698.43s → 700.67s]** manual code, combination.
+
+**[701.63s → 704.31s]** It's really important that you develop a strong intuition
+
+**[704.31s → 707.82s]** on which of these to use to give a problem.
+
+**[707.82s → 709.50s]** And this will change.
+
+**[709.50s → 711.06s]** This is a really active field.
+
+**[711.06s → 713.42s]** And I imagine that a lot of these tool sets
+
+**[713.42s → 716.22s]** are gonna change over the next two years.
+
+**[716.22s → 717.86s]** So you are gonna wanna continue
+
+**[717.86s → 721.00s]** to build out this list in your head.
+
+**[721.00s → 723.40s]** So graphs are gonna be great
+
+**[723.40s → 726.04s]** for really defined workflows that require looping back
+
+**[726.04s → 729.84s]** to a certain point or really complex systems overall.
+
+**[729.84s → 732.68s]** So yeah, things that are gonna need to remember
+
+**[732.68s → 736.96s]** where they started and stops and cycle through
+
+**[736.96s → 738.52s]** a various steps often.
+
+**[738.52s → 740.64s]** They're also really good at asynchronous tasking.
+
+**[740.64s → 746.53s]** So you can use a graph for a variety of different tasks.
+
+**[746.53s → 749.97s]** Agents are gonna be really good for reasoning.
+
+**[749.97s → 754.61s]** So you're gonna use agents when task require reasoning.
+
+**[754.61s → 758.61s]** So I might use an agent or agent's plural
+
+**[758.61s → 760.17s]** to write a research report.
+
+**[760.17s → 761.65s]** I might have somebody do the research.
+
+**[761.65s → 763.33s]** When I do the research,
+
+**[763.33s → 765.13s]** might have another agent back check.
+
+**[765.13s → 767.37s]** I might have another agent write the report,
+
+**[767.37s → 769.61s]** another agent edit the report.
+
+**[769.61s → 775.18s]** And a supervisor help manage the whole process.
+
+**[775.18s → 780.42s]** Chains are gonna be really straightforward LLM workflows.
+
+**[780.42s → 783.82s]** Hey, I've got this specific query
+
+**[783.82s → 787.14s]** and like I'd like to know about the weather
+
+**[787.14s → 789.66s]** in Smoky Mountains in September.
+
+**[789.66s → 792.26s]** The chain can process my natural language input
+
+**[792.26s → 794.34s]** into the appropriate data points
+
+**[794.34s → 796.70s]** to put into a structured API call,
+
+**[796.70s → 799.50s]** returns the weather, gives me an ice answer.
+
+**[799.50s → 801.86s]** Even though that natural language I gave it
+
+**[801.86s → 805.73s]** is a little bit more challenging.
+
+**[805.73s → 813.21s]** So very clear linear workflow for chains.
+
+**[813.21s → 818.08s]** Single LLM calls have a specific prompts
+
+**[818.08s → 822.04s]** with no examples, one example or a few examples
+
+**[822.04s → 830.60s]** need a single response. So this is your classic chat GTP use case. I need to log in and ask something
+
+**[830.60s → 840.41s]** one time. Manual code of course is just consistent input now put and you can use that whenever you
+
+**[840.41s → 849.42s]** make sense. That's always going to be very deterministic, right? Like I need to know what my bank
+
+**[849.42s → 854.70s]** balances. I don't need an LLM to do that. I can just hit the API for that and give that answer.
+
+**[857.54s → 862.50s]** Combination likely just mixes all of these different apps together. Most of the stuff you're
+
+**[862.50s → 867.06s]** going to build in the real world is going to be a combination of all the above or portions of
+
+**[867.06s → 883.43s]** that make sense. We talked about this a little bit before but I think this is one of the things we
+
+**[883.43s → 887.99s]** didn't talk about was maybe cost. So you think about choosing the right LLM for the job.
+
+**[887.99s → 896.18s]** different LLMs perform differently. I think it's that simple. So if you're
+
+**[896.18s → 901.54s]** dealing with chat TTP for or any of the flavors of it, it's gonna behave
+
+**[901.54s → 904.58s]** differently than mixed row. That's gonna behave differently than
+
+**[904.58s → 912.15s]** grot or jema. So you're going to want to test a variety of different models and
+
+**[912.15s → 917.42s]** find the one that best suits your needs and budget. Also, there might be times
+
+**[917.42s → 923.74s]** are simpler models that you can run locally make more sense so I can combine different models together.
+
+**[923.74s → 932.54s]** Like my best writing might come from ChatGTB4 or Gemma but you know just raw internet research where
+
+**[932.54s → 939.26s]** I'm parsing broad search results and summarizing them you know, Wama 3 run locally might be fine for
+
+**[939.26s → 942.48s]** for that task.
+
+**[942.48s → 945.92s]** And you're gonna wanna use some kind of structured measure
+
+**[945.92s → 951.34s]** to see what the output of different LLMs will be.
+
+**[951.70s → 955.79s]** Now, objectively measured doesn't necessarily mean
+
+**[955.79s → 958.35s]** to just measure the actual output of the model,
+
+**[958.35s → 962.67s]** but also maybe your evaluation metric is something else
+
+**[962.67s → 964.45s]** like cost.
+
+**[964.45s → 968.47s]** You know, I need to go hit the end point for ChatGTP
+
+**[968.47s → 969.99s]** to do all this internet research,
+
+**[969.99s → 973.11s]** but per token getting massive cost.
+
+**[974.45s → 976.81s]** So my objective measure might be just simply reducing.
+
+**[976.81s → 980.37s]** I need to LM that's both performing enough,
+
+**[980.37s → 985.52s]** but it's also meets my cost threshold.
+
+**[985.52s → 987.80s]** So don't be afraid to test a bunch of different LLMs
+
+**[987.80s → 988.88s]** in your project.
+
+**[992.02s → 995.46s]** And we went through overview of steps on model selection before,
+
+**[995.46s → 998.14s]** so I won't rehash those,
+
+**[998.14s → 1002.74s]** but definitely explore initial model selection,
+
+**[1002.74s → 1006.50s]** evaluate them and definitely try a bunch of different of them.
+
+**[1006.50s → 1009.78s]** Hugging face like we talked about before is a great place to research
+
+**[1009.78s → 1018.57s]** different open source models out there.
+
+**[1018.57s → 1023.45s]** Now, for many of you especially you work in your capstone projects,
+
+**[1023.45s → 1026.66s]** if you're interested in instruction fine tuning,
+
+**[1026.66s → 1030.18s]** you actually need a lot of data for instruction fine tuning to make sense.
+
+**[1030.18s → 1034.54s]** Whether it's 5,000, 10,000,
+
+**[1034.54s → 1037.18s]** instruction examples,
+
+**[1037.18s → 1039.68s]** You can't just come up with that on the fly,
+
+**[1039.68s → 1040.92s]** through capstem,
+
+**[1042.28s → 1044.40s]** unless you have access to a bunch of users
+
+**[1044.40s → 1046.66s]** that are helping you with that.
+
+**[1046.66s → 1051.66s]** So what you're gonna wanna do instead is try to develop prompts
+
+**[1053.89s → 1057.86s]** to help you analyze problems really effectively.
+
+**[1057.86s → 1060.28s]** So there's a framework called DSPy
+
+**[1060.28s → 1063.16s]** that allows, it's a prompt engineering automated tool.
+
+**[1063.16s → 1065.52s]** Essentially it'll help you engineer your prompt
+
+**[1065.52s → 1074.15s]** maximize user response accuracy. Really, really cool. I've seen this used at Lockheed by a couple
+
+**[1074.15s → 1081.99s]** of different people in a pilot capacity and they were very, very happy with it. So the process looks
+
+**[1081.99s → 1088.76s]** like this. Define your task and the input and output of the behavior you want your LLM to
+
+**[1089.94s → 1095.86s]** outline the pipeline steps and start with a very, very simple process. So test it with a bunch of
+
+**[1095.86s → 1103.06s]** different examples and different language models. And then it'll help you gather and generate
+
+**[1103.06s → 1111.28s]** training evaluation data as part of the process of DSP. You define your own evaluation metrics
+
+**[1111.28s → 1117.28s]** and evaluate output quality. And then you're going to run some preliminary evaluations, identify
+
+**[1117.28s → 1125.49s]** the baseline performance against various models. Now in step seven, optimizing instructions,
+
+**[1125.49s → 1128.53s]** that's where the magic of DSPY happens.
+
+**[1128.53s → 1136.18s]** So optimizing the DSPY optimizers will optimize your prompt to help you achieve the best
+
+**[1136.18s → 1141.05s]** performance according to your evaluation metrics and set five.
+
+**[1141.05s → 1145.81s]** And you're going to want to continuously do that throughout.
+
+**[1145.81s → 1150.64s]** Some great examples on DSPY's website, but you can read through.
+
+**[1150.64s → 1163.64s]** A couple of caveats though that I'll say one tool calling isn't well supported yet here with DSP. So if you're the prompt you're trying to engineer and all some kind of tool call.
+
+**[1163.64s → 1171.64s]** It's really not a great way to do that. This is really good for like simple input and how I'm prompted evaluation testing.
+
+**[1171.64s → 1175.00s]** I think it'll become more sophisticated and there probably are some way
+
+**[1175.00s → 1181.24s]** hackier ways to do more sophisticated prompts but DSP I really support simpler
+
+**[1181.24s → 1185.96s]** prompts right now. Well maybe what I should say supports
+
+**[1185.96s → 1205.13s]** simpler prompts best and then I kind of last big thing to think about for your
+
+**[1205.13s → 1208.33s]** apps. Kind of like what I talked about at the very beginning,
+
+**[1208.33s → 1211.61s]** make sure you're getting human verification of your AI generated content.
+
+**[1211.61s → 1218.65s]** So back to that engineering example, say, hey, are these outputs correct?
+
+**[1219.84s → 1228.35s]** Am I missing anything? Can I reliably use this antenna design on my radar system?
+
+**[1231.52s → 1239.28s]** Also, too, I think it's very important to be transparent that the content that's being generated
+
+**[1239.28s → 1243.84s]** is from an AI tool to avoid a lot of misconceptions.
+
+**[1243.84s → 1245.76s]** So users interact differently with AI
+
+**[1245.76s → 1248.62s]** compared to human generated content.
+
+**[1248.62s → 1250.06s]** So when they know it's from AI,
+
+**[1250.06s → 1255.56s]** they're going to respond to it differently,
+
+**[1255.56s → 1260.04s]** which in my own experience, like Amazon reviews,
+
+**[1260.04s → 1264.60s]** if you've noticed, Amazon has a AI generated summary now.
+
+**[1264.60s → 1266.28s]** And a lot of other websites are starting to implement
+
+**[1266.28s → 1269.96s]** that feature too.
+
+**[1269.96s → 1273.16s]** I know that's generated by AI, but I still go through it.
+
+**[1273.16s → 1276.84s]** So that's, I find the summer is too very helpful, but I like to just double check and
+
+**[1276.84s → 1283.56s]** sanity check and read a couple other reviews and make sure that that tracks as well.
+
+**[1283.56s → 1286.60s]** Sometimes I discover stuff and I'm like, oh, that's interesting little tidbit.
+
+**[1287.24s → 1295.97s]** It wasn't mentioned in the summering. If you really, really want to get your project to be
+
+**[1295.97s → 1302.92s]** outstanding and sustainable over time, you're going to need to find some way to store the prompts
+
+**[1302.92s → 1304.84s]** that are going into the system.
+
+**[1304.84s → 1308.36s]** So, and you're going to want to store those outside the code base.
+
+**[1308.36s → 1309.72s]** Why? Because it's a lot of data.
+
+**[1309.72s → 1311.88s]** You don't want to store your prompts in your code base.
+
+**[1314.48s → 1316.48s]** Yeah, the system prompts that you're using
+
+**[1316.48s → 1318.92s]** and stuff like that are stuff in your model.
+
+**[1318.92s → 1323.96s]** But you could also begin virtual controlling your prompts.
+
+**[1323.96s → 1325.96s]** And I think there are some platforms that are starting
+
+**[1325.96s → 1328.96s]** to explore how to do prompt management.
+
+**[1328.96s → 1331.04s]** So you can kind of like releasing a model,
+
+**[1331.04s → 1333.32s]** you could release a prompt for a different step.
+
+**[1333.88s → 1339.88s]** I don't know that we're quite there yet, but getting pretty close.
+
+**[1339.88s → 1346.09s]** You've seen a lot of observability platforms in the class with Langsmith.
+
+**[1346.09s → 1351.25s]** That is a great choice, which imbias this is popular in this space too.
+
+**[1351.25s → 1356.65s]** Langfews if you can't use Langsmith, but that's really going to get you to start
+
+**[1356.65s → 1364.39s]** storing your prompt data and evaluating the performance.
+
+**[1364.39s → 1369.39s]** That was a really quick overview of some AI tips and tricks.
+
+**[1369.39s → 1372.71s]** But over the next couple weeks,
+
+**[1372.71s → 1374.71s]** from either your capstone phase,
+
+**[1374.71s → 1377.09s]** so continue to design your capstone.
+
+**[1377.09s → 1382.09s]** And then absolutely share your capstone for feedback product design,
+
+**[1382.09s → 1385.35s]** visual aids, summaries, whatever.
+
+**[1385.35s → 1388.35s]** Yeah, the team will get back to you with feedback.
+
+**[1388.35s → 1395.25s]** And hopefully your peers will also give you good feedback in your project too.
+
+**[1395.25s → 1400.34s]** Well, I will pause there for questions.
+
+**[1400.34s → 1411.85s]** I think I have no questions at the moment.
+
+**[1411.85s → 1415.48s]** Yeah, yeah.
+
+**[1415.48s → 1424.00s]** I think, Marcus, we have plenty of time, so if you want to ask other questions about the course so far, that you want to cover?
+
+**[1424.00s → 1438.92s]** I just for, I think it's just a comment. I feel really interested in the a couple of
+
+**[1438.92s → 1450.37s]** classes ago about the Creole AI framework. And one thing that I don't, don't be so
+
+**[1450.37s → 1460.34s]** clean to me is not the limitation but the the boundaries to shows to pick a
+
+**[1460.34s → 1470.80s]** Prod like clear eye or build yourself of a sweet of a solution with AI and
+
+**[1470.80s → 1476.65s]** this be crew AI looks really simplify a lot of things but create a lot of
+
+**[1476.65s → 1483.69s]** but here's an understand better how the prod and assign polls use case like this
+
+**[1483.69s → 1491.92s]** should be useful and I start to read in the the commentation and other steps about it.
+
+**[1492.72s → 1501.52s]** If have any other frameworks or other probes or other examples is really cool to see.
+
+**[1501.52s → 1508.69s]** Oh, like other than in reference to crew AI, is that what you're talking about?
+
+**[1508.69s → 1519.51s]** Not only clearly, but other frameworks that could be helpful to make L like MVP's or other
+
+**[1519.51s → 1526.59s]** tasks because when I met my case, for example, in my company, we don't have a
+
+**[1526.59s → 1533.00s]** a culture around AI that we don't have products that use AI.
+
+**[1533.00s → 1537.00s]** I think we are more on the point of prototyping stuff.
+
+**[1537.00s → 1542.00s]** I think for prototyping,
+
+**[1542.00s → 1546.00s]** things like a career, it could be good.
+
+**[1546.00s → 1552.00s]** Other products or other solutions that take easy to introduce
+
+**[1552.00s → 1562.24s]** the AI solutions for a company. This looks interesting because when I see the more complex
+
+**[1562.24s → 1573.12s]** solution make-by-scatch, I imagine that need more, not only effort, but more knowledge for
+
+**[1573.12s → 1577.56s]** or a team that's not so, or my time is expanded to
+
+**[1577.56s → 1583.04s]** propose those stuff and this is, and they set link on the chat.
+
+**[1584.83s → 1587.31s]** Yeah, I just, I don't wanna interrupt you,
+
+**[1587.31s → 1590.19s]** but Haystack is another popular,
+
+**[1590.19s → 1592.65s]** nice one framework, not like RBI,
+
+**[1592.65s → 1594.19s]** slightly different but similar.
+
+**[1596.41s → 1601.09s]** This is the kind of thing I looking for,
+
+**[1601.09s → 1610.61s]** like have options to compare and see, oh, this is this feature with my my case with with my MVP and
+
+**[1610.61s → 1617.57s]** to propose like this. For example, in in new shop, that's my my company and the others in this class.
+
+**[1618.93s → 1631.14s]** We are talking about user AI to analyze our partner code. Just really is more context.
+
+**[1631.54s → 1640.84s]** We have e-commerce platform that our partners can developer plugins for us.
+
+**[1640.84s → 1645.68s]** We needed to analyze the code of plugin like,
+
+**[1645.68s → 1651.32s]** imagine the process of AppStore for NIPO is the same idea.
+
+**[1651.32s → 1657.84s]** But one point we think to use AI is for analyze the first step
+
+**[1657.84s → 1662.12s]** to just before send it for a human interaction.
+
+**[1662.12s → 1670.88s]** This is one MVP that we think to use AI and it could be helpful.
+
+**[1670.88s → 1677.98s]** Yeah, no, it sounds like it.
+
+**[1677.98s → 1680.55s]** How would you apply AI?
+
+**[1680.55s → 1684.64s]** What do you have when you're initial thought?
+
+**[1684.64s → 1687.96s]** One point is we are really
+
+**[1687.96s → 1699.67s]** I spent a lot of effort and security like when a partner and user an IP code we needed to
+
+**[1699.67s → 1712.51s]** looking for the libraries or a lot of patterns that for example external requests for no
+
+**[1712.51s → 1719.51s]** that's not making it, not fit with the partner services or our platform services.
+
+**[1719.51s → 1729.51s]** And it doesn't find this kind of cold mouse or maybe based on a document or a
+
+**[1729.51s → 1737.51s]** pattern is sent off it back for partners like you killed, do that, you know,
+
+**[1737.51s → 1746.47s]** these and things like this. I think I'm mixing for analyzing and
+
+**[1746.47s → 1755.78s]** taking the compiler to work flow like this. I think this is the idea but
+
+**[1755.78s → 1765.50s]** this is just an idea that my team is working and I think maybe AI could be
+
+**[1765.50s → 1778.76s]** helpful for us. Yeah, I mean, I think police officers go ahead and mark this. Yeah, I think so, so
+
+**[1782.46s → 1787.90s]** I think I caught some of that. So the idea is to compile information from a couple different
+
+**[1787.90s → 1795.45s]** sources, some are in some rise together. Okay. Yeah. Yeah, it's because we needed to
+
+**[1795.45s → 1807.05s]** you analyze a lot of small information like the client is distracted or for example
+
+**[1807.05s → 1821.74s]** our clienty kind of business or the strictry are organized or easy things like organizing
+
+**[1821.74s → 1832.12s]** files are is a lot of small suggestions that usually today we have a
+
+**[1832.12s → 1839.64s]** supporting to do and this is a boring for a person because it's the same thing
+
+**[1839.64s → 1847.92s]** a lot of time is and I go why not I to help or to party like it analyze
+
+**[1847.92s → 1854.56s]** is a pre-analysed and hanking, oh this is a human interaction, this is not the human
+
+**[1854.56s → 1860.36s]** interaction, this is good and make the first half check for us and that.
+
+**[1860.36s → 1867.40s]** For example, what other thing we are talking, I talk to one of my colleagues this day
+
+**[1867.40s → 1876.44s]** is for example, this is really common on AppStars when you have a published app and this is
+
+**[1876.44s → 1880.08s]** is replaced for a completely different source code.
+
+**[1880.08s → 1885.24s]** It does not a version of grade is a replacement.
+
+**[1885.24s → 1887.52s]** And this is one thing that we needed to catch
+
+**[1887.52s → 1890.20s]** fast like it, because this code
+
+**[1890.20s → 1898.83s]** would be really weird and dangerous
+
+**[1898.83s → 1903.48s]** vulnerabilities for us.
+
+**[1903.48s → 1907.48s]** Like, oh, this code looks like evolution
+
+**[1907.48s → 1913.48s]** on the version of that. This is kind of this. This is a Senate check that we needed to do.
+
+**[1914.73s → 1919.61s]** Yeah, I got yeah, and you guys can't read the entire code base, but just checking to see what's
+
+**[1919.61s → 1928.89s]** changed and like what the nature of it is. Yeah, totally. Yeah. That's a great idea. This is the idea
+
+**[1928.89s → 1940.35s]** the MVPI I started to negotiate you with my bosses to spend a bit of time to create
+
+**[1940.35s → 1948.05s]** an MVP but DLC or a peripheral conscious for that.
+
+**[1948.05s → 1954.03s]** This is one point when I think AI could be really helpful for us.
+
+**[1954.03s → 1960.31s]** And this is when I think, okay, maybe a framework like AI raised I care others could be
+
+**[1960.31s → 1964.23s]** helpful for us. And I like to have options to compare.
+
+**[1966.35s → 1968.87s]** Yeah, I would, I would definitely say,
+
+**[1968.87s → 1970.55s]** career is worth exploring.
+
+**[1971.63s → 1976.44s]** Think the length chain ecosystem also stuff that's like
+
+**[1976.44s → 1980.72s]** enterprise grade to like land graph has that host service that
+
+**[1980.72s → 1982.76s]** we kind of equivalent to crew AI.
+
+**[1984.28s → 1986.76s]** But I mean, honestly, I think career is a little bit easier to
+
+**[1986.76s → 1987.68s]** wrap our head around.
+
+**[1987.68s → 1989.68s]** Okay.
+
+**[1989.68s → 1995.50s]** But that's the moment for me to do this.
+
+**[1995.50s → 1996.50s]** Oh, please.
+
+**[1996.50s → 1997.50s]** I was going to say Marcus,
+
+**[1997.50s → 1998.50s]** um,
+
+**[1998.50s → 2000.50s]** the other nice thing is once you've kind of
+
+**[2000.50s → 2003.50s]** deleted a developer idea on crew AI,
+
+**[2003.50s → 2007.50s]** it's not that hard to move over to some of the gals.
+
+**[2007.50s → 2010.50s]** So once you've actually got it and you're like,
+
+**[2010.50s → 2012.50s]** okay, well, this works.
+
+**[2012.50s → 2015.50s]** You can then always invest a little bit of time in learning
+
+**[2015.50s → 2018.50s]** a bit more into length and a little bit more into other things
+
+**[2018.50s → 2023.80s]** things and then kind of build up and build on land graph or another thing and have it a bit more
+
+**[2023.80s → 2029.16s]** robust afterwards. So it doesn't have to be perfect first time round unless obviously you try and
+
+**[2030.04s → 2035.64s]** that's. But in general when you first testing it's that's the idea behind these frameworks is
+
+**[2035.64s → 2042.60s]** and things like Cua is, get it to be fit for purpose and once you've got it fit for purpose then
+
+**[2042.60s → 2050.82s]** then you can build on it and make it more robust and switch to you can just switch out the different bits and pieces like the LLM's
+
+**[2050.82s → 2055.58s]** switch out the the reduction and everything and just slowly do it modular sort of thing.
+
+**[2056.76s → 2059.52s]** So it's okay. Sorry, okay.
+
+**[2062.33s → 2062.73s]** Okay.
+
+**[2062.73s → 2063.77s]** Make sense.
+
+**[2064.81s → 2065.89s]** I just think.
+
+**[2071.39s → 2072.07s]** Okay.
+
+**[2073.49s → 2076.82s]** But I think at the moment as this, that I
+
+**[2076.82s → 2080.95s]** I can't contribute to him interacting is on the weekend.
+
+**[2080.95s → 2085.95s]** That's his only way to have a good opportunity to ask.
+
+**[2085.95s → 2088.72s]** Yeah, totally.
+
+**[2088.72s → 2090.72s]** Glad you did.
+
+**[2090.72s → 2093.39s]** Yeah.
+
+**[2093.39s → 2099.39s]** I want to think like a so DM do anyway, but literally if you've got a time where you like you
+
+**[2099.39s → 2104.39s]** you can't make it to the office hours, let me know a time what would make a better suit you.
+
+**[2104.39s → 2106.39s]** So if I'm available, I can always drop it.
+
+**[2106.39s → 2109.39s]** So in more so, we can go over things if you need to.
+
+**[2109.39s → 2110.39s]** Okay, okay.
+
+**[2110.39s → 2117.52s]** And I try to send you a message on to like and try to analyze better.
+
+**[2117.52s → 2120.52s]** Get a fit of better time.
+
+**[2120.52s → 2125.32s]** Yeah.
+
+**[2125.32s → 2126.32s]** Oh, yeah.
+
+**[2126.32s → 2128.12s]** And I think that.
+
+**[2128.12s → 2129.12s]** Please.
+
+**[2129.12s → 2135.57s]** Well, if you have any other questions, Marcus, we'll go and close out for tonight.
+
+**[2135.57s → 2139.18s]** But I'm glad it came by.
+
+**[2139.18s → 2147.91s]** Okay, I don't know if this is really thanks for it.
+
+**[2147.91s → 2151.61s]** Anyway, thanks a lot Marks anyway.
+
+**[2151.61s → 2152.61s]** Thanks, bye.
+
+**[2152.61s → 2154.03s]** Thanks a lot.
+

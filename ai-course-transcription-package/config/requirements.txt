@@ -1,0 +1,31 @@
+# Core automation and web handling
+selenium>=4.15.0
+playwright>=1.40.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# Video and audio processing
+faster-whisper>=0.10.0
+ffmpeg-python>=0.2.0
+
+# Content analysis and NLP
+spacy>=3.7.0
+transformers>=4.35.0
+nltk>=3.8.0
+
+# Data handling and utilities
+pandas>=2.1.0
+numpy>=1.24.0
+python-dateutil>=2.8.2
+
+# Async and parallel processing
+aiohttp>=3.9.0
+asyncio-throttle>=1.0.2
+
+# Logging and monitoring
+coloredlogs>=15.0.1
+tqdm>=4.66.0
+
+# Security and encryption
+cryptography>=41.0.0
+keyring>=24.0.0

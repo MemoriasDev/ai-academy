@@ -1,0 +1,2679 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_02/week_2_class_1_2024-05-27.mp4
+**Duration:** 6215.68 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 1330
+**Generated:** 2025-08-13 18:28:09
+**File Hash:** ecadf737dc6242b5d1ef6f3a0d77d489
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_02
+**file_name:** week_2_class_1_2024-05-27.mp4
+
+---
+
+## Transcript
+
+**[344.94s → 353.66s]** Hey Thomas gone. Oh good. Yeah, I'm still I'm still on my
+
+**[355.62s → 358.68s]** Live chat time as well for the other
+
+**[359.18s → 362.94s]** Stop I've got about it. I'll just put that on the meeting for that lunch this
+
+**[371.34s → 372.54s]** Chris
+
+**[372.54s → 383.85s]** Marcus as well
+
+**[383.85s → 385.85s]** Christopher your view is pretty sick
+
+**[386.37s → 393.38s]** But like the nice breeze and the trees in the background. It's cozy and it's cheap too
+
+**[393.38s → 428.45s]** Yeah, I think it's a little bit of time here. I just wanted to mention that I was listening to the all-in podcasts last week's episode.
+
+**[428.45s → 436.54s]** And they described building an app that sounded very similar to Office Hours project from yesterday.
+
+**[436.54s → 437.54s]** Pretty cool.
+
+**[437.54s → 439.54s]** Awesome.
+
+**[439.54s → 440.54s]** Awesome.
+
+**[440.54s → 443.40s]** For now, it's a blue.
+
+**[443.40s → 445.12s]** Crazy thing, we had a technical difficulty,
+
+**[445.12s → 448.21s]** so the office hours wasn't recorded somehow.
+
+**[448.21s → 449.69s]** The bot records didn't record it,
+
+**[449.69s → 452.89s]** so I ended up making another video of me live coding the same
+
+**[452.89s → 456.47s]** up again, and I sort of dropped it into the one.
+
+**[456.47s → 483.25s]** So we had to wait just another couple of minutes
+
+**[483.25s → 544.08s]** to get rolling.
+
+**[544.08s → 546.80s]** And while we were waiting for people to filter in,
+
+**[546.80s → 548.44s]** for those of you that are already on,
+
+**[548.44s → 550.60s]** I'd love to know how many of you are
+
+**[550.60s → 553.89s]** are going to be familiar with embeddings.
+
+**[553.89s → 559.76s]** Let's see.
+
+**[559.76s → 567.51s]** If you want to give me a maybe just a quick reaction Slack,
+
+**[567.51s → 571.77s]** I'm going to add a quick note and Slack.
+
+**[571.77s → 612.68s]** All right, let's go ahead and get started.
+
+**[612.68s → 615.03s]** I think we've reached quorum now.
+
+**[615.03s → 618.03s]** So thank you everybody for joining today.
+
+**[618.03s → 622.03s]** Welcome. This is day three week two of the anti for
+
+**[622.03s → 624.03s]** developer productivity course.
+
+**[624.03s → 626.03s]** So today we're going to be talking about retrieval
+
+**[626.03s → 628.27s]** augment and generation.
+
+**[628.27s → 631.31s]** It's really that technique that helps ground and mitigates
+
+**[631.31s → 634.47s]** the problem of hallucinations in large language model
+
+**[634.47s → 636.14s]** applications.
+
+**[636.14s → 637.66s]** So you've seen a lot of the cloud service
+
+**[637.66s → 642.62s]** providers, implement Rags of Service, whether that's AWS,
+
+**[642.62s → 646.30s]** or Google, VZB Vertex.
+
+**[646.30s → 651.54s]** And a lot of Python SDKs like Lanchane, Python packages,
+
+**[651.54s → 654.78s]** supporting Richie Lawman in Generation Worthless.
+
+**[656.39s → 661.39s]** And my work, Rags, a big part of the types of
+
+**[661.87s → 664.19s]** limitations we do, whether that's
+
+**[664.19s → 667.63s]** Spanish corporate policy, to design documentation
+
+**[668.91s → 671.63s]** all the way up to just like really simple
+
+**[671.63s → 674.91s]** a team people ragged their own obsidian notebooks before.
+
+**[676.51s → 679.79s]** So it's a really great technique to help you explore
+
+**[679.79s → 685.37s]** the best possible ways to retrieve information
+
+**[685.93s → 689.86s]** and get nice and right responses.
+
+**[689.86s → 692.82s]** So today, we got a fun class to work for you.
+
+**[692.82s → 694.70s]** I'm actually really glad for those of you
+
+**[694.70s → 697.34s]** that were able to join OfficeHour as yesterday with Tom.
+
+**[697.34s → 701.50s]** He did a work a walkthrough of the rag pipeline.
+
+**[701.50s → 703.58s]** So you've already seen the implementation of it,
+
+**[703.58s → 704.58s]** hopefully.
+
+**[704.58s → 706.86s]** If you weren't able to join OfficeHour as yesterday,
+
+**[706.86s → 710.58s]** I highly recommend you watch Tom's recording
+
+**[710.58s → 714.98s]** or re-recording of the session and get that walk through
+
+**[714.98s → 716.42s]** of the complete implementation.
+
+**[716.42s → 719.06s]** We're not gonna do that today because you already done it.
+
+**[720.10s → 723.22s]** But we are gonna go into a deeper, high-level
+
+**[723.22s → 724.38s]** understanding of Bragg.
+
+**[724.38s → 727.30s]** So supplementing what you saw yesterday in code
+
+**[727.30s → 730.42s]** with just a little bit more voice track.
+
+**[732.01s → 734.53s]** I'm gonna talk a little bit about embeddings.
+
+**[734.53s → 736.49s]** So if you haven't answered my question in Slack,
+
+**[736.49s → 739.85s]** just a quick emoji reaction is perfect.
+
+**[739.85s → 746.00s]** That'll help me tell you as much about embeddings
+
+**[746.00s → 747.04s]** that as you need to know.
+
+**[747.04s → 751.28s]** So if you're super familiar, we don't have to go super deep.
+
+**[751.28s → 753.72s]** Then we'll talk a little bit about how to prepare documents
+
+**[753.72s → 755.36s]** for RAG.
+
+**[755.36s → 757.52s]** We'll also take the look at a visualization
+
+**[757.52s → 763.71s]** of how the text of longer documents can be sliced up for RAG.
+
+**[763.71s → 767.51s]** And you'll see an example yesterday,
+
+**[767.51s → 771.07s]** you were dealing with pretty lengthy PDF documents.
+
+**[771.07s → 774.23s]** in the huge example that I'll show later today,
+
+**[774.23s → 775.51s]** the documents are very short,
+
+**[775.51s → 777.07s]** so we don't need to slice them.
+
+**[778.27s → 780.59s]** But in that longer context,
+
+**[780.59s → 782.87s]** you wanna make sure that we're slicing appropriately
+
+**[782.87s → 786.35s]** and I wanna help you build some intuition about how to do that.
+
+**[788.52s → 791.28s]** Or we'll talk a little bit about vector databases.
+
+**[791.28s → 794.48s]** Kinda introduced pine cone a little bit last week,
+
+**[794.48s → 795.72s]** but we'll talk about,
+
+**[796.80s → 799.32s]** we'll revisit pine cone and talk about vector databases
+
+**[799.32s → 803.94s]** and there are a variety of ones out there.
+
+**[803.94s → 807.42s]** We'll show you how to store documents in a vector DB,
+
+**[807.42s → 810.96s]** and then kind of at the very last bit of class,
+
+**[810.96s → 813.68s]** then we'll get transitioned into some code,
+
+**[813.68s → 817.04s]** and we'll take a look at a rag fusion example,
+
+**[817.04s → 831.81s]** which is a way to enhance the performance of a rag model.
+
+**[831.81s → 834.65s]** Quick show, I had so many people have worked on a rag problem
+
+**[834.65s → 835.49s]** before.
+
+**[835.49s → 839.73s]** How many of you have either implemented a rag
+
+**[839.73s → 841.29s]** on one of your engineering projects
+
+**[841.29s → 861.53s]** or have interacted with one.
+
+**[861.53s → 862.69s]** Okay, great.
+
+**[862.69s → 866.29s]** So I'm glad to see that many of you
+
+**[866.29s → 868.37s]** haven't interacted with us before.
+
+**[868.37s → 872.73s]** So, retrieval admin in generation is the idea
+
+**[872.73s → 875.13s]** of being able to take documents that are pre-existing.
+
+**[875.13s → 877.17s]** So like in that context, you saw yesterday
+
+**[877.17s → 878.81s]** with the shareholder letters
+
+**[880.13s → 885.20s]** and being able to chump those into different pieces.
+
+**[885.20s → 889.46s]** Can you see my cursor, by the way?
+
+**[889.46s → 891.12s]** Okay, good.
+
+**[891.12s → 894.42s]** Be able to chunk those into tiny pieces,
+
+**[894.42s → 896.58s]** take the chunks into an embedding vector
+
+**[896.58s → 898.70s]** and then put them in a database.
+
+**[898.70s → 901.46s]** Well, JC, what happens with my documents
+
+**[901.46s → 903.06s]** when I make a query?
+
+**[903.06s → 905.82s]** Well, actually what happens is your prompts,
+
+**[905.82s → 908.78s]** before we haven't talked about this yet,
+
+**[908.78s → 911.22s]** but your prompt is also getting turned into a embedding,
+
+**[911.22s → 913.90s]** and that embedding is getting sent into the model
+
+**[913.90s → 915.50s]** and the model is generating the output.
+
+**[915.50s → 917.78s]** Here, it's actually important for us to talk about
+
+**[917.78s → 920.78s]** that embedding step a little bit separately,
+
+**[922.42s → 924.14s]** because now you're gonna take that embedding
+
+**[924.14s → 927.70s]** and you're gonna use it to query the vector database.
+
+**[927.70s → 930.94s]** And you're gonna grab a collection of documents
+
+**[930.94s → 932.18s]** that are really similar.
+
+**[933.62s → 935.34s]** Very, for those of you that are familiar
+
+**[935.34s → 937.08s]** with information retrieval,
+
+**[937.08s → 939.02s]** there's really not anything unique
+
+**[939.02s → 942.14s]** about the information retrieval step that occurs here.
+
+**[942.14s → 944.67s]** You're gonna do an embedding prompt,
+
+**[944.67s → 946.19s]** you're gonna do cosine similarity
+
+**[946.19s → 949.95s]** for the top K results in the vector database,
+
+**[949.95s → 954.90s]** and then you're gonna take that context of the top K results,
+
+**[954.90s → 957.28s]** those will become your selected documents,
+
+**[957.28s → 959.94s]** and you're going to update your prompt
+
+**[959.94s → 962.64s]** with those selected documents.
+
+**[962.64s → 967.64s]** Kind of like a context that we might use in a longer prompt.
+
+**[969.22s → 974.22s]** Not necessarily just to separate not like the few shot example,
+
+**[974.62s → 976.42s]** right, where we're showing the example output,
+
+**[976.42s → 980.06s]** it's not that, it's for providing additional contacts
+
+**[980.06s → 983.42s]** for our model to ground the response in.
+
+**[983.42s → 985.54s]** So once your prompt has been updated with the documents,
+
+**[985.54s → 988.06s]** then it's actually sent to the LLM.
+
+**[988.06s → 992.14s]** So all of this stuff before is not directly exposed
+
+**[992.14s → 995.69s]** to the LLM of your choice, whether that's ChattyTP,
+
+**[995.69s → 999.23s]** 3.5, yeah, 3.5.0, 4,
+
+**[1000.25s → 1001.57s]** menstrual, et cetera.
+
+**[1002.49s → 1008.56s]** Then your model has been to generate your response.
+
+**[1008.56s → 1014.32s]** very, very powerful stuff if you're dealing with huge documents.
+
+**[1014.32s → 1021.78s]** This is a great way to help begin to query your LLM because you can imagine, for example,
+
+**[1025.73s → 1028.93s]** let's say you're dealing with a corpus of policy documents like
+
+**[1030.61s → 1036.78s]** your engineering style guides. So if you've worked somewhere that has pretty complex engineering
+
+**[1036.78s → 1043.66s]** style guides somewhere like Google and your developer you are going to want to, you're
+
+**[1043.66s → 1048.58s]** not going to want to necessarily read through all of those documents to find what you need
+
+**[1048.58s → 1049.58s]** to know.
+
+**[1049.58s → 1051.74s]** So it's been pre-processed for you.
+
+**[1051.74s → 1056.88s]** You log onto the application and you say, I would like to know what Google's policy is
+
+**[1056.88s → 1060.20s]** on tab spacing in code.
+
+**[1060.20s → 1067.82s]** It's going to generate all of that context for you and a nice response that's grounded
+
+**[1067.82s → 1068.82s]** in some truth.
+
+**[1068.82s → 1070.66s]** It's not perfect.
+
+**[1070.66s → 1075.70s]** Rags is still subject to hallucination, but it mitigates or lessens the problem that
+
+**[1075.70s → 1079.30s]** you see with traditional LLN responses.
+
+**[1079.30s → 1085.62s]** For instance, we had an issue at work with one of our applications two weeks ago, where
+
+**[1085.62s → 1092.10s]** was generating a hallucinator response with an email that wasn't associated with our company at all.
+
+**[1092.90s → 1098.67s]** So we could fix that problem by using RAC because it would happen to be a policy
+
+**[1099.63s → 1106.24s]** question prompt that the user was using. Maybe when I just slow down for a second,
+
+**[1106.24s → 1111.02s]** make sure that we don't have any questions so far. I don't see any questions read.
+
+**[1111.02s → 1136.27s]** Okay, I'll keep you doing.
+
+**[1136.27s → 1139.55s]** So, you know, if you take a look at the very first step
+
+**[1139.55s → 1144.55s]** in the process of processing documents
+
+**[1144.55s → 1147.59s]** and your prompt is to try and create an embedding
+
+**[1147.59s → 1152.66s]** or a numerical representation of the texture query.
+
+**[1152.66s → 1155.56s]** So embedding has been around a while
+
+**[1155.56s → 1160.56s]** and actually pre-transformer and even pre-deep learning.
+
+**[1160.56s → 1166.32s]** and some, you know, that's not quite a perfect statement, but modern deep learning, let's say.
+
+**[1167.12s → 1173.12s]** And embeddings, you might be familiar with elastic search, right, and taking something and
+
+**[1173.12s → 1180.64s]** transforming it with TF IDF, term frequency inverse document frequency. That's a vector
+
+**[1180.64s → 1186.48s]** representation of text. It's not an embedding model, but if you're familiar with TF IDF,
+
+**[1186.48s → 1190.47s]** of, we were just token counts,
+
+**[1190.47s → 1195.09s]** those are precursors to modern embeddings.
+
+**[1195.09s → 1197.43s]** So you're gonna see use cases for these types
+
+**[1197.43s → 1199.71s]** of numeric representations of text
+
+**[1199.71s → 1202.27s]** well beyond LLMs and deep learning.
+
+**[1202.27s → 1204.27s]** So it's actually a really good thing for you
+
+**[1204.27s → 1207.23s]** as a developer to learn and be exposed to
+
+**[1207.23s → 1211.18s]** regardless of whether or not you're using it for a rack.
+
+**[1211.18s → 1213.54s]** So there are a bunch of different ways
+
+**[1213.54s → 1215.34s]** to create embedding models.
+
+**[1216.34s → 1218.70s]** The most common ones are gonna be tightly coupled
+
+**[1218.70s → 1220.22s]** with your LLM.
+
+**[1220.22s → 1223.62s]** In other words, you're gonna wanna use a embedding model
+
+**[1223.62s → 1228.62s]** that is compatible with the large language model you're using.
+
+**[1230.30s → 1233.58s]** And the intuition there is simply,
+
+**[1235.52s → 1237.40s]** your model's not gonna understand
+
+**[1237.40s → 1241.08s]** the numeric vector representation that you give it.
+
+**[1241.08s → 1243.76s]** If it's not the same thing it was trained on
+
+**[1243.76s → 1245.44s]** or it's not interoperable,
+
+**[1245.44s → 1253.63s]** Something as simple as the number of fields in the vector, right?
+
+**[1253.63s → 1261.63s]** Whether that's your model might have been trained on an embedding as an example, an embedding that had 32 elements in the vector.
+
+**[1261.63s → 1269.76s]** And you're like, oh, I want to try an embedding model that has 16 elements in the embedding vector.
+
+**[1269.76s → 1273.76s]** Right, that's not going to work at least not the way that you want it to.
+
+**[1273.76s → 1279.41s]** So take a look at some sample code here.
+
+**[1279.41s → 1283.05s]** Let's take a look at embeddings,
+
+**[1283.05s → 1287.53s]** so you can see how this workflow operates.
+
+**[1287.53s → 1290.69s]** Tons of different options for embeddings.
+
+**[1290.69s → 1293.79s]** We're going to use OpenAI as embeddings because we're using
+
+**[1293.79s → 1295.01s]** ChapsuTP.
+
+**[1295.01s → 1299.38s]** So we're going to instantiate an instance of an embedding model,
+
+**[1299.38s → 1301.90s]** grab our text 3 embedding large,
+
+**[1301.90s → 1306.66s]** and take a very simple query, Hello World.
+
+**[1306.66s → 1309.38s]** and take that text query and embed it.
+
+**[1309.38s → 1313.84s]** You don't show the printout here,
+
+**[1313.84s → 1315.88s]** but it's just going to be a list object
+
+**[1315.88s → 1321.12s]** or a couple of check of a couple numbers that are normalized.
+
+**[1321.12s → 1325.74s]** If I wanted to embed multiple documents at one time,
+
+**[1325.74s → 1331.24s]** I can embed a whole set of documents together,
+
+**[1331.24s → 1334.88s]** and then I can start to do my similarity scores.
+
+**[1334.88s → 1338.86s]** So for those of you that may not be familiar with fast,
+
+**[1338.86s → 1346.62s]** That's a type of nearest neighbor search. I think it's from Facebook where you can search
+
+**[1346.62s → 1351.74s]** a group of documents in your embedding. Tell me about Alice and it's going to return the closest
+
+**[1351.74s → 1359.62s]** document. So for those of you that aren't familiar with embeddings, I do want to show you
+
+**[1362.18s → 1369.82s]** what embeddings look like in a much simpler embedding model than what is shown on that slide.
+
+**[1369.82s → 1377.52s]** just clear this reaction real quick.
+
+**[1377.52s → 1383.61s]** So, not constantly, yeah, have a green check on my face.
+
+**[1383.61s → 1387.56s]** So this is an application that was built by Google,
+
+**[1387.56s → 1390.16s]** and it's part of the TensorFlow ecosystem,
+
+**[1390.16s → 1394.52s]** circa like 2016, and they built it around WordDevac,
+
+**[1394.52s → 1398.70s]** which is an embedding model trained on a large corpus.
+
+**[1398.70s → 1400.94s]** So for those of you that are familiar with Transformers,
+
+**[1400.94s → 1403.30s]** and then ultimately the rise of GTP
+
+**[1403.30s → 1405.80s]** and other models of that elk.
+
+**[1407.10s → 1409.66s]** That came started really in about 2016
+
+**[1409.66s → 1411.90s]** with the publication of all you need is attention.
+
+**[1411.90s → 1414.50s]** So embeddings, right?
+
+**[1414.50s → 1419.25s]** Very well mature ahead of modern transformers.
+
+**[1419.25s → 1422.21s]** So words of heck, what you're seeing here
+
+**[1422.21s → 1423.65s]** are a bunch of blue dots
+
+**[1423.65s → 1426.86s]** and those blue dots represent words.
+
+**[1426.86s → 1430.66s]** Now the embeddings are typically pretty long vectors
+
+**[1430.66s → 1434.98s]** like something anywhere between 32, 132 elements,
+
+**[1434.98s → 1436.94s]** don't want your vectors to be too huge
+
+**[1436.94s → 1439.18s]** because then it makes the complexity
+
+**[1439.18s → 1440.62s]** of your model increase.
+
+**[1440.62s → 1442.54s]** So there's a trade-off between vector length
+
+**[1442.54s → 1444.10s]** and model complexity.
+
+**[1446.43s → 1449.19s]** Here, we're taking that long vector
+
+**[1449.19s → 1451.31s]** and compressing it down using
+
+**[1451.31s → 1453.83s]** a dimensionality reduction technique.
+
+**[1453.83s → 1456.39s]** And so we're just visualizing the words
+
+**[1456.39s → 1460.43s]** and their related vectors in a three-dimensional space.
+
+**[1460.43s → 1462.91s]** I'm not going to dive too much into the particular
+
+**[1462.91s → 1464.87s]** dimensional reduction technique.
+
+**[1464.87s → 1466.67s]** There are three to choose from down here,
+
+**[1466.67s → 1468.99s]** if you want to mess with it a little bit.
+
+**[1470.30s → 1473.86s]** If the 3D thing's a little confusing,
+
+**[1473.86s → 1479.10s]** you can switch to 2D and see what's going on.
+
+**[1479.10s → 1482.94s]** So let's take a look at a couple different words.
+
+**[1482.94s → 1499.85s]** The classity example are concepts like queen.
+
+**[1499.85s → 1508.57s]** And then let's take another one, look at king.
+
+**[1508.57s → 1511.85s]** So you see in the embedding space, king and queen
+
+**[1511.85s → 1515.49s]** are semantically pretty close together, right?
+
+**[1515.49s → 1519.01s]** You're looking at the nearest points to king.
+
+**[1519.01s → 1522.65s]** It's gonna be the other titles like Bishop, Duke, Royal,
+
+**[1522.65s → 1527.33s]** Queen, and then are starting to see some other,
+
+**[1527.33s → 1530.05s]** like kinda interrelated terms,
+
+**[1530.05s → 1532.37s]** Sweden, Sultan, ruler,
+
+**[1538.88s → 1540.76s]** and you can take a look at a bunch of different terms
+
+**[1540.76s → 1542.84s]** and even do map with some of the terms.
+
+**[1542.84s → 1545.18s]** So if you wanted to really play with this stuff,
+
+**[1545.18s → 1546.74s]** you can do things like,
+
+**[1546.74s → 1549.52s]** Kim minus queen is what?
+
+**[1551.45s → 1558.26s]** And that vector math will help generate a related embedding.
+
+**[1558.26s → 1559.90s]** Any question so far in embedding?
+
+**[1559.90s → 1561.54s]** So hopefully that's a good introduction
+
+**[1561.54s → 1563.62s]** to what embeddings are.
+
+**[1563.62s → 1566.30s]** These are a similar representation of vectors
+
+**[1566.30s → 1575.14s]** that would vector embeddings would go into our rag or LLM.
+
+**[1575.14s → 1577.14s]** And there's one question I have.
+
+**[1577.14s → 1581.50s]** And it is like, I know it's just a numerical representation,
+
+**[1581.50s → 1583.47s]** semantic meaning.
+
+**[1583.47s → 1585.63s]** Like can we talk a bit about what kind of inputs
+
+**[1585.63s → 1589.71s]** go into actually making it a numerical representation?
+
+**[1589.71s → 1591.31s]** Like is it like word frequency?
+
+**[1591.31s → 1594.33s]** Is it co-location of words?
+
+**[1594.33s → 1596.25s]** It's like, yeah, I'm just curious,
+
+**[1596.25s → 1601.06s]** what are the different ways to actually figure that out?
+
+**[1601.06s → 1601.90s]** Yeah.
+
+**[1601.90s → 1604.10s]** So in the context of word to that,
+
+**[1604.10s → 1607.00s]** It's a little bit different for transformers.
+
+**[1607.92s → 1609.36s]** So I'll focus on WordDevac
+
+**[1609.36s → 1611.38s]** and then I'll point you in the direction
+
+**[1611.38s → 1615.28s]** of some of the other transformers stuff.
+
+**[1616.28s → 1619.74s]** WordDevac is using a context window.
+
+**[1619.74s → 1624.74s]** So either it's predicting the words that are closest to it,
+
+**[1625.60s → 1629.26s]** like looking out and so it'll take a,
+
+**[1630.40s → 1633.16s]** it's what we call a self supervised technique.
+
+**[1633.16s → 1637.92s]** So you're constructing the data set from an unlabeled data set.
+
+**[1637.92s → 1641.50s]** You'll take all of the words, and then you'll extract
+
+**[1641.50s → 1643.16s]** the words that are like to the left,
+
+**[1643.16s → 1645.64s]** to the immediate left and right of the center word.
+
+**[1645.64s → 1649.12s]** And that will become your unlabeled data set
+
+**[1649.12s → 1652.08s]** or your training data set, and then you're trying to predict
+
+**[1652.08s → 1657.17s]** whether or not you got the stuff to the left and right correct.
+
+**[1658.09s → 1662.73s]** And in that way, you're training your network to help predict
+
+**[1662.73s → 1665.25s]** what's gonna happen at the left or right.
+
+**[1665.25s → 1668.33s]** So then when you're running your model through,
+
+**[1669.33s → 1673.49s]** at the very kind of end of the neural network architecture,
+
+**[1673.49s → 1676.97s]** there's gonna be like a layer of logits
+
+**[1676.97s → 1680.56s]** where just raw, essentially raw weights
+
+**[1681.56s → 1684.43s]** and that becomes your embedding vector.
+
+**[1684.43s → 1686.23s]** And there are different ways to like chop off the end
+
+**[1686.23s → 1689.07s]** of the neural network to make the embedding work better.
+
+**[1690.19s → 1693.35s]** But that's how you arrive at the numerical representation
+
+**[1693.35s → 1694.79s]** at least in word to back.
+
+**[1694.79s → 1697.47s]** And there are a couple of different ways to train.
+
+**[1698.75s → 1701.19s]** I'm just trying to simplify to help you
+
+**[1701.19s → 1704.43s]** wrap your head around it.
+
+**[1704.43s → 1705.51s]** Yeah, that's helpful.
+
+**[1705.51s → 1707.51s]** I think I'd be in place to start.
+
+**[1707.51s → 1708.67s]** Thanks.
+
+**[1708.67s → 1710.98s]** Yeah.
+
+**[1712.18s → 1715.02s]** I would definitely, as you's definitely recommend you go,
+
+**[1715.02s → 1717.94s]** if you're really interested at a deeper level,
+
+**[1717.94s → 1721.54s]** go back and read the paper, all you need is attention.
+
+**[1721.54s → 1723.42s]** And they talk heavily about
+
+**[1723.42s → 1727.02s]** The self-supervised learning techniques applied
+
+**[1727.02s → 1730.42s]** with attention mechanisms to help predict
+
+**[1730.42s → 1732.30s]** longer context windows.
+
+**[1732.30s → 1734.22s]** So where WordDevette couldn't scale
+
+**[1734.22s → 1737.26s]** because it was predicting words close by,
+
+**[1737.26s → 1739.90s]** attention ultimately saw the problem
+
+**[1739.90s → 1743.22s]** of being able to look at longer contexts.
+
+**[1743.22s → 1766.49s]** And that's what has enabled modern transformers.
+
+**[1766.49s → 1768.69s]** So moving back into Rags,
+
+**[1768.69s → 1772.13s]** so we're talking about we need to embed a document
+
+**[1772.13s → 1774.37s]** and we need to embed the prompts,
+
+**[1774.37s → 1777.80s]** we also need some way to chunk the document.
+
+**[1777.80s → 1781.92s]** So really good rag requires curating documents
+
+**[1781.92s → 1786.51s]** so that they become part of the memory of AI.
+
+**[1787.47s → 1790.35s]** And I would, preparation is not something
+
+**[1790.35s → 1792.03s]** you should do have, Pass or so.
+
+**[1792.03s → 1796.19s]** For those of you that are thinking about rag projects,
+
+**[1796.19s → 1799.71s]** whether that's a code base that you want your developers
+
+**[1799.71s → 1806.37s]** a rag and answer questions about, or whether that's applications you're building for business
+
+**[1806.37s → 1814.33s]** operations or customers. It's really something you should experiment with chunking.
+
+**[1814.33s → 1825.52s]** Oh, I love that someone shared the 3 blue and brown video. I love 3 blue and brown.
+
+**[1825.52s → 1835.98s]** The guy is amazing. So our document splitting technique is a way for you to plan and experiment
+
+**[1835.98s → 1839.65s]** with different execution.
+
+**[1839.65s → 1844.60s]** So you could begin to try a couple of different techniques.
+
+**[1844.60s → 1848.44s]** There are the simplest, which is to be character splitting,
+
+**[1848.44s → 1850.32s]** which is simply taking the document,
+
+**[1850.32s → 1853.00s]** splitting it up by different windows of character
+
+**[1853.00s → 1856.84s]** and sliding across your document.
+
+**[1856.84s → 1859.92s]** So you'll end up with some overlap in your document
+
+**[1859.92s → 1862.98s]** as you go through.
+
+**[1862.98s → 1866.22s]** And I think it's very simple and so
+
+**[1866.22s → 1873.54s]** can be fast from a computation perspective, although it can miss a lot of context because
+
+**[1873.54s → 1880.24s]** it knows nothing about your text or it's just simple sliding character split.
+
+**[1880.24s → 1885.12s]** Recurses splitters aim for some kind of cleaner break in your text, so that way the things
+
+**[1885.12s → 1889.52s]** that help you split things make a little bit more sense.
+
+**[1889.52s → 1896.12s]** Again, not a quote unquote smart, it's not using the AI or machine learning to do the splitting.
+
+**[1896.12s → 1902.88s]** But the next level up would be to use semantic splitting.
+
+**[1902.88s → 1906.88s]** That is not something we're going to see in the application chunk biz today.
+
+**[1906.88s → 1913.88s]** But that's really, really good for documents with headers and significant context changes.
+
+**[1913.88s → 1921.88s]** I've got to say from having worked on many documents, splitting problems in my career.
+
+**[1921.88s → 1926.68s]** like OCR and PDFs, which may be not a great symbol here,
+
+**[1926.68s → 1931.52s]** but digital PDFs being able to figure out how to chunk
+
+**[1931.52s → 1934.84s]** that really well is a challenging problem.
+
+**[1934.84s → 1938.60s]** So being able to use a semantic splitting algorithm
+
+**[1938.60s → 1942.34s]** that's pre-trained, very, very, very useful,
+
+**[1942.34s → 1946.73s]** looking back some of the projects in my career at least.
+
+**[1946.73s → 1949.45s]** So if that's documents splitting and you're thinking,
+
+**[1949.45s → 1952.13s]** okay, well, how do I figure out how to tune
+
+**[1952.13s → 1953.81s]** for my application.
+
+**[1953.81s → 1958.61s]** So do I need to think about the tokens
+
+**[1958.61s → 1960.33s]** that we're splitting on, the method,
+
+**[1960.33s → 1962.21s]** how do I experiment?
+
+**[1962.21s → 1966.30s]** So for LLMs, there are a couple of different things
+
+**[1966.30s → 1968.86s]** that you wanna start to think about editing.
+
+**[1968.86s → 1972.18s]** So try and replace pronouns with proper nouns
+
+**[1972.18s → 1973.74s]** for a lot of clarity.
+
+**[1973.74s → 1979.25s]** So, Tim went to the store, he bought some milk.
+
+**[1979.25s → 1981.37s]** You might wanna replace things with like,
+
+**[1981.37s → 1983.81s]** to them into the store, to them, hot some milk.
+
+**[1986.09s → 1989.05s]** That's possible with modern context windows
+
+**[1989.05s → 1992.53s]** and semantic splitting to help you clean up your data.
+
+**[1992.53s → 1996.05s]** Because if you're ragging like, who bought milk later on,
+
+**[1997.09s → 1999.89s]** the motto might hallucinate and might not give you 10 as an answer.
+
+**[2006.01s → 2008.81s]** The other thing that you wanna do is try to remove idioms
+
+**[2008.81s → 2011.77s]** and admit really extraneous content,
+
+**[2012.97s → 2016.29s]** like marketing messages, boilerplate, copy,
+
+**[2016.97s → 2020.33s]** That's really not helpful for the context.
+
+**[2020.33s → 2023.39s]** So if you could imagine where I work,
+
+**[2023.39s → 2026.03s]** we have lots of information warning splash over all kinds
+
+**[2026.03s → 2029.99s]** of pages of documents, websites, et cetera.
+
+**[2029.99s → 2032.95s]** That's boilerplate that we want to remove
+
+**[2032.95s → 2034.63s]** from documents that we deal with.
+
+**[2036.99s → 2038.63s]** Definitely wouldn't need to get that
+
+**[2038.63s → 2043.54s]** in every response that's generated.
+
+**[2043.54s → 2059.19s]** All right, let's go take a look at chunk biz.
+
+**[2059.19s → 2061.15s]** Start with a very simple character splitter.
+
+**[2061.15s → 2071.38s]** For this particular exercise, you all are more than welcome to play with this yourself.
+
+**[2071.38s → 2076.88s]** To open up this app and kind of play with some of the parameters as I'm talking.
+
+**[2076.88s → 2080.36s]** I'm just going to kind of explain what's happening in some of the different parameters.
+
+**[2080.36s → 2084.16s]** And once we're done with this exercise, I'll ask you to come back to the slides and
+
+**[2084.16s → 2088.39s]** focus on the slides, but it's going to be moving to the next section.
+
+**[2088.39s → 2093.41s]** And Tom already dropped the link and slacks so you guys have it.
+
+**[2093.41s → 2094.41s]** All right.
+
+**[2094.41s → 2100.65s]** character splitter, right? Just simple. I'm going to split the text every 25 characters. So you
+
+**[2100.65s → 2113.47s]** notice these beautiful highlighted color blocks, you know, are perfectly the same size, right? 25
+
+**[2113.47s → 2121.48s]** characters every time. They don't overlap. Overlapped is a parameter we can control. So if I try to
+
+**[2121.48s → 2129.63s]** overlap by say, I don't know, three characters, then you're going to start to see I can catch a
+
+**[2129.63s → 2133.35s]** a little bit more reoccurring context.
+
+**[2133.35s → 2135.71s]** And that's to help you if you're doing character splitting,
+
+**[2135.71s → 2138.05s]** the reason you would want to overlap
+
+**[2138.05s → 2142.33s]** is to help you get chunks of text that have better context
+
+**[2142.33s → 2143.01s]** than that.
+
+**[2143.01s → 2146.24s]** Finally, it's not quite random context
+
+**[2146.24s → 2150.12s]** because it's sliding overlap, but basically don't
+
+**[2150.12s → 2154.42s]** want to miss anything.
+
+**[2154.42s → 2157.82s]** And then you can take a look at the number of chunks
+
+**[2157.82s → 2160.62s]** and the help you figure out,
+
+**[2162.06s → 2166.97s]** and compare that to your document with the length.
+
+**[2166.97s → 2168.77s]** I don't have any good context yet
+
+**[2168.77s → 2171.97s]** on what the best number of chunks is for document
+
+**[2171.97s → 2176.09s]** like what kind of ratio works well.
+
+**[2176.09s → 2179.89s]** I think that's really an active area of research
+
+**[2179.89s → 2184.13s]** in rag and increasing rag performance.
+
+**[2184.13s → 2185.93s]** So this is definitely something
+
+**[2185.93s → 2187.65s]** that you want to pay attention to,
+
+**[2187.65s → 2190.65s]** whether using character splitting or any of the other types of chunks splitting.
+
+**[2193.66s → 2195.86s]** All right, let's take a look at recursive character splitting.
+
+**[2205.11s → 2215.47s]** And let's take a look at, just maybe a larger chunk size.
+
+**[2227.65s → 2228.73s]** Excuse me, I'll have some tea.
+
+**[2232.99s → 2236.56s]** So recursive character splitting, slightly different.
+
+**[2236.56s → 2245.96s]** It's going to go back and process this in a slightly different way and chunk it up on.
+
+**[2245.96s → 2268.85s]** By pre-processing the text in a variety of different recursive manners, you'll notice the link is variable because it's trying to process the text in a couple different ways of being a little bit more aware.
+
+**[2268.85s → 2275.17s]** Now, one question you might have is what happens when I begin to process different types of documents.
+
+**[2275.17s → 2280.45s]** So, for instance, if I'm trying to process code, let's start with Python, because that's what the
+
+**[2280.45s → 2296.10s]** course is taught in. You can take a look at an example of prompts that we might have from chain.
+
+**[2296.10s → 2306.66s]** This is the text that we're processing. And then I can take a look at the embeddings.
+
+**[2306.66s → 2311.88s]** And you can play around with it a little bit.
+
+**[2311.88s → 2318.30s]** To me, this probably looks like a lot of good split here.
+
+**[2318.30s → 2322.30s]** Like I'm seeing a lot of import statements that are grouped together.
+
+**[2322.30s → 2327.30s]** And a pretty hefty chunk size promises group together.
+
+**[2327.30s → 2328.30s]** Pass it around.
+
+**[2328.30s → 2343.38s]** You can read a lot more about how these recursive text players work
+
+**[2343.38s → 2346.38s]** in the lane chain documentation.
+
+**[2346.38s → 2349.38s]** Because there are a lot of things that are going to be done.
+
+**[2349.38s → 2358.38s]** because there's a lot of idiosyncrasies about how they process what happens in markdown and what happens in Python and JavaScript.
+
+**[2358.38s → 2367.38s]** And I want to think that there are a couple other languages that Langshane helps you pre-process and split text in.
+
+**[2367.38s → 2379.30s]** So I would highly recommend you review that documentation of your projects and see what's happening.
+
+**[2379.30s → 2386.51s]** Okay, question so far on recursive text splitting or text splitting in general with chunk
+
+**[2386.51s → 2405.74s]** this. If you can see this, you can check out there's a nice straight link down here to
+
+**[2405.74s → 2442.66s]** the docs. Let me share this resource. Right, so let's go back to our rag back to the slides
+
+**[2442.66s → 2447.50s]** of you in playing with chunk viz or explain the documentation online chain, come back.
+
+**[2447.50s → 2450.02s]** So back to our RAAG overview.
+
+**[2450.02s → 2454.58s]** So so far we've talked about our document chunks.
+
+**[2454.58s → 2456.46s]** We've talked about our embeddings.
+
+**[2456.46s → 2457.96s]** So the next thing we need to talk about
+
+**[2457.96s → 2460.10s]** is our vector database.
+
+**[2460.10s → 2467.40s]** So let's take a look at vector databases.
+
+**[2467.40s → 2469.60s]** Pine code is actually one of many
+
+**[2469.60s → 2471.72s]** vector database solutions out there.
+
+**[2472.68s → 2476.44s]** It's just really well suited for high workflows.
+
+**[2476.44s → 2478.68s]** So you'll notice in the call,
+
+**[2478.68s → 2481.64s]** if you have a chance to go through the office hours example,
+
+**[2481.64s → 2484.00s]** yesterday or if you're following along with the link,
+
+**[2484.00s → 2486.04s]** use an example today.
+
+**[2486.04s → 2488.56s]** You'll notice it's really, really fast
+
+**[2488.56s → 2493.01s]** and it's going to allow you to upload documents
+
+**[2493.01s → 2494.89s]** and query them really quickly.
+
+**[2495.88s → 2498.28s]** Pinecones user guide,
+
+**[2498.28s → 2500.88s]** they've got a YouTube version that's really, really good.
+
+**[2500.88s → 2504.04s]** If you want to read through it a little bit more,
+
+**[2504.04s → 2507.56s]** some of them can fake is not too crazy.
+
+**[2507.56s → 2512.23s]** I actually think pinecones are really easy to use.
+
+**[2512.23s → 2515.27s]** You've already seen this, so we'll set up our embeddings.
+
+**[2515.27s → 2517.67s]** One of the things that makes Pinecon easy to use
+
+**[2517.67s → 2519.83s]** and one of the reasons I like it,
+
+**[2519.83s → 2522.71s]** is that I don't need to spend a lot of configuration
+
+**[2522.71s → 2525.95s]** if I'm using a pretty common embedding model.
+
+**[2525.95s → 2528.31s]** So if I'm gonna use the OpenAI,
+
+**[2528.31s → 2530.59s]** Xt embedding 3 model,
+
+**[2530.59s → 2532.19s]** that's gonna know how many elements
+
+**[2532.19s → 2535.43s]** are in the table of my index, essentially.
+
+**[2536.55s → 2539.43s]** For coming from that kind of SQL backgrounds,
+
+**[2539.43s → 2544.43s]** we can refer to a vector database index as a table
+
+**[2544.79s → 2548.64s]** as probably the closest analogy.
+
+**[2548.64s → 2550.68s]** And over here to the right,
+
+**[2550.68s → 2553.80s]** kind of the same thing that we talked about before, right?
+
+**[2553.80s → 2556.04s]** There's a two dimensional representation
+
+**[2556.04s → 2557.92s]** of an embedding space and we can see
+
+**[2557.92s → 2561.00s]** how close the documents are in that embedding space.
+
+**[2561.00s → 2564.34s]** So things appear in the upper right hand corner
+
+**[2564.34s → 2565.82s]** are all really similar.
+
+**[2565.82s → 2569.74s]** So the loan sum document is kind of unique, right?
+
+**[2569.74s → 2581.84s]** there's nothing else close to it.
+
+**[2581.84s → 2590.10s]** And if you are working on projects that require rag
+
+**[2590.44s → 2592.98s]** and can be disconnected from the internet,
+
+**[2592.98s → 2596.94s]** there are a couple other vector database solutions out there
+
+**[2596.94s → 2601.44s]** in the ether that can run locally for smaller sets of data.
+
+**[2602.38s → 2608.12s]** Like for example, if you've played with web UI,
+
+**[2609.80s → 2612.68s]** which is essentially the like local version
+
+**[2612.68s → 2615.72s]** self-hosted version of ChatGTP.
+
+**[2615.72s → 2618.40s]** It has a RAC solution baked into it, right?
+
+**[2618.40s → 2620.28s]** And so the vector database is actually
+
+**[2620.28s → 2621.28s]** on your local machine.
+
+**[2621.28s → 2623.40s]** It's just attracted away from you.
+
+**[2623.40s → 2627.16s]** So you don't need a SAS tool like PINCO
+
+**[2627.16s → 2629.48s]** to store your vectors.
+
+**[2629.48s → 2631.68s]** That's really only when you're dealing with absolutely
+
+**[2631.68s → 2634.56s]** massive vector databases.
+
+**[2634.56s → 2643.81s]** But we'd like to expose you to the best of breed.
+
+**[2643.81s → 2652.40s]** I want to pop into PINCO and just show you,
+
+**[2652.40s → 2654.48s]** this is the example we're going to be using in class
+
+**[2654.48s → 2667.13s]** later today, the Bragg Fusion example.
+
+**[2667.13s → 2670.53s]** And you can see the raw text that went into the database,
+
+**[2670.53s → 2672.93s]** climate change, economic impacts.
+
+**[2672.93s → 2677.09s]** And then we have the values that are stored in the index,
+
+**[2677.09s → 2682.45s]** the actual embedding values.
+
+**[2682.45s → 2684.61s]** Nothing too crazy, right?
+
+**[2684.61s → 2686.73s]** But if I wanted to query by a vector
+
+**[2686.73s → 2692.83s]** and get my top K, I can write a nice query.
+
+**[2692.83s → 2693.79s]** I don't know about you guys, but I don't
+
+**[2693.79s → 2698.14s]** speak vector embeddings negatively.
+
+**[2698.14s → 2702.70s]** So unfortunately, I don't think I can write query from scratch,
+
+**[2702.70s → 2705.22s]** but you can play with some of the numbers if you want.
+
+**[2705.22s → 2707.50s]** We can just maybe change this random vector
+
+**[2707.50s → 2711.20s]** and it'll change the query results.
+
+**[2711.20s → 2715.36s]** So point four, we'll change maybe one other number
+
+**[2715.36s → 2718.38s]** to help boost the change in results.
+
+**[2718.38s → 2722.62s]** Okay, so the top result before a hit query is one,
+
+**[2722.62s → 2729.01s]** index one is re-query.
+
+**[2729.01s → 2730.75s]** All right, still one.
+
+**[2730.75s → 2733.83s]** Let's get maybe a more significant change
+
+**[2733.83s → 2748.42s]** to the vector to help get a different search result.
+
+**[2748.42s → 2751.66s]** All right, so we've got our document chunking,
+
+**[2751.66s → 2753.86s]** we've got our vector database,
+
+**[2755.61s → 2760.91s]** we've got our embedding.
+
+**[2760.91s → 2763.27s]** So let's get into actual solution.
+
+**[2763.27s → 2769.51s]** Let's take a look at a rag implementation.
+
+**[2769.51s → 2774.51s]** So if you think about like a summary lookup,
+
+**[2774.51s → 2779.51s]** So Rags is not just about like document augmentation
+
+**[2779.91s → 2783.40s]** where you think about how to represent my document
+
+**[2783.40s → 2787.88s]** and best in a database like Elasticsearch
+
+**[2787.88s → 2789.60s]** for information retrieval.
+
+**[2789.60s → 2793.62s]** It's beyond that document augmentation search.
+
+**[2794.76s → 2798.77s]** This is really a way to think about how to
+
+**[2799.80s → 2804.89s]** grounds your LLIMS response in your own documents.
+
+**[2804.89s → 2814.28s]** So let's take a look and think about what you did last night as a similar example.
+
+**[2814.28s → 2821.28s]** So if I want to find information about Learn Buffett's investment in Coca-Cola in 2023,
+
+**[2821.28s → 2826.28s]** and I want to do all of the information about shareholder letters
+
+**[2826.28s → 2830.28s]** that are retrieving relevant data from other years.
+
+**[2830.28s → 2838.53s]** That's not necessarily an easy problem as you guys might have looked at yesterday.
+
+**[2838.53s → 2844.53s]** So this slide right is a kind of review of what you did in office hours.
+
+**[2844.53s → 2853.88s]** So if I want that tiny sliver of information, before RAD and LLMs, you're going to have to go and read the documents.
+
+**[2853.88s → 2858.44s]** a text search, Coca-Cola, and find Coca-Cola,
+
+**[2858.44s → 2861.08s]** or you could find information about Warren Buffett.
+
+**[2862.24s → 2865.52s]** But that search is gonna be challenging.
+
+**[2865.52s → 2867.80s]** It's not going to be as quick.
+
+**[2867.80s → 2870.56s]** It's not that it's impossible, it's about speed.
+
+**[2870.56s → 2875.56s]** So we want to enhance the speed of retrieving the information
+
+**[2876.32s → 2879.44s]** with LLM and create a very tidy summary.
+
+**[2879.44s → 2883.50s]** So we can recreate a vector database
+
+**[2883.50s → 2886.06s]** from all of those and shareholder letters,
+
+**[2887.54s → 2890.42s]** query that vector database
+
+**[2890.42s → 2895.22s]** and ask about Warren Buffett's Coca-Cola investments,
+
+**[2895.22s → 2897.40s]** specifically in 2023,
+
+**[2897.40s → 2900.10s]** it's going to search all of the documents
+
+**[2900.10s → 2902.90s]** and document chunks of those investment letters.
+
+**[2902.90s → 2912.52s]** And then it's gonna use that prompt to refine the search.
+
+**[2912.52s → 2914.64s]** All right, so you're probably all thinking,
+
+**[2914.64s → 2916.00s]** This sounds great, right?
+
+**[2916.00s → 2920.16s]** It's like doing work that needs to be grounded in truth.
+
+**[2920.16s → 2923.64s]** And I want to mitigate my LLM from hallucinating.
+
+**[2923.64s → 2926.28s]** This sounds good, right?
+
+**[2926.28s → 2928.84s]** Has anyone worked on a rag problem?
+
+**[2928.84s → 2931.84s]** So it sounds like most people have not worked on rag.
+
+**[2931.84s → 2947.89s]** Has anyone heard about the limitations of rag?
+
+**[2947.89s → 2951.97s]** Now, I have some questions about this thing.
+
+**[2951.97s → 2965.21s]** So after we have reneclery and identified and using the first vector database to identify
+
+**[2965.21s → 2976.40s]** the relevant documents, how are we then using that information with the second database
+
+**[2976.40s → 2983.53s]** lookup or subsequent prompt to filter out all the other stuff that doesn't matter?
+
+**[2983.53s → 2985.13s]** Hmm, I love that question.
+
+**[2987.52s → 2996.19s]** It is because the selected documents has a fixed number of results.
+
+**[2996.19s → 3000.19s]** So you actually only pick the top K results.
+
+**[3000.19s → 3003.19s]** That might be five documents, might be 10 or 15.
+
+**[3003.19s → 3009.19s]** I feel like 10 is a really common parameter I've seen in a lot of rag solutions.
+
+**[3009.19s → 3015.19s]** I've also seen people go down to five depending on how their documents are trumps.
+
+**[3015.19s → 3017.67s]** But I think that answers your question.
+
+**[3017.67s → 3018.79s]** Yeah, it's going to cool.
+
+**[3018.79s → 3020.23s]** Let's go back to the other slides.
+
+**[3020.23s → 3029.57s]** So in this example, you're going through two separate database
+
+**[3029.57s → 3030.93s]** queries.
+
+**[3030.93s → 3035.40s]** First, you're looking at document summaries
+
+**[3035.40s → 3039.56s]** to identify the documents that are the most the top
+
+**[3039.56s → 3042.49s]** K that are most similar.
+
+**[3042.49s → 3062.62s]** Then what you're going to do is then you need to access the source of truth content of that document through another query.
+
+**[3062.62s → 3066.98s]** And you may not just be one subsequent documents
+
+**[3066.98s → 3067.90s]** that is the sort of truth.
+
+**[3067.90s → 3071.42s]** And maybe the top 10 that are the most relevant, right?
+
+**[3071.42s → 3075.98s]** Like, what I don't understand is that seconds jump to,
+
+**[3075.98s → 3077.66s]** okay, these are the documents
+
+**[3077.66s → 3082.23s]** from the first vector database prompt or query.
+
+**[3082.23s → 3085.35s]** Then like, how am I actually then saying,
+
+**[3085.35s → 3091.36s]** hey, now you need the content from document ID, 1, 2, 3?
+
+**[3091.36s → 3092.56s]** Oh, I got it, got it.
+
+**[3092.56s → 3096.60s]** Like since I'm creating that second index that summaries,
+
+**[3096.60s → 3100.44s]** how am I then knowing the link
+
+**[3100.44s → 3103.32s]** back to the original documents to write that out?
+
+**[3103.32s → 3107.32s]** But yeah, I think in this particular use case,
+
+**[3107.32s → 3108.68s]** there's not an explicit link.
+
+**[3108.68s → 3110.72s]** There's an assumption that the information you need
+
+**[3110.72s → 3111.92s]** is in the summary.
+
+**[3111.92s → 3115.52s]** So you're actually, when you're doing the rag summary lookup,
+
+**[3115.52s → 3117.24s]** you're actually querying the summaries
+
+**[3117.24s → 3119.56s]** and not the original documents themselves.
+
+**[3119.56s → 3133.78s]** Although it would make sense to help you include a title of the document in the summary that's stored in the second index.
+
+**[3133.78s → 3143.88s]** But I think Chris also there are solutions where there are rags with citation.
+
+**[3143.88s → 3155.88s]** So, be able to like actually cite the documents that's generated is something that's emerging in Rags, which is not necessarily related to this particular example.
+
+**[3155.88s → 3163.68s]** I haven't seen a really great implementation of that solution myself yet.
+
+**[3163.68s → 3171.36s]** I mean, it seems like in order to support that, we would need to have a text splitter that
+
+**[3171.36s → 3175.76s]** prepended every chunk with some metadata.
+
+**[3175.76s → 3183.92s]** And or there's already some sort of metadata storage in the vector database and or, you
+
+**[3183.92s → 3189.22s]** know, tying the embedding to the content or somewhere in the middle.
+
+**[3189.22s → 3195.70s]** that gives us some sort of structured data for this type of purpose.
+
+**[3195.70s → 3200.26s]** Like I also brought up this problem of authorization.
+
+**[3203.04s → 3210.80s]** And I would want to know, okay, assuming I have authorization to see a document,
+
+**[3212.08s → 3217.68s]** I want to know where that document is, what the title of it was, who the author was,
+
+**[3217.68s → 3221.00s]** was all the structured data about it.
+
+**[3221.00s → 3223.84s]** But I haven't seen that.
+
+**[3223.84s → 3226.92s]** Like does that exist or not?
+
+**[3226.92s → 3231.52s]** I think if it doesn't have a row level security
+
+**[3231.52s → 3232.44s]** like you're talking about,
+
+**[3232.44s → 3234.56s]** I think that a lot of the major database companies
+
+**[3234.56s → 3235.52s]** aren't getting there.
+
+**[3236.52s → 3240.52s]** Like I host-cress, I think supports and vectors.
+
+**[3240.52s → 3242.84s]** So that would allow you to blend vectors
+
+**[3242.84s → 3245.52s]** and traditional structured data,
+
+**[3245.52s → 3248.48s]** which I think would definitely help solve that problem
+
+**[3248.48s → 3251.52s]** at least not to not fully enlarge part.
+
+**[3253.53s → 3255.61s]** And then write you just query over the column
+
+**[3255.61s → 3257.57s]** that is your vectors.
+
+**[3257.57s → 3258.41s]** Right.
+
+**[3258.41s → 3262.82s]** And all of that, yes, like we could use Postgres,
+
+**[3262.82s → 3266.27s]** but then I have to hand write all of the logic
+
+**[3266.27s → 3267.35s]** on top of it.
+
+**[3267.35s → 3273.88s]** Is there no company or project that has solved this yet
+
+**[3274.84s → 3278.09s]** that I can just download?
+
+**[3278.09s → 3279.53s]** Like I don't want to do all this work.
+
+**[3279.53s → 3282.77s]** I want someone else to do it for me.
+
+**[3282.77s → 3285.17s]** Not that I'm aware of.
+
+**[3285.17s → 3289.32s]** I'm sure people have attempted.
+
+**[3289.32s → 3294.42s]** And I have not seen any presentations
+
+**[3294.42s → 3299.46s]** or work about that kind of data security.
+
+**[3299.46s → 3302.22s]** I have seen people blend structured data
+
+**[3302.22s → 3306.66s]** and un-the unstructured embedding and bragg before.
+
+**[3306.66s → 3308.26s]** Let me ask you first.
+
+**[3308.26s → 3309.02s]** Yeah.
+
+**[3309.02s → 3310.86s]** You said you worked at Lockheed, right?
+
+**[3310.86s → 3311.70s]** Yeah.
+
+**[3311.70s → 3312.70s]** OK.
+
+**[3312.70s → 3315.06s]** I mean, for a defense contractor,
+
+**[3315.06s → 3317.90s]** you have many people with clearance levels
+
+**[3317.90s → 3320.22s]** that I do not have, right?
+
+**[3320.22s → 3320.82s]** Yeah.
+
+**[3320.82s → 3324.38s]** Sure that there are documents that are sort of somewhere
+
+**[3324.38s → 3327.46s]** that I definitely would never be able to see.
+
+**[3327.46s → 3331.82s]** Is that just not something that you have built?
+
+**[3331.82s → 3335.52s]** Like are those types of document access not
+
+**[3335.52s → 3338.72s]** solves it Lockheed yet in any of these LLM
+
+**[3338.72s → 3341.58s]** Bragg-based solutions?
+
+**[3341.58s → 3346.34s]** Yeah, I can't answer your question directly, unfortunately,
+
+**[3346.34s → 3348.54s]** because that would divulge quite a bit
+
+**[3348.54s → 3350.46s]** of proprietary information.
+
+**[3350.46s → 3353.54s]** But I'll go back and generalize
+
+**[3355.96s → 3357.56s]** and try and answer your question.
+
+**[3360.82s → 3365.66s]** I think in a lot of use cases where that kind of problem
+
+**[3365.66s → 3368.78s]** is occurring, people are creating rags
+
+**[3368.78s → 3371.50s]** that are on different datasets entirely.
+
+**[3371.50s → 3374.26s]** So not kind of use case where we might need to
+
+**[3374.26s → 3377.58s]** bifurcate information for security reasons.
+
+**[3377.58s → 3379.90s]** You're gonna see a rag on one set of documents
+
+**[3379.90s → 3382.44s]** and a rag on a second set of documents.
+
+**[3384.49s → 3388.49s]** And I think the other thing that I'm seeing happen
+
+**[3388.49s → 3391.73s]** in the developer community is creating
+
+**[3391.73s → 3393.61s]** hyper specialized rags.
+
+**[3393.61s → 3396.33s]** So that way you're creating rags on like
+
+**[3396.33s → 3400.05s]** corporate policy documents on finance documents.
+
+**[3400.05s → 3405.05s]** So it's not like one rag to rule them all situation either.
+
+**[3406.25s → 3408.89s]** And then of course, so the company are size,
+
+**[3408.89s → 3411.37s]** you know, do you think about our core buy?
+
+**[3411.37s → 3414.92s]** They're like pretty small comparatively
+
+**[3416.16s → 3419.36s]** to like the kind of the open internet.
+
+**[3419.36s → 3422.24s]** So the scale of things that we're dealing with
+
+**[3422.24s → 3423.32s]** is also different.
+
+**[3423.32s → 3438.40s]** But Chris, I'm happy to shout more about that in Q&A too.
+
+**[3438.40s → 3441.92s]** Okay.
+
+**[3441.92s → 3462.12s]** So another way to help us enhance the performance of Bragg is by generating multiple user queries and then re-ranking the results that are coming off.
+
+**[3462.12s → 3469.56s]** So re-ranking the results occurs with reciprocal rank function.
+
+**[3469.56s → 3472.36s]** That's an information retrieval algorithm.
+
+**[3472.36s → 3477.64s]** You can do do do do do read more about our
+
+**[3477.64s → 3478.68s]** reciprocal rank.
+
+**[3481.20s → 3485.16s]** I actually slightly prefer the last search explanation
+
+**[3485.16s → 3487.96s]** because it also links to the original paper
+
+**[3487.96s → 3501.86s]** on reciprocal rank, but it's gonna take the original user
+
+**[3502.38s → 3504.94s]** query and then generate similar queries.
+
+**[3504.94s → 3507.74s]** And then all of those similar queries are gonna go off
+
+**[3507.74s → 3512.74s]** and retrieve documents from your embedding index.
+
+**[3513.30s → 3514.22s]** And then all of that,
+
+**[3514.22s → 3516.02s]** retrieved information is gonna go into your
+
+**[3516.02s → 3517.82s]** suitable rank function.
+
+**[3517.82s → 3519.26s]** It's gonna re-rank the results
+
+**[3519.26s → 3522.06s]** and then pick the top K to actually use
+
+**[3522.06s → 3523.70s]** in the augmented prompt.
+
+**[3525.34s → 3530.34s]** So it's gonna be leveraging LLMs to rewrite the query,
+
+**[3530.34s → 3534.01s]** then try and use that additional context.
+
+**[3534.01s → 3536.01s]** Like let's say the prompt was something like,
+
+**[3536.01s → 3537.65s]** how can I save money?
+
+**[3537.65s → 3539.73s]** Well, from an inventory perspective,
+
+**[3539.73s → 3543.25s]** you might be, how can I find alternatives to drug costs?
+
+**[3544.21s → 3547.45s]** How can I better utilize existing contracts
+
+**[3547.45s → 3549.89s]** where the items are experiencing
+
+**[3549.89s → 3551.81s]** high increases due to inflation?
+
+**[3553.37s → 3557.82s]** These are the types of augmentations
+
+**[3557.82s → 3559.46s]** that might occur in the original prompt,
+
+**[3559.46s → 3561.91s]** how do I save money?
+
+**[3561.91s → 3563.99s]** Now, each query could be the,
+
+**[3566.28s → 3567.96s]** is then sent to the retriever,
+
+**[3567.96s → 3570.54s]** potentially including the original one,
+
+**[3570.54s → 3572.52s]** depending on how the system is designed
+
+**[3572.52s → 3576.51s]** to then generate your output.
+
+**[3576.51s → 3580.19s]** So we're gonna take a look at some code today
+
+**[3580.19s → 3581.99s]** and I'm gonna walk through the process.
+
+**[3581.99s → 3586.54s]** But before I show you the code and we get in the weeds,
+
+**[3586.54s → 3589.22s]** there are four steps for us to implement a very,
+
+**[3589.22s → 3593.18s]** very, very simple rag fusion example.
+
+**[3593.18s → 3594.90s]** We're gonna load the data.
+
+**[3595.90s → 3598.90s]** We're gonna set up our pine cone API key
+
+**[3598.90s → 3602.02s]** and then we're going to load up our library
+
+**[3602.02s → 3603.66s]** and our fake documents.
+
+**[3604.92s → 3607.34s]** Fake documents should be isolated to one topic.
+
+**[3607.34s → 3610.98s]** So if you're trying to mess with this example later,
+
+**[3610.98s → 3614.58s]** definitely don't add other documents
+
+**[3614.58s → 3616.46s]** that are not in the same sphere.
+
+**[3617.78s → 3619.82s]** Then we're gonna create our vector store,
+
+**[3619.82s → 3623.58s]** load up our data to a pre-existing pi-n-con index
+
+**[3623.58s → 3629.38s]** and then we're gonna convert our, sorry, skip,
+
+**[3630.02s → 3636.37s]** Let's get my own step there. Create our vector store. Third step is to define a query generator.
+
+**[3636.37s → 3640.29s]** So how we're actually going to generate the supplemental prompts.
+
+**[3641.27s → 3644.95s]** And then we're going to use a template for that query generation from Linchain Hub,
+
+**[3645.91s → 3650.71s]** which I don't think we've exposed you to before, but Linchain Hub has some great examples of
+
+**[3650.71s → 3660.12s]** different prompts for you to use. Then we're going to define a query chain. And we're going to
+
+**[3660.12s → 3664.92s]** stitch all of those things together to do those multiple queries up once.
+
+**[3667.81s → 3673.01s]** Then finally we'll get into the or reciprocal rank function to re-rank the results.
+
+**[3685.12s → 3690.05s]** All right, let's get into some code. I'm not a robot.
+
+**[3694.13s → 3697.81s]** So that beautiful white slide screen was eliminating my face.
+
+**[3703.68s → 3704.16s]** All right.
+
+**[3707.62s → 3711.94s]** I hopefully the save came through, but just one very tiny thing to note if you're re-running
+
+**[3711.94s → 3717.70s]** this code yourself later. I added a variable in here that's called index name and
+
+**[3717.70s → 3724.34s]** Rapper to slip below. So you may not have that variable, I'm not sure if we figured out
+
+**[3724.34s → 3731.06s]** the best place to say this file. But you'll see where the change name of the index is in the code.
+
+**[3731.06s → 3737.33s]** It's really obvious. So make sure you have your pine cone API key and your open API key in there.
+
+**[3737.33s → 3744.05s]** We're going to be using a chain of an AI,
+
+**[3744.05s → 3758.06s]** pine cone, core, and chain itself.
+
+**[3758.06s → 3763.52s]** All of our documents are going to be about climate change.
+
+**[3763.52s → 3765.92s]** Climate change, economic impact,
+
+**[3765.92s → 3770.90s]** technological solutions to address climate change, et cetera, et cetera.
+
+**[3770.90s → 3790.55s]** Now, let's go ahead and create our pine cone vector store.
+
+**[3790.55s → 3795.17s]** I mentioned that one of the reasons I like pine cone is because it's easy to use.
+
+**[3795.17s → 3799.33s]** So if we're going back to that very first slide with the rag overview pipeline,
+
+**[3800.53s → 3804.61s]** right, I don't need to do anything special to the embedding. So I don't need to make like a
+
+**[3804.61s → 3811.41s]** special call to do the embedding step. That SDK is abstracting that away for me, and I can just
+
+**[3811.41s → 3817.73s]** pass it the list of raw document text. And then my embedding model I want to use and index some
+
+**[3817.73s → 3838.91s]** running data to. So I already showed this to you all, but just to illustrate, these are
+
+**[3838.91s → 3849.98s]** are the documents now stored in our vector database,
+
+**[3849.98s → 3862.93s]** loading, loading, loading.
+
+**[3862.93s → 3872.46s]** My climate change model and the values of the vector.
+
+**[3872.46s → 3873.74s]** All right, now the fun stuff.
+
+**[3873.74s → 3881.34s]** Let's actually do the query generation stuff.
+
+**[3881.34s → 3884.78s]** So Langshin Hub is a library that has kind of like
+
+**[3884.78s → 3889.78s]** a quick request access to the different prompt templates.
+
+**[3889.78s → 3909.56s]** And let's go ahead and load the prompt from Langshin Hub.
+
+**[3909.56s → 3912.12s]** So this is the Rag Fusion query generation.
+
+**[3912.12s → 3915.60s]** This is the template that we're gonna pull.
+
+**[3915.60s → 3917.80s]** We've copied and pasted the prompt for you here,
+
+**[3917.80s → 3920.92s]** so you can actually see what's in this text.
+
+**[3920.92s → 3922.96s]** If you go into the hub and pull that,
+
+**[3922.96s → 3924.52s]** it's gonna be the same thing.
+
+**[3927.14s → 3929.30s]** And you can see, right, system,
+
+**[3929.30s → 3930.22s]** your helpful system,
+
+**[3930.22s → 3931.82s]** that generates multiple search queries
+
+**[3931.82s → 3933.78s]** based on a single input query,
+
+**[3934.80s → 3936.76s]** and then we're going to generate multiple searches
+
+**[3936.76s → 3938.64s]** based on the original query,
+
+**[3938.64s → 3947.83s]** and then provide an unstructured output.
+
+**[3947.83s → 3951.49s]** So here's our template prompts,
+
+**[3951.49s → 3954.25s]** the model that we're using, the output,
+
+**[3954.25s → 3957.33s]** and then we're gonna parse those queries altogether.
+
+**[3964.56s → 3967.52s]** And so far everything we've done
+
+**[3967.52s → 3971.32s]** has not really hit any services except
+
+**[3971.32s → 3973.48s]** uploading the documents to Pinecon
+
+**[3973.48s → 3977.90s]** because we haven't defined our full chain of events yet.
+
+**[3977.90s → 3982.58s]** So our chain, we're going to take our query,
+
+**[3982.58s → 3984.46s]** generate a bunch of new queries,
+
+**[3984.46s → 3986.42s]** look up those queries in the retriever,
+
+**[3986.42s → 3988.18s]** and then join all the results together
+
+**[3988.18s → 3990.01s]** using reciprocal rank.
+
+**[3990.01s → 4000.71s]** So our original query is what is the impact of the climate change?
+
+**[4000.71s → 4004.15s]** Then I'm gonna create my retriever that's gonna go to pine cone
+
+**[4004.15s → 4007.59s]** and using my embedding model,
+
+**[4007.59s → 4015.53s]** it's going to retrieve information from my vector store.
+
+**[4015.53s → 4019.08s]** So here's my reciprocal rank function.
+
+**[4019.08s → 4023.68s]** So to take results, looking for a K of 60,
+
+**[4023.68s → 4027.66s]** because I'm getting results from multiple input queries.
+
+**[4027.66s → 4035.26s]** And I'm going to enumerate over those results
+
+**[4035.26s → 4036.70s]** and fuse this core together.
+
+**[4036.70s → 4039.86s]** I'm not going to go too much into the reciprocal rank function,
+
+**[4039.86s → 4042.06s]** but the way it works because there's
+
+**[4042.06s → 4044.86s]** good documentation about that.
+
+**[4044.86s → 4053.37s]** But just to point out how this is working.
+
+**[4053.37s → 4057.05s]** So now my chain is generate the queries,
+
+**[4057.05s → 4058.37s]** map it onto a treaver,
+
+**[4058.37s → 4069.42s]** and then pass it through the reciprocal rank function.
+
+**[4069.42s → 4078.92s]** And then finally, I'm going to invoke that chain together.
+
+**[4078.92s → 4083.92s]** And now I have my client retrieve documents
+
+**[4084.88s → 4086.20s]** with client chain fusion.
+
+**[4088.71s → 4089.75s]** All right, you know, I am,
+
+**[4089.75s → 4091.31s]** I shouldn't really not feel too well.
+
+**[4091.31s → 4094.07s]** I'm like bringing on a cold sweat.
+
+**[4094.07s → 4095.51s]** I'm not sure what's going on.
+
+**[4095.51s → 4100.61s]** So I'm gonna close out here and ask Tom to do takeover for me.
+
+**[4102.63s → 4106.53s]** So thanks for all of our catch a later.
+
+**[4106.53s → 4107.93s]** I'm sorry for the brough cutoff,
+
+**[4107.93s → 4111.10s]** but I'm not feeling it.
+
+**[4111.10s → 4113.65s]** All right, I'll catch you all soon.
+
+**[4113.65s → 4118.31s]** Better.
+
+**[4118.31s → 4122.94s]** All right guys, let's have a look.
+
+**[4122.94s → 4126.24s]** So where do we finish off when we was doing that?
+
+**[4126.24s → 4133.66s]** Let's see if I can grab the future stuff.
+
+**[4133.66s → 4142.67s]** I'm not familiar with the piping syntax yet.
+
+**[4142.67s → 4151.68s]** Like, can we look at whenever you get it pulled up?
+
+**[4151.68s → 4156.33s]** The piping syntax for a bunch of Ours basically.
+
+**[4156.33s → 4166.70s]** So any of those are saying either if the prompt doesn't exist, then it's kind of a weird,
+
+**[4166.70s → 4172.06s]** we're auring them together, sort of think.
+
+**[4172.06s → 4174.90s]** So it's basically just a way of worrying.
+
+**[4174.90s → 4179.81s]** So the first one that returns true will halt the chain?
+
+**[4179.81s → 4180.73s]** Yeah.
+
+**[4180.73s → 4183.13s]** So it kind of goes, OK, this or this or that,
+
+**[4183.13s → 4186.45s]** or that it's not exclusive or so it's combining
+
+**[4186.45s → 4204.06s]** all the bits together in a way logically.
+
+**[4204.06s → 4204.70s]** Let's look.
+
+**[4204.70s → 4207.58s]** So basically it just uses true or false.
+
+**[4207.58s → 4210.02s]** It proves either a logical or operation.
+
+**[4210.02s → 4217.93s]** But if you use it on something, Calse,
+
+**[4217.93s → 4225.42s]** you can keep combining it over.
+
+**[4225.42s → 4228.34s]** So it's almost like it does it all,
+
+**[4228.34s → 4233.40s]** but then it can create unions of things by using all,
+
+**[4233.40s → 4234.60s]** if you don't mind.
+
+**[4234.60s → 4237.68s]** It's almost like, I don't know if you've ever done
+
+**[4237.68s → 4241.62s]** Bitwise operations where you're adding things together
+
+**[4241.62s → 4243.78s]** and using them like a bit mask.
+
+**[4243.78s → 4244.90s]** So it's kind of like that,
+
+**[4244.90s → 4249.48s]** but it kind of makes unions in Python.
+
+**[4249.48s → 4251.88s]** So you can actually make a union in the same way
+
+**[4251.88s → 4258.82s]** theoretically by using sets and that way basically it's kind of just sticking
+
+**[4258.82s → 4263.66s]** together in a set almost and then that set becomes the union and if any of the
+
+**[4263.66s → 4271.12s]** memory overlaps they're literally gonna kind of go okay well that's if I want
+
+**[4271.12s → 4276.87s]** to reference it by the side if they're all the same size of memory you can
+
+**[4276.87s → 4283.96s]** reference them all in different ways so maybe you got ten different types that
+
+**[4283.96s → 4291.92s]** you want to reference and story memory, but really those types are still in the same piece of memory.
+
+**[4294.19s → 4299.31s]** So when you're oring things in that way, you're basically combining them all in the same piece of
+
+**[4299.31s → 4306.28s]** memory like a big union. Does that make sense? So there's more needed to find the concept of that.
+
+**[4324.97s → 4331.93s]** So I can retake numbers, we can order those together and get what sort of like things we end up with.
+
+**[4331.93s → 4335.29s]** Sorry, I was muted. I want to walk through this. This is what I was talking about. This is the
+
+**[4335.29s → 4338.57s]** the piping syntax that I was mentioning, I don't understand.
+
+**[4338.57s → 4340.61s]** That's from one to boss.
+
+**[4340.61s → 4345.01s]** The piping syntax being just like, it's, it's a little bit.
+
+**[4345.01s → 4349.07s]** That doesn't make sense to me because if we're saying,
+
+**[4349.07s → 4354.79s]** hey, generate query is prompt or instantiate an LM or parser
+
+**[4354.79s → 4358.07s]** or this lambda, then like we're not generating query.
+
+**[4358.07s → 4359.47s]** So we're not doing the other type.
+
+**[4359.47s → 4361.19s]** There's two ways of doing a watch.
+
+**[4361.19s → 4365.03s]** You can do a double pipe type or which does that check
+
+**[4365.03s → 4366.83s]** that thing what you're talking about.
+
+**[4366.83s → 4368.99s]** The other one is kind of writing stuff together
+
+**[4368.99s → 4372.96s]** like in memory making a union.
+
+**[4372.96s → 4375.85s]** So like if you took a binary number
+
+**[4375.85s → 4379.75s]** and another binary number and you done it or on them,
+
+**[4379.75s → 4381.61s]** it would make a new binary number.
+
+**[4381.61s → 4387.75s]** And that's basically what we're kind of doing as a union.
+
+**[4387.75s → 4389.65s]** And then we're doing them on each other next one,
+
+**[4389.65s → 4391.84s]** next one, next one.
+
+**[4391.84s → 4393.56s]** And basically combine them.
+
+**[4393.56s → 4397.24s]** So we can access them as that thing, that thing,
+
+**[4397.24s → 4398.08s]** and that thing.
+
+**[4398.08s → 4399.48s]** So it's just taking all those bits of data
+
+**[4399.48s → 4404.28s]** turn into one thing or most. Does that make sense?
+
+**[4404.68s → 4410.60s]** Sure. So we have a prompt, which is an invocation. It's the output of this
+
+**[4410.60s → 4417.32s]** invocation here. And then we're passing that, and then we're
+
+**[4417.32s → 4421.96s]** instantiating this. And so we got the output of this. We've got the
+
+**[4421.96s → 4426.08s]** output of this, the output of all this. And then we're just, yeah,
+
+**[4426.08s → 4435.64s]** Yeah, and if any of those overlap where it doesn't make sense, it will kind of just regenerate
+
+**[4435.64s → 4440.44s]** something that does make sense if you don't mean to it in a binary format.
+
+**[4440.44s → 4445.37s]** But yeah, they're literally just combining the things into it like a union set.
+
+**[4445.37s → 4450.65s]** So it's almost the same making a set of them kind of, but using Python under the hood
+
+**[4450.65s → 4455.54s]** to kind of do a few little tricks.
+
+**[4455.54s → 4458.42s]** Some programmers do tend to like to do things like this a lot.
+
+**[4458.42s → 4462.20s]** You know what I mean?
+
+**[4462.20s → 4468.24s]** And it can kind of, of course, if you do them in the wrong order as well, I've noticed
+
+**[4468.24s → 4471.66s]** it kind of can really break things.
+
+**[4471.66s → 4474.22s]** So you're going to be a bit more in the order as well.
+
+**[4474.22s → 4478.49s]** I'm doing these things.
+
+**[4478.49s → 4482.61s]** So if we double piped, that'd be a whole different thing.
+
+**[4482.61s → 4485.61s]** That'd be like true or false type thing.
+
+**[4485.61s → 4490.54s]** So that'd be your kind of Boolean sort of way of doing it.
+
+**[4490.54s → 4494.53s]** This is more like bitwise operations,
+
+**[4494.53s → 4496.97s]** that's kind of taking the data and splicing it together,
+
+**[4496.97s → 4498.84s]** if you like.
+
+**[4498.84s → 4501.52s]** Yeah, I don't follow how the output of one
+
+**[4501.52s → 4503.80s]** becomes input to another one here.
+
+**[4503.80s → 4506.13s]** I don't actually see,
+
+**[4506.13s → 4507.95s]** like is that just an inherent thing
+
+**[4507.95s → 4510.96s]** when we're making a set?
+
+**[4510.96s → 4513.78s]** Like I don't understand how the invocation of,
+
+**[4516.02s → 4517.10s]** I guess like in this case,
+
+**[4517.10s → 4521.21s]** are we passing the output of prompt
+
+**[4521.21s → 4526.21s]** to the invocation of this LLM and then the output of that
+
+**[4526.21s → 4529.96s]** gets passed to this output parser to be parsed
+
+**[4529.96s → 4532.72s]** and then it's passed to this lambda to split.
+
+**[4532.72s → 4537.46s]** Like I don't understand how that's happening.
+
+**[4537.46s → 4538.30s]** Right.
+
+**[4538.30s → 4540.34s]** Or are you just saying that that is an inherent property
+
+**[4540.34s → 4545.92s]** of piping and that's it?
+
+**[4545.92s → 4546.92s]** Well, there's something else.
+
+**[4546.92s → 4547.44s]** Well, exactly.
+
+**[4547.44s → 4548.36s]** I ping though.
+
+**[4548.36s → 4549.28s]** That's the thing.
+
+**[4549.28s → 4552.08s]** We're oring things, if you know what I mean.
+
+**[4552.08s → 4557.76s]** from saying we've just created a new tuple and we've ordered a bunch of data together
+
+**[4557.76s → 4565.38s]** basically but then we're doing the lambda split with all those bits of data. So let's see
+
+**[4565.38s → 4608.57s]** if I can find the docs. Oh okay sorry this specific use of it happens to be a feature of
+
+**[4608.57s → 4612.30s]** the actual, what did you call it?
+
+**[4612.30s → 4614.77s]** I forgot what the library was now.
+
+**[4614.77s → 4617.44s]** A feature of the actual library that we're using
+
+**[4617.44s → 4618.28s]** turns out.
+
+**[4618.28s → 4619.52s]** So it's completely different to the Python.
+
+**[4619.52s → 4621.64s]** It's nothing to do with Python now.
+
+**[4621.64s → 4623.52s]** So it's literally to do the,
+
+**[4623.52s → 4626.64s]** what this is to literally chain.
+
+**[4626.64s → 4630.68s]** This is a syntax for chaining things together.
+
+**[4630.68s → 4633.32s]** It's specifically made to do that.
+
+**[4633.32s → 4637.66s]** So it's not a pipe and it's not an ore in this situation.
+
+**[4637.66s → 4641.00s]** I just found that out by looking up on the ducks.
+
+**[4641.00s → 4644.88s]** So in this situation, it's not an ore,
+
+**[4644.88s → 4645.98s]** and it's not a Python pipe,
+
+**[4645.98s → 4648.92s]** so it's doing neither of those things.
+
+**[4648.92s → 4651.98s]** It's just a specific feature somewhere,
+
+**[4651.98s → 4656.66s]** underlying written inside the lang chain modules
+
+**[4656.66s → 4660.36s]** where they've decided to overload the pipe
+
+**[4660.36s → 4665.26s]** or the ore operator to do a specific task in chaining.
+
+**[4665.26s → 4669.08s]** So that's what the chaining thing's doing.
+
+**[4669.08s → 4671.60s]** So that shouldn't have really made any sense
+
+**[4671.60s → 4674.86s]** if you don't mean we're just looking at it.
+
+**[4674.86s → 4679.13s]** Is there a benefit to overloading the paper operator?
+
+**[4679.13s → 4680.81s]** That would be the choice
+
+**[4680.81s → 4683.25s]** of the people who have wrote Lang chain.
+
+**[4683.25s → 4685.05s]** It's, well, you're overloading,
+
+**[4685.05s → 4688.77s]** you're making up a use for a character basically.
+
+**[4688.77s → 4693.01s]** So if I wanted to override the addition character,
+
+**[4693.01s → 4697.78s]** yeah, then I could do this instead and have it chain.
+
+**[4697.78s → 4700.62s]** So it's whatever your operator overloading
+
+**[4700.62s → 4704.96s]** that you decide as the writer of that module or that import.
+
+**[4704.96s → 4707.90s]** So it's whatever their thought process was at the time,
+
+**[4707.90s → 4710.91s]** which I can't really attest to, to be honest.
+
+**[4710.91s → 4712.87s]** Maybe to them, it made logical sense like,
+
+**[4712.87s → 4714.71s]** oh, which is kind of piping them together or something.
+
+**[4714.71s → 4715.63s]** I don't know.
+
+**[4715.63s → 4718.23s]** But that's literally whatever that was going through their head,
+
+**[4718.23s → 4720.23s]** they would have decided to use that.
+
+**[4720.23s → 4725.30s]** If you were as a C sharp developer,
+
+**[4725.30s → 4727.14s]** you'd probably kind of be doing more like
+
+**[4727.14s → 4729.38s]** or a C++ developer, you'd probably thinking of it,
+
+**[4729.38s → 4730.46s]** well, why can't we do it?
+
+**[4730.46s → 4732.24s]** Well, other way.
+
+**[4732.24s → 4734.02s]** Why wouldn't we overload this?
+
+**[4734.02s → 4735.64s]** Because that's the insertion operator.
+
+**[4735.64s → 4738.12s]** So let's just say push this into there
+
+**[4738.12s → 4741.25s]** and then move that along and push that into there.
+
+**[4741.25s → 4742.17s]** And then push it all in.
+
+**[4742.17s → 4745.04s]** And I'm sorry.
+
+**[4745.04s → 4746.68s]** Are you screen sharing?
+
+**[4746.68s → 4748.28s]** Oh, I get, no, I'm not.
+
+**[4748.28s → 4750.16s]** And I'm talking as if I am.
+
+**[4750.16s → 4751.90s]** Sorry about that.
+
+**[4751.90s → 4753.87s]** Oh my life.
+
+**[4753.87s → 4754.87s]** Yeah, that was a bit special.
+
+**[4754.87s → 4755.99s]** Sorry about that.
+
+**[4755.99s → 4758.51s]** Where are we?
+
+**[4758.51s → 4764.06s]** Let's go here.
+
+**[4764.06s → 4764.90s]** Let's share.
+
+**[4764.90s → 4767.46s]** I don't even know what Windows that even is.
+
+**[4767.46s → 4773.58s]** It's Rackfusion, Rackfusion 101, Rackfusion.
+
+**[4782.09s → 4782.93s]** There it is, sorry.
+
+**[4782.93s → 4784.93s]** I thought I was going to share on victory,
+
+**[4784.93s → 4786.65s]** ravishing as if it's none.
+
+**[4786.65s → 4788.77s]** So all I was doing was looking at those pipes and saying,
+
+**[4788.77s → 4791.29s]** if you were C++ developer, you might think,
+
+**[4791.29s → 4793.05s]** well hang on, this is an insertional price.
+
+**[4793.05s → 4794.77s]** So why don't we just overload ducks?
+
+**[4794.77s → 4799.60s]** It'd make more sense, do you know what I mean?
+
+**[4799.60s → 4805.33s]** But in certain languages,
+
+**[4805.33s → 4809.57s]** That might be a shift right for logical operations.
+
+**[4809.57s → 4811.69s]** So that might mess up with different people.
+
+**[4811.69s → 4813.93s]** So it's probably whatever they came from
+
+**[4817.98s → 4823.14s]** as to why they decided to make it like sort of character.
+
+**[4823.14s → 4824.06s]** Because when I look at that,
+
+**[4824.06s → 4828.49s]** I'm seeing prompt or chat open API blah blah
+
+**[4828.49s → 4832.01s]** or which makes no sense as a thing
+
+**[4832.01s → 4833.17s]** unless you look at this and go,
+
+**[4833.17s → 4835.77s]** okay, well, that's now making the union
+
+**[4835.77s → 4838.74s]** which it would do in normal Python.
+
+**[4838.74s → 4840.94s]** But because it's to do with the chaining stuff
+
+**[4840.94s → 4842.74s]** and going to be used in the actual
+
+**[4845.79s → 4849.42s]** lang chain stuff, they've decided,
+
+**[4849.42s → 4851.98s]** we'll use the pipe to mean it's a chain.
+
+**[4851.98s → 4854.34s]** Literally, that's the data different portions
+
+**[4854.34s → 4858.37s]** of that chain together.
+
+**[4858.37s → 4862.11s]** So in their minds, that was the logical choice to use.
+
+**[4864.62s → 4869.50s]** So I'm not too sure what their thought process was for that.
+
+**[4869.50s → 4870.62s]** Does that make sense by the way?
+
+**[4870.62s → 4875.22s]** which maybe why it was a bit confusing,
+
+**[4875.22s → 4880.22s]** because it's a bit of an interpretation type thing there.
+
+**[4880.22s → 4882.24s]** And we're trying to interpret something
+
+**[4882.24s → 4888.41s]** whatever was meant by the people who ever made the thing.
+
+**[4888.41s → 4891.61s]** That's never come up before it's just been a like,
+
+**[4891.61s → 4893.65s]** this is how you do it type thought process.
+
+**[4893.65s → 4895.25s]** So it's good having these questions,
+
+**[4895.25s → 4899.00s]** could it kind of make you look?
+
+**[4899.00s → 4901.16s]** I come from more of an operating system development
+
+**[4901.16s → 4903.50s]** sort of background.
+
+**[4903.50s → 4911.26s]** So to me, that's just a normal thing that you would do on binary data and join them together in a union, anyway.
+
+**[4912.91s → 4915.71s]** And then in Python, it's it's a way of making unions.
+
+**[4916.31s → 4926.69s]** So what I see here is I'm looking at basically as far as I'm concerned, a two point with a bunch of things or together that then go and get split by that.
+
+**[4926.69s → 4931.48s]** based by a new line character.
+
+**[4931.48s → 4935.74s]** That's what I read when I look at this,
+
+**[4935.74s → 4938.66s]** but according to the what's it ducks,
+
+**[4938.66s → 4941.67s]** it's literally a case of its part of,
+
+**[4941.67s → 4944.74s]** it's not a pipe operator and it's not an or,
+
+**[4944.74s → 4947.06s]** it's literally a thing to chain.
+
+**[4947.06s → 4951.50s]** So you could call it a chain operator in this situation.
+
+**[4951.50s → 4952.66s]** So does that make sense?
+
+**[4952.66s → 4961.42s]** Does that really follow up to that point?
+
+**[4961.42s → 4964.50s]** That's a look, sorry, it'll go through.
+
+**[4964.50s → 4966.14s]** So by importing this Python library
+
+**[4966.14s → 4968.54s]** overload in pipe carriage to do that specific task.
+
+**[4968.54s → 4971.90s]** Yeah, in this particular use case, yes.
+
+**[4971.90s → 4977.38s]** It looks like it's quite funny really,
+
+**[4977.38s → 4979.38s]** because it means they've had to kind of do a bunch
+
+**[4979.38s → 4980.74s]** of other stuff.
+
+**[4980.74s → 4982.94s]** So you know, overriding the addition of rate
+
+**[4982.94s → 4984.34s]** is really easy in Python,
+
+**[4984.34s → 4989.21s]** because everything's got basically a double underscore add
+
+**[4989.21s → 4990.99s]** and you're overriding that.
+
+**[4990.99s → 4992.27s]** That's how you do it.
+
+**[4992.27s → 4995.27s]** I'm not too sure whether everything got a double underscore pipe
+
+**[4995.27s → 4999.20s]** or it might be a double underscore or see
+
+**[4999.20s → 5002.98s]** I've kind of look into each of the objects.
+
+**[5002.98s → 5006.74s]** But basically string will have an add function,
+
+**[5006.74s → 5010.83s]** which will be a concatenate really.
+
+**[5010.83s → 5014.95s]** And then integer or number will have an add function, which
+
+**[5014.95s → 5016.99s]** adds two numbers together.
+
+**[5016.99s → 5022.91s]** So if you override that, you can tell you to do anything basically.
+
+**[5022.91s → 5025.63s]** So you can pretty much do a lot of upright overloading
+
+**[5025.63s → 5029.43s]** in Python anyway.
+
+**[5029.43s → 5031.15s]** At least in C Python, definitely.
+
+**[5031.15s → 5033.75s]** I'm not too sure about I am Python to be honest.
+
+**[5033.75s → 5036.91s]** It's exactly how the right overlighting works,
+
+**[5036.91s → 5038.55s]** but definitely see Python you can.
+
+**[5038.55s → 5046.94s]** Right.
+
+**[5046.94s → 5049.34s]** So Christopher, does that make sense, by the way?
+
+**[5049.34s → 5050.94s]** What's any follow-ups to that?
+
+**[5050.94s → 5051.54s]** Oh, yeah.
+
+**[5051.54s → 5052.54s]** Yeah, it makes sense.
+
+**[5052.54s → 5053.54s]** No problem.
+
+**[5053.54s → 5054.54s]** That was a bit of a weird one.
+
+**[5054.54s → 5055.54s]** So he can hang on.
+
+**[5055.54s → 5056.54s]** Yeah, because it does this.
+
+**[5056.54s → 5057.54s]** I'm like, hang on, it's not doing that.
+
+**[5057.54s → 5058.54s]** Why is he not doing that?
+
+**[5058.54s → 5061.34s]** But yeah, it's good to ask these things.
+
+**[5061.34s → 5063.74s]** Because it makes me have a look for them at least as well.
+
+**[5063.74s → 5065.92s]** Because I don't know everything.
+
+**[5065.92s → 5067.92s]** I don't think I've met anyone who does.
+
+**[5067.92s → 5070.06s]** If you find somebody who knows everything,
+
+**[5070.06s → 5072.16s]** Cascom Web and McCarr keys are.
+
+**[5072.16s → 5076.03s]** Let's have a look.
+
+**[5076.03s → 5077.15s]** Where was we?
+
+**[5077.15s → 5081.79s]** I've lost track of where John was in this explanation,
+
+**[5081.79s → 5083.97s]** whether he finished it.
+
+**[5083.97s → 5085.25s]** Let's have a look.
+
+**[5085.25s → 5086.61s]** Final chain.
+
+**[5086.61s → 5089.01s]** Once we've actually chained those things together
+
+**[5089.01s → 5090.90s]** in the generation query,
+
+**[5090.90s → 5094.10s]** we're going to take the original query.
+
+**[5094.10s → 5098.83s]** We're going to then store that into there.
+
+**[5098.83s → 5100.83s]** We're going to use the index name.
+
+**[5100.83s → 5103.02s]** It's going to.
+
+**[5103.02s → 5105.02s]** Where's our index name come from?
+
+**[5105.02s → 5110.62s]** Oh, the index name is set up at the top was.
+
+**[5110.62s → 5113.00s]** What's it got?
+
+**[5113.00s → 5115.00s]** Yeah, the index name's there.
+
+**[5115.00s → 5122.00s]** So that's going to be using the rag fusion 24 a to index in whatever pine cone.
+
+**[5122.00s → 5123.00s]** I can't this is from.
+
+**[5123.00s → 5126.38s]** No, well, let's let's give it a go at running and see what breaks.
+
+**[5126.38s → 5128.38s]** Let's run it anyway.
+
+**[5128.38s → 5130.51s]** You can see what we can do.
+
+**[5130.51s → 5140.31s]** too many sessions. Oh, I think I've got a load of stuff open. Let's close the load of stuff off. Close that off. Close that off.
+
+**[5140.31s → 5150.97s]** I'm not logged into my pro account. I'm not on my... that's why. Okay. Still saying too many sessions.
+
+**[5150.97s → 5156.17s]** Sorry about this guys, I thought this was a sort of ad pro on this again.
+
+**[5156.17s → 5160.81s]** I've been logging something up.
+
+**[5160.81s → 5168.24s]** Which one, don't you know, I've not logged into my private account anywhere.
+
+**[5168.24s → 5172.86s]** It's kind of multi-sessions, can I do just single-session on this one?
+
+**[5172.86s → 5178.78s]** See if it'll let me do it on this one.
+
+**[5178.78s → 5180.40s]** Looks like it is.
+
+**[5180.40s → 5181.88s]** It's not continuing.
+
+**[5181.88s → 5186.02s]** So if we've done that, we've installed a library and already explained about those.
+
+**[5186.02s → 5194.67s]** We've got a deterministic thing that's not going to crash on us.
+
+**[5195.66s → 5202.95s]** It's still installing.
+
+**[5202.95s → 5205.53s]** Successfully installed.
+
+**[5205.53s → 5209.53s]** Now we're going to load that fake data that was made of.
+
+**[5209.53s → 5215.65s]** We just kind of synthesize and pretending this document to this point.
+
+**[5215.65s → 5219.65s]** Build out the vector store, which is very much the same thing that we did yesterday.
+
+**[5219.65s → 5225.35s]** But we're using a list of all the documents instead of pulling them in from my PDF.
+
+**[5225.35s → 5233.24s]** from the Wikipedia file, then we'll grab our output passer and install the langchain hub.
+
+**[5235.53s → 5237.85s]** It looks like it's already satisfied a lot in the same way.
+
+**[5239.83s → 5245.43s]** And then we'll grab the hub and pull down the actual rag fusion query generator.
+
+**[5245.43s → 5248.39s]** We don't need to touch this prompt because that's just an example of what it had.
+
+**[5249.93s → 5254.33s]** Let's look, define query generation. This is where we're going to do that magical piping.
+
+**[5254.33s → 5260.42s]** and then we'll grab the original query and this is what's going to be like imagine
+
+**[5260.42s → 5264.41s]** Domino, Rally and we're going to this is just flicking the first Domino, this is going
+
+**[5264.41s → 5269.61s]** to be our first instantiation of what we're going to hit. Then in theory we now create
+
+**[5269.61s → 5274.57s]** some sort of way of retrieving stuff from the vector store which we've done so many times
+
+**[5274.57s → 5280.41s]** in the past so well we've done it a few times over time and we've kind of literally
+
+**[5280.41s → 5285.93s]** yesterday and last night, so I think we did exactly this just to do with the PDF.
+
+**[5285.93s → 5292.91s]** Now, let's have a look at this function. We'll let it do its stuff for that. So it's going to use
+
+**[5292.91s → 5299.15s]** JSON dumps to actually pull out the bit. So I presume it's going to be sending the information
+
+**[5299.15s → 5307.21s]** as some sort of JSON and then kind of pulling it back in. Now we'll define the whole chain. So we're
+
+**[5307.21s → 5311.45s]** going to do the same thing again. Notice how we're chaining things together using the chain operative.
+
+**[5311.45s → 5314.89s]** I'm just going to keep going into the chain operator now from now because it gets a bit when I keep
+
+**[5314.89s → 5321.60s]** the chain pipe. So now it's doing a generate query, is chaining it to the retriever and it's doing a
+
+**[5321.60s → 5327.28s]** map of it's mapping over the stuff, then it's chaining it to the reciprocal rank fusion.
+
+**[5328.27s → 5338.67s]** So basically we're pulling the queries that it's generated and we've got a map. So yeah,
+
+**[5338.67s → 5343.52s]** it's chaining them all together and then it's finally shoving the fine route put into that chain
+
+**[5343.52s → 5350.08s]** function. So now when we actually invoke it using mysim's same
+
+**[5350.08s → 5353.36s]** function, oh right okay. So now when we invoke it, we actually
+
+**[5353.36s → 5358.00s]** start with the original query and we're passing it this. So when
+
+**[5358.00s → 5361.84s]** we're saying this part, this is just telling you what variable we
+
+**[5361.84s → 5366.86s]** want to use to do this. So let's invoke the chain using that and see
+
+**[5366.86s → 5372.73s]** what happens. It's maybe a slow process. It's
+
+**[5372.73s → 5390.03s]** mind about that. So we've only got to a point where we're actually doing the chain. So
+
+**[5390.03s → 5396.48s]** it's met and now gave us a bunch of documents. So what do we want? We probably want to store
+
+**[5396.48s → 5413.12s]** that in the same. Is that just okay? It's incomplete. Well, it's stored. That output is less
+
+**[5413.12s → 5417.47s]** So look, so if I do that in theory that should story somewhere.
+
+**[5417.47s → 5425.43s]** So now if I make a new one to print, let's say,
+
+**[5425.43s → 5427.67s]** actually we want to, it's a list of docs isn't it?
+
+**[5427.67s → 5431.12s]** So I'll take the zero one for now.
+
+**[5431.12s → 5441.62s]** Let's say stored docs at zero, which is at zero.
+
+**[5441.62s → 5444.38s]** And let's see what that's actually printing for us.
+
+**[5444.38s → 5447.70s]** So that's the single document with the page content
+
+**[5447.70s → 5455.90s]** of this and then I think that's giving it its actual weight after the thing so that's
+
+**[5455.90s → 5459.23s]** going to be its actual weight isn't it?
+
+**[5459.23s → 5467.07s]** Yeah so that's its rank 0.195 so I presume these are the top 10 I'm going to guess, so
+
+**[5467.07s → 5469.07s]** look how many of we rank 10.
+
+**[5469.07s → 5470.07s]** Oh sorry top.
+
+**[5470.07s → 5477.33s]** Oh it's doing the top 60 but we haven't given it 60 so it's doing the top 60 out of 10
+
+**[5477.33s → 5481.96s]** document. So it makes about a lot of sense to be honest. We'd have to give it a larger
+
+**[5481.96s → 5490.30s]** end or larger K or smaller K and larger. So in this situation, this shows you the process
+
+**[5490.30s → 5496.13s]** but it doesn't really give us any meaningful information. So it's great as a contrived
+
+**[5496.13s → 5502.51s]** thing but maybe we could play with this in office hours and have a little mess along
+
+**[5502.51s → 5507.78s]** with the other stuff that we've got lined up if you like and just break it down a little
+
+**[5507.78s → 5512.12s]** bit more on a terriopart. That's presuming that hasn't gotten the extra for the
+
+**[5512.12s → 5518.16s]** officers what we need to do but I don't know if everyone wants to do that. I'm happy to jump in and
+
+**[5518.16s → 5528.68s]** do that. Let's say that we take that stored dark
+
+**[5528.68s → 5532.76s]** and we know that it's got two parts, it's got the page content so can we just
+
+**[5532.76s → 5540.20s]** literally add some more? I think maybe just add the bunch more documents in.
+
+**[5540.20s → 5544.36s]** Let's copy and paste and add by a bunch more.
+
+**[5561.11s → 5562.11s]** Right, so we do that.
+
+**[5562.31s → 5564.47s]** So now we've got kind of 20 documents here.
+
+**[5565.11s → 5568.15s]** Let's let's rerun these from the all documents part.
+
+**[5571.38s → 5572.78s]** Store them in the vector store.
+
+**[5575.11s → 5582.59s]** Do all the other imports make sure that all working still probably don't really need to do the install, but I just don't want to chance it with the internet.
+
+**[5585.04s → 5586.32s]** So that looks like I've gone through.
+
+**[5586.32s → 5591.04s]** We're just going to quickly run through those and then we'll try and get maybe rewrite the
+
+**[5591.04s → 5597.86s]** instead of taking a k of 60 will probably take a smaller k. In fact, we've given it 20,
+
+**[5597.86s → 5610.18s]** so maybe give it the k 10. So give me the 10th most correct ones, gentlemen. Actually,
+
+**[5610.18s → 5615.22s]** you know what, now let's get the 5 most correct things because at the moment I've got
+
+**[5615.22s → 5618.98s]** some repeated stuff in there. I just basically copy and paste it. I should change the content
+
+**[5618.98s → 5627.11s]** as well really. So let's try that. Let's define it as the K5. Since we just pass it in, we're not
+
+**[5627.11s → 5632.74s]** actually giving it a number. So it's going to want automatically theoretically go to that one.
+
+**[5633.54s → 5641.20s]** So let's do that fusion thing. Then try and do it with the original query and let it do its thing.
+
+**[5643.12s → 5650.72s]** And then we'll print the dark up zero. Is that the same? No, 1.26 instead of 1.7. So it's a better
+
+**[5650.72s → 5655.92s]** ranking on this one. I think the problem was it wasn't ranking properly because it was just
+
+**[5656.56s → 5662.20s]** grabbing all of them. So in this case we've actually been out to rank it because we got a bit more
+
+**[5662.20s → 5669.59s]** meaningful stuff over the um so that's apparently the ranking there. Is it a lower rank? Is
+
+**[5669.59s → 5678.66s]** the next one a lower rank or are they just unordered though? Oh there wasn't that, man, that's interesting.
+
+**[5678.66s → 5684.93s]** So rank on the zeroes one is it cut, maybe it needs certain number of routes, on two six,
+
+**[5684.93s → 5694.80s]** and then the zeroes one was tiny a bit more, not much, so it was ranked in the order.
+
+**[5696.96s → 5703.83s]** So it's basically coming out almost like a sorted list based upon the sorting of the rank.
+
+**[5705.78s → 5716.34s]** That's quite interesting. So yeah, how are we doing on time? We're coming a bit close on times.
+
+**[5716.34s → 5719.38s]** are any closing questions, thoughts, observations or anything?
+
+**[5719.94s → 5725.72s]** Yeah, I had a question about the ranking. So, this isn't necessarily related to disassignment.
+
+**[5728.02s → 5733.54s]** But if I'm curious, I know we have these confidence boards. Is there a way to have a custom
+
+**[5734.50s → 5738.90s]** metric that you can rank on? I guess what I'm thinking about is, let's say,
+
+**[5738.90s → 5750.28s]** I don't know. I have like documents or like content in a vector space and they have certain scores, right?
+
+**[5750.28s → 5756.32s]** And I specifically want to search on semantic meaning but also like, I don't know.
+
+**[5756.32s → 5763.32s]** And like descending order for those like scores. How can I do such a thing without sending that you can do?
+
+**[5763.32s → 5773.79s]** Well realistically you'd have to make a full K of the total or reverse it at the end.
+
+**[5773.79s → 5776.79s]** See if you think about it, it looks sorted.
+
+**[5776.79s → 5780.27s]** Fusion score items based upon that.
+
+**[5780.27s → 5785.87s]** So instead of this, we could do there's your one.
+
+**[5785.87s → 5786.87s]** Done.
+
+**[5786.87s → 5789.31s]** If you know what I mean.
+
+**[5789.31s → 5791.31s]** Now we've done them on.
+
+**[5791.31s → 5796.37s]** You just choose in your Lambda what sort of key you want to use.
+
+**[5796.37s → 5802.85s]** So no, so X at one. Imagine you wanted to sort it based on the moment we're sorting on the
+
+**[5803.41s → 5810.05s]** second thing in that document. Yeah. If we wanted to sort it on the actual word, which would be
+
+**[5810.05s → 5814.21s]** a bit weird, because it's not a number, but we could. You could put a zero there. And all
+
+**[5814.21s → 5820.12s]** it. Imagine you've got 50 different things inside that document, like, you know, different keys.
+
+**[5820.76s → 5825.32s]** You just choose which one, it's all time in the lambda. That's all you do. You change whichever
+
+**[5825.32s → 5831.91s]** the number is really. And if you're wanting to do it in reverse audio, you at the moment,
+
+**[5831.91s → 5836.87s]** reverse audio is the biggest because you do smallest. It does smallest to largest, doesn't
+
+**[5836.87s → 5842.63s]** it usually, when you're when you're sorting. So reverse it be that. So all you do is you don't
+
+**[5842.63s → 5846.18s]** reverse it and then you get the shortest smallest. Yeah. That makes sense.
+
+**[5847.20s → 5852.56s]** Like, I don't think I'm like a youth key. Now I'd make sounds like, yeah, I mean, I might
+
+**[5852.56s → 5857.56s]** So imagine it was a dictionary just for now.
+
+**[5857.56s → 5862.79s]** And you had a name of some sort in there.
+
+**[5862.79s → 5865.79s]** And that had somebody's name.
+
+**[5865.79s → 5867.79s]** That might be that was author.
+
+**[5867.79s → 5874.31s]** Let's say that was the author of the document.
+
+**[5874.31s → 5879.31s]** So you had an author and the author had a name of date.
+
+**[5879.31s → 5881.92s]** And then I don't know.
+
+**[5881.92s → 5882.92s]** Author age.
+
+**[5882.92s → 5885.92s]** Let's imagine you had the age of the author as well.
+
+**[5885.92s → 5892.44s]** well. So we had the age of the author and we could rank on that because that's numeric.
+
+**[5892.44s → 5902.92s]** So let's say he's 56. And then some document content of some sort like the content of it,
+
+**[5904.09s → 5914.75s]** being whatever the corpus is like this is a chunk. Let's see, I'm not sure if we have.
+
+**[5914.75s → 5917.27s]** and let's say we had a rank anyway.
+
+**[5917.27s → 5928.33s]** So in this situation, imagine we took this and turned it into a list.
+
+**[5928.33s → 5931.96s]** So now we think of this as the zeroes one.
+
+**[5931.96s → 5937.76s]** That is the one with the one and this is a two and this is a third.
+
+**[5937.76s → 5939.52s]** So here is the number what you put in.
+
+**[5939.52s → 5944.75s]** So you put if you wanted to like sort it via alphabetically,
+
+**[5944.75s → 5952.45s]** author, you could put zero there. You want to sort it by their age, you put a one. If you
+
+**[5952.45s → 5958.36s]** want to sort it by the actual alphabetical string hair content, you put a Turk. If you
+
+**[5958.36s → 5963.36s]** want to sort it by ranking this specific one, you put a three. Does that make sense?
+
+**[5963.36s → 5968.96s]** Yeah, I know what you mean. I guess like I'm back in like, if we're doing the vector search,
+
+**[5968.96s → 5973.60s]** right? I guess like a youth can think of it. It's like, I don't know. Let's say like you
+
+**[5973.60s → 5982.80s]** have like users, right? And they all have like, I don't know, descriptions of who they are,
+
+**[5982.80s → 5988.01s]** and like they also have like some sort of like risks for, right? So I guess like what I'm thinking
+
+**[5988.01s → 5996.75s]** of, how could you like look into the space and say, I want to find users that are similar,
+
+**[5996.75s → 6000.51s]** but also have the highest risks for it.
+
+**[6000.51s → 6002.59s]** So that's like a use case.
+
+**[6004.52s → 6006.56s]** So that's only what you can do in the back.
+
+**[6006.56s → 6009.10s]** There's like use those two parameters.
+
+**[6009.10s → 6010.44s]** Yeah, I mean, you could do a single,
+
+**[6010.44s → 6011.64s]** you could do it twice
+
+**[6011.64s → 6015.32s]** if you wanted to just quickly, like caveman solution.
+
+**[6016.42s → 6018.32s]** You could literally do one sort of batten
+
+**[6018.32s → 6024.27s]** and after they're sorted, take the actual sorted thing again.
+
+**[6024.27s → 6025.63s]** If you don't remember, you can sort it again
+
+**[6025.63s → 6027.51s]** and store them in a different way.
+
+**[6027.51s → 6029.27s]** Obviously you wouldn't sort this then,
+
+**[6029.27s → 6032.70s]** you'd have to do a sorted on the ranked results.
+
+**[6032.70s → 6035.03s]** Do you remember?
+
+**[6035.03s → 6037.64s]** So you kind of have that
+
+**[6037.64s → 6039.56s]** and then do the same sort of thing again
+
+**[6039.56s → 6043.00s]** for blah, blah in instead of sorted of,
+
+**[6043.00s → 6045.00s]** instead of few score items,
+
+**[6045.00s → 6048.60s]** you're now gonna do it on the ranked results,
+
+**[6048.60s → 6050.68s]** but on another line down here.
+
+**[6050.68s → 6052.00s]** Okay, do you remember me?
+
+**[6052.00s → 6055.64s]** So then you could sort the sort of space on another key
+
+**[6055.64s → 6056.64s]** and then reach repeated.
+
+**[6056.64s → 6058.84s]** So you kind of chain them together in that way.
+
+**[6058.84s → 6060.44s]** That's a way of doing it.
+
+**[6060.44s → 6064.13s]** You could do it as a nested one,
+
+**[6064.13s → 6065.51s]** but you may get a load of calls
+
+**[6065.51s → 6067.55s]** that are gonna smash your stack,
+
+**[6067.55s → 6069.87s]** like the call stack.
+
+**[6069.87s → 6073.33s]** So you may be ideal to actually just shove it down
+
+**[6073.33s → 6075.21s]** on the next line and shove it down on the next line
+
+**[6075.21s → 6076.77s]** rather than nesting it,
+
+**[6076.77s → 6080.09s]** because nesting it's gonna probably mess with the call stack
+
+**[6080.09s → 6083.45s]** a little bit, depending upon how badly it works.
+
+**[6083.45s → 6085.37s]** I'm gonna throw it with this and then,
+
+**[6085.37s → 6087.61s]** maybe I can come up with more, like a better class.
+
+**[6087.61s → 6089.93s]** Yeah, I definitely, if you want to,
+
+**[6089.93s → 6092.97s]** If you want to just do a file, save a copy in your drive
+
+**[6092.97s → 6096.12s]** and start messing it, have a play with it.
+
+**[6096.12s → 6098.48s]** We can always revisit this during office hours,
+
+**[6098.48s → 6100.32s]** if you like, and we can play about with ideas
+
+**[6100.32s → 6101.84s]** of what we could do with things.
+
+**[6101.84s → 6106.36s]** I've got to find out off Ash what exactly
+
+**[6106.36s → 6107.76s]** expected to do on office hours,
+
+**[6107.76s → 6111.48s]** or whether he's gonna run it all right on the next office hours,
+
+**[6111.48s → 6113.60s]** but I'll find out that beforehand.
+
+**[6113.60s → 6117.09s]** And I'll kind of post in the channel
+
+**[6117.09s → 6119.07s]** as to what we're gonna be doing.
+
+**[6119.07s → 6120.11s]** And then if we get more time,
+
+**[6120.11s → 6124.91s]** can play about with other things. That's good. Yeah. Thanks.
+
+**[6124.91s → 6129.95s]** It's been awesome. We've run a little bit over time, so I'm going to have to call it for today.
+
+**[6131.74s → 6135.90s]** Thanks so much for all your questions. Everybody, you know, I mean, especially Christopher,
+
+**[6135.90s → 6141.66s]** you've just been going awesome on the questions there. But everybody's been amazing.
+
+**[6143.24s → 6149.16s]** All right, so I'll, I think we've already got a copy of this for everyone. You've already got links.
+
+**[6149.16s → 6159.92s]** I put a bunch of links in Slack into a little sort of, you know, I've lost words today.
+
+**[6161.74s → 6167.74s]** I can't even find my Slack, but basically there it is. So basically into one of the threads,
+
+**[6167.74s → 6175.66s]** I made a thread for a bunch of links and I've put the links from the, that's been mentioned,
+
+**[6175.66s → 6180.62s]** like I put the YouTube series to the Pinecon User Guide in there. And some other, I've found a
+
+**[6181.18s → 6186.63s]** database engines, sort of like different ones versus different ones, sort of comparison.
+
+**[6186.63s → 6189.75s]** So I'll put that in there in a few other bits and pieces.
+
+**[6189.75s → 6191.87s]** Happy to add more, I think, after this.
+
+**[6191.87s → 6194.11s]** We'll get a bit of time as well.
+
+**[6194.11s → 6199.36s]** Well, then that everyone, you have a great, I don't know, it's day evening,
+
+**[6199.36s → 6202.15s]** whatever, everywhere.
+
+**[6202.15s → 6205.91s]** But have an awesome one, and I'll see you again, hopefully, in office hours and obviously
+
+**[6205.91s → 6208.23s]** in Slack, so bye guys.
+
+**[6208.23s → 6209.23s]** Thanks.
+
+**[6209.23s → 6210.23s]** Thank you.
+

@@ -1,0 +1,2005 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_test/week_01/week_1_class_1_2024-05-20.mp4
+**Duration:** 4814.88 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 993
+**Generated:** 2025-08-13 18:06:13
+**File Hash:** 90e37d6fd0b96a1ac17f3198a6950696
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_01
+**file_name:** week_1_class_1_2024-05-20.mp4
+
+---
+
+## Transcript
+
+**[5.07s → 10.26s]** All you, Jen.
+
+**[10.26s → 12.81s]** All right, welcome everyone.
+
+**[12.81s → 15.09s]** I am John Cody Sokol.
+
+**[15.09s → 17.49s]** I'll be your instructor for this course,
+
+**[18.45s → 21.01s]** developer productivity using artificial intelligence
+
+**[21.01s → 22.61s]** from FluteSec.
+
+**[22.61s → 27.01s]** So this is a side teaching engagement for me.
+
+**[27.01s → 29.41s]** My full time job on the head of developer relations
+
+**[29.41s → 31.81s]** and developer strategy at Lockheed Martin.
+
+**[31.81s → 36.49s]** So I help build our AI ecosystem of tools, services
+
+**[36.49s → 39.97s]** that help make developing artificial intelligence easier.
+
+**[41.61s → 45.45s]** So been a machine learning and data science instructor
+
+**[45.45s → 48.81s]** in capacities for Lambda School, now in the tech,
+
+**[48.81s → 51.77s]** previously, and happy to be here and walk you through
+
+**[51.77s → 55.05s]** all the excited things happening in the world of generative AI.
+
+**[55.05s → 56.57s]** So I also wanna introduce a couple of people
+
+**[56.57s → 58.25s]** that will be assisting with the class
+
+**[58.25s → 61.37s]** as we go through it, but with the course of the next 10 weeks.
+
+**[61.37s → 62.69s]** So Ash, I'm gonna go over to you
+
+**[62.69s → 64.78s]** to give a quick introduction.
+
+**[64.78s → 66.78s]** Hey guys, I'm Ash.
+
+**[66.78s → 72.10s]** I've been the guy who's been emailing you back and forth a bunch of times, so apologize for
+
+**[72.10s → 73.10s]** that.
+
+**[73.10s → 75.90s]** But I'm going to be your course coordinator.
+
+**[75.90s → 80.82s]** I do product over here at BlumeTech, but if there's any issues with the course, any problems
+
+**[80.82s → 83.66s]** accessing anything, feel free to email me at any time.
+
+**[83.66s → 85.98s]** You guys have my personal email and you'll also see me on Slack.
+
+**[85.98s → 91.26s]** Off to you.
+
+**[91.26s → 93.41s]** All right, awesome.
+
+**[93.41s → 101.81s]** Yeah, I'm Tom. I'm one of the AI LAs or Framing Assistance. I'll be here to help you again.
+
+**[101.81s → 106.21s]** In a similar role to what Ash is talking about, but in a slightly more genuine position.
+
+**[106.21s → 110.51s]** So if you've got any questions, feel free to reach out to me at any time.
+
+**[110.51s → 121.07s]** I'm fairly open with my timings. I tend to work for the AI side and also do the labs and the other stuff in Blume Tech.
+
+**[121.07s → 126.51s]** So if there's a time where you need to speak and you can't get hold of anyone, I'm here most of the time.
+
+**[126.51s → 131.91s]** So I'm perfectly happy to help out at any point in time. So I always feel free to reach out.
+
+**[131.91s → 136.68s]** John, would you like to take a break?
+
+**[136.68s → 138.28s]** Alright, I'll take it back.
+
+**[138.28s → 143.72s]** So the other big thing about having a class like this, especially after your working hours,
+
+**[143.72s → 148.36s]** all of you are coming from work and you're sponsored here by your company, Sadiere.
+
+**[148.36s → 155.44s]** I'd love to do just a quick ash if you can help me facilitate just a quick random breakout of one on one
+
+**[156.16s → 163.32s]** Instead of doing a icebreaker. Let's just do a one-on-one introduction between two people and ran minds the breakouts if we can
+
+**[165.52s → 172.92s]** And if we can just just take no more than three minutes to do that mean come back at I'm in central time on base member
+
+**[172.92s → 179.82s]** So you hear me reference central time, but we'll come back at like seven, probably seven or seven.
+
+**[179.82s → 185.16s]** Give us a couple 30 seconds a minute to get everything ready and then three minutes to do the interactions.
+
+**[186.14s → 189.44s]** Okay, so might not be one on one, but it'll be like three or four people if that's cold.
+
+**[190.12s → 191.08s]** That's perfect. Yeah.
+
+**[479.62s → 481.38s]** Actually, everybody back now.
+
+**[482.42s → 483.30s]** Yep. That's everyone.
+
+**[484.02s → 485.06s]** Okay. Perfect.
+
+**[486.20s → 486.72s]** All right.
+
+**[487.16s → 488.08s]** Let's go and get started.
+
+**[488.08s → 499.36s]** So overall the course objective is to help you acquire the knowledge to design, build, and deploy
+
+**[499.36s → 505.52s]** generative AI agents and multi-agent systems. And we're going to do that in the context of your company.
+
+**[505.52s → 511.20s]** So this is also a great opportunity to ask questions about how this might work in your infrastructure
+
+**[511.20s → 514.72s]** of your company or maybe some of the benefits and challenges that you might see.
+
+**[516.48s → 521.28s]** We really want to help you increase the efficiency of your work, whether that's using this,
+
+**[521.92s → 524.16s]** many of you are engineers or selves,
+
+**[524.16s → 526.20s]** whether that's as simple as helping you write
+
+**[526.20s → 529.06s]** documentation on the functions that you use
+
+**[529.06s → 532.28s]** and helping you increase the quality of your code base,
+
+**[532.28s → 534.28s]** or whether that's building applications
+
+**[534.28s → 537.55s]** that people within your company might use.
+
+**[537.55s → 541.03s]** So we're going to do this with three methods.
+
+**[541.03s → 543.31s]** We're gonna help you build these skills
+
+**[543.31s → 544.39s]** through live instruction.
+
+**[544.39s → 546.97s]** That's what I'm here for.
+
+**[546.97s → 549.01s]** So definitely, it's very hard,
+
+**[549.01s → 550.49s]** we're all working professionals.
+
+**[550.49s → 552.01s]** It can be very challenging to be here
+
+**[552.01s → 557.37s]** in person, but this is a great opportunity for you to leverage the full benefit of live
+
+**[557.37s → 560.33s]** instruction and come and ask questions interactively.
+
+**[560.33s → 564.33s]** But of course, the videos will be available for you on the Blume Tech platform.
+
+**[564.33s → 569.65s]** If you're not able to make the class totally understand, I have a one-year-old daughter,
+
+**[569.65s → 573.64s]** so I can understand the chaos.
+
+**[573.64s → 578.60s]** Then the second part of the course will be helping you build the implementations of agents
+
+**[578.60s → 581.72s]** and agent systems through guided projects.
+
+**[581.72s → 584.84s]** of those are projects that we do together in class,
+
+**[584.84s → 588.64s]** or you might walk through with Asher Tom during office hours.
+
+**[588.64s → 590.28s]** Those are the types of things that will help you
+
+**[590.28s → 591.96s]** get the hands-on keyboard experience
+
+**[591.96s → 594.79s]** that you're gonna need to help practice.
+
+**[594.79s → 597.51s]** Finally, the course will have a capstone project
+
+**[597.51s → 600.07s]** where you're gonna implement multi-agent systems
+
+**[600.07s → 602.27s]** and bring everything together.
+
+**[602.27s → 604.63s]** And then we'd love for you to be able to take that project
+
+**[604.63s → 608.11s]** with you to your team, get feedback, and talk about
+
+**[608.11s → 609.87s]** how you can take that multi-agent system
+
+**[609.87s → 613.25s]** and scale it within your company.
+
+**[613.25s → 618.41s]** And just to feel free, I am monitoring the Slack.
+
+**[618.41s → 620.41s]** The questions thread that Ash started.
+
+**[620.41s → 624.41s]** So you feel free to ask questions in that thread.
+
+**[624.41s → 627.41s]** And then if you have a question during class, you know,
+
+**[627.41s → 630.41s]** feel free to use the raise hand function and zoom.
+
+**[630.41s → 634.41s]** And I'm more than happy to help stop and answer your questions.
+
+**[634.41s → 639.62s]** So the class is divided into four major components.
+
+**[639.62s → 643.62s]** We're going to start with just kind of an opening session.
+
+**[643.62s → 647.70s]** And on LOM overview, that's today.
+
+**[647.70s → 650.38s]** We'll talk about open source LOMs,
+
+**[650.38s → 652.38s]** and then we'll talk about a little bit
+
+**[652.38s → 654.57s]** of blank chain and blank Smith.
+
+**[654.57s → 656.69s]** Then we're going to move on into kind of a meet
+
+**[656.69s → 660.65s]** of this first sprint, retrieval augmented generation.
+
+**[660.65s → 664.13s]** You probably have all heard about RAG and the benefits of RAG,
+
+**[664.13s → 666.41s]** kind of to help mitigate that hallucination
+
+**[666.41s → 668.39s]** that you hear about.
+
+**[668.39s → 670.39s]** Then we'll start to move into our next sprint,
+
+**[670.39s → 671.95s]** which will be chaining.
+
+**[671.95s → 674.01s]** the idea of being able to chain together
+
+**[674.01s → 676.79s]** a couple different tools within an LLM
+
+**[676.79s → 680.02s]** to increase the efficacy of the response.
+
+**[680.02s → 682.82s]** Finally, we'll talk about agents and building agents
+
+**[682.82s → 686.66s]** using AWS Spenderog and performing agents
+
+**[686.66s → 689.05s]** in production environments.
+
+**[689.05s → 691.99s]** And lastly, multi-agent systems.
+
+**[691.99s → 693.95s]** So really being able to build out
+
+**[693.95s → 698.39s]** what a multi-agent system look like using Crue.CruAi
+
+**[698.39s → 700.23s]** and Langchained together.
+
+**[700.23s → 701.35s]** And then we'll talk about scaling
+
+**[701.35s → 703.89s]** those multi-agent systems.
+
+**[703.89s → 706.53s]** So I think a really, really fun class.
+
+**[707.57s → 709.41s]** The developers at Lockheed are going through
+
+**[709.41s → 712.17s]** trying to do all this kind of stuff ourselves right now.
+
+**[712.17s → 714.45s]** And I'll try and color some of that perspective
+
+**[714.45s → 726.40s]** as we go through too, as much as I can share.
+
+**[726.40s → 730.40s]** So you will have five components to pass the course
+
+**[731.32s → 733.96s]** or which are your guided projects
+
+**[733.96s → 736.64s]** and the fifth of which is your capstone.
+
+**[736.64s → 740.67s]** So we're gonna do these guided projects
+
+**[740.67s → 744.23s]** with you'll watch us implement in agents.
+
+**[744.23s → 746.71s]** We'll do that together during class.
+
+**[746.71s → 748.19s]** You're gonna add your own spin
+
+**[748.19s → 751.71s]** and then try and make it something useful for you.
+
+**[751.71s → 754.19s]** Each project has pass fail,
+
+**[754.19s → 757.27s]** ashes and tom will be functioning as the teaching assistants
+
+**[757.27s → 762.27s]** and helping grade those assignments as you complete them.
+
+**[762.87s → 766.51s]** And then they'll also be hosting a separate
+
+**[766.51s → 770.84s]** kind of hours for you to answer questions.
+
+**[770.84s → 773.54s]** Each project is a more opportunity
+
+**[773.54s → 775.18s]** to implement some kind of stretch.
+
+**[775.18s → 777.86s]** So like, I mean, there's the minimum requirements
+
+**[777.86s → 780.78s]** to pass, but it's also your opportunity to play around.
+
+**[780.78s → 783.90s]** So get out there and break stuff.
+
+**[783.90s → 787.62s]** Try and figure out how things are going to work.
+
+**[787.62s → 790.58s]** Maybe it's the development tools you use.
+
+**[790.58s → 792.26s]** Could be your stretch goals.
+
+**[792.26s → 794.66s]** Maybe it's the prompts or maybe it's the application.
+
+**[794.66s → 796.98s]** It's just like a slight tweet.
+
+**[796.98s → 800.58s]** So we're going to be using four different guided projects.
+
+**[800.58s → 803.02s]** We want to be a technical writer agent.
+
+**[803.02s → 804.74s]** Another one will be a developer.
+
+**[804.74s → 806.30s]** Then we'll do some QA testing.
+
+**[806.30s → 808.42s]** And then finally, a managing agent.
+
+**[808.42s → 810.38s]** These are the four kind of guided projects
+
+**[810.38s → 815.04s]** we'll use to help you throughout the course.
+
+**[815.04s → 819.20s]** I do want to pause here and ask Ash.
+
+**[819.20s → 820.52s]** Have I covered everything?
+
+**[820.52s → 824.99s]** Students need to know here.
+
+**[824.99s → 838.15s]** And then is there any questions so far?
+
+**[838.15s → 844.33s]** Great.
+
+**[844.33s → 846.13s]** So the last two weeks of the class,
+
+**[846.13s → 847.17s]** that's gonna be your opportunity
+
+**[847.17s → 850.71s]** to build that capstone direct implementation project.
+
+**[850.71s → 853.31s]** So we wanna provide you with a nut code
+
+**[853.31s → 856.97s]** and kind of mentorship guidance to help you get started.
+
+**[858.07s → 860.15s]** So that way it's not just like textbook theory
+
+**[860.15s → 862.53s]** on multi-agent systems.
+
+**[862.53s → 867.13s]** So we're gonna break down this capstone into four pieces.
+
+**[867.13s → 869.80s]** We're gonna help you identify the problem,
+
+**[869.80s → 873.11s]** design the solution and plan the implementation,
+
+**[873.11s → 876.11s]** Coming up with your strategy on training,
+
+**[876.11s → 878.75s]** not just the training of the agent itself,
+
+**[878.75s → 880.27s]** but also the training of people
+
+**[880.27s → 884.39s]** how to use the agent and talk about performance metrics.
+
+**[884.39s → 886.27s]** Then you're going to code a prototype,
+
+**[886.27s → 888.99s]** develop everything, a functioning prototype,
+
+**[888.99s → 893.12s]** something very bare bones, and help you.
+
+**[893.12s → 895.28s]** Then we're going to try and encourage you
+
+**[895.28s → 897.24s]** to test it in your own ecosystem.
+
+**[897.24s → 899.28s]** So test and deploy the prototype,
+
+**[899.28s → 900.96s]** get some feedback from users,
+
+**[900.96s → 915.95s]** and try and refine it based on their feedback.
+
+**[915.95s → 922.57s]** So as everyone knows, the course is going to be on Mondays
+
+**[922.57s → 927.37s]** and Wednesdays from seven to eight central time
+
+**[927.37s → 929.85s]** with a 30 minute Q and A afterwards.
+
+**[929.85s → 932.61s]** There are two weeks that I want to flag for everyone
+
+**[932.61s → 934.67s]** to help you with the schedule.
+
+**[934.67s → 936.79s]** One of which is next week.
+
+**[936.79s → 938.71s]** So next week because of Memorial Day,
+
+**[938.71s → 941.79s]** there will be no class on Monday.
+
+**[941.79s → 945.03s]** Instead, we'll be doing class on Wednesday and Thursday.
+
+**[945.03s → 948.43s]** So a big difference next week that should already be reflected in your Google
+
+**[948.43s → 949.95s]** calendar version of the course.
+
+**[949.95s → 951.95s]** So you should be set there.
+
+**[953.03s → 956.73s]** The next thing is we're also going to be doing a summer break, the week of the
+
+**[956.73s → 957.65s]** 4th of July.
+
+**[957.93s → 962.69s]** So no class between June 30th and July 7th, which that's basically just a week
+
+**[962.69s → 963.49s]** of class.
+
+**[964.01s → 970.09s]** So 10 weeks of instruction time, 11 weeks of actual course time, start to
+
+**[970.09s → 970.65s]** finish.
+
+**[972.64s → 973.12s]** Right.
+
+**[973.12s → 977.31s]** If anyone knows that they're going to be out,
+
+**[977.31s → 980.95s]** for some reason, always great to give a heads up to Ash.
+
+**[980.95s → 984.39s]** That'll help them get understanding of who's going to show up for
+
+**[984.39s → 986.19s]** class and who we should check in with.
+
+**[986.19s → 992.42s]** That kind of stuff.
+
+**[992.42s → 995.66s]** What time is office hours, Ash?
+
+**[995.66s → 1000.03s]** Same as so.
+
+**[1000.03s → 1003.19s]** Everything is going to start at eight Eastern or five Pacific.
+
+**[1003.19s → 1007.39s]** It's going to be Tuesdays at eight Eastern.
+
+**[1007.39s → 1010.09s]** Perfect.
+
+**[1010.09s → 1024.43s]** I'll actually add that this slide as well.
+
+**[1024.43s → 1027.79s]** So let's move on into today's actual lesson material.
+
+**[1027.79s → 1029.47s]** Now that we've gotten some of the course logistics out
+
+**[1029.47s → 1032.91s]** of the way, and of course, feel free to ask questions
+
+**[1032.91s → 1039.24s]** about either the course logistics or as we go through.
+
+**[1039.24s → 1042.22s]** How many of you are already using some kind of LLM
+
+**[1042.22s → 1043.04s]** technology?
+
+**[1043.04s → 1052.65s]** Do you just want to give me maybe a quick reaction in Zoom?
+
+**[1052.65s → 1054.45s]** A couple of people say they're easy to get up co-file
+
+**[1054.45s → 1061.84s]** later.
+
+**[1061.84s → 1062.44s]** OK.
+
+**[1062.44s → 1063.40s]** I like it.
+
+**[1063.40s → 1070.73s]** Perfect.
+
+**[1070.73s → 1075.25s]** So those of you that have been doing this,
+
+**[1075.25s → 1078.37s]** you know that LLMs are not perfect, right?
+
+**[1078.37s → 1080.09s]** It's kind of seem kind of magical,
+
+**[1080.09s → 1084.77s]** but it's essentially some kind of statistical model
+
+**[1084.77s → 1087.89s]** of the relationship between text and probability.
+
+**[1087.89s → 1092.77s]** So what we're gonna do today is help demystify that process.
+
+**[1092.77s → 1094.89s]** We're gonna start with just a quick understanding
+
+**[1094.89s → 1098.65s]** of LLM intuition, like what is actually happening
+
+**[1098.65s → 1103.40s]** by looking at a very, very, very simple model.
+
+**[1103.40s → 1106.44s]** That's not even really an LM, but helping you break down
+
+**[1106.44s → 1108.70s]** the thought process.
+
+**[1108.70s → 1111.14s]** That we're going to talk about varying types
+
+**[1111.14s → 1113.86s]** of large language model messages
+
+**[1113.86s → 1116.99s]** and help you think through what this can be
+
+**[1116.99s → 1119.53s]** and how best you'll communicate.
+
+**[1119.53s → 1123.49s]** Then we'll kind of go into some more increasingly advanced
+
+**[1123.49s → 1128.89s]** ideas, talking about 0, 1 and few shop prompting,
+
+**[1128.89s → 1131.77s]** really building in context in your prompts,
+
+**[1131.77s → 1133.93s]** and then finally taking a look at chat histories
+
+**[1133.93s → 1145.41s]** and putting those into practice.
+
+**[1145.41s → 1149.53s]** So text generation is actually really well-established task
+
+**[1149.53s → 1152.65s]** with effective variety of techniques.
+
+**[1152.65s → 1157.91s]** So LLMs are fundamentally just the next token predictors
+
+**[1158.75s → 1162.11s]** enhanced by a very complex testicle analysis
+
+**[1162.11s → 1165.43s]** and probabilistic methods.
+
+**[1165.43s → 1169.08s]** So we're going to look at a very simple Markov chain,
+
+**[1169.08s → 1173.24s]** which is also a not quite a probabilistic method
+
+**[1173.24s → 1181.56s]** in the same way, but viewed as a very simple statistical
+
+**[1181.56s → 1183.58s]** analysis.
+
+**[1183.58s → 1188.80s]** So I just had another quick note to LLMs
+
+**[1188.80s → 1191.04s]** are not the first generative text methods.
+
+**[1191.04s → 1196.24s]** So hopping back to, like say, 2018, 2019,
+
+**[1196.24s → 1201.48s]** people were still talking about things like LSTMs and some other
+
+**[1201.48s → 1204.92s]** and transformers were really just beginning to take off in that
+
+**[1204.92s → 1210.32s]** kind of 2017, 2016 beyond just the very beginning days of
+
+**[1210.32s → 1214.24s]** transformers. So we've come a long way in the past eight years,
+
+**[1214.24s → 1220.61s]** it's mind blowing. Is anyone familiar with the Markov chain?
+
+**[1220.65s → 1224.29s]** Is anyone willing to just provide maybe a sentence on what they
+
+**[1224.33s → 1225.61s]** believe a Markov chain is?
+
+**[1225.61s → 1236.48s]** you calculate the probability of the next word,
+
+**[1236.48s → 1243.54s]** you calculate the probabilities for what word follows another word.
+
+**[1243.54s → 1250.54s]** And then for a given sequence of words, you can then try to predict
+
+**[1250.54s → 1255.54s]** what the full sequence will be starting from those words.
+
+**[1255.54s → 1264.54s]** And this example is just one word in a time, but it gets more complex once you have two, three, four, five and more words of the time.
+
+**[1264.54s → 1267.24s]** Yes, exactly.
+
+**[1267.24s → 1273.24s]** And you say Markov chain doesn't necessarily have to be related to text, like the any kind of sequence.
+
+**[1273.24s → 1280.24s]** Like you might use Markov chains to project the next gene and a chain of genes for DNA.
+
+**[1280.24s → 1287.14s]** But the same idea, it's going to look at what's most likely next based on like slight random
+
+**[1287.14s → 1289.90s]** slices of the text.
+
+**[1291.96s → 1293.16s]** Well, let's actually get into some code.
+
+**[1293.56s → 1314.10s]** All right, I'm going to pick on one of my fellow instructors here for a second.
+
+**[1314.80s → 1319.16s]** Does anyone notice anything about this Python class that's missing?
+
+**[1320.66s → 1321.76s]** It's the code works.
+
+**[1321.76s → 1324.46s]** So it's not actually the code implementation on the hint there.
+
+**[1341.12s → 1343.52s]** Yeah, there's no documentation, right?
+
+**[1343.52s → 1345.72s]** There's just got one quick tiny line.
+
+**[1345.72s → 1351.57s]** So, we'll come back and talk about that real quick.
+
+**[1351.57s → 1355.77s]** So, the Markup chain is going to initialize, first of all,
+
+**[1355.77s → 1376.17s]** just go ahead and run it and I'll come back and talk about everything.
+
+**[1376.17s → 1382.68s]** So, we're going to initialize our Markup chain with just a very simple set of text.
+
+**[1382.68s → 1385.48s]** So, start with a quick one sentence.
+
+**[1385.48s → 1391.53s]** Here's our list of words.
+
+**[1391.53s → 1396.93s]** So, the word and the next word that happens most frequently after the word we selected.
+
+**[1396.93s → 1404.93s]** So for this is a, a, et cetera, going down a list of the chain.
+
+**[1404.93s → 1414.84s]** So if I wanted to generate some text, we'll go back and talk about how this actually works.
+
+**[1414.84s → 1429.19s]** You see it's going to repeat the same phrase over and over again, because it's going down the chain and predicting this, a, a, test, et cetera, et cetera.
+
+**[1429.19s → 1442.23s]** Let's try just a slightly bigger data set for you.
+
+**[1442.23s → 1445.63s]** Let's try Alice in Wonderland.
+
+**[1445.63s → 1451.90s]** Great book for a teaching example.
+
+**[1451.90s → 1455.74s]** We're just going to read in and I'm glossing over the Python code.
+
+**[1455.74s → 1458.14s]** I know many of you are probably familiar with Python,
+
+**[1458.14s → 1463.90s]** so I won't try and explain too much stuff that's not directly relevant to the instruction.
+
+**[1463.90s → 1473.22s]** Good. So we're going to try and look at the chain for the next word after Alice.
+
+**[1473.22s → 1479.64s]** So what are the words that follow Alice?
+
+**[1479.64s → 1488.44s]** In the entire book, these are all of the words that followed Alice.
+
+**[1488.44s → 1490.28s]** Our tokenizer may be not that great.
+
+**[1490.28s → 1493.12s]** We've got some funky stuff in here.
+
+**[1493.12s → 1497.40s]** We'll talk about tokenization throughout the course, but I just want to point out some
+
+**[1497.40s → 1501.72s]** of those data secrecy's early.
+
+**[1501.72s → 1505.19s]** So we're going to try and just randomly pick.
+
+**[1505.19s → 1509.35s]** Anytime we start with the word Alice, we'll randomly pick from this list of potential
+
+**[1509.35s → 1510.35s]** start forwards.
+
+**[1510.35s → 1516.44s]** We're going to say we're going to start a text with Alice.
+
+**[1516.44s → 1520.08s]** Now this is text that's been pre-run by Erin who wrote this notebook.
+
+**[1520.08s → 1524.49s]** I want to rerun it and look at different because we're going to start with a different
+
+**[1524.49s → 1525.49s]** random start.
+
+**[1525.49s → 1543.76s]** I will start again just so you can see the changes cycling through.
+
+**[1543.76s → 1547.32s]** Now Alice may not be the best word to start with if we're trying to generate something like
+
+**[1547.32s → 1552.00s]** a snippet of a book but you can think that is probably a pretty solid word to start
+
+**[1552.00s → 1553.10s]** with.
+
+**[1553.10s → 1556.75s]** Our function also allows us to control the max output,
+
+**[1556.75s → 1567.27s]** so we'll do no more than say 300 tokens.
+
+**[1567.27s → 1568.11s]** Very good.
+
+**[1568.11s → 1569.97s]** That's starting to look pretty good.
+
+**[1569.97s → 1577.31s]** The frog footman had repeated in a minute.
+
+**[1577.31s → 1585.17s]** It's got a nice little prediction there.
+
+**[1585.17s → 1587.01s]** So to tie this back into LLIMS,
+
+**[1587.01s → 1591.29s]** if you're thinking about LLIMS as a probabilistic choice,
+
+**[1591.29s → 1593.45s]** so now let's go back to the Markov-Chaheading Compare
+
+**[1593.45s → 1598.40s]** to Code.
+
+**[1598.40s → 1602.20s]** So Markov-Chaheading is creating a nice dictionary object
+
+**[1602.20s → 1603.24s]** for all of the words.
+
+**[1603.24s → 1605.48s]** it's taking a look at the word immediately following it
+
+**[1605.48s → 1609.78s]** and storing that in a default dictionary.
+
+**[1609.78s → 1612.06s]** Then for our to generate text,
+
+**[1612.06s → 1614.70s]** what we're gonna do is we're gonna provide a start word
+
+**[1614.70s → 1617.62s]** and an input length of tokens,
+
+**[1617.62s → 1620.83s]** we're gonna default at 100.
+
+**[1620.83s → 1624.18s]** Then we're going to just randomly choose
+
+**[1624.18s → 1629.18s]** a word within the dictionary of the word that we started with.
+
+**[1631.14s → 1632.94s]** And we're gonna keep doing that
+
+**[1632.94s → 1636.34s]** until we've exhausted the length of the inputs
+
+**[1636.34s → 1640.28s]** of the output sequence.
+
+**[1640.28s → 1644.08s]** Now, for LLMs, instead of using a random choice,
+
+**[1644.08s → 1645.76s]** we're going to do a probabilistic method.
+
+**[1645.76s → 1649.32s]** So LLMs are going to take a look at a context.
+
+**[1649.32s → 1651.28s]** And instead of just one token, we're
+
+**[1651.28s → 1654.40s]** going to take a look at what's called a context window.
+
+**[1654.40s → 1656.00s]** We're taking that entire context window
+
+**[1656.00s → 1657.88s]** and say, given that context, what's
+
+**[1657.88s → 1660.16s]** the next possible token?
+
+**[1660.16s → 1663.56s]** And where what's most probable?
+
+**[1663.56s → 1665.76s]** And you're going to see a variety in the same way
+
+**[1665.76s → 1670.00s]** we saw the mark-off-chain, but it's not random.
+
+**[1670.00s → 1673.00s]** That's going to be based on context you're giving it,
+
+**[1673.00s → 1674.64s]** and that could also be because you're giving it
+
+**[1674.64s → 1677.48s]** multiple contexts to the same input.
+
+**[1677.48s → 1680.80s]** And we could talk about all of the different scenarios
+
+**[1680.80s → 1685.08s]** in which trying to reproduce the exact input you have
+
+**[1685.08s → 1693.44s]** is challenging.
+
+**[1693.44s → 1696.16s]** All right, any questions on the mark-off chain?
+
+**[1696.16s → 1699.97s]** Good there?
+
+**[1699.97s → 1703.29s]** And do you want us to, so, execute it?
+
+**[1703.29s → 1708.21s]** Because I'm not sure if I should be looking at your screen
+
+**[1708.21s → 1712.63s]** or changing something on my screen.
+
+**[1712.63s → 1714.27s]** In the column.
+
+**[1714.27s → 1718.71s]** No, you guys, you're welcome to this particular exercise
+
+**[1718.71s → 1721.43s]** was just me trying to show stuff to you guys.
+
+**[1721.43s → 1724.07s]** If I want you to follow along, I'll let you know what,
+
+**[1724.07s → 1726.11s]** like when we're about to start doing an exercise
+
+**[1726.11s → 1727.63s]** where I need to follow along.
+
+**[1727.63s → 1732.74s]** But thank you for saying that out loud.
+
+**[1732.74s → 1735.65s]** But yeah, feel free to play around with this.
+
+**[1735.65s → 1738.69s]** You should be able to access the link from the slide
+
+**[1738.69s → 1743.09s]** directly.
+
+**[1743.09s → 1744.77s]** We'll take just a really quick sidebar
+
+**[1744.77s → 1745.25s]** partition.
+
+**[1745.25s → 1748.51s]** I want to show you just how easy it is to do stuff
+
+**[1748.51s → 1752.79s]** with generative AI.
+
+**[1752.79s → 1757.25s]** If you're using Copilot already, hopefully you're
+
+**[1757.25s → 1760.81s]** using Copilot to do exactly what I'm about to show you,
+
+**[1760.81s → 1767.15s]** we're just going to pop over to Gemini.
+
+**[1767.15s → 1768.83s]** And my prompt has already been saved,
+
+**[1768.83s → 1770.23s]** so we don't need to rerun it.
+
+**[1770.23s → 1776.51s]** But I just asked it to add Doc strings to our function.
+
+**[1776.51s → 1781.43s]** So now we have a very tiny function that documents the inputs
+
+**[1781.43s → 1785.19s]** and outputs and gives us good Doc strings
+
+**[1785.19s → 1787.79s]** to help build our auto docs later.
+
+**[1787.79s → 1793.96s]** And you can control the style of this and all variety
+
+**[1793.96s → 1806.09s]** of manners with your prompt experience.
+
+**[1806.09s → 1808.53s]** How long did it take you to write the prompt
+
+**[1808.53s → 1812.86s]** to generate documentation for Backless?
+
+**[1812.86s → 1817.00s]** Maybe about 10 seconds.
+
+**[1817.00s → 1820.20s]** I think I tried, let's see.
+
+**[1820.20s → 1821.80s]** Let's go back, I'll show you guys.
+
+**[1833.78s → 1838.12s]** I think my first attempt was, what did I say exactly?
+
+**[1838.12s → 1839.70s]** I said, can you document,
+
+**[1841.10s → 1842.58s]** and I have a typo there?
+
+**[1842.58s → 1845.06s]** Can you, the documentation for this function?
+
+**[1845.06s → 1845.62s]** And then it,
+
+**[1847.34s → 1848.46s]** spit out the next explanation
+
+**[1848.46s → 1849.58s]** of everything that was happening,
+
+**[1849.58s → 1852.06s]** and I was like, yeah, that's how I want,
+
+**[1852.06s → 1857.41s]** I want you to modify the function with DocSranks.
+
+**[1857.41s → 1883.59s]** So, that was about 10 seconds of working on it.
+
+**[1883.59s → 1888.59s]** So, speaking of helping us create better and better prompts,
+
+**[1888.59s → 1892.88s]** we're going to talk about zero-shot prompts,
+
+**[1892.88s → 1898.94s]** one-shot prompts and few-shot prompts to help achieve better results.
+
+**[1898.94s → 1905.26s]** It's a really simple technique that you guys can use in different aspects as you're going down
+
+**[1905.90s → 1911.69s]** the road. I'm not going to run anything here. I just want to talk a little bit about the examples.
+
+**[1913.63s → 1920.27s]** So zero-shot function would just mean, hey, I want you to, I'm going to write a prompt,
+
+**[1921.55s → 1927.24s]** and then I want you to generate a response. So here we wrote a function,
+
+**[1927.24s → 1929.72s]** and I have a template prompt.
+
+**[1929.72s → 1931.32s]** As a customer support representative,
+
+**[1931.32s → 1933.32s]** write a response to the bond review.
+
+**[1935.69s → 1938.21s]** And then we pass it the reviews.
+
+**[1938.21s → 1940.81s]** The use case could be yell purviews.
+
+**[1940.81s → 1942.05s]** If you've seen when somebody writes
+
+**[1942.05s → 1943.73s]** really negative yell purview,
+
+**[1945.44s → 1947.60s]** you want to be able to respond to that
+
+**[1947.60s → 1949.64s]** as the business owner.
+
+**[1949.64s → 1952.48s]** Well, this is just a zero shot response.
+
+**[1952.48s → 1954.28s]** So that means whatever the model gives,
+
+**[1954.28s → 1955.76s]** you're gonna get.
+
+**[1955.76s → 1958.36s]** And it may not be exactly what you want.
+
+**[1958.36s → 1963.36s]** So instead, we might give it a couple few shot examples.
+
+**[1963.44s → 1968.72s]** So I might modify my prompts with a few examples.
+
+**[1968.84s → 1972.20s]** So here's how we would do that.
+
+**[1972.20s → 1973.04s]** Review.
+
+**[1973.04s → 1974.84s]** I had a great experience with your product,
+
+**[1974.84s → 1976.60s]** my encounter in a small issue.
+
+**[1976.60s → 1979.16s]** And then you provide your nice template.
+
+**[1979.16s → 1981.92s]** It could be the voice and style of your company.
+
+**[1981.92s → 1983.28s]** Thank you for your feedback.
+
+**[1983.28s → 1985.12s]** We're glad to hear you had a great experience.
+
+**[1985.12s → 1988.02s]** Plot of applause.
+
+**[1988.02s → 1990.26s]** And so you have that nice template,
+
+**[1992.17s → 1993.73s]** help reinforce the style.
+
+**[2020.25s → 2021.57s]** Everybody clear on those,
+
+**[2021.57s → 2026.22s]** just the differences between those?
+
+**[2026.22s → 2034.77s]** Yep.
+
+**[2034.77s → 2040.54s]** So let's talk about the context within prompts.
+
+**[2040.54s → 2044.62s]** So if I am trying to provide a lot of good context,
+
+**[2044.62s → 2048.46s]** I want to assign my LLM a job or a role
+
+**[2048.46s → 2051.41s]** to help me create better responses.
+
+**[2051.41s → 2054.21s]** So let's try and write something
+
+**[2054.21s → 2059.44s]** where we're going to help provide really good context
+
+**[2059.84s → 2063.52s]** to help us shape what the response is gonna be.
+
+**[2064.94s → 2071.16s]** Just a quick review back here,
+
+**[2071.16s → 2077.96s]** but I didn't mention, we'll talk about
+
+**[2079.32s → 2081.71s]** some of the imports a little bit.
+
+**[2081.71s → 2086.44s]** This is a wrapper around one of the chain libraries.
+
+**[2086.44s → 2091.44s]** So we're gonna create the role as a technical support specialist
+
+**[2091.44s → 2093.66s]** and we want that specialist to provide
+
+**[2093.66s → 2098.04s]** clearing and size instructions for the user's problem.
+
+**[2098.04s → 2103.26s]** So that way as we structure the inputs
+
+**[2103.26s → 2106.86s]** that we're trying to get for our output of a response,
+
+**[2106.86s → 2111.58s]** I'm saying, hey, I want you as the technical support function
+
+**[2111.58s → 2114.46s]** that's your role as the LLM.
+
+**[2114.46s → 2116.66s]** And then here is the user's message.
+
+**[2116.66s → 2119.14s]** This is the user I want you as the technical support
+
+**[2119.14s → 2122.23s]** specialist to respond to.
+
+**[2122.23s → 2126.20s]** So we're going to have the LLM role play
+
+**[2126.20s → 2132.49s]** with our system prompt message and our user problem message.
+
+**[2132.49s → 2148.24s]** And then we're going to sign that really nice role to the LLM.
+
+**[2148.24s → 2152.36s]** Now, that's one way to provide context within prompts.
+
+**[2152.36s → 2154.88s]** A second way to help us provide really good context
+
+**[2154.88s → 2156.64s]** within a prompt is to decorate it
+
+**[2156.64s → 2161.33s]** with some kind of additional information.
+
+**[2161.33s → 2163.93s]** So when we decorate a prompt, we're
+
+**[2163.93s → 2167.25s]** going to do something like define the prompts
+
+**[2167.25s → 2170.01s]** with and without SQL schema.
+
+**[2170.01s → 2172.13s]** So let's say I'm trying to query a database
+
+**[2172.13s → 2175.21s]** and retrieve all the employees from the table
+
+**[2175.21s → 2178.33s]** that have a salary greater than $50,000.
+
+**[2178.33s → 2181.96s]** So I'm gonna write that prompt,
+
+**[2181.96s → 2184.70s]** and then I'm gonna write the SQL schema,
+
+**[2184.70s → 2186.86s]** and I'm gonna say, yeah, here's the table,
+
+**[2186.86s → 2191.20s]** here are the columns that I want from that response object.
+
+**[2191.20s → 2192.04s]** Okay?
+
+**[2192.04s → 2194.83s]** Now the prompt without the schema,
+
+**[2194.83s → 2196.83s]** write SQL query to retrieve all employees
+
+**[2196.83s → 2200.77s]** of a salary greater than $50,000.
+
+**[2200.77s → 2205.99s]** I could try the prompt within without the schema
+
+**[2205.99s → 2209.92s]** to get a different result.
+
+**[2209.92s → 2211.84s]** My LLM is gonna have more stability
+
+**[2211.84s → 2213.00s]** with which option,
+
+**[2213.00s → 2239.06s]** and the which option has additional context.
+
+**[2239.06s → 2240.70s]** That's not gonna get into this already.
+
+**[2240.70s → 2243.50s]** Maybe I'm jumping ahead, but like, yeah.
+
+**[2243.50s → 2245.90s]** What are the like, guiding gets both
+
+**[2245.90s → 2247.98s]** for structuring the prompts like this?
+
+**[2247.98s → 2249.86s]** Like I'm just curious, like in time,
+
+**[2249.86s → 2252.17s]** I know we just talked about,
+
+**[2252.17s → 2255.17s]** You know, you broke down how Elle laments us.
+
+**[2255.17s → 2257.25s]** If you'd simplified them, I'd sort of like Markov chain.
+
+**[2257.25s → 2260.72s]** So I'm just curious, how do we know,
+
+**[2260.72s → 2262.44s]** oh, this is like how we should structure
+
+**[2262.44s → 2265.00s]** like a think way to prompt the closest based off
+
+**[2265.00s → 2267.02s]** of this curious.
+
+**[2267.02s → 2269.86s]** Yeah, I think there's, yeah, no, it makes the purpose
+
+**[2269.86s → 2270.70s]** sense to me.
+
+**[2270.70s → 2273.30s]** There are a bunch of frameworks circulating
+
+**[2273.30s → 2274.78s]** within the community.
+
+**[2274.78s → 2278.50s]** Even within Lockheed, we have some people
+
+**[2278.50s → 2281.30s]** filming to answer your question.
+
+**[2281.30s → 2285.30s]** I think we have three frameworks that people are talking about right now.
+
+**[2285.30s → 2292.04s]** I don't remember all the acronyms, but I've heard things like star.
+
+**[2292.04s → 2304.23s]** But if all of the frameworks boil down to you, you need to provide exactly what you're looking for in terms of response as much context as you possibly can.
+
+**[2304.23s → 2308.29s]** And for your preferred output format.
+
+**[2308.29s → 2312.09s]** So if you can provide as much specificity as possible,
+
+**[2312.09s → 2314.01s]** you're going to get the best results.
+
+**[2314.01s → 2318.41s]** So you saw in my example with the documentation
+
+**[2318.41s → 2320.81s]** that I didn't provide actually good context.
+
+**[2320.81s → 2323.81s]** Like my communication with L, I'm on my side wasn't great.
+
+**[2323.81s → 2325.33s]** I said, can you document the function?
+
+**[2325.33s → 2328.37s]** It was like, sure, I'll write a textbook about your function.
+
+**[2328.37s → 2329.77s]** It's like, oh, that's not what I meant.
+
+**[2329.77s → 2331.29s]** I needed better context.
+
+**[2331.29s → 2336.61s]** And so my enhanced context was, I want you to modify
+
+**[2336.61s → 2344.76s]** this Python function and include DocStrings describing the Python's classes functionality.
+
+**[2344.76s → 2347.16s]** And that additional context was really helpful.
+
+**[2347.16s → 2352.76s]** And I could even enhance it further by, say that I had a really specific style guide for
+
+**[2352.76s → 2357.92s]** my DocStrings, then I might include an example of that functionality.
+
+**[2357.92s → 2362.40s]** Thanks.
+
+**[2362.40s → 2384.12s]** So your LLMs are going to leverage your chat history as you go along to maintain a context window.
+
+**[2384.12s → 2390.12s]** So the older the context, the more likely it is to be discarded to the size.
+
+**[2390.12s → 2396.63s]** Those limitations are typically very well documented, depending on the model you're working with.
+
+**[2396.63s → 2399.11s]** And you can look this up.
+
+**[2399.11s → 2401.71s]** You could say maximum context window,
+
+**[2401.71s → 2404.11s]** I think is the most common language
+
+**[2404.11s → 2405.87s]** to help you identify that.
+
+**[2407.73s → 2410.13s]** Let's say for menstrual,
+
+**[2410.13s → 2412.45s]** it's, and this don't call me on the exact number,
+
+**[2412.45s → 2414.57s]** but let's say it's 30,000 tokens.
+
+**[2415.65s → 2417.85s]** Let's say for chat TTP,
+
+**[2419.41s → 2423.09s]** 3.5, let's say it's 70,000 tokens.
+
+**[2423.09s → 2424.93s]** And again, I don't think those numbers are correct,
+
+**[2424.93s → 2426.93s]** but just as an example.
+
+**[2426.93s → 2431.69s]** That means it would take a look at 70,000 of the previous tokens in your chat history
+
+**[2431.69s → 2436.40s]** to help inform the next thing it's going to protect.
+
+**[2436.40s → 2441.00s]** So the bigger the context window, probably the better the results are going to be for
+
+**[2441.00s → 2442.57s]** you.
+
+**[2442.57s → 2447.77s]** This is also important to know, anytime, no matter which LLM you're working with, whether
+
+**[2447.77s → 2455.13s]** you're using OpenAI or you're using Obama on your local machine or you're using, you
+
+**[2455.13s → 2457.43s]** you know, Gemini or something like that.
+
+**[2457.43s → 2460.93s]** Creating a new chat history creates a new context.
+
+**[2460.93s → 2464.43s]** So making sure that you are a cognizant
+
+**[2464.43s → 2466.63s]** of which context to work in.
+
+**[2466.63s → 2470.19s]** So if I'm trying to create doctering functions
+
+**[2470.19s → 2473.63s]** and all of a sudden I switch to a new chat,
+
+**[2473.63s → 2475.83s]** I'm gonna lose that context that I've had.
+
+**[2475.83s → 2479.71s]** And so I would need to maybe create a template prompt
+
+**[2479.71s → 2484.84s]** to help me reset the context by set up a chat.
+
+**[2484.84s → 2490.68s]** So that idea of creating a system prompts and initializing the LLM,
+
+**[2490.68s → 2492.68s]** something that we can also do in Python.
+
+**[2493.40s → 2498.04s]** So in this particular example, we're going to grab a prompt about
+
+**[2499.16s → 2502.36s]** creating a LLM that's a helpful assistance.
+
+**[2502.36s → 2505.64s]** So we're going to try and answer questions to the best of the ability.
+
+**[2505.64s → 2510.68s]** So every time I initialize my LLM, I'm going to have that functionality.
+
+**[2510.68s → 2516.15s]** and that system will help start.
+
+**[2516.15s → 2519.15s]** This is also how a lot of companies help create
+
+**[2519.15s → 2523.30s]** safety controls on their LLMs,
+
+**[2523.30s → 2524.94s]** you know, things like, right?
+
+**[2524.94s → 2526.98s]** They're going to initialize their LLM
+
+**[2526.98s → 2528.62s]** with some system level prompts
+
+**[2528.62s → 2531.54s]** so that way even when you're interacting with it,
+
+**[2531.54s → 2534.94s]** it's saying it's protecting the output in some way.
+
+**[2534.94s → 2536.46s]** Like your safety filters are gonna be
+
+**[2536.46s → 2543.60s]** in some more sophisticated version of this visualization.
+
+**[2543.60s → 2547.28s]** And then of course, if you're doing things that are very important,
+
+**[2547.28s → 2551.62s]** you're going to want to save your child history.
+
+**[2551.62s → 2555.90s]** And so you can, this code will help you kind of save that context
+
+**[2555.90s → 2564.56s]** and then re-initialize it later when you're doing other work.
+
+**[2564.56s → 2570.84s]** Well, I should hear, the system problems can be overwritten, right?
+
+**[2570.84s → 2575.64s]** Like, can't we prompt something and then wipe it out or malicious
+
+**[2575.64s → 2580.12s]** can wipe it out if it's exposed to the client, right?
+
+**[2580.12s → 2583.74s]** Yes, and people try to do that all the time.
+
+**[2584.76s → 2589.26s]** I will say a lot of the prompts are written
+
+**[2589.26s → 2591.24s]** in such a way that it's like,
+
+**[2591.24s → 2594.60s]** protect the information of this prompt, you know,
+
+**[2594.60s → 2595.48s]** defend it.
+
+**[2596.36s → 2598.24s]** There's kind of this language they construct
+
+**[2598.24s → 2602.74s]** to help defend the context of what's in those safety windows.
+
+**[2602.74s → 2608.84s]** So, and you can read a lot about the research and overcoming them.
+
+**[2608.84s → 2615.64s]** Yeah, people have definitely, especially AI security researchers are trying very hard.
+
+**[2615.64s → 2618.82s]** And of course, that actor is too.
+
+**[2618.82s → 2631.38s]** But I think just maybe to add on to that point, there was an example in the ball.
+
+**[2631.38s → 2633.90s]** I remember if it was, I think it was ChatTTP.
+
+**[2633.90s → 2639.50s]** that a researcher was able to force Shatty to reveal
+
+**[2639.50s → 2643.04s]** the email of an individual, with the email in contact
+
+**[2643.04s → 2646.94s]** and he tells an individual that was in its training data.
+
+**[2646.94s → 2651.67s]** Just by repeating one word over and over and over and over again,
+
+**[2651.67s → 2668.47s]** that's nice stuff.
+
+**[2668.47s → 2671.70s]** Let's get our hands a little bit.
+
+**[2671.70s → 2675.30s]** So we're going to develop a conversation between two LLMs,
+
+**[2675.30s → 2677.34s]** discussing the process of building a crud
+
+**[2677.34s → 2679.88s]** at leveraging different perspectives and techniques
+
+**[2679.88s → 2682.84s]** to maintain the chat history effectively.
+
+**[2683.81s → 2686.19s]** We're gonna take a look at a couple different approaches,
+
+**[2686.19s → 2690.25s]** like summarization and proactive context management
+
+**[2690.25s → 2692.93s]** and prevent the conversations from going stale.
+
+**[2692.93s → 2699.81s]** So that'll be your guided project.
+
+**[2699.81s → 2701.53s]** Ash, you wanna talk a little bit more
+
+**[2701.53s → 2705.52s]** about the guided project?
+
+**[2705.52s → 2707.52s]** Oh, sorry, this is just more like an exercise
+
+**[2707.52s → 2710.52s]** at the end of class for you guys to check your understanding.
+
+**[2710.52s → 2711.92s]** And then the full guided project
+
+**[2711.92s → 2714.16s]** we'll have on next Thursday,
+
+**[2714.16s → 2716.52s]** which is going to be our technical writer.
+
+**[2716.52s → 2719.36s]** So I will introduce that,
+
+**[2719.36s → 2721.40s]** but this would be something in office hours
+
+**[2721.40s → 2723.52s]** that me and Tom are gonna go over tomorrow.
+
+**[2723.52s → 2724.64s]** So this is something too,
+
+**[2724.64s → 2726.92s]** as the lecture's coming to close today,
+
+**[2726.92s → 2729.80s]** that it's a challenge for you guys to try out your free time.
+
+**[2729.80s → 2731.28s]** If not, if you come to office hours,
+
+**[2731.28s → 2740.63s]** this is exactly what we're gonna be building.
+
+**[2740.63s → 2743.87s]** And then the only thing I had for everybody else was,
+
+**[2743.87s → 2745.19s]** I think you missed the system
+
+**[2745.19s → 2746.91s]** versus human prompt to slide,
+
+**[2746.91s → 2748.31s]** so you're gonna go back to it.
+
+**[2748.31s → 2753.70s]** I skipped it. I sure did.
+
+**[2753.70s → 2756.82s]** Bummer. Core part.
+
+**[2756.82s → 2762.25s]** So going way back earlier.
+
+**[2762.25s → 2764.93s]** So system versus user prompts.
+
+**[2764.93s → 2767.27s]** So system prompts are the things.
+
+**[2767.27s → 2770.67s]** You know, I was talking about initializing your LLM with context
+
+**[2770.67s → 2773.51s]** before your user is interacting with it.
+
+**[2773.51s → 2775.91s]** That would be a system prompt.
+
+**[2775.91s → 2781.21s]** So that's going to typically in the framework of chain is going to carry more weight
+
+**[2781.21s → 2785.01s]** on the response and the way that chain is structured.
+
+**[2785.01s → 2788.53s]** User messages are the things you're sending when you're going on to the chat,
+
+**[2788.53s → 2797.04s]** e-db, chat or Gemini. Those are going to contain contextual information in the task at hand.
+
+**[2798.99s → 2805.47s]** So your best practices for you guys as developers making this stuff is you definitely want to use both.
+
+**[2806.19s → 2812.83s]** So even if your system prompts are not super sophisticated, like it's something like,
+
+**[2812.83s → 2816.66s]** Like, just go back here.
+
+**[2816.66s → 2818.82s]** Here's a system prompt, you're a helpful assistant.
+
+**[2818.82s → 2821.18s]** It's all the questions to the best of your ability.
+
+**[2821.18s → 2823.22s]** That's not a super sophisticated prompt,
+
+**[2823.22s → 2827.78s]** but because you've created an initializer system with that,
+
+**[2827.78s → 2831.06s]** the performance your LLM is going to change
+
+**[2831.06s → 2834.30s]** and you're going to get that more helpful tone in the text
+
+**[2835.34s → 2837.62s]** and it's gonna try and answer things.
+
+**[2837.62s → 2841.30s]** Yeah, and these things aren't perfect, right?
+
+**[2841.30s → 2844.02s]** It's like essentially mimicking talking with the human,
+
+**[2844.02s → 2855.06s]** But so here, we're initializing our model with, excuse me,
+
+**[2865.22s → 2869.18s]** we're gonna initialize our model with some contacts
+
+**[2869.18s → 2873.94s]** and then we can play with our system text a little bit.
+
+**[2873.94s → 2875.82s]** Since we have time, I think we can play around
+
+**[2875.82s → 2877.06s]** with this a little bit.
+
+**[2877.06s → 2881.10s]** If you want to, I see at least one question
+
+**[2881.10s → 2890.32s]** in the Slack chat, right?
+
+**[2890.32s → 2892.28s]** Yeah, okay, the key to not necessarily a question,
+
+**[2892.28s → 2896.12s]** but more of context hijacking.
+
+**[2896.12s → 2897.84s]** Yeah, I haven't seen that small model
+
+**[2899.56s → 2900.90s]** creating the prompt stuff,
+
+**[2900.90s → 2902.04s]** but that sounds really cool.
+
+**[2902.04s → 2905.82s]** I'll have to check it out.
+
+**[2905.82s → 2931.81s]** Any questions so far?
+
+**[2931.81s → 2935.14s]** All right, let's try playing around a little bit.
+
+**[2935.14s → 2937.62s]** We'll spend the next 15 minutes playing out
+
+**[2937.62s → 2941.02s]** with some of these prompt ideas from the slides.
+
+**[2941.02s → 2944.09s]** And then we'll close out here at 8 o'clock,
+
+**[2945.25s → 2947.89s]** central time, 9 p.m. Eastern time.
+
+**[2947.89s → 2951.33s]** And then if you wanna stick around and just chat
+
+**[2951.33s → 2995.87s]** more than happy to do that.
+
+**[2995.87s → 2999.19s]** Just creating a quick scratch pad and BS code,
+
+**[2999.19s → 3000.79s]** nothing too crazy.
+
+**[3000.79s → 3002.59s]** I've already installed the dependencies
+
+**[3002.59s → 3006.48s]** in my Python environment, so we should be okay there.
+
+**[3006.48s → 3010.16s]** And then I think we can just start playing around.
+
+**[3010.16s → 3013.52s]** I do have a LOMA running on my local system.
+
+**[3015.17s → 3017.41s]** The responses that we're going to get
+
+**[3017.41s → 3020.33s]** from chatty to be are gonna be a little bit better.
+
+**[3020.33s → 3023.45s]** If you'd like me to talk about what LOMA is,
+
+**[3023.45s → 3025.17s]** and have you expand on that.
+
+**[3025.17s → 3027.49s]** But part of the course we do provide you
+
+**[3027.49s → 3032.05s]** does open AI access tokens.
+
+**[3032.05s → 3071.27s]** So hopefully, and use some of the latest greatest.
+
+**[3071.27s → 3077.03s]** So got a very predictable error key to get here.
+
+**[3077.03s → 3078.87s]** If you haven't already, I think Ash,
+
+**[3078.87s → 3084.37s]** you share the open AI API keys with the class, right?
+
+**[3084.37s → 3086.13s]** Yep, it's on our Slack channel.
+
+**[3086.13s → 3088.41s]** And then I just saw the message about the ENV setup.
+
+**[3088.41s → 3092.12s]** So I'll record them right now.
+
+**[3092.12s → 3102.09s]** OK, perfect.
+
+**[3102.09s → 3104.41s]** So everybody has the same API key here.
+
+**[3104.41s → 3107.25s]** So it's of course terrible to have practices,
+
+**[3107.25s → 3110.21s]** but just to simplify things a little bit,
+
+**[3110.21s → 3118.90s]** we're just gonna pass it in as a string.
+
+**[3118.90s → 3122.53s]** And don't worry, Josh, I'm just gonna commit this
+
+**[3122.53s → 3132.03s]** to the public GitHub repo right now.
+
+**[3132.03s → 3134.35s]** The survey knows we're trying to have everybody share the key
+
+**[3134.35s → 3136.03s]** for the duration of the program.
+
+**[3137.47s → 3139.51s]** We didn't wanna have cost and curve from learning.
+
+**[3139.51s → 3142.73s]** So that's why we're doing the shared key.
+
+**[3142.73s → 3145.17s]** Of course, use your own keys if you wanna use your own keys,
+
+**[3145.17s → 3148.49s]** but we didn't want this to be a blocker for anybody
+
+**[3148.49s → 3151.30s]** that was like having to put in their own money
+
+**[3151.30s → 3152.86s]** for a key while they were learning.
+
+**[3152.86s → 3154.18s]** So that's why we did this.
+
+**[3154.18s → 3156.54s]** If you wanna use your own go for it
+
+**[3156.54s → 3158.86s]** or you wanna use Alama go for it,
+
+**[3158.86s → 3160.74s]** just understand there was a reason for that.
+
+**[3160.74s → 3163.86s]** Also, it's important to note that there's so many people
+
+**[3163.86s → 3166.74s]** from so many different tech backgrounds in the room here.
+
+**[3166.74s → 3169.14s]** We don't know who needs like an environment
+
+**[3169.14s → 3172.43s]** and set up walkthrough versus somebody that's like
+
+**[3172.43s → 3174.11s]** offended that we would offer an environment
+
+**[3174.11s → 3175.55s]** and set up walkthrough, I don't think I'm gonna be offended.
+
+**[3175.55s → 3183.55s]** you get the idea like some people have strong opinions on how they would set things up. So this is our second cohort of running this.
+
+**[3184.55s → 3193.55s]** And so we're getting new information all the time. So we'll take what we can get from your feedback. So like Chris really appreciate you saying that. So we'll get on creating that.
+
+**[3193.55s → 3198.51s]** that. But just keep in mind if there's something that you feel is missing, it wasn't on purpose.
+
+**[3198.51s → 3205.63s]** So just feel free to hit up ash or John Cody will always teaching or DMA during class. And we'll
+
+**[3205.63s → 3212.35s]** start working on getting those to you. The thing that we have, it's really too hard vantage is
+
+**[3212.35s → 3218.27s]** having built several of these in the past and talking with people in industry and getting
+
+**[3218.27s → 3224.59s]** opinion and opinion has been the interesting golden nugget while a lot of people have been coming
+
+**[3224.59s → 3228.51s]** to this course and getting a lot of information. So in our first cohort we've had some incredible
+
+**[3228.51s → 3234.27s]** success from just having opinions on what you do next. So just wanted to kind of point that out
+
+**[3234.27s → 3240.27s]** to say if you see something say something so we can start helping you out. So I appreciate that
+
+**[3240.27s → 3243.63s]** Chris, anybody else. We're here to help you. Thanks.
+
+**[3243.63s → 3258.29s]** Thanks, Josh. I will, speaking of, this is my first time teaching this class, although
+
+**[3258.29s → 3264.13s]** I this is stuff I do in my day job, so I'm very excited to be here and share kind of what I'm working on.
+
+**[3264.93s → 3272.53s]** But for this particular class, I will probably be, I haven't fully decided on, but I'm going to
+
+**[3272.53s → 3275.89s]** to implement alongside Asch.
+
+**[3275.89s → 3278.69s]** I am going to end up using a Docker local environment
+
+**[3278.69s → 3279.97s]** VS Code.
+
+**[3279.97s → 3282.25s]** So if those of you are interested in,
+
+**[3282.25s → 3285.09s]** that's your preferred way of setting up environments.
+
+**[3285.09s → 3288.49s]** I'm happy to talk through that and send some of the instructions
+
+**[3288.49s → 3289.93s]** on how to do that.
+
+**[3289.93s → 3291.81s]** I'd love for Asch to still do this video
+
+**[3291.81s → 3293.21s]** because he'll do it differently than I will.
+
+**[3293.21s → 3297.33s]** And I think there's really great value in that.
+
+**[3297.33s → 3299.41s]** Yeah, we can actually do like three or four ways.
+
+**[3299.41s → 3302.17s]** So actually, I'm going to post all the videos
+
+**[3302.17s → 3309.67s]** and whatever preferences feel for it to do that?
+
+**[3309.67s → 3311.95s]** So going back to the code for a second,
+
+**[3311.95s → 3313.39s]** the point of this was to show you
+
+**[3313.39s → 3314.75s]** just kind of what the differences are
+
+**[3314.75s → 3316.67s]** with different system props.
+
+**[3316.67s → 3319.11s]** So now we've loaded in our API key,
+
+**[3319.11s → 3327.66s]** we can create an instance of our LLM,
+
+**[3327.66s → 3328.86s]** well, my help actually ran the line
+
+**[3328.86s → 3361.42s]** that had the API key and I,
+
+**[3361.42s → 3364.42s]** well, yeah, I had it in a mixture underscore
+
+**[3364.42s → 3369.84s]** between open and AI.
+
+**[3369.84s → 3372.20s]** Okay, so we now have our contacts,
+
+**[3372.20s → 3376.08s]** our LLM connection and our context is up.
+
+**[3376.08s → 3378.12s]** We're going to try and create some text.
+
+**[3378.12s → 3381.20s]** What would be a good name for a company that makes colorful socks?
+
+**[3381.20s → 3392.38s]** So we're going to send a human message with some text, and then we're going to invoke
+
+**[3392.38s → 3393.38s]** a message.
+
+**[3393.38s → 3402.99s]** In other words, we're going to print out the response.
+
+**[3402.99s → 3407.72s]** So the answer we got was Rainbow Footwear Company.
+
+**[3407.72s → 3408.72s]** Okay, that's fun.
+
+**[3408.72s → 3411.72s]** That's a fun answer.
+
+**[3411.72s → 3435.50s]** Now let's try to change this a little bit by changing the system startup context.
+
+**[3435.50s → 3441.61s]** fun system started message. Here's sarcastic bot that gives helpful advice. Let's try a new name
+
+**[3441.61s → 3455.56s]** suggestion. Here we go. Oh, how about in plans, socks incorporated. I love it. Anybody else
+
+**[3455.56s → 3471.48s]** have a system prompt they want to try to change the answer a little bit? No, no, no, no, no, no,
+
+**[3471.48s → 3496.66s]** two-year-old box. No sarcastic. Okay. I did not spell material, right? But that's okay. Typhos are
+
+**[3496.66s → 3504.66s]** I am curious to see how our type of reforms.
+
+**[3504.66s → 3523.88s]** How about rainbow footwear company?
+
+**[3523.88s → 3527.88s]** Conveys the ideal colorful socks and sketchy and memorable.
+
+**[3527.88s → 3530.23s]** Doesn't quite seem material.
+
+**[3530.23s → 3536.79s]** Should we change the spelling or someone else want to trust me else?
+
+**[3536.79s → 3541.73s]** I got one.
+
+**[3541.73s → 3546.73s]** Your world's famous creative strategist known for coming up with company names.
+
+**[3546.73s → 3547.73s]** I like this.
+
+**[3547.73s → 3548.73s]** Okay.
+
+**[3548.73s → 3567.24s]** I also picked it in the chat so you don't have to type it all out.
+
+**[3567.24s → 3572.17s]** my copy and paste from Zoom was not working for some reason.
+
+**[3572.17s → 3612.19s]** From a SOC company, different.
+
+**[3612.19s → 3615.19s]** What if we change it just a little bit, say, no one for coming
+
+**[3615.19s → 3619.19s]** with a company name. What if we added some kind of descriptor to the
+
+**[3619.19s → 3637.42s]** something like quirky, quirky and sarcastic company names,
+
+**[3637.42s → 3656.23s]** rainbow to Z's company. It's pretty funny.
+
+**[3656.23s → 3664.30s]** All right, everyone. I think we're at time for that kind of formal
+
+**[3664.30s → 3670.06s]** part of the course. So I do want to kind of close out some instruction here. I'll see you all
+
+**[3670.06s → 3677.71s]** again on Thursday, excuse me Wednesday nights. And I'm happy to stick around for a few minutes and
+
+**[3677.71s → 3683.23s]** just chat, answer your questions, but can continue playing around with some prompts or just talk about
+
+**[3684.13s → 3686.05s]** whatever you want to talk about in the world of generative AI.
+
+**[3688.02s → 3690.42s]** I actually would love to know really quickly, selfishly.
+
+**[3690.42s → 3702.51s]** cohort to cohort. We have like a set interesting tech backgrounds. Something we can't really tell with season veterans is just everybody's reaction and body language is usually pretty similar.
+
+**[3702.51s → 3713.78s]** It's something to the lines of this. It's like hard to tell. So what I would love to know is just from emojis and reactions here.
+
+**[3713.78s → 3719.72s]** In terms of the beginning of this course,
+
+**[3719.72s → 3722.08s]** foundationally we've got to talk about course content.
+
+**[3722.08s → 3724.92s]** We've got to talk about the foundational aspects,
+
+**[3724.92s → 3727.76s]** like the Markov chains and understanding prediction.
+
+**[3727.76s → 3732.64s]** Some people have zero clue and they're like JavaScript engineers that are just like,
+
+**[3732.64s → 3734.50s]** this is fascinating. I've never seen this before.
+
+**[3734.50s → 3735.84s]** I've never heard this term before.
+
+**[3735.84s → 3736.88s]** If you were in that camp,
+
+**[3736.88s → 3744.49s]** can you just give me a thumbs up in the reaction so I can get an idea of this group?
+
+**[3744.49s → 3752.34s]** Interesting. Okay. I'm fig I kind of figure that was this group. Okay. So if you're in this space
+
+**[3752.34s → 3756.52s]** You're coding in Python and or some other like you're actually architecting different things
+
+**[3756.52s → 3761.92s]** And you're looking for some interesting opinions on like what could be done and how to be useful
+
+**[3762.74s → 3764.74s]** with these give me a
+
+**[3765.58s → 3774.16s]** Reaction thumbs up for that. Okay, okay
+
+**[3774.96s → 3779.76s]** All right, all right 50% of the room all right other 50% of the room
+
+**[3779.76s → 3783.98s]** So I'm interested.
+
+**[3783.98s → 3786.18s]** What is it that you're hoping to gain?
+
+**[3786.18s → 3788.82s]** Because we, this is the most beginner we've got.
+
+**[3788.82s → 3793.05s]** It gets deeper and deeper class over class.
+
+**[3793.05s → 3797.33s]** So today you're going, we're talking about system prompts seriously.
+
+**[3797.33s → 3801.21s]** Again, some people were like having a hard time with it in our first cohort.
+
+**[3801.21s → 3805.99s]** This cohort seems very different personality wise.
+
+**[3805.99s → 3811.57s]** So tell me, you can throw me, throw in chatter on me if you are in the second group there.
+
+**[3811.57s → 3820.87s]** What is it that you're hoping to gain over the span of the next 10 weeks?
+
+**[3820.87s → 3826.10s]** Is it the agents, the multi agents, deeper opinions on RAG implementation?
+
+**[3826.10s → 3839.47s]** Well, how to get, yeah, how to properly direct for a large interconnected code of A's
+
+**[3839.47s → 3848.49s]** that communicates with each other over Kafka, Sinesse, Scusse,
+
+**[3848.49s → 3851.81s]** stuff like that, and pass those messages around and how to,
+
+**[3852.85s → 3854.37s]** all those information is written down,
+
+**[3854.37s → 3860.29s]** so we're how to connect all these dots and do multi-shot agents,
+
+**[3860.77s → 3863.65s]** multi-shot agents where it tries to, you know,
+
+**[3863.65s → 3868.96s]** tries to, maybe multi-agents where it tries different models
+
+**[3868.96s → 3872.32s]** as well to give the user a chance to evaluate stuff like that.
+
+**[3872.88s → 3877.76s]** Perfect. Okay. The reason I ask is because like we are going to get to those spaces.
+
+**[3879.28s → 3883.36s]** But we're going to be going through some of the foundational pieces of course.
+
+**[3884.91s → 3890.11s]** I just hope you understand that that's how this course works. So we will scaffold into it.
+
+**[3891.87s → 3896.91s]** I just didn't want any surprises for anybody because we posted the course content.
+
+**[3896.91s → 3901.71s]** It should be clear. I'm reading the room today going, these people clearly get what we're saying.
+
+**[3903.07s → 3908.19s]** I want to interject here to say we've got more coming and I'm excited for you to see it because
+
+**[3908.19s → 3912.43s]** we've seen it in the first cohort and people are really enjoying it. Well, we saw the same kind of
+
+**[3912.43s → 3917.39s]** reaction in the first day too, where it was like LLMs, are you serious? And it's like, okay.
+
+**[3918.99s → 3924.75s]** So there's more to come. We're going to get deeper. John Cody's chops and like the people that he
+
+**[3924.75s → 3931.07s]** works with every day are an incredible advantage that this cohort has. And so I just wanted to
+
+**[3931.07s → 3935.31s]** like interject that on our first day just from reading the room. My job is literally to read
+
+**[3936.03s → 3940.51s]** classrooms day in and day up and doing that for a long time. I'm just going, I'm seeing it here
+
+**[3940.51s → 3944.91s]** and I wanted to interject. So stay with us. We're going to have a lot of fun and we're going to get
+
+**[3944.91s → 3950.51s]** deeper. But I had an inkling that this group is more advanced than the last one and everybody just
+
+**[3950.51s → 3954.59s]** confirmed that. So we might adjust the curriculum further for this group as well. So
+
+**[3954.59s → 3955.59s]** I appreciate that.
+
+**[3955.59s → 3960.27s]** I'm going to pass over to John Cody for anybody that wants to stick around and ask questions,
+
+**[3960.27s → 3964.84s]** but thanks for, let me do a little quick check for understanding there.
+
+**[3964.84s → 3971.83s]** Thanks, Josh.
+
+**[3971.83s → 3974.23s]** It makes it way more fun too.
+
+**[3974.23s → 3978.43s]** So we'll, you know, we can take the average of the room up.
+
+**[3978.43s → 3983.91s]** We'll get to cover a lot more stuff and answer harder and harder questions.
+
+**[3983.91s → 3987.28s]** So cool.
+
+**[3987.28s → 3987.78s]** Cool.
+
+**[3987.78s → 3991.80s]** What kind of, I think because many of you
+
+**[3991.80s → 3993.72s]** are here with technical background,
+
+**[3993.72s → 3995.48s]** you're looking to get something out.
+
+**[3995.48s → 3999.44s]** What are the specific things that you don't know about
+
+**[3999.44s → 4002.99s]** that you really want to know more about?
+
+**[4002.99s → 4005.35s]** I want to know why we are choosing
+
+**[4005.35s → 4008.67s]** to use the different packages here that we're using.
+
+**[4008.67s → 4012.35s]** For instance, why are we using chain on a school open AI?
+
+**[4012.35s → 4018.56s]** Chat open AI class, instead of like just another chain open
+
+**[4018.56s → 4020.56s]** I mean, there's a bunch of them.
+
+**[4020.56s → 4025.56s]** So I don't know when to pick and choose different things for different applications.
+
+**[4025.56s → 4031.59s]** I mean, in this exercise, we can just walk through why you picked those things.
+
+**[4031.59s → 4032.81s]** I'd be hopeful.
+
+**[4032.81s → 4033.81s]** Totally.
+
+**[4033.81s → 4045.77s]** So I would say overall,
+
+**[4045.77s → 4049.77s]** there are other libraries like Langshan.
+
+**[4049.77s → 4051.87s]** The people are experimenting with.
+
+**[4051.87s → 4053.87s]** My team is experimenting with a couple.
+
+**[4053.87s → 4060.87s]** to, Langchain seems to be the very best supported right now in terms of the commuting the documentation.
+
+**[4060.87s → 4063.87s]** So there's plenty of other stuff out there.
+
+**[4063.87s → 4072.09s]** They're like our critiques of Langchain, which I think would be on the scope of this course you could just Google that later.
+
+**[4072.09s → 4080.09s]** But we picked it because it's the most common framework right now for LLMs.
+
+**[4080.09s → 4083.09s]** So that's to answer your package question.
+
+**[4083.09s → 4088.09s]** Langshan is then also further divided into a couple different flavors depending on what you're trying to do.
+
+**[4088.09s → 4093.09s]** So like there's Langshan core, which is going to have most of the stuff that you're familiar with.
+
+**[4093.09s → 4098.09s]** Open AI is going to just make it easier to interact with the open AI API standard.
+
+**[4098.09s → 4105.09s]** And then community is the other community driven packages that are created to interact with the Langshan ecosystem.
+
+**[4105.09s → 4109.48s]** So that's the choice on packages.
+
+**[4109.48s → 4113.48s]** Now in terms of message classes,
+
+**[4113.48s → 4117.00s]** the human message just mimics what it would be like
+
+**[4117.00s → 4120.04s]** if you were I were to go on chat GDP and write a response in.
+
+**[4120.04s → 4123.88s]** So like that's what it's trying to do in terms of weights
+
+**[4123.88s → 4128.24s]** for the particular message that we're writing.
+
+**[4128.24s → 4131.12s]** System message like we talked about earlier in the class,
+
+**[4131.12s → 4135.00s]** that's what your instance of your API connection
+
+**[4135.00s → 4142.13s]** is going to initialize your context window with that system prompt.
+
+**[4142.13s → 4146.80s]** Let's go take a look at the different types though, maybe
+
+**[4146.80s → 4149.77s]** see what other questions you have.
+
+**[4149.77s → 4152.57s]** I don't remember what all this input and API spec.
+
+**[4152.57s → 4194.72s]** And it's just the human message docs are sharing.
+
+**[4194.72s → 4195.76s]** You sharing something?
+
+**[4195.76s → 4198.12s]** I want to see your bioscode.
+
+**[4198.12s → 4199.92s]** Oh, sorry.
+
+**[4199.92s → 4229.94s]** I wasn't sharing my whole desktop.
+
+**[4229.94s → 4234.04s]** Yeah, the docs don't list all the messages types.
+
+**[4234.04s → 4244.95s]** One page which I find frustrating, but hopefully that helped begin to answer your question.
+
+**[4244.95s → 4248.28s]** I don't think it's a full answer though.
+
+**[4248.28s → 4259.16s]** We can also ask, ask once see.
+
+**[4259.16s → 4260.16s]** Let me get back to you.
+
+**[4260.16s → 4266.16s]** Let me take a look at the documentation, see which other classes are implemented as message types.
+
+**[4266.16s → 4274.70s]** Is that the right track though that you were looking for?
+
+**[4274.70s → 4276.86s]** I think I understand the messages, right?
+
+**[4276.86s → 4279.02s]** And I can look and see if the base message class
+
+**[4279.02s → 4282.96s]** is extended with other children, that's fine.
+
+**[4282.96s → 4287.24s]** Like, why are we using the chat open AI model here?
+
+**[4289.92s → 4292.96s]** So the chat open AI model is just easier
+
+**[4292.96s → 4297.08s]** to help handle their quest to and from the open AI API spec.
+
+**[4297.08s → 4299.08s]** So that way we're not having to write
+
+**[4299.08s → 4302.70s]** the waiting class, sending out to the open API.
+
+**[4302.70s → 4314.18s]** So it's really abstracting away a lot of actual HTTP requests for us that's specific to the Open API spec.
+
+**[4314.18s → 4323.81s]** So that would be the reason for us to use that particular module.
+
+**[4323.81s → 4337.13s]** Okay, so, so like I'll give you an instance that we have implemented, even though we host our own models, open source models.
+
+**[4337.13s → 4340.09s]** We have them implemented on our servering
+
+**[4340.09s → 4342.25s]** and our inference infrastructure
+
+**[4342.25s → 4344.81s]** to comply with the Open API,
+
+**[4344.81s → 4349.49s]** excuse me, Open API, API specs, it's a mouthful.
+
+**[4349.49s → 4353.25s]** So that way you can just drop in the model URL
+
+**[4353.25s → 4363.96s]** and it's gonna work the same way with the same wrappers.
+
+**[4363.96s → 4366.46s]** So this base, this chat Open AI model,
+
+**[4366.46s → 4369.85s]** it's a client class that deals with the network of stuff
+
+**[4369.85s → 4373.21s]** over the chat GPC API.
+
+**[4373.21s → 4376.09s]** I guess what are the API, what are the points that we're hitting?
+
+**[4376.09s → 4379.53s]** And then you mentioned swapping it out.
+
+**[4379.53s → 4382.85s]** Like, is this the same interface as, you know,
+
+**[4382.85s → 4386.85s]** Gemini client or a XCETARA client?
+
+**[4386.85s → 4392.97s]** Like, or is this, are we coupling this to chat to open AI's endpoints?
+
+**[4392.97s → 4393.97s]** Right now.
+
+**[4393.97s → 4398.65s]** Yeah, right now we're coupling it to open AI's endpoints.
+
+**[4398.65s → 4403.68s]** So we are taking that API key, connecting to GTP 3.5 turbo
+
+**[4404.88s → 4408.14s]** and sending in requests that way.
+
+**[4408.14s → 4411.22s]** And know the API specs between Gemini
+
+**[4411.22s → 4413.94s]** and ChatGTP are gonna be different.
+
+**[4413.94s → 4416.88s]** And actually, I don't think there is a API for Gemini
+
+**[4416.88s → 4419.32s]** that's public facing at the moment.
+
+**[4419.32s → 4422.48s]** Although their model Gemma is open source,
+
+**[4422.48s → 4425.18s]** so you could grab Gemma and use it and host it yourself.
+
+**[4425.18s → 4430.18s]** But then there are plenty of other alternatives out there as well,
+
+**[4430.18s → 4433.18s]** where the model is hosted by somebody else.
+
+**[4433.18s → 4471.48s]** Well, if there's not another question, I'll just pull up the open AI aspect.
+
+**[4471.48s → 4474.51s]** Just so we can take a look at what the endpoints look like.
+
+**[4474.51s → 4502.22s]** Always a fun, yaml doctor read through.
+
+**[4502.22s → 4505.88s]** Server URL.
+
+**[4505.88s → 4510.61s]** And then these would be the past at different endpoints.
+
+**[4510.61s → 4527.15s]** different endpoints. So chat completion, it's going to be some example scripts, streaming
+
+**[4527.15s → 4539.48s]** and chat completion, to continue context, the raw log probabilities. Yeah, that would
+
+**[4539.48s → 4562.08s]** be fun. Something I'm interested in is just like evaluation in general. So like, I've
+
+**[4562.08s → 4568.51s]** taken a step at it for, I'm just curious, like you should just like different like frameworks
+
+**[4568.51s → 4570.43s]** for writing prompts.
+
+**[4570.43s → 4573.63s]** Mr. Trius, how do you evaluate
+
+**[4573.63s → 4576.27s]** which one's working better for you at scale?
+
+**[4578.59s → 4582.70s]** I think a lot of it just depends on
+
+**[4582.70s → 4584.34s]** the scale that you're talking about.
+
+**[4584.34s → 4586.94s]** So let's say if I were a
+
+**[4588.50s → 4590.46s]** a consumer-facing product company,
+
+**[4590.46s → 4594.60s]** and I had like, I don't know, maybe products
+
+**[4594.60s → 4597.04s]** that sold like tens of thousands or hundreds of thousands
+
+**[4597.04s → 4599.24s]** of units, and I'm getting, you know,
+
+**[4599.24s → 4602.35s]** maybe like 500 reviews a day.
+
+**[4602.35s → 4607.35s]** So, and you need an agent to respond to the negative reviews.
+
+**[4608.68s → 4611.68s]** Well, you're gonna want to do very careful evaluation
+
+**[4611.68s → 4614.92s]** of like how well people are responding to that
+
+**[4616.04s → 4617.88s]** in the interactions.
+
+**[4617.88s → 4619.20s]** And you would need to come up with some kind
+
+**[4619.20s → 4621.04s]** of experiment framework.
+
+**[4621.04s → 4624.60s]** You could either use a prompt engineering tracking framework,
+
+**[4624.60s → 4628.20s]** like the famous proprietary one would be weights and biases
+
+**[4628.20s → 4634.14s]** as a tool that even open AI uses to help track their own model
+
+**[4634.14s → 4636.30s]** training and performance, but then also their prompt
+
+**[4636.30s → 4638.78s]** engineering performance.
+
+**[4638.78s → 4641.43s]** That's a good proprietary one.
+
+**[4641.43s → 4644.35s]** But that science is still in flight.
+
+**[4644.35s → 4648.75s]** People, in terms of choosing the best prompts,
+
+**[4648.75s → 4655.50s]** there are bunches of different ways of doing that right now.
+
+**[4655.50s → 4657.10s]** I think someone alluded to it earlier
+
+**[4657.10s → 4660.62s]** in the question I responded to by maybe just displaying outputs
+
+**[4660.62s → 4664.54s]** from a couple different models and then having a user pick one.
+
+**[4664.54s → 4667.34s]** That would be another great way, like a multi-armed band
+
+**[4667.34s → 4670.14s]** experiment design.
+
+**[4670.14s → 4673.89s]** If you could do that at the scale I was just talking about.
+
+**[4673.89s → 4677.29s]** Now, I have another use case right now at work
+
+**[4677.29s → 4681.91s]** where we're taking a look at hundreds and hundreds
+
+**[4681.91s → 4684.67s]** of recordings of talks.
+
+**[4684.67s → 4688.55s]** And we transcribed them using Whisper,
+
+**[4688.55s → 4691.31s]** and then we ran them through a model,
+
+**[4691.31s → 4693.87s]** an Asian pipeline to help write blogs
+
+**[4693.87s → 4695.99s]** based on the transcript from Whisper.
+
+**[4695.99s → 4698.31s]** So we tried a couple different prompts
+
+**[4698.31s → 4701.03s]** to help engineer the best blog output,
+
+**[4701.03s → 4703.07s]** but the scale was tiny, right?
+
+**[4703.07s → 4704.87s]** Only a couple hundred.
+
+**[4704.87s → 4707.75s]** It's hard to track the performance there
+
+**[4707.75s → 4709.19s]** because it's very subjective.
+
+**[4710.39s → 4713.83s]** There's no way we could evaluate it on a user feedback
+
+**[4713.83s → 4717.59s]** just quite literally a smoke test between a couple of different options.
+
+**[4723.43s → 4727.91s]** So at work are you using like sort of custom experimentation frameworks?
+
+**[4729.78s → 4734.82s]** Or that's where you're using or are there like tools like not the box schools that
+
+**[4736.30s → 4740.62s]** I think that when I've seen the most people adopt out of the box is weights and biases.
+
+**[4744.87s → 4767.69s]** Well thank you. Anybody have any other questions they want to dive into?
+
+**[4767.69s → 4786.82s]** Well, thank you everyone for joining tonight's class.
+
+**[4786.82s → 4791.82s]** Feel free, my delays on Slack might be a little long,
+
+**[4791.82s → 4795.82s]** but I'll check in every once in a while if you all have any questions that you want to ask me.
+
+**[4795.82s → 4804.82s]** Of course, Ash and Tom will be around tomorrow to help you with the office hours project.
+
+**[4804.82s → 4806.82s]** And then I will see you all on Wednesday.
+
+**[4806.82s → 4810.66s]** All right.
+
+**[4810.66s → 4812.08s]** Thank you everybody.
+
+**[4812.08s → 4813.08s]** Thank you.
+

@@ -1,0 +1,2089 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_06/week_6_class_2_2024-06-25.mp4
+**Duration:** 4927.68 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 1035
+**Generated:** 2025-08-13 19:24:31
+**File Hash:** eb38ae52715c8ddeeac1d74d41188253
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_06
+**file_name:** week_6_class_2_2024-06-25.mp4
+
+---
+
+## Transcript
+
+**[4.85s → 12.85s]** Hello and welcome to the Office Havas for the 2-4 AI2.
+
+**[12.85s → 19.07s]** Today we're looking at a land graph code development using multi-agent flow.
+
+**[19.07s → 26.07s]** We've just installed these requirements and then we'll move down and start importing them.
+
+**[26.07s → 30.07s]** We're going to use Streamlit. We're going to use some of the tools from Langchain.
+
+**[30.07s → 34.07s]** We're going to grab the hub from Langchain so we can use different things.
+
+**[34.07s → 39.31s]** We're going to use chat OpenAI as the main sort of chat LLM.
+
+**[39.31s → 46.15s]** We're going to import base model so that we can build out actual agent models.
+
+**[46.15s → 48.58s]** We're going to be making those in classic.
+
+**[48.58s → 50.86s]** So I'll just import all those bits.
+
+**[50.86s → 57.70s]** I'm going to include my OpenAI API key which actually I've popped inside my secrets for
+
+**[57.70s → 58.70s]** ease of use.
+
+**[58.70s → 62.06s]** So I'm just user data.get OpenAI.
+
+**[62.06s → 65.96s]** Now you can get that by literally using the Google Code I've import user data.
+
+**[65.96s → 71.89s]** So you can store all of your API keys in here and sort of work on.
+
+**[71.89s → 75.37s]** And that'll be based on your account, not on per notebook.
+
+**[75.37s → 78.73s]** So then you can use the same key on multiple notebooks for that.
+
+**[78.73s → 80.01s]** I'm going to put it on.
+
+**[80.01s → 84.16s]** So we run that, grant access to the notebook.
+
+**[84.16s → 86.56s]** So it's allowed to get those keys.
+
+**[86.56s → 88.16s]** Now I can build out the LLM.
+
+**[88.16s → 90.16s]** I'm just going to use Gpt4.
+
+**[90.16s → 92.36s]** That's work.
+
+**[92.36s → 95.24s]** So this is a single agent, this code agent.
+
+**[95.24s → 101.16s]** So again, we give it a role, a task, some instructions and some requirements.
+
+**[101.16s → 105.44s]** And that's what I'm doing as a general prompt for each of them and making like a chat prompt
+
+**[105.44s → 107.16s]** template for them.
+
+**[107.16s → 111.44s]** So this one's going to be the code, like the software development agent.
+
+**[111.44s → 117.72s]** Then I've got a tester, a guy to write tests for me, you know, so it's another agent.
+
+**[117.72s → 124.88s]** So for this one, it's going to have an import for test cases to evaluate the provided code
+
+**[124.88s → 128.28s]** and output which is expected output for the test cases.
+
+**[128.28s → 134.04s]** So basically two different possible arrays of a bunch of different test cases.
+
+**[134.04s → 138.52s]** In this one again, we've got a role, we've got the objective, we've got another objective
+
+**[138.52s → 141.72s]** and then we've got the instructions and then we've got requirements and then we've got
+
+**[141.72s → 143.68s]** whatever code's been passed in.
+
+**[143.68s → 148.81s]** but will basically be taking code from our actual program agent
+
+**[148.81s → 152.78s]** and writing tests for you basically.
+
+**[152.78s → 154.96s]** I'm gonna run that again.
+
+**[154.96s → 158.04s]** And then if we come down here,
+
+**[158.04s → 162.47s]** let's take a look at the code so far.
+
+**[162.47s → 165.66s]** So hang on, oh, that's wrong.
+
+**[165.66s → 166.94s]** Oh my life.
+
+**[166.94s → 169.02s]** I've just noticed some of our part of us disappeared
+
+**[169.02s → 171.10s]** after all that preparation.
+
+**[171.10s → 172.34s]** Ha ha ha ha.
+
+**[173.98s → 179.77s]** Don't tell me I didn't put it on this one.
+
+**[179.77s → 182.15s]** and I can fall see this.
+
+**[182.15s → 188.92s]** Perfect timing when recording.
+
+**[188.92s → 193.06s]** Yeah.
+
+**[193.06s → 198.52s]** We've got to do this part in invoke requirement.
+
+**[198.52s → 202.60s]** Someone I've managed to delete the self.
+
+**[202.60s → 204.74s]** Oh dear, sorry about that.
+
+**[204.74s → 205.58s]** Code.
+
+**[205.58s → 210.56s]** So the, oh no.
+
+**[210.56s → 213.64s]** OK, that's why I didn't invoke the code.
+
+**[213.64s → 214.72s]** That's why.
+
+**[214.72s → 215.80s]** Sorry about that.
+
+**[215.80s → 218.48s]** I thought that was this one down here.
+
+**[218.48s → 220.92s]** Right, so once I've created the code,
+
+**[220.92s → 221.92s]** I'm going to code.
+
+**[221.92s → 236.82s]** right yes what I forgot to do is actually run the code so here's the code
+
+**[236.82s → 239.78s]** drum now invoking him saying hey you've got a requirement of generating
+
+**[239.78s → 244.09s]** fibonite chisequise series so it's going to try and code on the now run that
+
+**[244.09s → 256.58s]** there we go now it's generated it so what we can do is we can have a look at the
+
+**[256.58s → 260.70s]** code so we can have a quick look at the code as it is he's generated this
+
+**[260.70s → 266.06s]** generate Fibonacci length hint list and it's basically just got the Fibonacci
+
+**[266.06s → 271.02s]** sequence and doing a series and building out from an archie series and giving an example
+
+**[271.02s → 277.66s]** of it working. Now, I haven't got any tests or anything to this point. So what we do now
+
+**[277.66s → 282.20s]** is we invoke the test model. I'm doing these manually at the moment, but then at the end
+
+**[282.20s → 286.86s]** we'll do something with it. Workings are graph. This isn't a graph. This is just me testing
+
+**[286.86s → 293.43s]** each of these models as we're building them. So that's individually using the agents.
+
+**[293.43s → 298.10s]** So then we can just print the code like I said.
+
+**[298.10s → 300.70s]** Then we can create some tests.
+
+**[300.70s → 304.14s]** So generate for the non-archive series code code.
+
+**[304.14s → 306.82s]** So now what they see saying is that was a requirement.
+
+**[306.82s → 308.34s]** Now make some tests for it.
+
+**[308.34s → 309.50s]** So we're telling a test agent.
+
+**[309.50s → 311.26s]** Here's what the original idea was.
+
+**[311.26s → 313.02s]** And here's the code that came out.
+
+**[313.02s → 314.78s]** Now go make some tests for it.
+
+**[314.78s → 318.78s]** So it goes off to make the tests.
+
+**[318.78s → 322.90s]** So you see just us testing the individual agents on their own.
+
+**[322.90s → 325.30s]** So to see that they do what this goes to.
+
+**[325.30s → 326.94s]** Now we take a look, it's made some tests.
+
+**[326.94s → 330.62s]** So inputs like we told it to zero is an input.
+
+**[330.62s → 332.18s]** And then it shows what the output should be
+
+**[332.18s → 333.02s]** and so on.
+
+**[333.02s → 334.66s]** It's got like just a bunch of inputs
+
+**[334.66s → 336.46s]** and a bunch of outputs.
+
+**[336.46s → 340.26s]** So if you zero, then it should be a nothing
+
+**[340.26s → 344.38s]** because there is no n up to n of zero.
+
+**[344.38s → 347.38s]** Then if we do one, then the first one's gonna be a zero,
+
+**[347.38s → 349.58s]** then if we do two, the next one's gonna be one,
+
+**[349.58s → 351.78s]** and you're just doing 10.
+
+**[351.78s → 353.96s]** There's to the 10th.
+
+**[353.96s → 355.96s]** So it's showing one.
+
+**[355.96s → 357.90s]** The import-expecting output.
+
+**[357.90s → 363.31s]** Now we can go off and have it execute that test.
+
+**[363.39s → 367.76s]** So we've got this executable code creator.
+
+**[367.76s → 369.78s]** So this one has instructions.
+
+**[369.78s → 372.06s]** Make sure to return error if the assertion fails.
+
+**[372.06s → 373.46s]** So go off and run it.
+
+**[373.46s → 376.14s]** And if there's a problem, let us know.
+
+**[376.14s → 379.06s]** Basically, this is the runner,
+
+**[379.06s → 381.74s]** basically to run stuff and that's not whether there's a problem.
+
+**[381.74s → 385.66s]** So we're gonna execution, invoke, pass it the code,
+
+**[385.66s → 388.78s]** pass it the inputs from the test that the test are made,
+
+**[388.78s → 390.58s]** and the outputs from the test that the test are made.
+
+**[390.58s → 394.18s]** So it's gonna go off and run the code with those tests
+
+**[394.18s → 397.94s]** and do the thing, so now let's do this.
+
+**[397.94s → 400.95s]** It's gone off and doing it's thing now.
+
+**[400.95s → 410.39s]** So this is building out the code, execution stuff.
+
+**[410.39s → 411.75s]** Okay, there we go.
+
+**[411.75s → 414.19s]** Now we can print what it did.
+
+**[414.19s → 419.70s]** So we have a look, we've now got the code and the test.
+
+**[419.86s → 423.37s]** So here's all the tests.
+
+**[423.37s → 426.57s]** So we've now got the code base and the testing for it,
+
+**[426.57s → 428.50s]** all in.
+
+**[428.50s → 431.98s]** So now we can go off and execute it and see if there's any errors.
+
+**[431.98s → 433.46s]** So let's run what it's got.
+
+**[433.46s → 435.50s]** Assertion failed in part of negative one.
+
+**[435.50s → 437.70s]** Expect that it put nothing.
+
+**[437.70s → 439.34s]** But the code what we've made there
+
+**[439.34s → 442.98s]** or what the original code has made is flawed.
+
+**[442.98s → 444.46s]** It's not working correctly,
+
+**[444.46s → 446.86s]** with that it's not passing that edge case.
+
+**[446.86s → 453.78s]** Yeah. Oh wait, so I lost you. Where did we're to decide to pass in negative one?
+
+**[453.78s → 458.18s]** As an input. I didn't see that. The inputs for the test. Okay.
+
+**[459.22s → 463.06s]** So it's also created a string of five there. So we've got other problems.
+
+**[463.86s → 468.66s]** So at the moment, we know that negative one doesn't pass. So we've got a problem. But now it's okay
+
+**[468.66s → 475.28s]** because we've got a guy to go and debug it. This debug agent. Yeah, so we can refine the code
+
+**[475.28s → 481.82s]** based upon the errors. So this one's going to take the code and look for errors. So just made a simple
+
+**[481.82s → 487.01s]** JSON with that and now we can go off and try and refine that code. So it's going to go off and try
+
+**[487.01s → 492.37s]** and fix problems in there. It's going to look for errors and go, hey, okay, I can fix it. I can do this.
+
+**[492.37s → 497.65s]** So I can try and fix the problem based on the test. So it's our test-driven development part if you
+
+**[497.65s → 502.90s]** like, right? So again, we're just using these individually. This is out them, noted together.
+
+**[502.90s → 509.07s]** this is just us going okay this wonders this this wonders this and so on. Now we can look at our
+
+**[509.07s → 518.88s]** refined code okay. Now it's added this if not instance so if any is not an instance of int
+
+**[519.52s → 525.52s]** or if any is less than zero then just return empty so it's adding some checking there and some
+
+**[525.52s → 530.50s]** bits for base cases and stuff. Yeah. But what we can do is we can execute it again to see if it
+
+**[530.50s → 536.80s]** passes this time. All test cases passed. We fixed the code or rather add the bug
+
+**[536.80s → 541.84s]** engagement that's fixed the code. So our initial code made a mistake or made it
+
+**[541.84s → 548.68s]** not perfect. The tester made the tests to hit all edge cases. The execute or
+
+**[548.68s → 555.37s]** executed those tests and went hey there's a problem and here's you know it's
+
+**[555.37s → 560.97s]** not passing this test. So then the debugger checked for any errors and then went
+
+**[560.97s → 567.90s]** and fix the code. So that's several different agents doing their job. So we've got
+
+**[567.90s → 577.49s]** any. So in the, this is pretty cool. And in the, in the test case, when it's got inputs,
+
+**[577.49s → 584.51s]** and it's coming up with expected outputs, how did it know to come up with those expected
+
+**[584.51s → 590.55s]** outputs? Like how did the LLM just, there's just no Fibonacci, so well, it can tell you
+
+**[590.55s → 595.75s]** Because we told it what to do, we told it, look through that code, it's on your piece of logic.
+
+**[595.75s → 601.26s]** Look through that logic and go, okay, what are we going to break it?
+
+**[601.26s → 603.58s]** What other, what should happen?
+
+**[603.58s → 609.30s]** If you pass it this, if I pass you this code, what input should give what output?
+
+**[609.30s → 614.19s]** So it just looks through that and just does logic and just but it generates a few things
+
+**[614.19s → 615.99s]** that would be usable.
+
+**[615.99s → 623.48s]** And so how but how did it how did it handle the case where it was looking at negative one.
+
+**[624.20s → 628.04s]** In this example and say well negative one should return empty.
+
+**[628.68s → 634.26s]** Yeah, because it's not zero it it literally looked at the code and was like hmm
+
+**[634.98s → 640.90s]** At its initial it's so negative one there's no such thing as a negative so it must be a zero
+
+**[640.90s → 646.98s]** It kind of that's a mistake almost, that's like, oh, and hey, but in theory, I gave it the code,
+
+**[646.98s → 654.70s]** but I also gave it a thing to do. It's like, this code should create a, where did I do that? Where's
+
+**[654.70s → 661.53s]** the, where's the test done? Here's the requirement. I gave it a requirement. I also gave it the code.
+
+**[662.98s → 668.57s]** So it had reference of, hey, you need to, this code should generate it from 90 series.
+
+**[668.57s → 677.53s]** So based on that code, it extrapolated that, well, hang on, probably at first, if we look
+
+**[677.53s → 681.29s]** at the things I gave you to do, roll.
+
+**[681.29s → 687.25s]** As a test, your task is to create basic and simple test cases based on providing requirement
+
+**[687.25s → 688.97s]** and Python code.
+
+**[688.97s → 692.41s]** So it's all about the prompt engineering at this point.
+
+**[692.41s → 698.09s]** These test cases should encompass basic edge scenarios to ensure that the code's robustness,
+
+**[698.09s → 706.17s]** reliability and stability. One, basic test cases, objective, basic and small-scarled test cases
+
+**[706.17s → 713.67s]** to validate basic functionality. Edge test cases, objective to evaluate the functional behavior
+
+**[713.67s → 719.67s]** under extreme or unusual circumstances. So that's this was the case, what it did the negative one for.
+
+**[720.98s → 726.74s]** So it's all the prompt engineering. And that's just with a with a GPT-4 model. I didn't use 4O.
+
+**[726.74s → 733.69s]** Could you use mixed rule or minstral? Could you use one of the code ones? Could you use
+
+**[733.69s → 738.13s]** a lot of different ones? You can fine tune them more, but this is just prompt engineering
+
+**[738.13s → 739.69s]** to get it to do this.
+
+**[739.69s → 747.49s]** So you're having the right prompts, the right models, and the right sort of situation,
+
+**[747.49s → 751.25s]** how you build your things. Because a lot of the times, I could have just put your roles
+
+**[751.25s → 757.37s]** of test to go test the code or go make tests for the code. And that was it. It wouldn't
+
+**[757.37s → 760.59s]** worked, it would have probably not read very many tests
+
+**[760.59s → 764.49s]** because the AI can do what you tell it to do.
+
+**[764.49s → 765.33s]** Do you remember?
+
+**[765.33s → 766.65s]** So we told it to do something.
+
+**[766.65s → 769.05s]** We told it, okay, your role is this.
+
+**[769.05s → 771.09s]** Your here are the different options
+
+**[771.09s → 772.89s]** of what you can do and your instructions
+
+**[772.89s → 776.33s]** are implemented comprehensive set of test cases
+
+**[776.33s → 778.36s]** based on requirements.
+
+**[778.36s → 780.72s]** Pay special attention to edge cases
+
+**[780.72s → 784.23s]** as they often refill hidden bugs.
+
+**[784.23s → 787.19s]** I only generate basic and edge cases which are small.
+
+**[787.19s → 790.75s]** is the other thing because otherwise you could have had like a million you know,
+
+**[790.75s → 796.47s]** I mean it would have just took you can have it so it builds out massive test cases,
+
+**[796.47s → 798.79s]** but then the problem is if you don't tell it to make small ones,
+
+**[799.39s → 802.43s]** we'd have been here for hours waiting for it to run through the test.
+
+**[802.43s → 806.91s]** So I can't be kept to pay special attention to edge cases of the often reveal
+
+**[806.91s → 811.19s]** hymn bugs only generate basic and edge cases which are small again.
+
+**[812.55s → 815.91s]** Avoid generating large scale and medium scale test cases.
+
+**[815.91s → 818.51s]** focus only small basic test again,
+
+**[818.51s → 820.27s]** repeating myself a lot here,
+
+**[820.27s → 823.83s]** because that's how it gets to have the right answer.
+
+**[823.83s → 827.87s]** This, the more time to repeat the same words,
+
+**[827.87s → 831.44s]** the more weight it carries.
+
+**[831.44s → 834.76s]** So sometimes, you repeat yourself exactly,
+
+**[834.76s → 836.56s]** repeat yourself, like copy past a few times,
+
+**[836.56s → 840.89s]** you're wanting to have more weight of those specific things.
+
+**[840.89s → 842.93s]** And then you've got requirement,
+
+**[842.93s → 846.97s]** requirement code code, those are the arguments expected.
+
+**[846.97s → 850.47s]** Yeah, it's expected to take two arguments, the requirements and the code.
+
+**[851.27s → 851.47s]** Yeah.
+
+**[852.47s → 857.57s]** Can we take another look at the pain where you created code?
+
+**[859.01s → 860.01s]** You mean the bottom bill?
+
+**[861.11s → 861.91s]** I mean the agent.
+
+**[862.51s → 863.11s]** Yeah, right.
+
+**[863.11s → 863.61s]** Okay.
+
+**[863.61s → 865.11s]** So that's coder invoke.
+
+**[866.42s → 868.12s]** Henry, Fibonacci.
+
+**[868.42s → 868.92s]** Okay.
+
+**[869.42s → 870.82s]** This one's a fixed requirement.
+
+**[871.02s → 872.12s]** This one doesn't take anything.
+
+**[873.79s → 876.89s]** So it's it's down to you make in template and a good prompt.
+
+**[877.29s → 877.99s]** That's the big.
+
+**[877.99s → 885.52s]** That's one of the hardest part of AI is figuring out what you want to do with it.
+
+**[885.52s → 890.37s]** The next hardest thing is letting it know what you want to do.
+
+**[890.37s → 897.93s]** So those two things are very big sort of problematic things for any person or an engineer building
+
+**[897.93s → 898.93s]** these things.
+
+**[898.93s → 902.85s]** Well, I have a hard time letting go of the control.
+
+**[902.85s → 908.37s]** Like the fact that you're just writing these natural language instructions and handing
+
+**[908.37s → 914.10s]** them off to me, it's like I'm emotionally attached to doing things the hard way.
+
+**[915.22s → 924.07s]** You want to mix of this, a mix of automation, tooling that you write, some rag, and fine tuning of
+
+**[924.07s → 930.79s]** models because you could fine tune a model just for code, fine tune a model just for testing, fine
+
+**[930.79s → 935.99s]** tune a model just for debug and so on if you really wanted to squeeze the best out of it.
+
+**[935.99s → 943.15s]** I have noticed, like I said, sometimes with certain models, it just goes off on one and it's
+
+**[943.15s → 944.15s]** not.
+
+**[944.15s → 945.87s]** It just doesn't give you what you want.
+
+**[945.87s → 946.87s]** Anyway, now.
+
+**[946.87s → 949.11s]** But the nice thing is we're giving it accountability.
+
+**[949.11s → 950.83s]** So we're giving it this code.
+
+**[950.83s → 952.15s]** This guy's coding it up.
+
+**[952.15s → 954.79s]** And I just noticed he made a mistake.
+
+**[954.79s → 955.79s]** Not a big mistake.
+
+**[955.79s → 957.31s]** He made an edge case issue.
+
+**[957.31s → 960.16s]** So we didn't like cover all the basis.
+
+**[960.16s → 963.76s]** But then because we had the test, they're building out the tests and we told it to cover
+
+**[963.76s → 966.24s]** like edge cases and stuff.
+
+**[966.24s → 971.28s]** was able to kind of keep the guard rails up and stop it from, you know, to give it some sort of
+
+**[972.46s → 976.38s]** accountability if you like. And then when we add the, sorry,
+
+**[977.76s → 984.40s]** when you're working on a project like this, so where we identified a failing edge case,
+
+**[984.40s → 992.14s]** if you input negative one, would you typically, you know, if you're working on something like this,
+
+**[992.14s → 1001.72s]** would you then go back into the initial prompt and extend the prompt so that you avoid the error
+
+**[1001.72s → 1008.28s]** in the first place, or would you accept that initial error and then know that the final output of
+
+**[1008.28s → 1013.40s]** the program is what's important and that will have the negative one edge case handled.
+
+**[1014.04s → 1018.76s]** Yeah, I think the first thing I do is build it so it works. Get this to the point where it's okay.
+
+**[1018.76s → 1022.44s]** Then after a couple of run-throughs, see whether it kind of fixes itself,
+
+**[1022.44s → 1026.60s]** because it's kind of history, and we're going to be adding it to a land graph and a database,
+
+**[1026.60s → 1032.44s]** so it's kind of a bit more context. But if it still starts making silly problems,
+
+**[1033.39s → 1038.67s]** that's when you go back and re-it's rate over you actual problems.
+
+**[1039.47s → 1039.87s]** Okay.
+
+**[1039.87s → 1045.31s]** Over-optimized right now, because we haven't even got to the point of like literally
+
+**[1045.31s → 1050.13s]** make it into a graph. This is more just sanity trying and also I've kind of
+
+**[1050.13s → 1054.57s]** contrived it a little bit so that we can have problems. Do you remember that was a
+
+**[1054.57s → 1058.97s]** little bit deliberate. So it made the oh no there's an error. Oh look this thing
+
+**[1058.97s → 1065.08s]** can fix it. It's a little bit staged in that way. At one point I done a
+
+**[1065.08s → 1068.88s]** typo on here deliberately so we had to figure out what there I was talking about
+
+**[1068.88s → 1074.06s]** pretty did it when I made exactly the same code. I think I put a Fobben
+
+**[1074.06s → 1081.08s]** Nuku series and it knew that I was on about just to I don't think I caught that. Yeah,
+
+**[1081.08s → 1086.40s]** but it's clean. But like I say, part of this is sort of deliberate. This is slightly
+
+**[1086.40s → 1090.84s]** contriced just to prove, you know, to go go over the use case and the point of these things.
+
+**[1090.84s → 1095.32s]** Because it doesn't know how well you prompt. Eventually it's going to have some things
+
+**[1095.32s → 1100.75s]** on the perfect. You know, but yeah, definitely a requirement to the prompt will be a good use
+
+**[1100.75s → 1108.24s]** case for that. But yes, so with the test 3 is testing it and then we went over the whole
+
+**[1110.14s → 1114.38s]** execute to just kind of it kind of builds out the executable code ready to execute.
+
+**[1114.86s → 1119.02s]** That's for that purpose. So the test is purely just making test cases pretty much. That's it.
+
+**[1119.80s → 1124.76s]** The execute so he's actually going, okay, well these are the test cases, these are what the inputs are,
+
+**[1124.76s → 1128.84s]** these are what the outputs are and there's the current code. Now add code in there to make sure
+
+**[1128.84s → 1136.22s]** these test cases, thingy and body and test and give a yes it works or no it doesn't. And then if
+
+**[1136.22s → 1141.18s]** if it doesn't work it can always then go again that's why I did it sort of linear in this way.
+
+**[1141.18s → 1146.48s]** It can then go and see the bugger can go and fix it and then that can be sent back to the test
+
+**[1146.48s → 1152.88s]** thing or back to the execution and test it again and if it passes everything then we're all good
+
+**[1154.59s → 1160.03s]** so that's kind of a refinement stage. It's like normal development you do your first pass solution
+
+**[1160.03s → 1163.95s]** and you get it working, it's like, okay, then maybe you want to refine it and make it better
+
+**[1163.95s → 1169.69s]** and go through those process. So, and then you've ended up with a single file at the moment,
+
+**[1169.69s → 1174.25s]** not multiple files, because we haven't got any like real file agents to write these files at this point.
+
+**[1175.08s → 1180.44s]** But you end up with the test cases, the way to test the functionality of the code as well,
+
+**[1180.44s → 1188.27s]** or within there. So it's nice for a little unit sort of test. Then we come to the idea of a graph.
+
+**[1188.27s → 1194.99s]** We haven't got to this is all without a graph. We just did that manually one agent at a time following the flow
+
+**[1195.39s → 1199.55s]** Like naturally what would happen if you had some broken code and it would go through
+
+**[1200.25s → 1205.69s]** Believe it didn't fix the code it would then jump back and try to you know try other things
+
+**[1206.65s → 1209.69s]** And so it's not always gonna take one one shot and just work
+
+**[1210.68s → 1212.68s]** But again like you said you can always
+
+**[1213.28s → 1216.08s]** Go in and do a bit more prompt engineering to have it fixed up
+
+**[1216.08s → 1223.78s]** I mean, that's kind of the idea there. But again, this is meant to kind of show an idea of the things that you can actually do.
+
+**[1223.78s → 1228.78s]** You just make a few simple classes. You've got your agents.
+
+**[1228.78s → 1234.13s]** And now the graph then puts them all together and allows them to use.
+
+**[1234.13s → 1237.13s]** So I've made an agent code, which is just a type of diction, right?
+
+**[1237.13s → 1241.29s]** With requirement code, tests and errors to hold all these things.
+
+**[1241.29s → 1245.29s]** Just to keep them together. So that will be kind of like your state carrying.
+
+**[1245.29s → 1249.22s]** Just be like your movement of state.
+
+**[1249.22s → 1250.66s]** Then we've got more of the codes.
+
+**[1250.66s → 1253.34s]** Look, we've got a programmer, debugger,
+
+**[1253.34s → 1256.33s]** executor and tester.
+
+**[1256.33s → 1261.62s]** And if we decide to end, yeah, check for errors,
+
+**[1261.62s → 1263.50s]** either return debugger if the zeros,
+
+**[1263.50s → 1264.50s]** otherwise return end.
+
+**[1264.50s → 1266.94s]** So we've got a few little bits of code here
+
+**[1266.94s → 1269.26s]** to utilize the agents together in the graph.
+
+**[1269.26s → 1273.70s]** So if you think of the agents being the nodes,
+
+**[1273.70s → 1276.22s]** and these bits of requirement in the state
+
+**[1276.22s → 1278.98s]** and the code invoked and stuff and the conditions,
+
+**[1278.98s → 1281.26s]** think of those being the connections between them.
+
+**[1281.26s → 1282.50s]** So this is a graph problem.
+
+**[1282.50s → 1285.62s]** We're turning programming into a graph problem.
+
+**[1285.62s → 1286.56s]** Yeah?
+
+**[1287.99s → 1290.43s]** So now if I add all those functionalities
+
+**[1290.43s → 1291.95s]** and all those nodes,
+
+**[1291.95s → 1297.81s]** now we get our state graph and the end from Nangra.
+
+**[1298.17s → 1301.45s]** We've built out a state graph of agent coder,
+
+**[1301.45s → 1303.17s]** which is what we've got a state.
+
+**[1303.17s → 1304.89s]** So that's the state.
+
+**[1304.89s → 1310.20s]** building it after utilizing that as a state. And that's going to be our workflow. So we add a node
+
+**[1310.20s → 1317.10s]** programmer using the actual programmer functionality. Add a node debugger using the debugger function
+
+**[1317.10s → 1322.38s]** after. Add a node executor using the executor function after. And so on with the tester.
+
+**[1323.87s → 1328.91s]** We've got a decided to end. You can also do kind of just commented that out for now.
+
+**[1331.08s → 1335.64s]** And then we've got same again, we're building it. So set entry point to programmer. So first thing
+
+**[1335.64s → 1341.48s]** that happens is it hits the programmer. Now it can either go to the programmer again or
+
+**[1341.48s → 1345.60s]** the tester. I'll just write it programmer added an edge from programmer to tester so I
+
+**[1345.60s → 1351.72s]** would direct it graph. And then we go let's add an edge from debugger to executor and add
+
+**[1351.72s → 1359.68s]** an edge from tester also to executor. So basically the programmer can sort to the tester.
+
+**[1359.68s → 1364.88s]** The debugger's got a thing to talk to the executor and the tester's got an execute, connection
+
+**[1364.88s → 1371.81s]** to execute. So we've got a few lines in our graph, walking around. Then we can add conditional
+
+**[1371.81s → 1381.92s]** edges. So executor, if we decide to end, then end, otherwise hit the debugger. So we're
+
+**[1381.92s → 1386.88s]** either going to go, well, we can either, otherwise we're going to hit the debugger. I call
+
+**[1386.88s → 1390.36s]** that. This is our decision tree.
+
+**[1390.36s → 1398.59s]** I think the guy who gave, I forget his name, he, I was confused by this.
+
+**[1398.59s → 1405.51s]** I didn't realize, end is the true, the bugger is the fault, is the fault.
+
+**[1405.51s → 1411.01s]** It's basically we're making almost a flow chart literally.
+
+**[1411.01s → 1412.01s]** Yeah.
+
+**[1412.01s → 1416.65s]** What we're doing, we're making a flow chart in code to do some actions.
+
+**[1416.65s → 1417.65s]** Yeah.
+
+**[1417.65s → 1420.85s]** Currently I haven't, not I've put share it yet,
+
+**[1420.85s → 1424.77s]** but I do wanna have a working system of it
+
+**[1424.77s → 1425.97s]** first of all, really share it,
+
+**[1425.97s → 1429.61s]** but I'm making a, an actual graph-based thing
+
+**[1429.61s → 1431.73s]** in React where I can pull all the bits
+
+**[1431.73s → 1436.05s]** and build these things up and add all the different agents
+
+**[1436.05s → 1439.35s]** and join them with the lines.
+
+**[1439.35s → 1441.71s]** I don't know if some currently build on that.
+
+**[1441.71s → 1445.03s]** We have a private project that's other things.
+
+**[1445.03s → 1447.79s]** But that's a bit of fun, because it means you can do this,
+
+**[1447.79s → 1450.64s]** but you're just drawing your flow chart.
+
+**[1450.64s → 1452.66s]** And then you build your graph,
+
+**[1452.66s → 1453.82s]** and then you click on the thing
+
+**[1453.82s → 1455.66s]** and have it run and do things
+
+**[1455.66s → 1458.30s]** and have work as doing automation stuff.
+
+**[1458.30s → 1461.51s]** I'm currently building that out as well just as a thing
+
+**[1461.51s → 1463.45s]** for all this stuff.
+
+**[1463.45s → 1465.73s]** That's been quite interesting.
+
+**[1465.73s → 1466.97s]** Coming in this stuff, it's great
+
+**[1466.97s → 1467.81s]** because we can see the code,
+
+**[1467.81s → 1471.65s]** but it's not as nice always as just productive-wise,
+
+**[1471.65s → 1473.30s]** do you remember?
+
+**[1473.30s → 1476.46s]** So is this the only conditional edge, the executor?
+
+**[1476.46s → 1477.78s]** Yeah, at this point.
+
+**[1477.78s → 1481.94s]** because it is the thing that runs the test so it's going to decide, well, are we good?
+
+**[1481.94s → 1487.54s]** Or do we need more daybogging? That's, and again, you can, it's in the graph so you can add as many
+
+**[1487.54s → 1493.57s]** things as you like to this, you can add a research assistant in there. You can add whatever you want,
+
+**[1493.57s → 1499.81s]** literally anything. It's limitless as to the things. It's just, I've specifically kept here
+
+**[1500.45s → 1505.01s]** closed loop if you like to make it a fairly tight thing because you can go on forever with this.
+
+**[1505.01s → 1513.81s]** And so at the end of, let's say there's an iteration where we start with the programmer,
+
+**[1513.81s → 1523.92s]** then we go to the tester, and then we run the test, and we evaluate if the test passed.
+
+**[1523.92s → 1529.83s]** And then at some point, at the end of that evaluation, we go back to the programmer if
+
+**[1529.83s → 1532.55s]** there are edge cases that fail.
+
+**[1532.55s → 1535.92s]** Basically, the debugger's the programmer.
+
+**[1535.92s → 1538.64s]** The debugger's kind of a more advanced programmer,
+
+**[1538.64s → 1540.00s]** if you like, with more.
+
+**[1540.00s → 1540.96s]** Yeah, shit.
+
+**[1540.96s → 1541.96s]** Yeah.
+
+**[1541.96s → 1547.22s]** So that second line is really the, that's the action.
+
+**[1547.22s → 1550.66s]** That's like the, that's the go to line one.
+
+**[1550.66s → 1554.02s]** That's returned to the top and start over again.
+
+**[1554.02s → 1556.98s]** It's nothing really new in the sense of the concepts,
+
+**[1556.98s → 1558.82s]** because this is programs.
+
+**[1558.82s → 1561.18s]** This is what we make if conditions, we have loops.
+
+**[1561.18s → 1562.26s]** Yes.
+
+**[1562.26s → 1570.68s]** It's just utilizing those other ways of reasoning and taking humans a little bit out of the loop to give us more automation.
+
+**[1571.24s → 1573.96s]** It's just a fancier way of doing the automation if you like.
+
+**[1575.32s → 1578.92s]** It's the next next natural progression from the whole machine learning side.
+
+**[1579.48s → 1583.16s]** So you go in from let's make a little loop with some if conditions.
+
+**[1583.72s → 1587.04s]** Let's make a decision tree graph and give it some machine learning.
+
+**[1587.04s → 1596.30s]** Let's now learn multiple models and use them as entire agents and give them personas.
+
+**[1596.30s → 1600.26s]** And what does decide to end look like?
+
+**[1600.26s → 1602.42s]** Did we already look at that?
+
+**[1602.42s → 1603.82s]** Decide to an end.
+
+**[1603.82s → 1604.82s]** I don't know.
+
+**[1604.82s → 1608.06s]** I actually added that node.
+
+**[1608.06s → 1610.46s]** Oh, that was it.
+
+**[1610.46s → 1616.00s]** If I remember right, they sort of went up.
+
+**[1616.00s → 1619.76s]** mean decide to end should basically be if there are no failing tests. Yeah,
+
+**[1620.00s → 1626.46s]** basically that's. But then a human would have to decide if there had actually been enough
+
+**[1626.46s → 1631.34s]** tests. Yeah, if there's errors, return the debugger. Otherwise, return end.
+
+**[1631.90s → 1635.30s]** That's decided to end. Oh, I'm not just post I haven't actually.
+
+**[1636.46s → 1640.10s]** I think that because I took it out when I was doing the debugger and other things,
+
+**[1640.10s → 1644.54s]** but I don't think you can get away. I think it's got enough understanding to
+
+**[1644.54s → 1649.66s]** actually be out to end without deciding to end portion but let's put it back in.
+
+**[1650.64s → 1654.96s]** But yeah, I've lost where I actually was. We just made the programmer stuff, didn't we?
+
+**[1655.95s → 1663.23s]** So let's now pull in the end and build the graph. This is same with any graph problem.
+
+**[1663.23s → 1668.84s]** It's figure out what are nodes and what are edges. This is exactly, it doesn't matter what the
+
+**[1668.84s → 1673.95s]** graph problem is. It could be Google Maps, it could be anything. The steps are going to be figure
+
+**[1673.95s → 1680.00s]** write what's an edge and what's an edge and what is a node. That's your first step.
+
+**[1680.00s → 1688.97s]** Once you figure that out, build the graph. We've just done that. Then, final step is
+
+**[1688.97s → 1694.73s]** traverse the graph. This is us actually doing the thing. This traversal of the graph.
+
+**[1694.73s → 1703.58s]** Let's give it a requirement here. Requirement. Given a array of integers, NOMs and an integer
+
+**[1703.58s → 1710.14s]** target, return indices of the two numbers so that they add up to the target. You may assume
+
+**[1710.14s → 1715.82s]** that each input would have exactly one solution. You may not use the same element twice. You
+
+**[1715.82s → 1724.17s]** can return an answer in any order. Okay. This is basically two-son. You don't mean like
+
+**[1724.17s → 1731.28s]** lead code problem. Yeah. That's one thing you could try. Yeah. Before we do that, though, I'd like
+
+**[1731.28s → 1734.64s]** to try some other stuff. So what I've done is I've gave it a little rep or what I've done is
+
+**[1734.64s → 1740.68s]** while requirement is not equal to end, give me a code task or end to exit basically.
+
+**[1740.68s → 1743.48s]** So we're going to prompt and we're going to type in something for it to do.
+
+**[1744.20s → 1750.09s]** Then, it requires end break. Otherwise, give it recursion limit at 50.
+
+**[1750.09s → 1754.01s]** So it doesn't go too mad because we could just carry on forever.
+
+**[1756.06s → 1760.38s]** Take the import, which is the requirement, which we've set based on what we say,
+
+**[1760.38s → 1771.58s]** set up a runindiction, right? Do for every event in the in the apps stream use the inputs at this point
+
+**[1771.58s → 1777.50s]** as 10 items which is the tests which we've got already and use the config which we just gave it
+
+**[1777.50s → 1786.73s]** the recursion limit of 50 at this point. Then we can go take the key values for events for every item in
+
+**[1786.73s → 1793.98s]** the event and re-add them to the running dictionary. So we're going to, this is keeping state.
+
+**[1795.31s → 1803.10s]** And if our final value is, it is not end, go off and print what it is and put a bunch of lines
+
+**[1803.10s → 1815.37s]** on it. So this is just so we see it as it's going. So if I run this, it should have us a nice little
+
+**[1815.37s → 1826.25s]** or prompt for us so we can type something again. Let's say build a simple, oh hang on,
+
+**[1826.25s → 1842.72s]** this one. Let's say given and array of 10 integers, but return, let's say the song of those
+
+**[1842.72s → 1858.23s]** into just the square, I'm in touch squared today, seriously, square. Let's try that, see
+
+**[1858.23s → 1862.61s]** if it understands that. I've deliberately wrote it fairly ambiguous, like, because that
+
+**[1862.61s → 1868.13s]** should have been a little bit, and those without an A grade, but yeah, so I've gave it,
+
+**[1868.13s → 1872.79s]** I've gave it a simple little prompt. So that's its requirement. It's entering the program
+
+**[1872.79s → 1877.59s]** the programmer agent now is looking at that going, what the hell are you talking about?
+
+**[1879.76s → 1883.84s]** Have you guys made some code? First, let's clarify, and it's right function that takes an array
+
+**[1883.84s → 1889.86s]** of 10 integers, so it's going through the process. Now we've got a problem. I'll broke it. It's going on.
+
+**[1891.09s → 1900.15s]** Validation error. Okay, I'll run it about 10 times before this video.
+
+**[1928.85s → 1931.41s]** If you run it again, will you pressure get the theme error?
+
+**[1931.41s → 1937.22s]** I don't know. Did I maybe not click one of these because I've ran it so many times and
+
+**[1937.22s → 1946.23s]** that I had a single problem with it so far. Everything's there, steam is there, but that's running.
+
+**[1947.38s → 1950.50s]** I'm just going to click on all these again just to make sure I'm not going to cry.
+
+**[1950.50s → 1956.82s]** I don't need to actually run and they seem focused off of me but make sure that the test early
+
+**[1956.82s → 1967.03s]** executors all there, you can run that, find code. I've literally been testing this for like an hour
+
+**[1967.03s → 1975.65s]** not half to have this stuff. That's fine. Make sure that's in place. I wonder if it's, I wonder
+
+**[1975.65s → 1984.18s]** whether I'll remove the um, is it really? Any chances? And then I'll just put something back that I
+
+**[1984.18s → 1993.17s]** should know. I mean you did on comment that they decide to end. Yeah, let's, I don't think
+
+**[1993.17s → 1997.89s]** that should make any difference for you though. Yeah, I don't either, but that's the one change I'm
+
+**[1997.89s → 2005.26s]** them to you made. Put that back and let's try that again. Maybe it was my prompt, maybe
+
+**[2005.26s → 2018.00s]** I've just mentioned weird and it got strange. Given an array, I'll tend integers,
+
+**[2018.00s → 2032.18s]** Ritzer, I'll just say an array of the integers to the power of four, let's say.
+
+**[2032.66s → 2033.86s]** Yeah, that's fairly clear.
+
+**[2033.86s → 2034.66s]** Okay.
+
+**[2034.66s → 2034.90s]** Yeah.
+
+**[2035.54s → 2036.66s]** See whether we get another issue.
+
+**[2036.66s → 2038.18s]** So the entry in the program is fine.
+
+**[2040.30s → 2041.98s]** He does his code entry in the test.
+
+**[2041.98s → 2043.26s]** Let's see if we still get another error.
+
+**[2043.82s → 2047.42s]** So it'd be really funny that it's just my pro, you know, my, the question I asked
+
+**[2047.42s → 2056.24s]** it just broke it or something weird. It's not died yet, let's see.
+
+**[2060.42s → 2064.82s]** There's actually a hand got to the point of end, so it had to do with the execute first before
+
+**[2064.82s → 2075.14s]** it got to the point of end. You don't know, it's also working slower than it has all.
+
+**[2075.14s → 2080.21s]** Oh, there we go. So that's what it should have done in the first place. I don't know what,
+
+**[2080.21s → 2085.28s]** but I haven't changed anything. I'm at that. The only thing I've changed was the question I asked
+
+**[2085.28s → 2095.58s]** it. I'll think my question broke the internet. But yeah, so it's actually the execute thing now.
+
+**[2095.58s → 2102.22s]** And again, for this you could add like, this may have been a useful one to do in, remember
+
+**[2102.22s → 2108.46s]** that lightning instead of colab, because I think there's more CPUs and stuff but as default
+
+**[2109.50s → 2112.46s]** and we're going to run this on as a GPU based system as well.
+
+**[2114.27s → 2118.83s]** Test case pass pass pass failed. So we've got a few failed things.
+
+**[2121.97s → 2127.90s]** Okay, that's a bit weird. That may be why I commented out the decide to end because that's ended too early.
+
+**[2130.99s → 2134.74s]** And yeah, that ended too early.
+
+**[2134.74s → 2136.86s]** So that might be why I commented that side to it.
+
+**[2136.86s → 2140.03s]** And maybe it was calling problems.
+
+**[2140.03s → 2142.43s]** Because I think that decision may be a bit too simplified
+
+**[2142.43s → 2146.08s]** because if one of the tests pass,
+
+**[2146.08s → 2149.20s]** it may have just ignored the other stuff,
+
+**[2149.20s → 2151.49s]** but really it should have had the errors.
+
+**[2151.49s → 2155.72s]** So I wonder if we decide to end state.
+
+**[2158.76s → 2161.92s]** It would be interesting to look at what state looks like
+
+**[2161.92s → 2164.66s]** from within that method.
+
+**[2164.66s → 2175.98s]** was this hang on that's why this isn't conditional neither so that's another
+
+**[2175.98s → 2183.48s]** issue that edge or might not have needed let's try two more runs first I'm
+
+**[2183.48s → 2188.83s]** gonna yeah connect I to enter it exists because you've got the conditional edge
+
+**[2188.83s → 2193.51s]** already you don't know what you're doing that because that's like non-conditional
+
+**[2193.51s → 2199.78s]** that's just going yeah yeah yeah like there's no excitation that's that's
+
+**[2199.78s → 2202.30s]** Let's rerun that.
+
+**[2202.30s → 2204.81s]** Nope, what's it minding about?
+
+**[2204.81s → 2208.31s]** Don't tell me I've got to do the whole lot again.
+
+**[2208.31s → 2210.02s]** Oh boy.
+
+**[2210.02s → 2212.22s]** Don't know where it's mowing from.
+
+**[2213.78s → 2215.42s]** Other than the install, I don't think it's gonna have.
+
+**[2215.42s → 2216.66s]** Well, we'll soon tell if this mine's
+
+**[2216.66s → 2218.38s]** or if they're not installed then it's something else.
+
+**[2218.38s → 2219.38s]** Let's find it.
+
+**[2219.38s → 2220.38s]** Do that.
+
+**[2220.38s → 2224.19s]** I'm gonna quickly fly through these just to make sure.
+
+**[2224.19s → 2226.67s]** So you only down side what I find with things like,
+
+**[2227.94s → 2230.19s]** oops, I didn't wanna do that.
+
+**[2230.19s → 2233.26s]** So, I'm going to put it up here up here.
+
+**[2233.26s → 2236.50s]** It's the downside to having Google GoLab is literally
+
+**[2236.50s → 2239.78s]** the time of this.
+
+**[2239.78s → 2240.86s]** Yeah.
+
+**[2240.86s → 2244.54s]** It's nice to explain things, but not the best thing
+
+**[2244.54s → 2249.12s]** for running stuff in, especially like engineered things.
+
+**[2249.12s → 2251.08s]** blah, blah, blah, I need that.
+
+**[2251.08s → 2252.47s]** This one.
+
+**[2252.47s → 2254.29s]** There you go.
+
+**[2254.29s → 2256.77s]** I don't need that.
+
+**[2256.77s → 2257.49s]** This one.
+
+**[2257.49s → 2259.57s]** See, these would all be either in their same file
+
+**[2259.57s → 2261.93s]** or imports, and you'd just have it nicely.
+
+**[2261.93s → 2264.68s]** don't need that, don't need that.
+
+**[2264.68s → 2267.50s]** And then we'll make sure we fresh graph,
+
+**[2267.50s → 2269.86s]** freshly make all the bits,
+
+**[2269.86s → 2272.02s]** and then we'll try that.
+
+**[2272.02s → 2274.58s]** What's it moaning about now?
+
+**[2274.58s → 2275.58s]** Why is it going?
+
+**[2275.58s → 2280.27s]** What?
+
+**[2280.27s → 2281.63s]** Oh, it's not, oh, so yeah,
+
+**[2281.63s → 2284.51s]** that's probably why I didn't do it.
+
+**[2284.51s → 2285.35s]** Interesting.
+
+**[2287.27s → 2289.67s]** So I didn't add it as a direct node,
+
+**[2289.67s → 2292.79s]** but because this side to end it exists,
+
+**[2292.79s → 2295.70s]** it's using that as a condition ledge,
+
+**[2295.70s → 2299.82s]** even though it's not a node physically in the graph there,
+
+**[2299.82s → 2305.49s]** That's interesting because ad conditional edges, so it's there's where we're adding the edge so we don't need to
+
+**[2306.37s → 2311.65s]** Make that node directly because it exists in its mind as a thing. So we got a reference to it there
+
+**[2312.50s → 2318.14s]** Wait, sorry in its mind, you know, sorry in it in its in its memory space rather
+
+**[2318.66s → 2327.46s]** Gotcha. So it already knows about the say the end. Yeah, so it infers that by looking at it. How does it know that this idea when there's a node
+
+**[2327.46s → 2332.75s]** because it's got the shape. It's like using the doc method.
+
+**[2332.75s → 2335.75s]** Method if it looks like a doc, it sounds like a doc.
+
+**[2335.75s → 2337.75s]** Probably is a doc. That's the Pythonic way.
+
+**[2337.75s → 2343.07s]** But wait, that's that's a sorry, I'm not normally a Python programmer.
+
+**[2343.07s → 2349.07s]** So just by the fact that it resembles the other methods that are nodes.
+
+**[2349.07s → 2356.07s]** Yeah, well, what it really does on the hood is it's looking for the memory address of this thing.
+
+**[2356.07s → 2360.51s]** thing and treating it as one anyway because we're inferring that it is one.
+
+**[2360.51s → 2361.01s]** Okay.
+
+**[2361.15s → 2366.51s]** So because you add conditional edge, it will go.
+
+**[2366.51s → 2367.55s]** Oh, that's the blank.
+
+**[2367.87s → 2368.99s]** I was to be taking a node.
+
+**[2369.15s → 2374.36s]** That's the shape what a node would be there for a, it must be a node.
+
+**[2375.32s → 2375.80s]** Okay.
+
+**[2375.80s → 2376.88s]** So it'll be a hacky.
+
+**[2376.88s → 2377.96s]** It's, it's more Python.
+
+**[2377.96s → 2381.40s]** It applies on is do what you want pretty much.
+
+**[2381.52s → 2383.48s]** You can override print pretty that way.
+
+**[2383.48s → 2391.25s]** I've read anything in Python and Lang graph often does and so does Langtree.
+
+**[2391.25s → 2397.25s]** Right, okay, so now it's happy. So he wasn't happy when I had those. That's why I've got rid of them.
+
+**[2397.25s → 2402.25s]** And there's a reason why there was like, I would have done that because that makes sense to have those.
+
+**[2402.25s → 2406.25s]** It must have been when I was building it out. I was like, okay, how are you going on? It's not working.
+
+**[2406.25s → 2410.25s]** It's like, oh, this works. Right now, but that's a good way to learn.
+
+**[2410.25s → 2415.72s]** I think I learned more from that mistake than I did from the end. That's good.
+
+**[2415.72s → 2421.61s]** All good fun. Right, so now we've got this one. Okay, let's see if it doesn't do a
+
+**[2421.61s → 2426.81s]** premature end this time because that was math. I'll keep forgetting what I've even said now.
+
+**[2428.09s → 2437.27s]** Isn't it waiting? Yeah, giving an array of categories. All right. Well, we'll be
+
+**[2437.27s → 2446.73s]** That's makes you look a bit more like a return and a rate of numbers.
+
+**[2446.73s → 2452.07s]** Okay, whether it's usually not.
+
+**[2452.07s → 2455.36s]** There was integers.
+
+**[2455.36s → 2459.12s]** Yeah, numbers.
+
+**[2459.12s → 2464.21s]** So that the return.
+
+**[2464.21s → 2466.69s]** Array.
+
+**[2466.69s → 2473.94s]** Oh my life, I'm overworked in this.
+
+**[2473.94s → 2486.95s]** the square of the numbers raised to the hour of four. Yeah. Well, it is differently this time.
+
+**[2486.95s → 2492.41s]** See if it breaks. I mean, like I said so far, I haven't been at this the first time. I've
+
+**[2492.41s → 2500.98s]** been out for really break it. It's always the same. Live doing stuff, break stuff. Here we go. It's
+
+**[2500.98s → 2505.78s]** called it raised to the fourth power. Let's give it a name. It gives an idea of what it's doing.
+
+**[2505.78s → 2509.62s]** Ensure the input is a list of 12 integers so it's doing checks there.
+
+**[2509.62s → 2511.78s]** So it's already kind of learned a little bit though.
+
+**[2511.78s → 2515.16s]** It's kind of cheating a bit now.
+
+**[2515.16s → 2517.88s]** It's doing the test. Now it's executing those tests.
+
+**[2517.88s → 2519.24s]** Let's see what breaks.
+
+**[2519.24s → 2520.68s]** What would it works?
+
+**[2520.68s → 2523.93s]** Zero to the power of four is that I think.
+
+**[2523.93s → 2537.38s]** It's going to be happy with that.
+
+**[2537.38s → 2540.10s]** I do think about oh, okay.
+
+**[2540.10s → 2543.14s]** Now it's the entry and side to end because it was successful
+
+**[2543.14s → 2545.94s]** and everything passed anyway but so we can't really tell whether that was a problem
+
+**[2545.94s → 2547.05s]** or not.
+
+**[2547.05s → 2555.24s]** But so we've got that working. Now I can say end. So that stops the loop. Now we can print
+
+**[2555.24s → 2563.80s]** V to have a look at what it built. Then we can print the code that it made. So raise to the
+
+**[2563.80s → 2572.04s]** power of four ensure that they're not this list of 12 integers. Use list comprensure x to the power
+
+**[2572.04s → 2580.01s]** of four for X in numbers. Return the result. And then a few test cases, expect it outputs.
+
+**[2580.01s → 2589.35s]** and then run all of the test cases. Super simple but works. Let's do it without
+
+**[2589.35s → 2593.67s]** the water loop and just give it that requirement and see what happens.
+
+**[2593.67s → 2603.59s]** Now, I can get rid of these. Yep. And then, on indent this a little bit. And then we've got
+
+**[2603.59s → 2608.65s]** the requirement here. So I'm going to build the requirement out. Then let's see what happens.
+
+**[2608.65s → 2616.34s]** See, this breaks it. This is doing like the Tucson. I think. We'll see how many iterations it needs to do.
+
+**[2616.66s → 2620.82s]** and whether it gets it right first time or whether it needs fixing or whatever.
+
+**[2620.82s → 2624.98s]** I'm presuming this one is going to require more iterations of debugging and stuff.
+
+**[2626.89s → 2630.33s]** I'm hoping it does anyway because it's the whole point of showing this.
+
+**[2632.60s → 2639.06s]** Also, it says, create dictionary to sort so that compliments
+
+**[2640.33s → 2643.05s]** iterate through the list of numbers. Okay,
+
+**[2643.85s → 2651.43s]** made some tests. Now it's going off and running those tests. Let's see if it fails any of the tests.
+
+**[2651.43s → 2659.76s]** It's not quite as interesting if it just works, try a little bit of fail tests.
+
+**[2659.76s → 2662.82s]** Seriously, hang on a minute.
+
+**[2662.82s → 2667.50s]** Found Irrwell running.
+
+**[2667.50s → 2672.92s]** Oh no, ended that thought of obscution, but now it's still entering the debugger.
+
+**[2672.92s → 2680.96s]** That's all right.
+
+**[2680.96s → 2692.00s]** It did some debugging apparently.
+
+**[2692.00s → 2698.98s]** Depending upon the actual model you use, it will depend on how many iterations this tax
+
+**[2698.98s → 2721.50s]** as well to solve this problem. Maybe this was a bit complex for the current.
+
+**[2736.51s → 2740.19s]** This starts taking too many iterations or stopping. I'll move on to the
+
+**[2740.99s → 2745.15s]** open deva because that's my far more interesting thing. This would just show in the concepts
+
+**[2746.13s → 2749.41s]** of the underpinning underlying things that are happening in open deva.
+
+**[2749.97s → 2753.65s]** Do you know what I mean? Yeah. These are things that are happening in the hood.
+
+**[2754.37s → 2759.81s]** Which is the idea. Even if you're going to use a tool that already exists, it's usually good to
+
+**[2759.81s → 2766.47s]** understand the moving parts so you can augment it and add more to it and make it do things that you want to do.
+
+**[2766.47s → 2771.36s]** Like with anything, it's like if you drive a car, you don't necessarily need to know how the engine works.
+
+**[2771.36s → 2781.66s]** But if you want to tweak it and make it run faster and have other things that it does, it's nice to know things that kind of helps when you need to actually do stuff.
+
+**[2781.66s → 2789.32s]** There's a lot of errors this is coming up with. I think the, we may need some more prompt engineering to make it do this.
+
+**[2789.32s → 2804.08s]** do this a bit annoying. It may just be this disconnecting because I've just had a couple of
+
+**[2804.08s → 2822.30s]** disconnections there. Yes, one of them take too long, be afraid. I don't think it's going
+
+**[2822.30s → 2831.52s]** to hit the recursion of it, but it's definitely going to sort of bash it a bit. This is more
+
+**[2831.52s → 2843.34s]** of a limitation to the actual RAM and CPU than it is at that. You put this on to a decent
+
+**[2843.34s → 2847.62s]** GPU. You probably hit the recursion in maybe like 10 times over by now.
+
+**[2847.62s → 2853.81s]** I'm going to put on that just for now.
+
+**[2853.81s → 2854.81s]** Yeah.
+
+**[2854.81s → 2859.33s]** I'm going to back trace a bit though and say, OK, remember when we was making that whole GDP
+
+**[2859.33s → 2866.82s]** thing and having it right out the stuff and do the stuff?
+
+**[2866.82s → 2870.66s]** I gave it to Open Devon to do and he was what he came up with.
+
+**[2870.66s → 2875.26s]** It went and looked on the internet without adding our own agent to do that.
+
+**[2875.26s → 2877.52s]** You already had the internet.
+
+**[2877.52s → 2886.08s]** then write this Python notebook for us literally. So that's that's a simple
+
+**[2886.08s → 2894.61s]** output of me asking it to do that. That's to give me the last five years for the
+
+**[2894.61s → 2903.14s]** UK. That's really gave me. So what it did first was it literally had the steps of searching
+
+**[2903.14s → 2910.22s]** Google finding the parts that had the right data, extrapolating that data, putting it into
+
+**[2910.22s → 2914.84s]** price unnotebook. Build an date frame and do this figure stuff, self and then
+
+**[2914.84s → 2921.34s]** wrote it. But yeah, so this is the actual open-defin
+
+**[2921.34s → 2928.34s]** repo. It's kind of like a chat GPTV like but you can put loads different things.
+
+**[2928.34s → 2933.42s]** Here's an example of a docker of it and that's where I'm going to be using it in a minute.
+
+**[2933.42s → 2939.98s]** So you can literally just copy and paste that and if you've got your open AI key
+
+**[2939.98s → 2947.82s]** you can put that in and run it on Docker. It's got a bunch of documentation. So even you can
+
+**[2947.82s → 2952.38s]** even look at the source code and look through the containers. It's got an agent hub with all the
+
+**[2952.38s → 2960.55s]** agents. It's all the agents it has. Software engineering agent, browsing agent, code action agent,
+
+**[2961.48s → 2966.28s]** code action software engineer agent, delegator agent, a dummy agent just making tests,
+
+**[2966.28s → 2972.28s]** to microagent, the monologue agent to talk to you and a planner agent there's some other
+
+**[2972.92s → 2977.56s]** agency you can use and you can just look through them and mess with their code so it's all there
+
+**[2978.28s → 2983.32s]** and look at their prompts, how their passing works, how the agent is and a bunch of examples
+
+**[2983.32s → 2989.93s]** with the general stuff so it's a really good learning tool as well to go through and figure out
+
+**[2989.93s → 2996.70s]** maybe agency you want to build. See it's a whole cost to run with 35 cents for that with GPT4
+
+**[2996.70s → 3001.98s]** turbo to do the whole of what it did there. So obviously it gives you casting as well when you're doing it.
+
+**[3003.06s → 3009.00s]** That's quite nice. Obviously you can run this on lico-lama and do some organ face and have your own
+
+**[3009.00s → 3014.36s]** models and do all sorts on it. So you kind of set it up and it's all encapsulated within a darker
+
+**[3015.00s → 3021.16s]** and you can give it access just to a workspace folder. You choose what folder on your system. So
+
+**[3021.16s → 3025.35s]** So only ever has a, he can't break out of that for you know, that's his base.
+
+**[3025.35s → 3028.64s]** But yeah, so here's the interface.
+
+**[3028.64s → 3030.64s]** So I am open Devon blah blah.
+
+**[3030.64s → 3035.64s]** It's got a code editor, it's got a web browser and it's got a Jupyter notebook.
+
+**[3035.64s → 3041.30s]** And a terminal.
+
+**[3041.30s → 3042.30s]** We work.
+
+**[3042.30s → 3045.00s]** So this is it.
+
+**[3045.00s → 3049.35s]** And would you use this for a real project?
+
+**[3049.35s → 3052.35s]** I'd say it's good for boilerplate and startups and stuff.
+
+**[3052.35s → 3054.35s]** I suppose it'll save you a bit of time.
+
+**[3054.35s → 3055.95s]** Here's a fun one.
+
+**[3055.95s → 3058.79s]** I can't remember what, because I've been playing about it with different, okay, I've got
+
+**[3058.79s → 3059.79s]** 401 there.
+
+**[3059.79s → 3062.04s]** Let's see what we can do.
+
+**[3062.04s → 3069.04s]** Build, paste, import, hello world, nestjs, API.
+
+**[3069.04s → 3076.94s]** Now, bear in mind, it doesn't have no JS installed or anything on the stocker.
+
+**[3076.94s → 3077.94s]** No tools.
+
+**[3077.94s → 3078.94s]** Ready?
+
+**[3078.94s → 3079.94s]** Let's see what happened.
+
+**[3079.94s → 3080.94s]** What's it break now?
+
+**[3080.94s → 3083.90s]** Oh, dude.
+
+**[3083.90s → 3088.63s]** Oh, I was joking about it.
+
+**[3088.63s → 3104.78s]** I'll just plug my internet and go, I'm gonna do it.
+
+**[3104.78s → 3106.70s]** This has been sitting here idling all this time,
+
+**[3106.70s → 3110.71s]** so it might just be able to disconnect,
+
+**[3110.71s → 3113.10s]** I don't think.
+
+**[3113.10s → 3118.31s]** Agent State area, so hang on, that's,
+
+**[3118.31s → 3121.91s]** that's for save.
+
+**[3121.91s → 3123.99s]** It's wait for a bit for this to kind of kick in.
+
+**[3123.99s → 3124.99s]** It's initializing again,
+
+**[3124.99s → 3129.57s]** and I'll just do a reset, because that's annoying.
+
+**[3129.57s → 3132.38s]** And that's just to have left it for so long.
+
+**[3132.38s → 3136.93s]** Refresh and start again.
+
+**[3136.93s → 3138.21s]** Don't know what that bit there,
+
+**[3138.21s → 3142.13s]** So knowing that it's going to hit the browser again.
+
+**[3142.13s → 3145.66s]** Because that's just, there we go.
+
+**[3145.66s → 3147.06s]** Start a new session.
+
+**[3147.06s → 3149.46s]** So I think that session probably just time to go.
+
+**[3149.46s → 3150.94s]** I'm hoping that's all it was.
+
+**[3150.94s → 3152.46s]** It's doing all connections at the moment
+
+**[3152.46s → 3155.42s]** for a society in the background.
+
+**[3155.42s → 3158.13s]** Yeah, it's doing all that.
+
+**[3158.13s → 3159.85s]** I'm going to show my stuff in the back.
+
+**[3159.85s → 3169.25s]** Right, let's get back to build a simple L.O. world API.
+
+**[3169.25s → 3172.62s]** and that's the right edits.
+
+**[3172.62s → 3176.99s]** Agents is running task.
+
+**[3176.99s → 3179.83s]** Exceptions, ignore exception, capitalize.
+
+**[3179.83s → 3181.31s]** I don't know what this LLM thinks,
+
+**[3181.31s → 3183.58s]** having an inference point,
+
+**[3183.58s → 3193.83s]** it's talking about a load of mad stuff.
+
+**[3193.83s → 3195.67s]** It's having some weird ones now.
+
+**[3195.67s → 3198.58s]** It's not had any of these problems before.
+
+**[3198.58s → 3204.94s]** I'll probably typed in the wrong LLM.
+
+**[3204.94s → 3214.06s]** GPT, there are Missed That a Dash.
+
+**[3214.06s → 3216.30s]** Oh, not Azure, seriously.
+
+**[3216.30s → 3219.41s]** Don't you just love it when it does this?
+
+**[3219.41s → 3221.56s]** There we go.
+
+**[3221.56s → 3227.35s]** typical because it's life. That's why I'm going to start dashing for us so it's my fault
+
+**[3227.91s → 3232.15s]** typos because I've been playing with loads of different LLMs to test today and stuff.
+
+**[3233.59s → 3238.94s]** So now I'm going to see if it all allowed me to just refresh the numbing.
+
+**[3240.82s → 3245.70s]** Start new session this time it should be the correct agent with errors. So it was just because I
+
+**[3245.70s → 3249.62s]** imagine I was just typed in wiggle as the agent also means just you just didn't know what that
+
+**[3249.62s → 3266.02s]** we're talking about. Right, I didn't initialize. Take 59, build a simple L.O. world API.
+
+**[3266.94s → 3274.81s]** NestJS. Okay, agents running. Let's see if it breaks. Should be fine this time. Sure,
+
+**[3274.81s → 3280.09s]** let's build it. Yeah. Notice I know it's going, oh, I can't find the thing. Let's install it.
+
+**[3280.09s → 3289.10s]** it. It's installing it now. Literally. Obviously it'll take a while to install, because it's
+
+**[3289.10s → 3295.30s]** kind of downloading it and it's my internet and do stuff. But that in itself is quite nice.
+
+**[3295.30s → 3301.06s]** You know what I mean? So it's gone from where I don't have the...
+
+**[3301.06s → 3307.15s]** Two, I want to know what to do. I'll hang on, I need this tool to get that tool. So it's
+
+**[3307.15s → 3314.13s]** gone off to do that. So it's at the moment it's downloading the Node.js stuff, installing
+
+**[3314.13s → 3316.89s]** get setting it up and now it's running the next JS CLI.
+
+**[3316.89s → 3320.21s]** It's trying to be installed in the next JS CLI.
+
+**[3320.21s → 3324.05s]** It might have some permission troubles, so it might have to do pseudo, it might mine about
+
+**[3324.05s → 3326.42s]** permissions, what will I say?
+
+**[3326.42s → 3329.26s]** Yep, it's mine about permissions, let's see what it says.
+
+**[3329.26s → 3334.43s]** Oh look, it's using pseudo, it realised it had a problem.
+
+**[3334.43s → 3337.51s]** So it's figured all this out, hands free, nothing.
+
+**[3337.51s → 3344.42s]** Obviously these are all things we could do, I say, they're not that mad, but it's nice
+
+**[3344.42s → 3348.98s]** to have it be able to do that. Look, hello world APIs, made a new one, it's doing that.
+
+**[3348.98s → 3352.50s]** Then it's going to write the code for the hello world controller and stuff like that.
+
+**[3353.56s → 3357.56s]** It's going to make a controller, it's going to make a service, it's going to make modules,
+
+**[3358.74s → 3368.09s]** do what it needs to. It's pretty cool, I think. I think, I'll say it's not the fastest to fast things,
+
+**[3368.09s → 3375.29s]** but and I've done this, I've gave it harder tasks to, I've done ones where we've had it re-factor
+
+**[3375.29s → 3384.90s]** a ES5 express JS application to have Bable and be all the S6 imports and everything
+
+**[3384.90s → 3392.46s]** and upgraded everything. Then my next test is going to be once we've got it set is to
+
+**[3392.46s → 3398.08s]** how we convert that into a full nest JS application in TypeScript and see how well it
+
+**[3398.08s → 3403.12s]** does. But at the moment, here we go. It's just done its thing. I'll blur. Can I access
+
+**[3403.12s → 3405.76s]** So I will actually start actually that's because you're already in there.
+
+**[3406.80s → 3409.04s]** It's not the smartest thing in the world.
+
+**[3412.58s → 3413.82s]** Thanks for installing this.
+
+**[3415.67s → 3416.19s]** It's there.
+
+**[3416.27s → 3417.19s]** Check that it was there.
+
+**[3418.82s → 3422.34s]** I think it may have just made two copies of the nest API.
+
+**[3422.34s → 3432.06s]** Now, or maybe two directories tested.
+
+**[3433.14s → 3434.38s]** Hello world API.
+
+**[3434.38s → 3435.30s]** It's it's it.
+
+**[3435.30s → 3436.10s]** No, look, it's built.
+
+**[3436.10s → 3437.22s]** It's built the new software.
+
+**[3437.22s → 3439.42s]** It's it's added some more files to it as well.
+
+**[3441.12s → 3443.12s]** So it ran it, tested it.
+
+**[3443.12s → 3447.31s]** Then when, oh, it doesn't have this, okay, let's add a controller.
+
+**[3447.31s → 3451.99s]** Oh, okay, the controller needs to talk to a service, let's write a service.
+
+**[3451.99s → 3457.59s]** So it's kind of doing that same process of what we just had in our code, what we've made,
+
+**[3457.59s → 3460.18s]** and it's building that out.
+
+**[3460.18s → 3465.34s]** Now it's got a main T.S. it's got a bunch of other stuff as well in the source directory,
+
+**[3465.34s → 3468.26s]** no?
+
+**[3468.26s → 3477.04s]** Pretty cool.
+
+**[3477.04s → 3479.96s]** So it's done 16 steps so far to do this.
+
+**[3479.96s → 3482.52s]** And again, at this point I'd have probably gone off at the time.
+
+**[3482.52s → 3485.32s]** I've gone back.
+
+**[3485.32s → 3490.28s]** But the fact that it knows that it needs to check the working directory,
+
+**[3491.14s → 3494.34s]** it's got a load of basically the agents are doing a lot of work here.
+
+**[3494.34s → 3496.10s]** They're doing a lot of different things.
+
+**[3498.89s → 3501.61s]** But just out of interest I'm going to go to my computer
+
+**[3502.73s → 3504.01s]** and go and have a look.
+
+**[3509.24s → 3510.52s]** See the interworks base.
+
+**[3513.08s → 3515.98s]** See the hello world API.
+
+**[3516.54s → 3517.26s]** Whoops, yep.
+
+**[3517.26s → 3523.86s]** Yeah, it's got the Hello World API and then he's got the Hello World. I think it's
+
+**[3523.86s → 3531.51s]** going to be a deal. I don't know. It'll be really fun. Nope, nope. You've done it twice.
+
+**[3532.38s → 3542.17s]** Got a bit confused. Let's open this one up and see whether this is the final one. So it's not
+
+**[3542.17s → 3551.53s]** perfect. We've got an app controlling TypeScript which has a return Hello World. That's not too bad.
+
+**[3551.53s → 3558.58s]** my dual services. And now the service also returns hello world, so it's not the best of the best
+
+**[3558.58s → 3567.45s]** looks. Maint. Yes, that's not a bad start. That's fine. Out of interest, it's still not finished.
+
+**[3569.05s → 3574.55s]** Interesting. I wonder whether that was just half of it's doing that hello. It's doing cut. It's
+
+**[3574.55s → 3582.82s]** even wrong curl to test it. And my dad's that. I'm going to miss it. Delete it. The other, no, it's
+
+**[3582.82s → 3589.24s]** to there right looks like this is the hello world maybe the main one not this one so some reason
+
+**[3589.24s → 3594.46s]** it kind of had a bit of a weird one it's even made a test folder and everything can put some
+
+**[3594.46s → 3606.09s]** into an oh it's made some tests how calls that it's made a test it's got package data JSON
+
+**[3607.35s → 3611.03s]** so look we've got all the bits that's got all the correct stuff in there but I look at it's even
+
+**[3611.03s → 3613.72s]** even got Gest.
+
+**[3613.72s → 3616.64s]** Script wise, it's got Lint, it's got Startup,
+
+**[3616.64s → 3620.21s]** Production, Debugging, or Development.
+
+**[3620.21s → 3625.00s]** So there's quite a few little, nice tees it's added.
+
+**[3625.00s → 3630.23s]** That's just your standard sort of like read me for next.
+
+**[3630.23s → 3632.39s]** So yes, this is interesting.
+
+**[3632.39s → 3635.27s]** So I'm gonna actually go to the outer one and open it.
+
+**[3635.27s → 3636.55s]** So I've got a feeling that's gonna be like
+
+**[3636.55s → 3639.47s]** the some weird stuff where it went off one more.
+
+**[3639.47s → 3641.31s]** Let's take a look and see what it's got in the service.
+
+**[3641.31s → 3643.71s]** So the service is doing what I expected to do.
+
+**[3643.71s → 3647.29s]** Control room is actually calling the service. That's the correct. That's its final form.
+
+**[3647.94s → 3649.94s]** Instead of it trying to do just
+
+**[3650.34s → 3654.54s]** send the string it's actually calling the service, but it's in the correct thing.
+
+**[3655.30s → 3659.93s]** So it took a few iterations to get there. We got there in the end. So
+
+**[3660.97s → 3663.35s]** And that's basically enough boilerplate. If I
+
+**[3663.93s → 3666.66s]** can see the dot dot
+
+**[3668.72s → 3674.75s]** Now if I remove that other one, I don't know. We'll get rid of that one. I was just
+
+**[3674.75s → 3684.60s]** just fail attempt. Let's open up a terminal here, NPMI, just to make sure everything's installed.
+
+**[3684.60s → 3693.96s]** I think it already installed it anyway. NPM start. Oh hang on, I've already got something
+
+**[3693.96s → 3704.26s]** running on 3000. Obviously it doesn't know that. So I'm just going to put 3000 and 9. Why not?
+
+**[3704.26s → 3714.61s]** just for the hell of it. So, MPM start, wait for a bit, we have, it started, successfully started.
+
+**[3714.61s → 3720.27s]** Right, so now if I go to local host, I should get Hello World. Let's go and give it a go.
+
+**[3724.16s → 3733.57s]** 3,091. Hello World. Obviously, that's amazing. We've got a Hello World, it's great, yeah.
+
+**[3734.37s → 3738.93s]** But the actual structure there now, I didn't have to do all that, that's done the boilerplate
+
+**[3738.93s → 3743.81s]** for me, I'm the testing and everything else. And what's that?
+
+**[3744.69s → 3750.29s]** That's great. And now we can have it refactor things into that. Or we can do,
+
+**[3750.29s → 3757.38s]** obviously, that was just a bit contrived. But there's let's look open dev.
+
+**[3758.37s → 3762.05s]** Now that it's done that, let's say, um,
+
+**[3762.69s → 3766.05s]** now does it have a memory of what it just accomplished?
+
+**[3766.61s → 3770.21s]** Yeah, that's what the sessions are there. Of course, like you can make a new session
+
+**[3770.21s → 3779.38s]** or you can keep in this. So you can have it mess about and do stuff. Create a simple
+
+**[3780.34s → 3785.94s]** express.js API with run.
+
+**[3785.94s → 3813.00s]** And a SQLite screen data based cable person with a shape of ID, name, location, page.
+
+**[3813.00s → 3837.69s]** um, make sure to use Vable and uh, ES6, SIMTAC or the Twin Pores. Also make sure to use
+
+**[3838.33s → 3852.31s]** Pores and Xpress, guys. Yeah. Okay. See what happens. Yeah. I can't see it not doing it,
+
+**[3852.31s → 3857.45s]** but it'd be interesting to see what it actually does.
+
+**[3857.45s → 3862.35s]** That just haven't been a straightaway.
+
+**[3862.35s → 3869.44s]** Oh, there we go.
+
+**[3869.44s → 3877.48s]** Yeah.
+
+**[3877.48s → 3879.08s]** So it's done what it needed to do.
+
+**[3879.08s → 3880.08s]** It's now initialized.
+
+**[3880.08s → 3885.26s]** It's installing SQL like three body parts, a cores, express.
+
+**[3885.26s → 3889.42s]** And it's saving devs with bagel core, bagel CLI, bagel presets.
+
+**[3889.42s → 3890.42s]** And that's correct.
+
+**[3890.42s → 3893.57s]** Awesome.
+
+**[3893.57s → 3895.09s]** So it's added those bits.
+
+**[3895.09s → 3897.13s]** Let's see what I've said to us.
+
+**[3897.13s → 3901.38s]** See what we get.
+
+**[3901.38s → 3938.58s]** do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do do
+
+**[3938.58s → 3940.86s]** Although it's fairly resilient, it's working.
+
+**[3940.86s → 3942.36s]** It's carrying on.
+
+**[3942.36s → 3944.52s]** It's having some problems with connections.
+
+**[3944.52s → 3947.36s]** This is the internet here.
+
+**[3947.36s → 3950.63s]** Whenever we add bad weather, the internet goes crazy.
+
+**[3950.63s → 3953.67s]** But your video screen is still working.
+
+**[3953.67s → 3955.15s]** You're Zoom call.
+
+**[3955.15s → 3955.99s]** Yeah.
+
+**[3955.99s → 3960.71s]** So it's luckily it does a QOS on stuff like that, writer.
+
+**[3960.71s → 3963.95s]** So it's giving that the main priority, not this.
+
+**[3963.95s → 3965.19s]** You know what I mean?
+
+**[3965.19s → 3966.87s]** If I can't ask you, it's fine.
+
+**[3966.87s → 3967.67s]** It's web browsing.
+
+**[3967.67s → 3972.30s]** leave that is we're having a stream at the moment so that's probably using up most of the bandwidth.
+
+**[3977.91s → 3982.39s]** Interesting to see where's it tuned. It's here for Hello World down. Yeah you can't see the work
+
+**[3982.39s → 3996.42s]** by so yeah let's see if the work space is local. Why not? Oh I'm already in the work by CB Godfather.
+
+**[3998.94s → 4009.08s]** It started making the crud express API anyway. We've got a database JS, we've got package JSON,
+
+**[4009.08s → 4015.59s]** node my jaw, so it doesn't have much else yet. Let's see what else it's building. It's hard to tell
+
+**[4015.59s → 4023.62s]** because it's like sitting there going, is there any look out soon? Let's see where we are.
+
+**[4024.57s → 4030.63s]** All bad to the current. Oh, Sunset 384, so it's doing stuff still. In the background it's just the
+
+**[4030.63s → 4040.17s]** front bit's not connecting to the back bit. So it's still going. This is your server log of
+
+**[4040.17s → 4045.93s]** local governance? Yeah, literally. So it looks like it's having a bit of a
+
+**[4045.93s → 4051.71s]** thing, but it's level zero step 35. So it's running the code out. Oh, just on the
+
+**[4051.71s → 4057.35s]** babel stuff. So that's it writing the stuff the front, the front parts having a
+
+**[4057.35s → 4062.17s]** bit of a wobbling not quite the eloquing initializing the agency. Doesn't know
+
+**[4062.17s → 4069.08s]** what to do yet. Successfully updated with the script now, express jazz server,
+
+**[4069.08s → 4076.09s]** blah, blah, blah, it's updated the scripts. I'd say it's not perfect to it at all.
+
+**[4076.09s → 4083.25s]** But again, you'd be away from this. You'd be eating something, doing something else and then coming back later and seeing what it's finished.
+
+**[4083.25s → 4086.53s]** Well, a lot of this is my internet.
+
+**[4086.53s → 4089.84s]** It's a problem here.
+
+**[4089.84s → 4098.06s]** Well, getting a lot of web socket disconnection stuff.
+
+**[4098.06s → 4101.18s]** I'll seriously know. That's not good.
+
+**[4101.18s → 4105.79s]** You know, because it was disconnected. I think it lost its entire thing.
+
+**[4105.79s → 4106.79s]** Oh.
+
+**[4106.79s → 4108.11s]** Oh, boy.
+
+**[4108.11s → 4113.75s]** I wonder whether that's what happened when it was doing the other thing as well then but didn't notice.
+
+**[4113.75s → 4118.95s]** You're a man.
+
+**[4118.95s → 4119.95s]** That's kind of another look.
+
+**[4119.95s → 4121.71s]** This is why sometimes it's good to have pretty good
+
+**[4121.71s → 4123.93s]** bad stuff.
+
+**[4123.93s → 4128.39s]** But yeah, that's because again, when it's not recording,
+
+**[4128.39s → 4129.71s]** it just seems to work.
+
+**[4129.71s → 4131.87s]** Like, it's not, he's looking at it.
+
+**[4131.87s → 4133.03s]** It's like, yeah.
+
+**[4134.15s → 4136.47s]** Let's unlock.
+
+**[4136.47s → 4139.42s]** Was it running in a virtual environment?
+
+**[4139.42s → 4141.50s]** Well, it's inside the docker basically.
+
+**[4148.26s → 4193.98s]** It looks like it's right, it came further though.
+
+**[4193.98s → 4201.23s]** It's got a surge.
+
+**[4201.23s → 4204.83s]** I thought my computer had completely crashed.
+
+**[4204.83s → 4208.27s]** It went completely, wouldn't let me move the mouse or anything.
+
+**[4208.27s → 4211.07s]** I thought, ah, I was trying to log on at the phone.
+
+**[4211.07s → 4215.96s]** Right, okay, so I ain't got on that.
+
+**[4215.96s → 4219.93s]** Which is a throwoff, let's have a look at the code so far.
+
+**[4219.93s → 4222.25s]** Right, so we've got a server JS with some,
+
+**[4222.25s → 4225.86s]** oh, with okay, I ain't got on.
+
+**[4225.86s → 4232.02s]** It's not an all database, let's look in database, JS.
+
+**[4232.10s → 4234.42s]** Open in database, selecting the file name,
+
+**[4234.42s → 4238.02s]** setting the driver, creating the day by see if it doesn't exist. That's good. It's got
+
+**[4238.02s → 4245.95s]** everything classic stuff. I think we've got some issue here. Some reason to show what
+
+**[4245.95s → 4255.95s]** that's going with. A valid character. Yeah, I think there's some weirdness going on there.
+
+**[4255.95s → 4261.09s]** It's actually not going to have that. But it may still be in the middle of fixing stuff
+
+**[4261.09s → 4265.57s]** at the moment. I don't really want to start fixing it for it. But basically, so far we've got
+
+**[4265.57s → 4273.02s]** an error here. So that could be a problem. It's got body parts and everything it needs.
+
+**[4273.02s → 4279.20s]** It's got the right dev dependencies. It started using Babel node, that's correct. So it can
+
+**[4279.20s → 4288.84s]** now we look at the imports using ES6 imports. It's got a full crud application there by
+
+**[4288.84s → 4293.40s]** look on it twice, three times. I think that's with the disconnections look, it's tried
+
+**[4293.40s → 4296.05s]** to write it more than once, that's why.
+
+**[4296.05s → 4300.20s]** So, that was because of the thing completely disconnecting
+
+**[4300.20s → 4301.94s]** and getting confused.
+
+**[4301.94s → 4304.12s]** Yeah.
+
+**[4304.12s → 4306.28s]** But while it's doing things, look, it's just gone,
+
+**[4306.28s → 4308.72s]** oh, it's cleaned itself up, what I mean speaking, look,
+
+**[4308.72s → 4310.28s]** I didn't do any of that.
+
+**[4310.28s → 4312.36s]** So it's gone, oh, no, that's the one I want to keep.
+
+**[4312.36s → 4314.04s]** Let's clean it up and it's doing all these things.
+
+**[4314.04s → 4316.16s]** Let's give it a little bit more time then.
+
+**[4316.16s → 4317.68s]** But it's still doing stuff and I'm trying to go,
+
+**[4317.68s → 4319.88s]** oh, it's not working.
+
+**[4319.88s → 4322.44s]** Let's have a look at the database then, is that fixed?
+
+**[4322.44s → 4325.16s]** Still not fixed itself there.
+
+**[4325.16s → 4332.17s]** It's kind of, so we've got the server that's using the database, it's caught the correct
+
+**[4332.17s → 4338.36s]** thing for persons ID, creating edit delete.
+
+**[4338.36s → 4342.96s]** So we've got full quad, that's not too bad.
+
+**[4342.96s → 4347.34s]** I've lost it, you should have the end, yeah.
+
+**[4347.34s → 4350.59s]** So that looks all fine.
+
+**[4350.59s → 4353.39s]** I think it's probably really in tests now, let's look at what it says.
+
+**[4353.39s → 4357.04s]** It says anything, no, it's still, it's froze there.
+
+**[4357.04s → 4365.05s]** I think you see it in the next page close again.
+
+**[4366.94s → 4368.22s]** Yeah, it's having a load of trouble here,
+
+**[4368.22s → 4378.20s]** but it's doing stuff.
+
+**[4378.20s → 4385.59s]** I'm about a spark sort of nice there.
+
+**[4385.59s → 4387.51s]** Does it figure out to look in the database box?
+
+**[4387.51s → 4391.02s]** I think that's the only problem there.
+
+**[4391.02s → 4395.14s]** Who is that?
+
+**[4395.14s → 4396.86s]** I think that's it figuring out the database
+
+**[4396.86s → 4402.15s]** well problem though.
+
+**[4402.15s → 4413.88s]** Well database jazz has just been created, corrected.
+
+**[4413.88s → 4415.48s]** I'm gonna go and have a look at code so far
+
+**[4415.48s → 4417.84s]** because it's saying it's been corrected.
+
+**[4424.13s → 4428.87s]** service farm. Oh, it's running in that look. It's created the database.
+
+**[4431.40s → 4434.76s]** What's the look? It's doing stuff whenever I'm not looking. As soon as I'm looking, it's like,
+
+**[4434.76s → 4439.84s]** nah, nah, it's not working. No, it's corrected the database problem there. It's fixed up.
+
+**[4441.60s → 4446.21s]** So it's done its debugging. Okay, it's not perfect. No, I don't think it's going to take anyone's job.
+
+**[4448.52s → 4454.28s]** But it's not a bad little bit of boilerplate if you wanted to do something basic.
+
+**[4454.28s → 4458.36s]** It's not, it's not going to be the best thing, but it's it's clean. It's to the point.
+
+**[4460.23s → 4463.64s]** Could probably vote it a bit quicker.
+
+**[4464.28s → 4470.01s]** But it's it's nice to it's got the Babel RC and it's got ES6 there and it's all that and
+
+**[4471.24s → 4475.52s]** What I'm thinking is if it can do this and if it can do a hello world
+
+**[4477.08s → 4480.00s]** NestJS it should be able to do this in NestJS
+
+**[4480.69s → 4482.82s]** That makes him yeah
+
+**[4482.82s → 4485.66s]** in probably about the same sort of amount of time,
+
+**[4485.66s → 4488.14s]** because now a few problems are missing.
+
+**[4488.14s → 4490.45s]** But there is potential there.
+
+**[4490.45s → 4494.13s]** And this kind of shows a bit of the potential of what can be done
+
+**[4494.13s → 4499.68s]** with agents and stuff like that, and chains and graphs.
+
+**[4499.68s → 4502.39s]** And to me, that's kind of,
+
+**[4502.39s → 4508.55s]** it's down to then thinking about what it is that you want to use it for.
+
+**[4508.55s → 4511.15s]** Like I said, that's always going to be the big hard case.
+
+**[4511.15s → 4514.55s]** But it sounds like you've got an idea of what you want to use it for any.
+
+**[4514.55s → 4520.82s]** So it's now going to be beginning, beginning ideas. I'm assuming a lot more will come.
+
+**[4520.82s → 4528.86s]** Yeah, and like I said, I found that you find uses. There's a lot of use places in like
+
+**[4528.86s → 4535.00s]** said, military application and stuff like that. There's, I've had a few civilian use cases
+
+**[4535.00s → 4544.04s]** as well. So there's, there's, there's variants of stuff, right? And I think it's still
+
+**[4544.04s → 4552.09s]** and go at stuff you know it's coming out. Oh yeah I've disconnected students and now
+
+**[4552.09s → 4557.28s]** you think we don't have no again. I think what I'm gonna do I'm gonna actually stop it
+
+**[4557.28s → 4563.18s]** from doing stuff now because that's just so I've had a cup of tea came back and gone oh it's
+
+**[4563.18s → 4573.08s]** done and it was still be going but yeah. Also just for a laugh I made where's it gone I had a
+
+**[4573.08s → 4593.61s]** rice with it. Yeah, I had a little rice with it. So we built the same thing. It took 12
+
+**[4593.61s → 4599.45s]** and a half, 30 minutes for it to do, took about 7 and a half minutes for me. But still,
+
+**[4599.45s → 4610.77s]** that's not too bad. We both made a simple sort of HTML file, CSS JavaScript front end,
+
+**[4610.77s → 4616.81s]** a backend in next with requires. And this is basically a simple text-to-speech
+
+**[4616.81s → 4629.57s]** application that hits Polly, AWS Polly, with a frontend and backend. So, right,
+
+**[4629.57s → 4637.20s]** this is the one I've made, but the same sort of concept. It made exactly the same
+
+**[4637.20s → 4642.67s]** sort of thing slightly different code but not much. Let's go and hit
+
+**[4642.67s → 4653.79s]** uh the load call, I was going on three three three three. That's it. So here's what I did.
+
+**[4653.79s → 4660.36s]** It did fairly similar sort of thing. Uh and text the speech and you can choose
+
+**[4660.36s → 4667.42s]** your personal who's going to speak synthesizer speech.
+
+**[4667.42s → 4670.78s]** Hello. Hello. Hello. Hello. Hello.
+
+**[4670.78s → 4674.80s]** Shall we? Since the slice speech. Hello.
+
+**[4674.80s → 4682.52s]** Huh? I won't even know. Maybe it didn't quite reset the bit. Shall we? Since the slice speech.
+
+**[4682.52s → 4690.40s]** Hello. Shall we instead? And you can do almost any like if you find it like the right one.
+
+**[4690.40s → 4699.56s]** Even though it's the end US, if we look for, I'll keep picking the US one. China. So if you get some
+
+**[4699.56s → 4706.61s]** Chinese character and pace them in here he will speak the Chinese literally so you can put whatever language you want in there
+
+**[4708.05s → 4711.61s]** Which is pretty cool. If a trying game say hello, I don't know what he's gonna say like
+
+**[4712.01s → 4713.01s]** Let's do a
+
+**[4713.01s → 4714.76s]** Refreshing
+
+**[4714.76s → 4720.28s]** See now at the moment languages whatever's there, but it's based on whatever name we give it it changes language
+
+**[4721.27s → 4725.86s]** So let's try that one
+
+**[4725.86s → 4728.46s]** Hello, so female Chinese
+
+**[4729.69s → 4731.69s]** But let's see
+
+**[4731.69s → 4736.50s]** Hello.
+
+**[4736.50s → 4737.50s]** Niha.
+
+**[4737.50s → 4739.20s]** Niha.
+
+**[4739.20s → 4740.20s]** Niha.
+
+**[4740.20s → 4741.24s]** Niha.
+
+**[4741.24s → 4746.24s]** Let's try Niha in Chinese and save this allows me to copy and paste it.
+
+**[4746.24s → 4749.28s]** Niha.
+
+**[4749.28s → 4752.57s]** Oh, I've got a refresh for us anyway.
+
+**[4752.57s → 4754.57s]** Oh, now we're two.
+
+**[4754.57s → 4756.76s]** Oh, was it that?
+
+**[4756.76s → 4757.76s]** Yeah.
+
+**[4757.76s → 4759.15s]** Niha.
+
+**[4759.15s → 4760.15s]** Niha.
+
+**[4760.15s → 4761.15s]** Niha.
+
+**[4761.15s → 4762.15s]** Niha.
+
+**[4762.15s → 4763.15s]** Niha.
+
+**[4763.15s → 4764.15s]** Niha.
+
+**[4764.15s → 4765.15s]** Niha.
+
+**[4765.15s → 4766.15s]** That's sort of under in there.
+
+**[4766.15s → 4767.15s]** Niha.
+
+**[4767.15s → 4768.15s]** Niha.
+
+**[4768.15s → 4777.54s]** Niha. Niha. I'm wondering what. So you got Niha, a new haul, two different sort of areas.
+
+**[4778.72s → 4783.28s]** I wonder if we can't, who's that? Arabic. Let's try and get the Arabic reading Chinese.
+
+**[4785.36s → 4793.59s]** I don't think that will work properly. Kimberly, US. Doesn't know what the hell I was talking about.
+
+**[4794.39s → 4795.03s]** Typical.
+
+**[4795.03s → 4800.82s]** Oh, put you on a Russian.
+
+**[4800.82s → 4802.20s]** Again, you can get some really stuff
+
+**[4802.20s → 4804.86s]** and put it in the Russian, and it will just speak it.
+
+**[4804.86s → 4806.74s]** But again, that's a simple app.
+
+**[4806.74s → 4807.70s]** It's not nothing special,
+
+**[4807.70s → 4810.32s]** but it's utilizing as well.
+
+**[4811.77s → 4816.24s]** AWS SDK V3, which is the latest one,
+
+**[4816.24s → 4820.89s]** which technically chat GPT doesn't know exists
+
+**[4820.89s → 4822.71s]** from using chat GPT,
+
+**[4822.71s → 4824.99s]** but because you have, as I searched the web,
+
+**[4824.99s → 4827.35s]** when I asked it to do like do it in V3
+
+**[4827.35s → 4828.87s]** and use the latest Apollo,
+
+**[4828.87s → 4833.37s]** it went off and researched it and found out how to do that.
+
+**[4833.37s → 4835.49s]** And I mean, that's what, that's what took it more time.
+
+**[4835.49s → 4836.65s]** Otherwise, I think it would have done it
+
+**[4836.65s → 4838.05s]** about the same time as I did.
+
+**[4839.64s → 4843.64s]** Then I asked it, if you'll notice in this code base,
+
+**[4843.64s → 4846.32s]** no, that's not the code base, we'll stick in.
+
+**[4846.32s → 4851.71s]** If you notice in this one, right now it's using ES5.
+
+**[4852.86s → 4855.18s]** So I then said, okay, well now I want you to turn it
+
+**[4855.18s → 4859.05s]** into ES6 context and it did, which was quite nice.
+
+**[4859.05s → 4861.89s]** it did leave exactly the same button here, six.
+
+**[4861.89s → 4864.57s]** So it can sort of update to newer things
+
+**[4864.57s → 4869.27s]** and write stuff that OpenAI stuff can't.
+
+**[4869.27s → 4871.35s]** If you just go into chat, you can try and get it
+
+**[4871.35s → 4873.63s]** to write this thing, you can copy and paste them in.
+
+**[4873.63s → 4876.91s]** It just goes around in circles of the older stuff.
+
+**[4876.91s → 4878.51s]** And if you try and have it update some stuff
+
+**[4878.51s → 4879.79s]** that you've got that's new,
+
+**[4879.79s → 4883.79s]** it will give you the older version of it and break it.
+
+**[4883.79s → 4888.55s]** So this is where utilized agents and chains and graphs
+
+**[4888.55s → 4894.92s]** makes a big big difference. That's kind of where it goes. But I think I'm going to call it because,
+
+**[4894.92s → 4902.68s]** you know, you was leaving at the start. Yeah, it's dinner time here where I live.
+
+**[4904.61s → 4911.33s]** So yeah, it's been awesome. I mean, good session. I got a lot from this. I really appreciate
+
+**[4911.33s → 4921.60s]** you taking the time. No promise on it. Yeah, sorry. Stop saying. I think you have a good one
+
+**[4921.60s → 4926.24s]** you too see you later bye bye
+

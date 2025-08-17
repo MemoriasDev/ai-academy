@@ -1,0 +1,1711 @@
+# Video Transcription
+
+**Source File:** ../cohorts/cohort_2/week_04/week_4_class_3_2024-06-12.mp4
+**Duration:** 4683.97 seconds
+**Language:** en (confidence: 1.00)
+**Model:** base
+**Segments:** 846
+**Generated:** 2025-08-13 18:40:12
+**File Hash:** 659b22852c802947bc24f951c04c4a39
+
+## Additional Metadata
+**cohort:** cohorts
+**week:** week_04
+**file_name:** week_4_class_3_2024-06-12.mp4
+
+---
+
+## Transcript
+
+**[7.66s → 9.90s]** All right, welcome everybody.
+
+**[9.90s → 14.14s]** So this is the end of this unit basically.
+
+**[14.14s → 17.50s]** So we're going to switch into a guided project.
+
+**[17.50s → 19.54s]** So this past two week period, we've
+
+**[19.54s → 22.86s]** been talking about chains and agents.
+
+**[22.86s → 24.42s]** And now we're going to stitch all that together
+
+**[24.42s → 29.94s]** and show you what an agent for developer productivity
+
+**[29.94s → 32.02s]** might look like.
+
+**[32.02s → 35.98s]** This example, I think, is just fun and really just
+
+**[35.98s → 39.74s]** It's designed to help get your creative juices flowing,
+
+**[39.74s → 44.30s]** to help you as you start your own projects as part of the coursework.
+
+**[45.22s → 48.51s]** So we're going to start out tonight.
+
+**[48.51s → 52.91s]** I'm going to show you something that the age you created,
+
+**[52.91s → 55.87s]** and then I'll show you the process of how we might create
+
+**[56.67s → 61.47s]** another application, and then we'll start to walk through the code.
+
+**[61.47s → 66.15s]** There are just a couple things that all remind you of.
+
+**[66.15s → 68.75s]** They need to have set up in your environment,
+
+**[68.75s → 71.55s]** wherever you choose to do your development.
+
+**[71.55s → 73.71s]** You can choose whether or not to fall along with me
+
+**[73.71s → 76.19s]** live coding tonight, or not.
+
+**[76.19s → 79.39s]** That's really up to you.
+
+**[79.39s → 83.07s]** Just a warning though, this is a live coding class.
+
+**[83.07s → 87.11s]** It will be mistakes around to happen.
+
+**[87.11s → 91.03s]** So if you all see me make a silly mistake in the process,
+
+**[91.03s → 93.67s]** Of course, please call it out.
+
+**[93.67s → 94.71s]** And definitely come off mute.
+
+**[94.71s → 96.95s]** Our class is small enough that you can do that.
+
+**[96.95s → 100.11s]** Or feel free to ping me in the Slack chat.
+
+**[100.11s → 103.47s]** I don't really monitor the Zoom chat during class.
+
+**[103.47s → 106.03s]** So just a good heads up there.
+
+**[106.03s → 118.96s]** All right.
+
+**[118.96s → 120.92s]** You might think, okay, hey, John Cretty,
+
+**[120.92s → 125.72s]** what is this beautiful, terribly horrible looking webpage
+
+**[125.72s → 127.32s]** in front of us?
+
+**[127.32s → 129.48s]** Well, this is a nice little tick-tock to example
+
+**[129.48s → 133.44s]** that Aaron actually created for the previous cohort.
+
+**[133.96s → 139.92s]** You know, just a very simple tic-tac-to kind of game.
+
+**[144.72s → 146.08s]** Nothing crazy.
+
+**[146.08s → 147.40s]** You're like, okay, cool.
+
+**[147.40s → 149.16s]** That's an awesome simple web age.
+
+**[149.16s → 152.76s]** But what if I told you I could create an application
+
+**[152.76s → 156.54s]** like this with one line under 30 seconds.
+
+**[156.54s → 159.70s]** And this is where AI becomes really good
+
+**[159.70s → 161.04s]** for developer productivity.
+
+**[161.04s → 162.90s]** The solutions that we're gonna get
+
+**[162.90s → 167.30s]** from these kinds of applications are never gonna be perfect.
+
+**[167.30s → 170.75s]** But if I'm trying to learn how to build out something like
+
+**[170.75s → 173.87s]** its XicTac To game and understand the JavaScript going behind
+
+**[173.87s → 177.05s]** that it's just going to accelerate development.
+
+**[177.05s → 179.39s]** And that's really what we're looking for is an increase
+
+**[179.39s → 181.77s]** in your productivity as developers.
+
+**[181.77s → 186.41s]** So let's take a look at how this works from like a user
+
+**[186.41s → 190.63s]** experience perspective as a developer.
+
+**[190.63s → 202.37s]** We reshare a new screen.
+
+**[202.37s → 204.61s]** So you should have gotten the code for tonight.
+
+**[204.61s → 206.45s]** So I'm just running a code that's actually
+
+**[206.45s → 217.56s]** just a different branch. So you will all absolutely be able to see the code that's fully working
+
+**[217.56s → 226.61s]** if you like. So let's take a look and let's create a very simple application about Battleship.
+
+**[226.61s → 231.81s]** The example is in here and tick-tax code in mine sweeper so we can kind of play around with it.
+
+**[239.48s → 244.92s]** All right so it doesn't look like the application is doing anything but it is and what we're going to
+
+**[244.92s → 266.39s]** say it is create a static website with vanilla HTML, CSS, JS, for the game battleship.
+
+**[266.39s → 276.87s]** So you all can see my prompt. I know that's egregiously large. Okay. So we launched a simple Python
+
+**[276.87s → 282.31s]** application from the command line and now it asks me for my prompt and my prompt is create a static
+
+**[282.31s → 288.07s]** website with an LHDMS CSS and JavaScript for the game battleship. So what it's going to do is if you
+
+**[288.07s → 294.96s]** look at my directory now there's not anything in there. When we run this you're going to notice it
+
+**[294.96s → 298.56s]** create, it's going to create a new directory. I don't know what it's going to be called yet.
+
+**[299.76s → 311.81s]** And that'll have our new HTML file and JavaScript files in it. Okay cool we got our create directory,
+
+**[312.45s → 322.20s]** we got our battleship game is our new directory. And you can see all the other functions that the
+
+**[322.20s → 330.72s]** the Asian called the process of creating this.
+
+**[330.72s → 338.83s]** And I love that it gives us a nice little description.
+
+**[338.83s → 350.34s]** So you can look at how well our application did.
+
+**[350.34s → 352.58s]** I was super interesting.
+
+**[352.58s → 354.98s]** You all me fasting to the know,
+
+**[354.98s → 357.38s]** I ran this example testing for class
+
+**[357.38s → 359.86s]** and actually the design was a little different.
+
+**[360.74s → 363.38s]** The battleship header was up here
+
+**[363.38s → 368.58s]** and there were actually two boards.
+
+**[368.58s → 370.30s]** So the CLLLMs, right,
+
+**[370.30s → 372.42s]** the improbableistic nature of what we're doing
+
+**[372.42s → 375.18s]** things can change.
+
+**[375.18s → 377.30s]** Seeing the other board was really cool.
+
+**[377.30s → 380.90s]** So you can see what the other player was doing
+
+**[380.90s → 389.76s]** because it was automatically picking.
+
+**[389.76s → 391.20s]** And we can go through, of course,
+
+**[391.20s → 394.00s]** and finish the whole click and do the battleship
+
+**[394.00s → 394.84s]** and see who wins.
+
+**[394.84s → 397.56s]** But I just wanted to show you how easy it was
+
+**[397.56s → 401.59s]** to begin generating the artifacts for a website like that.
+
+**[401.59s → 404.63s]** Well, I'm sorry, you all think I didn't show my use
+
+**[404.63s → 405.15s]** range.
+
+**[405.15s → 406.31s]** You didn't see the application.
+
+**[406.31s → 409.16s]** I was talking through it, not sharing
+
+**[409.16s → 422.56s]** it. But this is the battleship game that was created there. Any request for like a simple,
+
+**[422.56s → 428.88s]** static website generation? I think we can, we have time to run at least one more kind
+
+**[428.88s → 452.27s]** of trial example before we start walking through the code of how this works. And nobody else
+
+**[452.27s → 471.24s]** has like a favorite childhood game. I've got one more that we can try real quick. So here
+
+**[471.24s → 474.60s]** we're going to, we're going to do something similar, but now we're going to create a paint
+
+**[474.60s → 503.98s]** application. So I'm going to say something like create a simple pane application, which
+
+**[503.98s → 528.19s]** is in vanilla HTML, CSS and JS, which has two pink colors, red and blue and a star stamp
+
+**[530.35s → 550.96s]** and a export to PNG feature. Okay, so we're getting that new invoking create directory that's
+
+**[550.96s → 558.99s]** that's going to create the Pay Now directory,
+
+**[558.99s → 562.02s]** creating all the necessary files,
+
+**[562.02s → 569.89s]** creating our CSS right now.
+
+**[569.89s → 573.25s]** You can see we just have index and style so far.
+
+**[573.25s → 576.30s]** Now we're creating that JavaScript file.
+
+**[576.30s → 577.38s]** Okay, we're all done.
+
+**[577.38s → 578.86s]** Let's go check out our Pay Now application,
+
+**[578.86s → 601.07s]** see if it works.
+
+**[601.07s → 604.36s]** I'm going to try the Star Stamp.
+
+**[604.36s → 610.31s]** Ooh, fancy.
+
+**[610.31s → 621.15s]** Kind of gives me shooting star vibes.
+
+**[621.15s → 623.91s]** Maybe the stamp doesn't quite work as well as we want,
+
+**[623.91s → 626.99s]** but kind of an interesting little,
+
+**[628.28s → 635.30s]** and then our exports of PNG feature works.
+
+**[635.30s → 640.48s]** Beautiful, regular Picasso.
+
+**[640.48s → 642.44s]** Now these are really trivial examples,
+
+**[642.44s → 645.76s]** but I hope that immediately this is triggering
+
+**[645.76s → 648.20s]** your creativity, right?
+
+**[648.20s → 650.40s]** Like are you, if you're a React developer,
+
+**[650.40s → 654.28s]** you could write an agent help you start React projects.
+
+**[656.16s → 660.81s]** Let's say that you are a React developer
+
+**[660.81s → 662.11s]** And you're working on a project,
+
+**[662.11s → 666.35s]** but you just need ideas for different components.
+
+**[667.43s → 668.71s]** You know, this could help you just create
+
+**[668.71s → 670.91s]** a couple different ideas for components.
+
+**[672.93s → 675.33s]** This could just help you automatically generate code
+
+**[675.33s → 678.37s]** from design files.
+
+**[678.37s → 680.77s]** And of course, there are some AI-assisted tools
+
+**[680.77s → 682.79s]** in a lot of these places.
+
+**[684.46s → 686.70s]** But a lot of them, you have to pay for too.
+
+**[686.70s → 690.06s]** So I do want to point out that oftentimes
+
+**[690.06s → 696.86s]** stuff is, I won't say easy or trivial, but I will say straightforward to implement,
+
+**[697.58s → 706.52s]** depending on the sophistication of your application. So, okay, do you all want to see how we make
+
+**[706.52s → 730.89s]** an agent generate applications like this? And you all let me know if you have any questions so far.
+
+**[732.41s → 739.91s]** I haven't seen any come through on Slack, but we can also come back in office hours and kind of
+
+**[739.91s → 763.32s]** test the limits of what's possible with this application. So I hope that you have already
+
+**[763.32s → 767.80s]** cloned the repo for a class if you're going to be following along with live coding, not required,
+
+**[767.80s → 775.26s]** just kind of kind of walk through what we're doing. So just a quick reminder on things to set up
+
+**[775.26s → 781.10s]** for your environments. Similar to the directions for a normal class, you know, make sure you're
+
+**[781.10s → 786.30s]** cloning the repo, you're creating a virtual environment if you're using one, make sure to install
+
+**[786.30s → 792.22s]** requirements and then set up your variables. We're going to need open AI,
+
+**[792.22s → 797.82s]** learning chaining for length smith tracking and then just kind of two other
+
+**[797.82s → 800.22s]** simple variables.
+
+**[800.22s → 821.94s]** Just copy these, put these in the chat. And if you're wondering what this is,
+
+**[821.94s → 825.78s]** this is just that specific to my machine, but it's not actually credential,
+
+**[825.78s → 840.14s]** so nobody can deal with it. So to walk through the overall structure of the code,
+
+**[840.14s → 843.35s]** code we're looking at.
+
+**[843.35s → 848.91s]** We talked about chains on Tuesday, and you guys will love, I actually had a use case at
+
+**[848.91s → 851.95s]** work for the chains that we worked on on Tuesday.
+
+**[851.95s → 858.27s]** I had a couple of thousands of EML documents that needed some lending because they were
+
+**[858.27s → 863.67s]** a front-matter from GitLab issues that people just typed in.
+
+**[863.67s → 868.73s]** So it wasn't necessarily true EML lending that needed to be done.
+
+**[868.73s → 872.03s]** It was like, people would forget things,
+
+**[872.03s → 874.67s]** or sometimes they put a colon in a weird place,
+
+**[874.67s → 876.09s]** and it would throw things off.
+
+**[877.59s → 882.72s]** And so I just wrote, it was maybe five, six, seven lines
+
+**[883.68s → 889.42s]** of code after the imports to parse through all those
+
+**[889.78s → 894.06s]** and lend the camel for me and return it.
+
+**[895.50s → 896.66s]** Amazing.
+
+**[896.66s → 898.18s]** It definitely saved me a lot of time
+
+**[898.18s → 900.10s]** and having to like run a linter.
+
+**[900.10s → 902.52s]** and then go and manually track each file.
+
+**[903.78s → 906.66s]** Really, really great use case for change.
+
+**[906.66s → 909.06s]** But back to agents,
+
+**[909.06s → 911.20s]** agents are gonna be the more powerful
+
+**[911.20s → 916.78s]** of the two options between how to stitch things together.
+
+**[917.80s → 919.96s]** So what we're doing is gonna happen
+
+**[919.96s → 921.96s]** in a non-linear fashion.
+
+**[921.96s → 924.76s]** That's really where one of the primary benefits
+
+**[924.76s → 928.56s]** to agents is to allow us to choose those different
+
+**[928.56s → 932.43s]** tools out of our toolbox.
+
+**[932.43s → 934.07s]** Now, if you're still unclear on the differences
+
+**[934.07s → 937.35s]** between agents and chains, look back at the slide
+
+**[937.35s → 940.15s]** from Monday's class comparing the two.
+
+**[941.35s → 944.35s]** And I'm happy to revisit that conversation as well.
+
+**[944.35s → 946.99s]** Which is really important that we teach you chains
+
+**[946.99s → 952.17s]** because that is a pretty good tool for you to have.
+
+**[952.17s → 956.08s]** So we are going to have some tools
+
+**[956.08s → 958.28s]** that could create something like a React app
+
+**[958.28s → 959.52s]** with a new framework.
+
+**[959.52s → 961.88s]** Bites, I'm not a react developer,
+
+**[961.88s → 965.28s]** although I have three people that I manage
+
+**[965.28s → 967.32s]** that are react developers.
+
+**[967.32s → 971.24s]** So it's, I just, I have a very service level
+
+**[972.64s → 974.12s]** amounts about react.
+
+**[976.90s → 979.69s]** We can also create a directory.
+
+**[979.69s → 983.96s]** You solve this function being called, right?
+
+**[983.96s → 987.12s]** Find a file if we need to find a particular file,
+
+**[987.12s → 990.42s]** create a file, update file,
+
+**[990.42s → 994.22s]** and then we have our list of tools that we can do.
+
+**[994.22s → 997.82s]** And we can configure any tools that you'd like to do
+
+**[997.82s → 999.85s]** as part of class.
+
+**[999.85s → 1002.73s]** I'm not gonna run the React example.
+
+**[1002.73s → 1004.73s]** I don't have a React environment set up on this machine.
+
+**[1004.73s → 1007.89s]** So if I were to create something,
+
+**[1007.89s → 1011.01s]** we wouldn't be able to run it and that would be sad.
+
+**[1012.81s → 1014.53s]** But we could generate the code
+
+**[1014.53s → 1019.12s]** if you guys just wanna see a generate Act code.
+
+**[1019.12s → 1020.88s]** And then some of the other information here
+
+**[1020.88s → 1021.96s]** should look familiar.
+
+**[1021.96s → 1025.44s]** So we're going to initialize our OpenAI model.
+
+**[1025.44s → 1027.64s]** We're going to have our prompt templates,
+
+**[1027.64s → 1029.60s]** and then we're going to bind the tools together,
+
+**[1029.60s → 1033.24s]** create the agent, and then create the agent executor.
+
+**[1033.24s → 1035.52s]** This is the main loop at the very end.
+
+**[1035.52s → 1038.40s]** This is the thing that you saw me actually typing with
+
+**[1038.40s → 1046.57s]** and interacting with.
+
+**[1046.57s → 1055.02s]** So we can play around with that a little bit more.
+
+**[1055.02s → 1057.22s]** Let's actually just start with a create directory tool.
+
+**[1057.22s → 1059.58s]** We'll start with something that's really, really simple
+
+**[1059.58s → 1065.55s]** and how an agent might work for that particular use
+
+**[1065.55s → 1104.88s]** case. So we're going to create a directory in, we just add in our documentation. Create
+
+**[1104.88s → 1109.50s]** a new directory with a given directory name if it does not already exist. I mean, if it
+
+**[1109.50s → 1114.34s]** does already exist, like I wanted to recreate that battleship game, it'll make sure that
+
+**[1114.34s → 1127.26s]** the directory is writable for us. Now, I just want to point out in terms of developer productivity,
+
+**[1127.26s → 1131.46s]** you know, it's like Russian nesting dolls all the way down. You could also use generative
+
+**[1131.46s → 1133.46s]** I had to help you write the code here.
+
+**[1133.46s → 1136.58s]** Um, but let's take a look first.
+
+**[1136.58s → 1149.95s]** So the first thing we're just going to check.
+
+**[1149.95s → 1153.95s]** Uh, just make sure that the directory name doesn't have to, uh,
+
+**[1153.95s → 1154.95s]** Datsunet.
+
+**[1154.95s → 1157.95s]** Uh, that's not going to fly with, um,
+
+**[1157.95s → 1160.14s]** direct, create a directory.
+
+**[1160.14s → 1163.87s]** Um, if it doesn't have that name,
+
+**[1163.87s → 1165.87s]** of course, we're going to try.
+
+**[1165.87s → 1175.04s]** Create a directory.
+
+**[1175.04s → 1190.23s]** And it's okay if it already exists.
+
+**[1190.23s → 1200.36s]** Now, we're also going to check that the directory is writable too.
+
+**[1200.36s → 1234.22s]** So even if it already exists, you'll make it and let's see if the function is just checking
+
+**[1234.22s → 1237.18s]** to make sure that our directory is good.
+
+**[1237.18s → 1254.89s]** And of course, we'll give it a nice, friendly print statement.
+
+**[1254.89s → 1274.19s]** Let's have a good Python code if that a nice friendly print statement.
+
+**[1274.19s → 1279.31s]** Also, you all, I think many of you are very experienced developers.
+
+**[1279.31s → 1285.03s]** So I do just want to make sure if I'm going too slow, feel free to let me know, because
+
+**[1285.03s → 1289.19s]** we can definitely accelerate where you all want to.
+
+**[1289.19s → 1295.03s]** So I don't want you walking through code that you all understand really easily.
+
+**[1295.03s → 1302.05s]** Yeah, okay.
+
+**[1302.05s → 1308.41s]** So Nikito is asking, talking about the stretchables versus writing the code in class,
+
+**[1308.41s → 1312.32s]** okay?
+
+**[1312.32s → 1315.60s]** I'll put that on the backlog for a second.
+
+**[1318.35s → 1324.93s]** Would anyone else, does anyone else have other goals
+
+**[1324.93s → 1325.77s]** for tonight?
+
+**[1327.59s → 1330.31s]** This is an opportunity to review agent code.
+
+**[1330.31s → 1332.73s]** So this is showing a much more complex agent
+
+**[1332.73s → 1338.55s]** than we worked on in class two weeks ago,
+
+**[1338.55s → 1340.59s]** not two weeks ago, a week ago.
+
+**[1373.42s → 1378.10s]** All right, I'm not really seeing too many other pieces
+
+**[1378.10s → 1379.10s]** of traffic.
+
+**[1379.10s → 1384.61s]** So let me accelerate through the code in class,
+
+**[1384.61s → 1386.53s]** and then we can spend a lot more time
+
+**[1386.53s → 1390.65s]** talking about the thresholds.
+
+**[1390.65s → 1393.09s]** And just tell me that acceleration,
+
+**[1393.09s → 1394.69s]** I'm going to show you all that we
+
+**[1394.69s → 1397.93s]** can talk about the completed code instead
+
+**[1397.93s → 1409.35s]** of talking through line by line.
+
+**[1409.35s → 1420.86s]** We just switch screen shares for a second.
+
+**[1420.86s → 1425.18s]** So just a couple of things that are added to do this file
+
+**[1425.18s → 1428.03s]** that are important to point out.
+
+**[1428.03s → 1431.59s]** First is to just double check valid file types.
+
+**[1431.59s → 1434.83s]** So of course, you don't want your agent
+
+**[1434.83s → 1437.39s]** to just write something that isn't actually readable
+
+**[1437.39s → 1438.59s]** later on.
+
+**[1438.59s → 1442.03s]** So just a quick, essentially validation
+
+**[1442.03s → 1446.15s]** that everything is good and what you might expect.
+
+**[1446.15s → 1458.61s]** So Python files, text files, all the fun stuff.
+
+**[1458.61s → 1463.80s]** So this byte project is actually just helping set up
+
+**[1464.26s → 1465.70s]** subprocess run,
+
+**[1466.98s → 1470.26s]** and then creating the byte project for you with a template.
+
+**[1472.20s → 1474.44s]** That's basically just doing this setup.
+
+**[1474.44s → 1478.52s]** So like that function is helping you automate everything.
+
+**[1478.52s → 1482.54s]** There's nothing using an LLM, this particular function,
+
+**[1482.54s → 1487.70s]** the agent is just gonna do that and then add whatever files
+
+**[1487.70s → 1490.50s]** that was going into that byte project.
+
+**[1490.50s → 1493.76s]** So this is the kind of fun thing about agents.
+
+**[1493.76s → 1496.80s]** And I think Chris was maybe commenting on this last week,
+
+**[1496.80s → 1502.18s]** but agents kind of feel like weird ETL.
+
+**[1502.52s → 1506.22s]** And I don't entirely disagree with that sentiments,
+
+**[1507.55s → 1510.15s]** but it's one of those things
+
+**[1510.15s → 1515.25s]** where you can blend traditional ETL style function
+
+**[1515.25s → 1520.41s]** and standard functions together.
+
+**[1520.53s → 1524.13s]** And they don't have to follow a set pattern.
+
+**[1524.13s → 1528.70s]** I think that's probably the big differentiator.
+
+**[1528.70s → 1532.38s]** If we were to take a look at create directory,
+
+**[1532.38s → 1538.27s]** find file does exactly what you think it does.
+
+**[1538.27s → 1540.75s]** Now the create file is where things get
+
+**[1540.75s → 1541.99s]** a little bit spicier.
+
+**[1541.99s → 1545.87s]** So this is where when we're actually running
+
+**[1545.87s → 1549.15s]** to create file stuff.
+
+**[1549.15s → 1554.50s]** We're gonna make sure that the file type is valid.
+
+**[1554.50s → 1556.18s]** And if it's not, we're going to make sure
+
+**[1556.18s → 1559.02s]** that the LLMs are turning something that's valid.
+
+**[1559.02s → 1563.50s]** Then we're gonna pump it out to the directory path.
+
+**[1563.50s → 1571.99s]** And at that path then exist, create it.
+
+**[1571.99s → 1576.86s]** And then finally, we're going to update the files
+
+**[1576.86s → 1585.78s]** that you can choose from.
+
+**[1585.78s → 1590.78s]** This is the tool that we imported, by the way, the Shell tool.
+
+**[1591.74s → 1594.46s]** This is what allows us to interact with the agent
+
+**[1594.46s → 1595.50s]** on a command line.
+
+**[1595.50s → 1597.38s]** So if you go way back up to the imports,
+
+**[1597.38s → 1599.62s]** this isn't something we defined.
+
+**[1601.10s → 1604.41s]** And so by asking for a human input at the shell,
+
+**[1604.41s → 1605.85s]** we're asking you to create a session
+
+**[1605.85s → 1610.41s]** and that's a agent tool it can choose from.
+
+**[1610.41s → 1613.09s]** So it chooses when it wants to talk to us,
+
+**[1613.09s → 1615.62s]** which is fascinating.
+
+**[1615.62s → 1619.71s]** and then all of the functions that are in our files.
+
+**[1619.71s → 1626.18s]** Configure the LLM, set up the prompts.
+
+**[1626.18s → 1628.18s]** You're an expert web developer.
+
+**[1628.18s → 1631.18s]** Let's say you're a Python developer.
+
+**[1631.18s → 1634.18s]** Obviously you'd want to maybe switch to software Python,
+
+**[1634.18s → 1639.18s]** where you could extend the prompt to cover a couple different varieties of engineering.
+
+**[1639.18s → 1654.20s]** And then we configure our agents, create our agent executor,
+
+**[1654.20s → 1656.92s]** and then run our user prompt
+
+**[1656.92s → 1661.66s]** against the agent executor stream.
+
+**[1661.66s → 1665.16s]** I don't think we've taken a look at streams before yet,
+
+**[1665.16s → 1668.52s]** but that's where we're creating a continuous connection
+
+**[1669.92s → 1671.60s]** and stream data back and forth.
+
+**[1671.60s → 1674.94s]** So just maybe a slight difference
+
+**[1674.94s → 1683.73s]** and I think that's in your boilerplate code as well.
+
+**[1683.73s → 1686.37s]** All right, that was the very accelerated overview
+
+**[1686.37s → 1689.61s]** of the agent so that we could talk about stretch goals
+
+**[1689.61s → 1694.76s]** and talk a little bit about all of the other stuff
+
+**[1694.76s → 1715.40s]** that you want to talk about.
+
+**[1715.40s → 1716.48s]** I'd be interested.
+
+**[1716.48s → 1721.71s]** And so the agent, it looks good and you've mentioned how,
+
+**[1725.27s → 1727.55s]** obviously, it cannot be trusted.
+
+**[1727.55s → 1732.55s]** But I was curious how this would be integrated
+
+**[1733.09s → 1735.99s]** into a developed environment.
+
+**[1735.99s → 1739.72s]** would this be an agent that we,
+
+**[1739.72s → 1741.40s]** would we write a similar agent?
+
+**[1741.40s → 1743.96s]** Let's say we use Java for us,
+
+**[1743.96s → 1746.88s]** would we write a similar agent but for Java?
+
+**[1746.88s → 1750.76s]** And you have that as a tool that developers can run
+
+**[1750.76s → 1754.08s]** to bootstraps, certain glasses or projects.
+
+**[1755.18s → 1758.04s]** What would the workflow look like?
+
+**[1758.04s → 1758.88s]** Yeah, totally.
+
+**[1758.88s → 1761.80s]** I think probably what you'd want to do
+
+**[1761.80s → 1764.32s]** is let's say you have pre-existing projects
+
+**[1764.32s → 1766.24s]** and you were just trying to bootstrap new components
+
+**[1766.24s → 1767.56s]** or something.
+
+**[1767.56s → 1771.28s]** What you'd want to do is write a function
+
+**[1771.28s → 1774.24s]** that could read in the existing project
+
+**[1774.24s → 1777.68s]** as context, kind of like a rag, right?
+
+**[1777.68s → 1781.24s]** You want to retrieve new classes,
+
+**[1781.24s → 1785.16s]** based on the context of the preexisting code base.
+
+**[1785.16s → 1791.68s]** So there's not a function to do that in this starter project,
+
+**[1791.68s → 1794.20s]** but you could definitely write a couple of functions
+
+**[1794.20s → 1796.72s]** to do that help you read through the code.
+
+**[1796.72s → 1800.72s]** And as far as I know, this code will generate a Java code
+
+**[1800.72s → 1804.12s]** base that's in our list of file types.
+
+**[1804.12s → 1809.48s]** It just, I don't think it'll run.
+
+**[1809.48s → 1810.96s]** I have no idea.
+
+**[1810.96s → 1813.72s]** I mean, JVM is definitely installed on my machine,
+
+**[1813.72s → 1816.12s]** but I have no idea what the version looks like.
+
+**[1816.12s → 1819.12s]** So it could be a little rough.
+
+**[1819.12s → 1822.32s]** But we could just try it as an example
+
+**[1822.32s → 1824.98s]** to show you the flexibility of this solution.
+
+**[1824.98s → 1834.28s]** It doesn't have to generate a static website.
+
+**[1834.28s → 1835.44s]** Let's see.
+
+**[1845.22s → 1847.86s]** Nikita says this is you asked about Java.
+
+**[1849.80s → 1852.92s]** What kind of Java project would you want to create?
+
+**[1852.92s → 1855.99s]** Probably should be a web app for best results.
+
+**[1855.99s → 1859.59s]** Well, I think in practice creating a new brand,
+
+**[1859.59s → 1861.47s]** new project would be rare.
+
+**[1861.47s → 1864.11s]** More like let's say adding cash layer
+
+**[1864.11s → 1868.47s]** to an existing, let's say we have a dynamic DV operation
+
+**[1868.47s → 1871.59s]** and we wanna add a cache layer and topple that something
+
+**[1871.59s → 1875.43s]** like that because we wanna control the speed
+
+**[1875.43s → 1877.73s]** of number of dynamic DV operations.
+
+**[1880.04s → 1885.04s]** Yeah, so I think we'd wanna go into our agents
+
+**[1885.48s → 1892.56s]** and then we'd want to just add a new tool set
+
+**[1892.88s → 1911.16s]** and let's see, I think it just could be something like
+
+**[1912.00s → 1951.05s]** review existing code. So again, look at this. Okay, here's update file. Let's try and run update file.
+
+**[1951.85s → 1960.38s]** This only is going to work on a single file, but we could the agent could potentially update the
+
+**[1960.38s → 1967.18s]** multiple files and decide to call this function once. But what it's not doing, though, just to be
+
+**[1967.18s → 1970.86s]** I think which is important for your use case,
+
+**[1970.86s → 1973.66s]** it doesn't have the context of the entire code base
+
+**[1973.66s → 1975.14s]** when it's updated a file.
+
+**[1979.31s → 1981.47s]** So just remember,
+
+**[1981.47s → 1985.44s]** we're, it cause we're streaming though,
+
+**[1985.44s → 1987.68s]** it still has the prior context
+
+**[1987.68s → 1989.28s]** of generating the paint application.
+
+**[1989.28s → 1992.68s]** So that's why I'm gonna choose to update the paint application.
+
+**[1992.68s → 2000.46s]** So I'm gonna say, can you fix the stamp feature
+
+**[2000.46s → 2016.44s]** So that it does not draw a line between two stamps used consecutively.
+
+**[2016.44s → 2060.16s]** See, now we got something that's maybe not a great example.
+
+**[2060.16s → 2063.16s]** Because it made a decision that wasn't good.
+
+**[2063.16s → 2069.64s]** It's trying to run this shell command.
+
+**[2069.64s → 2092.23s]** We're not going to do that.
+
+**[2092.23s → 2094.23s]** This one seems pretty harmless.
+
+**[2094.23s → 2114.87s]** Now it's reviewing the context of paint and executing that fine file.
+
+**[2114.87s → 2138.78s]** While this is running, I noticed there was a question in the main select channel.
+
+**[2138.78s → 2144.88s]** If you missed Monday's class, that's okay.
+
+**[2144.88s → 2155.02s]** It would be good for you to review Monday's class, but since the primary focus is on agents,
+
+**[2155.02s → 2161.14s]** I think that you'll find that it's, you'll be okay.
+
+**[2162.74s → 2164.58s]** The thing, if you miss Munez Class,
+
+**[2164.58s → 2166.74s]** the annotation that'll be important
+
+**[2166.74s → 2170.41s]** that you might have missed is the LCEL,
+
+**[2173.20s → 2178.46s]** which is basically this kind of pipe format of language.
+
+**[2178.78s → 2182.22s]** So if you wanna understand what's going on with that,
+
+**[2182.22s → 2184.94s]** you could either use Munez Class,
+
+**[2184.94s → 2196.82s]** or the free-through-D line chain document on LCEL.
+
+**[2196.82s → 2200.48s]** So our LLM, by the way, finished execute.net update.
+
+**[2200.48s → 2203.08s]** So verify the changes, open Paynaf and a web browser
+
+**[2203.08s → 2242.52s]** and test the stamp.
+
+**[2242.52s → 2253.04s]** It still doesn't look like it fixed the problem.
+
+**[2253.04s → 2261.91s]** Just give it one quick refresh.
+
+**[2261.91s → 2264.40s]** Yeah, not perfect.
+
+**[2266.04s → 2268.52s]** So we could go back and tell it that it didn't
+
+**[2269.56s → 2289.35s]** fix that problem appropriately.
+
+**[2289.35s → 2303.62s]** So we'll look at some of the other stretch goals.
+
+**[2303.62s → 2306.82s]** So I think we already talked a little bit
+
+**[2306.82s → 2308.94s]** about context-aware assistance.
+
+**[2308.94s → 2312.94s]** So padding features that help understand the current code base.
+
+**[2317.96s → 2321.50s]** So there's a really good one.
+
+**[2326.30s → 2331.30s]** Here would be a good context-aware agent you could run.
+
+**[2332.66s → 2334.32s]** You could have something that's,
+
+**[2336.12s → 2338.56s]** let's say you had a pretty large Python code base
+
+**[2338.56s → 2341.48s]** and a bunch of different developers with different backgrounds,
+
+**[2341.48s → 2346.68s]** They may not all be following your word, silo guides.
+
+**[2346.88s → 2349.36s]** So you might just want to have a project
+
+**[2349.36s → 2354.48s]** that has the context of your entire Python code base,
+
+**[2354.48s → 2359.84s]** then also knows what silo guides you should be using
+
+**[2360.55s → 2365.55s]** and can analyze your code base and provide feedback.
+
+**[2366.63s → 2369.87s]** Now, you could also just do a raw lending
+
+**[2369.87s → 2374.51s]** of your Python code base and then use an LLM to summarize
+
+**[2374.51s → 2376.67s]** all of the issues that the Linter uncovered.
+
+**[2378.96s → 2381.12s]** And then you could say, systematically,
+
+**[2381.12s → 2384.68s]** these are our top five pairs,
+
+**[2384.68s → 2388.76s]** or identify the contributors that are struggling with that.
+
+**[2388.76s → 2390.56s]** Say you're an engineering manager
+
+**[2390.56s → 2392.60s]** that I could help you figure out
+
+**[2392.60s → 2396.44s]** forms of improvement plan to help your own developers,
+
+**[2396.44s → 2399.04s]** not in a bad way, just in a coaching way,
+
+**[2399.04s → 2402.38s]** help them figure out which style stuff that they need to review.
+
+**[2404.09s → 2411.16s]** As an example of context to wear assistance,
+
+**[2411.16s → 2413.44s]** of the other stretch goals,
+
+**[2413.44s → 2428.36s]** were there ones that people wanted to dig into?
+
+**[2428.36s → 2434.76s]** I guess, just to go back to my question,
+
+**[2434.76s → 2436.72s]** how would I make this,
+
+**[2436.72s → 2440.03s]** like what do you recommend as the best way
+
+**[2440.03s → 2443.43s]** to making this available to other members of the team?
+
+**[2443.43s → 2446.07s]** Would I do something like a dogher
+
+**[2446.07s → 2455.08s]** like would I do a Docker container of some sort or or just we just share a code repository or
+
+**[2456.04s → 2461.24s]** a hostess on the shared server or something like what's the best what would you recommend as a way
+
+**[2461.24s → 2467.64s]** to share it with the rest of the team members yeah I would say with this particular projects
+
+**[2469.24s → 2476.52s]** that we're working from yeah you could it's lightweight enough that you could probably just put it
+
+**[2476.52s → 2485.80s]** in a Python package and then have somebody add it into the developer dependencies of their projects.
+
+**[2488.98s → 2493.70s]** Of course, if your code basis is written Python, you may not want to money to waters,
+
+**[2494.74s → 2500.74s]** which I completely understand. And in that case, putting in a Docker image would be totally fine.
+
+**[2500.74s → 2505.74s]** You just have to, would have to expose a route into the Docker image.
+
+**[2505.74s → 2512.00s]** The past the file start needed, amount of the file structure to the Docker image that you want to use.
+
+**[2512.00s → 2516.00s]** It should be good. Some configuration there, but not terrible.
+
+**[2516.00s → 2521.00s]** And then the Docker image would run locally or wherever the.
+
+**[2521.00s → 2535.07s]** IE is for the developer.
+
+**[2535.07s → 2537.13s]** Last thought though, I'm exposing it to developers
+
+**[2537.13s → 2540.03s]** at your company, the other option, of course,
+
+**[2540.03s → 2543.94s]** like at the really cool end of the spectrum would be to,
+
+**[2543.94s → 2548.14s]** most people use VS Code across the relevant community
+
+**[2548.14s → 2550.78s]** that's the most well adopted, IDE, but
+
+**[2552.36s → 2554.80s]** so my suggestion there would be you could create a VS Code
+
+**[2554.80s → 2559.80s]** extension and expose hosted version of this service
+
+**[2561.84s → 2563.46s]** though it analyzes code base,
+
+**[2563.46s → 2576.45s]** would be the next level of sophistication.
+
+**[2576.45s → 2580.33s]** We see a lot at work with developers using generative AI stuff.
+
+**[2584.13s → 2585.97s]** You don't want people going to a bunch
+
+**[2585.97s → 2589.01s]** of different generative AI tools for developer productivity.
+
+**[2589.01s → 2590.69s]** You want the tools to be as close
+
+**[2590.69s → 2593.93s]** to their development environments as possible.
+
+**[2593.93s → 2596.53s]** So like a VS Code extension is very powerful
+
+**[2596.53s → 2599.33s]** and there are a couple out there already
+
+**[2599.33s → 2602.09s]** that you can plug into your open.
+
+**[2602.09s → 2607.09s]** And there's obviously GitHub co-pilots that could help.
+
+**[2608.05s → 2610.13s]** But then there are some other things out there too
+
+**[2610.13s → 2615.29s]** that you can plug in your OpenAI, API code or even,
+
+**[2617.14s → 2619.50s]** if you're hosting your own LLM.
+
+**[2621.62s → 2623.86s]** That's compatible with the OpenAI spec.
+
+**[2623.86s → 2632.76s]** You could also point the extension of that as well.
+
+**[2632.76s → 2633.88s]** We have a couple at work,
+
+**[2633.88s → 2636.84s]** but they're forks of the original open source projects
+
+**[2636.84s → 2639.28s]** So I don't, I know what we call them,
+
+**[2639.28s → 2641.60s]** but those names are not what they are in open source
+
+**[2641.60s → 2642.44s]** community.
+
+**[2642.44s → 2645.14s]** So give you a couple names,
+
+**[2645.14s → 2653.61s]** but I'm not going to be the names of the real VS Code extensions.
+
+**[2653.61s → 2656.09s]** So what you're saying is ideally,
+
+**[2656.09s → 2660.33s]** you would develop a custom VS Code extension for your team.
+
+**[2660.33s → 2663.13s]** Yeah, I think that that's probably ideal.
+
+**[2663.13s → 2703.54s]** Assuming that that's the IDE, you guys views.
+
+**[2703.54s → 2704.74s]** Yeah, Tom spot on.
+
+**[2704.74s → 2711.90s]** Yeah, IntelliJ or PyCharm extensions,
+
+**[2711.90s → 2726.14s]** but also be sweet.
+
+**[2726.14s → 2729.82s]** And you said, at your team, you've developed those extensions,
+
+**[2729.82s → 2730.86s]** right?
+
+**[2730.86s → 2731.66s]** Then that's okay.
+
+**[2731.66s → 2737.68s]** I say, yeah, Lockheed, we have forked open source,
+
+**[2740.75s → 2749.66s]** VS code extensions, and modify them for our internal,
+
+**[2750.26s → 2752.90s]** our internal generative AI systems.
+
+**[2755.39s → 2759.10s]** But yes, my team was the one that developed those,
+
+**[2759.10s → 2761.82s]** but we help socialize and advocate for them.
+
+**[2761.82s → 2764.38s]** That's why I'm not as familiar with what's underneath the hood.
+
+**[2765.38s → 2790.89s]** More familiar with how to use it.
+
+**[2790.89s → 2791.73s]** Thanks.
+
+**[2791.73s → 2795.49s]** If you want, we could maybe talk about the stretch goals.
+
+**[2795.49s → 2800.74s]** Like maybe give us a picture of how we could,
+
+**[2802.82s → 2805.38s]** like how we could do each of them.
+
+**[2805.38s → 2810.05s]** What's ideas?
+
+**[2810.05s → 2818.12s]** Yeah, I think definitely.
+
+**[2818.12s → 2823.96s]** So Tom, by the way, I think Tom, you're on the right track
+
+**[2823.96s → 2825.48s]** with the blast API.
+
+**[2827.27s → 2829.35s]** So if you're just to think about exposing it
+
+**[2829.35s → 2832.19s]** as a VS Code extension, and you obviously,
+
+**[2832.19s → 2834.23s]** at that point, you'd want to host it,
+
+**[2834.23s → 2839.03s]** and then hook up request calls to the API.
+
+**[2839.03s → 2844.03s]** So setting up an API framework for the calls would be great.
+
+**[2845.41s → 2846.54s]** So.
+
+**[2846.54s → 2856.46s]** Yeah, I mainly say that because I've already done that sort of thing to do for a office hours.
+
+**[2856.46s → 2870.92s]** Back to the stretch goals. So we can just go down on a list real quick and talk about what might be the idea.
+
+**[2870.92s → 2882.95s]** Actually, let me just, let me create a new file here,
+
+**[2882.95s → 2885.85s]** and then I can share with you all as we bring
+
+**[2885.85s → 2901.87s]** to Storm together about this stuff.
+
+**[2901.87s → 2913.23s]** So first, stretch goal was advanced code analysis.
+
+**[2913.23s → 2917.10s]** So things like identifying potential bugs,
+
+**[2917.10s → 2919.46s]** suggesting performance improvements,
+
+**[2919.46s → 2921.66s]** and brief factoring recommendations.
+
+**[2923.62s → 2929.55s]** This is actually something that I have not automated it
+
+**[2929.55s → 2935.79s]** at work myself, but I would love actually to see us work on or my team work on.
+
+**[2935.79s → 2945.11s]** Oftentimes, we have massive data sets that some users work with on our AI factory platform.
+
+**[2945.87s → 2949.71s]** And it's a couple of terabytes of data.
+
+**[2950.35s → 2954.83s]** And they'll run like feature engineering jobs, not even machine learning jobs,
+
+**[2954.83s → 2956.67s]** and say feature engineering jobs.
+
+**[2958.48s → 2962.40s]** And it would be really great to know if that code
+
+**[2962.40s → 2964.96s]** is fully optimized for performance
+
+**[2964.96s → 2966.88s]** because when you're running a such a large data set
+
+**[2966.88s → 2968.60s]** that takes a lot of compute resources.
+
+**[2971.40s → 2974.00s]** The handful of teams that work at that scale
+
+**[2974.00s → 2975.88s]** have really good get practices.
+
+**[2975.88s → 2979.60s]** So they're working on feature branches
+
+**[2979.60s → 2981.68s]** and working on MRs.
+
+**[2981.68s → 2984.32s]** So really advanced code analysis
+
+**[2984.32s → 3004.80s]** would just being able to say like, let's say, like when an MR is marked as ready for review
+
+**[3009.84s → 3021.81s]** that kicks off a CI CD job and actually similar to what we talked about two weeks ago, two or three
+
+**[3021.81s → 3034.39s]** weeks ago with this. CI CD I think is a great way to do things that are less about dynamic
+
+**[3034.39s → 3039.19s]** and interactive generation and more about review kind of stuff.
+
+**[3039.19s → 3044.61s]** So like, be able to analyze a code base.
+
+**[3044.61s → 3047.73s]** So we already took a look at the GitHub APIs
+
+**[3047.73s → 3050.76s]** we're getting to code.
+
+**[3050.76s → 3053.64s]** So you've got that in your back pocket.
+
+**[3053.64s → 3063.90s]** And analyze the change files.
+
+**[3063.90s → 3097.60s]** And then use the LLM to review the performance structure.
+
+**[3097.60s → 3104.91s]** you can say, you don't even necessarily have to write new code. I think that's part of the
+
+**[3104.91s → 3114.41s]** interesting. Just use the L-Umterview performance structure and then say, provide a detail
+
+**[3116.57s → 3158.62s]** summary of the, then I could write the code. And then finally leaves the, yes, that could be
+
+**[3158.62s → 3168.14s]** one way to do advanced code analysis. Like a CI-CD job, analyze the change files, use the L-Umterview
+
+**[3168.14s → 3173.13s]** everything that changed, provided detail summary ways to improve the performance,
+
+**[3174.17s → 3190.03s]** right? Any suggested changes to the code leaves summary comments on the MR.
+
+**[3194.92s → 3199.48s]** These are how much context do you need with something like advanced code analysis? Would it be
+
+**[3199.48s → 3205.04s]** to ingest the whole code base? If so, would you put it the whole code base in a vector store so you
+
+**[3205.04s → 3210.29s]** you get the necessary context, not sure what else you'd do it,
+
+**[3210.29s → 3212.88s]** secure what.
+
+**[3212.88s → 3216.29s]** Yeah, I think as easy as it depends on
+
+**[3216.29s → 3220.07s]** if you're analyzing the entire code base of your project.
+
+**[3232.00s → 3236.04s]** So the reason you put it just to revisit why you use
+
+**[3236.04s → 3240.11s]** a vector store for, you don't, number one,
+
+**[3240.11s → 3241.67s]** you don't have to use a vector store
+
+**[3241.67s → 3243.99s]** for retrieval, augment generation.
+
+**[3243.99s → 3252.83s]** Right. Anytime you're just grounding your prompts with additional context, like that's
+
+**[3252.83s → 3258.17s]** retrieval on management generation. Like, let's say that, you know, going back to the
+
+**[3258.17s → 3267.78s]** example of like where people works, like, you know, John Cody worked at Lockheed Martin.
+
+**[3267.78s → 3270.86s]** you know, has worked at BlumTech.
+
+**[3272.34s → 3275.62s]** Right, that's contacts that we're putting in,
+
+**[3275.62s → 3277.38s]** and then we're treating, and then I ask,
+
+**[3277.38s → 3279.42s]** you know, where did John Cody work?
+
+**[3279.42s → 3281.18s]** It's gonna look at that prior context.
+
+**[3281.18s → 3284.94s]** That data isn't an embedded read, an embedding database.
+
+**[3284.94s → 3288.37s]** So the reason you put it in an embedding database
+
+**[3288.37s → 3292.77s]** is to search for the most relevant examples
+
+**[3292.77s → 3294.97s]** if you had a massive set of data.
+
+**[3294.97s → 3296.73s]** So let's say that now,
+
+**[3296.73s → 3298.13s]** instead of just John Coney and Tom,
+
+**[3298.13s → 3300.33s]** I'm dealing with like a thousand employees
+
+**[3300.33s → 3302.17s]** or 10,000 employees or more.
+
+**[3304.18s → 3306.06s]** You're not gonna wanna pass 10,000 employees
+
+**[3306.06s → 3307.74s]** where the history to your LLM
+
+**[3307.74s → 3310.38s]** it's gonna choke on that performance.
+
+**[3310.38s → 3313.96s]** So you just use the embedding model
+
+**[3313.96s → 3317.04s]** to help you create that vector store and retrieve
+
+**[3317.04s → 3319.88s]** just using like K nearest neighbors
+
+**[3319.88s → 3324.72s]** or some kind of other nearest neighbor search method,
+
+**[3324.72s → 3328.08s]** or I should say approximate nearest neighbor search method
+
+**[3328.08s → 3333.08s]** to retrieve like a K set of relevant documents,
+
+**[3333.28s → 3334.36s]** like 10.
+
+**[3334.36s → 3338.60s]** So you might say, I'm gonna pull John Cody Sokol from,
+
+**[3340.29s → 3342.93s]** like I'm looking for his employment history,
+
+**[3342.93s → 3344.37s]** you'll wear the John Cody Sokol work
+
+**[3344.37s → 3348.09s]** and then it's going to search that embedding database
+
+**[3348.09s → 3350.93s]** of 10, 15,000, 50,000 employees
+
+**[3350.93s → 3352.81s]** for people that have named similar to mine.
+
+**[3352.81s → 3356.33s]** So I would presumably be the most similar result
+
+**[3356.33s → 3361.29s]** that comes up and then there might be a John,
+
+**[3361.29s → 3363.89s]** J-O-H-N, so-called, that could be two.
+
+**[3363.89s → 3367.69s]** And then, you go down on all the variations.
+
+**[3367.69s → 3370.05s]** Like Nikita and I have very similar last names,
+
+**[3370.05s → 3372.89s]** probably because we have similar family histories.
+
+**[3373.85s → 3376.13s]** So presumably that would also be,
+
+**[3377.81s → 3380.76s]** yeah, something that could come up to.
+
+**[3380.76s → 3384.00s]** So I know Zez is a really long-winded answer
+
+**[3384.00s → 3385.84s]** your question about whether or not
+
+**[3385.84s → 3389.10s]** you would use an embedding database.
+
+**[3389.10s → 3393.36s]** It depends on how much context you have in your code base.
+
+**[3393.36s → 3396.00s]** I mean, if your code base is just three files
+
+**[3396.00s → 3402.48s]** like the static website example, you could pass them all in.
+
+**[3402.48s → 3405.00s]** And how you determine that could be on the context link
+
+**[3405.00s → 3406.44s]** of the model you're using.
+
+**[3406.44s → 3409.96s]** So if you're dealing with a big chatty to be 4 plus,
+
+**[3409.96s → 3411.38s]** and some of the other large models,
+
+**[3411.38s → 3413.30s]** they have huge context windows.
+
+**[3414.24s → 3418.34s]** So, you know, it could fit quite a few files into memory
+
+**[3419.26s → 3421.38s]** like in the prompt and it'd be fine.
+
+**[3421.38s → 3423.58s]** But let's say you're dealing with like,
+
+**[3423.58s → 3426.54s]** Apple's new model that's on your device.
+
+**[3426.54s → 3428.38s]** Not that that's great for developer productivity,
+
+**[3428.38s → 3431.62s]** but, you know, it's gonna have a much smaller context window.
+
+**[3431.62s → 3433.58s]** And so you're gonna wanna use an embedding database
+
+**[3433.58s → 3437.74s]** for that example, because you're not gonna be able to fit
+
+**[3437.74s → 3445.42s]** all of the context and the memory when you send it.
+
+**[3445.42s → 3446.26s]** Thanks.
+
+**[3446.26s → 3449.81s]** That makes sense.
+
+**[3449.81s → 3453.03s]** I'm not sure if that was that.
+
+**[3453.03s → 3455.59s]** I want to take my response and transcribe it
+
+**[3455.59s → 3457.23s]** and pass it back through an LLM.
+
+**[3457.23s → 3485.21s]** And see if we can write it more succinctly.
+
+**[3485.21s → 3487.21s]** So maybe going back to some of the other searchables,
+
+**[3487.21s → 3492.56s]** do you think about?
+
+**[3492.56s → 3497.03s]** So we've already talked about context or assistance.
+
+**[3497.03s → 3500.27s]** We talked a little bit about continuous,
+
+**[3500.27s → 3515.05s]** like CICD stuff, but then the other thing you could do, I think collaboration features is maybe not as
+
+**[3516.60s → 3532.44s]** interesting to me personally, but let's say AI driven learning. So the stretch goal is about
+
+**[3532.44s → 3536.84s]** incorporating machine learning that's going to allow your agent to learn from your coding over time.
+
+**[3536.84s → 3545.22s]** This is really getting into that concept of fine tuning.
+
+**[3545.22s → 3562.35s]** So you could, you think about an example here.
+
+**[3562.35s → 3573.79s]** Let's say you have a, your company has a very particular style of how you write function names.
+
+**[3573.79s → 3576.55s]** and like what's a function name and what's a class
+
+**[3576.55s → 3579.95s]** and how those objects all interact together.
+
+**[3579.95s → 3583.70s]** Like you have a paradigm that's very challenging
+
+**[3583.70s → 3585.94s]** to put into words, but it's socializing
+
+**[3585.94s → 3589.83s]** your company over time and people adopted.
+
+**[3589.83s → 3594.80s]** So if your LLM response you've noticed
+
+**[3594.80s → 3596.48s]** doesn't always follow that paradigm.
+
+**[3596.48s → 3600.04s]** You might have functions that are misnamed
+
+**[3600.04s → 3602.04s]** or like they're not misnamed or say,
+
+**[3602.04s → 3604.84s]** but they're not a name that complies with that standard.
+
+**[3604.84s → 3608.33s]** that you want.
+
+**[3608.33s → 3611.85s]** And over time, when you've given catalog those responses
+
+**[3611.85s → 3614.13s]** in something like Lank Smith.
+
+**[3614.13s → 3619.43s]** So you've gone back and you've built a data set over time.
+
+**[3619.43s → 3621.71s]** And just one thing to note to you guys,
+
+**[3621.71s → 3624.27s]** you can just attach Lank Smith to your projects
+
+**[3624.27s → 3628.11s]** and let them run and then create the data sets post-facto.
+
+**[3628.11s → 3630.59s]** It's not like you have to do that interactively
+
+**[3630.59s → 3634.35s]** as you're creating stuff.
+
+**[3634.35s → 3636.95s]** So like you let your developers run
+
+**[3638.32s → 3642.70s]** the generated, any of these generative projects
+
+**[3642.70s → 3644.66s]** and then you're going back and looking at the code
+
+**[3644.66s → 3647.30s]** that it's generating and you're flagging like,
+
+**[3647.30s → 3649.90s]** hey, this is good, this is what I'm looking for,
+
+**[3649.90s → 3652.02s]** this is bad.
+
+**[3652.02s → 3656.32s]** So you're in Lange Smith and you create
+
+**[3656.32s → 3659.92s]** that data set of good examples.
+
+**[3659.92s → 3663.76s]** Then you could further find tune,
+
+**[3663.76s → 3668.83s]** instruction to an open source model to say,
+
+**[3670.43s → 3674.71s]** hey, actually, this is more the style I'm looking for.
+
+**[3674.71s → 3677.47s]** Here are all the examples that I have,
+
+**[3677.47s → 3680.83s]** like the instruction examples I have that I'm looking for.
+
+**[3682.91s → 3686.07s]** And there are a couple techniques that you could do that with,
+
+**[3688.37s → 3690.61s]** but that would be another stretchable.
+
+**[3690.61s → 3692.77s]** Sorry, I didn't write any notes about that as I was talking,
+
+**[3692.77s → 3700.65s]** but like collect data, so I collect output data.
+
+**[3765.14s → 3768.42s]** Some stock royals to investigate in this world would be like,
+
+**[3772.21s → 3811.32s]** don't remember who it is,
+
+**[3811.32s → 3815.20s]** but I feel like somebody just launched a new API endpoints
+
+**[3815.20s → 3817.54s]** for fine tuning.
+
+**[3817.54s → 3821.34s]** I don't remember if it was Quad or GTP,
+
+**[3821.34s → 3822.38s]** or am I making that up?
+
+**[3822.38s → 3824.54s]** Somebody know, somebody else remember that
+
+**[3824.54s → 3829.91s]** from like developer news in the past week.
+
+**[3829.91s → 3835.51s]** I mean, yeah, Claude Antropic has the ability to do fine tuning, but I've read it's
+
+**[3836.85s → 3844.77s]** cost on the order of $10,000 or something like it's very expensive to fine tune a model.
+
+**[3847.36s → 3852.32s]** Yeah, I mean, right, some of the models are huge, so that's not surprising.
+
+**[3860.39s → 3868.39s]** Yeah, for a lot of companies, this is why also a lot of companies have their own on-prem GPUs.
+
+**[3869.86s → 3875.30s]** because then of course you have to maintain bare metal and have infrastructure support
+
+**[3875.30s → 3882.16s]** and platform support to do that, but given up use cases it makes it work that easily.
+
+**[3884.42s → 3891.89s]** And it's not like you need a gigafactory of compute to fine tune a model. You might need like a
+
+**[3891.89s → 3899.57s]** single A 100, maybe even two or three A 100s depending on your model to fine tune something.
+
+**[3899.57s → 3906.84s]** because most of the time if you're fine tuning something,
+
+**[3906.84s → 3915.85s]** you could fine tune it with some form of quantization.
+
+**[3915.85s → 3918.17s]** And if you all have no idea what I'm talking about,
+
+**[3918.17s → 3920.85s]** that's getting way into the weeds of the machine learning
+
+**[3920.85s → 3925.98s]** of doing, of working with LLMs.
+
+**[3925.98s → 3930.10s]** So that's pretty far outside this COVID class,
+
+**[3930.10s → 3933.22s]** but if you're already experienced a machine learning,
+
+**[3934.41s → 3951.90s]** definitely something worth investigating.
+
+**[3951.90s → 3953.40s]** All right, I maybe just want to,
+
+**[3953.40s → 3955.70s]** I think we've covered most of the stretch goals.
+
+**[3957.08s → 3960.50s]** I just want to maybe step back out and check in.
+
+**[3960.50s → 3962.72s]** Does anyone have any questions
+
+**[3962.72s → 3965.04s]** about the example I showed tonight,
+
+**[3965.04s → 3967.92s]** any of the course material we've covered so far
+
+**[3969.12s → 3972.36s]** or maybe just any more general questions about LLMs
+
+**[3972.36s → 3974.60s]** and developer productivity?
+
+**[3974.60s → 3976.96s]** I could also take a few minutes to answer
+
+**[3978.56s → 3980.64s]** you know, in general, as much as I can share
+
+**[3980.64s → 3982.78s]** about stuff that we're doing at Lockheed.
+
+**[3984.87s → 3997.52s]** So I wanna open up the floor a little bit.
+
+**[3997.52s → 4002.52s]** Yeah, so for the examples of using LLM's to improve code,
+
+**[4004.32s → 4009.32s]** so I guess ideally do, if it's less than 128,000 tokens
+
+**[4009.52s → 4013.22s]** to ideally just load it entirely versus using RAG.
+
+**[4016.52s → 4020.64s]** I guess if you could, you just use a maximum context
+
+**[4020.64s → 4022.44s]** and that gives you some excellent performance,
+
+**[4022.44s → 4027.36s]** or would you still use RAAG so that you could focus
+
+**[4027.36s → 4035.79s]** the model's attention on specific parts?
+
+**[4035.79s → 4039.31s]** I would try and fit as much of the code base
+
+**[4039.31s → 4042.03s]** as I could in a context if it fits.
+
+**[4043.51s → 4045.83s]** Now of course you're gonna burn tokens that way.
+
+**[4045.83s → 4051.72s]** So if you're using a per token API endpoint
+
+**[4051.72s → 4057.60s]** a per token API endpoint that may not be the best cost effective strategy.
+
+**[4057.60s → 4060.96s]** So like now you're getting into difference between performance and cost.
+
+**[4064.56s → 4069.76s]** If you're worried about cost then yes I would definitely use some kind of rag and betting
+
+**[4069.76s → 4075.24s]** models to retrieve the most relevant examples. I think the trick though is figuring out what is
+
+**[4075.24s → 4085.29s]** the most relevant. So like how do you catalog it right? Like I'm trying to provide performance feedback
+
+**[4085.29s → 4091.60s]** on something. How do I know? Has the LLLM might have a sense of what's
+
+**[4091.60s → 4099.72s]** performant but then what's it retrieving context on. You may not need actually
+
+**[4099.72s → 4103.79s]** any information or retrieval to analyze performance.
+
+**[4109.68s → 4124.81s]** Yeah, and then you could maybe also something to do too is like writing good
+
+**[4124.81s → 4128.13s]** doctrines could also help too. Like if you want to analyze the entire structure
+
+**[4128.13s → 4133.57s]** your projects, like just from an overall architecture point of view, you could just, you know,
+
+**[4136.26s → 4140.02s]** not use the LLM and extract like the class structure or the documentation
+
+**[4142.31s → 4145.19s]** as a way to help analyze your code base.
+
+**[4157.40s → 4161.96s]** Would it help like if you have like a doc string, kind of what we talked about like with
+
+**[4161.96s → 4166.98s]** embeddings, you can have like a reference? So would it help to have like a summary doc string
+
+**[4166.98s → 4169.78s]** and then just to reference the actual code,
+
+**[4169.78s → 4176.92s]** or would you just put the whole code into the embeddings?
+
+**[4176.92s → 4181.32s]** I wouldn't put the whole code into the embeddings.
+
+**[4181.32s → 4184.24s]** And also, if you remember from really early on
+
+**[4184.24s → 4191.92s]** in the rag discussions, how you embed code can be tricky to,
+
+**[4191.92s → 4193.64s]** because it's not like sentences.
+
+**[4193.64s → 4198.40s]** There's like natural ways to embed documents.
+
+**[4198.40s → 4201.05s]** a little bit trickier with code.
+
+**[4201.05s → 4206.73s]** So you'd have to make sure that you were embedding
+
+**[4206.73s → 4213.14s]** system as well attuned to that.
+
+**[4213.14s → 4217.70s]** I'm not sure that answered your question.
+
+**[4217.70s → 4219.50s]** Yeah, I guess I'm trying to figure out
+
+**[4219.50s → 4222.66s]** missing about what's the best way to actually put it
+
+**[4222.66s → 4226.78s]** into your vector store.
+
+**[4226.78s → 4227.10s]** I don't know.
+
+**[4227.10s → 4232.68s]** It seems like Doc strings are a good option.
+
+**[4232.68s → 4233.76s]** Yeah, I mean, you can do both.
+
+**[4233.76s → 4235.60s]** I think it would be my answer.
+
+**[4235.60s → 4237.04s]** You know, just do both.
+
+**[4237.04s → 4239.61s]** Yep.
+
+**[4239.61s → 4242.97s]** And your what you're chunking in your code base
+
+**[4242.97s → 4248.39s]** could include like the function name and the doc string
+
+**[4249.18s → 4250.28s]** as part of your rag.
+
+**[4253.32s → 4255.84s]** Or it could include the whole function.
+
+**[4255.84s → 4258.54s]** You know what I mean, that's kind of where
+
+**[4258.54s → 4261.54s]** there's no reason you couldn't put both in your vector store.
+
+**[4268.86s → 4269.62s]** I was gonna say,
+
+**[4269.62s → 4273.10s]** if it depends on what the language is as well,
+
+**[4273.10s → 4280.09s]** might be able to turn it into its abstract syntax tree and then embed that. So that way you've
+
+**[4280.09s → 4287.71s]** kind of got what the system sees versus what readable person would see. And then have the doc
+
+**[4287.71s → 4292.35s]** strings or whatever it is the reference to each of those bits that abstract syntax tree which
+
+**[4292.35s → 4301.21s]** can be a lot smaller than the overall code base. Which generally, it's another option. And I mean
+
+**[4301.21s → 4303.93s]** if that was Java, that'd be basically the Java byte code,
+
+**[4303.93s → 4306.65s]** in its simplest form, if that was Python,
+
+**[4306.65s → 4311.13s]** that kind of pre-compiles to this little byte code itself,
+
+**[4311.13s → 4313.74s]** and you could kind of have it look over that
+
+**[4313.74s → 4316.24s]** and use those as your embeddings.
+
+**[4316.24s → 4317.84s]** So it depends really what the language is,
+
+**[4317.84s → 4319.85s]** and what you want it to do really.
+
+**[4319.85s → 4321.85s]** Mm-hmm.
+
+**[4321.85s → 4325.61s]** I think Python has its own thing to pull out its own abstract syntax
+
+**[4325.61s → 4329.29s]** tree. I think you can import like a AST module,
+
+**[4329.29s → 4332.29s]** and have it kind of pull out all that self as well.
+
+**[4332.29s → 4338.13s]** Yeah, thanks for saying that.
+
+**[4338.13s → 4366.92s]** Are there any other questions that I can answer
+
+**[4366.92s → 4368.92s]** or anything else you all want to chat about tonight?
+
+**[4368.92s → 4374.20s]** Oh, will you be sharing the stretch goals that I am on markdown file?
+
+**[4374.20s → 4375.20s]** The markdown file.
+
+**[4375.20s → 4377.20s]** Yeah, absolutely.
+
+**[4377.20s → 4378.20s]** Thanks.
+
+**[4378.20s → 4382.55s]** I'm just going to put it in the Q&A thread and Slack.
+
+**[4382.55s → 4398.40s]** Actually, I'm going to why I'm think my Slack is superior to do markdown.
+
+**[4398.40s → 4403.31s]** It's not having stuff that up yet.
+
+**[4403.31s → 4418.93s]** We just switched from Slack to teams about,
+
+**[4418.93s → 4423.21s]** you got three or four months ago at work,
+
+**[4423.21s → 4453.39s]** brutal, not a fan of teams.
+
+**[4453.39s → 4454.67s]** All right, everybody.
+
+**[4454.67s → 4459.50s]** Well, it seems like things are quite,
+
+**[4459.50s → 4460.34s]** they're all getting quiet.
+
+**[4460.34s → 4463.02s]** So we'll close out here.
+
+**[4463.02s → 4468.02s]** I hope by the way, the branch for the demo chart
+
+**[4468.90s → 4470.78s]** earlier in class is up.
+
+**[4470.78s → 4471.98s]** So you all should be able to run that
+
+**[4471.98s → 4473.78s]** and experiment with it.
+
+**[4473.78s → 4475.66s]** I think the branch name is called,
+
+**[4477.04s → 4479.48s]** just make sure that I've got this,
+
+**[4479.48s → 4506.94s]** is just a AI1.
+
+**[4506.94s → 4511.17s]** You know, so like two branches, AI1,
+
+**[4512.49s → 4518.70s]** the branch to the code that you all are looking for.
+
+**[4518.70s → 4521.82s]** It doesn't have the two examples that I ran in class today,
+
+**[4521.82s → 4524.97s]** but it does have minds to, you know,
+
+**[4524.97s → 4528.45s]** what I'm suggesting is you all get this running
+
+**[4528.45s → 4531.87s]** on your local machines and trying to create your own examples
+
+**[4531.87s → 4540.63s]** before you even start extending this for your projects.
+
+**[4540.63s → 4542.79s]** I also just want to point out to,
+
+**[4542.79s → 4547.79s]** I'm assuming most of you are probably know at least some Python.
+
+**[4549.71s → 4550.59s]** I also want to point out,
+
+**[4550.59s → 4553.79s]** Langchain has a JavaScript implementation too.
+
+**[4553.79s → 4561.56s]** So if you are,
+
+**[4561.56s → 4563.44s]** I will have to ask Ash this,
+
+**[4563.44s → 4565.00s]** because Tom, I'm not sure about the answer,
+
+**[4565.00s → 4570.43s]** but if you have more fluidity in JavaScript,
+
+**[4570.43s → 4575.63s]** we can ask if you can do your project in JavaScripts,
+
+**[4575.63s → 4577.23s]** using a line chain JavaScripts.
+
+**[4583.20s → 4588.36s]** Because all of the same stuff is gonna be there basically.
+
+**[4588.36s → 4589.96s]** Langsmith and Langgraph,
+
+**[4589.96s → 4593.28s]** both have JavaScript limitations as well as line chain.
+
+**[4593.28s → 4595.56s]** Yeah, but we just start pretty much the same sort of stuff
+
+**[4595.56s → 4599.16s]** in just in a different languages.
+
+**[4599.16s → 4604.52s]** I actually did one in PHP at one point the day.
+
+**[4605.32s → 4606.88s]** So you can kind of get it to work
+
+**[4606.88s → 4613.60s]** with all my staining language.
+
+**[4613.60s → 4616.60s]** I think I made a CGI script and in C as well
+
+**[4616.60s → 4618.88s]** and put some AI stuff in that as well.
+
+**[4618.88s → 4621.65s]** You can do that.
+
+**[4621.65s → 4624.12s]** Nice.
+
+**[4624.12s → 4626.56s]** I think it's pretty much language agnostics.
+
+**[4626.56s → 4628.48s]** It's got bindings for Python.
+
+**[4628.48s → 4631.12s]** I think it's got some bindings for JavaScript
+
+**[4631.12s → 4647.97s]** and you can kind of get it to work with all the staining.
+
+**[4647.97s → 4649.81s]** Well, thanks everybody for sickening around
+
+**[4649.81s → 4655.15s]** size class. And looking forward to next week, we'll get into starting to get
+
+**[4655.15s → 4659.73s]** some even more sophisticated example and start talking about multi-agent
+
+**[4659.73s → 4670.34s]** solutions. So all right, everybody. Well, I will catch you next week and have fun
+
+**[4670.34s → 4675.88s]** I'm hacking away.
+
+**[4675.88s → 4676.88s]** Thanks everyone.
+
