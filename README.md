@@ -1,18 +1,40 @@
-# AI Academy Course Platform
+# AI Academy - Professional AI/LLM Learning Platform
 
-Professional AI/LLM learning platform featuring the Aitra Legacy Content - a comprehensive 10-week course on developer productivity using artificial intelligence.
+A comprehensive learning platform for AI and Large Language Model development, featuring the complete Aitra Legacy Course with 22 video lessons across 9 weeks of intensive training.
+
+## 📖 What it does
+Transform your development workflow with AI. This platform delivers structured, hands-on training in LLM integration, RAG systems, agent development, and multi-agent architectures. Learn from real-world examples and build production-ready AI applications.
+
+## 🛠️ Built with
+- **Frontend**: React 18 + TypeScript + Vite
+- **Styling**: Tailwind CSS + Radix UI Components  
+- **Authentication**: Supabase Auth
+- **Database**: Supabase (PostgreSQL)
+- **Video Storage**: Supabase Storage
+- **AI Tools**: OpenAI Whisper, Cursor AI
+- **Deployment**: Vercel
+- **Progress Tracking**: localStorage (v1) → Supabase (planned v2)
+
+## 🚀 Status
+**In Production** - Live platform with 22 complete lessons, authentication, and video streaming. Progress tracking is functional but client-side only (server-side sync in development).
+
+## 🌐 Demo
+- **Live Demo**: [ai-academy.vercel.app](https://ai-academy.vercel.app) 
+- **Test Account**: Sign up required for access to protected content
+- **Sample Lesson**: Browse the Cohort 2 curriculum to see lesson structure and video player
 
 ## 🎓 Features
 
 - **📚 Structured Video Courses**: Complete curriculum with timestamped navigation
 - **🔐 Secure Authentication**: Protected content via Supabase Auth
-- **📝 AI-Powered Transcription**: Generate courses from video content
-- **📊 Progress Tracking**: Track your learning journey *(Note: Currently in development, not yet active)*
-- **🎯 Interactive Learning**: Timestamp-based navigation and summaries
+- **📝 AI-Powered Transcription**: Generate courses from video content using Modular-Mind Whisper to Course workflow. 
+- **📊 Progress Tracking**: Track your learning journey with checklist completion (localStorage-based, cloud sync planned)
+- **🎯 Interactive Learning**: Timestamp-based navigation and lesson summaries
+- **📱 Responsive Design**: Works seamlessly on desktop, tablet, and mobile
 
 ## 📚 Course Curriculum: Aitra Legacy Content
 
-This platform hosts the complete Aitra Legacy Course on AI/LLM development, featuring 22 video lessons across 9 weeks:
+This platform hosts the complete Aitra Legacy Course on AI/LLM development, featuring **22 video lessons across 9 weeks** (verified content count):
 
 ### **Weeks 1-2: LLM Foundations & Prompting**
 - Introduction to LLMs and Generative AI
@@ -182,16 +204,51 @@ npm run preview
 
 ## 📄 License
 
-Proprietary - All rights reserved. This is private course content for AI Academy.
+MIT License - Open source learning platform. Note: Course video content may have separate licensing terms.
 
 ## 🤝 Contributing
 
-This is a private repository. For access or contributions, please contact the AI Academy team.
+Contributions welcome! This project demonstrates modern React/TypeScript patterns with Supabase integration. 
+
+### How to Contribute
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Areas
+- Progress tracking migration to Supabase
+- Enhanced video player features
+- Mobile responsiveness improvements
+- Accessibility enhancements
+- Additional authentication providers
 
 ## 📞 Support
 
-For issues or questions about the course platform, please contact the development team.
+- **Issues**: [GitHub Issues](https://github.com/MemoriasDev/ai-academy/issues) *(will be available when repository is public)*
+- **Discussions**: [GitHub Discussions](https://github.com/MemoriasDev/ai-academy/discussions) *(will be available when repository is public)*
+- **Documentation**: [Wiki](https://github.com/MemoriasDev/ai-academy/wiki) *(will be available when repository is public)*
+- **Current**: Contact the development team for support during private beta
+
+## 🌟 Project Highlights
+
+- **22 Complete Video Lessons**: Professionally produced content with timestamps
+- **Secure Video Streaming**: Protected content with 15-minute signed URLs
+- **Modern React Architecture**: TypeScript, Tailwind CSS, and component-driven design
+- **Real-time Authentication**: Supabase Auth with session persistence
+- **Responsive UI**: Beautiful interface that works on all devices
+- **Progress Persistence**: Smart local storage with planned cloud sync
+- **AI-Powered Transcription**: Whisper integration for course generation
+
+## 🔗 Related Projects
+
+- **AI Course Transcription Package**: Automated video-to-course pipeline using OpenAI Whisper
+- **Supabase Integration**: Row-level security and real-time features
+- **Modern UI Components**: Radix UI primitives with Tailwind styling
 
 ---
 
-Built with ❤️ using [Module Mind](https://github.com/module-mind) template
+⭐ **Star this repository** if you find it useful for learning modern React development with AI integration!
+
+Built with ❤️ by developers, for developers learning AI

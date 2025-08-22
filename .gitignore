@@ -1,6 +1,9 @@
 # Videos (too large for GitHub - stored in Supabase)
 public/videos/**/*.mp4
 *.mp4
+*.webm
+*.mov
+*.avi
 
 # Python virtual environments
 ai-course-transcription-package/whisper_env/
@@ -47,6 +50,7 @@ venv/
 
 # Backups
 src/content/.backups/
+src/content/*backup*.json
 *.backup
 *.bak
 
@@ -64,3 +68,11 @@ ai-course-transcription-package/cohorts.zip
 ai-course-transcription-package/scripts/__pycache__/
 ai-course-transcription-package/.env
 ai-course-transcription-package/venv/
+
+# Development and security files
+.env.local
+.env.development
+.env.production
+*.key
+*.pem
+*.crt

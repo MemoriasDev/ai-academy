@@ -1,6 +1,6 @@
 {
   "name": "ai-academy",
-  "private": true,
+  "private": false,
   "version": "1.0.0",
   "description": "AI Academy - Professional AI/LLM Learning Platform",
   "author": "AI Academy Team",
@@ -11,7 +11,7 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate-course": "cd ai-course-transcription-package && python workflow_orchestrator.py"
+    "generate-course": "cd ai-course-transcription-package && python scripts/workflow_orchestrator.py"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
